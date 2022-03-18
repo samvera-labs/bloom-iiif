@@ -1,1 +1,1 @@
-# bloom-iiif
+# Bloom IIIF
