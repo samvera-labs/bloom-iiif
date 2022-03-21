@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Vault } from "@iiif/vault";
 import Figure from "components/Figure/Figure";
 import { useGetLabel } from "hooks/useGetLabel";
+import Header from "components/Header/Header";
 
 interface Props {
   collectionId: string;
@@ -37,10 +38,7 @@ const App: React.FC<Props> = ({ collectionId }) => {
 
   return (
     <>
-      <header>
-        <strong>{useGetLabel(collection["label"])}</strong>
-        <span>{useGetLabel(collection["summary"])}</span>
-      </header>
+      <Header label={collection.label} summary={collection.summary} />
       <div>
         {collection["items"].map((item) => (
           <Figure data={item} />
