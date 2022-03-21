@@ -3,13 +3,14 @@ import { Vault } from "@iiif/vault";
 import Figure from "components/Figure/Figure";
 import { useGetLabel } from "hooks/useGetLabel";
 import Header from "components/Header/Header";
+import { CollectionNormalized } from "@iiif/presentation-3";
 
 interface Props {
   collectionId: string;
 }
 
 const App: React.FC<Props> = ({ collectionId }) => {
-  const [collection, setCollection] = useState();
+  const [collection, setCollection] = useState<CollectionNormalized>();
   useEffect(() => {
     /**
      * load collection using @iiif/vault
@@ -25,22 +26,22 @@ const App: React.FC<Props> = ({ collectionId }) => {
       .finally(() => {});
   }, []);
 
-  if (!collection || !collection["items"]) {
+  if (!collection || !collection.items) {
+    return <></>;
     console.log(`The IIIF Collection ${collectionId} failed to load.`);
-    return <></>;
   }
-  if (collection["items"].length === 0) {
+  if (collection.items.length === 0) {
     console.log(`The IIIF collection ${collectionId} does not contain items.`);
+
     return <></>;
   }
-
-  console.log(collection["items"]);
+  console.log(collection.items);
 
   return (
     <>
       <Header label={collection.label} summary={collection.summary} />
       <div>
-        {collection["items"].map((item) => (
+        {collection.items.map((item) => (
           <Figure data={item} />
         ))}
       </div>

@@ -1,8 +1,9 @@
+import { CollectionNormalized, ManifestNormalized } from "@iiif/presentation-3";
 import { useGetLabel } from "hooks/useGetLabel";
 import React from "react";
 
 interface Props {
-  collectionId: string;
+  data: CollectionNormalized | ManifestNormalized;
 }
 
 const Figure: React.FC<Props> = ({ data }) => {
