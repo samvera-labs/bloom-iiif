@@ -1,3 +1,4 @@
+import { useGetLabel } from "hooks/useGetLabel";
 import React from "react";
 
 interface Props {
@@ -6,7 +7,12 @@ interface Props {
 
 const Figure: React.FC<Props> = ({ data }) => {
   console.log(data);
-  return <>item</>;
+  return (
+    <figure>
+      <img src="" />
+      <figcaption>{useGetLabel(data.label)}</figcaption>
+    </figure>
+  );
 };
 
 export default Figure;

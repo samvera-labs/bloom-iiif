@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Vault } from "@iiif/vault";
 import Figure from "components/Figure/Figure";
+import { useGetLabel } from "hooks/useGetLabel";
 
 interface Props {
   collectionId: string;
@@ -36,7 +37,10 @@ const App: React.FC<Props> = ({ collectionId }) => {
 
   return (
     <>
-      <div></div>
+      <header>
+        <strong>{useGetLabel(collection["label"])}</strong>
+        <span>{useGetLabel(collection["summary"])}</span>
+      </header>
       <div>
         {collection["items"].map((item) => (
           <Figure data={item} />
