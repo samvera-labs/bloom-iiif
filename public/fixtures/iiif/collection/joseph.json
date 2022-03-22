@@ -1,0 +1,78 @@
+{
+  "@context": ["http://iiif.io/api/presentation/3/context.json"],
+  "id": "http://127.0.0.1:8080/fixtures/iiif/collection/joseph.json",
+  "type": "Collection",
+  "label": {
+    "en": ["Chief Joseph (Hin-mah-too-yah-lat-kekt)"]
+  },
+  "summary": {
+    "en": ["Subject"]
+  },
+  "items": [
+    {
+      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/01-half-moon.json",
+      "type": "Manifest",
+      "label": "Half Moon - Nez Percé",
+      "metadata": [
+        {
+          "label": { "en": ["Resource Type"] },
+          "value": {
+            "en": ["Image"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/02-half-moon.json",
+      "type": "Manifest",
+      "label": "Half Moon - Nez Percé",
+      "metadata": [
+        {
+          "label": { "en": ["Resource Type"] },
+          "value": {
+            "en": ["Image"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/03-half-moon.json",
+      "type": "Manifest",
+      "label": "Half Moon - Nez Percé",
+      "metadata": [
+        {
+          "label": { "en": ["Resource Type"] },
+          "value": {
+            "en": ["Image"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/04-half-moon.json",
+      "type": "Manifest",
+      "label": "Half Moon - Nez Percé",
+      "metadata": [
+        {
+          "label": { "en": ["Resource Type"] },
+          "value": {
+            "en": ["Image"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/04-half-moon.json",
+      "type": "Manifest",
+      "label": "Half Moon - Nez Percé",
+      "metadata": [
+        {
+          "label": { "en": ["Resource Type"] },
+          "value": {
+            "en": ["Image"]
+          }
+        }
+      ]
+    }
+  ]
+}
