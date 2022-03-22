@@ -1,6 +1,7 @@
 import React from "react";
 import { useGetLabel } from "hooks/useGetLabel";
 import { InternationalString } from "@iiif/presentation-3";
+import { Description, HeaderStyled, Title } from "./Header.styled";
 
 interface HeaderProps {
   label: InternationalString | null;
@@ -9,10 +10,10 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ label, summary }) => {
   return (
-    <header>
-      <strong>{useGetLabel(label)}</strong>
-      <span>{useGetLabel(summary)}</span>
-    </header>
+    <HeaderStyled>
+      <Title>{useGetLabel(label)}</Title>
+      <Description>{useGetLabel(summary)}</Description>
+    </HeaderStyled>
   );
 };
 

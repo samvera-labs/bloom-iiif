@@ -1,4 +1,4 @@
-import { styled } from "../../../stitches";
+import { styled } from "stitches";
 
 const FigureStyled = styled("figure", {
   display: "flex",
@@ -13,15 +13,13 @@ const Image = styled("div", {
 
 const Title = styled("span", {
   marginTop: "0.618rem",
-  fontSize: "15px",
+  fontSize: "1rem",
   fontWeight: "700",
-  color: "black",
 });
 
-const Subtext = styled("span", {
-  fontSize: "12px",
-  color: "black",
-  marginTop: "6px",
+const Description = styled("span", {
+  fontSize: "0.8333rem",
+  marginTop: "0.382rem",
 });
 
-export { FigureStyled, Image, Title, Subtext };
+export { FigureStyled, Image, Title, Description };

@@ -1,6 +1,7 @@
 import React from "react";
 import Figure from "components/Figure/Figure";
 import { CollectionItems, Collection, Manifest } from "@iiif/presentation-3";
+import { ItemsStyled } from "./Items.styled";
 
 interface ItemsProps {
   items: CollectionItems[];
@@ -8,11 +9,11 @@ interface ItemsProps {
 
 const Items: React.FC<ItemsProps> = ({ items }) => {
   return (
-    <div>
+    <ItemsStyled>
       {items.map((item) => (
         <Figure item={item as Collection | Manifest} />
       ))}
-    </div>
+    </ItemsStyled>
   );
 };
 
