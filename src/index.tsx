@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Vault } from "@iiif/vault";
-import Figure from "components/Figure/Figure";
+import Items from "components/Items/Items";
 import Header from "components/Header/Header";
-import {
-  CollectionNormalized,
-  Collection,
-  Manifest,
-} from "@iiif/presentation-3";
+import { CollectionItems, CollectionNormalized } from "@iiif/presentation-3";
 
 interface Props {
   collectionId: string;
@@ -44,11 +40,7 @@ const App: React.FC<Props> = ({ collectionId }) => {
   return (
     <>
       <Header label={collection.label} summary={collection.summary} />
-      <div>
-        {collection.items.map((item) => (
-          <Figure item={item as Collection | Manifest} />
-        ))}
-      </div>
+      <Items items={collection.items as CollectionItems[]} />
     </>
   );
 };
