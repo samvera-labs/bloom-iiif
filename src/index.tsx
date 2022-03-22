@@ -3,6 +3,7 @@ import { Vault } from "@iiif/vault";
 import Items from "components/Items/Items";
 import Header from "components/Header/Header";
 import { CollectionItems, CollectionNormalized } from "@iiif/presentation-3";
+import { styled } from "stitches";
 
 interface Props {
   collectionId: string;
@@ -38,11 +39,19 @@ const App: React.FC<Props> = ({ collectionId }) => {
   console.log(collection.items);
 
   return (
-    <>
+    <Bloom>
       <Header label={collection.label} summary={collection.summary} />
       <Items items={collection.items as CollectionItems[]} />
-    </>
+    </Bloom>
   );
 };
+
+const Bloom = styled("div", {
+  marginBottom: "2.618rem",
+
+  "&:last-child": {
+    marginBottom: "0",
+  },
+});
 
 export default App;

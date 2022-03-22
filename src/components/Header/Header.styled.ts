@@ -8,14 +8,13 @@ const HeaderStyled = styled("div", {
 });
 
 const Title = styled("span", {
-  marginTop: "0.618rem",
-  fontSize: "1.618rem",
-  fontWeight: "700",
+  fontSize: "1.382rem",
+  fontWeight: "800",
 });
 
 const Description = styled("span", {
   fontSize: "1rem",
-  marginTop: "0.618rem",
+  marginTop: "0.382rem",
 });
 
 export { HeaderStyled, Title, Description };

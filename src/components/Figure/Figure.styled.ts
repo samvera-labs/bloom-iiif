@@ -18,7 +18,7 @@ const Title = styled("span", {
 });
 
 const Description = styled("span", {
-  fontSize: "0.8333rem",
+  fontSize: "0.618rem",
   marginTop: "0.382rem",
 });
 
