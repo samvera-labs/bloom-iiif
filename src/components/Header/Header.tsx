@@ -3,8 +3,8 @@ import { useGetLabel } from "hooks/useGetLabel";
 import { InternationalString } from "@iiif/presentation-3";
 
 interface HeaderProps {
-  label: InternationalString | string;
-  summary: InternationalString | string;
+  label: InternationalString | null;
+  summary: InternationalString | null;
 }
 
 const Header: React.FC<HeaderProps> = ({ label, summary }) => {

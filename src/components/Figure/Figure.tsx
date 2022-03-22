@@ -1,18 +1,20 @@
-import { CollectionNormalized, ManifestNormalized } from "@iiif/presentation-3";
-import { useGetLabel } from "hooks/useGetLabel";
 import React from "react";
+import { useGetLabel } from "hooks/useGetLabel";
+import { Collection, Manifest } from "@iiif/presentation-3";
+import { FigureStyled, Image, Subtext, Title } from "./Figure.styled";
 
-interface Props {
-  data: CollectionNormalized | ManifestNormalized;
+interface FigureProps {
+  item: Collection | Manifest;
 }
 
-const Figure: React.FC<Props> = ({ data }) => {
-  console.log(data);
+const Figure: React.FC<FigureProps> = ({ item }) => {
+  const { label } = item;
   return (
-    <figure>
-      <img src="" />
-      <figcaption>{useGetLabel(data.label)}</figcaption>
-    </figure>
+    <FigureStyled>
+      <Image style={{ width: "100%", height: `120px` }} />
+      <Title>{useGetLabel(label)}</Title>
+      <Subtext>Image</Subtext>
+    </FigureStyled>
   );
 };
 

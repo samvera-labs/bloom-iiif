@@ -3,7 +3,11 @@ import { Vault } from "@iiif/vault";
 import Figure from "components/Figure/Figure";
 import { useGetLabel } from "hooks/useGetLabel";
 import Header from "components/Header/Header";
-import { CollectionNormalized } from "@iiif/presentation-3";
+import {
+  CollectionNormalized,
+  Collection,
+  Manifest,
+} from "@iiif/presentation-3";
 
 interface Props {
   collectionId: string;
@@ -42,7 +46,7 @@ const App: React.FC<Props> = ({ collectionId }) => {
       <Header label={collection.label} summary={collection.summary} />
       <div>
         {collection.items.map((item) => (
-          <Figure data={item} />
+          <Figure item={item as Collection | Manifest} />
         ))}
       </div>
     </>
