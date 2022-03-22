@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Vault } from "@iiif/vault";
 import Figure from "components/Figure/Figure";
-import { useGetLabel } from "hooks/useGetLabel";
 import Header from "components/Header/Header";
 import {
   CollectionNormalized,
@@ -31,14 +30,15 @@ const App: React.FC<Props> = ({ collectionId }) => {
   }, []);
 
   if (!collection || !collection.items) {
-    return <></>;
     console.log(`The IIIF Collection ${collectionId} failed to load.`);
+    return <></>;
   }
+
   if (collection.items.length === 0) {
     console.log(`The IIIF collection ${collectionId} does not contain items.`);
-
     return <></>;
   }
+
   console.log(collection.items);
 
   return (
