@@ -3,8 +3,8 @@ import { styled } from "stitches";
 const HeaderStyled = styled("div", {
   display: "flex",
   flexDirection: "column",
-  paddingBottom: "1rem",
-  margin: "0 0 $1",
+  paddingBottom: "$4",
+  margin: "0",
 });
 
 const Title = styled("span", {
