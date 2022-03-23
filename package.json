@@ -17,14 +17,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mathewjordan/bloom-iiif.git"
+    "url": "git+https://github.com/nulib/bloom-iiif.git"
   },
   "author": "Northwestern University Libraries",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mathewjordan/bloom-iiif/issues"
+    "url": "https://github.com/nulib/bloom-iiif/issues"
   },
-  "homepage": "https://github.com/mathewjordan/bloom-iiif#readme",
+  "homepage": "https://github.com/nulib/bloom-iiif#readme",
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
