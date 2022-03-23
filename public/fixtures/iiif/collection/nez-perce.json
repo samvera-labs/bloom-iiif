@@ -10,7 +10,7 @@
   },
   "items": [
     {
-      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/",
+      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/01-half-moon.json",
       "type": "Manifest",
       "label": { "none": ["Half Moon - Nez Percé"] },
       "summary": { "none": ["Image"] },
@@ -24,7 +24,7 @@
       ]
     },
     {
-      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/",
+      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/02-lawyer.json",
       "type": "Manifest",
       "label": { "none": ["Lawyer - Nez Percé"] },
       "summary": { "none": ["Image"] },
@@ -38,7 +38,7 @@
       ]
     },
     {
-      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/",
+      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/03-matron.json",
       "type": "Manifest",
       "label": { "none": ["Nez Percé Matron"] },
       "summary": { "none": ["Image"] },
@@ -52,7 +52,7 @@
       ]
     },
     {
-      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/",
+      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/04-three-eagles.json",
       "type": "Manifest",
       "label": { "none": ["Three Eagles - Nez Percé"] },
       "summary": { "none": ["Image"] },
@@ -66,7 +66,7 @@
       ]
     },
     {
-      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/",
+      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/05-raven-blanket.json",
       "type": "Manifest",
       "label": { "none": ["Raven Blanket - Nez Percé"] },
       "summary": { "none": ["Image"] },
@@ -80,7 +80,7 @@
       ]
     },
     {
-      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/",
+      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/06-night-scout.json",
       "type": "Manifest",
       "label": { "none": ["Night Scout - Nez Percé"] },
       "summary": { "none": ["Image"] },
@@ -94,7 +94,7 @@
       ]
     },
     {
-      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/",
+      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/07-grizzly-bear-ferocious.json",
       "type": "Manifest",
       "label": { "none": ["Grizzly-bear Ferocious - Nez Percé"] },
       "summary": { "none": ["Image"] },
@@ -108,7 +108,7 @@
       ]
     },
     {
-      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/",
+      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/08-map-territory.json",
       "type": "Manifest",
       "label": { "none": ["Map of Nez Percé Territory"] },
       "summary": { "none": ["Image"] },
@@ -122,7 +122,7 @@
       ]
     },
     {
-      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/",
+      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/09-girl.json",
       "type": "Manifest",
       "label": { "none": ["Nez Percé Girl"] },
       "summary": { "none": ["Image"] },
@@ -136,7 +136,7 @@
       ]
     },
     {
-      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/",
+      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/10-kulkultsalum.json",
       "type": "Manifest",
       "label": { "none": ["Kulkultsálum - Nez Percé"] },
       "summary": { "none": ["Image"] },
@@ -150,7 +150,7 @@
       ]
     },
     {
-      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/",
+      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/11-watching-for-the-signal.json",
       "type": "Manifest",
       "label": { "none": ["Watching for the Signal - Nez Percé"] },
       "summary": { "none": ["Image"] },
@@ -164,7 +164,7 @@
       ]
     },
     {
-      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/",
+      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/12-joseph.json",
       "type": "Manifest",
       "label": { "none": ["Joseph - Nez Percé"] },
       "summary": { "none": ["Image"] },
@@ -178,7 +178,7 @@
       ]
     },
     {
-      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/",
+      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/13-chief-joseph.json",
       "type": "Manifest",
       "label": { "none": ["Chief Joseph - Nez Percé"] },
       "summary": { "none": ["Image"] },
@@ -192,7 +192,7 @@
       ]
     },
     {
-      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/",
+      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/14-joseph-dead-feast-lodge.json",
       "type": "Manifest",
       "label": { "none": ["Joseph Dead Feast Lodge - Nez Percé"] },
       "summary": { "none": ["Image"] },
@@ -206,7 +206,7 @@
       ]
     },
     {
-      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/",
+      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/15-last-home-of-joseph.json",
       "type": "Manifest",
       "label": { "none": ["Last Home of Joseph - Nez Percé"] },
       "summary": { "none": ["Image"] },
