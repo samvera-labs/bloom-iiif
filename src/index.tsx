@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Vault } from "@iiif/vault";
+import {
+  CollectionProvider,
+  useCollectionState,
+} from "context/collection-context";
 import Items from "components/Items/Items";
 import Header from "components/Header/Header";
 import { CollectionItems, CollectionNormalized } from "@iiif/presentation-3";
@@ -9,7 +12,17 @@ interface Props {
   collectionId: string;
 }
 
-const App: React.FC<Props> = ({ collectionId }) => {
+const App: React.FC<Props> = (props) => {
+  return (
+    <CollectionProvider>
+      <RenderBloom {...props} />
+    </CollectionProvider>
+  );
+};
+
+const RenderBloom: React.FC<Props> = ({ collectionId }) => {
+  const store = useCollectionState();
+  const { vault } = store;
   const [collection, setCollection] = useState<CollectionNormalized>();
   /**
    * todo: add wrapping context and store vault
@@ -19,7 +32,6 @@ const App: React.FC<Props> = ({ collectionId }) => {
     /**
      * load collection using @iiif/vault
      */
-    const vault = new Vault();
 
     vault
       .loadCollection(collectionId)
@@ -39,8 +51,6 @@ const App: React.FC<Props> = ({ collectionId }) => {
     console.log(`The IIIF collection ${collectionId} does not contain items.`);
     return <></>;
   }
-
-  console.log(collection.items);
 
   return (
     <Bloom>
