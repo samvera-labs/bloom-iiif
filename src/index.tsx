@@ -47,7 +47,7 @@ const App: React.FC<Props> = ({ collectionId }) => {
 };
 
 const Bloom = styled("div", {
-  marginBottom: "2.618rem",
+  marginBottom: "$3",
 
   "&:last-child": {
     marginBottom: "0",

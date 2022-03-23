@@ -9,8 +9,10 @@ const Figure: React.FC<FigureProps> = ({ caption }) => {
   return (
     <FigureStyled>
       <Image />
-      <Title>{caption}</Title>
-      <Description>Image</Description>
+      <figcaption>
+        <Title>{caption}</Title>
+        <Description>Image</Description>
+      </figcaption>
     </FigureStyled>
   );
 };

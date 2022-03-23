@@ -3,8 +3,13 @@ import { styled } from "stitches";
 const FigureStyled = styled("figure", {
   display: "flex",
   flexDirection: "column",
-  paddingBottom: "$3",
+  padding: "0",
   margin: "0",
+
+  figcaption: {
+    display: "flex",
+    flexDirection: "column",
+  },
 });
 
 const Image = styled("div", {
