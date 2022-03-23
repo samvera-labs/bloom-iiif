@@ -59,10 +59,10 @@ const Bloom: React.FC<Props> = ({ collectionId }) => {
 };
 
 const StyledBloom = styled("div", {
-  marginBottom: "$3",
+  paddingBottom: "$5",
 
-  "&:last-child": {
-    marginBottom: "0",
+  "&:first-child": {
+    paddingTop: "$5",
   },
 });
 

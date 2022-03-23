@@ -10,14 +10,15 @@ ReactDOM.render(
       style={{
         fontWeight: 400,
         fontSize: "1rem",
-        marginBottom: "1.618rem",
       }}
     >
       Explore Further
     </h2>
-    <App collectionId={collectionNezPerce} />
-    <App collectionId={collectionNezPerce} />
-    <App collectionId={collectionNezPerce} />
+    <div>
+      <App collectionId={collectionNezPerce} />
+      <App collectionId={collectionNezPerce} />
+      <App collectionId={collectionNezPerce} />
+    </div>
   </>,
   document.getElementById("root")
 );
