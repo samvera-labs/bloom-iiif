@@ -8,14 +8,40 @@ interface ItemsProps {
 }
 
 const Items: React.FC<ItemsProps> = ({ items }) => {
-  const [activeItems, setActiveItems] = useState<number[]>([]);
+  const [activeItems, setActiveItems] = useState<number[]>([0, 1, 2, 3]);
+
+  const handlePaging = (e: React.MouseEvent<HTMLButtonElement>) => {
+    console.log(e);
+  };
 
   return (
-    <ItemsStyled>
-      {items.map((item) => (
-        <Item item={item as Collection | Manifest} />
-      ))}
-    </ItemsStyled>
+    <>
+      <button
+        aria-label="previous"
+        data-increment={-1}
+        onClick={handlePaging}
+        value="previous"
+      >
+        Previous
+      </button>
+      <button
+        aria-label="next"
+        data-increment={+1}
+        onClick={handlePaging}
+        value="next"
+      >
+        Next
+      </button>
+      <ItemsStyled>
+        {items
+          .filter((item, index) => {
+            if (activeItems.includes(index)) return item;
+          })
+          .map((item) => (
+            <Item item={item as Collection | Manifest} key={item.id} />
+          ))}
+      </ItemsStyled>
+    </>
   );
 };
 
