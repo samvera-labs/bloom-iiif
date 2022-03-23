@@ -6,7 +6,7 @@ const ItemsStyled = styled("div", {
   flexDirection: "row",
 
   [`& ${FigureStyled}`]: {
-    marginRight: "2rem",
+    marginRight: "$4",
   },
 });
 
