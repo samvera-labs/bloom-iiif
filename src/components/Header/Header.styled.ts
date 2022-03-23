@@ -8,12 +8,12 @@ const HeaderStyled = styled("div", {
 });
 
 const Title = styled("span", {
-  fontSize: "1.382rem",
+  fontSize: "$6",
   fontWeight: "800",
 });
 
 const Description = styled("span", {
-  fontSize: "1rem",
+  fontSize: "$3",
   marginTop: "$1",
 });
 

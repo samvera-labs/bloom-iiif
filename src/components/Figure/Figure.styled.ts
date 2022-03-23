@@ -15,12 +15,12 @@ const Image = styled("div", {
 
 const Title = styled("span", {
   marginTop: "$2",
-  fontSize: "1rem",
+  fontSize: "$3",
   fontWeight: "700",
 });
 
 const Description = styled("span", {
-  fontSize: "0.618rem",
+  fontSize: "$2",
   marginTop: "$1",
 });
 

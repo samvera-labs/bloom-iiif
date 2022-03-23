@@ -38,6 +38,17 @@ export const theme = {
     sansBold: "Akkurat Pro Bold, Arial, sans-serif",
     display: "Campton, 'Akkurat Pro Regular', Arial, sans-serif",
   },
+  fontSizes: {
+    1: "0.611rem",
+    2: "0.722rem",
+    3: "0.833rem",
+    4: "1rem", // 19px
+    5: `1.177rem`,
+    6: `1.318rem`,
+    7: `calc(1rem * ${gr(1)})`,
+    8: `calc(1rem * ${gr(2)})`,
+    9: `calc(1rem * ${gr(3)})`,
+  },
   sizes: {
     1: "0.382rem",
     2: "0.618rem",
