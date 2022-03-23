@@ -3,15 +3,16 @@ import { Description, FigureStyled, Image, Title } from "./Figure.styled";
 
 interface FigureProps {
   caption: string;
+  description: string;
 }
 
-const Figure: React.FC<FigureProps> = ({ caption }) => {
+const Figure: React.FC<FigureProps> = ({ caption, description }) => {
   return (
     <FigureStyled>
       <Image />
       <figcaption>
         <Title>{caption}</Title>
-        <Description>Image</Description>
+        <Description>{description}</Description>
       </figcaption>
     </FigureStyled>
   );

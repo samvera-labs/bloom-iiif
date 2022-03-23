@@ -8,7 +8,12 @@ interface ItemProps {
 }
 
 const Item: React.FC<ItemProps> = ({ item }) => {
-  return <Figure caption={useGetLabel(item.label)} />;
+  return (
+    <Figure
+      caption={useGetLabel(item.label)}
+      description={useGetLabel(item.summary)}
+    />
+  );
 };
 
 export default Item;
