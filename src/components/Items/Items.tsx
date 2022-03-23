@@ -20,17 +20,17 @@ const Items: React.FC<ItemsProps> = ({ items }) => {
 
   return (
     <>
-      <ItemsControl
-        increment={-1}
-        label="previous"
-        handleControl={handleActiveItems}
-      />
-      <ItemsControl
-        increment={1}
-        label="next"
-        handleControl={handleActiveItems}
-      />
       <ItemsStyled>
+        <ItemsControl
+          increment={-1}
+          label="previous"
+          handleControl={handleActiveItems}
+        />
+        <ItemsControl
+          increment={1}
+          label="next"
+          handleControl={handleActiveItems}
+        />
         {items
           .filter((item, index) => {
             if (activeItems.includes(index)) return item;

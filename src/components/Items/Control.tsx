@@ -1,4 +1,5 @@
 import React from "react";
+import { ControlStyled } from "./Control.styled";
 
 interface ItemsControlProps {
   increment: number;
@@ -12,14 +13,15 @@ const ItemsControl: React.FC<ItemsControlProps> = ({
   handleControl,
 }) => {
   return (
-    <button
+    <ControlStyled
       aria-label={label}
       data-increment={increment}
-      value={label}
+      direction={label}
       onClick={handleControl}
+      value={label}
     >
       {label}
-    </button>
+    </ControlStyled>
   );
 };
 
