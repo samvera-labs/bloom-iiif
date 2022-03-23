@@ -14,9 +14,25 @@
       "type": "Manifest",
       "label": { "none": ["Half Moon - Nez Percé"] },
       "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/1ce40089-9317-4dc7-823a-3af757d55c5d/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/1ce40089-9317-4dc7-823a-3af757d55c5d",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
       "homepage": [
         {
-          "id": "      ",
+          "id": "https://dc.library.northwestern.edu/items/9bda3bba-18f6-467e-be96-3bbd079dabdb",
           "type": "Text",
           "label": { "none": ["Half Moon - Nez Percé"] },
           "format": "text/html"
@@ -28,9 +44,25 @@
       "type": "Manifest",
       "label": { "none": ["Lawyer - Nez Percé"] },
       "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/f3f7bde0-c173-4c7e-8bed-c1534d220fd3/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/f3f7bde0-c173-4c7e-8bed-c1534d220fd3",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
       "homepage": [
         {
-          "id": "      ",
+          "id": "https://dc.library.northwestern.edu/items/093af1dc-1147-4dfe-995b-12fb9f983192",
           "type": "Text",
           "label": { "none": ["Lawyer - Nez Percé"] },
           "format": "text/html"
@@ -42,9 +74,25 @@
       "type": "Manifest",
       "label": { "none": ["Nez Percé Matron"] },
       "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8b3ae6bc-a41b-4da2-98ca-6ac90fb38186/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8b3ae6bc-a41b-4da2-98ca-6ac90fb38186",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
       "homepage": [
         {
-          "id": "      ",
+          "id": "https://dc.library.northwestern.edu/items/0cd408af-ed9b-4dd1-a5a1-52dadcc667f5",
           "type": "Text",
           "label": { "none": ["Nez Percé Matron"] },
           "format": "text/html"
@@ -56,9 +104,25 @@
       "type": "Manifest",
       "label": { "none": ["Three Eagles - Nez Percé"] },
       "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/b5f79191-b6d4-4867-afeb-5dd010c26112/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/b5f79191-b6d4-4867-afeb-5dd010c26112",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
       "homepage": [
         {
-          "id": "      ",
+          "id": "https://dc.library.northwestern.edu/items/ddd72f96-9869-4335-9d8c-3a3da51ad128",
           "type": "Text",
           "label": { "none": ["Three Eagles - Nez Percé"] },
           "format": "text/html"
@@ -70,9 +134,25 @@
       "type": "Manifest",
       "label": { "none": ["Raven Blanket - Nez Percé"] },
       "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/4630e77e-598e-4ca3-8441-8a3d56c67c4f/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/4630e77e-598e-4ca3-8441-8a3d56c67c4f",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
       "homepage": [
         {
-          "id": "      ",
+          "id": "https://dc.library.northwestern.edu/items/19efac1e-5e79-471c-89c2-a60a775562ce",
           "type": "Text",
           "label": { "none": ["Raven Blanket - Nez Percé"] },
           "format": "text/html"
@@ -84,9 +164,25 @@
       "type": "Manifest",
       "label": { "none": ["Night Scout - Nez Percé"] },
       "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/c542c750-489c-430d-8dd5-3565497c6452/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/c542c750-489c-430d-8dd5-3565497c6452",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
       "homepage": [
         {
-          "id": "      ",
+          "id": "https://dc.library.northwestern.edu/items/c3e16b10-a8a9-4dee-96fc-5f81a77ef3b7",
           "type": "Text",
           "label": { "none": ["Night Scout - Nez Percé"] },
           "format": "text/html"
@@ -98,9 +194,25 @@
       "type": "Manifest",
       "label": { "none": ["Grizzly-bear Ferocious - Nez Percé"] },
       "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/4e26962c-c2de-45ad-aa92-56279965b136/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/4e26962c-c2de-45ad-aa92-56279965b136",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
       "homepage": [
         {
-          "id": "      ",
+          "id": "https://dc.library.northwestern.edu/items/972196ff-d614-4b76-9d12-80e18f1f37c9",
           "type": "Text",
           "label": { "none": ["Grizzly-bear Ferocious - Nez Percé"] },
           "format": "text/html"
@@ -112,9 +224,25 @@
       "type": "Manifest",
       "label": { "none": ["Map of Nez Percé Territory"] },
       "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/b2ff873e-f948-48e5-b4fd-0903021090a3/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/b2ff873e-f948-48e5-b4fd-0903021090a3",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
       "homepage": [
         {
-          "id": "      ",
+          "id": "https://dc.library.northwestern.edu/items/14a6aa15-9e12-47a7-9617-91f430d4f47b",
           "type": "Text",
           "label": { "none": ["Map of Nez Percé Territory"] },
           "format": "text/html"
@@ -126,9 +254,25 @@
       "type": "Manifest",
       "label": { "none": ["Nez Percé Girl"] },
       "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/90e4dc8a-996c-4f1f-9c9a-20f77e0d3fc6/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/90e4dc8a-996c-4f1f-9c9a-20f77e0d3fc6",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
       "homepage": [
         {
-          "id": "      ",
+          "id": "https://dc.library.northwestern.edu/items/8cc24976-3383-407d-9f4f-859d0cb70a8c",
           "type": "Text",
           "label": { "none": ["Nez Percé Girl"] },
           "format": "text/html"
@@ -140,9 +284,25 @@
       "type": "Manifest",
       "label": { "none": ["Kulkultsálum - Nez Percé"] },
       "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/faf52629-022e-4d3a-a5f9-dffb6f50ef04/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/faf52629-022e-4d3a-a5f9-dffb6f50ef04",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
       "homepage": [
         {
-          "id": "      ",
+          "id": "https://dc.library.northwestern.edu/items/6caed4fb-60bc-4574-86a2-cb9a1859f78c",
           "type": "Text",
           "label": { "none": ["Kulkultsálum - Nez Percé"] },
           "format": "text/html"
@@ -154,9 +314,25 @@
       "type": "Manifest",
       "label": { "none": ["Watching for the Signal - Nez Percé"] },
       "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8f58fe3a-caaf-4210-aa48-6a7cf8b63de8/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8f58fe3a-caaf-4210-aa48-6a7cf8b63de8",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
       "homepage": [
         {
-          "id": "      ",
+          "id": "https://dc.library.northwestern.edu/items/24894e75-3fd0-475a-b4d2-48fd1dd5c2bc",
           "type": "Text",
           "label": { "none": ["Watching for the Signal - Nez Percé"] },
           "format": "text/html"
@@ -168,9 +344,25 @@
       "type": "Manifest",
       "label": { "none": ["Joseph - Nez Percé"] },
       "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8061b387-205e-44b2-a91b-49fcc1f10a19/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8061b387-205e-44b2-a91b-49fcc1f10a19",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
       "homepage": [
         {
-          "id": "      ",
+          "id": "https://dc.library.northwestern.edu/items/84aec8c1-42e8-4e2c-a6b2-1c7e3790217f",
           "type": "Text",
           "label": { "none": ["Joseph - Nez Percé"] },
           "format": "text/html"
@@ -182,9 +374,25 @@
       "type": "Manifest",
       "label": { "none": ["Chief Joseph - Nez Percé"] },
       "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/fc59b9ea-f5c6-4892-9fe4-c9c0cc9cfc89/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/fc59b9ea-f5c6-4892-9fe4-c9c0cc9cfc89",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
       "homepage": [
         {
-          "id": "      ",
+          "id": "https://dc.library.northwestern.edu/items/431db4ca-a452-496e-91dc-3a266e4a2d83",
           "type": "Text",
           "label": { "none": ["Chief Joseph - Nez Percé"] },
           "format": "text/html"
@@ -196,9 +404,25 @@
       "type": "Manifest",
       "label": { "none": ["Joseph Dead Feast Lodge - Nez Percé"] },
       "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/d5d256ea-2e10-4794-9b84-1344ed02152f/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/d5d256ea-2e10-4794-9b84-1344ed02152f",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
       "homepage": [
         {
-          "id": "      ",
+          "id": "https://dc.library.northwestern.edu/items/83fbe94b-6db7-463e-9942-6beb256aa606",
           "type": "Text",
           "label": { "none": ["Joseph Dead Feast Lodge - Nez Percé"] },
           "format": "text/html"
@@ -210,9 +434,25 @@
       "type": "Manifest",
       "label": { "none": ["Last Home of Joseph - Nez Percé"] },
       "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/7424bda9-1bbf-4a9c-a47a-c5f57c795bf6/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/7424bda9-1bbf-4a9c-a47a-c5f57c795bf6",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
       "homepage": [
         {
-          "id": "      ",
+          "id": "https://dc.library.northwestern.edu/items/588a6527-88b6-4b70-ae6c-f42aceea9efb",
           "type": "Text",
           "label": { "none": ["Last Home of Joseph - Nez Percé"] },
           "format": "text/html"
