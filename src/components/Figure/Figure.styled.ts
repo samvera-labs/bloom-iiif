@@ -12,7 +12,7 @@ const FigureStyled = styled("figure", {
   },
 });
 
-const Image = styled("div", {
+const Image = styled("img", {
   backgroundColor: "black",
   width: "$8",
   height: "$7",

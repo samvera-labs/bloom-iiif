@@ -1,3 +1,4 @@
+import { useGetResourceImage } from "hooks/useGetResourceImage";
 import React from "react";
 import { Description, FigureStyled, Image, Title } from "./Figure.styled";
 
@@ -6,10 +7,10 @@ interface FigureProps {
   description: string;
 }
 
-const Figure: React.FC<FigureProps> = ({ caption, description }) => {
+const Figure: React.FC<FigureProps> = ({ caption, description, image }) => {
   return (
     <FigureStyled>
-      <Image />
+      <Image src={image} />
       <figcaption>
         <Title>{caption}</Title>
         <Description>{description}</Description>

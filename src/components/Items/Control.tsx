@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { ControlStyled } from "./Control.styled";
 
 interface ItemsControlProps {
