@@ -10,9 +10,10 @@ interface ItemsProps {
 const Items: React.FC<ItemsProps> = ({ items }) => {
   const [activeItems, setActiveItems] = useState<number[]>([0, 1, 2, 3]);
 
-  const handlePaging = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handlePaging = (e: React.MouseEvent) => {
+    const increment = (e.target as HTMLButtonElement).dataset?.increment;
     setActiveItems(
-      activeItems.map((index) => index + parseInt(e.target.dataset?.increment))
+      activeItems.map((index) => index + parseInt(increment as string))
     );
   };
 
