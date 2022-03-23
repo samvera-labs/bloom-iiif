@@ -11,6 +11,10 @@ interface Props {
 
 const App: React.FC<Props> = ({ collectionId }) => {
   const [collection, setCollection] = useState<CollectionNormalized>();
+  /**
+   * todo: add wrapping context and store vault
+   */
+
   useEffect(() => {
     /**
      * load collection using @iiif/vault

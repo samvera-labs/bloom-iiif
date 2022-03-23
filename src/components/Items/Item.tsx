@@ -9,11 +9,15 @@ interface ItemProps {
 }
 
 const Item: React.FC<ItemProps> = ({ item }) => {
+  /**
+   * todo: use vault to get content resource by id.
+   */
+
   return (
     <Figure
       caption={useGetLabel(item.label)}
       description={useGetLabel(item.summary)}
-      image={useGetResourceImage(item.thumbnail)}
+      image={useGetResourceImage(item.thumbnail, "100,161.8")}
     />
   );
 };

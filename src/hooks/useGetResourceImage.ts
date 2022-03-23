@@ -3,6 +3,7 @@ export const useGetResourceImage = (
   size = "600,",
   region = "full"
 ) => {
+  console.log(resource);
   if (Array.isArray(resource)) resource = resource[0];
 
   let image = resource.id;
