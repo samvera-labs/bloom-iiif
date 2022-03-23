@@ -6,8 +6,11 @@ const ItemsStyled = styled("div", {
   display: "flex",
   flexDirection: "row",
 
-  [`& ${FigureStyled}`]: {
+  [`> a`]: {
+    display: "flex",
     marginRight: "$4",
+    textDecoration: "none",
+    color: "black",
 
     "&:last-child": {
       marginRight: "0",

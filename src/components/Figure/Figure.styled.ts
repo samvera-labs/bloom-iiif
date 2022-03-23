@@ -26,7 +26,7 @@ const Title = styled("span", {
 });
 
 const Description = styled("span", {
-  fontSize: "$2",
+  fontSize: "$1",
   marginTop: "$1",
 });
 

@@ -15,14 +15,14 @@ const Item: React.FC<ItemProps> = ({ item }) => {
 
   const thumbnailResource = vault.get(item.thumbnail[0].id);
 
-  console.log(thumbnailResource);
-
   return (
-    <Figure
-      caption={useGetLabel(item.label)}
-      description={useGetLabel(item.summary)}
-      image={useGetResourceImage(thumbnailResource, "200,")}
-    />
+    <a href={item.homepage[0].id}>
+      <Figure
+        caption={useGetLabel(item.label)}
+        description={useGetLabel(item.summary)}
+        image={useGetResourceImage(thumbnailResource, "200,")}
+      />
+    </a>
   );
 };
 
