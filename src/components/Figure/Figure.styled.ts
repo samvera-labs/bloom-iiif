@@ -16,6 +16,7 @@ const Image = styled("img", {
   backgroundColor: "black",
   width: "$8",
   height: "$7",
+  objectFit: "contain",
 });
 
 const Title = styled("span", {
