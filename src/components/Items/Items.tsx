@@ -1,5 +1,5 @@
 import React from "react";
-import Figure from "components/Figure/Figure";
+import Item from "components/Items/Item";
 import { CollectionItems, Collection, Manifest } from "@iiif/presentation-3";
 import { ItemsStyled } from "./Items.styled";
 
@@ -11,7 +11,7 @@ const Items: React.FC<ItemsProps> = ({ items }) => {
   return (
     <ItemsStyled>
       {items.map((item) => (
-        <Figure item={item as Collection | Manifest} />
+        <Item item={item as Collection | Manifest} />
       ))}
     </ItemsStyled>
   );
