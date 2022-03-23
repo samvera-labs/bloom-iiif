@@ -8,7 +8,7 @@ interface FigureProps {
 const Figure: React.FC<FigureProps> = ({ caption }) => {
   return (
     <FigureStyled>
-      <Image style={{ width: "100%", height: `120px` }} />
+      <Image />
       <Title>{caption}</Title>
       <Description>Image</Description>
     </FigureStyled>

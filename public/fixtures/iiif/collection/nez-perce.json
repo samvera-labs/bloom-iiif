@@ -3,74 +3,219 @@
   "id": "http://127.0.0.1:8080/fixtures/iiif/collection/nez-perce.json",
   "type": "Collection",
   "label": {
-    "en": ["Nez Percé (Nimíipuu)"]
+    "none": ["Nez Percé (Nimíipuu)"]
   },
   "summary": {
-    "en": ["More from this Collection"]
+    "none": ["More from this Collection"]
   },
   "items": [
     {
-      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/01-half-moon.json",
+      "id": "      ",
       "type": "Manifest",
-      "label": "Half Moon - Nez Percé",
-      "metadata": [
+      "label": { "none": ["Half Moon - Nez Percé"] },
+      "summary": { "none": ["Image"] },
+      "homepage": [
         {
-          "label": { "en": ["Resource Type"] },
-          "value": {
-            "en": ["Image"]
-          }
+          "id": "      ",
+          "type": "Text",
+          "label": { "none": ["Half Moon - Nez Percé"] },
+          "format": "text/html"
         }
       ]
     },
     {
-      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/02-half-moon.json",
+      "id": "      ",
       "type": "Manifest",
-      "label": "Half Moon - Nez Percé",
-      "metadata": [
+      "label": { "none": ["Lawyer - Nez Percé"] },
+      "summary": { "none": ["Image"] },
+      "homepage": [
         {
-          "label": { "en": ["Resource Type"] },
-          "value": {
-            "en": ["Image"]
-          }
+          "id": "      ",
+          "type": "Text",
+          "label": { "none": ["Lawyer - Nez Percé"] },
+          "format": "text/html"
         }
       ]
     },
     {
-      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/03-half-moon.json",
+      "id": "      ",
       "type": "Manifest",
-      "label": "Half Moon - Nez Percé",
-      "metadata": [
+      "label": { "none": ["Nez Percé Matron"] },
+      "summary": { "none": ["Image"] },
+      "homepage": [
         {
-          "label": { "en": ["Resource Type"] },
-          "value": {
-            "en": ["Image"]
-          }
+          "id": "      ",
+          "type": "Text",
+          "label": { "none": ["Nez Percé Matron"] },
+          "format": "text/html"
         }
       ]
     },
     {
-      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/04-half-moon.json",
+      "id": "      ",
       "type": "Manifest",
-      "label": "Half Moon - Nez Percé",
-      "metadata": [
+      "label": { "none": ["Three Eagles - Nez Percé"] },
+      "summary": { "none": ["Image"] },
+      "homepage": [
         {
-          "label": { "en": ["Resource Type"] },
-          "value": {
-            "en": ["Image"]
-          }
+          "id": "      ",
+          "type": "Text",
+          "label": { "none": ["Three Eagles - Nez Percé"] },
+          "format": "text/html"
         }
       ]
     },
     {
-      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/04-half-moon.json",
+      "id": "      ",
       "type": "Manifest",
-      "label": "Half Moon - Nez Percé",
-      "metadata": [
+      "label": { "none": ["Raven Blanket - Nez Percé"] },
+      "summary": { "none": ["Image"] },
+      "homepage": [
         {
-          "label": { "en": ["Resource Type"] },
-          "value": {
-            "en": ["Image"]
-          }
+          "id": "      ",
+          "type": "Text",
+          "label": { "none": ["Raven Blanket - Nez Percé"] },
+          "format": "text/html"
+        }
+      ]
+    },
+    {
+      "id": "      ",
+      "type": "Manifest",
+      "label": { "none": ["Night Scout - Nez Percé"] },
+      "summary": { "none": ["Image"] },
+      "homepage": [
+        {
+          "id": "      ",
+          "type": "Text",
+          "label": { "none": ["Night Scout - Nez Percé"] },
+          "format": "text/html"
+        }
+      ]
+    },
+    {
+      "id": "      ",
+      "type": "Manifest",
+      "label": { "none": ["Grizzly-bear Ferocious - Nez Percé"] },
+      "summary": { "none": ["Image"] },
+      "homepage": [
+        {
+          "id": "      ",
+          "type": "Text",
+          "label": { "none": ["Grizzly-bear Ferocious - Nez Percé"] },
+          "format": "text/html"
+        }
+      ]
+    },
+    {
+      "id": "      ",
+      "type": "Manifest",
+      "label": { "none": ["Map of Nez Percé Territory"] },
+      "summary": { "none": ["Image"] },
+      "homepage": [
+        {
+          "id": "      ",
+          "type": "Text",
+          "label": { "none": ["Map of Nez Percé Territory"] },
+          "format": "text/html"
+        }
+      ]
+    },
+    {
+      "id": "      ",
+      "type": "Manifest",
+      "label": { "none": ["Nez Percé Girl"] },
+      "summary": { "none": ["Image"] },
+      "homepage": [
+        {
+          "id": "      ",
+          "type": "Text",
+          "label": { "none": ["Nez Percé Girl"] },
+          "format": "text/html"
+        }
+      ]
+    },
+    {
+      "id": "      ",
+      "type": "Manifest",
+      "label": { "none": ["Kulkultsálum - Nez Percé"] },
+      "summary": { "none": ["Image"] },
+      "homepage": [
+        {
+          "id": "      ",
+          "type": "Text",
+          "label": { "none": ["Kulkultsálum - Nez Percé"] },
+          "format": "text/html"
+        }
+      ]
+    },
+    {
+      "id": "      ",
+      "type": "Manifest",
+      "label": { "none": ["Watching for the Signal - Nez Percé"] },
+      "summary": { "none": ["Image"] },
+      "homepage": [
+        {
+          "id": "      ",
+          "type": "Text",
+          "label": { "none": ["Watching for the Signal - Nez Percé"] },
+          "format": "text/html"
+        }
+      ]
+    },
+    {
+      "id": "      ",
+      "type": "Manifest",
+      "label": { "none": ["Joseph - Nez Percé"] },
+      "summary": { "none": ["Image"] },
+      "homepage": [
+        {
+          "id": "      ",
+          "type": "Text",
+          "label": { "none": ["Joseph - Nez Percé"] },
+          "format": "text/html"
+        }
+      ]
+    },
+    {
+      "id": "      ",
+      "type": "Manifest",
+      "label": { "none": ["Chief Joseph - Nez Percé"] },
+      "summary": { "none": ["Image"] },
+      "homepage": [
+        {
+          "id": "      ",
+          "type": "Text",
+          "label": { "none": ["Chief Joseph - Nez Percé"] },
+          "format": "text/html"
+        }
+      ]
+    },
+    {
+      "id": "      ",
+      "type": "Manifest",
+      "label": { "none": ["Joseph Dead Feast Lodge - Nez Percé"] },
+      "summary": { "none": ["Image"] },
+      "homepage": [
+        {
+          "id": "      ",
+          "type": "Text",
+          "label": { "none": ["Joseph Dead Feast Lodge - Nez Percé"] },
+          "format": "text/html"
+        }
+      ]
+    },
+    {
+      "id": "      ",
+      "type": "Manifest",
+      "label": { "none": ["Last Home of Joseph - Nez Percé"] },
+      "summary": { "none": ["Image"] },
+      "homepage": [
+        {
+          "id": "      ",
+          "type": "Text",
+          "label": { "none": ["Last Home of Joseph - Nez Percé"] },
+          "format": "text/html"
         }
       ]
     }

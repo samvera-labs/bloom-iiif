@@ -1,6 +1,6 @@
 {
   "@context": ["http://iiif.io/api/presentation/3/context.json"],
-  "id": "http://127.0.0.1:8080/fixtures/iiif/collection/joseph.json",
+  "id": "http://127.0.0.1:8080/fixtures/iiif/collection/empty.json",
   "type": "Collection",
   "label": {
     "none": ["      "]
@@ -9,20 +9,6 @@
     "none": ["      "]
   },
   "items": [
-    {
-      "id": "      ",
-      "type": "Manifest",
-      "label": { "none": ["      "] },
-      "summary": { "none": ["      "] },
-      "homepage": [
-        {
-          "id": "      ",
-          "type": "Text",
-          "label": { "none": ["      "] },
-          "format": "text/html"
-        }
-      ]
-    },
     {
       "id": "      ",
       "type": "Manifest",

@@ -1,4 +1,4 @@
-import { styled } from "stitches";
+import { gr, styled } from "stitches";
 
 const FigureStyled = styled("figure", {
   display: "flex",
@@ -9,6 +9,8 @@ const FigureStyled = styled("figure", {
 
 const Image = styled("div", {
   backgroundColor: "black",
+  width: `calc(1rem * ${gr(5)})`,
+  height: `calc(1rem * ${gr(4)})`,
 });
 
 const Title = styled("span", {

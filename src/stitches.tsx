@@ -49,3 +49,16 @@ export const { styled, css, keyframes, createTheme } = createStitches({
   theme,
   media,
 });
+
+/**
+ * use Golden Ratio to stitch sizes
+ */
+
+/**
+ *
+ * @param multiplier
+ * @returns
+ */
+export const gr = (multiplier: number) => {
+  return 1.618 ** multiplier;
+};
