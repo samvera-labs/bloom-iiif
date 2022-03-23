@@ -12,15 +12,13 @@ interface Props {
   collectionId: string;
 }
 
-const App: React.FC<Props> = (props) => {
-  return (
-    <CollectionProvider>
-      <RenderBloom {...props} />
-    </CollectionProvider>
-  );
-};
+const App: React.FC<Props> = (props) => (
+  <CollectionProvider>
+    <Bloom {...props} />
+  </CollectionProvider>
+);
 
-const RenderBloom: React.FC<Props> = ({ collectionId }) => {
+const Bloom: React.FC<Props> = ({ collectionId }) => {
   const store = useCollectionState();
   const { vault } = store;
   const [collection, setCollection] = useState<CollectionNormalized>();
@@ -53,14 +51,14 @@ const RenderBloom: React.FC<Props> = ({ collectionId }) => {
   }
 
   return (
-    <Bloom>
+    <StyledBloom>
       <Header label={collection.label} summary={collection.summary} />
       <Items items={collection.items as CollectionItems[]} />
-    </Bloom>
+    </StyledBloom>
   );
 };
 
-const Bloom = styled("div", {
+const StyledBloom = styled("div", {
   marginBottom: "$3",
 
   "&:last-child": {
