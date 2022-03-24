@@ -1,16 +1,13 @@
 import { styled } from "stitches";
-import { FigureStyled } from "../Figure/Figure.styled";
+import { ItemStyled } from "./Item.styled";
 
 const ItemsStyled = styled("div", {
   position: "relative",
   display: "flex",
   flexDirection: "row",
 
-  [`> a`]: {
-    display: "flex",
+  [`> ${ItemStyled}`]: {
     marginRight: "$4",
-    textDecoration: "none",
-    color: "black",
 
     "&:last-child": {
       marginRight: "0",

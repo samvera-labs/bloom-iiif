@@ -5,6 +5,8 @@ const FigureStyled = styled("figure", {
   flexDirection: "column",
   padding: "0",
   margin: "0",
+  flexGrow: "0",
+  flexShrink: "0",
 
   figcaption: {
     display: "flex",
@@ -13,12 +15,14 @@ const FigureStyled = styled("figure", {
 });
 
 const Image = styled("img", {
+  display: "flex",
+  flexDirection: "column",
   backgroundColor: "#e0e0e0",
-  width: "$8",
-  height: "$7",
   objectFit: "contain",
   transition: "all 200ms ease-in-out",
   opacity: 0,
+  width: "100%",
+  height: "100%",
 
   [`&.loaded`]: {
     opacity: 1,
