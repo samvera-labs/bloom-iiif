@@ -3,6 +3,7 @@ import { styled } from "stitches";
 const ControlStyled = styled("button", {
   position: "absolute",
   left: "50px",
+  zIndex: "1",
 
   variants: {
     direction: {
