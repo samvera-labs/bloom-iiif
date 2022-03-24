@@ -5,7 +5,11 @@ import {
 } from "context/collection-context";
 import Items from "components/Items/Items";
 import Header from "components/Header/Header";
-import { CollectionItems, CollectionNormalized } from "@iiif/presentation-3";
+import {
+  CollectionItems,
+  CollectionNormalized,
+  ContentResource,
+} from "@iiif/presentation-3";
 import { styled } from "stitches";
 
 interface Props {
@@ -52,7 +56,11 @@ const Bloom: React.FC<Props> = ({ collectionId }) => {
 
   return (
     <StyledBloom>
-      <Header label={collection.label} summary={collection.summary} />
+      <Header
+        label={collection.label}
+        summary={collection.summary}
+        homepage={collection.homepage}
+      />
       <Items items={collection.items as CollectionItems[]} />
     </StyledBloom>
   );

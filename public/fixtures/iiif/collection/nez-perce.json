@@ -8,6 +8,14 @@
   "summary": {
     "none": ["More from this Collection"]
   },
+  "homepage": [
+    {
+      "id": "https://dc.library.northwestern.edu/search?q=%22Nez+Perce%22&Collection=%5B%22Edward+S.+Curtis%27s+The+North+American+Indian%22%5D",
+      "type": "Text",
+      "label": { "none": ["Nez Percé (Nimíipuu)"] },
+      "format": "text/html"
+    }
+  ],
   "items": [
     {
       "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/01-half-moon.json",

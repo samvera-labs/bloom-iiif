@@ -10,6 +10,11 @@ const HeaderStyled = styled("div", {
 const Title = styled("span", {
   fontSize: "$6",
   fontWeight: "800",
+
+  a: {
+    color: "black",
+    textDecoration: "none",
+  },
 });
 
 const Description = styled("span", {
