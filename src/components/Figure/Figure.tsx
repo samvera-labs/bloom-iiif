@@ -1,11 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
-import { Description, FigureStyled, Image, Title } from "./Figure.styled";
+import {
+  Background,
+  Description,
+  FigureStyled,
+  Image,
+  ImageWrapper,
+  Placeholder,
+  Title,
+} from "./Figure.styled";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 
 interface FigureProps {
   caption: string;
   description: string;
+  image: string;
 }
 
 const Figure: React.FC<FigureProps> = ({ caption, description, image }) => {
@@ -21,12 +30,16 @@ const Figure: React.FC<FigureProps> = ({ caption, description, image }) => {
   return (
     <FigureStyled>
       <AspectRatio.Root ratio={1 / 0.618}>
-        <Image
-          src={image}
-          ref={imgRef}
-          onLoad={() => setLoaded(true)}
-          className={clsx("source", loaded && "loaded")}
-        />
+        <Placeholder>
+          <ImageWrapper className={clsx("source", loaded && "loaded")}>
+            <Image src={image} ref={imgRef} onLoad={() => setLoaded(true)} />
+            <Background
+              style={{
+                backgroundImage: `url("${image}")`,
+              }}
+            />
+          </ImageWrapper>
+        </Placeholder>
       </AspectRatio.Root>
       <figcaption>
         <Title>{caption}</Title>
