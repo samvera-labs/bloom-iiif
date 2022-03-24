@@ -13,6 +13,7 @@ const FigureStyled = styled("figure", {
 });
 
 const Image = styled("img", {
+  backgroundColor: "#e0e0e0",
   width: "$8",
   height: "$7",
   objectFit: "contain",
