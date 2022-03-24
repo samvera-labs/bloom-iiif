@@ -8,21 +8,13 @@ let collectionScotland: string = `https://view.nls.uk/collections/7446/74462370.
 let collectionHeilman: string = `https://digital.lib.utk.edu/assemble/collection/collections/heilman`;
 
 ReactDOM.render(
-  <>
-    <h2
-      style={{
-        fontWeight: 400,
-        fontSize: "1rem",
-      }}
-    >
-      Explore Further
-    </h2>
+  <section>
     <div>
       <App collectionId={collectionNezPerce} />
       <App collectionId={collectionBodleian} />
       <App collectionId={collectionScotland} />
       <App collectionId={collectionHeilman} />
     </div>
-  </>,
+  </section>,
   document.getElementById("root")
 );

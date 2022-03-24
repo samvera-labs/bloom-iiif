@@ -13,10 +13,15 @@ const FigureStyled = styled("figure", {
 });
 
 const Image = styled("img", {
-  backgroundColor: "black",
   width: "$8",
   height: "$7",
   objectFit: "contain",
+  transition: "all 200ms ease-in-out",
+  opacity: 0,
+
+  [`&.loaded`]: {
+    opacity: 1,
+  },
 });
 
 const Title = styled("span", {
