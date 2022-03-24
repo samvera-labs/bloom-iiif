@@ -13,14 +13,25 @@ const Item: React.FC<ItemProps> = ({ item }) => {
   const store = useCollectionState();
   const { vault } = store;
 
-  const thumbnailResource = vault.get(item.thumbnail[0].id);
+  /**
+   * todo: be more defensive about collections without `thumbnail`
+   */
+  let image = null;
+  if (item.thumbnail)
+    image = useGetResourceImage(vault.get(item.thumbnail[0].id), "200,");
+
+  /**
+   * todo: be more defensive about collections without `homepage`
+   */
+  let url = null;
+  if (item.homepage) url = item.homepage[0].id;
 
   return (
-    <a href={item.homepage[0].id}>
+    <a href={url}>
       <Figure
         caption={useGetLabel(item.label)}
         description={useGetLabel(item.summary)}
-        image={useGetResourceImage(thumbnailResource, "200,")}
+        image={image}
       />
     </a>
   );
