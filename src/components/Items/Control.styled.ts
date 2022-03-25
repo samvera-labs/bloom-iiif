@@ -2,17 +2,32 @@ import { styled } from "stitches";
 
 const Gradient = styled("div", {
   position: "absolute",
-  transition: "all 200ms ease-in-out",
+  transition: "all 150ms ease-in-out",
   background: "black",
   opacity: "0",
 });
 
 const Icon = styled("div", {
   position: "absolute",
-  width: "$5",
-  height: "$5",
+  transition: "all 150ms ease-in-out",
+  display: "flex",
+  flexDirection: "column",
+  width: "$4",
+  height: "$4",
   borderRadius: "100%",
   backgroundColor: "white",
+  justifyContent: "center",
+  textAlign: "center",
+  alignItems: "center",
+  boxShadow: "none",
+  transform: "none",
+
+  span: {
+    display: "flex",
+    width: "$3",
+    height: "$3",
+    borderRadius: "100%",
+  },
 });
 
 const ControlStyled = styled("button", {
@@ -26,6 +41,10 @@ const ControlStyled = styled("button", {
   [`&:hover`]: {
     [`> ${Gradient}`]: {
       opacity: 1,
+    },
+
+    [`> ${Icon}`]: {
+      boxShadow: "0px 0px 19px #0003",
     },
   },
 
@@ -44,8 +63,12 @@ const ControlStyled = styled("button", {
         },
 
         [`> ${Icon}`]: {
-          right: "calc(-$5 / 2)",
-          marginTop: "calc(-$5 / 2)",
+          right: "calc(-$4 / 2)",
+          marginTop: "calc(-$4 / 2)",
+        },
+
+        [`&:hover > ${Icon}`]: {
+          marginRight: "25px",
         },
       },
       previous: {
@@ -61,8 +84,12 @@ const ControlStyled = styled("button", {
         },
 
         [`> ${Icon}`]: {
-          left: "calc(-$5 / 2)",
-          marginTop: "calc(-$5 / 2)",
+          left: "calc(-$4 / 2)",
+          marginTop: "calc(-$4 / 2)",
+        },
+
+        [`&:hover > ${Icon}`]: {
+          marginLeft: "25px",
         },
       },
     },

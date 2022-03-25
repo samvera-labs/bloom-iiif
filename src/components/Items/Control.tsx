@@ -25,7 +25,9 @@ const ItemsControl: React.FC<ItemsControlProps> = ({
       style={{ height: `${height}px`, width: `${width}px` }}
     >
       <Gradient style={{ height: `${height}px`, width: `${width}px` }} />
-      <Icon />
+      <Icon>
+        <span></span>
+      </Icon>
     </ControlStyled>
   );
 };
