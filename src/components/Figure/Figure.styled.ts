@@ -31,6 +31,7 @@ const Image = styled("img", {
 });
 
 const Placeholder = styled("span", {
+  transition: "all 150ms ease-in-out",
   display: "flex",
   position: "relative",
   backgroundColor: "#e0e0e0",
@@ -38,6 +39,7 @@ const Placeholder = styled("span", {
   height: "100%",
   overflow: "hidden",
   borderRadius: "3px",
+  boxShadow: "none",
 });
 
 const Title = styled("span", {

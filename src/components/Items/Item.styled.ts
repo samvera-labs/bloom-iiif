@@ -7,15 +7,13 @@ const Anchor = styled("a", {
 });
 
 const ItemStyled = styled("div", {
-  transition: "all 150ms ease-in-out",
   width: "calc(100% / 4)",
   zIndex: "0",
-  boxShadow: "none",
   borderRadius: "3px",
 
   "&:hover": {
     [`${Placeholder}`]: {
-      boxShadow: "3px 3px 8px #0003",
+      boxShadow: "3px 3px 11px #0003",
     },
   },
 });
