@@ -23,6 +23,7 @@ const Image = styled("img", {
   width: "100%",
   transition: "all 200ms ease-in-out",
   opacity: 0,
+  borderRadius: "3px",
 
   [`&.loaded`]: {
     opacity: 1,
@@ -32,7 +33,7 @@ const Image = styled("img", {
 const Placeholder = styled("span", {
   display: "flex",
   position: "relative",
-  backgroundColor: "#000",
+  backgroundColor: "#e0e0e0",
   width: "100%",
   height: "100%",
   overflow: "hidden",
