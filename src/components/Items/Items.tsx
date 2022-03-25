@@ -23,7 +23,7 @@ interface ItemsProps {
 }
 
 const Items: React.FC<ItemsProps> = ({ items }) => {
-  const [activeItems, setActiveItems] = useState<number[]>([0, 1, 2, 3, 5]);
+  const [activeItems, setActiveItems] = useState<number[]>([0, 1, 2, 3, 4]);
   const itemsRef = createRef();
   const dimensions = useRefDimensions(itemsRef);
 

@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { ControlStyled } from "./Control.styled";
 
 interface ItemsControlProps {
@@ -14,6 +14,8 @@ const ItemsControl: React.FC<ItemsControlProps> = ({
   handleControl,
   height,
 }) => {
+  const width: number = height * 0.382;
+
   return (
     <ControlStyled
       aria-label={label}
@@ -21,7 +23,7 @@ const ItemsControl: React.FC<ItemsControlProps> = ({
       direction={label}
       onClick={handleControl}
       value={label}
-      style={{ height: `${height}px` }}
+      style={{ height: `${height}px`, width: `${width}px` }}
     ></ControlStyled>
   );
 };

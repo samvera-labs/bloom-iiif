@@ -2,14 +2,21 @@ import { styled } from "stitches";
 
 const ControlStyled = styled("button", {
   position: "absolute",
-  left: "50px",
   height: "100%",
   zIndex: "1",
   border: "none",
   opacity: "0",
   cursor: "pointer",
-  width: "50px",
-  backgroundColor: "red",
+  transition: "all 200ms ease-in-out",
+  background: "black",
+  background:
+    "linear-gradient(90deg, rgba(0,0,0,0.618) 38.2%, rgba(0,0,0,0) 100%)",
+
+  "&[value=next]": {
+    background: "black",
+    background:
+      "linear-gradient(270deg, rgba(0,0,0,0.618) 38.2%, rgba(0,0,0,0) 100%)",
+  },
 
   "&:hover": {
     opacity: "1",
