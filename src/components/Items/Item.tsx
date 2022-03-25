@@ -21,7 +21,7 @@ const Item: React.FC<ItemProps> = ({ item }) => {
    */
   let image = null;
   if (item.thumbnail)
-    image = useGetResourceImage(vault.get(item.thumbnail[0].id), "200,");
+    image = useGetResourceImage(vault.get(item.thumbnail[0].id), "300,");
 
   /**
    * todo: be more defensive about collections without `homepage`
