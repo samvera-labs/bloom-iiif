@@ -11,6 +11,7 @@ import {
   ContentResource,
 } from "@iiif/presentation-3";
 import { styled } from "stitches";
+import { useHookWithRefCallback } from "hooks/useHookWithRefCallback";
 
 interface Props {
   collectionId: string;
@@ -29,7 +30,6 @@ const Bloom: React.FC<Props> = ({ collectionId }) => {
   /**
    * todo: add wrapping context and store vault
    */
-
   useEffect(() => {
     /**
      * load collection using @iiif/vault

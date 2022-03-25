@@ -5,12 +5,14 @@ interface ItemsControlProps {
   increment: number;
   label: string;
   handleControl: (e: React.MouseEvent) => void;
+  height: number;
 }
 
 const ItemsControl: React.FC<ItemsControlProps> = ({
   label,
   increment,
   handleControl,
+  height,
 }) => {
   return (
     <ControlStyled
@@ -19,9 +21,8 @@ const ItemsControl: React.FC<ItemsControlProps> = ({
       direction={label}
       onClick={handleControl}
       value={label}
-    >
-      {label}
-    </ControlStyled>
+      style={{ height: `${height}px` }}
+    ></ControlStyled>
   );
 };
 

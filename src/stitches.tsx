@@ -7,6 +7,23 @@ export const gr = (multiplier: number) => {
   return 1.618 ** multiplier;
 };
 
+export const rem = 19;
+
+export const sizes = {
+  1: "0.382rem",
+  2: "0.618rem",
+  3: "1rem", // 19px
+  4: `1.618rem`,
+  5: `calc(1rem * ${gr(2)})`,
+  6: `calc(1rem * ${gr(3)})`,
+  7: `calc(1rem * ${gr(4)})`,
+  8: `calc(1rem * ${gr(5)})`,
+  9: `calc(1rem * ${gr(6)})`,
+  10: `calc(1rem * ${gr(7)})`,
+  11: `calc(1rem * ${gr(8)})`,
+  12: `calc(1rem * ${gr(9)})`,
+};
+
 export const theme = {
   colors: {
     /*
@@ -49,34 +66,8 @@ export const theme = {
     8: `calc(1rem * ${gr(2)})`,
     9: `calc(1rem * ${gr(3)})`,
   },
-  sizes: {
-    1: "0.382rem",
-    2: "0.618rem",
-    3: "1rem", // 19px
-    4: `1.618rem`,
-    5: `calc(1rem * ${gr(2)})`,
-    6: `calc(1rem * ${gr(3)})`,
-    7: `calc(1rem * ${gr(4)})`,
-    8: `calc(1rem * ${gr(5)})`,
-    9: `calc(1rem * ${gr(6)})`,
-    10: `calc(1rem * ${gr(7)})`,
-    11: `calc(1rem * ${gr(8)})`,
-    12: `calc(1rem * ${gr(9)})`,
-  },
-  space: {
-    1: "0.382rem",
-    2: "0.618rem",
-    3: "1rem", // 19px
-    4: `1.618rem`,
-    5: `calc(1rem * ${gr(2)})`,
-    6: `calc(1rem * ${gr(3)})`,
-    7: `calc(1rem * ${gr(4)})`,
-    8: `calc(1rem * ${gr(5)})`,
-    9: `calc(1rem * ${gr(6)})`,
-    10: `calc(1rem * ${gr(7)})`,
-    11: `calc(1rem * ${gr(8)})`,
-    12: `calc(1rem * ${gr(9)})`,
-  },
+  sizes: { ...sizes },
+  space: { ...sizes },
   transitions: {
     all: "all 500ms cubic-bezier(0.16, 1, 0.3, 1)",
   },

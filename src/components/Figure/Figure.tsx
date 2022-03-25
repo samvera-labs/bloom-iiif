@@ -1,11 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import {
-  Background,
   Description,
   FigureStyled,
   Image,
-  ImageWrapper,
   Placeholder,
   Title,
 } from "./Figure.styled";
@@ -22,23 +20,19 @@ const Figure: React.FC<FigureProps> = ({ caption, description, image }) => {
   const imgRef = useRef();
 
   useEffect(() => {
-    if (imgRef.current && imgRef.current.complete) {
-      setLoaded(true);
-    }
+    if (imgRef.current && imgRef.current.complete) setLoaded(true);
   }, []);
 
   return (
     <FigureStyled>
-      <AspectRatio.Root ratio={1 / 0.618}>
+      <AspectRatio.Root ratio={1 / 1}>
         <Placeholder>
-          <ImageWrapper className={clsx("source", loaded && "loaded")}>
-            <Image src={image} ref={imgRef} onLoad={() => setLoaded(true)} />
-            <Background
-              style={{
-                backgroundImage: `url("${image}")`,
-              }}
-            />
-          </ImageWrapper>
+          <Image
+            src={image}
+            ref={imgRef}
+            onLoad={() => setLoaded(true)}
+            className={clsx("source", loaded && "loaded")}
+          />
         </Placeholder>
       </AspectRatio.Root>
       <figcaption>

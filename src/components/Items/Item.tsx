@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Figure from "components/Figure/Figure";
 import { Collection, Manifest } from "@iiif/presentation-3";
 import { useGetLabel } from "hooks/useGetLabel";
@@ -14,16 +14,14 @@ const Item: React.FC<ItemProps> = ({ item }) => {
   const store = useCollectionState();
   const { vault } = store;
 
+  useEffect(() => {}, []);
+
   /**
    * todo: be more defensive about collections without `thumbnail`
    */
   let image = null;
   if (item.thumbnail)
     image = useGetResourceImage(vault.get(item.thumbnail[0].id), "200,");
-
-  let lqip = null;
-  if (item.thumbnail)
-    lqip = useGetResourceImage(vault.get(item.thumbnail[0].id), "20,");
 
   /**
    * todo: be more defensive about collections without `homepage`
@@ -38,7 +36,6 @@ const Item: React.FC<ItemProps> = ({ item }) => {
           caption={useGetLabel(item.label)}
           description={useGetLabel(item.summary)}
           image={image}
-          lqip={lqip}
         />
       </Anchor>
     </ItemStyled>
