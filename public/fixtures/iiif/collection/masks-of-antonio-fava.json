@@ -168,6 +168,126 @@
           "format": "text/html"
         }
       ]
+    },
+    {
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/public/a3/c6/40/28/-d/1d/c-/4e/97/-8/2b/b-/1e/23/af/95/f5/e3-manifest.json",
+      "type": "Manifest",
+      "label": { "none": ["Bravazzo"] },
+      "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/38062d63-cbf3-421f-ba74-49081beb2ff6/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/38062d63-cbf3-421f-ba74-49081beb2ff6",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
+      "homepage": [
+        {
+          "id": "https://dc.library.northwestern.edu/items/a3c64028-d1dc-4e97-82bb-1e23af95f5e3",
+          "type": "Text",
+          "label": { "none": ["Bravazzo"] },
+          "format": "text/html"
+        }
+      ]
+    },
+    {
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/public/eb/b4/94/ad/-1/d5/6-/4a/d4/-9/77/2-/f2/28/06/7d/5a/79-manifest.json",
+      "type": "Manifest",
+      "label": { "none": ["Arlecchino \"Scimmia\""] },
+      "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/47ba6136-4c7f-48a5-9bfb-11c2f86026f8/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/47ba6136-4c7f-48a5-9bfb-11c2f86026f8",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
+      "homepage": [
+        {
+          "id": "https://dc.library.northwestern.edu/items/ebb494ad-1d56-4ad4-9772-f228067d5a79",
+          "type": "Text",
+          "label": { "none": ["Arlecchino \"Scimmia\""] },
+          "format": "text/html"
+        }
+      ]
+    },
+    {
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/public/2d/e0/35/5c/-8/e4/8-/44/78/-9/3a/f-/8c/bd/14/37/bd/16-manifest.json",
+      "type": "Manifest",
+      "label": { "none": ["Pulcinella \"tiepolano\""] },
+      "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/3d42aceb-73ad-44cc-817e-459993a50be6/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/3d42aceb-73ad-44cc-817e-459993a50be6",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
+      "homepage": [
+        {
+          "id": "https://dc.library.northwestern.edu/items/2de0355c-8e48-4478-93af-8cbd1437bd16",
+          "type": "Text",
+          "label": { "none": ["Pulcinella \"tiepolano\""] },
+          "format": "text/html"
+        }
+      ]
+    },
+    {
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/public/f9/12/a5/81/-d/9e/8-/43/d6/-a/7c/8-/a8/d4/6e/ff/75/17-manifest.json",
+      "type": "Manifest",
+      "label": { "none": ["Dottor Plus Quam Perfectus"] },
+      "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/156b56cf-fcc5-457c-86cc-5f806b7c280a/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/156b56cf-fcc5-457c-86cc-5f806b7c280a",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
+      "homepage": [
+        {
+          "id": "https://dc.library.northwestern.edu/items/f912a581-d9e8-43d6-a7c8-a8d46eff7517",
+          "type": "Text",
+          "label": { "none": ["Dottor Plus Quam Perfectus"] },
+          "format": "text/html"
+        }
+      ]
     }
   ]
 }
