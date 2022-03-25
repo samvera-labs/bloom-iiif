@@ -21,7 +21,7 @@ const Image = styled("img", {
   objectFit: "cover",
   zIndex: "1",
   width: "100%",
-  transition: "all 200ms ease-in-out",
+  transition: "all 150ms ease-in-out",
   opacity: 0,
   borderRadius: "3px",
 
@@ -37,7 +37,6 @@ const Placeholder = styled("span", {
   width: "100%",
   height: "100%",
   overflow: "hidden",
-  transition: "all 200ms ease-in-out",
   borderRadius: "3px",
 });
 
