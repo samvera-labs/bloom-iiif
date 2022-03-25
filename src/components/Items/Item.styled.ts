@@ -1,5 +1,5 @@
 import { styled } from "stitches";
-import { Placeholder } from "../Figure/Figure.styled";
+import { Placeholder, Image } from "../Figure/Figure.styled";
 
 const Anchor = styled("a", {
   color: "black",
