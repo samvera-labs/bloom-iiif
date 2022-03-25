@@ -22,11 +22,14 @@ const Icon = styled("div", {
   boxShadow: "none",
   transform: "none",
 
-  span: {
+  svg: {
     display: "flex",
+    transition: "all 150ms ease-in-out",
     width: "$3",
     height: "$3",
-    borderRadius: "100%",
+    fill: "#666",
+    stroke: "#666",
+    color: "#666",
   },
 });
 
@@ -44,7 +47,13 @@ const ControlStyled = styled("button", {
     },
 
     [`> ${Icon}`]: {
-      boxShadow: "0px 0px 19px #0003",
+      boxShadow: "2px 2px 5px #0003",
+
+      svg: {
+        fill: "black",
+        stroke: "black",
+        color: "black",
+      },
     },
   },
 
@@ -68,7 +77,7 @@ const ControlStyled = styled("button", {
         },
 
         [`&:hover > ${Icon}`]: {
-          marginRight: "25px",
+          marginRight: "$1",
         },
       },
       previous: {
@@ -89,7 +98,7 @@ const ControlStyled = styled("button", {
         },
 
         [`&:hover > ${Icon}`]: {
-          marginLeft: "25px",
+          marginLeft: "$1",
         },
       },
     },
