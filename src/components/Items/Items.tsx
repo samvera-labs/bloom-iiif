@@ -27,11 +27,8 @@ const Items: React.FC<ItemsProps> = ({ items }) => {
   const itemsRef = createRef();
   const dimensions = useRefDimensions(itemsRef);
 
-  const handleActiveItems = (e: React.MouseEvent) => {
-    const increment = (e.target as HTMLButtonElement).dataset?.increment;
-    setActiveItems(
-      activeItems.map((index) => index + parseInt(increment as string))
-    );
+  const handleActiveItems = (increment: number) => {
+    setActiveItems(activeItems.map((index) => index + increment));
   };
 
   /**

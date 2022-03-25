@@ -1,5 +1,5 @@
 import React from "react";
-import { ControlStyled } from "./Control.styled";
+import { ControlStyled, Gradient, Icon } from "./Control.styled";
 
 interface ItemsControlProps {
   increment: number;
@@ -19,12 +19,14 @@ const ItemsControl: React.FC<ItemsControlProps> = ({
   return (
     <ControlStyled
       aria-label={label}
-      data-increment={increment}
       direction={label}
-      onClick={handleControl}
+      onClick={() => handleControl(increment)}
       value={label}
       style={{ height: `${height}px`, width: `${width}px` }}
-    ></ControlStyled>
+    >
+      <Gradient style={{ height: `${height}px`, width: `${width}px` }} />
+      <Icon />
+    </ControlStyled>
   );
 };
 
