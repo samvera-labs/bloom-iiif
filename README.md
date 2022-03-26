@@ -2,19 +2,11 @@
 
 # Bloom IIIF
 
-# Controls
+# Slider Defaults
 
-- Controls for slider?
-- Always visible? or through some focus/hover interaction?
-
-# Slider?
-
-How do you best page item results.
-
-- Default: 4 items
-- Slide single or all results?
-- Show count?
-- Carousel or closed ends?
+- Responsive active item count
+- Carousel or closed ends
+- 1/1 aspect ratio
 
 # Preview
 
