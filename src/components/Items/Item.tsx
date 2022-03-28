@@ -5,31 +5,30 @@ import { useGetLabel } from "hooks/useGetLabel";
 import { useGetResourceImage } from "hooks/useGetResourceImage";
 import { useCollectionState } from "context/collection-context";
 import { Anchor, ItemStyled } from "./Item.styled";
+import Preview from "components/Preview/Preview";
 
 interface ItemProps {
   item: Collection | Manifest;
 }
 
 const Item: React.FC<ItemProps> = ({ item }) => {
-  const [focused, setFocused] = useState<boolean>(false);
-  const [preview, setPreview] = useState<boolean>(false);
   const store = useCollectionState();
   const { vault } = store;
 
   const itemRef = useRef(null);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
 
   useEffect(() => {
-    focused && setTimeout(() => setPreview(true), 1000);
-  }, [focused]);
+    isFocused
+      ? setTimeout(() => {
+          console.log("do it...");
+        }, 1000)
+      : null;
+    return;
+  }, [isFocused]);
 
-  useEffect(() => {}, [preview]);
-
-  const onFocus = () => setFocused(true);
-  const onBlur = () => {
-    setFocused(false);
-    setPreview(false);
-  };
-
+  const onFocus = () => setIsFocused(true);
+  const onBlur = () => setIsFocused(false);
   /**
    * todo: be more defensive about collections without `thumbnail`
    */
@@ -45,20 +44,26 @@ const Item: React.FC<ItemProps> = ({ item }) => {
 
   return (
     <ItemStyled>
-      {preview && focused && <div></div>}
       <Anchor
         href={url}
         tabIndex={0}
         onFocus={onFocus}
         onBlur={onBlur}
-        onMouseOver={onFocus}
-        onMouseOut={onBlur}
+        onMouseEnter={onFocus}
+        onMouseLeave={onBlur}
         ref={itemRef}
       >
+        {isFocused && (
+          <Preview>
+            <div></div>
+          </Preview>
+        )}
+
         <Figure
           caption={useGetLabel(item.label)}
           description={useGetLabel(item.summary)}
           image={image}
+          isFocused={isFocused}
         />
       </Anchor>
     </ItemStyled>

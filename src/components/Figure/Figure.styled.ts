@@ -3,14 +3,28 @@ import { styled } from "stitches";
 const FigureStyled = styled("figure", {
   display: "flex",
   flexDirection: "column",
-  padding: "0",
-  margin: "0",
+  margin: "0 0 $2",
   flexGrow: "0",
   flexShrink: "0",
+  transition: "all 150ms ease-in-out",
 
   figcaption: {
     display: "flex",
     flexDirection: "column",
+    padding: "0",
+    transition: "all 150ms ease-in-out",
+  },
+
+  variants: {
+    isFocused: {
+      true: {
+        margin: "-$2 -$2 0",
+
+        figcaption: {
+          padding: "0 $2",
+        },
+      },
+    },
   },
 });
 

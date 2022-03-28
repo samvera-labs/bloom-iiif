@@ -13,9 +13,15 @@ interface FigureProps {
   caption: string;
   description: string;
   image: string;
+  isFocused: boolean;
 }
 
-const Figure: React.FC<FigureProps> = ({ caption, description, image }) => {
+const Figure: React.FC<FigureProps> = ({
+  caption,
+  description,
+  image,
+  isFocused,
+}) => {
   const [loaded, setLoaded] = useState(false);
   const imgRef = useRef();
 
@@ -24,7 +30,7 @@ const Figure: React.FC<FigureProps> = ({ caption, description, image }) => {
   }, []);
 
   return (
-    <FigureStyled>
+    <FigureStyled isFocused={isFocused}>
       <AspectRatio.Root ratio={1 / 1}>
         <Placeholder>
           <Image
