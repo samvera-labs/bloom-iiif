@@ -48,7 +48,7 @@ const ControlStyled = styled("button", {
     },
 
     [`> ${Icon}`]: {
-      boxShadow: "2px 2px 5px #0003",
+      boxShadow: "3px 3px 11px #0003",
 
       svg: {
         fill: "$accent",
