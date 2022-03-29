@@ -5,21 +5,22 @@ const HeaderStyled = styled("div", {
   flexDirection: "column",
   paddingBottom: "$4",
   margin: "0",
+  color: "$primary",
 });
 
 const Title = styled("span", {
-  fontSize: "$6",
+  fontSize: "$5",
   fontWeight: "800",
 
   a: {
-    color: "black",
+    color: "$accent",
     textDecoration: "none",
   },
 });
 
 const Description = styled("span", {
   fontSize: "$3",
-  marginTop: "$1",
+  marginTop: "$2",
 });
 
 export { HeaderStyled, Title, Description };

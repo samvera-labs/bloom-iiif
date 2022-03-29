@@ -7,13 +7,14 @@ const FigureStyled = styled("figure", {
   flexGrow: "0",
   flexShrink: "0",
   borderRadius: "3px",
-  transition: "all 150ms ease-in-out",
+  transition: "$all",
 
   figcaption: {
     display: "flex",
     flexDirection: "column",
     padding: "$2 0",
-    transition: "all 150ms ease-in-out",
+    color: "$primary",
+    transition: "$all",
   },
 
   variants: {
@@ -23,6 +24,7 @@ const FigureStyled = styled("figure", {
 
         figcaption: {
           padding: "$2",
+          color: "$accent",
         },
       },
     },
@@ -36,8 +38,8 @@ const Image = styled("img", {
   objectFit: "cover",
   zIndex: "1",
   width: "100%",
-  transition: "all 150ms ease-in-out",
   opacity: 0,
+  transition: "$all",
 
   [`&.loaded`]: {
     opacity: 1,
@@ -45,15 +47,15 @@ const Image = styled("img", {
 });
 
 const Placeholder = styled("span", {
-  transition: "all 150ms ease-in-out",
   display: "flex",
   position: "relative",
-  backgroundColor: "#e0e0e0",
+  backgroundColor: "$secondaryAlt",
   width: "100%",
   height: "100%",
   overflow: "hidden",
   borderRadius: "3px",
   boxShadow: "none",
+  transition: "$all",
 });
 
 const Title = styled("span", {
@@ -64,7 +66,7 @@ const Title = styled("span", {
 const Description = styled("span", {
   fontSize: "$1",
   marginTop: "$1",
-  color: "#999",
+  color: "$primary",
 });
 
 export { FigureStyled, Image, Placeholder, Title, Description };

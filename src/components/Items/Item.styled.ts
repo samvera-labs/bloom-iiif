@@ -11,10 +11,11 @@ const ItemStyled = styled("div", {
   zIndex: "0",
   borderRadius: "3px",
 
-  "&:hover": {
+  [`> ${Anchor}:hover`]: {
     [`${FigureStyled}`]: {
       boxShadow: "3px 3px 11px #0003",
     },
+
     [`${Placeholder}`]: {
       borderBottomLeftRadius: "0",
       borderBottomRightRadius: "0",

@@ -2,15 +2,14 @@ import { styled } from "stitches";
 
 const Gradient = styled("div", {
   position: "absolute",
-  transition: "all 150ms ease-in-out",
   background: "black",
   borderRadius: "3px",
   opacity: "0",
+  transition: "$all",
 });
 
 const Icon = styled("div", {
   position: "absolute",
-  transition: "all 150ms ease-in-out",
   display: "flex",
   flexDirection: "column",
   width: "$4",
@@ -22,15 +21,16 @@ const Icon = styled("div", {
   alignItems: "center",
   boxShadow: "none",
   transform: "none",
+  transition: "$all",
 
   svg: {
     display: "flex",
-    transition: "all 150ms ease-in-out",
     width: "$3",
     height: "$3",
-    fill: "#999",
-    stroke: "#999",
-    color: "#999",
+    fill: "$primary",
+    stroke: "$primary",
+    color: "$primary",
+    transition: "$all",
   },
 });
 
@@ -51,9 +51,9 @@ const ControlStyled = styled("button", {
       boxShadow: "2px 2px 5px #0003",
 
       svg: {
-        fill: "black",
-        stroke: "black",
-        color: "black",
+        fill: "$accent",
+        stroke: "$accent",
+        color: "$accent",
       },
     },
   },
