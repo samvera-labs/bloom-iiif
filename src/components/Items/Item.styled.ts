@@ -1,5 +1,5 @@
 import { styled } from "stitches";
-import { Placeholder, Image } from "../Figure/Figure.styled";
+import { FigureStyled, Placeholder } from "../Figure/Figure.styled";
 
 const Anchor = styled("a", {
   color: "black",
@@ -12,8 +12,12 @@ const ItemStyled = styled("div", {
   borderRadius: "3px",
 
   "&:hover": {
-    [`${Placeholder}`]: {
+    [`${FigureStyled}`]: {
       boxShadow: "3px 3px 11px #0003",
+    },
+    [`${Placeholder}`]: {
+      borderBottomLeftRadius: "0",
+      borderBottomRightRadius: "0",
     },
   },
 });

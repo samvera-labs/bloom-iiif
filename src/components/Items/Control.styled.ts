@@ -28,9 +28,9 @@ const Icon = styled("div", {
     transition: "all 150ms ease-in-out",
     width: "$3",
     height: "$3",
-    fill: "#666",
-    stroke: "#666",
-    color: "#666",
+    fill: "#999",
+    stroke: "#999",
+    color: "#999",
   },
 });
 

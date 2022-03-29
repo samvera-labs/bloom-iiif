@@ -17,11 +17,18 @@ const Item: React.FC<ItemProps> = ({ item }) => {
 
   const itemRef = useRef(null);
   const [isFocused, setIsFocused] = useState<boolean>(false);
+  const [manifest, setManifest] = useState<Manifest>();
 
   useEffect(() => {
     isFocused
       ? setTimeout(() => {
-          console.log("do it...");
+          if (!manifest)
+            vault
+              .loadCollection(item.id)
+              .then((data: any) => setManifest(data))
+              .catch((error: any) => {
+                console.error(`Manifest failed to load: ${error}`);
+              });
         }, 1000)
       : null;
     return;
@@ -41,6 +48,8 @@ const Item: React.FC<ItemProps> = ({ item }) => {
    */
   let url = null;
   if (item.homepage) url = item.homepage[0].id;
+
+  console.log(manifest);
 
   return (
     <ItemStyled>
