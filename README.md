@@ -2,14 +2,42 @@
 
 **A slider component rendered from a IIIF Collection**
 
-## Item Defaults
+---
 
-- Responsive active item count
-- Carousel or closed ends
-- 1/1 aspect ratio
+<h2 id="development">Development</h2>
 
-## Preview
+Clover IIIF is built with:
 
-- **Image:** Canvas navigator
-- **Sound:** Canvas navigator -
-- **Video:** Canvas navigator / play 10 second preview, no sound, `duration * 0.1` in?
+- TypeScript
+- [ESBuild](https://esbuild.github.io/)
+- [Vault](https://github.com/IIIF-Commons/vault/)
+- [Stitches](https://stitches.dev/)
+
+### Environment
+
+This will open up a local dev server with live reloading.
+
+```
+npm install
+npm run dev
+```
+
+### Build
+
+This will build and package the component
+
+```
+npm run build
+```
+
+#### Notes
+
+- ESBuild compiles TypeScript to JavaScript, but does not do type checking. To view type checking errors (in addtion to what your IDE will be complaining about), run:
+
+```
+tsc
+```
+
+<h2 id="license">License</h2>
+
+This project is available under the [MIT License](https://github.com/samvera-labs/bloom-iiif/blob/main/LICENSE).
