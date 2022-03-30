@@ -6,6 +6,7 @@ import { useGetResourceImage } from "hooks/useGetResourceImage";
 import { useCollectionState } from "context/collection-context";
 import { Anchor, ItemStyled } from "./Item.styled";
 import Preview from "components/Preview/Preview";
+import Video from "components/Video/Video";
 
 interface ItemProps {
   item: Collection | Manifest;
@@ -19,6 +20,7 @@ const Item: React.FC<ItemProps> = ({ item }) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [activeCanvas, setActiveCanvas] = useState<number>(0);
   const [image, setImage] = useState<string | null>();
+  const [video, setVideo] = useState<string | null>();
   const [manifest, setManifest] = useState<Manifest>();
 
   useEffect(() => {
@@ -56,7 +58,7 @@ const Item: React.FC<ItemProps> = ({ item }) => {
       activeCanvas + parseInt(e.target.dataset.increment);
     const canvas = vault.get(manifest.items[targetCanvas]);
 
-    setImage(getCanvasImage(canvas));
+    setImage(getCanvasResource(canvas));
     setActiveCanvas(targetCanvas);
   };
 
@@ -65,16 +67,19 @@ const Item: React.FC<ItemProps> = ({ item }) => {
    * @param canvas
    * @returns
    */
-  const getCanvasImage = (canvas) => {
-    if (canvas.thumbnail.length > 0)
-      return useGetResourceImage(vault.get(canvas.thumbnail[0].id), "300,");
-
+  const getCanvasResource = (canvas) => {
     const annotationPage = vault.get(canvas.items[0]);
     const annotation = vault.get(annotationPage.items[0]);
     const contentResource = vault.get(annotation.body[0]);
 
-    if (contentResource.type === "Image")
+    if (contentResource.type === "Video") setVideo(contentResource);
+
+    if (canvas.thumbnail.length > 0)
+      return useGetResourceImage(vault.get(canvas.thumbnail[0].id), "300,");
+
+    if (contentResource.type === "Image") {
       return useGetResourceImage(contentResource, "300,");
+    }
   };
 
   return (
@@ -94,6 +99,7 @@ const Item: React.FC<ItemProps> = ({ item }) => {
           image={image}
           isFocused={isFocused}
         />
+        {video && <Video key={video.id} isFocused={isFocused} />}
         <Preview
           manifest={manifest}
           activeCanvas={activeCanvas}
