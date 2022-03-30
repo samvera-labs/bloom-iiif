@@ -16,12 +16,14 @@ const Header: React.FC<HeaderProps> = ({ label, summary, homepage = null }) => {
   let url = null;
   if (homepage.length > 0) url = homepage[0].id;
 
+  const description = useGetLabel(summary as InternationalString);
+
   return (
     <HeaderStyled>
       <Title>
         <a href={url}>{useGetLabel(label)}</a>
       </Title>
-      <Description>{useGetLabel(summary)}</Description>
+      {description && <Description>{description}</Description>}
     </HeaderStyled>
   );
 };

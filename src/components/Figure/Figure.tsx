@@ -43,7 +43,7 @@ const Figure: React.FC<FigureProps> = ({
       </AspectRatio.Root>
       <figcaption>
         <Title>{caption}</Title>
-        <Description>{description}</Description>
+        {description && <Description>{description}</Description>}
       </figcaption>
     </FigureStyled>
   );

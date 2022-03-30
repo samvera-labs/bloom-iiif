@@ -1,8 +1,13 @@
-export const useGetLabel = (label, language: string = "en") => {
+import { InternationalString } from "@iiif/presentation-3";
+
+export const useGetLabel = (
+  label: InternationalString,
+  language: string = "en"
+) => {
   /*
    * If no label exists, return an empty string.
    */
-  if (!label) return ["Untitled"];
+  if (!label) return null;
 
   /*
    * If label is not a IIIF Presentation API shape, return the string
