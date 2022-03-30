@@ -2,7 +2,7 @@ import { styled } from "stitches";
 
 const VideoStyled = styled("div", {
   position: "absolute",
-  zIndex: "1",
+  zIndex: "2",
   left: "0",
   top: "0",
   width: "100%",

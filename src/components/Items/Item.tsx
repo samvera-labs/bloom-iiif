@@ -6,7 +6,6 @@ import { useGetResourceImage } from "hooks/useGetResourceImage";
 import { useCollectionState } from "context/collection-context";
 import { Anchor, ItemStyled } from "./Item.styled";
 import Preview from "components/Preview/Preview";
-import Video from "components/Video/Video";
 
 interface ItemProps {
   item: Collection | Manifest;
@@ -97,9 +96,9 @@ const Item: React.FC<ItemProps> = ({ item }) => {
           caption={useGetLabel(item.label)}
           description={useGetLabel(item.summary)}
           image={image}
+          video={video}
           isFocused={isFocused}
         />
-        {video && <Video key={video.id} isFocused={isFocused} />}
         <Preview
           manifest={manifest}
           activeCanvas={activeCanvas}
