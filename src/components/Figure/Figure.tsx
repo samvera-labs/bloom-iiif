@@ -27,7 +27,11 @@ const Figure: React.FC<FigureProps> = ({
 
   useEffect(() => {
     if (imgRef.current && imgRef.current.complete) setLoaded(true);
-  }, []);
+  }, [loaded]);
+
+  useEffect(() => {
+    setLoaded(false);
+  }, [image]);
 
   return (
     <FigureStyled isFocused={isFocused}>

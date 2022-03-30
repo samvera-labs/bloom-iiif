@@ -23,7 +23,7 @@ const Item: React.FC<ItemProps> = ({ item }) => {
 
   useEffect(() => {
     if (item.thumbnail)
-      setImage(useGetResourceImage(vault.get(item.thumbnail[0].id), "200,"));
+      setImage(useGetResourceImage(vault.get(item.thumbnail[0].id), "300,"));
   }, []);
 
   useEffect(() => {
@@ -52,21 +52,29 @@ const Item: React.FC<ItemProps> = ({ item }) => {
 
   const handleActiveCanvas = (e) => {
     e.preventDefault();
-    setActiveCanvas(activeCanvas + parseInt(e.target.dataset.increment));
-    const canvas = vault.get(manifest.items[activeCanvas]);
+    const targetCanvas: number =
+      activeCanvas + parseInt(e.target.dataset.increment);
+    const canvas = vault.get(manifest.items[targetCanvas]);
+
     setImage(getCanvasImage(canvas));
+    setActiveCanvas(targetCanvas);
   };
 
+  /**
+   * todo: move this to a hook
+   * @param canvas
+   * @returns
+   */
   const getCanvasImage = (canvas) => {
     if (canvas.thumbnail.length > 0)
-      return useGetResourceImage(vault.get(canvas.thumbnail[0].id), "200,");
+      return useGetResourceImage(vault.get(canvas.thumbnail[0].id), "300,");
 
     const annotationPage = vault.get(canvas.items[0]);
     const annotation = vault.get(annotationPage.items[0]);
     const contentResource = vault.get(annotation.body[0]);
 
     if (contentResource.type === "Image")
-      return useGetResourceImage(contentResource, "200,");
+      return useGetResourceImage(contentResource, "300,");
   };
 
   return (

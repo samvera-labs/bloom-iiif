@@ -65,6 +65,7 @@ export const theme = {
   space: { ...sizes },
   transitions: {
     all: "all 250ms cubic-bezier(0.16, 1, 0.3, 1)",
+    load: "all 1.25s cubic-bezier(0.16, 1, 0.3, 1)",
   },
 };
 

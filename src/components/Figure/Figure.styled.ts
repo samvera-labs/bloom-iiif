@@ -39,7 +39,7 @@ const Image = styled("img", {
   zIndex: "1",
   width: "100%",
   opacity: 0,
-  transition: "$all",
+  transition: "$load",
 
   [`&.loaded`]: {
     opacity: 1,
