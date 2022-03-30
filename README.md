@@ -1,5 +1,8 @@
 <img src="https://user-images.githubusercontent.com/7376450/160845852-39bf8942-1db4-41ee-881f-889ba2a4f61e.png" class="bloom-screenshot" alt="Clover screenshot"/>
 
+### :construction: Under Development :construction:
+Bloom is still in alpha development. We do not recommend incorporating this into projects yet. You can test it out locally with your IIIF collections.
+
 # Bloom IIIF
 
 **A slider component rendered from a IIIF Collection**
