@@ -1,6 +1,6 @@
 # Bloom IIIF
 
-**A slider componet rendered from a IIIF Collection**
+**A slider component rendered from a IIIF Collection**
 
 ## Item Defaults
 
