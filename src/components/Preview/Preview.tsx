@@ -6,24 +6,57 @@ import { Controls, Label, Overlay, PreviewStyled } from "./Preview.styled";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 
 interface PreviewProps {
+  activeCanvas: number;
+  handleActiveCanvas: (e: React.MouseEvent) => void;
+  isFocused: boolean;
   manifest: Manifest;
 }
 
-const Preview: React.FC<PreviewProps> = ({ manifest }) => {
-  const [activeItem, setActiveItem] = useState<number>(0);
+const Preview: React.FC<PreviewProps> = ({
+  activeCanvas,
+  handleActiveCanvas,
+  isFocused,
+  manifest,
+}) => {
+  const [hasPrev, setHasPrev] = useState<boolean>(false);
+  const [hasNext, setHasNext] = useState<boolean>(false);
+
+  const canvasCurrent: number = activeCanvas + 1;
+  let canvasCount: number = 0;
+
+  if (manifest) canvasCount = manifest.items.length;
+
+  useEffect(() => {
+    canvasCurrent <= 1 ? setHasPrev(false) : setHasPrev(true);
+    canvasCurrent >= canvasCount ? setHasNext(false) : setHasNext(true);
+  }, [activeCanvas, manifest]);
 
   return (
-    <PreviewStyled>
+    <PreviewStyled isFocused={isFocused}>
       <AspectRatio.Root ratio={1 / 1}>
-        <Overlay>
-          <Controls>
-            <button>prev</button>
-            <button>next</button>
-          </Controls>
-          <Label>
-            {activeItem + 1} of {manifest.items.length}
-          </Label>
-        </Overlay>
+        {manifest && (
+          <Overlay>
+            <Controls>
+              <span>
+                {hasPrev && (
+                  <button onClick={handleActiveCanvas} data-increment={-1}>
+                    prev
+                  </button>
+                )}
+              </span>
+              <span>
+                {hasNext && (
+                  <button onClick={handleActiveCanvas} data-increment={1}>
+                    next
+                  </button>
+                )}
+              </span>
+            </Controls>
+            <Label>
+              {canvasCurrent} of {canvasCount}
+            </Label>
+          </Overlay>
+        )}
       </AspectRatio.Root>
     </PreviewStyled>
   );
