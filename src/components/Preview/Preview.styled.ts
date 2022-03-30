@@ -31,6 +31,7 @@ const Controls = styled("div", {
   justifyContent: "space-between",
   padding: "$2 $2 0",
   background: "linear-gradient(0deg, rgba(0,0,0,0.618) 0%, rgba(0,0,0,0) 100%)",
+  cursor: "default",
 });
 
 const Label = styled("div", {
@@ -40,6 +41,7 @@ const Label = styled("div", {
   color: "$secondaryAlt",
   fontSize: "$1",
   padding: "$1",
+  cursor: "default",
 });
 
 export { Controls, Label, Overlay, PreviewStyled };

@@ -36,7 +36,7 @@ const Preview: React.FC<PreviewProps> = ({
       <AspectRatio.Root ratio={1 / 1}>
         {manifest && (
           <Overlay>
-            <Controls>
+            <Controls onClick={(e) => e.preventDefault()}>
               <span>
                 {hasPrev && (
                   <button onClick={handleActiveCanvas} data-increment={-1}>
@@ -52,7 +52,7 @@ const Preview: React.FC<PreviewProps> = ({
                 )}
               </span>
             </Controls>
-            <Label>
+            <Label onClick={(e) => e.preventDefault()}>
               {canvasCurrent} of {canvasCount}
             </Label>
           </Overlay>
