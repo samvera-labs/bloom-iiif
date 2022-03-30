@@ -3,9 +3,9 @@ import { styled } from "stitches";
 const PreviewStyled = styled("div", {
   position: "absolute",
   zIndex: "1",
-  left: "0",
-  top: "0",
-  width: "100%",
+  left: "-$2",
+  top: "-$2",
+  width: "calc(100% + (0.618rem * 2))",
 });
 
 const Overlay = styled("div", {
@@ -20,13 +20,15 @@ const Overlay = styled("div", {
 const Controls = styled("div", {
   display: "flex",
   justifyContent: "space-between",
+  padding: "$2 $2 0",
+  background: "linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%)",
 });
 
 const Label = styled("div", {
   display: "flex",
   justifyContent: "center",
-  backgroundColor: "#000c",
-  color: "$secondary",
+  backgroundColor: "rgba(0,0,0,0.7)",
+  color: "$secondaryAlt",
   fontSize: "$1",
   padding: "$1",
 });

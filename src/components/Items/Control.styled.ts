@@ -69,7 +69,7 @@ const ControlStyled = styled("button", {
           right: "0",
           top: "0",
           background:
-            "linear-gradient(270deg, rgba(0,0,0,0.618) 38.2%, rgba(0,0,0,0) 98%)",
+            "linear-gradient(270deg, rgba(0,0,0,0.7) 38.2%, rgba(0,0,0,0) 98%)",
         },
 
         [`> ${Icon}`]: {
@@ -90,7 +90,7 @@ const ControlStyled = styled("button", {
           right: "unset",
           top: "0",
           background:
-            "linear-gradient(90deg, rgba(0,0,0,0.618) 38.2%, rgba(0,0,0,0) 98%)",
+            "linear-gradient(90deg, rgba(0,0,0,0.7) 38.2%, rgba(0,0,0,0) 98%)",
         },
 
         [`> ${Icon}`]: {
