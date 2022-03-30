@@ -49,8 +49,6 @@ const Item: React.FC<ItemProps> = ({ item }) => {
   let url = null;
   if (item.homepage) url = item.homepage[0].id;
 
-  console.log(manifest);
-
   return (
     <ItemStyled>
       <Anchor
@@ -62,18 +60,13 @@ const Item: React.FC<ItemProps> = ({ item }) => {
         onMouseLeave={onBlur}
         ref={itemRef}
       >
-        {isFocused && (
-          <Preview>
-            <div></div>
-          </Preview>
-        )}
-
         <Figure
           caption={useGetLabel(item.label)}
           description={useGetLabel(item.summary)}
           image={image}
           isFocused={isFocused}
         />
+        {isFocused && manifest && <Preview manifest={manifest} />}
       </Anchor>
     </ItemStyled>
   );
