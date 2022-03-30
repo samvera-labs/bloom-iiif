@@ -42,12 +42,14 @@ const Figure: React.FC<FigureProps> = ({
       <AspectRatio.Root ratio={1 / 1}>
         <Placeholder>
           {video && <Video key={video.id} isFocused={isFocused} />}
-          <Image
-            src={image as string}
-            ref={imgRef}
-            onLoad={() => setLoaded(true)}
-            className={clsx("source", loaded && "loaded")}
-          />
+          {image && (
+            <Image
+              src={image as string}
+              ref={imgRef}
+              onLoad={() => setLoaded(true)}
+              className={clsx("source", loaded && "loaded")}
+            />
+          )}
         </Placeholder>
       </AspectRatio.Root>
       <figcaption>
