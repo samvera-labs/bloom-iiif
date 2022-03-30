@@ -1,3 +1,5 @@
+<img src="https://user-images.githubusercontent.com/7376450/160845852-39bf8942-1db4-41ee-881f-889ba2a4f61e.png" class="bloom-screenshot" alt="Clover screenshot"/>
+
 # Bloom IIIF
 
 **A slider component rendered from a IIIF Collection**
