@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Clover IIIF</title>
+       <link rel="stylesheet" href="./default.css" />
+      <link rel="stylesheet" href="./styles.css" />
+    </head>
+    <body>
+      <div id="root"></div>
+      <div class="documentation-wrapper"><img src="https://user-images.githubusercontent.com/7376450/160845852-39bf8942-1db4-41ee-881f-889ba2a4f61e.png" class="bloom-screenshot" alt="Bloom screenshot"/>
+<h3>:construction: Under Development :construction:</h3>
+<p>Bloom is still in alpha development. We do not recommend incorporating this into projects yet. You can test it out locally with your IIIF collections.</p>
+<h1>Bloom IIIF</h1>
+<p><strong>A slider component rendered from a IIIF Collection</strong></p>
+<hr>
+<h2>Documentation</h2>
+<ul>
+<li><a href="#collection-anatomy">Collection Anatomy</a></li>
+<li><a href="#development">Development</a></li>
+</ul>
+<hr>
+<h2 id="collection-anatomy">Collection Anatomy</h2>
+<p>Bloom accepts both Presentation API 2.x and Presentation API 3.0 Collections.</p>
+<p><a href="https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json">See Example Collection</a></p>
+<h3>Header</h3>
+<h4>Text</h4>
+<p>The <a href="https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L5-L12">top-level <strong>label</strong> and <strong>summary</strong></a> (if existing) data is mapped to a Header sub-component</p>
+<pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">label</span><span style="color: #89DDFF">&quot;</span><span style="color: #EEFFFF">: </span><span style="color: #89DDFF">{</span></span>
+<span class="line"><span style="color: #EEFFFF">  </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">none</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">[</span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">Commedia dell&#39;Arte: The Masks of Antonio Fava</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">]</span></span>
+<span class="line"><span style="color: #89DDFF">}</span></span>
+<span class="line"></span></code></pre>
+<pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">summary</span><span style="color: #89DDFF">&quot;</span><span style="color: #EEFFFF">: </span><span style="color: #89DDFF">{</span></span>
+<span class="line"><span style="color: #EEFFFF">  </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">none</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">[</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">The Commedia dell&#39;Arte, the famous improvisational theatre style born in Renaissance Italy, remains a major influence in today&#39;s theatre. Antonio Fava is an actor, comedian, author, director, musician, mask maker and Internationally renowned Maestro of Commedia dell&#39;Arte.</span><span style="color: #89DDFF">&quot;</span></span>
+<span class="line"><span style="color: #EEFFFF">  </span><span style="color: #89DDFF">]</span></span>
+<span class="line"><span style="color: #89DDFF">}</span></span>
+<span class="line"></span></code></pre>
+<h4>Link</h4>
+<p>The <a href="https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L13-L20">top-level <strong>hompage</strong></a> represents the <code>href</code> attribute wrapping an HTML <code>&lt;a&gt;</code> element on the Header <strong>label</strong></p>
+<pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">homepage</span><span style="color: #89DDFF">&quot;</span><span style="color: #EEFFFF">: </span><span style="color: #89DDFF">[</span></span>
+<span class="line"><span style="color: #EEFFFF">  </span><span style="color: #89DDFF">{</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">id</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">https://dc.library.northwestern.edu/collections/c373ecd2-2c45-45f2-9f9e-52dc244870bd</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">type</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">Text</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">label</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">{</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #FFCB6B">none</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">[</span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">Commedia dell&#39;Arte: The Masks of Antonio Fava</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">]</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">},</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">format</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">text/html</span><span style="color: #89DDFF">&quot;</span></span>
+<span class="line"><span style="color: #EEFFFF">  </span><span style="color: #89DDFF">}</span></span>
+<span class="line"><span style="color: #89DDFF">]</span></span>
+<span class="line"></span></code></pre>
+<h3>Items</h3>
+<p>The <a href="https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L21-L292"><strong>items</strong> array</a> is mapped to the slider/carousel with each item render an HTML <code>&lt;figure&gt;</code></p>
+<pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">items</span><span style="color: #89DDFF">&quot;</span><span style="color: #EEFFFF">: </span><span style="color: #89DDFF">[</span></span>
+<span class="line"><span style="color: #EEFFFF">  </span><span style="color: #89DDFF">{</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">id</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">https://iiif.stack.rdc.library.northwestern.edu/public/72/98/fd/ce/-a/dc/1-/45/01/-9/e1/4-/9e/8b/d9/85/e1/49-manifest.json</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">type</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">Manifest</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">label</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">{</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #FFCB6B">none</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">[</span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">Pantalone classico</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">]</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">},</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">summary</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">{</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #FFCB6B">none</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">[</span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">Image</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">]</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">},</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">thumbnail</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">[</span></span>
+<span class="line"><span style="color: #EEFFFF">      </span><span style="color: #89DDFF">{</span></span>
+<span class="line"><span style="color: #EEFFFF">        </span><span style="color: #89DDFF">&quot;</span><span style="color: #FFCB6B">id</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">https://iiif.stack.rdc.library.northwestern.edu/iiif/2/180682c9-dfaf-4881-b7b6-1f2f21092d4f/full/200,/0/default.jpg</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">        </span><span style="color: #89DDFF">&quot;</span><span style="color: #FFCB6B">type</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">Image</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">        </span><span style="color: #89DDFF">&quot;</span><span style="color: #FFCB6B">format</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">image/jpeg</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">        </span><span style="color: #89DDFF">&quot;</span><span style="color: #FFCB6B">service</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">[</span></span>
+<span class="line"><span style="color: #EEFFFF">          </span><span style="color: #89DDFF">{</span></span>
+<span class="line"><span style="color: #EEFFFF">            </span><span style="color: #89DDFF">&quot;</span><span style="color: #F78C6C">id</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">https://iiif.stack.rdc.library.northwestern.edu/iiif/2/180682c9-dfaf-4881-b7b6-1f2f21092d4f</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">            </span><span style="color: #89DDFF">&quot;</span><span style="color: #F78C6C">profile</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">http://iiif.io/api/image/2/level2.json</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">            </span><span style="color: #89DDFF">&quot;</span><span style="color: #F78C6C">type</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">ImageService2</span><span style="color: #89DDFF">&quot;</span></span>
+<span class="line"><span style="color: #EEFFFF">          </span><span style="color: #89DDFF">}</span></span>
+<span class="line"><span style="color: #EEFFFF">        </span><span style="color: #89DDFF">],</span></span>
+<span class="line"><span style="color: #EEFFFF">        </span><span style="color: #89DDFF">&quot;</span><span style="color: #FFCB6B">width</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #F78C6C">200</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">        </span><span style="color: #89DDFF">&quot;</span><span style="color: #FFCB6B">height</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #F78C6C">200</span></span>
+<span class="line"><span style="color: #EEFFFF">      </span><span style="color: #89DDFF">}</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">],</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">homepage</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">[</span></span>
+<span class="line"><span style="color: #EEFFFF">      </span><span style="color: #89DDFF">{</span></span>
+<span class="line"><span style="color: #EEFFFF">        </span><span style="color: #89DDFF">&quot;</span><span style="color: #FFCB6B">id</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">https://dc.library.northwestern.edu/items/7298fdce-adc1-4501-9e14-9e8bd985e149</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">        </span><span style="color: #89DDFF">&quot;</span><span style="color: #FFCB6B">type</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">Text</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">        </span><span style="color: #89DDFF">&quot;</span><span style="color: #FFCB6B">label</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">{</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #F78C6C">none</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">[</span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">Pantalone classico</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">]</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">},</span></span>
+<span class="line"><span style="color: #EEFFFF">        </span><span style="color: #89DDFF">&quot;</span><span style="color: #FFCB6B">format</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">text/html</span><span style="color: #89DDFF">&quot;</span></span>
+<span class="line"><span style="color: #EEFFFF">      </span><span style="color: #89DDFF">}</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">]</span></span>
+<span class="line"><span style="color: #EEFFFF">  </span><span style="color: #89DDFF">}</span></span>
+<span class="line"><span style="color: #89DDFF">]</span></span>
+<span class="line"></span></code></pre>
+<h4>Text</h4>
+<p>For each item, the <a href="https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L25-L26"><strong>label</strong> and <strong>summary</strong></a> (if existing) data are mapped to a <code>&lt;figcaption&gt;</code></p>
+<pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">label</span><span style="color: #89DDFF">&quot;</span><span style="color: #EEFFFF">: </span><span style="color: #89DDFF">{</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">none</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">[</span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">Pantalone classico</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">]</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">}</span><span style="color: #EEFFFF">,</span></span>
+<span class="line"></span></code></pre>
+<pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">summary</span><span style="color: #89DDFF">&quot;</span><span style="color: #EEFFFF">: </span><span style="color: #89DDFF">{</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">none</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">[</span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">Image</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">]</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">}</span><span style="color: #EEFFFF">,</span></span>
+<span class="line"></span></code></pre>
+<h4>Image</h4>
+<p>For each item, the <a href="https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L27-L42"><strong>thumbnail</strong></a> is rendered as an <code>&lt;img /&gt;</code> element within the <code>&lt;figure&gt;</code></p>
+<pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">thumbnail</span><span style="color: #89DDFF">&quot;</span><span style="color: #EEFFFF">: </span><span style="color: #89DDFF">[</span></span>
+<span class="line"><span style="color: #EEFFFF">  </span><span style="color: #89DDFF">{</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">id</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">https://iiif.stack.rdc.library.northwestern.edu/iiif/2/180682c9-dfaf-4881-b7b6-1f2f21092d4f/full/200,/0/default.jpg</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">type</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">Image</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">format</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">image/jpeg</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">service</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">[</span></span>
+<span class="line"><span style="color: #EEFFFF">      </span><span style="color: #89DDFF">{</span></span>
+<span class="line"><span style="color: #EEFFFF">        </span><span style="color: #89DDFF">&quot;</span><span style="color: #FFCB6B">id</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">https://iiif.stack.rdc.library.northwestern.edu/iiif/2/180682c9-dfaf-4881-b7b6-1f2f21092d4f</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">        </span><span style="color: #89DDFF">&quot;</span><span style="color: #FFCB6B">profile</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">http://iiif.io/api/image/2/level2.json</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">        </span><span style="color: #89DDFF">&quot;</span><span style="color: #FFCB6B">type</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">ImageService2</span><span style="color: #89DDFF">&quot;</span></span>
+<span class="line"><span style="color: #EEFFFF">      </span><span style="color: #89DDFF">}</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">],</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">width</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #F78C6C">200</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">height</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #F78C6C">200</span></span>
+<span class="line"><span style="color: #EEFFFF">  </span><span style="color: #89DDFF">}</span></span>
+<span class="line"><span style="color: #89DDFF">]</span><span style="color: #EEFFFF">,</span></span>
+<span class="line"></span></code></pre>
+<h4>Link</h4>
+<p>The <a href="https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L43-L50"><strong>hompage</strong></a> for each item represents the <code>href</code> attribute of the HTML <code>&lt;a&gt;</code> element wrapping <code>&lt;figure&gt;</code></p>
+<pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">homepage</span><span style="color: #89DDFF">&quot;</span><span style="color: #EEFFFF">: </span><span style="color: #89DDFF">[</span></span>
+<span class="line"><span style="color: #EEFFFF">  </span><span style="color: #89DDFF">{</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">id</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">https://dc.library.northwestern.edu/items/7298fdce-adc1-4501-9e14-9e8bd985e149</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">type</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">Text</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">label</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">{</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #FFCB6B">none</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">[</span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">Pantalone classico</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">]</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">},</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">format</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">text/html</span><span style="color: #89DDFF">&quot;</span></span>
+<span class="line"><span style="color: #EEFFFF">  </span><span style="color: #89DDFF">}</span></span>
+<span class="line"><span style="color: #89DDFF">]</span></span>
+<span class="line"></span></code></pre>
+<hr>
+<h2 id="development">Development</h2>
+<p>Bloom IIIF is built with:</p>
+<ul>
+<li>TypeScript</li>
+<li><a href="https://esbuild.github.io/">ESBuild</a></li>
+<li><a href="https://github.com/IIIF-Commons/vault/">Vault</a></li>
+<li><a href="https://stitches.dev/">Stitches</a></li>
+</ul>
+<h3>Environment</h3>
+<p>This will open up a local dev server with live reloading.</p>
+<pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #EEFFFF">npm install</span></span>
+<span class="line"><span style="color: #EEFFFF">npm run dev</span></span>
+<span class="line"></span></code></pre>
+<h3>Build</h3>
+<p>This will build and package the component</p>
+<pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #EEFFFF">npm run build</span></span>
+<span class="line"></span></code></pre>
+<h4>Notes</h4>
+<p>ESBuild compiles TypeScript to JavaScript, but does not do type checking. To view type checking errors (in addtion to what your IDE will be complaining about), run:</p>
+<pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #EEFFFF">tsc</span></span>
+<span class="line"></span></code></pre>
+<h2 id="license">License</h2>
+<p>This project is available under the <a href="https://github.com/samvera-labs/bloom-iiif/blob/main/LICENSE">MIT License</a>.</p>
+</div>
+      <script src="./script.js"></script>
+    </body>
+  </html>
