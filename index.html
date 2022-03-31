@@ -11,15 +11,35 @@
       <div id="root"></div>
       <div class="documentation-wrapper"><img src="https://user-images.githubusercontent.com/7376450/160845852-39bf8942-1db4-41ee-881f-889ba2a4f61e.png" class="bloom-screenshot" alt="Bloom screenshot"/>
 <h3>:construction: Under Development :construction:</h3>
-<p>Bloom is still in alpha development. We do not recommend incorporating this into projects yet. You can test it out locally with your IIIF collections.</p>
+<p><em>Bloom is still in alpha development. We do not recommend incorporating this into projects yet. You can test it out locally with your IIIF collections.</em></p>
 <h1>Bloom IIIF</h1>
 <p><strong>A slider component rendered from a IIIF Collection</strong></p>
 <hr>
 <h2>Documentation</h2>
 <ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#basic-usage">Basic Usage</a></li>
 <li><a href="#collection-anatomy">Collection Anatomy</a></li>
 <li><a href="#development">Development</a></li>
 </ul>
+<hr>
+<h2 id="installation">Installation</h2>
+<p>Install the component from your command line using <code>npm install</code>,</p>
+<pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #EEFFFF">npm install @samvera/bloom-iiif</span></span>
+<span class="line"></span></code></pre>
+<p><strong>OR</strong> if you prefer Yarn, use <code>yarn add</code>.</p>
+<pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #EEFFFF">yarn add @samvera/bloom-iiif</span></span>
+<span class="line"></span></code></pre>
+<hr>
+<h2 id="basic-usage">Basic Usage</h2>
+<p>Add the BloomIIIF component to your <code>jsx</code> or <code>tsx</code> code.</p>
+<pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #89DDFF; font-style: italic">import</span><span style="color: #EEFFFF"> BloomIIIF </span><span style="color: #89DDFF; font-style: italic">from</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">@samvera/bloom-iiif</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">;</span></span>
+<span class="line"></span></code></pre>
+<p>Mnimal usage providing the <code>&lt;BloomIIIF/&gt;</code> component with an external manifest.</p>
+<pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #C792EA">const</span><span style="color: #EEFFFF"> collectionId </span><span style="color: #89DDFF">=</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">`</span><span style="color: #C3E88D">https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json</span><span style="color: #89DDFF">`</span><span style="color: #89DDFF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #89DDFF; font-style: italic">return</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&lt;</span><span style="color: #FFCB6B">BloomIIIF</span><span style="color: #89DDFF"> </span><span style="color: #C792EA">collectionId</span><span style="color: #89DDFF">={</span><span style="color: #EEFFFF">collectionId</span><span style="color: #89DDFF">} /&gt;;</span></span>
+<span class="line"></span></code></pre>
 <hr>
 <h2 id="collection-anatomy">Collection Anatomy</h2>
 <p>Bloom accepts both Presentation API 2.x and Presentation API 3.0 Collections.</p>
