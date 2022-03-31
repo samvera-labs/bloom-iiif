@@ -12,7 +12,6 @@ import {
   InternationalString,
 } from "@iiif/presentation-3";
 import { styled } from "stitches";
-import { useHookWithRefCallback } from "hooks/useHookWithRefCallback";
 
 interface Props {
   collectionId: string;
