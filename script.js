@@ -23694,15 +23694,13 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       items: collection.items
     }));
   };
-  var StyledBloom = styled("div", {
-    paddingBottom: "$5"
-  });
+  var StyledBloom = styled("div", { padding: "$4 0" });
   var src_default = App;
 
   // src/dev.tsx
-  var collectionBodleianGraeca = `https://iiif.bodleian.ox.ac.uk/iiif/collection/flora-and-fauna-graeca`;
+  var collectionMasks = `https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json`;
   import_react_dom.default.render(/* @__PURE__ */ import_react12.default.createElement("section", null, /* @__PURE__ */ import_react12.default.createElement(src_default, {
-    collectionId: collectionBodleianGraeca
+    collectionId: collectionMasks
   })), document.getElementById("root"));
 })();
 /*
