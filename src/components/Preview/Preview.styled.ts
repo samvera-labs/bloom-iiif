@@ -28,20 +28,26 @@ const Overlay = styled("div", {
 
 const Controls = styled("div", {
   display: "flex",
-  justifyContent: "space-between",
+  justifyContent: "center",
   padding: "$2 $2 0",
-  background: "linear-gradient(0deg, rgba(0,0,0,0.618) 0%, rgba(0,0,0,0) 100%)",
+  background: "linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%)",
   cursor: "default",
+
+  button: {
+    width: "$3",
+  },
 });
 
 const Label = styled("div", {
   display: "flex",
   justifyContent: "center",
-  backgroundColor: "rgba(0,0,0,0.618)",
+  backgroundColor: "rgba(0,0,0,0.7)",
   color: "$secondaryAlt",
   fontSize: "$1",
   padding: "$1",
   cursor: "default",
 });
+
+// linear-gradient(90deg, rgba(0,0,0,0.7) 38.2%, rgba(0,0,0,0) 98%)"
 
 export { Controls, Label, Overlay, PreviewStyled };

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import Figure from "components/Figure/Figure";
-import { Collection, Manifest } from "@iiif/presentation-3";
+import { CanvasNormalized, Collection, Manifest } from "@iiif/presentation-3";
 import { useGetLabel } from "hooks/useGetLabel";
 import { useGetResourceImage } from "hooks/useGetResourceImage";
 import { useCollectionState } from "context/collection-context";
@@ -42,6 +42,13 @@ const Item: React.FC<ItemProps> = ({ item }) => {
     return;
   }, [isFocused]);
 
+  useEffect(() => {
+    if (!manifest) return;
+
+    const canvas: CanvasNormalized = vault.get(manifest.items[activeCanvas]);
+    setImage(getCanvasResource(canvas));
+  }, [manifest]);
+
   const onFocus = () => setIsFocused(true);
   const onBlur = () => setIsFocused(false);
 
@@ -53,20 +60,26 @@ const Item: React.FC<ItemProps> = ({ item }) => {
 
   const handleActiveCanvas = (e) => {
     e.preventDefault();
+
+    if (!manifest) return;
+
     const targetCanvas: number =
       activeCanvas + parseInt(e.target.dataset.increment);
-    const canvas = vault.get(manifest.items[targetCanvas]);
+    const canvas: CanvasNormalized = vault.get(manifest.items[targetCanvas]);
 
     setImage(getCanvasResource(canvas));
     setActiveCanvas(targetCanvas);
   };
 
   /**
-   * todo: move this to a hook
+   * todo: move this to a hook?
    * @param canvas
    * @returns
    */
-  const getCanvasResource = (canvas) => {
+  const getCanvasResource = (canvas: CanvasNormalized) => {
+    /**
+     * resolve type bugs with multicanvas bodleian manifests
+     */
     const annotationPage = vault.get(canvas.items[0]);
     const annotation = vault.get(annotationPage.items[0]);
     const contentResource = vault.get(annotation.body[0]);
