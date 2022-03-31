@@ -1063,7 +1063,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState);
           }
-          function useReducer(reducer, initialArg, init) {
+          function useReducer2(reducer, initialArg, init) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useReducer(reducer, initialArg, init);
           }
@@ -1645,7 +1645,7 @@
           exports.useImperativeHandle = useImperativeHandle;
           exports.useLayoutEffect = useLayoutEffect;
           exports.useMemo = useMemo;
-          exports.useReducer = useReducer;
+          exports.useReducer = useReducer2;
           exports.useRef = useRef6;
           exports.useState = useState6;
           exports.version = ReactVersion;
@@ -22455,7 +22455,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     initialState = defaultState,
     children
   }) => {
-    const [state, dispatch] = import_react.default.useReducer(collectionReducer, initialState);
+    const [state, dispatch] = (0, import_react.useReducer)(collectionReducer, initialState);
     return /* @__PURE__ */ import_react.default.createElement(CollectionStateContext.Provider, {
       value: state
     }, /* @__PURE__ */ import_react.default.createElement(CollectionDispatchContext.Provider, {
