@@ -2,7 +2,7 @@
 
 ### :construction: Under Development :construction:
 
-Bloom is still in alpha development. We do not recommend incorporating this into projects yet. You can test it out locally with your IIIF collections.
+_Bloom is still in alpha development. We do not recommend incorporating this into projects yet. You can test it out locally with your IIIF collections._
 
 # Bloom IIIF
 
@@ -12,10 +12,47 @@ Bloom is still in alpha development. We do not recommend incorporating this into
 
 ## Documentation
 
+- [Installation](#installation)
+- [Basic Usage](#basic-usage)
 - [Collection Anatomy](#collection-anatomy)
 - [Development](#development)
 
 ---
+
+<h2 id="installation">Installation</h2>
+
+Install the component from your command line using `npm install`,
+
+```shell
+npm install @samvera/bloom-iiif
+```
+
+**OR** if you prefer Yarn, use `yarn add`.
+
+```shell
+yarn add @samvera/bloom-iiif
+```
+---
+
+<h2 id="basic-usage">Basic Usage</h2>
+
+Add the BloomIIIF component to your `jsx` or `tsx` code.
+
+```jsx
+import BloomIIIF from "@samvera/bloom-iiif";
+```
+
+Mnimal usage providing the `<BloomIIIF/>` component with an external manifest.
+
+```jsx
+const collectionId = `https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json`;
+
+return <BloomIIIF collectionId={collectionId} />;
+```
+
+---
+
+
 
 <h2 id="collection-anatomy">Collection Anatomy</h2>
 
