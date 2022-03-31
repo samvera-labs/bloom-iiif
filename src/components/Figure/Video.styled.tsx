@@ -8,6 +8,7 @@ const VideoStyled = styled("div", {
   width: "100%",
   opacity: "0",
   transition: "$load",
+  backgroundColor: "$primary",
 
   video: {
     width: "100%",

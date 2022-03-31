@@ -1,6 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import Figure from "components/Figure/Figure";
-import { CanvasNormalized, Collection, Manifest } from "@iiif/presentation-3";
+import {
+  CanvasNormalized,
+  Collection,
+  ContentResource,
+  Manifest,
+} from "@iiif/presentation-3";
 import { useGetLabel } from "hooks/useGetLabel";
 import { useGetResourceImage } from "hooks/useGetResourceImage";
 import { useCollectionState } from "context/collection-context";
@@ -19,7 +24,7 @@ const Item: React.FC<ItemProps> = ({ item }) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [activeCanvas, setActiveCanvas] = useState<number>(0);
   const [image, setImage] = useState<string | null>();
-  const [video, setVideo] = useState<string | null>();
+  const [video, setVideo] = useState<ContentResource | null>();
   const [manifest, setManifest] = useState<Manifest>();
 
   useEffect(() => {
