@@ -2,14 +2,17 @@ import React from "react";
 import { Vault } from "@iiif/vault";
 
 interface CollectionContextStore {
+  isLoaded: boolean;
   vault: Vault;
 }
 
 interface CollectionAction {
   type: string;
+  isLoaded: boolean;
 }
 
 const defaultState: CollectionContextStore = {
+  isLoaded: false,
   vault: new Vault(),
 };
 
@@ -23,6 +26,12 @@ function collectionReducer(
   action: CollectionAction
 ) {
   switch (action.type) {
+    case "updateIsLoaded": {
+      return {
+        ...state,
+        isLoaded: action.isLoaded,
+      };
+    }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }
