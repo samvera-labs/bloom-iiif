@@ -1,7 +1,7 @@
 {
-  "name": "bloom-iiif",
+  "name": "@samvera/bloom-iiif",
   "version": "0.0.1",
-  "description": "",
+  "description": "<img src=\"https://user-images.githubusercontent.com/7376450/160845852-39bf8942-1db4-41ee-881f-889ba2a4f61e.png\" class=\"bloom-screenshot\" alt=\"Bloom screenshot\"/>",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -11,6 +11,7 @@
     "clean": "rimraf dist",
     "dev": "NODE_ENV=development node serve.js",
     "test": "jest --watch",
+    "prepublishOnly": "npm run build",
     "ts-lint": "tsc --noEmit --incremental --watch"
   },
   "keywords": [
