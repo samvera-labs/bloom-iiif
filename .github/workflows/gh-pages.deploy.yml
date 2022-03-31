@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      NEXT_PUBLIC_BASE_PATH: /clover-iiif
+      NEXT_PUBLIC_BASE_PATH: /bloom-iiif
 
     strategy:
       matrix:
