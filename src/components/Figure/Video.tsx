@@ -18,8 +18,8 @@ const Video: React.FC<VideoProps> = ({ resource, isFocused }) => {
     videoEl.currentTime = 262;
     videoEl.play();
     setTimeout(() => {
-      videoEl.pause();
-    }, 10000);
+      videoEl.currentTime = 262;
+    }, 30000);
   };
 
   return (

@@ -31,20 +31,24 @@ export const theme = {
      * Must contrast to 4.5 or greater with `secondary`.
      */
     primary: "#1a1d1e",
-    primaryAlt: "#000000",
+    primaryMuted: "#26292b",
+    primaryAlt: "#151718",
 
     /*
      * Key brand color(s).
      * Must contrast to 4.5 or greater with `secondary`.
      */
     accent: "#006adc",
+    accentMuted: "#5eb0ef",
+    accentAlt: "#00254d",
 
     /*
      * White and light grays in a light theme.
      * Must contrast to 4.5 or greater with `primary` and  `accent`.
      */
     secondary: "#FFFFFF",
-    secondaryAlt: "#e6e8eb",
+    secondaryMuted: "#e6e8eb",
+    secondaryAlt: "#c1c8cd",
   },
   fonts: {
     sans: "'Inter', Arial, sans-serif",
