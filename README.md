@@ -1,6 +1,7 @@
 <img src="https://user-images.githubusercontent.com/7376450/160845852-39bf8942-1db4-41ee-881f-889ba2a4f61e.png" class="bloom-screenshot" alt="Bloom screenshot"/>
 
 ### :construction: Under Development :construction:
+
 Bloom is still in alpha development. We do not recommend incorporating this into projects yet. You can test it out locally with your IIIF collections.
 
 # Bloom IIIF
@@ -33,6 +34,7 @@ The [top-level **label** and **summary**](https://github.com/samvera-labs/bloom-
   "none": ["Commedia dell'Arte: The Masks of Antonio Fava"]
 }
 ```
+
 ```json
 "summary": {
   "none": [
@@ -55,7 +57,6 @@ The [top-level **hompage**](https://github.com/samvera-labs/bloom-iiif/blob/main
   }
 ]
 ```
-
 
 ### Items
 
@@ -103,6 +104,7 @@ For each item, the [**label** and **summary**](https://github.com/samvera-labs/b
 ```json
 "label": { "none": ["Pantalone classico"] },
 ```
+
 ```json
 "summary": { "none": ["Image"] },
 ```
@@ -132,7 +134,7 @@ For each item, the [**thumbnail**](https://github.com/samvera-labs/bloom-iiif/bl
 
 #### Link
 
-The [**hompage**](https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L43-L50) for each item represents the `href` attribute of the HTML `<a>` element wrapping `<figure>` 
+The [**hompage**](https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L43-L50) for each item represents the `href` attribute of the HTML `<a>` element wrapping `<figure>`
 
 ```json
 "homepage": [
@@ -160,7 +162,7 @@ Bloom IIIF is built with:
 
 This will open up a local dev server with live reloading.
 
-```console
+```shell
 npm install
 npm run dev
 ```
@@ -169,7 +171,7 @@ npm run dev
 
 This will build and package the component
 
-```console
+```shell
 npm run build
 ```
 
@@ -177,7 +179,7 @@ npm run build
 
 ESBuild compiles TypeScript to JavaScript, but does not do type checking. To view type checking errors (in addtion to what your IDE will be complaining about), run:
 
-```console
+```shell
 tsc
 ```
 

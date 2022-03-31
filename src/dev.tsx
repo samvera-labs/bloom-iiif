@@ -12,17 +12,17 @@ let collectionHeilman: string = `https://digital.lib.utk.edu/assemble/collection
 
 ReactDOM.render(
   <section>
-    <div>
+    <App collectionId={collectionBodleianGraeca} />
+    {/* <div>
       <h2>Northwestern</h2>
       <App collectionId={collectionNezPerce} />
       <App collectionId={collectionMasks} />
       <App collectionId={collectionFootball} />
-    </div>
+    </div> */}
 
-    <div>
+    {/* <div>
       <h2>Bodleian</h2>
       <App collectionId={collectionBodleianGraeca} />
-      <App collectionId={collectionBodleianMaps} />
     </div>
 
     <div>
@@ -33,7 +33,7 @@ ReactDOM.render(
     <div>
       <h2>University of Tennessee</h2>
       <App collectionId={collectionHeilman} />
-    </div>
+    </div> */}
   </section>,
   document.getElementById("root")
 );
