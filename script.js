@@ -1,7 +1,9 @@
 (() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;
+  var __defProps = Object.defineProperties;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+  var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
   var __getOwnPropNames = Object.getOwnPropertyNames;
   var __getOwnPropSymbols = Object.getOwnPropertySymbols;
   var __getProtoOf = Object.getPrototypeOf;
@@ -20,6 +22,7 @@
       }
     return a2;
   };
+  var __spreadProps = (a2, b3) => __defProps(a2, __getOwnPropDescs(b3));
   var __commonJS = (cb, mod) => function __require() {
     return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
   };
@@ -327,7 +330,7 @@
           pureComponentPrototype.constructor = PureComponent;
           _assign(pureComponentPrototype, Component.prototype);
           pureComponentPrototype.isPureReactComponent = true;
-          function createRef2() {
+          function createRef() {
             var refObject = {
               current: null
             };
@@ -1064,7 +1067,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useReducer(reducer, initialArg, init);
           }
-          function useRef5(initialValue) {
+          function useRef6(initialValue) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
@@ -1630,7 +1633,7 @@
           exports.createContext = createContext;
           exports.createElement = createElement$1;
           exports.createFactory = createFactory;
-          exports.createRef = createRef2;
+          exports.createRef = createRef;
           exports.forwardRef = forwardRef4;
           exports.isValidElement = isValidElement2;
           exports.lazy = lazy;
@@ -1643,7 +1646,7 @@
           exports.useLayoutEffect = useLayoutEffect;
           exports.useMemo = useMemo;
           exports.useReducer = useReducer;
-          exports.useRef = useRef5;
+          exports.useRef = useRef6;
           exports.useState = useState6;
           exports.version = ReactVersion;
         })();
@@ -22431,12 +22434,18 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
 
   // src/context/collection-context.tsx
   var defaultState = {
+    isLoaded: false,
     vault: new Vault()
   };
   var CollectionStateContext = import_react.default.createContext(defaultState);
   var CollectionDispatchContext = import_react.default.createContext(defaultState);
   function collectionReducer(state, action) {
     switch (action.type) {
+      case "updateIsLoaded": {
+        return __spreadProps(__spreadValues({}, state), {
+          isLoaded: action.isLoaded
+        });
+      }
       default: {
         throw new Error(`Unhandled action type: ${action.type}`);
       }
@@ -23196,7 +23205,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     video
   }) => {
     const [loaded, setLoaded] = (0, import_react5.useState)(false);
-    const imgRef = (0, import_react5.useRef)();
+    const imgRef = (0, import_react5.useRef)(null);
     (0, import_react5.useEffect)(() => {
       if (imgRef.current && imgRef.current.complete)
         setLoaded(true);
@@ -23386,7 +23395,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }, [manifest]);
     const onFocus = () => setIsFocused(true);
     const onBlur = () => setIsFocused(false);
-    let url = null;
+    let url = "";
     if (item.homepage)
       url = item.homepage[0].id;
     const handleActiveCanvas = (e3) => {
@@ -23600,7 +23609,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   };
   var Items = ({ items }) => {
     const [activeItems, setActiveItems] = (0, import_react9.useState)([0, 1, 2, 3, 4]);
-    const itemsRef = (0, import_react9.createRef)();
+    const itemsRef = (0, import_react9.useRef)(null);
     const dimensions = useRefDimensions(itemsRef);
     const handleActiveItems = (increment) => {
       setActiveItems(activeItems.map((index) => index + increment));
@@ -23656,8 +23665,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
 
   // src/components/Header/Header.tsx
   var Header = ({ label, summary, homepage = null }) => {
-    let url = null;
-    if (homepage.length > 0)
+    let url = "";
+    if (homepage && homepage.length > 0)
       url = homepage[0].id;
     const description = useGetLabel(summary);
     return /* @__PURE__ */ import_react10.default.createElement(HeaderStyled, null, /* @__PURE__ */ import_react10.default.createElement(Title2, null, /* @__PURE__ */ import_react10.default.createElement("a", {
