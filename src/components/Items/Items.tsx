@@ -1,11 +1,11 @@
-import React, { useState, createRef } from "react";
+import React, { useState, useRef } from "react";
 import Item from "components/Items/Item";
 import { CollectionItems, Collection, Manifest } from "@iiif/presentation-3";
 import { ItemsStyled } from "./Items.styled";
 import ItemsControl from "./Control";
 import { rem } from "stitches";
 
-const useRefDimensions = (ref) => {
+const useRefDimensions = (ref: React.RefObject<HTMLElement>) => {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   React.useEffect(() => {
     if (ref.current) {
@@ -24,7 +24,7 @@ interface ItemsProps {
 
 const Items: React.FC<ItemsProps> = ({ items }) => {
   const [activeItems, setActiveItems] = useState<number[]>([0, 1, 2, 3, 4]);
-  const itemsRef = createRef();
+  const itemsRef = useRef<HTMLElement>(null);
   const dimensions = useRefDimensions(itemsRef);
 
   const handleActiveItems = (increment: number) => {
