@@ -4,6 +4,7 @@ import {
   CanvasNormalized,
   Collection,
   ContentResource,
+  InternationalString,
   Manifest,
 } from "@iiif/presentation-3";
 import { useGetLabel } from "hooks/useGetLabel";
@@ -60,7 +61,7 @@ const Item: React.FC<ItemProps> = ({ item }) => {
   /**
    * todo: be more defensive about collections without `homepage`
    */
-  let url = null;
+  let url = "";
   if (item.homepage) url = item.homepage[0].id;
 
   const handleActiveCanvas = (e) => {
@@ -111,14 +112,20 @@ const Item: React.FC<ItemProps> = ({ item }) => {
         ref={itemRef}
       >
         <Figure
-          caption={useGetLabel(item.label)}
-          description={useGetLabel(item.summary)}
-          image={image}
-          video={video}
+          caption={
+            useGetLabel(item.label as InternationalString) as unknown as string
+          }
+          description={
+            useGetLabel(
+              item.summary as InternationalString
+            ) as unknown as string
+          }
+          image={image as string | null}
+          video={video as ContentResource | null}
           isFocused={isFocused}
         />
         <Preview
-          manifest={manifest}
+          manifest={manifest as Manifest}
           activeCanvas={activeCanvas}
           handleActiveCanvas={handleActiveCanvas}
           isFocused={isFocused}

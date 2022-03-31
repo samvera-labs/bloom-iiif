@@ -9,6 +9,7 @@ import {
   CollectionItems,
   CollectionNormalized,
   ContentResource,
+  InternationalString,
 } from "@iiif/presentation-3";
 import { styled } from "stitches";
 import { useHookWithRefCallback } from "hooks/useHookWithRefCallback";
@@ -57,9 +58,9 @@ const Bloom: React.FC<Props> = ({ collectionId }) => {
   return (
     <StyledBloom>
       <Header
-        label={collection.label}
+        label={collection.label as InternationalString}
         summary={collection.summary}
-        homepage={collection.homepage}
+        homepage={collection.homepage as any as ContentResource[]}
       />
       <Items items={collection.items as CollectionItems[]} />
     </StyledBloom>

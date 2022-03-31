@@ -1,7 +1,9 @@
+import { ContentResource, IIIFExternalWebResource } from "@iiif/presentation-3";
+
 export const useGetResourceImage = (
-  resource,
-  size = "600,",
-  region = "full"
+  resource: IIIFExternalWebResource | IIIFExternalWebResource[],
+  size: string = "600,",
+  region: string = "full"
 ) => {
   if (Array.isArray(resource)) resource = resource[0];
 
