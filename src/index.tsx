@@ -66,8 +66,6 @@ const Bloom: React.FC<Props> = ({ collectionId }) => {
   );
 };
 
-const StyledBloom = styled("div", {
-  paddingBottom: "$5",
-});
+const StyledBloom = styled("div", { padding: "$4 0" });
 
 export default App;
