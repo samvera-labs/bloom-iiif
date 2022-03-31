@@ -32,6 +32,7 @@ npm install @samvera/bloom-iiif
 ```shell
 yarn add @samvera/bloom-iiif
 ```
+
 ---
 
 <h2 id="basic-usage">Basic Usage</h2>
@@ -42,7 +43,7 @@ Add the BloomIIIF component to your `jsx` or `tsx` code.
 import BloomIIIF from "@samvera/bloom-iiif";
 ```
 
-Mnimal usage providing the `<BloomIIIF/>` component with an external manifest.
+Minimal usage providing the `<BloomIIIF/>` component with an external manifest.
 
 ```jsx
 const collectionId = `https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json`;
@@ -51,8 +52,6 @@ return <BloomIIIF collectionId={collectionId} />;
 ```
 
 ---
-
-
 
 <h2 id="collection-anatomy">Collection Anatomy</h2>
 
