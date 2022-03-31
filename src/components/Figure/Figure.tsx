@@ -41,7 +41,7 @@ const Figure: React.FC<FigureProps> = ({
     <FigureStyled isFocused={isFocused}>
       <AspectRatio.Root ratio={1 / 1}>
         <Placeholder>
-          {video && <Video video={video} isFocused={isFocused} />}
+          {video && <Video resource={video} isFocused={isFocused} />}
           {image && (
             <Image
               src={image as string}
