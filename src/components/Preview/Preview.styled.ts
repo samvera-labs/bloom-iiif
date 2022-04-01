@@ -34,7 +34,24 @@ const Controls = styled("div", {
   cursor: "default",
 
   button: {
-    width: "$3",
+    width: "$4",
+    height: "$4",
+    display: "flex",
+    flexDirection: "column",
+    textAlign: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadious: "100%",
+    backgroundColor: "transparent",
+    border: "none",
+    cursor: "pointer",
+
+    svg: {
+      width: "100%",
+      fill: "$accent",
+      stroke: "$accent",
+      color: "$accent",
+    },
   },
 });
 

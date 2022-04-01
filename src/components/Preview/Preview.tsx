@@ -40,20 +40,12 @@ const Preview: React.FC<PreviewProps> = ({
           <Overlay>
             <Controls onClick={(e) => e.preventDefault()}>
               {hasPrev && (
-                <button
-                  onClick={handleActiveCanvas}
-                  data-increment={-1}
-                  style={{ width: "31px" }}
-                >
+                <button onClick={() => handleActiveCanvas(-1)}>
                   <PreviousIcon />
                 </button>
               )}
               {hasNext && (
-                <button
-                  onClick={handleActiveCanvas}
-                  data-increment={1}
-                  style={{ width: "31px" }}
-                >
+                <button onClick={() => handleActiveCanvas(1)}>
                   <NextIcon />
                 </button>
               )}

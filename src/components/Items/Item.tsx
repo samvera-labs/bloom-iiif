@@ -64,13 +64,10 @@ const Item: React.FC<ItemProps> = ({ item }) => {
   let url = "";
   if (item.homepage) url = item.homepage[0].id;
 
-  const handleActiveCanvas = (e) => {
-    e.preventDefault();
-
+  const handleActiveCanvas = (increment: number) => {
     if (!manifest) return;
 
-    const targetCanvas: number =
-      activeCanvas + parseInt(e.target.dataset.increment);
+    const targetCanvas: number = activeCanvas + increment;
     const canvas: CanvasNormalized = vault.get(manifest.items[targetCanvas]);
 
     setImage(getCanvasResource(canvas));
