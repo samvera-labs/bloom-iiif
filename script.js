@@ -23316,7 +23316,23 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     background: "linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%)",
     cursor: "default",
     button: {
-      width: "$3"
+      width: "$4",
+      height: "$4",
+      display: "flex",
+      flexDirection: "column",
+      textAlign: "center",
+      justifyContent: "center",
+      alignItems: "center",
+      borderRadious: "100%",
+      backgroundColor: "transparent",
+      border: "none",
+      cursor: "pointer",
+      svg: {
+        width: "100%",
+        fill: "$accent",
+        stroke: "$accent",
+        color: "$accent"
+      }
     }
   });
   var Label = styled("div", {
@@ -23383,13 +23399,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }, manifest && /* @__PURE__ */ import_react8.default.createElement(Overlay, null, /* @__PURE__ */ import_react8.default.createElement(Controls, {
       onClick: (e3) => e3.preventDefault()
     }, hasPrev && /* @__PURE__ */ import_react8.default.createElement("button", {
-      onClick: handleActiveCanvas,
-      "data-increment": -1,
-      style: { width: "31px" }
+      onClick: () => handleActiveCanvas(-1)
     }, /* @__PURE__ */ import_react8.default.createElement(PreviousIcon, null)), hasNext && /* @__PURE__ */ import_react8.default.createElement("button", {
-      onClick: handleActiveCanvas,
-      "data-increment": 1,
-      style: { width: "31px" }
+      onClick: () => handleActiveCanvas(1)
     }, /* @__PURE__ */ import_react8.default.createElement(NextIcon, null))), /* @__PURE__ */ import_react8.default.createElement(Label, {
       onClick: (e3) => e3.preventDefault()
     }, canvasCurrent, " of ", canvasCount))));
@@ -23430,11 +23442,10 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     let url = "";
     if (item.homepage)
       url = item.homepage[0].id;
-    const handleActiveCanvas = (e3) => {
-      e3.preventDefault();
+    const handleActiveCanvas = (increment) => {
       if (!manifest)
         return;
-      const targetCanvas = activeCanvas + parseInt(e3.target.dataset.increment);
+      const targetCanvas = activeCanvas + increment;
       const canvas = vault.get(manifest.items[targetCanvas]);
       setImage(getCanvasResource(canvas));
       setActiveCanvas(targetCanvas);
