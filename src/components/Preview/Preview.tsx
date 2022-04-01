@@ -4,6 +4,8 @@ import { useGetLabel } from "hooks/useGetLabel";
 import React, { useEffect, useRef, useState } from "react";
 import { Controls, Label, Overlay, PreviewStyled } from "./Preview.styled";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
+import { NextIcon } from "components/Icons/NextIcon";
+import { PreviousIcon } from "components/Icons/PrevIcon";
 
 interface PreviewProps {
   activeCanvas: number;
@@ -38,13 +40,21 @@ const Preview: React.FC<PreviewProps> = ({
           <Overlay>
             <Controls onClick={(e) => e.preventDefault()}>
               {hasPrev && (
-                <button onClick={handleActiveCanvas} data-increment={-1}>
-                  -
+                <button
+                  onClick={handleActiveCanvas}
+                  data-increment={-1}
+                  style={{ width: "31px" }}
+                >
+                  <PreviousIcon />
                 </button>
               )}
               {hasNext && (
-                <button onClick={handleActiveCanvas} data-increment={1}>
-                  +
+                <button
+                  onClick={handleActiveCanvas}
+                  data-increment={1}
+                  style={{ width: "31px" }}
+                >
+                  <NextIcon />
                 </button>
               )}
             </Controls>

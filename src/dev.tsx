@@ -12,6 +12,7 @@ let collectionHeilman: string = `https://digital.lib.utk.edu/assemble/collection
 ReactDOM.render(
   <section>
     <App collectionId={collectionMasks} />
+    <App collectionId={collectionFootball} />
   </section>,
   document.getElementById("root")
 );

@@ -1,35 +1,7 @@
 import React from "react";
+import { NextIcon } from "components/Icons/NextIcon";
+import { PreviousIcon } from "components/Icons/PrevIcon";
 import { ControlStyled, Gradient, Icon } from "./Control.styled";
-
-const PreviousIcon: React.FC = () => {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-      <title>Arrow Back</title>
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeMiterlimit="10"
-        strokeWidth="70"
-        d="M244 400L100 256l144-144M120 256h292"
-      />
-    </svg>
-  );
-};
-
-const NextIcon: React.FC = () => {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-      <title>Arrow Forward</title>
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeMiterlimit="10"
-        strokeWidth="70"
-        d="M268 112l144 144-144 144M392 256H100"
-      />
-    </svg>
-  );
-};
 
 interface ItemsControlProps {
   increment: number;
