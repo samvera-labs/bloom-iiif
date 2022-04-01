@@ -2455,11 +2455,11 @@
       if (true) {
         (function() {
           "use strict";
-          var React11 = require_react();
+          var React13 = require_react();
           var _assign = require_object_assign();
           var Scheduler = require_scheduler();
           var tracing = require_tracing();
-          var ReactSharedInternals = React11.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React13.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           function warn(format) {
             {
               for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
@@ -2491,7 +2491,7 @@
               Function.prototype.apply.call(console[level], console, argsWithFormat);
             }
           }
-          if (!React11) {
+          if (!React13) {
             {
               throw Error("ReactDOM was loaded before React. Make sure you load the React package before loading ReactDOM.");
             }
@@ -3707,7 +3707,7 @@
           var didWarnInvalidChild = false;
           function flattenChildren(children) {
             var content = "";
-            React11.Children.forEach(children, function(child) {
+            React13.Children.forEach(children, function(child) {
               if (child == null) {
                 return;
               }
@@ -3718,7 +3718,7 @@
           function validateProps(element, props) {
             {
               if (typeof props.children === "object" && props.children !== null) {
-                React11.Children.forEach(props.children, function(child) {
+                React13.Children.forEach(props.children, function(child) {
                   if (child == null) {
                     return;
                   }
@@ -10911,7 +10911,7 @@
           }
           var fakeInternalInstance = {};
           var isArray = Array.isArray;
-          var emptyRefsObject = new React11.Component().refs;
+          var emptyRefsObject = new React13.Component().refs;
           var didWarnAboutStateAssignmentForComponent;
           var didWarnAboutUninitializedState;
           var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -20588,11 +20588,11 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   });
 
   // src/dev.tsx
-  var import_react12 = __toESM(require_react());
+  var import_react14 = __toESM(require_react());
   var import_react_dom = __toESM(require_react_dom());
 
   // src/index.tsx
-  var import_react11 = __toESM(require_react());
+  var import_react13 = __toESM(require_react());
 
   // src/context/collection-context.tsx
   var import_react = __toESM(require_react());
@@ -22471,10 +22471,10 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   }
 
   // src/components/Items/Items.tsx
-  var import_react9 = __toESM(require_react());
+  var import_react11 = __toESM(require_react());
 
   // src/components/Items/Item.tsx
-  var import_react7 = __toESM(require_react());
+  var import_react9 = __toESM(require_react());
 
   // src/components/Figure/Figure.tsx
   var import_react5 = __toESM(require_react());
@@ -23283,7 +23283,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   });
 
   // src/components/Preview/Preview.tsx
-  var import_react6 = __toESM(require_react());
+  var import_react8 = __toESM(require_react());
 
   // src/components/Preview/Preview.styled.ts
   var PreviewStyled = styled("div", {
@@ -23329,6 +23329,36 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     cursor: "default"
   });
 
+  // src/components/Icons/NextIcon.tsx
+  var import_react6 = __toESM(require_react());
+  var NextIcon = () => {
+    return /* @__PURE__ */ import_react6.default.createElement("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      viewBox: "0 0 512 512"
+    }, /* @__PURE__ */ import_react6.default.createElement("title", null, "Next"), /* @__PURE__ */ import_react6.default.createElement("path", {
+      fill: "none",
+      stroke: "currentColor",
+      strokeMiterlimit: "10",
+      strokeWidth: "70",
+      d: "M268 112l144 144-144 144M392 256H100"
+    }));
+  };
+
+  // src/components/Icons/PrevIcon.tsx
+  var import_react7 = __toESM(require_react());
+  var PreviousIcon = () => {
+    return /* @__PURE__ */ import_react7.default.createElement("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      viewBox: "0 0 512 512"
+    }, /* @__PURE__ */ import_react7.default.createElement("title", null, "Previous"), /* @__PURE__ */ import_react7.default.createElement("path", {
+      fill: "none",
+      stroke: "currentColor",
+      strokeMiterlimit: "10",
+      strokeWidth: "70",
+      d: "M244 400L100 256l144-144M120 256h292"
+    }));
+  };
+
   // src/components/Preview/Preview.tsx
   var Preview = ({
     activeCanvas,
@@ -23336,29 +23366,31 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     isFocused,
     manifest
   }) => {
-    const [hasPrev, setHasPrev] = (0, import_react6.useState)(false);
-    const [hasNext, setHasNext] = (0, import_react6.useState)(false);
+    const [hasPrev, setHasPrev] = (0, import_react8.useState)(false);
+    const [hasNext, setHasNext] = (0, import_react8.useState)(false);
     const canvasCurrent = activeCanvas + 1;
     let canvasCount = 0;
     if (manifest)
       canvasCount = manifest.items.length;
-    (0, import_react6.useEffect)(() => {
+    (0, import_react8.useEffect)(() => {
       canvasCurrent <= 1 ? setHasPrev(false) : setHasPrev(true);
       canvasCurrent >= canvasCount ? setHasNext(false) : setHasNext(true);
     }, [activeCanvas, manifest]);
-    return /* @__PURE__ */ import_react6.default.createElement(PreviewStyled, {
+    return /* @__PURE__ */ import_react8.default.createElement(PreviewStyled, {
       isFocused
-    }, /* @__PURE__ */ import_react6.default.createElement(Root, {
+    }, /* @__PURE__ */ import_react8.default.createElement(Root, {
       ratio: 1 / 1
-    }, manifest && /* @__PURE__ */ import_react6.default.createElement(Overlay, null, /* @__PURE__ */ import_react6.default.createElement(Controls, {
+    }, manifest && /* @__PURE__ */ import_react8.default.createElement(Overlay, null, /* @__PURE__ */ import_react8.default.createElement(Controls, {
       onClick: (e3) => e3.preventDefault()
-    }, hasPrev && /* @__PURE__ */ import_react6.default.createElement("button", {
+    }, hasPrev && /* @__PURE__ */ import_react8.default.createElement("button", {
       onClick: handleActiveCanvas,
-      "data-increment": -1
-    }, "-"), hasNext && /* @__PURE__ */ import_react6.default.createElement("button", {
+      "data-increment": -1,
+      style: { width: "31px" }
+    }, /* @__PURE__ */ import_react8.default.createElement(PreviousIcon, null)), hasNext && /* @__PURE__ */ import_react8.default.createElement("button", {
       onClick: handleActiveCanvas,
-      "data-increment": 1
-    }, "+")), /* @__PURE__ */ import_react6.default.createElement(Label, {
+      "data-increment": 1,
+      style: { width: "31px" }
+    }, /* @__PURE__ */ import_react8.default.createElement(NextIcon, null))), /* @__PURE__ */ import_react8.default.createElement(Label, {
       onClick: (e3) => e3.preventDefault()
     }, canvasCurrent, " of ", canvasCount))));
   };
@@ -23368,17 +23400,17 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   var Item = ({ item }) => {
     const store = useCollectionState();
     const { vault } = store;
-    const itemRef = (0, import_react7.useRef)(null);
-    const [isFocused, setIsFocused] = (0, import_react7.useState)(false);
-    const [activeCanvas, setActiveCanvas] = (0, import_react7.useState)(0);
-    const [image, setImage] = (0, import_react7.useState)();
-    const [video, setVideo] = (0, import_react7.useState)();
-    const [manifest, setManifest] = (0, import_react7.useState)();
-    (0, import_react7.useEffect)(() => {
+    const itemRef = (0, import_react9.useRef)(null);
+    const [isFocused, setIsFocused] = (0, import_react9.useState)(false);
+    const [activeCanvas, setActiveCanvas] = (0, import_react9.useState)(0);
+    const [image, setImage] = (0, import_react9.useState)();
+    const [video, setVideo] = (0, import_react9.useState)();
+    const [manifest, setManifest] = (0, import_react9.useState)();
+    (0, import_react9.useEffect)(() => {
       if (item.thumbnail)
         setImage(useGetResourceImage(vault.get(item.thumbnail[0].id), "300,"));
     }, []);
-    (0, import_react7.useEffect)(() => {
+    (0, import_react9.useEffect)(() => {
       isFocused ? setTimeout(() => {
         if (!manifest)
           vault.loadCollection(item.id).then((data) => setManifest(data)).catch((error) => {
@@ -23387,7 +23419,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       }, 1e3) : null;
       return;
     }, [isFocused]);
-    (0, import_react7.useEffect)(() => {
+    (0, import_react9.useEffect)(() => {
       if (!manifest)
         return;
       const canvas = vault.get(manifest.items[activeCanvas]);
@@ -23419,7 +23451,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         return useGetResourceImage(contentResource, "300,");
       }
     };
-    return /* @__PURE__ */ import_react7.default.createElement(ItemStyled, null, /* @__PURE__ */ import_react7.default.createElement(Anchor, {
+    return /* @__PURE__ */ import_react9.default.createElement(ItemStyled, null, /* @__PURE__ */ import_react9.default.createElement(Anchor, {
       href: url,
       tabIndex: 0,
       onFocus,
@@ -23427,13 +23459,13 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       onMouseEnter: onFocus,
       onMouseLeave: onBlur,
       ref: itemRef
-    }, /* @__PURE__ */ import_react7.default.createElement(Figure_default, {
+    }, /* @__PURE__ */ import_react9.default.createElement(Figure_default, {
       caption: useGetLabel(item.label),
       description: useGetLabel(item.summary),
       image,
       video,
       isFocused
-    }), /* @__PURE__ */ import_react7.default.createElement(Preview_default, {
+    }), /* @__PURE__ */ import_react9.default.createElement(Preview_default, {
       manifest,
       activeCanvas,
       handleActiveCanvas,
@@ -23456,7 +23488,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   });
 
   // src/components/Items/Control.tsx
-  var import_react8 = __toESM(require_react());
+  var import_react10 = __toESM(require_react());
 
   // src/components/Items/Control.styled.ts
   var Gradient = styled("div", {
@@ -23551,30 +23583,6 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   });
 
   // src/components/Items/Control.tsx
-  var PreviousIcon = () => {
-    return /* @__PURE__ */ import_react8.default.createElement("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 512 512"
-    }, /* @__PURE__ */ import_react8.default.createElement("title", null, "Arrow Back"), /* @__PURE__ */ import_react8.default.createElement("path", {
-      fill: "none",
-      stroke: "currentColor",
-      strokeMiterlimit: "10",
-      strokeWidth: "70",
-      d: "M244 400L100 256l144-144M120 256h292"
-    }));
-  };
-  var NextIcon = () => {
-    return /* @__PURE__ */ import_react8.default.createElement("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 512 512"
-    }, /* @__PURE__ */ import_react8.default.createElement("title", null, "Arrow Forward"), /* @__PURE__ */ import_react8.default.createElement("path", {
-      fill: "none",
-      stroke: "currentColor",
-      strokeMiterlimit: "10",
-      strokeWidth: "70",
-      d: "M268 112l144 144-144 144M392 256H100"
-    }));
-  };
   var ItemsControl = ({
     label,
     increment,
@@ -23582,22 +23590,22 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     height
   }) => {
     const width = height * 0.382;
-    return /* @__PURE__ */ import_react8.default.createElement(ControlStyled, {
+    return /* @__PURE__ */ import_react10.default.createElement(ControlStyled, {
       "aria-label": label,
       direction: label,
       onClick: () => handleControl(increment),
       value: label,
       style: { height: `${height}px`, width: `${width}px` }
-    }, /* @__PURE__ */ import_react8.default.createElement(Gradient, {
+    }, /* @__PURE__ */ import_react10.default.createElement(Gradient, {
       style: { height: `${height}px`, width: `${width}px` }
-    }), /* @__PURE__ */ import_react8.default.createElement(Icon, null, label === "next" && /* @__PURE__ */ import_react8.default.createElement(NextIcon, null), label === "previous" && /* @__PURE__ */ import_react8.default.createElement(PreviousIcon, null)));
+    }), /* @__PURE__ */ import_react10.default.createElement(Icon, null, label === "next" && /* @__PURE__ */ import_react10.default.createElement(NextIcon, null), label === "previous" && /* @__PURE__ */ import_react10.default.createElement(PreviousIcon, null)));
   };
   var Control_default = ItemsControl;
 
   // src/components/Items/Items.tsx
   var useRefDimensions = (ref) => {
-    const [dimensions, setDimensions] = (0, import_react9.useState)({ width: 0, height: 0 });
-    import_react9.default.useEffect(() => {
+    const [dimensions, setDimensions] = (0, import_react11.useState)({ width: 0, height: 0 });
+    import_react11.default.useEffect(() => {
       if (ref.current) {
         const { current } = ref;
         const boundingRect = current.getBoundingClientRect();
@@ -23608,8 +23616,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     return dimensions;
   };
   var Items = ({ items }) => {
-    const [activeItems, setActiveItems] = (0, import_react9.useState)([0, 1, 2, 3, 4]);
-    const itemsRef = (0, import_react9.useRef)(null);
+    const [activeItems, setActiveItems] = (0, import_react11.useState)([0, 1, 2, 3, 4]);
+    const itemsRef = (0, import_react11.useRef)(null);
     const dimensions = useRefDimensions(itemsRef);
     const handleActiveItems = (increment) => {
       setActiveItems(activeItems.map((index) => index + increment));
@@ -23617,14 +23625,14 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     let gaps = rem * 1.618 * 4;
     let instance = dimensions.width - gaps;
     let controlHeight = instance / 5;
-    return /* @__PURE__ */ import_react9.default.createElement(ItemsStyled, {
+    return /* @__PURE__ */ import_react11.default.createElement(ItemsStyled, {
       ref: itemsRef
-    }, /* @__PURE__ */ import_react9.default.createElement(Control_default, {
+    }, /* @__PURE__ */ import_react11.default.createElement(Control_default, {
       increment: -1,
       label: "previous",
       handleControl: handleActiveItems,
       height: controlHeight
-    }), /* @__PURE__ */ import_react9.default.createElement(Control_default, {
+    }), /* @__PURE__ */ import_react11.default.createElement(Control_default, {
       increment: 1,
       label: "next",
       handleControl: handleActiveItems,
@@ -23632,7 +23640,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }), items.filter((item, index) => {
       if (activeItems.includes(index))
         return item;
-    }).map((item) => /* @__PURE__ */ import_react9.default.createElement(Item_default, {
+    }).map((item) => /* @__PURE__ */ import_react11.default.createElement(Item_default, {
       item,
       key: item.id
     })));
@@ -23640,7 +23648,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   var Items_default = Items;
 
   // src/components/Header/Header.tsx
-  var import_react10 = __toESM(require_react());
+  var import_react12 = __toESM(require_react());
 
   // src/components/Header/Header.styled.ts
   var HeaderStyled = styled("div", {
@@ -23669,19 +23677,19 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     if (homepage && homepage.length > 0)
       url = homepage[0].id;
     const description = useGetLabel(summary);
-    return /* @__PURE__ */ import_react10.default.createElement(HeaderStyled, null, /* @__PURE__ */ import_react10.default.createElement(Title2, null, /* @__PURE__ */ import_react10.default.createElement("a", {
+    return /* @__PURE__ */ import_react12.default.createElement(HeaderStyled, null, /* @__PURE__ */ import_react12.default.createElement(Title2, null, /* @__PURE__ */ import_react12.default.createElement("a", {
       href: url
-    }, useGetLabel(label))), description && /* @__PURE__ */ import_react10.default.createElement(Description2, null, description));
+    }, useGetLabel(label))), description && /* @__PURE__ */ import_react12.default.createElement(Description2, null, description));
   };
   var Header_default = Header;
 
   // src/index.tsx
-  var App = (props) => /* @__PURE__ */ import_react11.default.createElement(CollectionProvider, null, /* @__PURE__ */ import_react11.default.createElement(Bloom, __spreadValues({}, props)));
+  var App = (props) => /* @__PURE__ */ import_react13.default.createElement(CollectionProvider, null, /* @__PURE__ */ import_react13.default.createElement(Bloom, __spreadValues({}, props)));
   var Bloom = ({ collectionId }) => {
     const store = useCollectionState();
     const { vault } = store;
-    const [collection, setCollection] = (0, import_react11.useState)();
-    (0, import_react11.useEffect)(() => {
+    const [collection, setCollection] = (0, import_react13.useState)();
+    (0, import_react13.useEffect)(() => {
       vault.loadCollection(collectionId).then((data) => setCollection(data)).catch((error) => {
         console.error(`Collection failed to load: ${error}`);
       }).finally(() => {
@@ -23689,17 +23697,17 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }, []);
     if (!collection || !collection.items) {
       console.log(`The IIIF Collection ${collectionId} failed to load.`);
-      return /* @__PURE__ */ import_react11.default.createElement(import_react11.default.Fragment, null);
+      return /* @__PURE__ */ import_react13.default.createElement(import_react13.default.Fragment, null);
     }
     if (collection.items.length === 0) {
       console.log(`The IIIF collection ${collectionId} does not contain items.`);
-      return /* @__PURE__ */ import_react11.default.createElement(import_react11.default.Fragment, null);
+      return /* @__PURE__ */ import_react13.default.createElement(import_react13.default.Fragment, null);
     }
-    return /* @__PURE__ */ import_react11.default.createElement(StyledBloom, null, /* @__PURE__ */ import_react11.default.createElement(Header_default, {
+    return /* @__PURE__ */ import_react13.default.createElement(StyledBloom, null, /* @__PURE__ */ import_react13.default.createElement(Header_default, {
       label: collection.label,
       summary: collection.summary,
       homepage: collection.homepage
-    }), /* @__PURE__ */ import_react11.default.createElement(Items_default, {
+    }), /* @__PURE__ */ import_react13.default.createElement(Items_default, {
       items: collection.items
     }));
   };
@@ -23708,8 +23716,11 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
 
   // src/dev.tsx
   var collectionMasks = `https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json`;
-  import_react_dom.default.render(/* @__PURE__ */ import_react12.default.createElement("section", null, /* @__PURE__ */ import_react12.default.createElement(src_default, {
+  var collectionFootball = `https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/athletic-department-footbal-films.json`;
+  import_react_dom.default.render(/* @__PURE__ */ import_react14.default.createElement("section", null, /* @__PURE__ */ import_react14.default.createElement(src_default, {
     collectionId: collectionMasks
+  }), /* @__PURE__ */ import_react14.default.createElement(src_default, {
+    collectionId: collectionFootball
   })), document.getElementById("root"));
 })();
 /*
