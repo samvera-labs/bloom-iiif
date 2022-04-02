@@ -1,12 +1,10 @@
 <img src="https://user-images.githubusercontent.com/7376450/160845852-39bf8942-1db4-41ee-881f-889ba2a4f61e.png" class="bloom-screenshot" alt="Bloom screenshot"/>
 
-### :construction: Under Development :construction:
-
-_Bloom is still in alpha development. We do not recommend incorporating this into projects yet. You can test it out locally with your IIIF collections._
-
 # Bloom IIIF
 
 **A slider component rendered from a IIIF Collection**
+
+_Bloom is still in alpha development. We do not recommend incorporating this into projects yet. You can test it out locally with your IIIF collections._
 
 ---
 
@@ -96,7 +94,7 @@ The [top-level **hompage**](https://github.com/samvera-labs/bloom-iiif/blob/main
 
 ### Items
 
-The [**items** array](https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L21-L292) is mapped to the slider/carousel with each item render an HTML `<figure>`
+The [**items** array](https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L21-L292) is mapped to the slider/carousel with each item render as an HTML `<figure>`
 
 ```json
 "items": [
@@ -138,11 +136,11 @@ The [**items** array](https://github.com/samvera-labs/bloom-iiif/blob/main/publi
 For each item, the [**label** and **summary**](https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L25-L26) (if existing) data are mapped to a `<figcaption>`
 
 ```json
-"label": { "none": ["Pantalone classico"] },
+"label": { "none": ["Pantalone classico"] }
 ```
 
 ```json
-"summary": { "none": ["Image"] },
+"summary": { "none": ["Image"] }
 ```
 
 #### Image
@@ -165,7 +163,7 @@ For each item, the [**thumbnail**](https://github.com/samvera-labs/bloom-iiif/bl
     "width": 200,
     "height": 200
   }
-],
+]
 ```
 
 #### Link
