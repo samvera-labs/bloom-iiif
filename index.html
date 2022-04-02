@@ -10,10 +10,9 @@
     <body>
       <div id="root"></div>
       <div class="documentation-wrapper"><img src="https://user-images.githubusercontent.com/7376450/160845852-39bf8942-1db4-41ee-881f-889ba2a4f61e.png" class="bloom-screenshot" alt="Bloom screenshot"/>
-<h3>:construction: Under Development :construction:</h3>
-<p><em>Bloom is still in alpha development. We do not recommend incorporating this into projects yet. You can test it out locally with your IIIF collections.</em></p>
 <h1>Bloom IIIF</h1>
 <p><strong>A slider component rendered from a IIIF Collection</strong></p>
+<p><em>Bloom is still in alpha development. We do not recommend incorporating this into projects yet. You can test it out locally with your IIIF collections.</em></p>
 <hr>
 <h2>Documentation</h2>
 <ul>
@@ -69,7 +68,7 @@
 <span class="line"><span style="color: #89DDFF">]</span></span>
 <span class="line"></span></code></pre>
 <h3>Items</h3>
-<p>The <a href="https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L21-L292"><strong>items</strong> array</a> is mapped to the slider/carousel with each item render an HTML <code>&lt;figure&gt;</code></p>
+<p>The <a href="https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L21-L292"><strong>items</strong> array</a> is mapped to the slider/carousel with each item render as an HTML <code>&lt;figure&gt;</code></p>
 <pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">items</span><span style="color: #89DDFF">&quot;</span><span style="color: #EEFFFF">: </span><span style="color: #89DDFF">[</span></span>
 <span class="line"><span style="color: #EEFFFF">  </span><span style="color: #89DDFF">{</span></span>
 <span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">id</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">https://iiif.stack.rdc.library.northwestern.edu/public/72/98/fd/ce/-a/dc/1-/45/01/-9/e1/4-/9e/8b/d9/85/e1/49-manifest.json</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span></span>
@@ -105,9 +104,9 @@
 <span class="line"></span></code></pre>
 <h4>Text</h4>
 <p>For each item, the <a href="https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L25-L26"><strong>label</strong> and <strong>summary</strong></a> (if existing) data are mapped to a <code>&lt;figcaption&gt;</code></p>
-<pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">label</span><span style="color: #89DDFF">&quot;</span><span style="color: #EEFFFF">: </span><span style="color: #89DDFF">{</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">none</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">[</span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">Pantalone classico</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">]</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">}</span><span style="color: #EEFFFF">,</span></span>
+<pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">label</span><span style="color: #89DDFF">&quot;</span><span style="color: #EEFFFF">: </span><span style="color: #89DDFF">{</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">none</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">[</span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">Pantalone classico</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">]</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">}</span></span>
 <span class="line"></span></code></pre>
-<pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">summary</span><span style="color: #89DDFF">&quot;</span><span style="color: #EEFFFF">: </span><span style="color: #89DDFF">{</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">none</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">[</span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">Image</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">]</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">}</span><span style="color: #EEFFFF">,</span></span>
+<pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">summary</span><span style="color: #89DDFF">&quot;</span><span style="color: #EEFFFF">: </span><span style="color: #89DDFF">{</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">none</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">[</span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">Image</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">]</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">}</span></span>
 <span class="line"></span></code></pre>
 <h4>Image</h4>
 <p>For each item, the <a href="https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L27-L42"><strong>thumbnail</strong></a> is rendered as an <code>&lt;img /&gt;</code> element within the <code>&lt;figure&gt;</code></p>
@@ -126,7 +125,7 @@
 <span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">width</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #F78C6C">200</span><span style="color: #89DDFF">,</span></span>
 <span class="line"><span style="color: #EEFFFF">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">height</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #F78C6C">200</span></span>
 <span class="line"><span style="color: #EEFFFF">  </span><span style="color: #89DDFF">}</span></span>
-<span class="line"><span style="color: #89DDFF">]</span><span style="color: #EEFFFF">,</span></span>
+<span class="line"><span style="color: #89DDFF">]</span></span>
 <span class="line"></span></code></pre>
 <h4>Link</h4>
 <p>The <a href="https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L43-L50"><strong>hompage</strong></a> for each item represents the <code>href</code> attribute of the HTML <code>&lt;a&gt;</code> element wrapping <code>&lt;figure&gt;</code></p>
