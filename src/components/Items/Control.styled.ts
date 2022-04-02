@@ -42,6 +42,10 @@ const ControlStyled = styled("button", {
   cursor: "pointer",
   background: "transparent",
 
+  [`&:disabled`]: {
+    opacity: "0",
+  },
+
   [`&:hover`]: {
     [`> ${Gradient}`]: {
       opacity: 1,

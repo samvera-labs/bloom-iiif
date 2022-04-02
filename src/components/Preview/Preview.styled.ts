@@ -46,11 +46,15 @@ const Controls = styled("div", {
     border: "none",
     cursor: "pointer",
 
+    "&:disabled": {
+      opacity: "0.2",
+    },
+
     svg: {
       width: "100%",
-      fill: "$accent",
-      stroke: "$accent",
-      color: "$accent",
+      fill: "$secondary",
+      stroke: "$secondary",
+      color: "$secondary",
     },
   },
 });

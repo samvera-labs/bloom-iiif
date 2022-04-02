@@ -4,6 +4,7 @@ import { PreviousIcon } from "components/Icons/PrevIcon";
 import { ControlStyled, Gradient, Icon } from "./Control.styled";
 
 interface ItemsControlProps {
+  disabled: boolean;
   increment: number;
   label: string;
   handleControl: (e: React.MouseEvent) => void;
@@ -11,6 +12,7 @@ interface ItemsControlProps {
 }
 
 const ItemsControl: React.FC<ItemsControlProps> = ({
+  disabled,
   label,
   increment,
   handleControl,
@@ -25,6 +27,7 @@ const ItemsControl: React.FC<ItemsControlProps> = ({
       onClick={() => handleControl(increment)}
       value={label}
       style={{ height: `${height}px`, width: `${width}px` }}
+      disabled={disabled}
     >
       <Gradient style={{ height: `${height}px`, width: `${width}px` }} />
       <Icon>

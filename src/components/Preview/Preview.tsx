@@ -39,16 +39,15 @@ const Preview: React.FC<PreviewProps> = ({
         {manifest && (
           <Overlay>
             <Controls onClick={(e) => e.preventDefault()}>
-              {hasPrev && (
-                <button onClick={() => handleActiveCanvas(-1)}>
-                  <PreviousIcon />
-                </button>
-              )}
-              {hasNext && (
-                <button onClick={() => handleActiveCanvas(1)}>
-                  <NextIcon />
-                </button>
-              )}
+              <button
+                onClick={() => handleActiveCanvas(-1)}
+                disabled={!hasPrev}
+              >
+                <PreviousIcon />
+              </button>
+              <button onClick={() => handleActiveCanvas(1)} disabled={!hasNext}>
+                <NextIcon />
+              </button>
             </Controls>
             <Label onClick={(e) => e.preventDefault()}>
               {canvasCurrent} of {canvasCount}

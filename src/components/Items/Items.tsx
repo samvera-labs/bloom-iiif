@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Item from "components/Items/Item";
 import { CollectionItems, Collection, Manifest } from "@iiif/presentation-3";
 import { ItemsStyled } from "./Items.styled";
@@ -24,8 +24,19 @@ interface ItemsProps {
 
 const Items: React.FC<ItemsProps> = ({ items }) => {
   const [activeItems, setActiveItems] = useState<number[]>([0, 1, 2, 3, 4]);
+  const [hasPrev, setHasPrev] = useState<boolean>(false);
+  const [hasNext, setHasNext] = useState<boolean>(false);
   const itemsRef = useRef<HTMLElement>(null);
   const dimensions = useRefDimensions(itemsRef);
+
+  useEffect(() => {
+    if (!items) return;
+
+    activeItems.includes(0) ? setHasPrev(false) : setHasPrev(true);
+    activeItems.includes(items.length - 1)
+      ? setHasNext(false)
+      : setHasNext(true);
+  }, [activeItems]);
 
   const handleActiveItems = (increment: number) => {
     setActiveItems(activeItems.map((index) => index + increment));
@@ -45,12 +56,14 @@ const Items: React.FC<ItemsProps> = ({ items }) => {
         label="previous"
         handleControl={handleActiveItems}
         height={controlHeight}
+        disabled={!hasPrev}
       />
       <ItemsControl
         increment={1}
         label="next"
         handleControl={handleActiveItems}
         height={controlHeight}
+        disabled={!hasNext}
       />
       {items
         .filter((item, index) => {
