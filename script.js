@@ -1071,7 +1071,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect7(create, deps) {
+          function useEffect8(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -1641,7 +1641,7 @@
           exports.useCallback = useCallback2;
           exports.useContext = useContext;
           exports.useDebugValue = useDebugValue;
-          exports.useEffect = useEffect7;
+          exports.useEffect = useEffect8;
           exports.useImperativeHandle = useImperativeHandle;
           exports.useLayoutEffect = useLayoutEffect;
           exports.useMemo = useMemo;
@@ -23327,11 +23327,14 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       backgroundColor: "transparent",
       border: "none",
       cursor: "pointer",
+      "&:disabled": {
+        opacity: "0.2"
+      },
       svg: {
         width: "100%",
-        fill: "$accent",
-        stroke: "$accent",
-        color: "$accent"
+        fill: "$secondary",
+        stroke: "$secondary",
+        color: "$secondary"
       }
     }
   });
@@ -23398,10 +23401,12 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       ratio: 1 / 1
     }, manifest && /* @__PURE__ */ import_react8.default.createElement(Overlay, null, /* @__PURE__ */ import_react8.default.createElement(Controls, {
       onClick: (e3) => e3.preventDefault()
-    }, hasPrev && /* @__PURE__ */ import_react8.default.createElement("button", {
-      onClick: () => handleActiveCanvas(-1)
-    }, /* @__PURE__ */ import_react8.default.createElement(PreviousIcon, null)), hasNext && /* @__PURE__ */ import_react8.default.createElement("button", {
-      onClick: () => handleActiveCanvas(1)
+    }, /* @__PURE__ */ import_react8.default.createElement("button", {
+      onClick: () => handleActiveCanvas(-1),
+      disabled: !hasPrev
+    }, /* @__PURE__ */ import_react8.default.createElement(PreviousIcon, null)), /* @__PURE__ */ import_react8.default.createElement("button", {
+      onClick: () => handleActiveCanvas(1),
+      disabled: !hasNext
     }, /* @__PURE__ */ import_react8.default.createElement(NextIcon, null))), /* @__PURE__ */ import_react8.default.createElement(Label, {
       onClick: (e3) => e3.preventDefault()
     }, canvasCurrent, " of ", canvasCount))));
@@ -23540,6 +23545,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     border: "none",
     cursor: "pointer",
     background: "transparent",
+    [`&:disabled`]: {
+      opacity: "0"
+    },
     [`&:hover`]: {
       [`> ${Gradient}`]: {
         opacity: 1
@@ -23595,6 +23603,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
 
   // src/components/Items/Control.tsx
   var ItemsControl = ({
+    disabled,
     label,
     increment,
     handleControl,
@@ -23606,7 +23615,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       direction: label,
       onClick: () => handleControl(increment),
       value: label,
-      style: { height: `${height}px`, width: `${width}px` }
+      style: { height: `${height}px`, width: `${width}px` },
+      disabled
     }, /* @__PURE__ */ import_react10.default.createElement(Gradient, {
       style: { height: `${height}px`, width: `${width}px` }
     }), /* @__PURE__ */ import_react10.default.createElement(Icon, null, label === "next" && /* @__PURE__ */ import_react10.default.createElement(NextIcon, null), label === "previous" && /* @__PURE__ */ import_react10.default.createElement(PreviousIcon, null)));
@@ -23628,8 +23638,16 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   };
   var Items = ({ items }) => {
     const [activeItems, setActiveItems] = (0, import_react11.useState)([0, 1, 2, 3, 4]);
+    const [hasPrev, setHasPrev] = (0, import_react11.useState)(false);
+    const [hasNext, setHasNext] = (0, import_react11.useState)(false);
     const itemsRef = (0, import_react11.useRef)(null);
     const dimensions = useRefDimensions(itemsRef);
+    (0, import_react11.useEffect)(() => {
+      if (!items)
+        return;
+      activeItems.includes(0) ? setHasPrev(false) : setHasPrev(true);
+      activeItems.includes(items.length - 1) ? setHasNext(false) : setHasNext(true);
+    }, [activeItems]);
     const handleActiveItems = (increment) => {
       setActiveItems(activeItems.map((index) => index + increment));
     };
@@ -23642,12 +23660,14 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       increment: -1,
       label: "previous",
       handleControl: handleActiveItems,
-      height: controlHeight
+      height: controlHeight,
+      disabled: !hasPrev
     }), /* @__PURE__ */ import_react11.default.createElement(Control_default, {
       increment: 1,
       label: "next",
       handleControl: handleActiveItems,
-      height: controlHeight
+      height: controlHeight,
+      disabled: !hasNext
     }), items.filter((item, index) => {
       if (activeItems.includes(index))
         return item;
@@ -23727,11 +23747,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
 
   // src/dev.tsx
   var collectionMasks = `https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json`;
-  var collectionFootball = `https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/athletic-department-footbal-films.json`;
   import_react_dom.default.render(/* @__PURE__ */ import_react14.default.createElement("section", null, /* @__PURE__ */ import_react14.default.createElement(src_default, {
     collectionId: collectionMasks
-  }), /* @__PURE__ */ import_react14.default.createElement(src_default, {
-    collectionId: collectionFootball
   })), document.getElementById("root"));
 })();
 /*
