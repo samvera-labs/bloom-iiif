@@ -22435,6 +22435,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   // src/context/collection-context.tsx
   var defaultState = {
     isLoaded: false,
+    itemHeight: void 0,
     vault: new Vault()
   };
   var CollectionStateContext = import_react.default.createContext(defaultState);
@@ -22444,6 +22445,11 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       case "updateIsLoaded": {
         return __spreadProps(__spreadValues({}, state), {
           isLoaded: action.isLoaded
+        });
+      }
+      case "updateItemHeight": {
+        return __spreadProps(__spreadValues({}, state), {
+          itemHeight: action.itemHeight
         });
       }
       default: {
@@ -22466,6 +22472,13 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     const context = import_react.default.useContext(CollectionStateContext);
     if (context === void 0) {
       throw new Error("useViewerState must be used within a ViewerProvider");
+    }
+    return context;
+  }
+  function useCollectionDispatch() {
+    const context = import_react.default.useContext(CollectionDispatchContext);
+    if (context === void 0) {
+      throw new Error("useViewerDispatch must be used within a ViewerProvider");
     }
     return context;
   }
@@ -22944,7 +22957,6 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   var gr = (multiplier) => {
     return __pow(1.618, multiplier);
   };
-  var rem = 19;
   var sizes = {
     1: "0.382rem",
     2: "0.618rem",
@@ -23007,6 +23019,11 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   });
 
   // src/components/Figure/Figure.styled.ts
+  var Width = styled("div", {
+    position: "absolute",
+    width: "100%",
+    backgroundColor: "green"
+  });
   var FigureStyled = styled("figure", {
     display: "flex",
     flexDirection: "column",
@@ -23014,7 +23031,6 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     flexGrow: "0",
     flexShrink: "0",
     borderRadius: "3px",
-    transition: "$all",
     figcaption: {
       display: "flex",
       flexDirection: "column",
@@ -23029,6 +23045,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
           figcaption: {
             padding: "$2",
             color: "$accent"
+          },
+          [`& ${Width}`]: {
+            width: "calc(100% - ($2 * 2))"
           }
         }
       }
@@ -23201,11 +23220,14 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     caption,
     description,
     image,
+    index,
     isFocused,
     video
   }) => {
+    const dispatch = useCollectionDispatch();
     const [loaded, setLoaded] = (0, import_react5.useState)(false);
     const imgRef = (0, import_react5.useRef)(null);
+    const widthRef = (0, import_react5.useRef)(null);
     (0, import_react5.useEffect)(() => {
       if (imgRef.current && imgRef.current.complete)
         setLoaded(true);
@@ -23213,11 +23235,28 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     (0, import_react5.useEffect)(() => {
       setLoaded(false);
     }, [image]);
+    (0, import_react5.useEffect)(() => {
+      const resizeObserver = new ResizeObserver((entries) => {
+        for (let entry of entries) {
+          if (entry.contentBoxSize) {
+            const contentBoxSize = Array.isArray(entry.contentBoxSize) ? entry.contentBoxSize[0] : entry.contentBoxSize;
+            dispatch({
+              type: "updateItemHeight",
+              itemHeight: contentBoxSize.inlineSize
+            });
+          }
+        }
+      });
+      if (index === 0 && widthRef.current)
+        resizeObserver.observe(widthRef.current);
+    }, [index, loaded]);
     return /* @__PURE__ */ import_react5.default.createElement(FigureStyled, {
       isFocused
     }, /* @__PURE__ */ import_react5.default.createElement(Root, {
       ratio: 1 / 1
-    }, /* @__PURE__ */ import_react5.default.createElement(Placeholder, null, video && /* @__PURE__ */ import_react5.default.createElement(Video_default, {
+    }, /* @__PURE__ */ import_react5.default.createElement(Width, {
+      ref: widthRef
+    }), /* @__PURE__ */ import_react5.default.createElement(Placeholder, null, video && /* @__PURE__ */ import_react5.default.createElement(Video_default, {
       resource: video,
       isFocused
     }), image && /* @__PURE__ */ import_react5.default.createElement(Image, {
@@ -23414,7 +23453,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   var Preview_default = Preview;
 
   // src/components/Items/Item.tsx
-  var Item = ({ item }) => {
+  var Item = ({ index, item }) => {
     const store = useCollectionState();
     const { vault } = store;
     const itemRef = (0, import_react9.useRef)(null);
@@ -23479,6 +23518,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       caption: useGetLabel(item.label),
       description: useGetLabel(item.summary),
       image,
+      index,
       video,
       isFocused
     }), /* @__PURE__ */ import_react9.default.createElement(Preview_default, {
@@ -23546,7 +23586,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     cursor: "pointer",
     background: "transparent",
     [`&:disabled`]: {
-      opacity: "0"
+      opacity: "0",
+      transform: "scale(0)"
     },
     [`&:hover`]: {
       [`> ${Gradient}`]: {
@@ -23624,24 +23665,13 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   var Control_default = ItemsControl;
 
   // src/components/Items/Items.tsx
-  var useRefDimensions = (ref) => {
-    const [dimensions, setDimensions] = (0, import_react11.useState)({ width: 0, height: 0 });
-    import_react11.default.useEffect(() => {
-      if (ref.current) {
-        const { current } = ref;
-        const boundingRect = current.getBoundingClientRect();
-        const { width, height } = boundingRect;
-        setDimensions({ width: Math.round(width), height: Math.round(height) });
-      }
-    }, []);
-    return dimensions;
-  };
   var Items = ({ items }) => {
+    const store = useCollectionState();
+    const { itemHeight } = store;
     const [activeItems, setActiveItems] = (0, import_react11.useState)([0, 1, 2, 3, 4]);
     const [hasPrev, setHasPrev] = (0, import_react11.useState)(false);
     const [hasNext, setHasNext] = (0, import_react11.useState)(false);
     const itemsRef = (0, import_react11.useRef)(null);
-    const dimensions = useRefDimensions(itemsRef);
     (0, import_react11.useEffect)(() => {
       if (!items)
         return;
@@ -23651,27 +23681,25 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     const handleActiveItems = (increment) => {
       setActiveItems(activeItems.map((index) => index + increment));
     };
-    let gaps = rem * 1.618 * 4;
-    let instance = dimensions.width - gaps;
-    let controlHeight = instance / 5;
     return /* @__PURE__ */ import_react11.default.createElement(ItemsStyled, {
       ref: itemsRef
-    }, /* @__PURE__ */ import_react11.default.createElement(Control_default, {
+    }, itemHeight && /* @__PURE__ */ import_react11.default.createElement(import_react11.default.Fragment, null, /* @__PURE__ */ import_react11.default.createElement(Control_default, {
       increment: -1,
       label: "previous",
       handleControl: handleActiveItems,
-      height: controlHeight,
+      height: itemHeight,
       disabled: !hasPrev
     }), /* @__PURE__ */ import_react11.default.createElement(Control_default, {
       increment: 1,
       label: "next",
       handleControl: handleActiveItems,
-      height: controlHeight,
+      height: itemHeight,
       disabled: !hasNext
-    }), items.filter((item, index) => {
+    })), items.filter((item, index) => {
       if (activeItems.includes(index))
         return item;
-    }).map((item) => /* @__PURE__ */ import_react11.default.createElement(Item_default, {
+    }).map((item, index) => /* @__PURE__ */ import_react11.default.createElement(Item_default, {
+      index,
       item,
       key: item.id
     })));
