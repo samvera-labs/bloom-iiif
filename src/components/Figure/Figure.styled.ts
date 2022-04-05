@@ -1,5 +1,11 @@
 import { styled } from "stitches";
 
+const Width = styled("div", {
+  position: "absolute",
+  width: "100%",
+  backgroundColor: "green",
+});
+
 const FigureStyled = styled("figure", {
   display: "flex",
   flexDirection: "column",
@@ -7,7 +13,6 @@ const FigureStyled = styled("figure", {
   flexGrow: "0",
   flexShrink: "0",
   borderRadius: "3px",
-  transition: "$all",
 
   figcaption: {
     display: "flex",
@@ -25,6 +30,10 @@ const FigureStyled = styled("figure", {
         figcaption: {
           padding: "$2",
           color: "$accent",
+        },
+
+        [`& ${Width}`]: {
+          width: "calc(100% - ($2 * 2))",
         },
       },
     },
@@ -69,4 +78,4 @@ const Description = styled("span", {
   color: "$primary",
 });
 
-export { FigureStyled, Image, Placeholder, Title, Description };
+export { FigureStyled, Image, Placeholder, Title, Description, Width };

@@ -44,6 +44,7 @@ const ControlStyled = styled("button", {
 
   [`&:disabled`]: {
     opacity: "0",
+    transform: "scale(0)",
   },
 
   [`&:hover`]: {

@@ -14,10 +14,11 @@ import { Anchor, ItemStyled } from "./Item.styled";
 import Preview from "components/Preview/Preview";
 
 interface ItemProps {
+  index: number;
   item: Collection | Manifest;
 }
 
-const Item: React.FC<ItemProps> = ({ item }) => {
+const Item: React.FC<ItemProps> = ({ index, item }) => {
   const store = useCollectionState();
   const { vault } = store;
 
@@ -118,6 +119,7 @@ const Item: React.FC<ItemProps> = ({ item }) => {
             ) as unknown as string
           }
           image={image as string | null}
+          index={index}
           video={video as ContentResource | null}
           isFocused={isFocused}
         />
