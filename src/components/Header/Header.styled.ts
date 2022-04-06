@@ -10,7 +10,8 @@ const HeaderStyled = styled("div", {
 
 const Title = styled("span", {
   fontSize: "$5",
-  fontWeight: "800",
+  fontWeight: "400",
+  fontFamily: "$display",
 
   a: {
     color: "$accent",
