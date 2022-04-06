@@ -1067,11 +1067,11 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useReducer(reducer, initialArg, init);
           }
-          function useRef6(initialValue) {
+          function useRef7(initialValue) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect8(create, deps) {
+          function useEffect9(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -1641,12 +1641,12 @@
           exports.useCallback = useCallback2;
           exports.useContext = useContext;
           exports.useDebugValue = useDebugValue;
-          exports.useEffect = useEffect8;
+          exports.useEffect = useEffect9;
           exports.useImperativeHandle = useImperativeHandle;
           exports.useLayoutEffect = useLayoutEffect;
           exports.useMemo = useMemo;
           exports.useReducer = useReducer2;
-          exports.useRef = useRef6;
+          exports.useRef = useRef7;
           exports.useState = useState6;
           exports.version = ReactVersion;
         })();
@@ -2455,11 +2455,11 @@
       if (true) {
         (function() {
           "use strict";
-          var React13 = require_react();
+          var React14 = require_react();
           var _assign = require_object_assign();
           var Scheduler = require_scheduler();
           var tracing = require_tracing();
-          var ReactSharedInternals = React13.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React14.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           function warn(format) {
             {
               for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
@@ -2491,7 +2491,7 @@
               Function.prototype.apply.call(console[level], console, argsWithFormat);
             }
           }
-          if (!React13) {
+          if (!React14) {
             {
               throw Error("ReactDOM was loaded before React. Make sure you load the React package before loading ReactDOM.");
             }
@@ -3707,7 +3707,7 @@
           var didWarnInvalidChild = false;
           function flattenChildren(children) {
             var content = "";
-            React13.Children.forEach(children, function(child) {
+            React14.Children.forEach(children, function(child) {
               if (child == null) {
                 return;
               }
@@ -3718,7 +3718,7 @@
           function validateProps(element, props) {
             {
               if (typeof props.children === "object" && props.children !== null) {
-                React13.Children.forEach(props.children, function(child) {
+                React14.Children.forEach(props.children, function(child) {
                   if (child == null) {
                     return;
                   }
@@ -10911,7 +10911,7 @@
           }
           var fakeInternalInstance = {};
           var isArray = Array.isArray;
-          var emptyRefsObject = new React13.Component().refs;
+          var emptyRefsObject = new React14.Component().refs;
           var didWarnAboutStateAssignmentForComponent;
           var didWarnAboutUninitializedState;
           var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -20588,7 +20588,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   });
 
   // src/dev.tsx
-  var import_react14 = __toESM(require_react());
+  var import_react16 = __toESM(require_react());
   var import_react_dom = __toESM(require_react_dom());
 
   // src/index.tsx
@@ -22928,6 +22928,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }, selector: i2, toString: s3 };
   });
   var U2 = o();
+  var X2;
   var Y2 = o();
   var q2 = (e3) => {
     const t3 = ((e4) => {
@@ -22952,6 +22953,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       };
     }))(t3), t3;
   };
+  var K2 = () => X2 || (X2 = q2());
+  var re2 = (...e3) => K2().styled(...e3);
 
   // src/stitches.tsx
   var gr = (multiplier) => {
@@ -22985,7 +22988,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     },
     fonts: {
       sans: "'Inter', Arial, sans-serif",
-      display: "'Inter', Arial, sans-serif"
+      display: "'Calistoga', 'Inter', Arial, sans-serif"
     },
     fontSizes: {
       1: "0.611rem",
@@ -23719,7 +23722,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   });
   var Title2 = styled("span", {
     fontSize: "$5",
-    fontWeight: "800",
+    fontWeight: "400",
+    fontFamily: "$display",
     a: {
       color: "$accent",
       textDecoration: "none"
@@ -23773,11 +23777,156 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   var StyledBloom = styled("div", { padding: "$4 0" });
   var src_default = App;
 
+  // src/dev/DynamicUrl.tsx
+  var import_react15 = __toESM(require_react());
+
+  // src/dev/DynamicUrl.styled.tsx
+  var DynamicUrlStyled = re2("section", {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: "2rem"
+  });
+  var ManualForm = re2("form", {
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "column",
+    alignItems: "center",
+    width: "61.8%",
+    label: {
+      display: "block",
+      marginBottom: "1rem",
+      fontSize: "1.25rem",
+      color: "$primary",
+      fontWeight: "400",
+      fontFamily: "$display"
+    },
+    "> div": {
+      display: "flex",
+      backgroundColor: "$secondaryMuted",
+      position: "relative",
+      width: "100%",
+      borderRadius: "3px",
+      input: {
+        padding: "0.618rem 1rem",
+        background: "transparent",
+        color: "$primary",
+        border: "none",
+        fontFamily: "$sans",
+        width: "100%"
+      },
+      button: {
+        padding: "0.382rem 0.618rem",
+        cursor: "pointer",
+        position: "absolute",
+        right: "0.382rem",
+        alignSelf: "center",
+        background: "$secondary",
+        border: "none",
+        fontSize: "0.7222rem",
+        fontFamily: "$sans",
+        fontWeight: "700",
+        borderRadius: "3px",
+        backgroundColor: "$secondary",
+        color: "$primary"
+      }
+    }
+  });
+  var Curated = re2("div", {
+    padding: "2rem",
+    display: "flex",
+    justifyContent: "center",
+    flexWrap: "wrap"
+  });
+  var ButtonForm = re2("form", {
+    button: {
+      backgroundColor: "$transparent",
+      border: "none",
+      outline: "1px solid $secondaryMuted",
+      color: "$primaryMuted",
+      fontFamily: "$sans",
+      fontSize: "0.8333rem",
+      height: "2rem",
+      padding: "0 1rem",
+      borderRadius: "1rem",
+      cursor: "pointer",
+      margin: "0.5rem"
+    },
+    "&[data-active='true']": {
+      button: {
+        color: "$secondary",
+        fontWeight: "700",
+        backgroundColor: "$accent",
+        outline: "1px solid $accent"
+      }
+    }
+  });
+
+  // src/dev/collections.ts
+  var collections = [
+    {
+      url: "https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json",
+      label: "Masks of Antonio Fava"
+    },
+    {
+      url: "https://iiif.bodleian.ox.ac.uk/iiif/collection/flora-and-fauna-graeca",
+      label: "Flora and Fauna Graeca"
+    },
+    {
+      url: "https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/athletic-department-footbal-films.json",
+      label: "Football Films"
+    }
+  ];
+
+  // src/dev/DynamicUrl.tsx
+  var DynamicUrl = ({ url, setUrl }) => {
+    const inputRef = (0, import_react15.useRef)(null);
+    const handleSubmit = (e3) => {
+      var _a;
+      e3.preventDefault();
+      const target = e3.target;
+      setUrl((_a = target.url) == null ? void 0 : _a.value);
+    };
+    (0, import_react15.useEffect)(() => {
+      if (inputRef.current)
+        inputRef.current.value = url;
+    }, [url]);
+    return /* @__PURE__ */ import_react15.default.createElement(DynamicUrlStyled, null, /* @__PURE__ */ import_react15.default.createElement(ManualForm, {
+      onSubmit: handleSubmit
+    }, /* @__PURE__ */ import_react15.default.createElement("label", {
+      htmlFor: "manual-collection"
+    }, "View a IIIF Collection"), /* @__PURE__ */ import_react15.default.createElement("div", null, /* @__PURE__ */ import_react15.default.createElement("input", {
+      type: "text",
+      name: "url",
+      id: "manual-collection",
+      placeholder: "IIIF Collection",
+      ref: inputRef
+    }), /* @__PURE__ */ import_react15.default.createElement("button", {
+      type: "submit"
+    }, "View"))), collections.length > 0 && /* @__PURE__ */ import_react15.default.createElement(Curated, null, collections.map((obj) => /* @__PURE__ */ import_react15.default.createElement(ButtonForm, {
+      key: obj.label,
+      onSubmit: handleSubmit,
+      "data-active": url === obj.url ? true : false
+    }, /* @__PURE__ */ import_react15.default.createElement("button", {
+      name: "url",
+      value: obj.url
+    }, obj.label)))));
+  };
+  var DynamicUrl_default = DynamicUrl;
+
   // src/dev.tsx
-  var collectionMasks = `https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json`;
-  import_react_dom.default.render(/* @__PURE__ */ import_react14.default.createElement("section", null, /* @__PURE__ */ import_react14.default.createElement(src_default, {
-    collectionId: collectionMasks
-  })), document.getElementById("root"));
+  var Wrapper = () => {
+    const defaultUrl = collections[0].url;
+    const [url, setUrl] = import_react16.default.useState(defaultUrl);
+    return /* @__PURE__ */ import_react16.default.createElement(import_react16.default.Fragment, null, /* @__PURE__ */ import_react16.default.createElement(src_default, {
+      collectionId: url,
+      key: url
+    }), /* @__PURE__ */ import_react16.default.createElement(DynamicUrl_default, {
+      url,
+      setUrl
+    }));
+  };
+  import_react_dom.default.render(/* @__PURE__ */ import_react16.default.createElement(Wrapper, null), document.getElementById("root"));
 })();
 /*
 object-assign
