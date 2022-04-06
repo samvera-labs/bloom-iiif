@@ -52,7 +52,7 @@ export const theme = {
   },
   fonts: {
     sans: "'Inter', Arial, sans-serif",
-    display: "'Inter', Arial, sans-serif",
+    display: "'Calistoga', 'Inter', Arial, sans-serif",
   },
   fontSizes: {
     1: "0.611rem",
