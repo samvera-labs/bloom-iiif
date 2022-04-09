@@ -4,7 +4,9 @@
 
 **A slider component rendered from a IIIF Collection**
 
-_Bloom is still in alpha development. We do not recommend incorporating this into projects yet. You can test it out locally with your IIIF collections._
+#### [Demo](https://samvera-labs.github.io/bloom-iiif)
+
+_Bloom is still in alpha development. It is not recommend adding this into production projects yet._
 
 ---
 
