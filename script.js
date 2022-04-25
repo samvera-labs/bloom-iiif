@@ -85,8 +85,8 @@
         var from;
         var to = toObject(target);
         var symbols;
-        for (var s3 = 1; s3 < arguments.length; s3++) {
-          from = Object(arguments[s3]);
+        for (var s4 = 1; s4 < arguments.length; s4++) {
+          from = Object(arguments[s4]);
           for (var key in from) {
             if (hasOwnProperty.call(from, key)) {
               to[key] = from[key];
@@ -395,7 +395,7 @@
                   var init = lazyComponent._init;
                   try {
                     return getComponentName(init(payload));
-                  } catch (x3) {
+                  } catch (x4) {
                     return null;
                   }
                 }
@@ -1182,8 +1182,8 @@
               if (prefix === void 0) {
                 try {
                   throw Error();
-                } catch (x3) {
-                  var match = x3.stack.trim().match(/\n( *(at )?)/);
+                } catch (x4) {
+                  var match = x4.stack.trim().match(/\n( *(at )?)/);
                   prefix = match && match[1] || "";
                 }
               }
@@ -1229,23 +1229,23 @@
                 if (typeof Reflect === "object" && Reflect.construct) {
                   try {
                     Reflect.construct(Fake, []);
-                  } catch (x3) {
-                    control = x3;
+                  } catch (x4) {
+                    control = x4;
                   }
                   Reflect.construct(fn, [], Fake);
                 } else {
                   try {
                     Fake.call();
-                  } catch (x3) {
-                    control = x3;
+                  } catch (x4) {
+                    control = x4;
                   }
                   fn.call(Fake.prototype);
                 }
               } else {
                 try {
                   throw Error();
-                } catch (x3) {
-                  control = x3;
+                } catch (x4) {
+                  control = x4;
                 }
                 fn();
               }
@@ -1253,19 +1253,19 @@
               if (sample && control && typeof sample.stack === "string") {
                 var sampleLines = sample.stack.split("\n");
                 var controlLines = control.stack.split("\n");
-                var s3 = sampleLines.length - 1;
+                var s4 = sampleLines.length - 1;
                 var c3 = controlLines.length - 1;
-                while (s3 >= 1 && c3 >= 0 && sampleLines[s3] !== controlLines[c3]) {
+                while (s4 >= 1 && c3 >= 0 && sampleLines[s4] !== controlLines[c3]) {
                   c3--;
                 }
-                for (; s3 >= 1 && c3 >= 0; s3--, c3--) {
-                  if (sampleLines[s3] !== controlLines[c3]) {
-                    if (s3 !== 1 || c3 !== 1) {
+                for (; s4 >= 1 && c3 >= 0; s4--, c3--) {
+                  if (sampleLines[s4] !== controlLines[c3]) {
+                    if (s4 !== 1 || c3 !== 1) {
                       do {
-                        s3--;
+                        s4--;
                         c3--;
-                        if (c3 < 0 || sampleLines[s3] !== controlLines[c3]) {
-                          var _frame = "\n" + sampleLines[s3].replace(" at new ", " at ");
+                        if (c3 < 0 || sampleLines[s4] !== controlLines[c3]) {
+                          var _frame = "\n" + sampleLines[s4].replace(" at new ", " at ");
                           {
                             if (typeof fn === "function") {
                               componentFrameCache.set(fn, _frame);
@@ -1273,7 +1273,7 @@
                           }
                           return _frame;
                         }
-                      } while (s3 >= 1 && c3 >= 0);
+                      } while (s4 >= 1 && c3 >= 0);
                     }
                     break;
                   }
@@ -1337,7 +1337,7 @@
                   var init = lazyComponent._init;
                   try {
                     return describeUnknownElementTypeFrameInDEV(init(payload), source, ownerFn);
-                  } catch (x3) {
+                  } catch (x4) {
                   }
                 }
               }
@@ -3104,8 +3104,8 @@
               if (prefix === void 0) {
                 try {
                   throw Error();
-                } catch (x3) {
-                  var match = x3.stack.trim().match(/\n( *(at )?)/);
+                } catch (x4) {
+                  var match = x4.stack.trim().match(/\n( *(at )?)/);
                   prefix = match && match[1] || "";
                 }
               }
@@ -3151,23 +3151,23 @@
                 if (typeof Reflect === "object" && Reflect.construct) {
                   try {
                     Reflect.construct(Fake, []);
-                  } catch (x3) {
-                    control = x3;
+                  } catch (x4) {
+                    control = x4;
                   }
                   Reflect.construct(fn, [], Fake);
                 } else {
                   try {
                     Fake.call();
-                  } catch (x3) {
-                    control = x3;
+                  } catch (x4) {
+                    control = x4;
                   }
                   fn.call(Fake.prototype);
                 }
               } else {
                 try {
                   throw Error();
-                } catch (x3) {
-                  control = x3;
+                } catch (x4) {
+                  control = x4;
                 }
                 fn();
               }
@@ -3175,19 +3175,19 @@
               if (sample && control && typeof sample.stack === "string") {
                 var sampleLines = sample.stack.split("\n");
                 var controlLines = control.stack.split("\n");
-                var s3 = sampleLines.length - 1;
+                var s4 = sampleLines.length - 1;
                 var c3 = controlLines.length - 1;
-                while (s3 >= 1 && c3 >= 0 && sampleLines[s3] !== controlLines[c3]) {
+                while (s4 >= 1 && c3 >= 0 && sampleLines[s4] !== controlLines[c3]) {
                   c3--;
                 }
-                for (; s3 >= 1 && c3 >= 0; s3--, c3--) {
-                  if (sampleLines[s3] !== controlLines[c3]) {
-                    if (s3 !== 1 || c3 !== 1) {
+                for (; s4 >= 1 && c3 >= 0; s4--, c3--) {
+                  if (sampleLines[s4] !== controlLines[c3]) {
+                    if (s4 !== 1 || c3 !== 1) {
                       do {
-                        s3--;
+                        s4--;
                         c3--;
-                        if (c3 < 0 || sampleLines[s3] !== controlLines[c3]) {
-                          var _frame = "\n" + sampleLines[s3].replace(" at new ", " at ");
+                        if (c3 < 0 || sampleLines[s4] !== controlLines[c3]) {
+                          var _frame = "\n" + sampleLines[s4].replace(" at new ", " at ");
                           {
                             if (typeof fn === "function") {
                               componentFrameCache.set(fn, _frame);
@@ -3195,7 +3195,7 @@
                           }
                           return _frame;
                         }
-                      } while (s3 >= 1 && c3 >= 0);
+                      } while (s4 >= 1 && c3 >= 0);
                     }
                     break;
                   }
@@ -3264,7 +3264,7 @@
                   var init = lazyComponent._init;
                   try {
                     return describeUnknownElementTypeFrameInDEV(init(payload), source, ownerFn);
-                  } catch (x3) {
+                  } catch (x4) {
                   }
                 }
               }
@@ -3306,8 +3306,8 @@
                 node = node.return;
               } while (node);
               return info;
-            } catch (x3) {
-              return "\nError generating stack: " + x3.message + "\n" + x3.stack;
+            } catch (x4) {
+              return "\nError generating stack: " + x4.message + "\n" + x4.stack;
             }
           }
           function getWrappedName(outerType, innerType, wrapperName) {
@@ -3366,7 +3366,7 @@
                   var init = lazyComponent._init;
                   try {
                     return getComponentName(init(payload));
-                  } catch (x3) {
+                  } catch (x4) {
                     return null;
                   }
                 }
@@ -4159,7 +4159,7 @@
             var warnedForNaNValue = false;
             var warnedForInfinityValue = false;
             var camelize = function(string) {
-              return string.replace(hyphenPattern, function(_2, character) {
+              return string.replace(hyphenPattern, function(_3, character) {
                 return character.toUpperCase();
               });
             };
@@ -5295,7 +5295,7 @@
               passiveBrowserEventsSupported = false;
             }
           }
-          function invokeGuardedCallbackProd(name, func, context, a2, b3, c3, d3, e3, f3) {
+          function invokeGuardedCallbackProd(name, func, context, a2, b3, c3, d3, e3, f4) {
             var funcArgs = Array.prototype.slice.call(arguments, 3);
             try {
               func.apply(context, funcArgs);
@@ -5307,7 +5307,7 @@
           {
             if (typeof window !== "undefined" && typeof window.dispatchEvent === "function" && typeof document !== "undefined" && typeof document.createEvent === "function") {
               var fakeNode = document.createElement("react");
-              invokeGuardedCallbackImpl = function invokeGuardedCallbackDev(name, func, context, a2, b3, c3, d3, e3, f3) {
+              invokeGuardedCallbackImpl = function invokeGuardedCallbackDev(name, func, context, a2, b3, c3, d3, e3, f4) {
                 if (!(typeof document !== "undefined")) {
                   {
                     throw Error("The `document` global was defined when React was initialized, but is not defined anymore. This can happen in a test environment if a component schedules an update from an asynchronous callback, but the test has already finished running. To solve this, you can either unmount the component at the end of your test (and ensure that any asynchronous operations get canceled in `componentWillUnmount`), or you can change the test itself to be asynchronous.");
@@ -5384,12 +5384,12 @@
               caughtError = error2;
             }
           };
-          function invokeGuardedCallback(name, func, context, a2, b3, c3, d3, e3, f3) {
+          function invokeGuardedCallback(name, func, context, a2, b3, c3, d3, e3, f4) {
             hasError = false;
             caughtError = null;
             invokeGuardedCallbackImpl$1.apply(reporter, arguments);
           }
-          function invokeGuardedCallbackAndCatchFirstError(name, func, context, a2, b3, c3, d3, e3, f3) {
+          function invokeGuardedCallbackAndCatchFirstError(name, func, context, a2, b3, c3, d3, e3, f4) {
             invokeGuardedCallback.apply(this, arguments);
             if (hasError) {
               var error2 = clearCaughtError();
@@ -7543,8 +7543,8 @@
             }
             accumulateEnterLeaveTwoPhaseListeners(dispatchQueue, leave, enter, from, to);
           }
-          function is(x3, y3) {
-            return x3 === y3 && (x3 !== 0 || 1 / x3 === 1 / y3) || x3 !== x3 && y3 !== y3;
+          function is(x4, y4) {
+            return x4 === y4 && (x4 !== 0 || 1 / x4 === 1 / y4) || x4 !== x4 && y4 !== y4;
           }
           var objectIs = typeof Object.is === "function" ? Object.is : is;
           var hasOwnProperty$2 = Object.prototype.hasOwnProperty;
@@ -14421,7 +14421,7 @@
                   var init = lazyComponent._init;
                   try {
                     outerMemoType = init(payload);
-                  } catch (x3) {
+                  } catch (x4) {
                     outerMemoType = null;
                   }
                   var outerPropTypes = outerMemoType && outerMemoType.propTypes;
@@ -20459,25 +20459,25 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
           if (n4.getType == null)
             throw new Error("Argument contains array with invalid element at index " + t4 + ', it should be an action-creator instance from "typesafe-actions"');
         }
-        function u3(n4) {
+        function u4(n4) {
           return typeof n4 == "string" || typeof n4 == "symbol";
         }
         function a2(n4) {
-          return !u3(n4);
+          return !u4(n4);
         }
         function c3(n4) {
           throw new Error("Argument " + n4 + " is invalid, it should be an action type of type: string | symbol");
         }
-        function f3(n4, t4) {
+        function f4(n4, t4) {
           if (n4 == null)
             throw new Error("Argument contains array with empty element at index " + t4);
           if (typeof n4 != "string" && typeof n4 != "symbol")
             throw new Error("Argument contains array with invalid element at index " + t4 + ", it should be of type: string | symbol");
         }
-        function s3(n4, e4, o5, u4) {
-          return t3(n4) && r3(1), a2(n4) && i2(1), { type: n4, payload: e4, meta: o5, error: u4 };
+        function s4(n4, e4, o5, u5) {
+          return t3(n4) && r3(1), a2(n4) && i2(1), { type: n4, payload: e4, meta: o5, error: u5 };
         }
-        function y3(n4, e4) {
+        function y4(n4, e4) {
           t3(n4) && r3(1), a2(n4) && c3(1);
           return Object.assign(function() {
             var t4 = e4 != null ? e4.apply(void 0, arguments) : void 0;
@@ -20488,15 +20488,15 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
             return n4;
           } });
         }
-        function l4(n4, e4, i3) {
+        function l5(n4, e4, i3) {
           return t3(n4) && r3(1), a2(n4) && c3(1), function() {
-            return y3(n4, function() {
+            return y4(n4, function() {
               var n5 = arguments.length <= 0 ? void 0 : arguments[0], t4 = arguments.length <= 1 ? void 0 : arguments[1];
               return e4 == null && i3 == null || (n5 = e4 != null ? e4.apply(void 0, arguments) : void 0, t4 = i3 != null ? i3.apply(void 0, arguments) : void 0), Object.assign({}, n5 !== void 0 && { payload: n5 }, {}, t4 !== void 0 && { meta: t4 });
             });
           };
         }
-        function p3(n4) {
+        function p4(n4) {
           return t3(n4) && r3(1), e3(n4) || i2(1), n4.getType();
         }
         function d3(n4, e4) {
@@ -20510,10 +20510,10 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
             return n4;
           } });
         }
-        var g3 = { createAction: function(n4, t4) {
+        var g4 = { createAction: function(n4, t4) {
           var r4 = t4 == null ? function() {
-            return s3(n4);
-          } : t4(s3.bind(null, n4));
+            return s4(n4);
+          } : t4(s4.bind(null, n4));
           return Object.assign(r4, { getType: function() {
             return n4;
           }, toString: function() {
@@ -20534,21 +20534,21 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
             });
           } });
         } };
-        n3.action = s3, n3.createAction = l4, n3.createAsyncAction = function(n4, t4, r4, e4) {
+        n3.action = s4, n3.createAction = l5, n3.createAsyncAction = function(n4, t4, r4, e4) {
           return function() {
             var i3 = [n4, t4, r4, e4].map(function(n5, t5) {
-              return Array.isArray(n5) ? l4(n5[0], n5[1], n5[2])() : typeof n5 == "string" || typeof n5 == "symbol" ? l4(n5)() : void (t5 < 3 && function(n6) {
+              return Array.isArray(n5) ? l5(n5[0], n5[1], n5[2])() : typeof n5 == "string" || typeof n5 == "symbol" ? l5(n5)() : void (t5 < 3 && function(n6) {
                 throw new Error("Argument " + n6 + ' is invalid, it should be an action type of "string | symbol" or a tuple of "[string | symbol, Function, Function?]"');
               }(t5));
             });
             return { request: i3[0], success: i3[1], failure: i3[2], cancel: i3[3] };
           };
-        }, n3.createCustomAction = y3, n3.createReducer = function n4(t4, r4) {
+        }, n3.createCustomAction = y4, n3.createReducer = function n4(t4, r4) {
           r4 === void 0 && (r4 = {});
           var i3 = Object.assign({}, r4), o5 = function(r5, o6) {
             var a3 = Array.isArray(r5) ? r5 : [r5], c4 = {};
             return a3.map(function(n5, t5) {
-              return e3(n5) ? p3(n5) : u3(n5) ? n5 : function(n6) {
+              return e3(n5) ? p4(n5) : u4(n5) ? n5 : function(n6) {
                 throw new Error("Argument " + n6 + ' is invalid, it should be an action-creator instance from "typesafe-actions" or action type of type: string | symbol');
               }(t5 + 1);
             }).forEach(function(n5) {
@@ -20564,20 +20564,20 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
             }
             return n5;
           }, { handlers: Object.assign({}, i3), handleAction: o5, handleType: o5 });
-        }, n3.deprecated = g3, n3.getType = p3, n3.isActionOf = function(n4, e4) {
+        }, n3.deprecated = g4, n3.getType = p4, n3.isActionOf = function(n4, e4) {
           t3(n4) && r3(1);
           var i3 = Array.isArray(n4) ? n4 : [n4];
           i3.forEach(o4);
-          var u4 = function(n5) {
+          var u5 = function(n5) {
             return i3.some(function(t4) {
               return n5.type === t4.getType();
             });
           };
-          return e4 === void 0 ? u4 : u4(e4);
+          return e4 === void 0 ? u5 : u5(e4);
         }, n3.isOfType = function(n4, e4) {
           t3(n4) && r3(1);
           var i3 = Array.isArray(n4) ? n4 : [n4];
-          i3.forEach(f3);
+          i3.forEach(f4);
           var o5 = function(n5) {
             return i3.includes(n5.type);
           };
@@ -20588,11 +20588,11 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   });
 
   // src/dev.tsx
-  var import_react16 = __toESM(require_react());
+  var import_react31 = __toESM(require_react());
   var import_react_dom = __toESM(require_react_dom());
 
   // src/index.tsx
-  var import_react13 = __toESM(require_react());
+  var import_react28 = __toESM(require_react());
 
   // src/context/collection-context.tsx
   var import_react = __toESM(require_react());
@@ -21053,8 +21053,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   function qe(t3, e3 = "Rights/License", i2 = "none") {
     let n3 = null;
     const r3 = [], a2 = Array.isArray(t3) ? t3 : [t3];
-    for (const I2 of a2) {
-      const o4 = I2 ? Ge(I2) : void 0;
+    for (const I3 of a2) {
+      const o4 = I3 ? Ge(I3) : void 0;
       if (o4 && (o4.indexOf("creativecommons.org") !== -1 || o4.indexOf("rightsstatements.org") !== -1)) {
         o4.startsWith("https://") ? n3 = `http://${o4.slice(8)}` : n3 = o4;
         continue;
@@ -21234,25 +21234,25 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       const a2 = i2[r3.type];
       if (!a2)
         return c;
-      const I2 = ht(t3, r3.id) || (r3.id && r3.type ? r3 : null);
-      if (!I2)
+      const I3 = ht(t3, r3.id) || (r3.id && r3.type ? r3 : null);
+      if (!I3)
         return c;
-      const o4 = a2(I2, t3, { isTopLevel: e3.id === r3.id });
-      let R2 = o4.next();
-      for (; !R2.done; ) {
-        const E2 = R2.value;
-        let T2 = c;
-        if (E2)
-          if (Array.isArray(E2)) {
-            const D2 = [];
-            for (const Ae of E2)
-              D2.push(n3(Ae));
-            T2 = D2;
+      const o4 = a2(I3, t3, { isTopLevel: e3.id === r3.id });
+      let R3 = o4.next();
+      for (; !R3.done; ) {
+        const E3 = R3.value;
+        let T3 = c;
+        if (E3)
+          if (Array.isArray(E3)) {
+            const D3 = [];
+            for (const Ae of E3)
+              D3.push(n3(Ae));
+            T3 = D3;
           } else
-            T2 = n3(E2);
-        R2 = o4.next(T2);
+            T3 = n3(E3);
+        R3 = o4.next(T3);
       }
-      return R2.value === c ? c : de(R2.value);
+      return R3.value === c ? c : de(R3.value);
     }
     return n3(e3);
   }
@@ -22495,24 +22495,24 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
 
   // node_modules/clsx/dist/clsx.m.js
   function toVal(mix) {
-    var k3, y3, str = "";
+    var k4, y4, str = "";
     if (typeof mix === "string" || typeof mix === "number") {
       str += mix;
     } else if (typeof mix === "object") {
       if (Array.isArray(mix)) {
-        for (k3 = 0; k3 < mix.length; k3++) {
-          if (mix[k3]) {
-            if (y3 = toVal(mix[k3])) {
+        for (k4 = 0; k4 < mix.length; k4++) {
+          if (mix[k4]) {
+            if (y4 = toVal(mix[k4])) {
               str && (str += " ");
-              str += y3;
+              str += y4;
             }
           }
         }
       } else {
-        for (k3 in mix) {
-          if (mix[k3]) {
+        for (k4 in mix) {
+          if (mix[k4]) {
             str && (str += " ");
-            str += k3;
+            str += k4;
           }
         }
       }
@@ -22520,12 +22520,12 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     return str;
   }
   function clsx_m_default() {
-    var i2 = 0, tmp, x3, str = "";
+    var i2 = 0, tmp, x4, str = "";
     while (i2 < arguments.length) {
       if (tmp = arguments[i2++]) {
-        if (x3 = toVal(tmp)) {
+        if (x4 = toVal(tmp)) {
           str && (str += " ");
-          str += x3;
+          str += x4;
         }
       }
     }
@@ -22563,44 +22563,44 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   var m2 = (e3, t3) => e3 in b2 && typeof t3 == "string" ? t3.replace(/^((?:[^]*[^\w-])?)(fit-content|stretch)((?:[^\w-][^]*)?)$/, (t4, r3, n3, i2) => r3 + (n3 === "stretch" ? `-moz-available${i2};${d2(e3)}:${r3}-webkit-fill-available` : `-moz-fit-content${i2};${d2(e3)}:${r3}fit-content`) + i2) : String(t3);
   var b2 = { blockSize: 1, height: 1, inlineSize: 1, maxBlockSize: 1, maxHeight: 1, maxInlineSize: 1, maxWidth: 1, minBlockSize: 1, minHeight: 1, minInlineSize: 1, minWidth: 1, width: 1 };
   var S2 = (e3) => e3 ? e3 + "-" : "";
-  var k2 = (e3, t3, r3) => e3.replace(/([+-])?((?:\d+(?:\.\d*)?|\.\d+)(?:[Ee][+-]?\d+)?)?(\$|--)([$\w-]+)/g, (e4, n3, i2, o4, l4) => o4 == "$" == !!i2 ? e4 : (n3 || o4 == "--" ? "calc(" : "") + "var(--" + (o4 === "$" ? S2(t3) + (l4.includes("$") ? "" : S2(r3)) + l4.replace(/\$/g, "-") : l4) + ")" + (n3 || o4 == "--" ? "*" + (n3 || "") + (i2 || "1") + ")" : ""));
+  var k2 = (e3, t3, r3) => e3.replace(/([+-])?((?:\d+(?:\.\d*)?|\.\d+)(?:[Ee][+-]?\d+)?)?(\$|--)([$\w-]+)/g, (e4, n3, i2, o4, l5) => o4 == "$" == !!i2 ? e4 : (n3 || o4 == "--" ? "calc(" : "") + "var(--" + (o4 === "$" ? S2(t3) + (l5.includes("$") ? "" : S2(r3)) + l5.replace(/\$/g, "-") : l5) + ")" + (n3 || o4 == "--" ? "*" + (n3 || "") + (i2 || "1") + ")" : ""));
   var y2 = /\s*,\s*(?![^()]*\))/;
   var B2 = Object.prototype.toString;
   var $2 = (e3, t3, r3, n3, i2) => {
-    let o4, l4, s3;
+    let o4, l5, s4;
     const a2 = (e4, t4, r4) => {
-      let c3, g3;
-      const p3 = (e5) => {
+      let c3, g4;
+      const p4 = (e5) => {
         for (c3 in e5) {
-          const R2 = c3.charCodeAt(0) === 64, z3 = R2 && Array.isArray(e5[c3]) ? e5[c3] : [e5[c3]];
-          for (g3 of z3) {
-            const e6 = /[A-Z]/.test($3 = c3) ? $3 : $3.replace(/-[^]/g, (e7) => e7[1].toUpperCase()), z4 = typeof g3 == "object" && g3 && g3.toString === B2 && (!n3.utils[e6] || !t4.length);
+          const R3 = c3.charCodeAt(0) === 64, z3 = R3 && Array.isArray(e5[c3]) ? e5[c3] : [e5[c3]];
+          for (g4 of z3) {
+            const e6 = /[A-Z]/.test($4 = c3) ? $4 : $4.replace(/-[^]/g, (e7) => e7[1].toUpperCase()), z4 = typeof g4 == "object" && g4 && g4.toString === B2 && (!n3.utils[e6] || !t4.length);
             if (e6 in n3.utils && !z4) {
               const t5 = n3.utils[e6];
-              if (t5 !== l4) {
-                l4 = t5, p3(t5(g3)), l4 = null;
+              if (t5 !== l5) {
+                l5 = t5, p4(t5(g4)), l5 = null;
                 continue;
               }
             } else if (e6 in u2) {
               const t5 = u2[e6];
-              if (t5 !== s3) {
-                s3 = t5, p3(t5(g3)), s3 = null;
+              if (t5 !== s4) {
+                s4 = t5, p4(t5(g4)), s4 = null;
                 continue;
               }
             }
-            if (R2 && (b3 = c3.slice(1) in n3.media ? "@media " + n3.media[c3.slice(1)] : c3, c3 = b3.replace(/\(\s*([\w-]+)\s*(=|<|<=|>|>=)\s*([\w-]+)\s*(?:(<|<=|>|>=)\s*([\w-]+)\s*)?\)/g, (e7, t5, r5, n4, i3, o5) => {
-              const l5 = h2.test(t5), s4 = 0.0625 * (l5 ? -1 : 1), [a3, c4] = l5 ? [n4, t5] : [t5, n4];
-              return "(" + (r5[0] === "=" ? "" : r5[0] === ">" === l5 ? "max-" : "min-") + a3 + ":" + (r5[0] !== "=" && r5.length === 1 ? c4.replace(h2, (e8, t6, n5) => Number(t6) + s4 * (r5 === ">" ? 1 : -1) + n5) : c4) + (i3 ? ") and (" + (i3[0] === ">" ? "min-" : "max-") + a3 + ":" + (i3.length === 1 ? o5.replace(h2, (e8, t6, r6) => Number(t6) + s4 * (i3 === ">" ? -1 : 1) + r6) : o5) : "") + ")";
+            if (R3 && (b3 = c3.slice(1) in n3.media ? "@media " + n3.media[c3.slice(1)] : c3, c3 = b3.replace(/\(\s*([\w-]+)\s*(=|<|<=|>|>=)\s*([\w-]+)\s*(?:(<|<=|>|>=)\s*([\w-]+)\s*)?\)/g, (e7, t5, r5, n4, i3, o5) => {
+              const l6 = h2.test(t5), s5 = 0.0625 * (l6 ? -1 : 1), [a3, c4] = l6 ? [n4, t5] : [t5, n4];
+              return "(" + (r5[0] === "=" ? "" : r5[0] === ">" === l6 ? "max-" : "min-") + a3 + ":" + (r5[0] !== "=" && r5.length === 1 ? c4.replace(h2, (e8, t6, n5) => Number(t6) + s5 * (r5 === ">" ? 1 : -1) + n5) : c4) + (i3 ? ") and (" + (i3[0] === ">" ? "min-" : "max-") + a3 + ":" + (i3.length === 1 ? o5.replace(h2, (e8, t6, r6) => Number(t6) + s5 * (i3 === ">" ? -1 : 1) + r6) : o5) : "") + ")";
             })), z4) {
-              const e7 = R2 ? r4.concat(c3) : [...r4], n4 = R2 ? [...t4] : f2(t4, c3.split(y2));
-              o4 !== void 0 && i2(x2(...o4)), o4 = void 0, a2(g3, n4, e7);
+              const e7 = R3 ? r4.concat(c3) : [...r4], n4 = R3 ? [...t4] : f2(t4, c3.split(y2));
+              o4 !== void 0 && i2(x2(...o4)), o4 = void 0, a2(g4, n4, e7);
             } else
-              o4 === void 0 && (o4 = [[], t4, r4]), c3 = R2 || c3.charCodeAt(0) !== 36 ? c3 : `--${S2(n3.prefix)}${c3.slice(1).replace(/\$/g, "-")}`, g3 = z4 ? g3 : typeof g3 == "number" ? g3 && e6 in I ? String(g3) + "px" : String(g3) : k2(m2(e6, g3 == null ? "" : g3), n3.prefix, n3.themeMap[e6]), o4[0].push(`${R2 ? `${c3} ` : `${d2(c3)}:`}${g3}`);
+              o4 === void 0 && (o4 = [[], t4, r4]), c3 = R3 || c3.charCodeAt(0) !== 36 ? c3 : `--${S2(n3.prefix)}${c3.slice(1).replace(/\$/g, "-")}`, g4 = z4 ? g4 : typeof g4 == "number" ? g4 && e6 in I ? String(g4) + "px" : String(g4) : k2(m2(e6, g4 == null ? "" : g4), n3.prefix, n3.themeMap[e6]), o4[0].push(`${R3 ? `${c3} ` : `${d2(c3)}:`}${g4}`);
           }
         }
-        var b3, $3;
+        var b3, $4;
       };
-      p3(e4), o4 !== void 0 && i2(x2(...o4)), o4 = void 0;
+      p4(e4), o4 !== void 0 && i2(x2(...o4)), o4 = void 0;
     };
     a2(e3, t3, r3);
   };
@@ -22662,18 +22662,18 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       for (const e4 of i2)
         if (j2(e4)) {
           for (let i3 = 0, o5 = e4.cssRules; o5[i3]; ++i3) {
-            const l5 = Object(o5[i3]);
-            if (l5.type !== 1)
+            const l6 = Object(o5[i3]);
+            if (l6.type !== 1)
               continue;
-            const s3 = Object(o5[i3 + 1]);
-            if (s3.type !== 4)
+            const s4 = Object(o5[i3 + 1]);
+            if (s4.type !== 4)
               continue;
             ++i3;
-            const { cssText: a2 } = l5;
+            const { cssText: a2 } = l6;
             if (!a2.startsWith("--sxs"))
               continue;
             const c3 = a2.slice(14, -3).trim().split(/\s+/), d3 = W2[c3[0]];
-            d3 && (t3 || (t3 = { sheet: e4, reset: n3, rules: {}, toString: r3 }), t3.rules[d3] = { group: s3, index: i3, cache: new Set(c3) });
+            d3 && (t3 || (t3 = { sheet: e4, reset: n3, rules: {}, toString: r3 }), t3.rules[d3] = { group: s4, index: i3, cache: new Set(c3) });
           }
           if (t3)
             break;
@@ -22686,14 +22686,14 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         } });
         t3 = { sheet: e3 ? (e3.head || e3).appendChild(document.createElement("style")).sheet : i3("", "text/css"), rules: {}, reset: n3, toString: r3 };
       }
-      const { sheet: o4, rules: l4 } = t3;
+      const { sheet: o4, rules: l5 } = t3;
       for (let e4 = W2.length - 1; e4 >= 0; --e4) {
         const t4 = W2[e4];
-        if (!l4[t4]) {
-          const r4 = W2[e4 + 1], n4 = l4[r4] ? l4[r4].index : o4.cssRules.length;
-          o4.insertRule("@media{}", n4), o4.insertRule(`--sxs{--sxs:${e4}}`, n4), l4[t4] = { group: o4.cssRules[n4 + 1], index: n4, cache: /* @__PURE__ */ new Set([e4]) };
+        if (!l5[t4]) {
+          const r4 = W2[e4 + 1], n4 = l5[r4] ? l5[r4].index : o4.cssRules.length;
+          o4.insertRule("@media{}", n4), o4.insertRule(`--sxs{--sxs:${e4}}`, n4), l5[t4] = { group: o4.cssRules[n4 + 1], index: n4, cache: /* @__PURE__ */ new Set([e4]) };
         }
-        v2(l4[t4]);
+        v2(l5[t4]);
       }
     };
     return n3(), t3;
@@ -22723,21 +22723,21 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     return n3.type == null && (n3.type = "span"), n3.composers.size || n3.composers.add(["PJLV", {}, [], [], {}, []]), P2(e3, n3, t3);
   });
   var C2 = ({ variants: e3, compoundVariants: t3, defaultVariants: r3, ...n3 }, i2) => {
-    const o4 = `${S2(i2.prefix)}c-${z2(n3)}`, l4 = [], s3 = [], d3 = /* @__PURE__ */ Object.create(null), g3 = [];
+    const o4 = `${S2(i2.prefix)}c-${z2(n3)}`, l5 = [], s4 = [], d3 = /* @__PURE__ */ Object.create(null), g4 = [];
     for (const e4 in r3)
       d3[e4] = String(r3[e4]);
     if (typeof e3 == "object" && e3)
       for (const t4 in e3) {
-        p3 = d3, u3 = t4, c2.call(p3, u3) || (d3[t4] = "undefined");
+        p4 = d3, u4 = t4, c2.call(p4, u4) || (d3[t4] = "undefined");
         const r4 = e3[t4];
         for (const e4 in r4) {
           const n4 = { [t4]: String(e4) };
-          String(e4) === "undefined" && g3.push(t4);
+          String(e4) === "undefined" && g4.push(t4);
           const i3 = r4[e4], o5 = [n4, i3, !a(i3)];
-          l4.push(o5);
+          l5.push(o5);
         }
       }
-    var p3, u3;
+    var p4, u4;
     if (typeof t3 == "object" && t3)
       for (const e4 of t3) {
         let { css: t4, ...r4 } = e4;
@@ -22745,9 +22745,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         for (const e5 in r4)
           r4[e5] = String(r4[e5]);
         const n4 = [r4, t4, !a(t4)];
-        s3.push(n4);
+        s4.push(n4);
       }
-    return [o4, n3, l4, s3, d3, g3];
+    return [o4, n3, l5, s4, d3, g4];
   };
   var P2 = (e3, t3, r3) => {
     const [n3, i2, o4, a2] = L2(t3.composers), c3 = typeof t3.type == "function" || t3.type.$$typeof ? ((e4) => {
@@ -22759,32 +22759,32 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         return t4[T] = [], null;
       }
       return t4[T] = [], t4.rules = {}, W2.forEach((e5) => t4.rules[e5] = { apply: (r4) => t4[T].push([e5, r4]) }), t4;
-    })(r3) : null, d3 = (c3 || r3).rules, g3 = `.${n3}${i2.length > 1 ? `:where(.${i2.slice(1).join(".")})` : ""}`, p3 = (l4) => {
-      l4 = typeof l4 == "object" && l4 || A2;
-      const { css: s3, ...p4 } = l4, u3 = {};
+    })(r3) : null, d3 = (c3 || r3).rules, g4 = `.${n3}${i2.length > 1 ? `:where(.${i2.slice(1).join(".")})` : ""}`, p4 = (l5) => {
+      l5 = typeof l5 == "object" && l5 || A2;
+      const { css: s4, ...p5 } = l5, u4 = {};
       for (const e4 in o4)
-        if (delete p4[e4], e4 in l4) {
-          let t4 = l4[e4];
-          typeof t4 == "object" && t4 ? u3[e4] = { "@initial": o4[e4], ...t4 } : (t4 = String(t4), u3[e4] = t4 !== "undefined" || a2.has(e4) ? t4 : o4[e4]);
+        if (delete p5[e4], e4 in l5) {
+          let t4 = l5[e4];
+          typeof t4 == "object" && t4 ? u4[e4] = { "@initial": o4[e4], ...t4 } : (t4 = String(t4), u4[e4] = t4 !== "undefined" || a2.has(e4) ? t4 : o4[e4]);
         } else
-          u3[e4] = o4[e4];
+          u4[e4] = o4[e4];
       const h3 = /* @__PURE__ */ new Set([...i2]);
-      for (const [n4, i3, o5, l5] of t3.composers) {
+      for (const [n4, i3, o5, l6] of t3.composers) {
         r3.rules.styled.cache.has(n4) || (r3.rules.styled.cache.add(n4), $2(i3, [`.${n4}`], [], e3, (e4) => {
           d3.styled.apply(e4);
         }));
-        const t4 = O2(o5, u3, e3.media), s4 = O2(l5, u3, e3.media, true);
+        const t4 = O2(o5, u4, e3.media), s5 = O2(l6, u4, e3.media, true);
         for (const i4 of t4)
           if (i4 !== void 0)
-            for (const [t5, o6, l6] of i4) {
+            for (const [t5, o6, l7] of i4) {
               const i5 = `${n4}-${z2(o6)}-${t5}`;
               h3.add(i5);
-              const s5 = (l6 ? r3.rules.resonevar : r3.rules.onevar).cache, a3 = l6 ? d3.resonevar : d3.onevar;
-              s5.has(i5) || (s5.add(i5), $2(o6, [`.${i5}`], [], e3, (e4) => {
+              const s6 = (l7 ? r3.rules.resonevar : r3.rules.onevar).cache, a3 = l7 ? d3.resonevar : d3.onevar;
+              s6.has(i5) || (s6.add(i5), $2(o6, [`.${i5}`], [], e3, (e4) => {
                 a3.apply(e4);
               }));
             }
-        for (const t5 of s4)
+        for (const t5 of s5)
           if (t5 !== void 0)
             for (const [i4, o6] of t5) {
               const t6 = `${n4}-${z2(o6)}-${i4}`;
@@ -22793,27 +22793,27 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
               }));
             }
       }
-      if (typeof s3 == "object" && s3) {
-        const t4 = `${n3}-i${z2(s3)}-css`;
-        h3.add(t4), r3.rules.inline.cache.has(t4) || (r3.rules.inline.cache.add(t4), $2(s3, [`.${t4}`], [], e3, (e4) => {
+      if (typeof s4 == "object" && s4) {
+        const t4 = `${n3}-i${z2(s4)}-css`;
+        h3.add(t4), r3.rules.inline.cache.has(t4) || (r3.rules.inline.cache.add(t4), $2(s4, [`.${t4}`], [], e3, (e4) => {
           d3.inline.apply(e4);
         }));
       }
-      for (const e4 of String(l4.className || "").trim().split(/\s+/))
+      for (const e4 of String(l5.className || "").trim().split(/\s+/))
         e4 && h3.add(e4);
-      const f3 = p4.className = [...h3].join(" ");
-      return { type: t3.type, className: f3, selector: g3, props: p4, toString: () => f3, deferredInjector: c3 };
+      const f4 = p5.className = [...h3].join(" ");
+      return { type: t3.type, className: f4, selector: g4, props: p5, toString: () => f4, deferredInjector: c3 };
     };
-    return s2(p3, { className: n3, selector: g3, [l2]: t3, toString: () => (r3.rules.styled.cache.has(n3) || p3(), n3) });
+    return s2(p4, { className: n3, selector: g4, [l2]: t3, toString: () => (r3.rules.styled.cache.has(n3) || p4(), n3) });
   };
   var L2 = (e3) => {
     let t3 = "";
     const r3 = [], n3 = {}, i2 = [];
-    for (const [o4, , , , l4, s3] of e3) {
-      t3 === "" && (t3 = o4), r3.push(o4), i2.push(...s3);
-      for (const e4 in l4) {
-        const t4 = l4[e4];
-        (n3[e4] === void 0 || t4 !== "undefined" || s3.includes(t4)) && (n3[e4] = t4);
+    for (const [o4, , , , l5, s4] of e3) {
+      t3 === "" && (t3 = o4), r3.push(o4), i2.push(...s4);
+      for (const e4 in l5) {
+        const t4 = l5[e4];
+        (n3[e4] === void 0 || t4 !== "undefined" || s4.includes(t4)) && (n3[e4] = t4);
       }
     }
     return [t3, r3, n3, new Set(i2)];
@@ -22821,8 +22821,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   var O2 = (e3, t3, r3, n3) => {
     const i2 = [];
     e:
-      for (let [o4, l4, s3] of e3) {
-        if (s3)
+      for (let [o4, l5, s4] of e3) {
+        if (s4)
           continue;
         let e4, a2 = 0, c3 = false;
         for (e4 in o4) {
@@ -22833,22 +22833,22 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
               continue e;
             {
               let e5, t4, o5 = 0;
-              for (const l5 in i3) {
-                if (n4 === String(i3[l5])) {
-                  if (l5 !== "@initial") {
-                    const e6 = l5.slice(1);
-                    (t4 = t4 || []).push(e6 in r3 ? r3[e6] : l5.replace(/^@media ?/, "")), c3 = true;
+              for (const l6 in i3) {
+                if (n4 === String(i3[l6])) {
+                  if (l6 !== "@initial") {
+                    const e6 = l6.slice(1);
+                    (t4 = t4 || []).push(e6 in r3 ? r3[e6] : l6.replace(/^@media ?/, "")), c3 = true;
                   }
                   a2 += o5, e5 = true;
                 }
                 ++o5;
               }
-              if (t4 && t4.length && (l4 = { ["@media " + t4.join(", ")]: l4 }), !e5)
+              if (t4 && t4.length && (l5 = { ["@media " + t4.join(", ")]: l5 }), !e5)
                 continue e;
             }
           }
         }
-        (i2[a2] = i2[a2] || []).push([n3 ? "cv" : `${e4}-${o4[e4]}`, l4, c3]);
+        (i2[a2] = i2[a2] || []).push([n3 ? "cv" : `${e4}-${o4[e4]}`, l5, c3]);
       }
     return i2;
   };
@@ -22908,25 +22908,25 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   var F2 = o();
   var J2 = (e3, t3) => F2(e3, () => (r3, n3) => {
     n3 = typeof r3 == "object" && r3 || Object(n3);
-    const i2 = `.${r3 = (r3 = typeof r3 == "string" ? r3 : "") || `${S2(e3.prefix)}t-${z2(n3)}`}`, o4 = {}, l4 = [];
+    const i2 = `.${r3 = (r3 = typeof r3 == "string" ? r3 : "") || `${S2(e3.prefix)}t-${z2(n3)}`}`, o4 = {}, l5 = [];
     for (const t4 in n3) {
       o4[t4] = {};
       for (const r4 in n3[t4]) {
-        const i3 = `--${S2(e3.prefix)}${t4}-${r4}`, s4 = k2(String(n3[t4][r4]), e3.prefix, t4);
-        o4[t4][r4] = new G2(r4, s4, t4, e3.prefix), l4.push(`${i3}:${s4}`);
+        const i3 = `--${S2(e3.prefix)}${t4}-${r4}`, s5 = k2(String(n3[t4][r4]), e3.prefix, t4);
+        o4[t4][r4] = new G2(r4, s5, t4, e3.prefix), l5.push(`${i3}:${s5}`);
       }
     }
-    const s3 = () => {
-      if (l4.length && !t3.rules.themed.cache.has(r3)) {
+    const s4 = () => {
+      if (l5.length && !t3.rules.themed.cache.has(r3)) {
         t3.rules.themed.cache.add(r3);
-        const i3 = `${n3 === e3.theme ? ":root," : ""}.${r3}{${l4.join(";")}}`;
+        const i3 = `${n3 === e3.theme ? ":root," : ""}.${r3}{${l5.join(";")}}`;
         t3.rules.themed.apply(i3);
       }
       return r3;
     };
     return { ...o4, get className() {
-      return s3();
-    }, selector: i2, toString: s3 };
+      return s4();
+    }, selector: i2, toString: s4 };
   });
   var U2 = o();
   var X2;
@@ -22936,10 +22936,10 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       let t4 = false;
       const r3 = U2(e4, (e5) => {
         t4 = true;
-        const r4 = "prefix" in (e5 = typeof e5 == "object" && e5 || {}) ? String(e5.prefix) : "", i2 = typeof e5.media == "object" && e5.media || {}, o4 = typeof e5.root == "object" ? e5.root || null : globalThis.document || null, l4 = typeof e5.theme == "object" && e5.theme || {}, s3 = { prefix: r4, media: i2, theme: l4, themeMap: typeof e5.themeMap == "object" && e5.themeMap || { ...n }, utils: typeof e5.utils == "object" && e5.utils || {} }, a2 = E(o4), c3 = { css: M2(s3, a2), globalCss: D(s3, a2), keyframes: V2(s3, a2), createTheme: J2(s3, a2), reset() {
+        const r4 = "prefix" in (e5 = typeof e5 == "object" && e5 || {}) ? String(e5.prefix) : "", i2 = typeof e5.media == "object" && e5.media || {}, o4 = typeof e5.root == "object" ? e5.root || null : globalThis.document || null, l5 = typeof e5.theme == "object" && e5.theme || {}, s4 = { prefix: r4, media: i2, theme: l5, themeMap: typeof e5.themeMap == "object" && e5.themeMap || { ...n }, utils: typeof e5.utils == "object" && e5.utils || {} }, a2 = E(o4), c3 = { css: M2(s4, a2), globalCss: D(s4, a2), keyframes: V2(s4, a2), createTheme: J2(s4, a2), reset() {
           a2.reset(), c3.theme.toString();
-        }, theme: {}, sheet: a2, config: s3, prefix: r4, getCssText: a2.toString, toString: a2.toString };
-        return String(c3.theme = c3.createTheme(l4)), c3;
+        }, theme: {}, sheet: a2, config: s4, prefix: r4, getCssText: a2.toString, toString: a2.toString };
+        return String(c3.theme = c3.createTheme(l5)), c3;
       });
       return t4 || r3.reset(), r3;
     })(e3);
@@ -22947,8 +22947,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       const r3 = M2(e4, t4);
       return (...e5) => {
         const t5 = r3(...e5), n3 = t5[l2].type, i2 = import_react2.default.forwardRef((e6, r4) => {
-          const i3 = e6 && e6.as || n3, { props: o4, deferredInjector: l4 } = t5(e6);
-          return delete o4.as, o4.ref = r4, l4 ? import_react2.default.createElement(import_react2.default.Fragment, null, import_react2.default.createElement(i3, o4), import_react2.default.createElement(l4, null)) : import_react2.default.createElement(i3, o4);
+          const i3 = e6 && e6.as || n3, { props: o4, deferredInjector: l5 } = t5(e6);
+          return delete o4.as, o4.ref = r4, l5 ? import_react2.default.createElement(import_react2.default.Fragment, null, import_react2.default.createElement(i3, o4), import_react2.default.createElement(l5, null)) : import_react2.default.createElement(i3, o4);
         });
         return i2.className = t5.className, i2.displayName = `Styled.${n3.displayName || n3.name || n3}`, i2.selector = t5.selector, i2.toString = () => t5.selector, i2[l2] = t5[l2], i2;
       };
@@ -23120,13 +23120,13 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
 
   // node_modules/@radix-ui/react-slot/dist/index.module.js
   var Slot = /* @__PURE__ */ t2.forwardRef((e3, o4) => {
-    const { children: a2, ...s3 } = e3;
-    return t2.Children.toArray(a2).some(l3) ? /* @__PURE__ */ t2.createElement(t2.Fragment, null, t2.Children.map(a2, (e4) => l3(e4) ? /* @__PURE__ */ t2.createElement(n2, _extends({}, s3, { ref: o4 }), e4.props.children) : e4)) : /* @__PURE__ */ t2.createElement(n2, _extends({}, s3, { ref: o4 }), a2);
+    const { children: a2, ...s4 } = e3;
+    return t2.Children.toArray(a2).some(l3) ? /* @__PURE__ */ t2.createElement(t2.Fragment, null, t2.Children.map(a2, (e4) => l3(e4) ? /* @__PURE__ */ t2.createElement(n2, _extends({}, s4, { ref: o4 }), e4.props.children) : e4)) : /* @__PURE__ */ t2.createElement(n2, _extends({}, s4, { ref: o4 }), a2);
   });
   Slot.displayName = "Slot";
   var n2 = /* @__PURE__ */ t2.forwardRef((r3, n3) => {
-    const { children: l4, ...a2 } = r3;
-    return t2.isValidElement(l4) ? /* @__PURE__ */ t2.cloneElement(l4, { ...o3(a2, l4.props), ref: composeRefs(n3, l4.ref) }) : t2.Children.count(l4) > 1 ? t2.Children.only(null) : null;
+    const { children: l5, ...a2 } = r3;
+    return t2.isValidElement(l5) ? /* @__PURE__ */ t2.cloneElement(l5, { ...o3(a2, l5.props), ref: composeRefs(n3, l5.ref) }) : t2.Children.count(l5) > 1 ? t2.Children.only(null) : null;
   });
   n2.displayName = "SlotClone";
   var Slottable = ({ children: e3 }) => /* @__PURE__ */ t2.createElement(t2.Fragment, null, e3);
@@ -23136,28 +23136,28 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   function o3(e3, t3) {
     const r3 = { ...t3 };
     for (const n3 in t3) {
-      const l4 = e3[n3], o4 = t3[n3];
+      const l5 = e3[n3], o4 = t3[n3];
       /^on[A-Z]/.test(n3) ? r3[n3] = (...e4) => {
-        o4 == null || o4(...e4), l4 == null || l4(...e4);
-      } : n3 === "style" ? r3[n3] = { ...l4, ...o4 } : n3 === "className" && (r3[n3] = [l4, o4].filter(Boolean).join(" "));
+        o4 == null || o4(...e4), l5 == null || l5(...e4);
+      } : n3 === "style" ? r3[n3] = { ...l5, ...o4 } : n3 === "className" && (r3[n3] = [l5, o4].filter(Boolean).join(" "));
     }
     return { ...e3, ...r3 };
   }
 
   // node_modules/@radix-ui/react-primitive/dist/index.module.js
   var r2 = __toESM(require_react());
-  var Primitive = ["a", "button", "div", "h2", "h3", "img", "li", "nav", "ol", "p", "span", "svg", "ul"].reduce((o4, i2) => ({ ...o4, [i2]: /* @__PURE__ */ r2.forwardRef((o5, m3) => {
-    const { asChild: a2, ...s3 } = o5, n3 = a2 ? Slot : i2;
+  var Primitive = ["a", "button", "div", "h2", "h3", "img", "li", "nav", "ol", "p", "span", "svg", "ul"].reduce((o4, i2) => ({ ...o4, [i2]: /* @__PURE__ */ r2.forwardRef((o5, m4) => {
+    const { asChild: a2, ...s4 } = o5, n3 = a2 ? Slot : i2;
     return r2.useEffect(() => {
       window[Symbol.for("radix-ui")] = true;
-    }, []), /* @__PURE__ */ r2.createElement(n3, _extends({}, s3, { ref: m3 }));
+    }, []), /* @__PURE__ */ r2.createElement(n3, _extends({}, s4, { ref: m4 }));
   }) }), {});
 
   // node_modules/@radix-ui/react-aspect-ratio/dist/index.module.js
   var e2 = __toESM(require_react());
   var AspectRatio = /* @__PURE__ */ e2.forwardRef((r3, i2) => {
-    const { ratio: a2 = 1, style: p3, ...s3 } = r3;
-    return e2.createElement("div", { style: { position: "relative", width: "100%", paddingBottom: 100 / a2 + "%" }, "data-radix-aspect-ratio-wrapper": "" }, /* @__PURE__ */ e2.createElement(Primitive.div, _extends({}, s3, { ref: i2, style: { ...p3, position: "absolute", top: 0, right: 0, bottom: 0, left: 0 } })));
+    const { ratio: a2 = 1, style: p4, ...s4 } = r3;
+    return e2.createElement("div", { style: { position: "relative", width: "100%", paddingBottom: 100 / a2 + "%" }, "data-radix-aspect-ratio-wrapper": "" }, /* @__PURE__ */ e2.createElement(Primitive.div, _extends({}, s4, { ref: i2, style: { ...p4, position: "absolute", top: 0, right: 0, bottom: 0, left: 0 } })));
   });
   var Root = AspectRatio;
 
@@ -23714,7 +23714,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   var Items_default = Items;
 
   // src/components/Header/Header.tsx
-  var import_react12 = __toESM(require_react());
+  var import_react27 = __toESM(require_react());
 
   // src/components/Header/Header.styled.ts
   var HeaderStyled = styled("div", {
@@ -23722,41 +23722,108 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     flexDirection: "column",
     paddingBottom: "$4",
     margin: "0",
-    color: "$primary"
-  });
-  var Title2 = styled("span", {
-    fontSize: "$5",
-    fontWeight: "400",
-    fontFamily: "$display",
-    a: {
+    color: "$primary",
+    ".bloom-header-homepage": {
       color: "$accent",
       textDecoration: "none"
+    },
+    ".bloom-header-label": {
+      fontSize: "$5",
+      fontWeight: "400",
+      fontFamily: "$display"
+    },
+    ".bloom-header-summary": {
+      fontSize: "$3",
+      marginTop: "$2"
     }
   });
-  var Description2 = styled("span", {
-    fontSize: "$3",
-    marginTop: "$2"
-  });
+
+  // node_modules/@samvera/nectar-iiif/dist/index.esm.js
+  var import_react12 = __toESM(require_react());
+  var import_react14 = __toESM(require_react());
+  var import_react16 = __toESM(require_react());
+  var import_react18 = __toESM(require_react());
+  var import_react19 = __toESM(require_react());
+  var import_react20 = __toESM(require_react());
+  var import_react22 = __toESM(require_react());
+  var import_react23 = __toESM(require_react());
+  var import_react25 = __toESM(require_react());
+  var R2 = Object.defineProperty;
+  var I2 = Object.getOwnPropertySymbols;
+  var M3 = Object.prototype.hasOwnProperty;
+  var A3 = Object.prototype.propertyIsEnumerable;
+  var x3 = (t3, e3, r3) => e3 in t3 ? R2(t3, e3, { enumerable: true, configurable: true, writable: true, value: r3 }) : t3[e3] = r3;
+  var m3 = (t3, e3) => {
+    for (var r3 in e3 || (e3 = {}))
+      M3.call(e3, r3) && x3(t3, r3, e3[r3]);
+    if (I2)
+      for (var r3 of I2(e3))
+        A3.call(e3, r3) && x3(t3, r3, e3[r3]);
+    return t3;
+  };
+  var l4 = (t3, e3 = "none") => {
+    var a2;
+    if (!t3)
+      return null;
+    if (typeof t3 == "string")
+      return [t3];
+    if (!t3[e3]) {
+      let i2 = Object.getOwnPropertyNames(t3);
+      if (i2.length > 0)
+        return (a2 = t3[i2[0]]) == null ? void 0 : a2.join(", ");
+    }
+    return !t3[e3] || !Array.isArray(t3[e3]) ? null : t3[e3].join(", ");
+  };
+  var C3 = re2("div", {});
+  var E2 = re2("span", {});
+  var $3 = ({ as: t3 = "div", children: e3, homepage: r3, lang: a2 = "none" }) => {
+    let i2 = "span";
+    return t3 !== "div" && (i2 = "li"), import_react12.default.createElement(C3, { as: t3, "data-testid": "nectar-homepage" }, r3.map((o4) => {
+      let n3 = l4(o4.label, a2);
+      return import_react12.default.createElement(E2, { as: i2, key: o4.id }, import_react12.default.createElement("a", { href: o4.id, "aria-label": n3 }, e3 || n3));
+    }));
+  };
+  var W3 = $3;
+  var H3 = re2("span", {});
+  var T2 = (t3) => {
+    let { as: e3, label: r3 } = t3, a2 = t3;
+    return import_react14.default.createElement(H3, m3({ as: e3 }, a2), l4(r3, a2.lang));
+  };
+  var s3 = T2;
+  var O3 = re2("dl", {});
+  var D2 = re2("dl", {});
+  var U3 = (t3) => {
+    let { as: e3, summary: r3 } = t3;
+    return import_react22.default.createElement(s3, m3({ as: e3, label: r3 }, t3));
+  };
+  var X3 = U3;
+  var v3 = re2("img", { width: "100%", height: "100%", transition: "all 1s cubic-bezier(0.16, 1, 0.3, 1)", opacity: 0, ["&.loaded"]: { opacity: 1 } });
+  var ot2 = re2("div", {});
 
   // src/components/Header/Header.tsx
   var Header = ({ label, summary, homepage = null }) => {
-    let url = "";
-    if (homepage && homepage.length > 0)
-      url = homepage[0].id;
-    const description = useGetLabel(summary);
-    return /* @__PURE__ */ import_react12.default.createElement(HeaderStyled, null, /* @__PURE__ */ import_react12.default.createElement(Title2, null, /* @__PURE__ */ import_react12.default.createElement("a", {
-      href: url
-    }, useGetLabel(label))), description && /* @__PURE__ */ import_react12.default.createElement(Description2, null, description));
+    return /* @__PURE__ */ import_react27.default.createElement(HeaderStyled, null, /* @__PURE__ */ import_react27.default.createElement(W3, {
+      homepage,
+      className: "bloom-header-homepage"
+    }, /* @__PURE__ */ import_react27.default.createElement(s3, {
+      label,
+      as: "span",
+      className: "bloom-header-label"
+    })), summary && /* @__PURE__ */ import_react27.default.createElement(X3, {
+      summary,
+      as: "span",
+      className: "bloom-header-summary"
+    }));
   };
   var Header_default = Header;
 
   // src/index.tsx
-  var App = (props) => /* @__PURE__ */ import_react13.default.createElement(CollectionProvider, null, /* @__PURE__ */ import_react13.default.createElement(Bloom, __spreadValues({}, props)));
+  var App = (props) => /* @__PURE__ */ import_react28.default.createElement(CollectionProvider, null, /* @__PURE__ */ import_react28.default.createElement(Bloom, __spreadValues({}, props)));
   var Bloom = ({ collectionId }) => {
     const store = useCollectionState();
     const { vault } = store;
-    const [collection, setCollection] = (0, import_react13.useState)();
-    (0, import_react13.useEffect)(() => {
+    const [collection, setCollection] = (0, import_react28.useState)();
+    (0, import_react28.useEffect)(() => {
       vault.loadCollection(collectionId).then((data) => setCollection(data)).catch((error) => {
         console.error(`Collection failed to load: ${error}`);
       }).finally(() => {
@@ -23764,17 +23831,17 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }, []);
     if (!collection || !collection.items) {
       console.log(`The IIIF Collection ${collectionId} failed to load.`);
-      return /* @__PURE__ */ import_react13.default.createElement(import_react13.default.Fragment, null);
+      return /* @__PURE__ */ import_react28.default.createElement(import_react28.default.Fragment, null);
     }
     if (collection.items.length === 0) {
       console.log(`The IIIF collection ${collectionId} does not contain items.`);
-      return /* @__PURE__ */ import_react13.default.createElement(import_react13.default.Fragment, null);
+      return /* @__PURE__ */ import_react28.default.createElement(import_react28.default.Fragment, null);
     }
-    return /* @__PURE__ */ import_react13.default.createElement(StyledBloom, null, /* @__PURE__ */ import_react13.default.createElement(Header_default, {
+    return /* @__PURE__ */ import_react28.default.createElement(StyledBloom, null, /* @__PURE__ */ import_react28.default.createElement(Header_default, {
       label: collection.label,
       summary: collection.summary,
       homepage: collection.homepage
-    }), /* @__PURE__ */ import_react13.default.createElement(Items_default, {
+    }), /* @__PURE__ */ import_react28.default.createElement(Items_default, {
       items: collection.items
     }));
   };
@@ -23782,7 +23849,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   var src_default = App;
 
   // src/dev/DynamicUrl.tsx
-  var import_react15 = __toESM(require_react());
+  var import_react30 = __toESM(require_react());
 
   // src/dev/DynamicUrl.styled.tsx
   var DynamicUrlStyled = re2("section", {
@@ -23892,34 +23959,34 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
 
   // src/dev/DynamicUrl.tsx
   var DynamicUrl = ({ url, setUrl }) => {
-    const inputRef = (0, import_react15.useRef)(null);
+    const inputRef = (0, import_react30.useRef)(null);
     const handleSubmit = (e3) => {
       var _a;
       e3.preventDefault();
       const target = e3.target;
       setUrl((_a = target.url) == null ? void 0 : _a.value);
     };
-    (0, import_react15.useEffect)(() => {
+    (0, import_react30.useEffect)(() => {
       if (inputRef.current)
         inputRef.current.value = url;
     }, [url]);
-    return /* @__PURE__ */ import_react15.default.createElement(DynamicUrlStyled, null, /* @__PURE__ */ import_react15.default.createElement(ManualForm, {
+    return /* @__PURE__ */ import_react30.default.createElement(DynamicUrlStyled, null, /* @__PURE__ */ import_react30.default.createElement(ManualForm, {
       onSubmit: handleSubmit
-    }, /* @__PURE__ */ import_react15.default.createElement("label", {
+    }, /* @__PURE__ */ import_react30.default.createElement("label", {
       htmlFor: "manual-collection"
-    }, "View a IIIF Collection"), /* @__PURE__ */ import_react15.default.createElement("div", null, /* @__PURE__ */ import_react15.default.createElement("input", {
+    }, "View a IIIF Collection"), /* @__PURE__ */ import_react30.default.createElement("div", null, /* @__PURE__ */ import_react30.default.createElement("input", {
       type: "text",
       name: "url",
       id: "manual-collection",
       placeholder: "IIIF Collection",
       ref: inputRef
-    }), /* @__PURE__ */ import_react15.default.createElement("button", {
+    }), /* @__PURE__ */ import_react30.default.createElement("button", {
       type: "submit"
-    }, "View"))), collections.length > 0 && /* @__PURE__ */ import_react15.default.createElement(Curated, null, collections.map((obj) => /* @__PURE__ */ import_react15.default.createElement(ButtonForm, {
+    }, "View"))), collections.length > 0 && /* @__PURE__ */ import_react30.default.createElement(Curated, null, collections.map((obj) => /* @__PURE__ */ import_react30.default.createElement(ButtonForm, {
       key: obj.label,
       onSubmit: handleSubmit,
       "data-active": url === obj.url ? true : false
-    }, /* @__PURE__ */ import_react15.default.createElement("button", {
+    }, /* @__PURE__ */ import_react30.default.createElement("button", {
       name: "url",
       value: obj.url
     }, obj.label)))));
@@ -23929,16 +23996,16 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   // src/dev.tsx
   var Wrapper = () => {
     const defaultUrl = collections[0].url;
-    const [url, setUrl] = import_react16.default.useState(defaultUrl);
-    return /* @__PURE__ */ import_react16.default.createElement(import_react16.default.Fragment, null, /* @__PURE__ */ import_react16.default.createElement(src_default, {
+    const [url, setUrl] = import_react31.default.useState(defaultUrl);
+    return /* @__PURE__ */ import_react31.default.createElement(import_react31.default.Fragment, null, /* @__PURE__ */ import_react31.default.createElement(src_default, {
       collectionId: url,
       key: url
-    }), /* @__PURE__ */ import_react16.default.createElement(DynamicUrl_default, {
+    }), /* @__PURE__ */ import_react31.default.createElement(DynamicUrl_default, {
       url,
       setUrl
     }));
   };
-  import_react_dom.default.render(/* @__PURE__ */ import_react16.default.createElement(Wrapper, null), document.getElementById("root"));
+  import_react_dom.default.render(/* @__PURE__ */ import_react31.default.createElement(Wrapper, null), document.getElementById("root"));
 })();
 /*
 object-assign
