@@ -20600,9 +20600,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   // node_modules/@iiif/parser/dist/esm/index.mjs
   var k = { id: "https://iiif-parser/annotation-page", type: "AnnotationPage", behavior: [], motivation: null, label: null, thumbnail: [], summary: null, requiredStatement: null, metadata: [], rights: null, provider: [], items: [], seeAlso: [], homepage: [], logo: [], rendering: [], service: [] };
   var N = { id: "https://iiif-parser/empty-canvas", type: "Canvas", label: null, behavior: [], motivation: null, thumbnail: [], posterCanvas: null, accompanyingCanvas: null, placeholderCanvas: null, summary: null, requiredStatement: null, metadata: [], rights: null, navDate: null, provider: [], items: [], annotations: [], seeAlso: [], homepage: [], logo: [], partOf: [], rendering: [], service: [], duration: 0, height: 0, width: 0 };
-  var j = { id: "https://iiif-parser/empty-collection", type: "Collection", label: null, viewingDirection: "left-to-right", behavior: [], motivation: null, thumbnail: [], posterCanvas: null, accompanyingCanvas: null, placeholderCanvas: null, summary: null, requiredStatement: null, metadata: [], rights: null, navDate: null, provider: [], items: [], annotations: [], seeAlso: [], homepage: [], logo: [], partOf: [], rendering: [], service: [], services: [] };
-  var G = { id: "https://iiif-parser/empty-manifest", type: "Manifest", annotations: [], behavior: [], homepage: [], items: [], label: null, logo: [], metadata: [], motivation: null, navDate: null, provider: [], partOf: [], posterCanvas: null, accompanyingCanvas: null, placeholderCanvas: null, rendering: [], requiredStatement: null, rights: null, seeAlso: [], service: [], services: [], start: null, structures: [], summary: null, thumbnail: [], viewingDirection: "left-to-right" };
-  var $ = { id: "https://iiif-parser/empty-canvas", type: "Range", label: null, behavior: [], motivation: null, thumbnail: [], posterCanvas: null, accompanyingCanvas: null, placeholderCanvas: null, summary: null, requiredStatement: null, metadata: [], rights: null, navDate: null, provider: [], items: [], annotations: [], seeAlso: [], homepage: [], logo: [], partOf: [], rendering: [], service: [], start: null, supplementary: null, viewingDirection: "left-to-right" };
+  var $ = { id: "https://iiif-parser/empty-collection", type: "Collection", label: null, viewingDirection: "left-to-right", behavior: [], motivation: null, thumbnail: [], posterCanvas: null, accompanyingCanvas: null, placeholderCanvas: null, summary: null, requiredStatement: null, metadata: [], rights: null, navDate: null, provider: [], items: [], annotations: [], seeAlso: [], homepage: [], logo: [], partOf: [], rendering: [], service: [], services: [] };
+  var j = { id: "https://iiif-parser/empty-manifest", type: "Manifest", annotations: [], behavior: [], homepage: [], items: [], label: null, logo: [], metadata: [], motivation: null, navDate: null, provider: [], partOf: [], posterCanvas: null, accompanyingCanvas: null, placeholderCanvas: null, rendering: [], requiredStatement: null, rights: null, seeAlso: [], service: [], services: [], start: null, structures: [], summary: null, thumbnail: [], viewingDirection: "left-to-right" };
+  var G = { id: "https://iiif-parser/empty-canvas", type: "Range", label: null, behavior: [], motivation: null, thumbnail: [], posterCanvas: null, accompanyingCanvas: null, placeholderCanvas: null, summary: null, requiredStatement: null, metadata: [], rights: null, navDate: null, provider: [], items: [], annotations: [], seeAlso: [], homepage: [], logo: [], partOf: [], rendering: [], service: [], start: null, supplementary: null, viewingDirection: "left-to-right" };
   var q = { id: "https://iiif-parser/empty-agent", type: "Agent", label: {}, logo: [], seeAlso: [], homepage: [] };
   var M = ["Collection", "Manifest", "Canvas", "AnnotationPage", "AnnotationCollection", "Annotation", "ContentResource", "Range", "Service", "Selector", "Agent"];
   function U(t3) {
@@ -20691,9 +20691,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       return this.traverseType(this.traverseDescriptive(this.traverseLinking(e3)), this.traversals.agent);
     }
     traverseType(e3, i2) {
-      return i2.reduce((n3, a2) => {
-        const r3 = a2(n3);
-        return typeof r3 == "undefined" && !this.options.allowUndefinedReturn ? n3 : r3;
+      return i2.reduce((n3, r3) => {
+        const a2 = r3(n3);
+        return typeof a2 == "undefined" && !this.options.allowUndefinedReturn ? n3 : a2;
       }, e3);
     }
     traverseService(e3) {
@@ -20851,19 +20851,19 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       return e3.profile ? this.traverseService(e3) : e3;
     }
     traverseImageResource(e3) {
-      const i2 = Array.isArray(e3), n3 = Array.isArray(e3) ? e3 : [e3], a2 = [];
-      for (const r3 of n3)
-        typeof r3 == "string" ? a2.push(this.traverseContentResource({ "@id": r3, "@type": "dctypes:Image" })) : a2.push(this.traverseContentResource(r3));
-      return !i2 && !this.options.convertPropsToArray ? a2[0] : a2;
+      const i2 = Array.isArray(e3), n3 = Array.isArray(e3) ? e3 : [e3], r3 = [];
+      for (const a2 of n3)
+        typeof a2 == "string" ? r3.push(this.traverseContentResource({ "@id": a2, "@type": "dctypes:Image" })) : r3.push(this.traverseContentResource(a2));
+      return !i2 && !this.options.convertPropsToArray ? r3[0] : r3;
     }
     traverseDescriptive(e3) {
       return e3.thumbnail && (e3.thumbnail = this.traverseImageResource(e3.thumbnail)), e3.logo && (e3.logo = this.traverseImageResource(e3.logo)), e3;
     }
     traverseOneOrMoreServices(e3) {
-      const i2 = Array.isArray(e3), n3 = Array.isArray(e3) ? e3 : [e3], a2 = [];
-      for (const r3 of n3)
-        a2.push(this.traverseService(r3));
-      return !i2 && !this.options.convertPropsToArray ? a2[0] : a2;
+      const i2 = Array.isArray(e3), n3 = Array.isArray(e3) ? e3 : [e3], r3 = [];
+      for (const a2 of n3)
+        r3.push(this.traverseService(a2));
+      return !i2 && !this.options.convertPropsToArray ? r3[0] : r3;
     }
     traverseLinking(e3) {
       return e3.related && (e3.related = this.traverseOneOrManyType(e3.related, this.traversals.contentResource)), e3.rendering && (e3.rendering = this.traverseOneOrManyType(e3.rendering, this.traversals.contentResource)), e3.service && (e3.service = this.traverseOneOrMoreServices(e3.service)), e3.seeAlso && (e3.seeAlso = this.traverseOneOrManyType(e3.seeAlso, this.traversals.contentResource)), e3.within && (typeof e3.within == "string" || (e3.within = this.traverseOneOrManyType(e3.within, this.traversals.contentResource))), e3.startCanvas && (typeof e3.startCanvas == "string" ? e3.startCanvas = this.traverseType({ "@id": e3.startCanvas, "@type": "sc:Canvas" }, this.traversals.canvas) : e3.startCanvas && this.traverseType(e3.startCanvas, this.traversals.canvas)), e3.contentLayer && (typeof e3.contentLayer == "string" ? e3.contentLayer = this.traverseLayer({ "@id": e3.contentLayer, "@type": "sc:Layer" }) : e3.contentLayer = this.traverseLayer(e3.contentLayer)), e3;
@@ -20877,9 +20877,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       return e3.map((n3) => this.traverseType(n3, i2));
     }
     traverseType(e3, i2) {
-      return i2.reduce((n3, a2) => {
-        const r3 = a2(n3);
-        return typeof r3 == "undefined" && !this.options.allowUndefinedReturn ? n3 : r3;
+      return i2.reduce((n3, r3) => {
+        const a2 = r3(n3);
+        return typeof a2 == "undefined" && !this.options.allowUndefinedReturn ? n3 : a2;
       }, e3);
     }
   };
@@ -20887,8 +20887,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   var W = "http://library.stanford.edu/iiif/image-api/compliance.html#level1";
   var z = "http://library.stanford.edu/iiif/image-api/compliance.html#level2";
   var be = "http://library.stanford.edu/iiif/image-api/conformance.html#level0";
-  var H = "http://library.stanford.edu/iiif/image-api/conformance.html#level1";
-  var B = "http://library.stanford.edu/iiif/image-api/conformance.html#level2";
+  var B = "http://library.stanford.edu/iiif/image-api/conformance.html#level1";
+  var H = "http://library.stanford.edu/iiif/image-api/conformance.html#level2";
   var Re = "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level0";
   var K = "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level1";
   var Q = "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2";
@@ -20913,24 +20913,24 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   var Se = "http://iiif.io/api/image/2/level0";
   var le = "http://iiif.io/api/image/2/level1";
   var ve = "http://iiif.io/api/image/2/level2";
-  var Oe = [le, ve, W, z, H, B, K, Q, X, Y, Z, J, ee, te, ie, ne, re, ae, se, oe];
-  var Pe = [Se, le, ve, _e, W, z, be, H, B, Re, K, Q, we, X, Y, Ee, Le, Z, J, ee, te, Te, Me, ie, ne, re, ae, xe, se, oe];
+  var Oe = [le, ve, W, z, B, H, K, Q, X, Y, Z, J, ee, te, ie, ne, re, ae, se, oe];
+  var Pe = [Se, le, ve, _e, W, z, be, B, H, Re, K, Q, we, X, Y, Ee, Le, Z, J, ee, te, Te, Me, ie, ne, re, ae, xe, se, oe];
   var S = { attributionLabel: "Attribution", lang: "none", providerId: "http://example.org/provider", providerName: "Unknown" };
   function u(t3, e3 = "none") {
     if (!t3)
       return {};
     const i2 = Array.isArray(t3) ? t3 : [t3], n3 = {};
-    for (const a2 of i2) {
-      if (typeof a2 == "string") {
-        n3[e3] = n3[e3] ? n3[e3] : [], n3[e3].push(a2 || "");
+    for (const r3 of i2) {
+      if (typeof r3 == "string") {
+        n3[e3] = n3[e3] ? n3[e3] : [], n3[e3].push(r3 || "");
         continue;
       }
-      if (!a2["@language"]) {
-        n3[e3] = n3[e3] ? n3[e3] : [], n3[e3].push(a2["@value"] || "");
+      if (!r3["@language"]) {
+        n3[e3] = n3[e3] ? n3[e3] : [], n3[e3].push(r3["@value"] || "");
         continue;
       }
-      const r3 = a2["@language"];
-      n3[r3] = n3[r3] ? n3[r3] : [], n3[r3].push(a2["@value"] || "");
+      const a2 = r3["@language"];
+      n3[a2] = n3[a2] ? n3[a2] : [], n3[a2].push(r3["@value"] || "");
     }
     return n3;
   }
@@ -20996,20 +20996,20 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         return t3.slice(e3.length + 1);
     return t3;
   }
-  var je = ["Collection", "Manifest", "Annotation", "AnnotationPage", "Range", "Service"];
+  var $e = ["Collection", "Manifest", "Annotation", "AnnotationPage", "Range", "Service"];
   function O(t3) {
     const e3 = t3["@id"] || t3.id;
     let i2 = t3["@type"] || t3.type;
-    const n3 = t3.profile || void 0, a2 = t3["@context"] || void 0;
+    const n3 = t3.profile || void 0, r3 = t3["@context"] || void 0;
     if (n3) {
-      const r3 = De(n3);
-      if (r3)
-        return r3;
+      const a2 = De(n3);
+      if (a2)
+        return a2;
     }
-    if (a2) {
-      const r3 = Fe(a2);
-      if (r3)
-        return r3;
+    if (r3) {
+      const a2 = Fe(r3);
+      if (a2)
+        return a2;
     }
     if (i2) {
       if (Array.isArray(i2)) {
@@ -21019,9 +21019,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
           return "TextualBody";
         i2 = i2[0];
       }
-      for (const r3 of ["sc", "oa", "dcterms", "dctypes", "iiif"])
-        if (i2.startsWith(`${r3}:`)) {
-          i2 = i2.slice(r3.length + 1);
+      for (const a2 of ["sc", "oa", "dcterms", "dctypes", "iiif"])
+        if (i2.startsWith(`${a2}:`)) {
+          i2 = i2.slice(a2.length + 1);
           break;
         }
       switch (i2) {
@@ -21033,7 +21033,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
           return "TextualBody";
       }
     }
-    if (i2 && je.indexOf(i2) !== -1)
+    if (i2 && $e.indexOf(i2) !== -1)
       return i2;
     if (t3.format) {
       if (t3.format.startsWith("image/"))
@@ -21045,23 +21045,23 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }
     return e3 && (e3.endsWith(".jpg") || e3.endsWith(".png") || e3.endsWith(".jpeg")) ? "Image" : i2 || "unknown";
   }
-  var Ge = /http(s)?:\/\/(creativecommons.org|rightsstatements.org)[^"'\\<\n]+/gm;
-  function $e(t3) {
-    const e3 = t3.match(Ge);
+  var je = /http(s)?:\/\/(creativecommons.org|rightsstatements.org)[^"'\\<\n]+/gm;
+  function Ge(t3) {
+    const e3 = t3.match(je);
     return e3 ? e3[0] : t3;
   }
   function qe(t3, e3 = "Rights/License", i2 = "none") {
     let n3 = null;
-    const a2 = [], r3 = Array.isArray(t3) ? t3 : [t3];
-    for (const I2 of r3) {
-      const o4 = I2 ? $e(I2) : void 0;
+    const r3 = [], a2 = Array.isArray(t3) ? t3 : [t3];
+    for (const I2 of a2) {
+      const o4 = I2 ? Ge(I2) : void 0;
       if (o4 && (o4.indexOf("creativecommons.org") !== -1 || o4.indexOf("rightsstatements.org") !== -1)) {
         o4.startsWith("https://") ? n3 = `http://${o4.slice(8)}` : n3 = o4;
         continue;
       }
-      o4 && a2.push({ label: { [i2]: [e3] }, value: { [i2]: [o4] } });
+      o4 && r3.push({ label: { [i2]: [e3] }, value: { [i2]: [o4] } });
     }
-    return [n3, a2];
+    return [n3, r3];
   }
   var Ue = ["http://iiif.io/api/presentation/2/context.json", "http://iiif.io/api/image/2/context.json", "http://iiif.io/api/image/1/context.json", "http://library.stanford.edu/iiif/image-api/1.1/context.json", "http://iiif.io/api/search/1/context.json", "http://iiif.io/api/search/0/context.json", "http://iiif.io/api/auth/1/context.json", "http://iiif.io/api/auth/0/context.json", "http://iiif.io/api/annex/openannotation/context.json"];
   function Ve(t3) {
@@ -21114,13 +21114,13 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     const e3 = t3.related ? Array.isArray(t3.related) ? t3.related : [t3.related] : [], i2 = t3.contentLayer;
     return { provider: t3.logo || e3.length ? [{ id: S.providerId, type: "Agent", homepage: e3.length ? [e3[0]] : void 0, logo: t3.logo ? Array.isArray(t3.logo) ? t3.logo : [t3.logo] : void 0, label: u(S.providerName) }] : void 0, partOf: ze(t3), rendering: t3.rendering, seeAlso: t3.seeAlso, start: t3.startCanvas, service: t3.service ? ke(t3.service) : void 0, supplementary: i2 ? [i2] : void 0 };
   }
-  function He(t3) {
+  function Be(t3) {
     return v({ ...p(t3), ...l(t3), ...h(t3), items: t3.members });
   }
-  function Be(t3) {
+  function He(t3) {
     const e3 = [], i2 = [];
-    for (const a2 of t3.sequences || [])
-      a2.canvases.length && e3.push(...a2.canvases), a2.behavior && i2.push(...a2.behavior);
+    for (const r3 of t3.sequences || [])
+      r3.canvases.length && e3.push(...r3.canvases), r3.behavior && i2.push(...r3.behavior);
     const n3 = p(t3);
     return i2.length && (n3.behavior ? n3.behavior.push(...i2) : n3.behavior = i2), v({ ...n3, ...l(t3), ...h(t3), items: e3, structures: t3.structures });
   }
@@ -21148,13 +21148,13 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     return v({ ...p(t3), ...l(t3), ...h(t3), items: t3.members });
   }
   function tt(t3) {
-    const { "@id": e3, "@type": i2, "@context": n3, profile: a2, ...r3 } = t3;
-    return e3 && (r3.id = e3), r3.type = O(t3), r3.type === "unknown" && (r3.type = "Service"), a2 && (r3.profile = pe(a2)), v({ ...r3, ...l(r3) });
+    const { "@id": e3, "@type": i2, "@context": n3, profile: r3, ...a2 } = t3;
+    return e3 && (a2.id = e3), a2.type = O(t3), a2.type === "unknown" && (a2.type = "Service"), r3 && (a2.profile = pe(r3)), v({ ...a2, ...l(a2) });
   }
   function it(t3) {
     return v({ ...p(t3), ...l(t3), ...h(t3) });
   }
-  var nt = new x({ collection: [He], manifest: [Be], canvas: [Ke], annotationList: [Qe], sequence: [Xe], annotation: [Ye], contentResource: [Ze], choice: [Je], range: [et], service: [tt], layer: [it] });
+  var nt = new x({ collection: [Be], manifest: [He], canvas: [Ke], annotationList: [Qe], sequence: [Xe], annotation: [Ye], contentResource: [Ze], choice: [Je], range: [et], service: [tt], layer: [it] });
   function rt(t3) {
     return t3 && t3["@context"] && (t3["@context"] === "http://iiif.io/api/presentation/2/context.json" || t3["@context"].indexOf("http://iiif.io/api/presentation/2/context.json") !== -1 || t3["@context"] === "http://www.shared-canvas.org/ns/context.json") || t3["@context"] === "http://iiif.io/api/image/2/context.json" ? nt.traverseUnknown(t3) : t3;
   }
@@ -21171,18 +21171,18 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   function st(t3) {
     return (e3, i2) => {
       const n3 = t3[e3] ? t3[e3] : {};
-      return (a2) => {
-        const r3 = ue(a2, i2 || e3);
-        return r3 && r3.id && e3 ? (n3[r3.id] = n3[r3.id] ? Object.assign({}, n3[r3.id], r3) : Object.assign({}, r3), { id: r3.id, type: e3 === "ContentResource" ? e3 : r3.type }) : r3;
+      return (r3) => {
+        const a2 = ue(r3, i2 || e3);
+        return a2 && a2.id && e3 ? (n3[a2.id] = n3[a2.id] ? Object.assign({}, n3[a2.id], a2) : Object.assign({}, a2), { id: a2.id, type: e3 === "ContentResource" ? e3 : a2.type }) : a2;
       };
     };
   }
   function ot(t3) {
     return (e3, i2) => (n3) => {
-      const { id: a2, type: r3 } = ue(n3, i2 || e3);
-      if (typeof a2 == "undefined")
+      const { id: r3, type: a2 } = ue(n3, i2 || e3);
+      if (typeof r3 == "undefined")
         throw new Error("Found invalid entity without an ID.");
-      return e3 === "ContentResource" ? t3[a2] = e3 : t3[a2] = r3, n3;
+      return e3 === "ContentResource" ? t3[r3] = e3 : t3[r3] = a2, n3;
     };
   }
   function lt(t3) {
@@ -21190,11 +21190,11 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     let i2 = 5381, n3 = e3.length;
     for (; n3; )
       i2 = i2 * 33 ^ e3.charCodeAt(--n3);
-    const r3 = (i2 >>> 0).toString(16);
-    return r3.length % 2 ? "0" + r3 : r3;
+    const a2 = (i2 >>> 0).toString(16);
+    return a2.length % 2 ? "0" + a2 : a2;
   }
   function P(t3) {
-    return (e3) => typeof e3 == "string" ? { id: e3, type: t3 } : e3.id ? e3.type ? e3 : { type: t3, ...e3 } : { id: lt(e3), type: t3, ...e3 };
+    return (e3) => typeof e3 == "string" ? { id: e3, type: t3 } : e3.id ? e3.type ? e3 : { type: t3, ...e3 } : { id: `vault://${lt(e3)}`, type: t3, ...e3 };
   }
   function _(t3) {
     return (e3) => ({ ...t3, ...e3 });
@@ -21206,7 +21206,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     return t3.body && (t3.body = b(t3.body)), t3.seeAlso && (t3.seeAlso = b(t3.seeAlso)), t3.body && (t3.body = b(t3.body)), t3.audience && (t3.audience = b(t3.audience)), t3.accessibility && (t3.accessibility = b(t3.accessibility)), t3.motivation && (t3.motivation = b(t3.motivation)), t3;
   }
   function pt(t3) {
-    const e3 = rt(t3), i2 = fe(), n3 = {}, a2 = st(i2), r3 = ot(n3), o4 = new L({ collection: [_(j), r3("Collection"), a2("Collection")], manifest: [_(G), r3("Manifest"), a2("Manifest")], canvas: [_(N), r3("Canvas"), a2("Canvas")], annotationPage: [P("AnnotationPage"), _(k), r3("AnnotationPage"), a2("AnnotationPage")], annotation: [P("Annotation"), vt, r3("Annotation"), a2("Annotation")], contentResource: [P("ContentResource"), r3("ContentResource"), a2("ContentResource")], range: [_($), r3("Range", "Canvas"), a2("Range", "Canvas")], agent: [_(q), r3("Agent"), a2("Agent")] }).traverseUnknown(e3);
+    const e3 = rt(t3), i2 = fe(), n3 = {}, r3 = st(i2), a2 = ot(n3), o4 = new L({ collection: [_($), a2("Collection"), r3("Collection")], manifest: [_(j), a2("Manifest"), r3("Manifest")], canvas: [_(N), a2("Canvas"), r3("Canvas")], annotationPage: [P("AnnotationPage"), _(k), a2("AnnotationPage"), r3("AnnotationPage")], annotation: [P("Annotation"), vt, a2("Annotation"), r3("Annotation")], contentResource: [P("ContentResource"), a2("ContentResource"), r3("ContentResource")], range: [_(G), a2("Range", "Canvas"), r3("Range", "Canvas")], agent: [_(q), a2("Agent"), r3("Agent")] }).traverseUnknown(e3);
     return { entities: i2, resource: o4, mapping: n3 };
   }
   var c = "__$UNSET$__";
@@ -21230,14 +21230,14 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       throw new Error("Unknown entity");
     if (!i2[e3.type])
       throw new Error(`Serializer not found for ${e3.type}`);
-    function n3(a2) {
-      const r3 = i2[a2.type];
-      if (!r3)
+    function n3(r3) {
+      const a2 = i2[r3.type];
+      if (!a2)
         return c;
-      const I2 = ht(t3, a2.id) || (a2.id && a2.type ? a2 : null);
+      const I2 = ht(t3, r3.id) || (r3.id && r3.type ? r3 : null);
       if (!I2)
         return c;
-      const o4 = r3(I2, t3, { isTopLevel: e3.id === a2.id });
+      const o4 = a2(I2, t3, { isTopLevel: e3.id === r3.id });
       let R2 = o4.next();
       for (; !R2.done; ) {
         const E2 = R2.value;
@@ -21325,13 +21325,13 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     const e3 = [], i2 = [];
     if (t3.items)
       for (const n3 of t3.items) {
-        const a2 = yield n3;
-        e3.push({ "@id": n3.id, "@type": n3.type, label: a2 ? a2.label : void 0, within: t3.id }), n3.type === "Canvas" && i2.push(n3.id);
+        const r3 = yield n3;
+        e3.push({ "@id": n3.id, "@type": n3.type, label: r3 ? r3.label : void 0, within: t3.id }), n3.type === "Canvas" && i2.push(n3.id);
       }
     return [...m(t3, "sc:Range"), ...yield* g(t3), ...yield* w(t3), ["canvases", i2.length === e3.length ? i2 : void 0], ["members", i2.length !== e3.length ? e3 : void 0]];
   } };
   function y(t3) {
-    return [["id", t3.id], ["type", t3.type], ["format", t3.format], ["profile", t3.profile], ["height", t3.height], ["width", t3.width], ["duration", t3.duration || void 0], ["viewingDirection", t3.viewingDirection !== "left-to-right" ? t3.viewingDirection : void 0], ["behavior", t3.behavior && t3.behavior.length ? t3.behavior : void 0], ["timeMode", t3.timeMode], ["motivation", t3.motivation]];
+    return [["id", t3.id?.startsWith("vault://") ? void 0 : t3.id], ["type", t3.type], ["format", t3.format], ["profile", t3.profile], ["height", t3.height], ["width", t3.width], ["duration", t3.duration || void 0], ["viewingDirection", t3.viewingDirection !== "left-to-right" ? t3.viewingDirection : void 0], ["behavior", t3.behavior && t3.behavior.length ? t3.behavior : void 0], ["timeMode", t3.timeMode], ["motivation", Array.isArray(t3.motivation) ? t3.motivation[0] : t3.motivation]];
   }
   function s(t3) {
     if (!(!t3 || t3.length === 0))
@@ -21339,8 +21339,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   }
   function ge(t3) {
     if (t3 && t3.type && t3.type === "ImageService2") {
-      const { id: e3, type: i2, profile: n3, ...a2 } = t3;
-      return { "@id": e3, "@type": i2, profile: n3.startsWith("http") ? n3 : `http://iiif.io/api/image/2/${n3}.json`, ...a2 };
+      const { id: e3, type: i2, profile: n3, ...r3 } = t3;
+      return { "@id": e3, "@type": i2, profile: n3.startsWith("http") ? n3 : `http://iiif.io/api/image/2/${n3}.json`, ...r3 };
     }
     return t3;
   }
@@ -21365,9 +21365,10 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   }, Service: function* (t3) {
     return [[F, ge(t3)]];
   }, Annotation: function* (t3) {
-    return [...Object.entries(t3).map(([i2, n3]) => [i2, Array.isArray(n3) ? s(n3) : n3]).filter(([i2]) => i2 !== "body"), ["body", yield t3.body]];
+    const e3 = Object.entries(t3).map(([n3, r3]) => n3 === "motivation" ? [n3, Array.isArray(r3) ? r3[0] : r3] : [n3, Array.isArray(r3) ? s(r3) : r3]).filter(([n3]) => n3 !== "body"), i2 = yield t3.body;
+    return [...e3, ["body", i2.length === 1 ? i2[0] : i2]];
   }, ContentResource: function* (t3) {
-    return [...y(t3), ...yield* A(t3), ...yield* C(t3), ["annotations", s(yield t3.annotations)]];
+    return [...y(t3), ...yield* A(t3), ...yield* C(t3), ["annotations", s(yield t3.annotations)], ["items", s(yield t3.items)]];
   }, AnnotationCollection: function* (t3) {
     return [["id", t3.id], ["type", "AnnotationCollection"], ["label", t3.label]];
   }, Collection: function* (t3, e3, { isTopLevel: i2 }) {
@@ -23286,21 +23287,24 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   };
 
   // src/hooks/useGetResourceImage.ts
-  var useGetResourceImage = (resource, size = "600,", region = "full") => {
+  var useGetResourceImage = (resource, size = "200,", region = "full") => {
     if (Array.isArray(resource))
       resource = resource[0];
-    let image = resource.id;
-    if (!resource.service)
-      return resource.id;
-    if (!Array.isArray(resource.service)) {
-      if (resource.service["@id"])
-        return `${resource.service["@id"]}/${region}/${size}/0/default.jpg`;
-      if (resource.service.id)
-        return `${resource.service.id}/${region}/${size}/0/default.jpg`;
+    const { id, service } = resource;
+    let imageService;
+    if (!service)
+      return id;
+    if (Array.isArray(resource.service) && resource.service.length > 0)
+      imageService = service[0];
+    if (imageService) {
+      let imageServiceURI;
+      if (imageService["@id"])
+        imageServiceURI = imageService["@id"];
+      if (imageService.id)
+        imageServiceURI = imageService.id;
+      if (imageServiceURI)
+        return `${imageServiceURI}/${region}/${size}/0/default.jpg`;
     }
-    if (resource.service["@id"])
-      return `${resource.service["@id"]}/${region}/${size}/0/default.jpg`;
-    return `${resource.service[0].id}/${region}/${size}/0/default.jpg`;
   };
 
   // src/components/Items/Item.styled.ts
@@ -23867,6 +23871,10 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     {
       url: "https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json",
       label: "Masks of Antonio Fava"
+    },
+    {
+      url: "https://digital.lib.utk.edu/assemble/collection/collections/rftaart",
+      label: "RFTA Artists"
     },
     {
       url: "https://iiif.bodleian.ox.ac.uk/iiif/collection/flora-and-fauna-graeca",
