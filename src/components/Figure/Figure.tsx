@@ -1,47 +1,27 @@
 import React, { useEffect, useRef, useState } from "react";
-import clsx from "clsx";
-import {
-  Description,
-  FigureStyled,
-  Image,
-  Placeholder,
-  Title,
-  Width,
-} from "./Figure.styled";
+import { FigureStyled, Placeholder, Width } from "./Figure.styled";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
-import { ContentResource } from "@iiif/presentation-3";
 import Video from "./Video";
 import { useCollectionDispatch } from "context/collection-context";
+import { Label, Thumbnail } from "@samvera/nectar-iiif";
 
 interface FigureProps {
-  caption: string;
-  description: string;
-  image: string | null;
+  label: any;
+  thumbnail: any;
   index: number;
-  video: ContentResource | null;
   isFocused: boolean;
 }
 
 const Figure: React.FC<FigureProps> = ({
-  caption,
-  description,
-  image,
+  label,
+  thumbnail,
   index,
   isFocused,
-  video,
 }) => {
   const dispatch: any = useCollectionDispatch();
   const [loaded, setLoaded] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
   const widthRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (imgRef.current && imgRef.current.complete) setLoaded(true);
-  }, [loaded]);
-
-  useEffect(() => {
-    setLoaded(false);
-  }, [image]);
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver(
@@ -71,20 +51,11 @@ const Figure: React.FC<FigureProps> = ({
       <AspectRatio.Root ratio={1 / 1}>
         <Width ref={widthRef} />
         <Placeholder>
-          {video && <Video resource={video} isFocused={isFocused} />}
-          {image && (
-            <Image
-              src={image as string}
-              ref={imgRef}
-              onLoad={() => setLoaded(true)}
-              className={clsx("source", loaded && "loaded")}
-            />
-          )}
+          <Thumbnail thumbnail={thumbnail} />
         </Placeholder>
       </AspectRatio.Root>
       <figcaption>
-        <Title>{caption}</Title>
-        {description && <Description>{description}</Description>}
+        <Label label={label} />
       </figcaption>
     </FigureStyled>
   );

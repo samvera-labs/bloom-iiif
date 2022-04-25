@@ -25,14 +25,8 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
   const itemRef = useRef(null);
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [activeCanvas, setActiveCanvas] = useState<number>(0);
-  const [image, setImage] = useState<string | null>();
-  const [video, setVideo] = useState<ContentResource | null>();
+  const [thumbnail, setThumbnail] = useState(item.thumbnail);
   const [manifest, setManifest] = useState<Manifest>();
-
-  useEffect(() => {
-    if (item.thumbnail)
-      setImage(useGetResourceImage(vault.get(item.thumbnail[0].id), "300,"));
-  }, []);
 
   useEffect(() => {
     isFocused
@@ -50,20 +44,12 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
   }, [isFocused]);
 
   useEffect(() => {
-    if (!manifest) return;
-
-    const canvas: CanvasNormalized = vault.get(manifest.items[activeCanvas]);
-    setImage(getCanvasResource(canvas));
-  }, [manifest]);
+    const thumbnail = vault.get(item.thumbnail);
+    setThumbnail(thumbnail);
+  }, []);
 
   const onFocus = () => setIsFocused(true);
   const onBlur = () => setIsFocused(false);
-
-  /**
-   * todo: be more defensive about collections without `homepage`
-   */
-  let url = "";
-  if (item.homepage) url = item.homepage[0].id;
 
   const handleActiveCanvas = (increment: number) => {
     if (!manifest) return;
@@ -71,37 +57,23 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
     const targetCanvas: number = activeCanvas + increment;
     const canvas: CanvasNormalized = vault.get(manifest.items[targetCanvas]);
 
-    setImage(getCanvasResource(canvas));
-    setActiveCanvas(targetCanvas);
+    const resource = getCanvasResource(canvas);
+    const thumbnail = vault.get(resource);
+
+    setThumbnail(thumbnail);
   };
 
-  /**
-   * todo: move this to a hook?
-   * @param canvas
-   * @returns
-   */
   const getCanvasResource = (canvas: CanvasNormalized) => {
-    /**
-     * resolve type bugs with multicanvas bodleian manifests
-     */
+    if (canvas.thumbnail.length !== 0) return canvas.thumbnail;
+
     const annotationPage = vault.get(canvas.items[0]);
     const annotation = vault.get(annotationPage.items[0]);
-    const contentResource = vault.get(annotation.body[0]);
-
-    if (contentResource.type === "Video") setVideo(contentResource);
-
-    if (canvas.thumbnail.length > 0)
-      return useGetResourceImage(vault.get(canvas.thumbnail[0].id), "300,");
-
-    if (contentResource.type === "Image") {
-      return useGetResourceImage(contentResource, "300,");
-    }
+    return annotation.body;
   };
 
   return (
     <ItemStyled>
       <Anchor
-        href={url}
         tabIndex={0}
         onFocus={onFocus}
         onBlur={onBlur}
@@ -110,17 +82,9 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
         ref={itemRef}
       >
         <Figure
-          caption={
-            useGetLabel(item.label as InternationalString) as unknown as string
-          }
-          description={
-            useGetLabel(
-              item.summary as InternationalString
-            ) as unknown as string
-          }
-          image={image as string | null}
+          label={item.label}
+          thumbnail={thumbnail}
           index={index}
-          video={video as ContentResource | null}
           isFocused={isFocused}
         />
         <Preview
