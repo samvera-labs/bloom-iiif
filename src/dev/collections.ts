@@ -1,5 +1,9 @@
 export const collections = [
   {
+    url: "https://digital.lib.utk.edu/assemble/collection/collections/rftaart",
+    label: "RFTA Artists",
+  },
+  {
     url: "https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json",
     label: "Masks of Antonio Fava",
   },
