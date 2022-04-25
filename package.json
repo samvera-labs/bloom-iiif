@@ -52,6 +52,7 @@
     "@iiif/presentation-3": "^1.0.4",
     "@iiif/vault": "^0.9.18",
     "@radix-ui/react-aspect-ratio": "^0.1.4",
+    "@samvera/nectar-iiif": "^0.0.6-alpha.7",
     "@stitches/react": "^1.2.7",
     "clsx": "^1.1.1",
     "react": "^16.13.1  || ^17.0 || ^18.0",

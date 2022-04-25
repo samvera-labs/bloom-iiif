@@ -1,7 +1,7 @@
 import React from "react";
-import { useGetLabel } from "hooks/useGetLabel";
 import { ContentResource, InternationalString } from "@iiif/presentation-3";
-import { Description, HeaderStyled, Title } from "./Header.styled";
+import { HeaderStyled } from "./Header.styled";
+import { Homepage, Label, Summary } from "@samvera/nectar-iiif";
 
 interface HeaderProps {
   label: InternationalString;
@@ -10,21 +10,14 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ label, summary, homepage = null }) => {
-  /**
-   * todo: be more defensive about collections without `homepage`
-   */
-  let url: string = "";
-
-  if (homepage && homepage.length > 0) url = homepage[0].id as string;
-
-  const description = useGetLabel(summary as InternationalString);
-
   return (
     <HeaderStyled>
-      <Title>
-        <a href={url}>{useGetLabel(label)}</a>
-      </Title>
-      {description && <Description>{description}</Description>}
+      <Homepage homepage={homepage} className="bloom-header-homepage">
+        <Label label={label} as="span" className="bloom-header-label" />
+      </Homepage>
+      {summary && (
+        <Summary summary={summary} as="span" className="bloom-header-summary" />
+      )}
     </HeaderStyled>
   );
 };

@@ -1,4 +1,5 @@
 import { styled } from "stitches";
+import { Label, Summary } from "@samvera/nectar-iiif";
 
 const HeaderStyled = styled("div", {
   display: "flex",
@@ -6,22 +7,22 @@ const HeaderStyled = styled("div", {
   paddingBottom: "$4",
   margin: "0",
   color: "$primary",
-});
 
-const Title = styled("span", {
-  fontSize: "$5",
-  fontWeight: "400",
-  fontFamily: "$display",
-
-  a: {
+  ".bloom-header-homepage": {
     color: "$accent",
     textDecoration: "none",
   },
+
+  ".bloom-header-label": {
+    fontSize: "$5",
+    fontWeight: "400",
+    fontFamily: "$display",
+  },
+
+  ".bloom-header-summary": {
+    fontSize: "$3",
+    marginTop: "$2",
+  },
 });
 
-const Description = styled("span", {
-  fontSize: "$3",
-  marginTop: "$2",
-});
-
-export { HeaderStyled, Title, Description };
+export { HeaderStyled };
