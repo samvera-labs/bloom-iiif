@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { Dispatch, useEffect, useRef, useState } from "react";
 import { FigureStyled, Placeholder, Width } from "./Figure.styled";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import Video from "./Video";
@@ -19,8 +19,6 @@ const Figure: React.FC<FigureProps> = ({
   isFocused,
 }) => {
   const dispatch: any = useCollectionDispatch();
-  const [loaded, setLoaded] = useState(false);
-  const imgRef = useRef<HTMLImageElement>(null);
   const widthRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -44,18 +42,18 @@ const Figure: React.FC<FigureProps> = ({
 
     if (index === 0 && widthRef.current)
       resizeObserver.observe(widthRef.current);
-  }, [index, loaded]);
+  }, [index]);
 
   return (
     <FigureStyled isFocused={isFocused}>
       <AspectRatio.Root ratio={1 / 1}>
         <Width ref={widthRef} />
         <Placeholder>
-          <Thumbnail thumbnail={thumbnail} />
+          <Thumbnail thumbnail={thumbnail} css={{ objectFit: "cover" }} />
         </Placeholder>
       </AspectRatio.Root>
       <figcaption>
-        <Label label={label} />
+        <Label label={label} css={{ fontWeight: "700", fontSize: "$2" }} />
       </figcaption>
     </FigureStyled>
   );

@@ -64,7 +64,7 @@ const ControlStyled = styled("button", {
   },
 
   variants: {
-    direction: {
+    value: {
       next: {
         left: "unset",
         right: "0",
