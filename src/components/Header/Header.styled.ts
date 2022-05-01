@@ -7,6 +7,7 @@ const HeaderStyled = styled("div", {
   paddingBottom: "$4",
   margin: "0",
   color: "$primary",
+  lineHeight: "1.4em",
 
   ".bloom-header-homepage": {
     color: "$accent",
@@ -14,13 +15,13 @@ const HeaderStyled = styled("div", {
   },
 
   ".bloom-header-label": {
-    fontSize: "$5",
+    fontSize: "$6",
     fontWeight: "400",
     fontFamily: "$display",
   },
 
   ".bloom-header-summary": {
-    fontSize: "$3",
+    fontSize: "$4",
     marginTop: "$2",
   },
 });

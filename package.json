@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/nulib/bloom-iiif#readme",
   "devDependencies": {
+    "@iiif/presentation-3": "^1.0.5",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@types/jest": "^27.4.1",
@@ -49,10 +50,9 @@
     "typescript": "^4.6.2"
   },
   "dependencies": {
-    "@iiif/presentation-3": "^1.0.4",
     "@iiif/vault": "^0.9.18",
     "@radix-ui/react-aspect-ratio": "^0.1.4",
-    "@samvera/nectar-iiif": "^0.0.6-alpha.7",
+    "@samvera/nectar-iiif": "^0.0.7",
     "@stitches/react": "^1.2.7",
     "clsx": "^1.1.1",
     "react": "^16.13.1  || ^17.0 || ^18.0",

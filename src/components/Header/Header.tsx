@@ -19,14 +19,16 @@ const Header: React.FC<HeaderProps> = ({ label, summary, homepage }) => {
   return (
     <HeaderStyled>
       {hasHomepage ? (
-        <Homepage homepage={homepage}>
-          <Label label={label} as="span" />
+        <Homepage homepage={homepage} className="bloom-header-homepage">
+          <Label label={label} as="span" className="bloom-header-label" />
         </Homepage>
       ) : (
-        <Label label={label} as="span" />
+        <Label label={label} as="span" className="bloom-header-label" />
       )}
 
-      {summary && <Summary summary={summary} as="span" />}
+      {summary && (
+        <Summary summary={summary} as="span" className="bloom-header-summary" />
+      )}
     </HeaderStyled>
   );
 };
