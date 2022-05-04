@@ -1,0 +1,229 @@
+{
+  "@context": ["http://iiif.io/api/presentation/3/context.json"],
+  "id": "http://127.0.0.1:8080/fixtures/iiif/collection/masks.json",
+  "type": "Collection",
+  "label": {
+    "none": ["Masks"]
+  },
+  "summary": {
+    "none": ["Subject"]
+  },
+  "homepage": [
+    {
+      "id": "https://dc.library.northwestern.edu/search?Subject=%5B%22Masks%22%5D",
+      "type": "Text",
+      "label": { "none": ["Masks"] },
+      "format": "text/html"
+    }
+  ],
+  "items": [
+    {
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/public/c4/a8/49/49/-4/cf/4-/4c/8e/-9/db/5-/b1/81/2c/45/81/2b-manifest.json",
+      "type": "Manifest",
+      "label": {
+        "none": [
+          "Spituk Gonkhang Lhakhang. Interior detail: masks above Yama (?) dikapala on buffalo, associated with the south"
+        ]
+      },
+      "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/b84008a2-5176-40fe-b939-facde6896174b/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/b84008a2-5176-40fe-b939-facde6896174",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
+      "homepage": [
+        {
+          "id": "https://dc.library.northwestern.edu/items/c4a84949-4cf4-4c8e-9db5-b1812c45812b",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Spituk Gonkhang Lhakhang. Interior detail: masks above Yama (?) dikapala on buffalo, associated with the south"
+            ]
+          },
+          "format": "text/html"
+        }
+      ]
+    },
+    {
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/public/c5/82/cb/74/-a/c5/1-/41/64/-b/ff/a-/2b/b1/57/d8/ab/76-manifest.json",
+      "type": "Manifest",
+      "label": {
+        "none": ["Korzok Monastery. Cham dance mask"]
+      },
+      "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8b863318-41c3-4d2b-b8e3-9330e2e45e88/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8b863318-41c3-4d2b-b8e3-9330e2e45e88",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
+      "homepage": [
+        {
+          "id": "https://dc.library.northwestern.edu/items/c582cb74-ac51-4164-bffa-2bb157d8ab76",
+          "type": "Text",
+          "label": {
+            "none": ["Korzok Monastery. Cham dance mask"]
+          },
+          "format": "text/html"
+        }
+      ]
+    },
+    {
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/public/df/27/5e/b2/-f/79/4-/47/df/-b/05/f-/f7/39/22/60/66/c4-manifest.json",
+      "type": "Manifest",
+      "label": {
+        "none": ["Masque Kono (Guinee)"]
+      },
+      "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/3b3a09e7-e3f7-40ee-8a06-e8d4868c2bfb/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/3b3a09e7-e3f7-40ee-8a06-e8d4868c2bfb",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
+      "homepage": [
+        {
+          "id": "https://dc.library.northwestern.edu/items/df275eb2-f794-47df-b05f-f739226066c4",
+          "type": "Text",
+          "label": {
+            "none": ["Masque Kono (Guinee)"]
+          },
+          "format": "text/html"
+        }
+      ]
+    },
+    {
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/public/e2/76/e6/50/-c/6f/c-/4e/e4/-8/77/1-/ee/a9/eb/21/cf/bb-manifest.json",
+      "type": "Manifest",
+      "label": {
+        "none": ["Masque Kono (Guinee)"]
+      },
+      "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/ccbabbde-7573-4560-93de-20a6eb041be4/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/ccbabbde-7573-4560-93de-20a6eb041be4",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
+      "homepage": [
+        {
+          "id": "https://dc.library.northwestern.edu/items/e276e650-c6fc-4ee4-8771-eea9eb21cfbb",
+          "type": "Text",
+          "label": {
+            "none": ["Masque Kono (Guinee)"]
+          },
+          "format": "text/html"
+        }
+      ]
+    },
+    {
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/public/e2/3c/a4/82/-2/1a/5-/4a/b1/-b/49/3-/96/e0/10/9f/95/ef-manifest.json",
+      "type": "Manifest",
+      "label": {
+        "none": ["Tribal dancers with masks on"]
+      },
+      "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/d5d37bbf-335e-4843-a938-9fed01131875/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/d5d37bbf-335e-4843-a938-9fed01131875",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
+      "homepage": [
+        {
+          "id": "https://dc.library.northwestern.edu/items/e23ca482-21a5-4ab1-b493-96e0109f95ef",
+          "type": "Text",
+          "label": {
+            "none": ["Tribal dancers with masks on"]
+          },
+          "format": "text/html"
+        }
+      ]
+    },
+    {
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/public/fd/47/8e/f4/-c/dd/e-/4c/26/-a/c4/c-/0e/2d/a6/1f/45/10-manifest.json",
+      "type": "Manifest",
+      "label": {
+        "none": ["WaSukuma Witch Doctor"]
+      },
+      "summary": { "none": ["Image"] },
+      "thumbnail": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/01edc34c-0bc1-4575-a30d-6dadc65c8561/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg",
+          "service": [
+            {
+              "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/01edc34c-0bc1-4575-a30d-6dadc65c8561",
+              "profile": "http://iiif.io/api/image/2/level2.json",
+              "type": "ImageService2"
+            }
+          ],
+          "width": 200,
+          "height": 200
+        }
+      ],
+      "homepage": [
+        {
+          "id": "https://dc.library.northwestern.edu/items/fd478ef4-cdde-4c26-ac4c-0e2da61f4510",
+          "type": "Text",
+          "label": {
+            "none": ["WaSukuma Witch Doctor"]
+          },
+          "format": "text/html"
+        }
+      ]
+    }
+  ]
+}
