@@ -1,6 +1,6 @@
 export const collections = [
   {
-    url: "http://127.0.0.1:8080/fixtures/iiif/collection/athletic-department-footbal-films.json",
+    url: "https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/athletic-department-footbal-films.json",
     label: "Football Films",
   },
   {
