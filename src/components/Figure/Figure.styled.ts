@@ -21,6 +21,7 @@ const FigureStyled = styled("figure", {
     objectFit: "cover",
     zIndex: "1",
     width: "100%",
+    color: "transparent",
   },
 
   figcaption: {

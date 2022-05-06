@@ -4,7 +4,6 @@ import {
   CanvasNormalized,
   Collection,
   ContentResource,
-  InternationalString,
   Manifest,
 } from "@iiif/presentation-3";
 import { useGetLabel } from "hooks/useGetLabel";
@@ -12,6 +11,7 @@ import { useGetResourceImage } from "hooks/useGetResourceImage";
 import { useCollectionState } from "context/collection-context";
 import { Anchor, ItemStyled } from "./Item.styled";
 import Preview from "components/Preview/Preview";
+import { getCanvasResource } from "lib/iiif";
 
 interface ItemProps {
   index: number;
@@ -25,7 +25,7 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
   const itemRef = useRef(null);
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [activeCanvas, setActiveCanvas] = useState<number>(0);
-  const [thumbnail, setThumbnail] = useState(item.thumbnail);
+  const [thumbnail, setThumbnail] = useState<ContentResource>(item.thumbnail);
   const [manifest, setManifest] = useState<Manifest>();
 
   useEffect(() => {
@@ -55,20 +55,14 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
     if (!manifest) return;
 
     const targetCanvas: number = activeCanvas + increment;
+
     const canvas: CanvasNormalized = vault.get(manifest.items[targetCanvas]);
 
-    const resource = getCanvasResource(canvas);
+    const resource = getCanvasResource(canvas, vault);
     const thumbnail = vault.get(resource);
 
     setThumbnail(thumbnail);
-  };
-
-  const getCanvasResource = (canvas: CanvasNormalized) => {
-    if (canvas.thumbnail.length !== 0) return canvas.thumbnail;
-
-    const annotationPage = vault.get(canvas.items[0]);
-    const annotation = vault.get(annotationPage.items[0]);
-    return annotation.body;
+    setActiveCanvas(targetCanvas);
   };
 
   return (

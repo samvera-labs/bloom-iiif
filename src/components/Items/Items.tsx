@@ -36,14 +36,16 @@ const Items: React.FC<ItemsProps> = ({ items }) => {
       {itemHeight && (
         <>
           <ItemsControl
+            increment={-1}
             label="previous"
-            handleControl={() => handleActiveItems(-1)}
+            handleControl={handleActiveItems}
             height={itemHeight}
             disabled={!hasPrev}
           />
           <ItemsControl
+            increment={1}
             label="next"
-            handleControl={() => handleActiveItems(1)}
+            handleControl={handleActiveItems}
             height={itemHeight}
             disabled={!hasNext}
           />

@@ -5,23 +5,29 @@ import { ControlStyled, Gradient, Icon } from "./Control.styled";
 
 interface ItemsControlProps {
   disabled: boolean;
-  label: string;
+  handleControl: (e: React.MouseEvent) => void;
   height: number;
+  increment: number;
+  label: string;
 }
 
 const ItemsControl: React.FC<ItemsControlProps> = ({
   disabled,
-  label,
+  handleControl,
   height,
+  increment,
+  label,
 }) => {
   const width: number = height * 0.382;
 
   return (
     <ControlStyled
       aria-label={label}
-      value={label}
+      direction={label}
+      onClick={() => handleControl(increment)}
       style={{ height: `${height}px`, width: `${width}px` }}
       disabled={disabled}
+      value={label}
     >
       <Gradient style={{ height: `${height}px`, width: `${width}px` }} />
       <Icon>
