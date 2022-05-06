@@ -35,7 +35,7 @@ const FigureStyled = styled("figure", {
     height: "100%",
     color: "transparent",
     opacity: "0",
-    transition: "$all",
+    transition: "$load",
     borderRadius: "3px",
   },
 
