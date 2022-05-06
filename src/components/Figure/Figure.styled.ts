@@ -14,6 +14,15 @@ const FigureStyled = styled("figure", {
   flexShrink: "0",
   borderRadius: "3px",
 
+  img: {
+    position: "relative",
+    display: "flex",
+    flexDirection: "column",
+    objectFit: "cover",
+    zIndex: "1",
+    width: "100%",
+  },
+
   figcaption: {
     display: "flex",
     flexDirection: "column",
@@ -37,21 +46,6 @@ const FigureStyled = styled("figure", {
         },
       },
     },
-  },
-});
-
-const Image = styled("img", {
-  position: "relative",
-  display: "flex",
-  flexDirection: "column",
-  objectFit: "cover",
-  zIndex: "1",
-  width: "100%",
-  opacity: 0,
-  transition: "$load",
-
-  [`&.loaded`]: {
-    opacity: 1,
   },
 });
 

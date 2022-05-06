@@ -1,4 +1,4 @@
-import React, { Dispatch, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { FigureStyled, Placeholder, Width } from "./Figure.styled";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import Video from "./Video";
