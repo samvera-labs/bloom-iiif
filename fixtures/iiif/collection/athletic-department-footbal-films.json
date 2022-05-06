@@ -1,6 +1,6 @@
 {
   "@context": ["http://iiif.io/api/presentation/3/context.json"],
-  "id": "http://127.0.0.1:8080/fixtures/iiif/collection/masks-of-antonio-fava.json",
+  "id": "https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/athletic-department-footbal-films.json",
   "type": "Collection",
   "label": {
     "none": ["Athletic Department Football Films"]
@@ -20,7 +20,7 @@
   ],
   "items": [
     {
-      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/football/wisconsin-1937.json",
+      "id": "https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/manifest/football/wisconsin-1937.json",
       "type": "Manifest",
       "label": { "none": ["Northwestern Football vs. Wisconsin, 1937"] },
       "summary": { "none": ["Video"] },
@@ -50,7 +50,7 @@
       ]
     },
     {
-      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/football/ohio-state-1963.json",
+      "id": "https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/manifest/football/ohio-state-1963.json",
       "type": "Manifest",
       "label": { "none": ["Northwestern Football vs. Ohio State, 1963"] },
       "summary": { "none": ["Video"] },
