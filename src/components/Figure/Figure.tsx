@@ -49,7 +49,11 @@ const Figure: React.FC<FigureProps> = ({
       <AspectRatio.Root ratio={1 / 1}>
         <Width ref={widthRef} />
         <Placeholder>
-          <Thumbnail thumbnail={thumbnail} css={{ objectFit: "cover" }} />
+          <Thumbnail
+            altAsLabel={label}
+            css={{ objectFit: "cover", width: "100%", height: "100%" }}
+            thumbnail={thumbnail}
+          />
         </Placeholder>
       </AspectRatio.Root>
       <figcaption>

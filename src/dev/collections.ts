@@ -1,15 +1,15 @@
 export const collections = [
   {
-    url: "http://127.0.0.1:8080/fixtures/iiif/collection/masks.json",
-    label: "Masks",
+    url: "https://digital.lib.utk.edu/assemble/collection/gsmrc/pcard00",
+    label: "Postcards from the Great Smoky Mountains",
   },
   {
     url: "https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json",
     label: "Masks of Antonio Fava",
   },
   {
-    url: "https://digital.lib.utk.edu/assemble/collection/collections/rftaart",
-    label: "RFTA Artists",
+    url: "https://digital.lib.utk.edu/assemble/collection/collections/rfta",
+    label: "Rising from the Ashes",
   },
   {
     url: "https://iiif.bodleian.ox.ac.uk/iiif/collection/flora-and-fauna-graeca",
