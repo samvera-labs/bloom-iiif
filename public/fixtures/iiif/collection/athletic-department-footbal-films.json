@@ -20,7 +20,7 @@
   ],
   "items": [
     {
-      "id": "https://iiif.stack.rdc.library.northwestern.edu/public/iiif3/4b/19/3e/9d/-5/32/6-/42/08/-a/cf/6-/7d/a7/e3/6b/af/2c-manifest.json",
+      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/football/wisconsin-1937.json",
       "type": "Manifest",
       "label": { "none": ["Northwestern Football vs. Wisconsin, 1937"] },
       "summary": { "none": ["Video"] },
@@ -50,7 +50,7 @@
       ]
     },
     {
-      "id": "https://iiif.stack.rdc.library.northwestern.edu/public/iiif3/cf/4e/33/36/-1/02/5-/4f/0f/-a/63/5-/53/64/fd/ed/f9/d5-manifest.json",
+      "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/football/ohio-state-1963.json",
       "type": "Manifest",
       "label": { "none": ["Northwestern Football vs. Ohio State, 1963"] },
       "summary": { "none": ["Video"] },

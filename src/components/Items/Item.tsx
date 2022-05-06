@@ -6,12 +6,11 @@ import {
   ContentResource,
   Manifest,
 } from "@iiif/presentation-3";
-import { useGetLabel } from "hooks/useGetLabel";
-import { useGetResourceImage } from "hooks/useGetResourceImage";
 import { useCollectionState } from "context/collection-context";
 import { Anchor, ItemStyled } from "./Item.styled";
 import Preview from "components/Preview/Preview";
 import { getCanvasResource } from "lib/iiif";
+import { Homepage } from "@samvera/nectar-iiif";
 
 interface ItemProps {
   index: number;
@@ -22,18 +21,18 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
   const store = useCollectionState();
   const { vault } = store;
 
-  const itemRef = useRef(null);
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [activeCanvas, setActiveCanvas] = useState<number>(0);
   const [thumbnail, setThumbnail] = useState<ContentResource>(item.thumbnail);
   const [manifest, setManifest] = useState<Manifest>();
+  const [id, setId] = useState<string>(item.id);
 
   useEffect(() => {
     isFocused
       ? setTimeout(() => {
           if (!manifest)
             vault
-              .loadCollection(item.id)
+              .loadManifest(item.id)
               .then((data: any) => setManifest(data))
               .catch((error: any) => {
                 console.error(`Manifest failed to load: ${error}`);
@@ -57,25 +56,35 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
     const targetCanvas: number = activeCanvas + increment;
 
     const canvas: CanvasNormalized = vault.get(manifest.items[targetCanvas]);
-
     const resource = getCanvasResource(canvas, vault);
+
     const thumbnail = vault.get(resource);
 
+    setId(canvas.id);
     setThumbnail(thumbnail);
     setActiveCanvas(targetCanvas);
   };
 
+  useEffect(() => {
+    if (manifest) handleActiveCanvas(0);
+  }, [manifest]);
+
+  let href;
+
+  if (item.homepage?.length > 0) href = item.homepage[0].id;
+
   return (
     <ItemStyled>
       <Anchor
+        href={href}
         tabIndex={0}
         onFocus={onFocus}
         onBlur={onBlur}
         onMouseEnter={onFocus}
         onMouseLeave={onBlur}
-        ref={itemRef}
       >
         <Figure
+          key={id}
           label={item.label}
           thumbnail={thumbnail}
           index={index}

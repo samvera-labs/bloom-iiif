@@ -44,6 +44,8 @@ const Figure: React.FC<FigureProps> = ({
       resizeObserver.observe(widthRef.current);
   }, [index]);
 
+  if (thumbnail[0].type === "ContentResource") return <></>;
+
   return (
     <FigureStyled isFocused={isFocused}>
       <AspectRatio.Root ratio={1 / 1}>

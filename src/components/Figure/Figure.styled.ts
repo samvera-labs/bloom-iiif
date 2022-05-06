@@ -15,13 +15,28 @@ const FigureStyled = styled("figure", {
   borderRadius: "3px",
 
   img: {
-    position: "relative",
+    position: "absolute",
+    display: "flex",
+    flexDirection: "column",
+    objectFit: "cover",
+    zIndex: "0",
+    width: "100%",
+    height: "100%",
+    color: "transparent",
+  },
+
+  video: {
+    position: "absolute",
     display: "flex",
     flexDirection: "column",
     objectFit: "cover",
     zIndex: "1",
     width: "100%",
+    height: "100%",
     color: "transparent",
+    opacity: "0",
+    transition: "$all",
+    borderRadius: "3px",
   },
 
   figcaption: {
@@ -29,13 +44,15 @@ const FigureStyled = styled("figure", {
     flexDirection: "column",
     padding: "$2 0",
     color: "$primary",
-    transition: "$all",
+    transition: "$load",
   },
 
   variants: {
     isFocused: {
       true: {
         margin: "-$2 -$2 0",
+
+        video: { opacity: "1" },
 
         figcaption: {
           padding: "$2",
