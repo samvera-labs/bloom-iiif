@@ -1,7 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FigureStyled, Placeholder, Width } from "./Figure.styled";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
-import Video from "./Video";
 import { useCollectionDispatch } from "context/collection-context";
 import { Label, Thumbnail } from "@samvera/nectar-iiif";
 
@@ -19,6 +18,7 @@ const Figure: React.FC<FigureProps> = ({
   isFocused,
 }) => {
   const dispatch: any = useCollectionDispatch();
+  const [loaded, setLoaded] = useState(false);
   const widthRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const Figure: React.FC<FigureProps> = ({
 
     if (index === 0 && widthRef.current)
       resizeObserver.observe(widthRef.current);
-  }, [index]);
+  }, [index, loaded]);
 
   if (thumbnail[0].type === "ContentResource") return <></>;
 
@@ -54,6 +54,7 @@ const Figure: React.FC<FigureProps> = ({
           <Thumbnail
             altAsLabel={label}
             css={{ objectFit: "cover", width: "100%", height: "100%" }}
+            onLoad={() => setLoaded(true)}
             thumbnail={thumbnail}
           />
         </Placeholder>
