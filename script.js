@@ -24584,15 +24584,15 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
                   try {
                     var fragment = context.frag;
                     var level = _this.hls.levels[fragment.level];
-                    var ot2 = _this.getObjectType(fragment);
+                    var ot3 = _this.getObjectType(fragment);
                     var data = {
                       d: fragment.duration * 1e3,
-                      ot: ot2
+                      ot: ot3
                     };
-                    if (ot2 === _types_cmcd__WEBPACK_IMPORTED_MODULE_1__["CMCDObjectType"].VIDEO || ot2 === _types_cmcd__WEBPACK_IMPORTED_MODULE_1__["CMCDObjectType"].AUDIO || ot2 == _types_cmcd__WEBPACK_IMPORTED_MODULE_1__["CMCDObjectType"].MUXED) {
+                    if (ot3 === _types_cmcd__WEBPACK_IMPORTED_MODULE_1__["CMCDObjectType"].VIDEO || ot3 === _types_cmcd__WEBPACK_IMPORTED_MODULE_1__["CMCDObjectType"].AUDIO || ot3 == _types_cmcd__WEBPACK_IMPORTED_MODULE_1__["CMCDObjectType"].MUXED) {
                       data.br = level.bitrate / 1e3;
-                      data.tb = _this.getTopBandwidth(ot2) / 1e3;
-                      data.bl = _this.getBufferLength(ot2);
+                      data.tb = _this.getTopBandwidth(ot3) / 1e3;
+                      data.bl = _this.getBufferLength(ot3);
                     }
                     _this.apply(context, data);
                   } catch (error) {
@@ -39583,8 +39583,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
             function parseTTML(ttml, syncTime) {
               var parser = new DOMParser();
               var xmlDoc = parser.parseFromString(ttml, "text/xml");
-              var tt2 = xmlDoc.getElementsByTagName("tt")[0];
-              if (!tt2) {
+              var tt3 = xmlDoc.getElementsByTagName("tt")[0];
+              if (!tt3) {
                 throw new Error("Invalid ttml");
               }
               var defaultRateInfo = {
@@ -39594,13 +39594,13 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
                 tickRate: 0
               };
               var rateInfo = Object.keys(defaultRateInfo).reduce(function(result, key) {
-                result[key] = tt2.getAttribute("ttp:" + key) || defaultRateInfo[key];
+                result[key] = tt3.getAttribute("ttp:" + key) || defaultRateInfo[key];
                 return result;
               }, {});
-              var trim = tt2.getAttribute("xml:space") !== "preserve";
-              var styleElements = collectionToDictionary(getElementCollection(tt2, "styling", "style"));
-              var regionElements = collectionToDictionary(getElementCollection(tt2, "layout", "region"));
-              var cueElements = getElementCollection(tt2, "body", "[begin]");
+              var trim = tt3.getAttribute("xml:space") !== "preserve";
+              var styleElements = collectionToDictionary(getElementCollection(tt3, "styling", "style"));
+              var regionElements = collectionToDictionary(getElementCollection(tt3, "layout", "region"));
+              var cueElements = getElementCollection(tt3, "body", "[begin]");
               return [].map.call(cueElements, function(cueElement) {
                 var cueText = getTextContent(cueElement, trim);
                 if (!cueText || !cueElement.hasAttribute("begin")) {
@@ -40706,9 +40706,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
                 this.values = /* @__PURE__ */ Object.create(null);
               }
               var _proto2 = Settings2.prototype;
-              _proto2.set = function set(k4, v4) {
-                if (!this.get(k4) && v4 !== "") {
-                  this.values[k4] = v4;
+              _proto2.set = function set(k4, v3) {
+                if (!this.get(k4) && v3 !== "") {
+                  this.values[k4] = v3;
                 }
               };
               _proto2.get = function get(k4, dflt, defaultKey) {
@@ -40720,22 +40720,22 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
               _proto2.has = function has(k4) {
                 return k4 in this.values;
               };
-              _proto2.alt = function alt(k4, v4, a2) {
+              _proto2.alt = function alt(k4, v3, a2) {
                 for (var n4 = 0; n4 < a2.length; ++n4) {
-                  if (v4 === a2[n4]) {
-                    this.set(k4, v4);
+                  if (v3 === a2[n4]) {
+                    this.set(k4, v3);
                     break;
                   }
                 }
               };
-              _proto2.integer = function integer(k4, v4) {
-                if (/^-?\d+$/.test(v4)) {
-                  this.set(k4, parseInt(v4, 10));
+              _proto2.integer = function integer(k4, v3) {
+                if (/^-?\d+$/.test(v3)) {
+                  this.set(k4, parseInt(v3, 10));
                 }
               };
-              _proto2.percent = function percent(k4, v4) {
-                if (/^([\d]{1,3})(\.[\d]*)?%$/.test(v4)) {
-                  var percent2 = parseFloat(v4);
+              _proto2.percent = function percent(k4, v3) {
+                if (/^([\d]{1,3})(\.[\d]*)?%$/.test(v3)) {
+                  var percent2 = parseFloat(v3);
                   if (percent2 >= 0 && percent2 <= 100) {
                     this.set(k4, percent2);
                     return true;
@@ -40774,22 +40774,22 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
               }
               function consumeCueSettings(input2, cue2) {
                 var settings = new Settings();
-                parseOptions(input2, function(k4, v4) {
+                parseOptions(input2, function(k4, v3) {
                   var vals;
                   switch (k4) {
                     case "region":
                       for (var i2 = regionList.length - 1; i2 >= 0; i2--) {
-                        if (regionList[i2].id === v4) {
+                        if (regionList[i2].id === v3) {
                           settings.set(k4, regionList[i2].region);
                           break;
                         }
                       }
                       break;
                     case "vertical":
-                      settings.alt(k4, v4, ["rl", "lr"]);
+                      settings.alt(k4, v3, ["rl", "lr"]);
                       break;
                     case "line":
-                      vals = v4.split(",");
+                      vals = v3.split(",");
                       settings.integer(k4, vals[0]);
                       if (settings.percent(k4, vals[0])) {
                         settings.set("snapToLines", false);
@@ -40800,17 +40800,17 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
                       }
                       break;
                     case "position":
-                      vals = v4.split(",");
+                      vals = v3.split(",");
                       settings.percent(k4, vals[0]);
                       if (vals.length === 2) {
                         settings.alt("positionAlign", vals[1], ["start", center, "end", "line-left", "line-right", "auto"]);
                       }
                       break;
                     case "size":
-                      settings.percent(k4, v4);
+                      settings.percent(k4, v3);
                       break;
                     case "align":
-                      settings.alt(k4, v4, ["start", center, "end", "left", "right"]);
+                      settings.alt(k4, v3, ["start", center, "end", "left", "right"]);
                       break;
                   }
                 }, /:/, /\s/);
@@ -40886,7 +40886,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
                   return line2;
                 }
                 function parseHeader(input) {
-                  parseOptions(input, function(k4, v4) {
+                  parseOptions(input, function(k4, v3) {
                   }, /:/);
                 }
                 try {
@@ -43913,17 +43913,17 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   var import_react12 = __toESM(require_react());
   var import_react13 = __toESM(require_react());
   var import_hls = __toESM(require_hls());
-  var O3 = Object.defineProperty;
+  var q3 = Object.defineProperty;
   var F3 = Object.getOwnPropertySymbols;
-  var z3 = Object.prototype.hasOwnProperty;
-  var V3 = Object.prototype.propertyIsEnumerable;
-  var H3 = (t3, e3, r3) => e3 in t3 ? O3(t3, e3, { enumerable: true, configurable: true, writable: true, value: r3 }) : t3[e3] = r3;
+  var O3 = Object.prototype.hasOwnProperty;
+  var z3 = Object.prototype.propertyIsEnumerable;
+  var H3 = (t3, e3, r3) => e3 in t3 ? q3(t3, e3, { enumerable: true, configurable: true, writable: true, value: r3 }) : t3[e3] = r3;
   var n3 = (t3, e3) => {
     for (var r3 in e3 || (e3 = {}))
-      z3.call(e3, r3) && H3(t3, r3, e3[r3]);
+      O3.call(e3, r3) && H3(t3, r3, e3[r3]);
     if (F3)
       for (var r3 of F3(e3))
-        V3.call(e3, r3) && H3(t3, r3, e3[r3]);
+        z3.call(e3, r3) && H3(t3, r3, e3[r3]);
     return t3;
   };
   var { styled: u3, css: dt2, keyframes: pt2 } = q2({ prefix: "nectar" });
@@ -43940,35 +43940,35 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }
     return !t3[e3] || !Array.isArray(t3[e3]) ? null : t3[e3].join(", ");
   };
-  function W3(t3, e3) {
+  function G3(t3, e3) {
     let r3 = Object.keys(t3).filter((o4) => e3.includes(o4) ? null : o4), a2 = new Object();
     return r3.forEach((o4) => {
       a2[o4] = t3[o4];
     }), a2;
   }
-  var m3 = W3;
-  var D2 = u3("a", {});
-  var _2 = (t3) => {
+  var m3 = G3;
+  var W3 = u3("a", {});
+  var D2 = (t3) => {
     let { children: e3, homepage: r3 } = t3, o4 = m3(t3, ["children", "homepage"]);
     return import_react4.default.createElement(import_react4.default.Fragment, null, r3 && r3.map((s3) => {
       let f3 = d3(s3.label, o4.lang);
-      return import_react4.default.createElement(D2, n3({ "aria-label": e3 ? f3 : void 0, href: s3.id, key: s3.id }, o4), e3 || f3);
+      return import_react4.default.createElement(W3, n3({ "aria-label": e3 ? f3 : void 0, href: s3.id, key: s3.id }, o4), e3 || f3);
     }));
   };
-  var P3 = _2;
-  var B3 = u3("span", {});
-  var J3 = (t3) => {
+  var _2 = D2;
+  var K3 = u3("span", {});
+  var B3 = (t3) => {
     let { as: e3, label: r3 } = t3, o4 = m3(t3, ["as", "label"]);
-    return import_react6.default.createElement(B3, n3({ as: e3 }, o4), d3(r3, o4.lang));
+    return import_react6.default.createElement(K3, n3({ as: e3 }, o4), d3(r3, o4.lang));
   };
-  var c3 = J3;
-  var Y3 = u3("dl", {});
-  var et2 = u3("dl", {});
-  var it2 = (t3) => {
+  var c3 = B3;
+  var X3 = u3("dl", {});
+  var tt2 = u3("dl", {});
+  var at = (t3) => {
     let { as: e3, summary: r3 } = t3, o4 = m3(t3, ["as", "summary"]);
     return import_react11.default.createElement(c3, n3({ as: e3, label: r3 }, o4));
   };
-  var nt2 = it2;
+  var it2 = at;
   var w3 = (t3, e3 = "200,", r3 = "full") => {
     Array.isArray(t3) && (t3 = t3[0]);
     let { id: a2, service: o4 } = t3, s3;
@@ -43981,11 +43981,11 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         return `${s3.id}/${r3}/${e3}/0/default.jpg`;
     }
   };
-  var j3 = u3("img", { objectFit: "cover" });
-  var st2 = (t3) => {
+  var $3 = u3("img", { objectFit: "cover" });
+  var mt = (t3) => {
     let e3 = (0, import_react13.useRef)(null), { contentResource: r3, altAsLabel: a2 } = t3, o4;
     a2 && (o4 = d3(a2));
-    let f3 = m3(t3, ["contentResource", "altAsLabel"]), { type: A3, id: l4, width: M3 = 200, height: T2, format: q3, duration: h3 } = r3;
+    let f3 = m3(t3, ["contentResource", "altAsLabel"]), { type: A3, id: l4, width: M3 = 200, height: T2, format: lt2, duration: v3 } = r3;
     (0, import_react13.useEffect)(() => {
       if (!l4 && !e3.current || ["Image"].includes(A3) || !l4.includes("m3u8"))
         return;
@@ -44013,7 +44013,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       if (!e3.current)
         return;
       let i2 = 0, y3 = 30;
-      if (h3 && (y3 = h3), !l4.split("#t=") && h3 && (i2 = h3 * 0.1), l4.split("#t=").pop()) {
+      if (v3 && (y3 = v3), !l4.split("#t=") && v3 && (i2 = v3 * 0.1), l4.split("#t=").pop()) {
         let C3 = l4.split("#t=").pop();
         C3 && (i2 = parseInt(C3.split(",")[0]));
       }
@@ -44023,19 +44023,19 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     switch (A3) {
       case "Image":
         let i2 = w3(r3);
-        return import_react13.default.createElement(j3, n3({ as: "img", alt: o4, css: { width: M3, height: T2 }, key: l4, src: i2 }, f3));
+        return import_react13.default.createElement($3, n3({ as: "img", alt: o4, css: { width: M3, height: T2 }, key: l4, src: i2 }, f3));
       case "Video":
-        return import_react13.default.createElement(j3, { as: "video", css: { width: M3, height: T2 }, key: l4, ref: e3, loop: true, muted: true, onPause: I2 }, import_react13.default.createElement("source", { src: l4, type: q3 }));
+        return import_react13.default.createElement($3, { as: "video", css: { width: M3, height: T2 }, key: l4, loop: true, muted: true, onPause: I2, ref: e3, src: l4 });
       default:
         return console.warn(`Resource type: ${A3} is not valid or not yet supported in Nectar.`), import_react13.default.createElement(import_react13.default.Fragment, null);
     }
   };
-  var k3 = st2;
-  var ut2 = (t3) => {
+  var j3 = mt;
+  var st2 = (t3) => {
     let { thumbnail: e3 } = t3, a2 = m3(t3, ["thumbnail"]);
-    return import_react12.default.createElement(import_react12.default.Fragment, null, e3 && e3.map((o4) => import_react12.default.createElement(k3, n3({ contentResource: o4 }, a2))));
+    return import_react12.default.createElement(import_react12.default.Fragment, null, e3 && e3.map((o4) => import_react12.default.createElement(j3, n3({ contentResource: o4, key: o4.id }, a2))));
   };
-  var lt2 = ut2;
+  var ut2 = st2;
 
   // src/components/Figure/Figure.tsx
   var Figure = ({
@@ -44070,7 +44070,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       ratio: 1 / 1
     }, /* @__PURE__ */ import_react14.default.createElement(Width, {
       ref: widthRef
-    }), /* @__PURE__ */ import_react14.default.createElement(Placeholder, null, /* @__PURE__ */ import_react14.default.createElement(lt2, {
+    }), /* @__PURE__ */ import_react14.default.createElement(Placeholder, null, /* @__PURE__ */ import_react14.default.createElement(ut2, {
       altAsLabel: label,
       css: { objectFit: "cover", width: "100%", height: "100%" },
       onLoad: () => setLoaded(true),
@@ -44516,7 +44516,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       if (homepage.length > 0)
         setHasHomepage(true);
     }, [homepage]);
-    return /* @__PURE__ */ import_react21.default.createElement(HeaderStyled, null, hasHomepage ? /* @__PURE__ */ import_react21.default.createElement(P3, {
+    return /* @__PURE__ */ import_react21.default.createElement(HeaderStyled, null, hasHomepage ? /* @__PURE__ */ import_react21.default.createElement(_2, {
       homepage,
       className: "bloom-header-homepage"
     }, /* @__PURE__ */ import_react21.default.createElement(c3, {
@@ -44527,7 +44527,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       label,
       as: "span",
       className: "bloom-header-label"
-    }), summary && /* @__PURE__ */ import_react21.default.createElement(nt2, {
+    }), summary && /* @__PURE__ */ import_react21.default.createElement(it2, {
       summary,
       as: "span",
       className: "bloom-header-summary"
