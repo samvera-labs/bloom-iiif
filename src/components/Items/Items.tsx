@@ -3,7 +3,6 @@ import Item from "components/Items/Item";
 import { CollectionItems, Collection, Manifest } from "@iiif/presentation-3";
 import { ItemsStyled } from "./Items.styled";
 import ItemsControl from "./Control";
-import { rem } from "stitches";
 import { useCollectionState } from "context/collection-context";
 
 interface ItemsProps {
@@ -11,8 +10,7 @@ interface ItemsProps {
 }
 
 const Items: React.FC<ItemsProps> = ({ items }) => {
-  const store = useCollectionState();
-  const { itemHeight } = store;
+  const { itemHeight } = useCollectionState();
   const [activeItems, setActiveItems] = useState<number[]>([0, 1, 2, 3, 4]);
   const [hasPrev, setHasPrev] = useState<boolean>(false);
   const [hasNext, setHasNext] = useState<boolean>(false);
