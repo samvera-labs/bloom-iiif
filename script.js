@@ -1059,7 +1059,7 @@
             }
             return dispatcher.useContext(Context, unstable_observedBits);
           }
-          function useState6(initialState) {
+          function useState7(initialState) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState);
           }
@@ -1647,7 +1647,7 @@
           exports.useMemo = useMemo;
           exports.useReducer = useReducer2;
           exports.useRef = useRef6;
-          exports.useState = useState6;
+          exports.useState = useState7;
           exports.version = ReactVersion;
         })();
       }
@@ -44045,6 +44045,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     isFocused
   }) => {
     const dispatch = useCollectionDispatch();
+    const [loaded, setLoaded] = (0, import_react14.useState)(false);
     const widthRef = (0, import_react14.useRef)(null);
     (0, import_react14.useEffect)(() => {
       const resizeObserver = new ResizeObserver((entries) => {
@@ -44060,7 +44061,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       });
       if (index === 0 && widthRef.current)
         resizeObserver.observe(widthRef.current);
-    }, [index]);
+    }, [index, loaded]);
     if (thumbnail[0].type === "ContentResource")
       return /* @__PURE__ */ import_react14.default.createElement(import_react14.default.Fragment, null);
     return /* @__PURE__ */ import_react14.default.createElement(FigureStyled, {
@@ -44072,6 +44073,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }), /* @__PURE__ */ import_react14.default.createElement(Placeholder, null, /* @__PURE__ */ import_react14.default.createElement(lt2, {
       altAsLabel: label,
       css: { objectFit: "cover", width: "100%", height: "100%" },
+      onLoad: () => setLoaded(true),
       thumbnail
     }))), /* @__PURE__ */ import_react14.default.createElement("figcaption", null, /* @__PURE__ */ import_react14.default.createElement(c3, {
       label,
@@ -44427,7 +44429,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     label
   }) => {
     const width = height * 0.382;
-    return /* @__PURE__ */ import_react19.default.createElement(ControlStyled, {
+    return /* @__PURE__ */ import_react19.default.createElement(import_react19.default.Fragment, null, /* @__PURE__ */ import_react19.default.createElement(ControlStyled, {
       "aria-label": label,
       direction: label,
       onClick: () => handleControl(increment),
@@ -44436,14 +44438,13 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       value: label
     }, /* @__PURE__ */ import_react19.default.createElement(Gradient, {
       style: { height: `${height}px`, width: `${width}px` }
-    }), /* @__PURE__ */ import_react19.default.createElement(Icon, null, label === "next" && /* @__PURE__ */ import_react19.default.createElement(NextIcon, null), label === "previous" && /* @__PURE__ */ import_react19.default.createElement(PreviousIcon, null)));
+    }), /* @__PURE__ */ import_react19.default.createElement(Icon, null, label === "next" && /* @__PURE__ */ import_react19.default.createElement(NextIcon, null), label === "previous" && /* @__PURE__ */ import_react19.default.createElement(PreviousIcon, null))));
   };
   var Control_default = ItemsControl;
 
   // src/components/Items/Items.tsx
   var Items = ({ items }) => {
-    const store = useCollectionState();
-    const { itemHeight } = store;
+    const { itemHeight } = useCollectionState();
     const [activeItems, setActiveItems] = (0, import_react20.useState)([0, 1, 2, 3, 4]);
     const [hasPrev, setHasPrev] = (0, import_react20.useState)(false);
     const [hasNext, setHasNext] = (0, import_react20.useState)(false);
