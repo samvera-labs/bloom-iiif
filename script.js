@@ -44162,6 +44162,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   // src/components/Figure/Figure.tsx
   var import_react16 = __toESM(require_react());
 
+  // node_modules/@samvera/nectar-iiif/dist/index.esm.js
+  var import_react3 = __toESM(require_react());
+
   // node_modules/@stitches/react/dist/index.mjs
   var import_react2 = __toESM(require_react(), 1);
   var e = "colors";
@@ -44587,6 +44590,162 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   var K2 = () => X2 || (X2 = q2());
   var re2 = (...e3) => K2().styled(...e3);
 
+  // node_modules/@samvera/nectar-iiif/dist/index.esm.js
+  var import_dompurify = __toESM(require_purify());
+  var import_react5 = __toESM(require_react());
+  var import_react6 = __toESM(require_react());
+  var import_react7 = __toESM(require_react());
+  var import_react8 = __toESM(require_react());
+  var import_react9 = __toESM(require_react());
+  var import_react10 = __toESM(require_react());
+  var import_react11 = __toESM(require_react());
+  var import_react12 = __toESM(require_react());
+  var import_react13 = __toESM(require_react());
+  var import_react14 = __toESM(require_react());
+  var import_hls = __toESM(require_hls());
+  var q3 = Object.defineProperty;
+  var V3 = Object.defineProperties;
+  var D2 = Object.getOwnPropertyDescriptors;
+  var H3 = Object.getOwnPropertySymbols;
+  var P3 = Object.prototype.hasOwnProperty;
+  var K3 = Object.prototype.propertyIsEnumerable;
+  var z3 = (t3, e3, r3) => e3 in t3 ? q3(t3, e3, { enumerable: true, configurable: true, writable: true, value: r3 }) : t3[e3] = r3;
+  var n2 = (t3, e3) => {
+    for (var r3 in e3 || (e3 = {}))
+      P3.call(e3, r3) && z3(t3, r3, e3[r3]);
+    if (H3)
+      for (var r3 of H3(e3))
+        K3.call(e3, r3) && z3(t3, r3, e3[r3]);
+    return t3;
+  };
+  var W3 = (t3, e3) => V3(t3, D2(e3));
+  var { styled: u3, css: kt, keyframes: Et } = q2({ prefix: "nectar" });
+  var l3 = (t3, e3 = "none") => {
+    var a2;
+    if (!t3)
+      return null;
+    if (typeof t3 == "string")
+      return [t3];
+    if (!t3[e3]) {
+      let o4 = Object.getOwnPropertyNames(t3);
+      if (o4.length > 0)
+        return (a2 = t3[o4[0]]) == null ? void 0 : a2.join(", ");
+    }
+    return !t3[e3] || !Array.isArray(t3[e3]) ? null : t3[e3].join(", ");
+  };
+  function w3(t3) {
+    return { __html: J3(t3) };
+  }
+  function s3(t3, e3) {
+    let r3 = Object.keys(t3).filter((o4) => e3.includes(o4) ? null : o4), a2 = new Object();
+    return r3.forEach((o4) => {
+      a2[o4] = t3[o4];
+    }), a2;
+  }
+  function J3(t3) {
+    return import_dompurify.default.sanitize(t3, { ALLOWED_ATTR: ["href", "src", "alt"], ALLOWED_TAGS: ["a", "b", "br", "i", "img", "p", "small", "span", "sub", "sup"], ALLOW_UNKNOWN_PROTOCOLS: false });
+  }
+  var Q2 = u3("a", {});
+  var X3 = (t3) => {
+    let { children: e3, homepage: r3 } = t3, o4 = s3(t3, ["children", "homepage"]);
+    return import_react3.default.createElement(import_react3.default.Fragment, null, r3 && r3.map((i2) => {
+      let c3 = l3(i2.label, o4.lang);
+      return import_react3.default.createElement(Q2, n2({ "aria-label": e3 ? c3 : void 0, href: i2.id, key: i2.id }, o4), e3 || c3);
+    }));
+  };
+  var Y3 = X3;
+  var tt2 = u3("span", {});
+  var et2 = (t3) => {
+    let { as: e3, label: r3 } = t3, o4 = s3(t3, ["as", "label"]);
+    return import_react5.default.createElement(tt2, n2({ as: e3 }, o4), l3(r3, o4.lang));
+  };
+  var I2 = et2;
+  var rt2 = u3("span", {});
+  var ot2 = (t3) => {
+    let { as: e3, markup: r3 } = t3;
+    if (!r3)
+      return import_react9.default.createElement(import_react9.default.Fragment, null);
+    let o4 = s3(t3, ["as", "markup"]), i2 = w3(l3(r3, o4.lang));
+    return import_react9.default.createElement(rt2, W3(n2({ as: e3 }, o4), { dangerouslySetInnerHTML: i2 }));
+  };
+  var S3 = ot2;
+  var st2 = u3("dl", {});
+  var lt2 = u3("dl", {});
+  var pt2 = u3("li", {});
+  var dt2 = u3("ul", {});
+  var St = (t3) => {
+    let { as: e3, summary: r3 } = t3, o4 = s3(t3, ["as", "summary"]);
+    return import_react12.default.createElement(S3, n2({ as: e3, markup: r3 }, o4));
+  };
+  var At = St;
+  var G3 = (t3, e3 = "200,", r3 = "full") => {
+    Array.isArray(t3) && (t3 = t3[0]);
+    let { id: a2, service: o4 } = t3, i2;
+    if (!o4)
+      return a2;
+    if (Array.isArray(t3.service) && t3.service.length > 0 && (i2 = o4[0]), i2) {
+      if (i2["@id"])
+        return `${i2["@id"]}/${r3}/${e3}/0/default.jpg`;
+      if (i2.id)
+        return `${i2.id}/${r3}/${e3}/0/default.jpg`;
+    }
+  };
+  var $3 = u3("img", { objectFit: "cover" });
+  var ht2 = (t3) => {
+    let e3 = (0, import_react14.useRef)(null), { contentResource: r3, altAsLabel: a2 } = t3, o4;
+    a2 && (o4 = l3(a2));
+    let c3 = s3(t3, ["contentResource", "altAsLabel"]), { type: M3, id: f3, width: C3 = 200, height: O3, format: Lt, duration: b3 } = r3;
+    (0, import_react14.useEffect)(() => {
+      if (!f3 && !e3.current || ["Image"].includes(M3) || !f3.includes("m3u8"))
+        return;
+      let m3 = new import_hls.default();
+      return e3.current && (m3.attachMedia(e3.current), m3.on(import_hls.default.Events.MEDIA_ATTACHED, function() {
+        m3.loadSource(f3);
+      })), m3.on(import_hls.default.Events.ERROR, function(d3, y3) {
+        if (y3.fatal)
+          switch (y3.type) {
+            case import_hls.default.ErrorTypes.NETWORK_ERROR:
+              console.error(`fatal ${d3} network error encountered, try to recover`), m3.startLoad();
+              break;
+            case import_hls.default.ErrorTypes.MEDIA_ERROR:
+              console.error(`fatal ${d3} media error encountered, try to recover`), m3.recoverMediaError();
+              break;
+            default:
+              m3.destroy();
+              break;
+          }
+      }), () => {
+        m3 && (m3.detachMedia(), m3.destroy());
+      };
+    }, []), (0, import_react14.useEffect)(() => N3(), []);
+    let N3 = () => {
+      if (!e3.current)
+        return;
+      let m3 = 0, d3 = 30;
+      if (b3 && (d3 = b3), !f3.split("#t=") && b3 && (m3 = b3 * 0.1), f3.split("#t=").pop()) {
+        let F3 = f3.split("#t=").pop();
+        F3 && (m3 = parseInt(F3.split(",")[0]));
+      }
+      let y3 = e3.current;
+      y3.currentTime = m3, y3.play(), setTimeout(() => N3(), d3 * 1e3);
+    };
+    switch (M3) {
+      case "Image":
+        let m3 = G3(r3);
+        return import_react14.default.createElement($3, n2({ as: "img", alt: o4, css: { width: C3, height: O3 }, key: f3, src: m3 }, c3));
+      case "Video":
+        return import_react14.default.createElement($3, { as: "video", css: { width: C3, height: O3 }, disablePictureInPicture: true, key: f3, loop: true, muted: true, onPause: N3, ref: e3, src: f3 });
+      default:
+        return console.warn(`Resource type: ${M3} is not valid or not yet supported in Nectar.`), import_react14.default.createElement(import_react14.default.Fragment, null);
+    }
+  };
+  var j3 = ht2;
+  var Mt = (t3) => {
+    let { thumbnail: e3 } = t3, a2 = s3(t3, ["thumbnail"]);
+    return import_react13.default.createElement(import_react13.default.Fragment, null, e3 && e3.map((o4) => import_react13.default.createElement(j3, n2({ contentResource: o4, key: o4.id }, a2))));
+  };
+  var Nt = Mt;
+
   // src/stitches.tsx
   var gr = (multiplier) => {
     return __pow(1.618, multiplier);
@@ -44665,6 +44824,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     flexGrow: "0",
     flexShrink: "0",
     borderRadius: "3px",
+    transition: "$all",
     img: {
       position: "absolute",
       display: "flex",
@@ -44693,7 +44853,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       flexDirection: "column",
       padding: "$2 0",
       color: "$primary",
-      transition: "$load"
+      transition: "$all"
     },
     variants: {
       isFocused: {
@@ -44722,12 +44882,12 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     boxShadow: "none",
     transition: "$all"
   });
-  var Title = styled("span", {
+  var Title = styled(I2, {
     fontSize: "$3",
     fontWeight: "700"
   });
-  var Description = styled("span", {
-    fontSize: "$1",
+  var Description = styled(At, {
+    fontSize: "$2",
     marginTop: "$1",
     color: "$primary"
   });
@@ -44762,16 +44922,16 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   // node_modules/@radix-ui/react-slot/dist/index.module.js
   var Slot = /* @__PURE__ */ t2.forwardRef((e3, o4) => {
     const { children: a2, ...s4 } = e3;
-    return t2.Children.toArray(a2).some(l3) ? /* @__PURE__ */ t2.createElement(t2.Fragment, null, t2.Children.map(a2, (e4) => l3(e4) ? /* @__PURE__ */ t2.createElement(n2, _extends({}, s4, { ref: o4 }), e4.props.children) : e4)) : /* @__PURE__ */ t2.createElement(n2, _extends({}, s4, { ref: o4 }), a2);
+    return t2.Children.toArray(a2).some(l4) ? /* @__PURE__ */ t2.createElement(t2.Fragment, null, t2.Children.map(a2, (e4) => l4(e4) ? /* @__PURE__ */ t2.createElement(n3, _extends({}, s4, { ref: o4 }), e4.props.children) : e4)) : /* @__PURE__ */ t2.createElement(n3, _extends({}, s4, { ref: o4 }), a2);
   });
   Slot.displayName = "Slot";
-  var n2 = /* @__PURE__ */ t2.forwardRef((r3, n4) => {
+  var n3 = /* @__PURE__ */ t2.forwardRef((r3, n4) => {
     const { children: l5, ...a2 } = r3;
     return t2.isValidElement(l5) ? /* @__PURE__ */ t2.cloneElement(l5, { ...o3(a2, l5.props), ref: composeRefs(n4, l5.ref) }) : t2.Children.count(l5) > 1 ? t2.Children.only(null) : null;
   });
-  n2.displayName = "SlotClone";
+  n3.displayName = "SlotClone";
   var Slottable = ({ children: e3 }) => /* @__PURE__ */ t2.createElement(t2.Fragment, null, e3);
-  function l3(e3) {
+  function l4(e3) {
     return t2.isValidElement(e3) && e3.type === Slottable;
   }
   function o3(e3, t3) {
@@ -44802,169 +44962,13 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   });
   var Root = AspectRatio;
 
-  // node_modules/@samvera/nectar-iiif/dist/index.esm.js
-  var import_react4 = __toESM(require_react());
-  var import_dompurify = __toESM(require_purify());
-  var import_react6 = __toESM(require_react());
-  var import_react7 = __toESM(require_react());
-  var import_react8 = __toESM(require_react());
-  var import_react9 = __toESM(require_react());
-  var import_react10 = __toESM(require_react());
-  var import_react11 = __toESM(require_react());
-  var import_react12 = __toESM(require_react());
-  var import_react13 = __toESM(require_react());
-  var import_react14 = __toESM(require_react());
-  var import_react15 = __toESM(require_react());
-  var import_hls = __toESM(require_hls());
-  var q3 = Object.defineProperty;
-  var V3 = Object.defineProperties;
-  var D2 = Object.getOwnPropertyDescriptors;
-  var H3 = Object.getOwnPropertySymbols;
-  var P3 = Object.prototype.hasOwnProperty;
-  var K3 = Object.prototype.propertyIsEnumerable;
-  var z3 = (t3, e3, r3) => e3 in t3 ? q3(t3, e3, { enumerable: true, configurable: true, writable: true, value: r3 }) : t3[e3] = r3;
-  var n3 = (t3, e3) => {
-    for (var r3 in e3 || (e3 = {}))
-      P3.call(e3, r3) && z3(t3, r3, e3[r3]);
-    if (H3)
-      for (var r3 of H3(e3))
-        K3.call(e3, r3) && z3(t3, r3, e3[r3]);
-    return t3;
-  };
-  var W3 = (t3, e3) => V3(t3, D2(e3));
-  var { styled: u3, css: kt, keyframes: Et } = q2({ prefix: "nectar" });
-  var l4 = (t3, e3 = "none") => {
-    var a2;
-    if (!t3)
-      return null;
-    if (typeof t3 == "string")
-      return [t3];
-    if (!t3[e3]) {
-      let o4 = Object.getOwnPropertyNames(t3);
-      if (o4.length > 0)
-        return (a2 = t3[o4[0]]) == null ? void 0 : a2.join(", ");
-    }
-    return !t3[e3] || !Array.isArray(t3[e3]) ? null : t3[e3].join(", ");
-  };
-  function w3(t3) {
-    return { __html: J3(t3) };
-  }
-  function s3(t3, e3) {
-    let r3 = Object.keys(t3).filter((o4) => e3.includes(o4) ? null : o4), a2 = new Object();
-    return r3.forEach((o4) => {
-      a2[o4] = t3[o4];
-    }), a2;
-  }
-  function J3(t3) {
-    return import_dompurify.default.sanitize(t3, { ALLOWED_ATTR: ["href", "src", "alt"], ALLOWED_TAGS: ["a", "b", "br", "i", "img", "p", "small", "span", "sub", "sup"], ALLOW_UNKNOWN_PROTOCOLS: false });
-  }
-  var Q2 = u3("a", {});
-  var X3 = (t3) => {
-    let { children: e3, homepage: r3 } = t3, o4 = s3(t3, ["children", "homepage"]);
-    return import_react4.default.createElement(import_react4.default.Fragment, null, r3 && r3.map((i2) => {
-      let c3 = l4(i2.label, o4.lang);
-      return import_react4.default.createElement(Q2, n3({ "aria-label": e3 ? c3 : void 0, href: i2.id, key: i2.id }, o4), e3 || c3);
-    }));
-  };
-  var Y3 = X3;
-  var tt2 = u3("span", {});
-  var et2 = (t3) => {
-    let { as: e3, label: r3 } = t3, o4 = s3(t3, ["as", "label"]);
-    return import_react6.default.createElement(tt2, n3({ as: e3 }, o4), l4(r3, o4.lang));
-  };
-  var I2 = et2;
-  var rt2 = u3("span", {});
-  var ot2 = (t3) => {
-    let { as: e3, markup: r3 } = t3;
-    if (!r3)
-      return import_react10.default.createElement(import_react10.default.Fragment, null);
-    let o4 = s3(t3, ["as", "markup"]), i2 = w3(l4(r3, o4.lang));
-    return import_react10.default.createElement(rt2, W3(n3({ as: e3 }, o4), { dangerouslySetInnerHTML: i2 }));
-  };
-  var S3 = ot2;
-  var st2 = u3("dl", {});
-  var lt2 = u3("dl", {});
-  var pt2 = u3("li", {});
-  var dt2 = u3("ul", {});
-  var St = (t3) => {
-    let { as: e3, summary: r3 } = t3, o4 = s3(t3, ["as", "summary"]);
-    return import_react13.default.createElement(S3, n3({ as: e3, markup: r3 }, o4));
-  };
-  var At = St;
-  var G3 = (t3, e3 = "200,", r3 = "full") => {
-    Array.isArray(t3) && (t3 = t3[0]);
-    let { id: a2, service: o4 } = t3, i2;
-    if (!o4)
-      return a2;
-    if (Array.isArray(t3.service) && t3.service.length > 0 && (i2 = o4[0]), i2) {
-      if (i2["@id"])
-        return `${i2["@id"]}/${r3}/${e3}/0/default.jpg`;
-      if (i2.id)
-        return `${i2.id}/${r3}/${e3}/0/default.jpg`;
-    }
-  };
-  var $3 = u3("img", { objectFit: "cover" });
-  var ht2 = (t3) => {
-    let e3 = (0, import_react15.useRef)(null), { contentResource: r3, altAsLabel: a2 } = t3, o4;
-    a2 && (o4 = l4(a2));
-    let c3 = s3(t3, ["contentResource", "altAsLabel"]), { type: M3, id: f3, width: C3 = 200, height: O3, format: Lt, duration: b3 } = r3;
-    (0, import_react15.useEffect)(() => {
-      if (!f3 && !e3.current || ["Image"].includes(M3) || !f3.includes("m3u8"))
-        return;
-      let m3 = new import_hls.default();
-      return e3.current && (m3.attachMedia(e3.current), m3.on(import_hls.default.Events.MEDIA_ATTACHED, function() {
-        m3.loadSource(f3);
-      })), m3.on(import_hls.default.Events.ERROR, function(d3, y3) {
-        if (y3.fatal)
-          switch (y3.type) {
-            case import_hls.default.ErrorTypes.NETWORK_ERROR:
-              console.error(`fatal ${d3} network error encountered, try to recover`), m3.startLoad();
-              break;
-            case import_hls.default.ErrorTypes.MEDIA_ERROR:
-              console.error(`fatal ${d3} media error encountered, try to recover`), m3.recoverMediaError();
-              break;
-            default:
-              m3.destroy();
-              break;
-          }
-      }), () => {
-        m3 && (m3.detachMedia(), m3.destroy());
-      };
-    }, []), (0, import_react15.useEffect)(() => N3(), []);
-    let N3 = () => {
-      if (!e3.current)
-        return;
-      let m3 = 0, d3 = 30;
-      if (b3 && (d3 = b3), !f3.split("#t=") && b3 && (m3 = b3 * 0.1), f3.split("#t=").pop()) {
-        let F3 = f3.split("#t=").pop();
-        F3 && (m3 = parseInt(F3.split(",")[0]));
-      }
-      let y3 = e3.current;
-      y3.currentTime = m3, y3.play(), setTimeout(() => N3(), d3 * 1e3);
-    };
-    switch (M3) {
-      case "Image":
-        let m3 = G3(r3);
-        return import_react15.default.createElement($3, n3({ as: "img", alt: o4, css: { width: C3, height: O3 }, key: f3, src: m3 }, c3));
-      case "Video":
-        return import_react15.default.createElement($3, { as: "video", css: { width: C3, height: O3 }, disablePictureInPicture: true, key: f3, loop: true, muted: true, onPause: N3, ref: e3, src: f3 });
-      default:
-        return console.warn(`Resource type: ${M3} is not valid or not yet supported in Nectar.`), import_react15.default.createElement(import_react15.default.Fragment, null);
-    }
-  };
-  var j3 = ht2;
-  var Mt = (t3) => {
-    let { thumbnail: e3 } = t3, a2 = s3(t3, ["thumbnail"]);
-    return import_react14.default.createElement(import_react14.default.Fragment, null, e3 && e3.map((o4) => import_react14.default.createElement(j3, n3({ contentResource: o4, key: o4.id }, a2))));
-  };
-  var Nt = Mt;
-
   // src/components/Figure/Figure.tsx
   var Figure = ({
-    label,
-    thumbnail,
     index,
-    isFocused
+    isFocused,
+    label,
+    summary,
+    thumbnail
   }) => {
     const dispatch = useCollectionDispatch();
     const [loaded, setLoaded] = (0, import_react16.useState)(false);
@@ -44997,9 +45001,10 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       css: { objectFit: "cover", width: "100%", height: "100%" },
       onLoad: () => setLoaded(true),
       thumbnail
-    }))), /* @__PURE__ */ import_react16.default.createElement("figcaption", null, /* @__PURE__ */ import_react16.default.createElement(I2, {
-      label,
-      css: { fontWeight: "700", fontSize: "$2" }
+    }))), /* @__PURE__ */ import_react16.default.createElement("figcaption", null, /* @__PURE__ */ import_react16.default.createElement(Title, {
+      label
+    }), summary && /* @__PURE__ */ import_react16.default.createElement(Description, {
+      summary
     })));
   };
   var Figure_default = Figure;
@@ -45081,7 +45086,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       }
     }
   });
-  var Label = styled("div", {
+  var Label2 = styled("div", {
     display: "flex",
     justifyContent: "center",
     backgroundColor: "rgba(0,0,0,0.7)",
@@ -45150,7 +45155,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }, /* @__PURE__ */ import_react19.default.createElement(PreviousIcon, null)), /* @__PURE__ */ import_react19.default.createElement("button", {
       onClick: () => handleActiveCanvas(1),
       disabled: !hasNext
-    }, /* @__PURE__ */ import_react19.default.createElement(NextIcon, null))), /* @__PURE__ */ import_react19.default.createElement(Label, {
+    }, /* @__PURE__ */ import_react19.default.createElement(NextIcon, null))), /* @__PURE__ */ import_react19.default.createElement(Label2, {
       onClick: (e3) => e3.preventDefault()
     }, canvasCurrent, " of ", canvasCount))));
   };
@@ -45216,11 +45221,12 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       onMouseEnter: onFocus,
       onMouseLeave: onBlur
     }, /* @__PURE__ */ import_react20.default.createElement(Figure_default, {
+      index,
+      isFocused,
       key: id,
       label: item.label,
-      thumbnail,
-      index,
-      isFocused
+      summary: item.summary,
+      thumbnail
     }), /* @__PURE__ */ import_react20.default.createElement(Preview_default, {
       manifest,
       activeCanvas,
