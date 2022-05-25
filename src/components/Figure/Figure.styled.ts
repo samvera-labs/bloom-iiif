@@ -1,3 +1,4 @@
+import { Label, Summary, Thumbnail } from "@samvera/nectar-iiif";
 import { styled } from "stitches";
 
 const Width = styled("div", {
@@ -13,6 +14,7 @@ const FigureStyled = styled("figure", {
   flexGrow: "0",
   flexShrink: "0",
   borderRadius: "3px",
+  transition: "$all",
 
   img: {
     position: "absolute",
@@ -44,7 +46,7 @@ const FigureStyled = styled("figure", {
     flexDirection: "column",
     padding: "$2 0",
     color: "$primary",
-    transition: "$load",
+    transition: "$all",
   },
 
   variants: {
@@ -79,15 +81,15 @@ const Placeholder = styled("span", {
   transition: "$all",
 });
 
-const Title = styled("span", {
+const Title = styled(Label, {
   fontSize: "$3",
   fontWeight: "700",
 });
 
-const Description = styled("span", {
-  fontSize: "$1",
+const Description = styled(Summary, {
+  fontSize: "$2",
   marginTop: "$1",
   color: "$primary",
 });
 
-export { FigureStyled, Image, Placeholder, Title, Description, Width };
+export { FigureStyled, Placeholder, Title, Description, Width };
