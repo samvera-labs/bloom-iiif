@@ -69,6 +69,4 @@ const Label = styled("div", {
   cursor: "default",
 });
 
-// linear-gradient(90deg, rgba(0,0,0,0.7) 38.2%, rgba(0,0,0,0) 98%)"
-
 export { Controls, Label, Overlay, PreviewStyled };

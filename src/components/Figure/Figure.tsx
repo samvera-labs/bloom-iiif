@@ -1,21 +1,30 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FigureStyled, Placeholder, Width } from "./Figure.styled";
+import {
+  Description,
+  FigureStyled,
+  Placeholder,
+  Title,
+  Width,
+} from "./Figure.styled";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { useCollectionDispatch } from "context/collection-context";
-import { Label, Thumbnail } from "@samvera/nectar-iiif";
+import { Label, Summary, Thumbnail } from "@samvera/nectar-iiif";
+import { InternationalString } from "@iiif/presentation-3";
 
 interface FigureProps {
-  label: any;
+  label: InternationalString;
+  summary?: InternationalString;
   thumbnail: any;
   index: number;
   isFocused: boolean;
 }
 
 const Figure: React.FC<FigureProps> = ({
-  label,
-  thumbnail,
   index,
   isFocused,
+  label,
+  summary,
+  thumbnail,
 }) => {
   const dispatch: any = useCollectionDispatch();
   const [loaded, setLoaded] = useState(false);
@@ -60,7 +69,8 @@ const Figure: React.FC<FigureProps> = ({
         </Placeholder>
       </AspectRatio.Root>
       <figcaption>
-        <Label label={label} css={{ fontWeight: "700", fontSize: "$2" }} />
+        <Title label={label} />
+        {summary && <Description summary={summary} />}
       </figcaption>
     </FigureStyled>
   );

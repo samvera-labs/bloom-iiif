@@ -84,11 +84,12 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
         onMouseLeave={onBlur}
       >
         <Figure
-          key={id}
-          label={item.label}
-          thumbnail={thumbnail}
           index={index}
           isFocused={isFocused}
+          key={id}
+          label={item.label}
+          summary={item.summary}
+          thumbnail={thumbnail}
         />
         <Preview
           manifest={manifest as Manifest}
