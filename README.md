@@ -2,7 +2,7 @@
 
 # Bloom IIIF
 
-**A slider component rendered from a IIIF Collection**
+**UI componentry for IIIF Collections**
 
 #### [Demo](https://samvera-labs.github.io/bloom-iiif)
 
@@ -191,6 +191,7 @@ Bloom IIIF is built with:
 
 - TypeScript
 - [ESBuild](https://esbuild.github.io/)
+- [Nectar IIIF](https://github.com/samvera-labs/nectar-iiif/)
 - [Vault](https://github.com/IIIF-Commons/vault/)
 - [Stitches](https://stitches.dev/)
 
