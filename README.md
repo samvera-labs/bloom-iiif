@@ -4,7 +4,7 @@
 
 **UI componentry for IIIF Collections**
 
-#### [Demo](https://samvera-labs.github.io/bloom-iiif)
+#### [Demo](https://samvera-labs.github.io/bloom-iiif)  |  [Code](https://github.com/samvera-labs/bloom-iiif)
 
 _Bloom is still in alpha development. It is not recommend adding this into production projects yet._
 
