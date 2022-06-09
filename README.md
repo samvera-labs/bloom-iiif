@@ -81,7 +81,7 @@ The [top-level Collection **label** and **summary**](https://github.com/samvera-
 
 #### Link
 
-The [top-level Collection **hompage**](https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L13-L20) represents the `href` attribute wrapping an HTML `<a>` element on the Header **label**
+The [top-level Collection **homepage**](https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L13-L20) represents the `href` attribute wrapping an HTML `<a>` element on the Header **label**
 
 ```json
 "homepage": [
@@ -170,7 +170,7 @@ For each item, the [**thumbnail**](https://github.com/samvera-labs/bloom-iiif/bl
 
 #### Link
 
-The [**hompage**](https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L43-L50) for each item represents the `href` attribute of the HTML `<a>` element wrapping `<figure>`
+The [**homepage**](https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L43-L50) for each item represents the `href` attribute of the HTML `<a>` element wrapping `<figure>`
 
 ```json
 "homepage": [
