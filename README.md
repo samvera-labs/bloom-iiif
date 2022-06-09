@@ -63,7 +63,7 @@ Bloom accepts both Presentation API 2.x and Presentation API 3.0 Collections.
 
 #### Text
 
-The [top-level **label** and **summary**](https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L5-L12) (if existing) data is mapped to a Header sub-component
+The [top-level Collection **label** and **summary**](https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L5-L12) (if existing) data is mapped to a Header sub-component
 
 ```json
 "label": {
@@ -81,7 +81,7 @@ The [top-level **label** and **summary**](https://github.com/samvera-labs/bloom-
 
 #### Link
 
-The [top-level **hompage**](https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L13-L20) represents the `href` attribute wrapping an HTML `<a>` element on the Header **label**
+The [top-level Collection **hompage**](https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L13-L20) represents the `href` attribute wrapping an HTML `<a>` element on the Header **label**
 
 ```json
 "homepage": [
@@ -96,7 +96,7 @@ The [top-level **hompage**](https://github.com/samvera-labs/bloom-iiif/blob/main
 
 ### Items
 
-The [**items** array](https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L21-L292) is mapped to the slider/carousel with each item render as an HTML `<figure>`
+The [**items** array](https://github.com/samvera-labs/bloom-iiif/blob/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json#L21-L292) is mapped to the slider/carousel with each item rendering as an HTML `<figure>`
 
 ```json
 "items": [
