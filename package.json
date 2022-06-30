@@ -30,7 +30,7 @@
   "devDependencies": {
     "@iiif/presentation-3": "^1.0.5",
     "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/react": "^12.1.4",
+    "@testing-library/react": "^13.1.1",
     "@types/jest": "^27.4.1",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
@@ -51,11 +51,10 @@
   },
   "dependencies": {
     "@iiif/vault": "^0.9.18",
-    "@radix-ui/react-aspect-ratio": "^0.1.4",
-    "@samvera/nectar-iiif": "^0.0.13",
+    "@radix-ui/react-aspect-ratio": "^0.1.5-rc.41",
     "@stitches/react": "^1.2.7",
-    "react": "^16.13.1  || ^17.0 || ^18.0",
-    "react-dom": "^16.13.1  || ^17.0 || ^18.0"
+    "react": "^16.13.1  || ^17 || ^18",
+    "react-dom": "^16.13.1  || ^17 || ^18"
   },
   "files": [
     "dist"
