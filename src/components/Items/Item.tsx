@@ -10,6 +10,7 @@ import { useCollectionState } from "context/collection-context";
 import { Anchor, ItemStyled } from "./Item.styled";
 import Preview from "components/Preview/Preview";
 import { getCanvasResource } from "lib/iiif";
+import { Homepage } from "@samvera/nectar-iiif";
 
 interface ItemProps {
   index: number;
@@ -82,8 +83,7 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
         onMouseEnter={onFocus}
         onMouseLeave={onBlur}
       >
-        ok
-        {/* <Figure
+        <Figure
           index={index}
           isFocused={isFocused}
           key={id}
@@ -96,7 +96,7 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
           activeCanvas={activeCanvas}
           handleActiveCanvas={handleActiveCanvas}
           isFocused={isFocused}
-        /> */}
+        />
       </Anchor>
     </ItemStyled>
   );

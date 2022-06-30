@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ContentResource, InternationalString } from "@iiif/presentation-3";
 import { HeaderStyled } from "./Header.styled";
-// import { Homepage, Label, Summary } from "@samvera/nectar-iiif";
+import { Homepage, Label, Summary } from "@samvera/nectar-iiif";
 
 interface HeaderProps {
   label: InternationalString;
@@ -18,8 +18,7 @@ const Header: React.FC<HeaderProps> = ({ label, summary, homepage }) => {
 
   return (
     <HeaderStyled>
-      ..
-      {/* {hasHomepage ? (
+      {hasHomepage ? (
         <Homepage homepage={homepage} className="bloom-header-homepage">
           <Label label={label} as="span" className="bloom-header-label" />
         </Homepage>
@@ -29,7 +28,7 @@ const Header: React.FC<HeaderProps> = ({ label, summary, homepage }) => {
 
       {summary && (
         <Summary summary={summary} as="span" className="bloom-header-summary" />
-      )} */}
+      )}
     </HeaderStyled>
   );
 };
