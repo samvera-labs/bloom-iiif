@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React from "react";
 import { Vault } from "@iiif/vault";
 
 interface CollectionContextStore {
@@ -56,7 +56,7 @@ const CollectionProvider: React.FC<CollectionProviderProps> = ({
   initialState = defaultState,
   children,
 }) => {
-  const [state, dispatch] = useReducer<
+  const [state, dispatch] = React.useReducer<
     React.Reducer<CollectionContextStore, CollectionAction>
   >(collectionReducer, initialState);
 
