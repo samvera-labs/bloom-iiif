@@ -52059,21 +52059,21 @@ and ensure you are accounting for this risk.
       if (!o2)
         return f;
       const l3 = a2(o2, t2, { isTopLevel: e2.id === r2.id });
-      let R3 = l3.next();
-      for (; !R3.done; ) {
-        const E3 = R3.value;
+      let R2 = l3.next();
+      for (; !R2.done; ) {
+        const E2 = R2.value;
         let T3 = f;
-        if (E3)
-          if (Array.isArray(E3)) {
+        if (E2)
+          if (Array.isArray(E2)) {
             const D3 = [];
-            for (const Ae of E3)
+            for (const Ae of E2)
               D3.push(n3(Ae));
             T3 = D3;
           } else
-            T3 = n3(E3);
-        R3 = l3.next(T3);
+            T3 = n3(E2);
+        R2 = l3.next(T3);
       }
-      return R3.value === f ? f : de(R3.value);
+      return R2.value === f ? f : de(R2.value);
     }
     return n3(e2);
   }
@@ -53357,7 +53357,7 @@ and ensure you are accounting for this risk.
       let c3, g3;
       const p4 = (e4) => {
         for (c3 in e4) {
-          const R3 = c3.charCodeAt(0) === 64, z4 = R3 && Array.isArray(e4[c3]) ? e4[c3] : [e4[c3]];
+          const R2 = c3.charCodeAt(0) === 64, z4 = R2 && Array.isArray(e4[c3]) ? e4[c3] : [e4[c3]];
           for (g3 of z4) {
             const e5 = /[A-Z]/.test($4 = c3) ? $4 : $4.replace(/-[^]/g, (e6) => e6[1].toUpperCase()), z5 = typeof g3 == "object" && g3 && g3.toString === B2 && (!n3.utils[e5] || !t3.length);
             if (e5 in n3.utils && !z5) {
@@ -53373,14 +53373,14 @@ and ensure you are accounting for this risk.
                 continue;
               }
             }
-            if (R3 && (b3 = c3.slice(1) in n3.media ? "@media " + n3.media[c3.slice(1)] : c3, c3 = b3.replace(/\(\s*([\w-]+)\s*(=|<|<=|>|>=)\s*([\w-]+)\s*(?:(<|<=|>|>=)\s*([\w-]+)\s*)?\)/g, (e6, t4, r4, n4, i3, o3) => {
+            if (R2 && (b3 = c3.slice(1) in n3.media ? "@media " + n3.media[c3.slice(1)] : c3, c3 = b3.replace(/\(\s*([\w-]+)\s*(=|<|<=|>|>=)\s*([\w-]+)\s*(?:(<|<=|>|>=)\s*([\w-]+)\s*)?\)/g, (e6, t4, r4, n4, i3, o3) => {
               const l4 = h2.test(t4), s5 = 0.0625 * (l4 ? -1 : 1), [a3, c4] = l4 ? [n4, t4] : [t4, n4];
               return "(" + (r4[0] === "=" ? "" : r4[0] === ">" === l4 ? "max-" : "min-") + a3 + ":" + (r4[0] !== "=" && r4.length === 1 ? c4.replace(h2, (e7, t5, n5) => Number(t5) + s5 * (r4 === ">" ? 1 : -1) + n5) : c4) + (i3 ? ") and (" + (i3[0] === ">" ? "min-" : "max-") + a3 + ":" + (i3.length === 1 ? o3.replace(h2, (e7, t5, r5) => Number(t5) + s5 * (i3 === ">" ? -1 : 1) + r5) : o3) : "") + ")";
             })), z5) {
-              const e6 = R3 ? r3.concat(c3) : [...r3], n4 = R3 ? [...t3] : f2(t3, c3.split(y2));
+              const e6 = R2 ? r3.concat(c3) : [...r3], n4 = R2 ? [...t3] : f2(t3, c3.split(y2));
               o2 !== void 0 && i2(x2(...o2)), o2 = void 0, a2(g3, n4, e6);
             } else
-              o2 === void 0 && (o2 = [[], t3, r3]), c3 = R3 || c3.charCodeAt(0) !== 36 ? c3 : `--${S2(n3.prefix)}${c3.slice(1).replace(/\$/g, "-")}`, g3 = z5 ? g3 : typeof g3 == "number" ? g3 && e5 in I2 ? String(g3) + "px" : String(g3) : k2(m2(e5, g3 == null ? "" : g3), n3.prefix, n3.themeMap[e5]), o2[0].push(`${R3 ? `${c3} ` : `${d2(c3)}:`}${g3}`);
+              o2 === void 0 && (o2 = [[], t3, r3]), c3 = R2 || c3.charCodeAt(0) !== 36 ? c3 : `--${S2(n3.prefix)}${c3.slice(1).replace(/\$/g, "-")}`, g3 = z5 ? g3 : typeof g3 == "number" ? g3 && e5 in I2 ? String(g3) + "px" : String(g3) : k2(m2(e5, g3 == null ? "" : g3), n3.prefix, n3.themeMap[e5]), o2[0].push(`${R2 ? `${c3} ` : `${d2(c3)}:`}${g3}`);
           }
         }
         var b3, $4;
@@ -53811,7 +53811,7 @@ and ensure you are accounting for this risk.
     let { as: e2, label: r2 } = t2, o2 = s3(t2, ["as", "label"]);
     return import_react5.default.createElement(tt2, n2({ as: e2 }, o2), u3(r2, o2.lang));
   };
-  var R2 = et2;
+  var L3 = et2;
   var rt2 = l2("span", {});
   var ot2 = (t2) => {
     let { as: e2, markup: r2 } = t2;
@@ -53846,7 +53846,7 @@ and ensure you are accounting for this risk.
   var At = (t2) => {
     let e2 = (0, import_react14.useRef)(null), { contentResource: r2, altAsLabel: a2 } = t2, o2;
     a2 && (o2 = u3(a2));
-    let c3 = s3(t2, ["contentResource", "altAsLabel"]), { type: M3, id: f3, width: C3 = 200, height: F3, format: It, duration: b3 } = r2;
+    let c3 = s3(t2, ["contentResource", "altAsLabel"]), { type: M3, id: f3, width: N3 = 200, height: I3 = 200, format: It, duration: b3 } = r2;
     (0, import_react14.useEffect)(() => {
       if (!f3 && !e2.current || ["Image"].includes(M3) || !f3.includes("m3u8"))
         return;
@@ -53869,8 +53869,8 @@ and ensure you are accounting for this risk.
       }), () => {
         m3 && (m3.detachMedia(), m3.destroy());
       };
-    }, []), (0, import_react14.useEffect)(() => N3(), []);
-    let N3 = () => {
+    }, []), (0, import_react14.useEffect)(() => R2(), []);
+    let R2 = () => {
       if (!e2.current)
         return;
       let m3 = 0, d3 = 30;
@@ -53879,14 +53879,14 @@ and ensure you are accounting for this risk.
         H3 && (m3 = parseInt(H3.split(",")[0]));
       }
       let g3 = e2.current;
-      g3.currentTime = m3, g3.play(), setTimeout(() => N3(), d3 * 1e3);
+      g3.currentTime = m3, g3.play(), setTimeout(() => R2(), d3 * 1e3);
     };
     switch (M3) {
       case "Image":
-        let m3 = q3(r2);
-        return import_react14.default.createElement(O3, n2({ as: "img", alt: o2, css: { width: C3, height: F3 }, key: f3, src: m3 }, c3));
+        let m3 = q3(r2, `${N3},${I3}`);
+        return import_react14.default.createElement(O3, n2({ as: "img", alt: o2, css: { width: N3, height: I3 }, key: f3, src: m3 }, c3));
       case "Video":
-        return import_react14.default.createElement(O3, { as: "video", css: { width: C3, height: F3 }, disablePictureInPicture: true, key: f3, loop: true, muted: true, onPause: N3, ref: e2, src: f3 });
+        return import_react14.default.createElement(O3, { as: "video", css: { width: N3, height: I3 }, disablePictureInPicture: true, key: f3, loop: true, muted: true, onPause: R2, ref: e2, src: f3 });
       default:
         return console.warn(`Resource type: ${M3} is not valid or not yet supported in Nectar.`), import_react14.default.createElement(import_react14.default.Fragment, null);
     }
@@ -54034,7 +54034,7 @@ and ensure you are accounting for this risk.
     boxShadow: "none",
     transition: "$all"
   });
-  var Title = styled(R2, {
+  var Title = styled(L3, {
     fontSize: "$3",
     fontWeight: "700"
   });
@@ -54695,11 +54695,11 @@ and ensure you are accounting for this risk.
     return /* @__PURE__ */ import_react27.default.createElement(HeaderStyled, null, hasHomepage ? /* @__PURE__ */ import_react27.default.createElement(Y3, {
       homepage,
       className: "bloom-header-homepage"
-    }, /* @__PURE__ */ import_react27.default.createElement(R2, {
+    }, /* @__PURE__ */ import_react27.default.createElement(L3, {
       label,
       as: "span",
       className: "bloom-header-label"
-    })) : /* @__PURE__ */ import_react27.default.createElement(R2, {
+    })) : /* @__PURE__ */ import_react27.default.createElement(L3, {
       label,
       as: "span",
       className: "bloom-header-label"
