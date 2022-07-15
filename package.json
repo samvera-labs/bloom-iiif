@@ -52,7 +52,7 @@
   "dependencies": {
     "@iiif/vault": "^0.9.18",
     "@radix-ui/react-aspect-ratio": "^0.1.5-rc.41",
-    "@samvera/nectar-iiif": "^0.0.14",
+    "@samvera/nectar-iiif": "^0.0.15",
     "@stitches/react": "^1.2.8",
     "react": "^16.13.1  || ^17 || ^18",
     "react-dom": "^16.13.1  || ^17 || ^18"
