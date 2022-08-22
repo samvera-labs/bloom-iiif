@@ -1,51 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { CollectionItems, Collection, Manifest } from "@iiif/presentation-3";
 import Item from "./Item";
 import { ItemsStyled } from "./Items.styled";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-import { media } from "../../stitches";
 
 interface ItemsProps {
   items: CollectionItems[];
 }
 
 const Items: React.FC<ItemsProps> = ({ items }) => {
-  const [slidesPerView, setslidesPerView] = useState(5);
-
-  let mediaQuery = new Map();
-  mediaQuery.set("xs", useMediaQuery(media.xs));
-  mediaQuery.set("sm", useMediaQuery(media.sm));
-  mediaQuery.set("md", useMediaQuery(media.md));
-  mediaQuery.set("lg", useMediaQuery(media.lg));
-  mediaQuery.set("xl", useMediaQuery(media.xl));
+  const [slidesPerView, setSlidesPerView] = useState(6);
+  const itemsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (mediaQuery.get("xs")) {
-      setslidesPerView(1);
-      return;
-    }
-    if (mediaQuery.get("sm")) {
-      setslidesPerView(2);
-      return;
-    }
-    if (mediaQuery.get("md")) {
-      setslidesPerView(3);
-      return;
-    }
-    if (mediaQuery.get("lg")) {
-      setslidesPerView(4);
-      return;
-    }
-    if (mediaQuery.get("xl")) {
-      setslidesPerView(5);
-      return;
-    }
-  }, [mediaQuery]);
+    if (itemsRef.current?.clientWidth)
+      setSlidesPerView(Math.ceil(itemsRef.current?.clientWidth / 300));
+  }, [itemsRef.current?.clientWidth]);
 
   return (
-    <ItemsStyled>
+    <ItemsStyled ref={itemsRef}>
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         slidesPerView={slidesPerView}
