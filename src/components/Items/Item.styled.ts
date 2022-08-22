@@ -10,17 +10,6 @@ const ItemStyled = styled("div", {
   position: "relative",
   zIndex: "0",
   borderRadius: "3px",
-
-  [`> ${Anchor}:hover`]: {
-    [`${FigureStyled}`]: {
-      boxShadow: "3px 3px 11px #0003",
-    },
-
-    [`${Placeholder}`]: {
-      borderBottomLeftRadius: "0",
-      borderBottomRightRadius: "0",
-    },
-  },
 });
 
 export { Anchor, ItemStyled };

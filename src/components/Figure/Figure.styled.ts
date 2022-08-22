@@ -52,18 +52,20 @@ const FigureStyled = styled("figure", {
   variants: {
     isFocused: {
       true: {
-        margin: "-$2 -$2 0",
+        // margin: "-$2 -$2 0",
 
-        video: { opacity: "1" },
+        video: {
+          opacity: "1",
+        },
 
         figcaption: {
-          padding: "$2",
+          // padding: "$2",
           color: "$accent",
         },
 
-        [`& ${Width}`]: {
-          width: "calc(100% - ($2 * 2))",
-        },
+        // [`& ${Width}`]: {
+        //   width: "calc(100% - ($2 * 2))",
+        // },
       },
     },
   },
