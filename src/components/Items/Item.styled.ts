@@ -8,7 +8,6 @@ const Anchor = styled("a", {
 
 const ItemStyled = styled("div", {
   position: "relative",
-  width: "calc(100% / 4)",
   zIndex: "0",
   borderRadius: "3px",
 
