@@ -37,7 +37,6 @@
     "chokidar": "^3.5.3",
     "dotenv": "^16.0.0",
     "esbuild": "^0.14.27",
-    "esbuild-css-modules-plugin": "^2.5.2",
     "esbuild-envfile-plugin": "^1.0.2",
     "fs-extra": "^10.0.1",
     "jest": "^27.5.1",
