@@ -4,14 +4,12 @@ import Item from "./Item";
 import { ItemsStyled } from "./Items.styled";
 import { Navigation, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useCollectionState } from "context/collection-context";
 
 interface ItemsProps {
   items: CollectionItems[];
 }
 
 const Items: React.FC<ItemsProps> = ({ items }) => {
-  const { itemHeight } = useCollectionState();
   const [itemCount, setItemCount] = useState(3);
   const itemsRef = useRef<HTMLDivElement>(null);
 
