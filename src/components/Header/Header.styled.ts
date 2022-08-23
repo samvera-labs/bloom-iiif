@@ -11,6 +11,12 @@ const HeaderControls = styled("div", {
   alignItems: "center",
   paddingLeft: "$5",
   paddingRight: "$4",
+
+  "@xs": {
+    width: "100%",
+    justifyContent: "center",
+    padding: "$4 $1 0 0",
+  },
 });
 
 const HeaderStyled = styled("div", {
@@ -22,6 +28,10 @@ const HeaderStyled = styled("div", {
   color: "$primary",
   lineHeight: "1.4em",
   alignItems: "flex-end",
+
+  "@xs": {
+    flexDirection: "column",
+  },
 
   ".bloom-header-homepage": {
     color: "$accent",

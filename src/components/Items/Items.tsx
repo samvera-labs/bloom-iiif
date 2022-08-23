@@ -5,7 +5,6 @@ import { ItemsStyled } from "./Items.styled";
 import { Navigation, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useCollectionState } from "context/collection-context";
-import ItemsControl from "./Control";
 
 interface ItemsProps {
   items: CollectionItems[];
