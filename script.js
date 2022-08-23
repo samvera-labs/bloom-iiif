@@ -463,7 +463,7 @@
             }
             return element;
           };
-          function createElement(type, config, children) {
+          function createElement(type, config, children2) {
             var propName;
             var props = {};
             var key = null;
@@ -493,7 +493,7 @@
             }
             var childrenLength = arguments.length - 2;
             if (childrenLength === 1) {
-              props.children = children;
+              props.children = children2;
             } else if (childrenLength > 1) {
               var childArray = Array(childrenLength);
               for (var i2 = 0; i2 < childrenLength; i2++) {
@@ -531,7 +531,7 @@
             var newElement = ReactElement(oldElement.type, newKey, oldElement.ref, oldElement._self, oldElement._source, oldElement._owner, oldElement.props);
             return newElement;
           }
-          function cloneElement(element, config, children) {
+          function cloneElement(element, config, children2) {
             if (element === null || element === void 0) {
               throw new Error("React.cloneElement(...): The argument must be a React element, but you passed " + element + ".");
             }
@@ -569,7 +569,7 @@
             }
             var childrenLength = arguments.length - 2;
             if (childrenLength === 1) {
-              props.children = children;
+              props.children = children2;
             } else if (childrenLength > 1) {
               var childArray = Array(childrenLength);
               for (var i2 = 0; i2 < childrenLength; i2++) {
@@ -597,25 +597,25 @@
           }
           var didWarnAboutMaps = false;
           var userProvidedKeyEscapeRegex = /\/+/g;
-          function escapeUserProvidedKey(text) {
-            return text.replace(userProvidedKeyEscapeRegex, "$&/");
+          function escapeUserProvidedKey(text2) {
+            return text2.replace(userProvidedKeyEscapeRegex, "$&/");
           }
-          function getElementKey(element, index) {
+          function getElementKey(element, index2) {
             if (typeof element === "object" && element !== null && element.key != null) {
               {
                 checkKeyStringCoercion(element.key);
               }
               return escape("" + element.key);
             }
-            return index.toString(36);
+            return index2.toString(36);
           }
-          function mapIntoArray(children, array, escapedPrefix, nameSoFar, callback) {
-            var type = typeof children;
+          function mapIntoArray(children2, array, escapedPrefix, nameSoFar, callback) {
+            var type = typeof children2;
             if (type === "undefined" || type === "boolean") {
-              children = null;
+              children2 = null;
             }
             var invokeCallback = false;
-            if (children === null) {
+            if (children2 === null) {
               invokeCallback = true;
             } else {
               switch (type) {
@@ -624,7 +624,7 @@
                   invokeCallback = true;
                   break;
                 case "object":
-                  switch (children.$$typeof) {
+                  switch (children2.$$typeof) {
                     case REACT_ELEMENT_TYPE:
                     case REACT_PORTAL_TYPE:
                       invokeCallback = true;
@@ -632,7 +632,7 @@
               }
             }
             if (invokeCallback) {
-              var _child = children;
+              var _child = children2;
               var mappedChild = callback(_child);
               var childKey = nameSoFar === "" ? SEPARATOR + getElementKey(_child, 0) : nameSoFar;
               if (isArray(mappedChild)) {
@@ -660,16 +660,16 @@
             var nextName;
             var subtreeCount = 0;
             var nextNamePrefix = nameSoFar === "" ? SEPARATOR : nameSoFar + SUBSEPARATOR;
-            if (isArray(children)) {
-              for (var i2 = 0; i2 < children.length; i2++) {
-                child = children[i2];
+            if (isArray(children2)) {
+              for (var i2 = 0; i2 < children2.length; i2++) {
+                child = children2[i2];
                 nextName = nextNamePrefix + getElementKey(child, i2);
                 subtreeCount += mapIntoArray(child, array, escapedPrefix, nextName, callback);
               }
             } else {
-              var iteratorFn = getIteratorFn(children);
+              var iteratorFn = getIteratorFn(children2);
               if (typeof iteratorFn === "function") {
-                var iterableChildren = children;
+                var iterableChildren = children2;
                 {
                   if (iteratorFn === iterableChildren.entries) {
                     if (!didWarnAboutMaps) {
@@ -687,47 +687,47 @@
                   subtreeCount += mapIntoArray(child, array, escapedPrefix, nextName, callback);
                 }
               } else if (type === "object") {
-                var childrenString = String(children);
-                throw new Error("Objects are not valid as a React child (found: " + (childrenString === "[object Object]" ? "object with keys {" + Object.keys(children).join(", ") + "}" : childrenString) + "). If you meant to render a collection of children, use an array instead.");
+                var childrenString = String(children2);
+                throw new Error("Objects are not valid as a React child (found: " + (childrenString === "[object Object]" ? "object with keys {" + Object.keys(children2).join(", ") + "}" : childrenString) + "). If you meant to render a collection of children, use an array instead.");
               }
             }
             return subtreeCount;
           }
-          function mapChildren(children, func, context) {
-            if (children == null) {
-              return children;
+          function mapChildren(children2, func, context) {
+            if (children2 == null) {
+              return children2;
             }
             var result = [];
             var count = 0;
-            mapIntoArray(children, result, "", "", function(child) {
+            mapIntoArray(children2, result, "", "", function(child) {
               return func.call(context, child, count++);
             });
             return result;
           }
-          function countChildren(children) {
+          function countChildren(children2) {
             var n3 = 0;
-            mapChildren(children, function() {
+            mapChildren(children2, function() {
               n3++;
             });
             return n3;
           }
-          function forEachChildren(children, forEachFunc, forEachContext) {
-            mapChildren(children, function() {
+          function forEachChildren(children2, forEachFunc, forEachContext) {
+            mapChildren(children2, function() {
               forEachFunc.apply(this, arguments);
             }, forEachContext);
           }
-          function toArray(children) {
-            return mapChildren(children, function(child) {
+          function toArray(children2) {
+            return mapChildren(children2, function(child) {
               return child;
             }) || [];
           }
-          function onlyChild(children) {
-            if (!isValidElement(children)) {
+          function onlyChild(children2) {
+            if (!isValidElement(children2)) {
               throw new Error("React.Children.only expected to receive a single React element child.");
             }
-            return children;
+            return children2;
           }
-          function createContext(defaultValue) {
+          function createContext2(defaultValue) {
             var context = {
               $$typeof: REACT_CONTEXT_TYPE,
               _currentValue: defaultValue,
@@ -904,7 +904,7 @@
             }
             return lazyType;
           }
-          function forwardRef(render) {
+          function forwardRef3(render) {
             {
               if (render != null && render.$$typeof === REACT_MEMO_TYPE) {
                 error("forwardRef requires a render function but received a `memo` component. Instead of forwardRef(memo(...)), use memo(forwardRef(...)).");
@@ -999,7 +999,7 @@
             }
             return dispatcher;
           }
-          function useContext(Context) {
+          function useContext2(Context) {
             var dispatcher = resolveDispatcher();
             {
               if (Context._context !== void 0) {
@@ -1013,7 +1013,7 @@
             }
             return dispatcher.useContext(Context);
           }
-          function useState7(initialState) {
+          function useState9(initialState) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState);
           }
@@ -1021,11 +1021,11 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useReducer(reducer, initialArg, init);
           }
-          function useRef6(initialValue) {
+          function useRef8(initialValue) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect8(create, deps) {
+          function useEffect10(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -1033,7 +1033,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useInsertionEffect(create, deps);
           }
-          function useLayoutEffect(create, deps) {
+          function useLayoutEffect2(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useLayoutEffect(create, deps);
           }
@@ -1508,7 +1508,7 @@
               }
             }
           }
-          function createElementWithValidation(type, props, children) {
+          function createElementWithValidation(type, props, children2) {
             var validType = isValidElementType(type);
             if (!validType) {
               var info = "";
@@ -1574,7 +1574,7 @@
             }
             return validatedFactory;
           }
-          function cloneElementWithValidation(element, props, children) {
+          function cloneElementWithValidation(element, props, children2) {
             var newElement = cloneElement.apply(this, arguments);
             for (var i2 = 2; i2 < arguments.length; i2++) {
               validateChildKeys(arguments[i2], newElement.type);
@@ -1791,29 +1791,29 @@
           exports.Suspense = REACT_SUSPENSE_TYPE;
           exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals;
           exports.cloneElement = cloneElement$1;
-          exports.createContext = createContext;
+          exports.createContext = createContext2;
           exports.createElement = createElement$1;
           exports.createFactory = createFactory;
           exports.createRef = createRef;
-          exports.forwardRef = forwardRef;
+          exports.forwardRef = forwardRef3;
           exports.isValidElement = isValidElement;
           exports.lazy = lazy;
           exports.memo = memo;
           exports.startTransition = startTransition;
           exports.unstable_act = act;
           exports.useCallback = useCallback;
-          exports.useContext = useContext;
+          exports.useContext = useContext2;
           exports.useDebugValue = useDebugValue;
           exports.useDeferredValue = useDeferredValue;
-          exports.useEffect = useEffect8;
+          exports.useEffect = useEffect10;
           exports.useId = useId;
           exports.useImperativeHandle = useImperativeHandle;
           exports.useInsertionEffect = useInsertionEffect;
-          exports.useLayoutEffect = useLayoutEffect;
+          exports.useLayoutEffect = useLayoutEffect2;
           exports.useMemo = useMemo;
           exports.useReducer = useReducer;
-          exports.useRef = useRef6;
-          exports.useState = useState7;
+          exports.useRef = useRef8;
+          exports.useState = useState9;
           exports.useSyncExternalStore = useSyncExternalStore;
           exports.useTransition = useTransition;
           exports.version = ReactVersion;
@@ -1851,9 +1851,9 @@
           var enableProfiling = false;
           var frameYieldMs = 5;
           function push(heap, node) {
-            var index = heap.length;
+            var index2 = heap.length;
             heap.push(node);
-            siftUp(heap, node, index);
+            siftUp(heap, node, index2);
           }
           function peek(heap) {
             return heap.length === 0 ? null : heap[0];
@@ -1871,42 +1871,42 @@
             return first;
           }
           function siftUp(heap, node, i2) {
-            var index = i2;
-            while (index > 0) {
-              var parentIndex = index - 1 >>> 1;
-              var parent = heap[parentIndex];
-              if (compare(parent, node) > 0) {
+            var index2 = i2;
+            while (index2 > 0) {
+              var parentIndex = index2 - 1 >>> 1;
+              var parent2 = heap[parentIndex];
+              if (compare(parent2, node) > 0) {
                 heap[parentIndex] = node;
-                heap[index] = parent;
-                index = parentIndex;
+                heap[index2] = parent2;
+                index2 = parentIndex;
               } else {
                 return;
               }
             }
           }
           function siftDown(heap, node, i2) {
-            var index = i2;
+            var index2 = i2;
             var length = heap.length;
             var halfLength = length >>> 1;
-            while (index < halfLength) {
-              var leftIndex = (index + 1) * 2 - 1;
+            while (index2 < halfLength) {
+              var leftIndex = (index2 + 1) * 2 - 1;
               var left = heap[leftIndex];
               var rightIndex = leftIndex + 1;
               var right = heap[rightIndex];
               if (compare(left, node) < 0) {
                 if (rightIndex < length && compare(right, left) < 0) {
-                  heap[index] = right;
+                  heap[index2] = right;
                   heap[rightIndex] = node;
-                  index = rightIndex;
+                  index2 = rightIndex;
                 } else {
-                  heap[index] = left;
+                  heap[index2] = left;
                   heap[leftIndex] = node;
-                  index = leftIndex;
+                  index2 = leftIndex;
                 }
               } else if (rightIndex < length && compare(right, node) < 0) {
-                heap[index] = right;
+                heap[index2] = right;
                 heap[rightIndex] = node;
-                index = rightIndex;
+                index2 = rightIndex;
               } else {
                 return;
               }
@@ -2309,9 +2309,9 @@
           if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
             __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
           }
-          var React13 = require_react();
+          var React17 = require_react();
           var Scheduler = require_scheduler();
-          var ReactSharedInternals = React13.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React17.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           var suppressWarning = false;
           function setSuppressWarning(newSuppressWarning) {
             {
@@ -3712,7 +3712,7 @@
             {
               if (props.value == null) {
                 if (typeof props.children === "object" && props.children !== null) {
-                  React13.Children.forEach(props.children, function(child) {
+                  React17.Children.forEach(props.children, function(child) {
                     if (child == null) {
                       return;
                     }
@@ -3888,8 +3888,8 @@
             }
             var initialValue = props.value;
             if (initialValue == null) {
-              var children = props.children, defaultValue = props.defaultValue;
-              if (children != null) {
+              var children2 = props.children, defaultValue = props.defaultValue;
+              if (children2 != null) {
                 {
                   error("Use the `defaultValue` or `value` props instead of setting children on <textarea>.");
                 }
@@ -3897,13 +3897,13 @@
                   if (defaultValue != null) {
                     throw new Error("If you supply `defaultValue` on a <textarea>, do not pass children.");
                   }
-                  if (isArray(children)) {
-                    if (children.length > 1) {
+                  if (isArray(children2)) {
+                    if (children2.length > 1) {
                       throw new Error("<textarea> can only have at most one child.");
                     }
-                    children = children[0];
+                    children2 = children2[0];
                   }
-                  defaultValue = children;
+                  defaultValue = children2;
                 }
               }
               if (defaultValue == null) {
@@ -3978,11 +3978,11 @@
             }
           };
           var reusableSVGContainer;
-          var setInnerHTML = createMicrosoftUnsafeLocalFunction(function(node, html) {
+          var setInnerHTML = createMicrosoftUnsafeLocalFunction(function(node, html2) {
             if (node.namespaceURI === SVG_NAMESPACE) {
               if (!("innerHTML" in node)) {
                 reusableSVGContainer = reusableSVGContainer || document.createElement("div");
-                reusableSVGContainer.innerHTML = "<svg>" + html.valueOf().toString() + "</svg>";
+                reusableSVGContainer.innerHTML = "<svg>" + html2.valueOf().toString() + "</svg>";
                 var svgNode = reusableSVGContainer.firstChild;
                 while (node.firstChild) {
                   node.removeChild(node.firstChild);
@@ -3993,22 +3993,22 @@
                 return;
               }
             }
-            node.innerHTML = html;
+            node.innerHTML = html2;
           });
           var ELEMENT_NODE = 1;
           var TEXT_NODE = 3;
           var COMMENT_NODE = 8;
           var DOCUMENT_NODE = 9;
           var DOCUMENT_FRAGMENT_NODE = 11;
-          var setTextContent = function(node, text) {
-            if (text) {
+          var setTextContent = function(node, text2) {
+            if (text2) {
               var firstChild = node.firstChild;
               if (firstChild && firstChild === node.lastChild && firstChild.nodeType === TEXT_NODE) {
-                firstChild.nodeValue = text;
+                firstChild.nodeValue = text2;
                 return;
               }
             }
-            node.textContent = text;
+            node.textContent = text2;
           };
           var shorthandToLonghand = {
             animation: ["animationDelay", "animationDirection", "animationDuration", "animationFillMode", "animationIterationCount", "animationName", "animationPlayState", "animationTimingFunction"],
@@ -4200,15 +4200,15 @@
             };
           }
           var warnValidStyle$1 = warnValidStyle;
-          function createDangerousStringForStyles(styles) {
+          function createDangerousStringForStyles(styles2) {
             {
               var serialized = "";
               var delimiter = "";
-              for (var styleName in styles) {
-                if (!styles.hasOwnProperty(styleName)) {
+              for (var styleName in styles2) {
+                if (!styles2.hasOwnProperty(styleName)) {
                   continue;
                 }
-                var styleValue = styles[styleName];
+                var styleValue = styles2[styleName];
                 if (styleValue != null) {
                   var isCustomProperty = styleName.indexOf("--") === 0;
                   serialized += delimiter + (isCustomProperty ? styleName : hyphenateStyleName(styleName)) + ":";
@@ -4219,19 +4219,19 @@
               return serialized || null;
             }
           }
-          function setValueForStyles(node, styles) {
+          function setValueForStyles(node, styles2) {
             var style2 = node.style;
-            for (var styleName in styles) {
-              if (!styles.hasOwnProperty(styleName)) {
+            for (var styleName in styles2) {
+              if (!styles2.hasOwnProperty(styleName)) {
                 continue;
               }
               var isCustomProperty = styleName.indexOf("--") === 0;
               {
                 if (!isCustomProperty) {
-                  warnValidStyle$1(styleName, styles[styleName]);
+                  warnValidStyle$1(styleName, styles2[styleName]);
                 }
               }
-              var styleValue = dangerousStyleValue(styleName, styles[styleName], isCustomProperty);
+              var styleValue = dangerousStyleValue(styleName, styles2[styleName], isCustomProperty);
               if (styleName === "float") {
                 styleName = "cssFloat";
               }
@@ -4245,9 +4245,9 @@
           function isValueEmpty(value) {
             return value == null || typeof value === "boolean" || value === "";
           }
-          function expandShorthandMap(styles) {
+          function expandShorthandMap(styles2) {
             var expanded = {};
-            for (var key in styles) {
+            for (var key in styles2) {
               var longhands = shorthandToLonghand[key] || [key];
               for (var i2 = 0; i2 < longhands.length; i2++) {
                 expanded[longhands[i2]] = key;
@@ -5091,13 +5091,13 @@
           var IS_CAPTURE_PHASE = 1 << 2;
           var SHOULD_NOT_PROCESS_POLYFILL_EVENT_PLUGINS = IS_EVENT_HANDLE_NON_MANAGED_NODE | IS_NON_DELEGATED | IS_CAPTURE_PHASE;
           var currentReplayingEvent = null;
-          function setReplayingEvent(event) {
+          function setReplayingEvent(event2) {
             {
               if (currentReplayingEvent !== null) {
                 error("Expected currently replaying event to be null. This error is likely caused by a bug in React. Please file an issue.");
               }
             }
-            currentReplayingEvent = event;
+            currentReplayingEvent = event2;
           }
           function resetReplayingEvent() {
             {
@@ -5107,8 +5107,8 @@
             }
             currentReplayingEvent = null;
           }
-          function isReplayingEvent(event) {
-            return event === currentReplayingEvent;
+          function isReplayingEvent(event2) {
+            return event2 === currentReplayingEvent;
           }
           function getEventTarget(nativeEvent) {
             var target = nativeEvent.target || nativeEvent.srcElement || window;
@@ -5286,13 +5286,13 @@
                 var error2;
                 var didSetError = false;
                 var isCrossOriginError = false;
-                function handleWindowError(event) {
-                  error2 = event.error;
+                function handleWindowError(event2) {
+                  error2 = event2.error;
                   didSetError = true;
-                  if (error2 === null && event.colno === 0 && event.lineno === 0) {
+                  if (error2 === null && event2.colno === 0 && event2.lineno === 0) {
                     isCrossOriginError = true;
                   }
-                  if (event.defaultPrevented) {
+                  if (event2.defaultPrevented) {
                     if (error2 != null && typeof error2 === "object") {
                       try {
                         error2._suppressLogging = true;
@@ -5577,8 +5577,8 @@
             }
             return alternate;
           }
-          function findCurrentHostFiber(parent) {
-            var currentParent = findCurrentFiberUsingSlowPath(parent);
+          function findCurrentHostFiber(parent2) {
+            var currentParent = findCurrentFiberUsingSlowPath(parent2);
             return currentParent !== null ? findCurrentHostFiberImpl(currentParent) : null;
           }
           function findCurrentHostFiberImpl(node) {
@@ -5595,8 +5595,8 @@
             }
             return null;
           }
-          function findCurrentHostFiberWithNoPortals(parent) {
-            var currentParent = findCurrentFiberUsingSlowPath(parent);
+          function findCurrentHostFiberWithNoPortals(parent2) {
+            var currentParent = findCurrentFiberUsingSlowPath(parent2);
             return currentParent !== null ? findCurrentHostFiberWithNoPortalsImpl(currentParent) : null;
           }
           function findCurrentHostFiberWithNoPortalsImpl(node) {
@@ -5619,7 +5619,7 @@
           var cancelCallback = Scheduler.unstable_cancelCallback;
           var shouldYield = Scheduler.unstable_shouldYield;
           var requestPaint = Scheduler.unstable_requestPaint;
-          var now = Scheduler.unstable_now;
+          var now2 = Scheduler.unstable_now;
           var getCurrentPriorityLevel = Scheduler.unstable_getCurrentPriorityLevel;
           var ImmediatePriority = Scheduler.unstable_ImmediatePriority;
           var UserBlockingPriority = Scheduler.unstable_UserBlockingPriority;
@@ -5667,11 +5667,11 @@
               return false;
             }
           }
-          function onScheduleRoot(root2, children) {
+          function onScheduleRoot(root2, children2) {
             {
               if (injectedHook && typeof injectedHook.onScheduleFiberRoot === "function") {
                 try {
-                  injectedHook.onScheduleFiberRoot(rendererID, root2, children);
+                  injectedHook.onScheduleFiberRoot(rendererID, root2, children2);
                 } catch (err) {
                   if (!hasLoggedError) {
                     hasLoggedError = true;
@@ -5773,7 +5773,7 @@
             {
               var map = /* @__PURE__ */ new Map();
               var lane = 1;
-              for (var index2 = 0; index2 < TotalLanes; index2++) {
+              for (var index3 = 0; index3 < TotalLanes; index3++) {
                 var label = getLabelForLane(lane);
                 map.set(lane, label);
                 lane *= 2;
@@ -6144,9 +6144,9 @@
               var entanglements = root2.entanglements;
               var lanes = nextLanes & entangledLanes;
               while (lanes > 0) {
-                var index2 = pickArbitraryLaneIndex(lanes);
-                var lane = 1 << index2;
-                nextLanes |= entanglements[index2];
+                var index3 = pickArbitraryLaneIndex(lanes);
+                var lane = 1 << index3;
+                nextLanes |= entanglements[index3];
                 lanes &= ~lane;
               }
             }
@@ -6156,9 +6156,9 @@
             var eventTimes = root2.eventTimes;
             var mostRecentEventTime = NoTimestamp;
             while (lanes > 0) {
-              var index2 = pickArbitraryLaneIndex(lanes);
-              var lane = 1 << index2;
-              var eventTime = eventTimes[index2];
+              var index3 = pickArbitraryLaneIndex(lanes);
+              var lane = 1 << index3;
+              var eventTime = eventTimes[index3];
               if (eventTime > mostRecentEventTime) {
                 mostRecentEventTime = eventTime;
               }
@@ -6217,12 +6217,12 @@
             var expirationTimes = root2.expirationTimes;
             var lanes = pendingLanes;
             while (lanes > 0) {
-              var index2 = pickArbitraryLaneIndex(lanes);
-              var lane = 1 << index2;
-              var expirationTime = expirationTimes[index2];
+              var index3 = pickArbitraryLaneIndex(lanes);
+              var lane = 1 << index3;
+              var expirationTime = expirationTimes[index3];
               if (expirationTime === NoTimestamp) {
                 if ((lane & suspendedLanes) === NoLanes || (lane & pingedLanes) !== NoLanes) {
-                  expirationTimes[index2] = computeExpirationTime(lane, currentTime);
+                  expirationTimes[index3] = computeExpirationTime(lane, currentTime);
                 }
               } else if (expirationTime <= currentTime) {
                 root2.expiredLanes |= lane;
@@ -6332,8 +6332,8 @@
               root2.pingedLanes = NoLanes;
             }
             var eventTimes = root2.eventTimes;
-            var index2 = laneToIndex(updateLane);
-            eventTimes[index2] = eventTime;
+            var index3 = laneToIndex(updateLane);
+            eventTimes[index3] = eventTime;
           }
           function markRootSuspended(root2, suspendedLanes) {
             root2.suspendedLanes |= suspendedLanes;
@@ -6341,9 +6341,9 @@
             var expirationTimes = root2.expirationTimes;
             var lanes = suspendedLanes;
             while (lanes > 0) {
-              var index2 = pickArbitraryLaneIndex(lanes);
-              var lane = 1 << index2;
-              expirationTimes[index2] = NoTimestamp;
+              var index3 = pickArbitraryLaneIndex(lanes);
+              var lane = 1 << index3;
+              expirationTimes[index3] = NoTimestamp;
               lanes &= ~lane;
             }
           }
@@ -6363,11 +6363,11 @@
             var expirationTimes = root2.expirationTimes;
             var lanes = noLongerPendingLanes;
             while (lanes > 0) {
-              var index2 = pickArbitraryLaneIndex(lanes);
-              var lane = 1 << index2;
-              entanglements[index2] = NoLanes;
-              eventTimes[index2] = NoTimestamp;
-              expirationTimes[index2] = NoTimestamp;
+              var index3 = pickArbitraryLaneIndex(lanes);
+              var lane = 1 << index3;
+              entanglements[index3] = NoLanes;
+              eventTimes[index3] = NoTimestamp;
+              expirationTimes[index3] = NoTimestamp;
               lanes &= ~lane;
             }
           }
@@ -6376,10 +6376,10 @@
             var entanglements = root2.entanglements;
             var lanes = rootEntangledLanes;
             while (lanes) {
-              var index2 = pickArbitraryLaneIndex(lanes);
-              var lane = 1 << index2;
-              if (lane & entangledLanes | entanglements[index2] & entangledLanes) {
-                entanglements[index2] |= entangledLanes;
+              var index3 = pickArbitraryLaneIndex(lanes);
+              var lane = 1 << index3;
+              if (lane & entangledLanes | entanglements[index3] & entangledLanes) {
+                entanglements[index3] |= entangledLanes;
               }
               lanes &= ~lane;
             }
@@ -6435,9 +6435,9 @@
             }
             var pendingUpdatersLaneMap = root2.pendingUpdatersLaneMap;
             while (lanes > 0) {
-              var index2 = laneToIndex(lanes);
-              var lane = 1 << index2;
-              var updaters = pendingUpdatersLaneMap[index2];
+              var index3 = laneToIndex(lanes);
+              var lane = 1 << index3;
+              var updaters = pendingUpdatersLaneMap[index3];
               updaters.add(fiber);
               lanes &= ~lane;
             }
@@ -6449,9 +6449,9 @@
             var pendingUpdatersLaneMap = root2.pendingUpdatersLaneMap;
             var memoizedUpdaters = root2.memoizedUpdaters;
             while (lanes > 0) {
-              var index2 = laneToIndex(lanes);
-              var lane = 1 << index2;
-              var updaters = pendingUpdatersLaneMap[index2];
+              var index3 = laneToIndex(lanes);
+              var lane = 1 << index3;
+              var updaters = pendingUpdatersLaneMap[index3];
               if (updaters.size > 0) {
                 updaters.forEach(function(fiber) {
                   var alternate = fiber.alternate;
@@ -7145,26 +7145,26 @@
             assign(SyntheticBaseEvent.prototype, {
               preventDefault: function() {
                 this.defaultPrevented = true;
-                var event = this.nativeEvent;
-                if (!event) {
+                var event2 = this.nativeEvent;
+                if (!event2) {
                   return;
                 }
-                if (event.preventDefault) {
-                  event.preventDefault();
-                } else if (typeof event.returnValue !== "unknown") {
-                  event.returnValue = false;
+                if (event2.preventDefault) {
+                  event2.preventDefault();
+                } else if (typeof event2.returnValue !== "unknown") {
+                  event2.returnValue = false;
                 }
                 this.isDefaultPrevented = functionThatReturnsTrue;
               },
               stopPropagation: function() {
-                var event = this.nativeEvent;
-                if (!event) {
+                var event2 = this.nativeEvent;
+                if (!event2) {
                   return;
                 }
-                if (event.stopPropagation) {
-                  event.stopPropagation();
-                } else if (typeof event.cancelBubble !== "unknown") {
-                  event.cancelBubble = true;
+                if (event2.stopPropagation) {
+                  event2.stopPropagation();
+                } else if (typeof event2.cancelBubble !== "unknown") {
+                  event2.cancelBubble = true;
                 }
                 this.isPropagationStopped = functionThatReturnsTrue;
               },
@@ -7178,8 +7178,8 @@
             eventPhase: 0,
             bubbles: 0,
             cancelable: 0,
-            timeStamp: function(event) {
-              return event.timeStamp || Date.now();
+            timeStamp: function(event2) {
+              return event2.timeStamp || Date.now();
             },
             defaultPrevented: 0,
             isTrusted: 0
@@ -7193,16 +7193,16 @@
           var lastMovementX;
           var lastMovementY;
           var lastMouseEvent;
-          function updateMouseMovementPolyfillState(event) {
-            if (event !== lastMouseEvent) {
-              if (lastMouseEvent && event.type === "mousemove") {
-                lastMovementX = event.screenX - lastMouseEvent.screenX;
-                lastMovementY = event.screenY - lastMouseEvent.screenY;
+          function updateMouseMovementPolyfillState(event2) {
+            if (event2 !== lastMouseEvent) {
+              if (lastMouseEvent && event2.type === "mousemove") {
+                lastMovementX = event2.screenX - lastMouseEvent.screenX;
+                lastMovementY = event2.screenY - lastMouseEvent.screenY;
               } else {
                 lastMovementX = 0;
                 lastMovementY = 0;
               }
-              lastMouseEvent = event;
+              lastMouseEvent = event2;
             }
           }
           var MouseEventInterface = assign({}, UIEventInterface, {
@@ -7219,21 +7219,21 @@
             getModifierState: getEventModifierState,
             button: 0,
             buttons: 0,
-            relatedTarget: function(event) {
-              if (event.relatedTarget === void 0)
-                return event.fromElement === event.srcElement ? event.toElement : event.fromElement;
-              return event.relatedTarget;
+            relatedTarget: function(event2) {
+              if (event2.relatedTarget === void 0)
+                return event2.fromElement === event2.srcElement ? event2.toElement : event2.fromElement;
+              return event2.relatedTarget;
             },
-            movementX: function(event) {
-              if ("movementX" in event) {
-                return event.movementX;
+            movementX: function(event2) {
+              if ("movementX" in event2) {
+                return event2.movementX;
               }
-              updateMouseMovementPolyfillState(event);
+              updateMouseMovementPolyfillState(event2);
               return lastMovementX;
             },
-            movementY: function(event) {
-              if ("movementY" in event) {
-                return event.movementY;
+            movementY: function(event2) {
+              if ("movementY" in event2) {
+                return event2.movementY;
               }
               return lastMovementY;
             }
@@ -7254,8 +7254,8 @@
           });
           var SyntheticAnimationEvent = createSyntheticEvent(AnimationEventInterface);
           var ClipboardEventInterface = assign({}, EventInterface, {
-            clipboardData: function(event) {
-              return "clipboardData" in event ? event.clipboardData : window.clipboardData;
+            clipboardData: function(event2) {
+              return "clipboardData" in event2 ? event2.clipboardData : window.clipboardData;
             }
           });
           var SyntheticClipboardEvent = createSyntheticEvent(ClipboardEventInterface);
@@ -7361,24 +7361,24 @@
             repeat: 0,
             locale: 0,
             getModifierState: getEventModifierState,
-            charCode: function(event) {
-              if (event.type === "keypress") {
-                return getEventCharCode(event);
+            charCode: function(event2) {
+              if (event2.type === "keypress") {
+                return getEventCharCode(event2);
               }
               return 0;
             },
-            keyCode: function(event) {
-              if (event.type === "keydown" || event.type === "keyup") {
-                return event.keyCode;
+            keyCode: function(event2) {
+              if (event2.type === "keydown" || event2.type === "keyup") {
+                return event2.keyCode;
               }
               return 0;
             },
-            which: function(event) {
-              if (event.type === "keypress") {
-                return getEventCharCode(event);
+            which: function(event2) {
+              if (event2.type === "keypress") {
+                return getEventCharCode(event2);
               }
-              if (event.type === "keydown" || event.type === "keyup") {
-                return event.keyCode;
+              if (event2.type === "keydown" || event2.type === "keyup") {
+                return event2.keyCode;
               }
               return 0;
             }
@@ -7415,11 +7415,11 @@
           });
           var SyntheticTransitionEvent = createSyntheticEvent(TransitionEventInterface);
           var WheelEventInterface = assign({}, MouseEventInterface, {
-            deltaX: function(event) {
-              return "deltaX" in event ? event.deltaX : "wheelDeltaX" in event ? -event.wheelDeltaX : 0;
+            deltaX: function(event2) {
+              return "deltaX" in event2 ? event2.deltaX : "wheelDeltaX" in event2 ? -event2.wheelDeltaX : 0;
             },
-            deltaY: function(event) {
-              return "deltaY" in event ? event.deltaY : "wheelDeltaY" in event ? -event.wheelDeltaY : "wheelDelta" in event ? -event.wheelDelta : 0;
+            deltaY: function(event2) {
+              return "deltaY" in event2 ? event2.deltaY : "wheelDeltaY" in event2 ? -event2.wheelDeltaY : "wheelDelta" in event2 ? -event2.wheelDelta : 0;
             },
             deltaZ: 0,
             deltaMode: 0
@@ -7510,17 +7510,17 @@
             }
             var listeners = accumulateTwoPhaseListeners(targetInst, eventType);
             if (listeners.length > 0) {
-              var event = new SyntheticCompositionEvent(eventType, domEventName, null, nativeEvent, nativeEventTarget);
+              var event2 = new SyntheticCompositionEvent(eventType, domEventName, null, nativeEvent, nativeEventTarget);
               dispatchQueue.push({
-                event,
+                event: event2,
                 listeners
               });
               if (fallbackData) {
-                event.data = fallbackData;
+                event2.data = fallbackData;
               } else {
                 var customData = getDataFromCustomEvent(nativeEvent);
                 if (customData !== null) {
-                  event.data = customData;
+                  event2.data = customData;
                 }
               }
             }
@@ -7586,12 +7586,12 @@
             }
             var listeners = accumulateTwoPhaseListeners(targetInst, "onBeforeInput");
             if (listeners.length > 0) {
-              var event = new SyntheticInputEvent("onBeforeInput", "beforeinput", null, nativeEvent, nativeEventTarget);
+              var event2 = new SyntheticInputEvent("onBeforeInput", "beforeinput", null, nativeEvent, nativeEventTarget);
               dispatchQueue.push({
-                event,
+                event: event2,
                 listeners
               });
-              event.data = chars;
+              event2.data = chars;
             }
           }
           function extractEvents(dispatchQueue, domEventName, targetInst, nativeEvent, nativeEventTarget, eventSystemFlags, targetContainer) {
@@ -7645,9 +7645,9 @@
             enqueueStateRestore(target);
             var listeners = accumulateTwoPhaseListeners(inst, "onChange");
             if (listeners.length > 0) {
-              var event = new SyntheticEvent("onChange", "change", null, nativeEvent, target);
+              var event2 = new SyntheticEvent("onChange", "change", null, nativeEvent, target);
               dispatchQueue.push({
-                event,
+                event: event2,
                 listeners
               });
             }
@@ -7842,10 +7842,10 @@
             }
             accumulateEnterLeaveTwoPhaseListeners(dispatchQueue, leave, enter, from, to);
           }
-          function is(x4, y4) {
+          function is2(x4, y4) {
             return x4 === y4 && (x4 !== 0 || 1 / x4 === 1 / y4) || x4 !== x4 && y4 !== y4;
           }
-          var objectIs = typeof Object.is === "function" ? Object.is : is;
+          var objectIs = typeof Object.is === "function" ? Object.is : is2;
           function shallowEqual(objA, objB) {
             if (objectIs(objA, objB)) {
               return true;
@@ -7880,17 +7880,17 @@
               node = node.parentNode;
             }
           }
-          function getNodeForCharacterOffset(root2, offset) {
+          function getNodeForCharacterOffset(root2, offset2) {
             var node = getLeafNode(root2);
             var nodeStart = 0;
             var nodeEnd = 0;
             while (node) {
               if (node.nodeType === TEXT_NODE) {
                 nodeEnd = nodeStart + node.textContent.length;
-                if (nodeStart <= offset && nodeEnd >= offset) {
+                if (nodeStart <= offset2 && nodeEnd >= offset2) {
                   return {
                     node,
-                    offset: offset - nodeStart
+                    offset: offset2 - nodeStart
                   };
                 }
                 nodeStart = nodeEnd;
@@ -7924,7 +7924,7 @@
             var parentNode = null;
             outer:
               while (true) {
-                var next = null;
+                var next2 = null;
                 while (true) {
                   if (node === anchorNode && (anchorOffset === 0 || node.nodeType === TEXT_NODE)) {
                     start = length + anchorOffset;
@@ -7935,11 +7935,11 @@
                   if (node.nodeType === TEXT_NODE) {
                     length += node.nodeValue.length;
                   }
-                  if ((next = node.firstChild) === null) {
+                  if ((next2 = node.firstChild) === null) {
                     break;
                   }
                   parentNode = node;
-                  node = next;
+                  node = next2;
                 }
                 while (true) {
                   if (node === outerNode) {
@@ -7951,13 +7951,13 @@
                   if (parentNode === focusNode && ++indexWithinFocus === focusOffset) {
                     end = length;
                   }
-                  if ((next = node.nextSibling) !== null) {
+                  if ((next2 = node.nextSibling) !== null) {
                     break;
                   }
                   node = parentNode;
                   parentNode = node.parentNode;
                 }
-                node = next;
+                node = next2;
               }
             if (start === -1 || end === -1) {
               return null;
@@ -8149,12 +8149,12 @@
               lastSelection = currentSelection;
               var listeners = accumulateTwoPhaseListeners(activeElementInst$1, "onSelect");
               if (listeners.length > 0) {
-                var event = new SyntheticEvent("onSelect", "select", null, nativeEvent, nativeEventTarget);
+                var event2 = new SyntheticEvent("onSelect", "select", null, nativeEvent, nativeEventTarget);
                 dispatchQueue.push({
-                  event,
+                  event: event2,
                   listeners
                 });
-                event.target = activeElement$1;
+                event2.target = activeElement$1;
               }
             }
           }
@@ -8374,30 +8374,30 @@
           }
           var mediaEventTypes = ["abort", "canplay", "canplaythrough", "durationchange", "emptied", "encrypted", "ended", "error", "loadeddata", "loadedmetadata", "loadstart", "pause", "play", "playing", "progress", "ratechange", "resize", "seeked", "seeking", "stalled", "suspend", "timeupdate", "volumechange", "waiting"];
           var nonDelegatedEvents = new Set(["cancel", "close", "invalid", "load", "scroll", "toggle"].concat(mediaEventTypes));
-          function executeDispatch(event, listener, currentTarget) {
-            var type = event.type || "unknown-event";
-            event.currentTarget = currentTarget;
-            invokeGuardedCallbackAndCatchFirstError(type, listener, void 0, event);
-            event.currentTarget = null;
+          function executeDispatch(event2, listener, currentTarget) {
+            var type = event2.type || "unknown-event";
+            event2.currentTarget = currentTarget;
+            invokeGuardedCallbackAndCatchFirstError(type, listener, void 0, event2);
+            event2.currentTarget = null;
           }
-          function processDispatchQueueItemsInOrder(event, dispatchListeners, inCapturePhase) {
+          function processDispatchQueueItemsInOrder(event2, dispatchListeners, inCapturePhase) {
             var previousInstance;
             if (inCapturePhase) {
               for (var i2 = dispatchListeners.length - 1; i2 >= 0; i2--) {
                 var _dispatchListeners$i = dispatchListeners[i2], instance = _dispatchListeners$i.instance, currentTarget = _dispatchListeners$i.currentTarget, listener = _dispatchListeners$i.listener;
-                if (instance !== previousInstance && event.isPropagationStopped()) {
+                if (instance !== previousInstance && event2.isPropagationStopped()) {
                   return;
                 }
-                executeDispatch(event, listener, currentTarget);
+                executeDispatch(event2, listener, currentTarget);
                 previousInstance = instance;
               }
             } else {
               for (var _i = 0; _i < dispatchListeners.length; _i++) {
                 var _dispatchListeners$_i = dispatchListeners[_i], _instance = _dispatchListeners$_i.instance, _currentTarget = _dispatchListeners$_i.currentTarget, _listener = _dispatchListeners$_i.listener;
-                if (_instance !== previousInstance && event.isPropagationStopped()) {
+                if (_instance !== previousInstance && event2.isPropagationStopped()) {
                   return;
                 }
-                executeDispatch(event, _listener, _currentTarget);
+                executeDispatch(event2, _listener, _currentTarget);
                 previousInstance = _instance;
               }
             }
@@ -8405,8 +8405,8 @@
           function processDispatchQueue(dispatchQueue, eventSystemFlags) {
             var inCapturePhase = (eventSystemFlags & IS_CAPTURE_PHASE) !== 0;
             for (var i2 = 0; i2 < dispatchQueue.length; i2++) {
-              var _dispatchQueue$i = dispatchQueue[i2], event = _dispatchQueue$i.event, listeners = _dispatchQueue$i.listeners;
-              processDispatchQueueItemsInOrder(event, listeners, inCapturePhase);
+              var _dispatchQueue$i = dispatchQueue[i2], event2 = _dispatchQueue$i.event, listeners = _dispatchQueue$i.listeners;
+              processDispatchQueueItemsInOrder(event2, listeners, inCapturePhase);
             }
             rethrowCaughtError();
           }
@@ -8634,8 +8634,8 @@
             }
             return null;
           }
-          function accumulateEnterLeaveListenersForEvent(dispatchQueue, event, target, common, inCapturePhase) {
-            var registrationName = event._reactName;
+          function accumulateEnterLeaveListenersForEvent(dispatchQueue, event2, target, common, inCapturePhase) {
+            var registrationName = event2._reactName;
             var listeners = [];
             var instance = target;
             while (instance !== null) {
@@ -8664,7 +8664,7 @@
             }
             if (listeners.length !== 0) {
               dispatchQueue.push({
-                event,
+                event: event2,
                 listeners
               });
             }
@@ -8740,9 +8740,9 @@
                 error("Expected `%s` listener to be a function, instead got a value of `%s` type.", registrationName, typeof listener);
               }
             };
-            normalizeHTML = function(parent, html) {
-              var testElement = parent.namespaceURI === HTML_NAMESPACE ? parent.ownerDocument.createElement(parent.tagName) : parent.ownerDocument.createElementNS(parent.namespaceURI, parent.tagName);
-              testElement.innerHTML = html;
+            normalizeHTML = function(parent2, html2) {
+              var testElement = parent2.namespaceURI === HTML_NAMESPACE ? parent2.ownerDocument.createElement(parent2.tagName) : parent2.ownerDocument.createElementNS(parent2.namespaceURI, parent2.tagName);
+              testElement.innerHTML = html2;
               return testElement.innerHTML;
             };
           }
@@ -8889,8 +8889,8 @@
             }
             return domElement;
           }
-          function createTextNode(text, rootContainerElement) {
-            return getOwnerDocumentFromRootContainer(rootContainerElement).createTextNode(text);
+          function createTextNode(text2, rootContainerElement) {
+            return getOwnerDocumentFromRootContainer(rootContainerElement).createTextNode(text2);
           }
           function setInitialProperties(domElement, tag, rawProps, rootContainerElement) {
             var isCustomComponentTag = isCustomComponent(tag, rawProps);
@@ -9332,8 +9332,8 @@
             }
             return updatePayload;
           }
-          function diffHydratedText(textNode, text, isConcurrentMode) {
-            var isDifferent = textNode.nodeValue !== text;
+          function diffHydratedText(textNode, text2, isConcurrentMode) {
+            var isDifferent = textNode.nodeValue !== text2;
             return isDifferent;
           }
           function warnForDeletedHydratableElement(parentNode, child) {
@@ -9363,16 +9363,16 @@
               error("Expected server HTML to contain a matching <%s> in <%s>.", tag, parentNode.nodeName.toLowerCase());
             }
           }
-          function warnForInsertedHydratedText(parentNode, text) {
+          function warnForInsertedHydratedText(parentNode, text2) {
             {
-              if (text === "") {
+              if (text2 === "") {
                 return;
               }
               if (didWarnInvalidHydration) {
                 return;
               }
               didWarnInvalidHydration = true;
-              error('Expected server HTML to contain a matching text node for "%s" in <%s>.', text, parentNode.nodeName.toLowerCase());
+              error('Expected server HTML to contain a matching text node for "%s" in <%s>.', text2, parentNode.nodeName.toLowerCase());
             }
           }
           function restoreControlledState$3(domElement, tag, props) {
@@ -9729,12 +9729,12 @@
           function shouldSetTextContent(type, props) {
             return type === "textarea" || type === "noscript" || typeof props.children === "string" || typeof props.children === "number" || typeof props.dangerouslySetInnerHTML === "object" && props.dangerouslySetInnerHTML !== null && props.dangerouslySetInnerHTML.__html != null;
           }
-          function createTextInstance(text, rootContainerInstance, hostContext, internalInstanceHandle) {
+          function createTextInstance(text2, rootContainerInstance, hostContext, internalInstanceHandle) {
             {
               var hostContextDev = hostContext;
-              validateDOMNesting(null, text, hostContextDev.ancestorInfo);
+              validateDOMNesting(null, text2, hostContextDev.ancestorInfo);
             }
-            var textNode = createTextNode(text, rootContainerInstance);
+            var textNode = createTextNode(text2, rootContainerInstance);
             precacheFiberNode(internalInstanceHandle, textNode);
             return textNode;
           }
@@ -9872,8 +9872,8 @@
             var display = styleProp !== void 0 && styleProp !== null && styleProp.hasOwnProperty("display") ? styleProp.display : null;
             instance.style.display = dangerousStyleValue("display", display);
           }
-          function unhideTextInstance(textInstance, text) {
-            textInstance.nodeValue = text;
+          function unhideTextInstance(textInstance, text2) {
+            textInstance.nodeValue = text2;
           }
           function clearContainer(container) {
             if (container.nodeType === ELEMENT_NODE) {
@@ -9890,8 +9890,8 @@
             }
             return instance;
           }
-          function canHydrateTextInstance(instance, text) {
-            if (text === "" || instance.nodeType !== TEXT_NODE) {
+          function canHydrateTextInstance(instance, text2) {
+            if (text2 === "" || instance.nodeType !== TEXT_NODE) {
               return null;
             }
             return instance;
@@ -9970,10 +9970,10 @@
             var isConcurrentMode = (internalInstanceHandle.mode & ConcurrentMode) !== NoMode;
             return diffHydratedProperties(instance, type, props, parentNamespace, rootContainerInstance, isConcurrentMode, shouldWarnDev);
           }
-          function hydrateTextInstance(textInstance, text, internalInstanceHandle, shouldWarnDev) {
+          function hydrateTextInstance(textInstance, text2, internalInstanceHandle, shouldWarnDev) {
             precacheFiberNode(internalInstanceHandle, textInstance);
             var isConcurrentMode = (internalInstanceHandle.mode & ConcurrentMode) !== NoMode;
-            return diffHydratedText(textInstance, text);
+            return diffHydratedText(textInstance, text2);
           }
           function hydrateSuspenseInstance(suspenseInstance, internalInstanceHandle) {
             precacheFiberNode(internalInstanceHandle, suspenseInstance);
@@ -10027,14 +10027,14 @@
           function shouldDeleteUnhydratedTailInstances(parentType) {
             return parentType !== "head" && parentType !== "body";
           }
-          function didNotMatchHydratedContainerTextInstance(parentContainer, textInstance, text, isConcurrentMode) {
+          function didNotMatchHydratedContainerTextInstance(parentContainer, textInstance, text2, isConcurrentMode) {
             var shouldWarnDev = true;
-            checkForUnmatchedText(textInstance.nodeValue, text, isConcurrentMode, shouldWarnDev);
+            checkForUnmatchedText(textInstance.nodeValue, text2, isConcurrentMode, shouldWarnDev);
           }
-          function didNotMatchHydratedTextInstance(parentType, parentProps, parentInstance, textInstance, text, isConcurrentMode) {
+          function didNotMatchHydratedTextInstance(parentType, parentProps, parentInstance, textInstance, text2, isConcurrentMode) {
             if (parentProps[SUPPRESS_HYDRATION_WARNING$1] !== true) {
               var shouldWarnDev = true;
-              checkForUnmatchedText(textInstance.nodeValue, text, isConcurrentMode, shouldWarnDev);
+              checkForUnmatchedText(textInstance.nodeValue, text2, isConcurrentMode, shouldWarnDev);
             }
           }
           function didNotHydrateInstanceWithinContainer(parentContainer, instance) {
@@ -10080,9 +10080,9 @@
               warnForInsertedHydratedElement(parentContainer, type);
             }
           }
-          function didNotFindHydratableTextInstanceWithinContainer(parentContainer, text) {
+          function didNotFindHydratableTextInstanceWithinContainer(parentContainer, text2) {
             {
-              warnForInsertedHydratedText(parentContainer, text);
+              warnForInsertedHydratedText(parentContainer, text2);
             }
           }
           function didNotFindHydratableInstanceWithinSuspenseInstance(parentInstance, type, props) {
@@ -10092,11 +10092,11 @@
                 warnForInsertedHydratedElement(parentNode, type);
             }
           }
-          function didNotFindHydratableTextInstanceWithinSuspenseInstance(parentInstance, text) {
+          function didNotFindHydratableTextInstanceWithinSuspenseInstance(parentInstance, text2) {
             {
               var parentNode = parentInstance.parentNode;
               if (parentNode !== null)
-                warnForInsertedHydratedText(parentNode, text);
+                warnForInsertedHydratedText(parentNode, text2);
             }
           }
           function didNotFindHydratableInstance(parentType, parentProps, parentInstance, type, props, isConcurrentMode) {
@@ -10106,10 +10106,10 @@
               }
             }
           }
-          function didNotFindHydratableTextInstance(parentType, parentProps, parentInstance, text, isConcurrentMode) {
+          function didNotFindHydratableTextInstance(parentType, parentProps, parentInstance, text2, isConcurrentMode) {
             {
               if (isConcurrentMode || parentProps[SUPPRESS_HYDRATION_WARNING$1] !== true) {
-                warnForInsertedHydratedText(parentInstance, text);
+                warnForInsertedHydratedText(parentInstance, text2);
               }
             }
           }
@@ -10253,36 +10253,36 @@
           {
             fiberStack = [];
           }
-          var index = -1;
+          var index2 = -1;
           function createCursor(defaultValue) {
             return {
               current: defaultValue
             };
           }
           function pop(cursor, fiber) {
-            if (index < 0) {
+            if (index2 < 0) {
               {
                 error("Unexpected pop.");
               }
               return;
             }
             {
-              if (fiber !== fiberStack[index]) {
+              if (fiber !== fiberStack[index2]) {
                 error("Unexpected Fiber popped.");
               }
             }
-            cursor.current = valueStack[index];
-            valueStack[index] = null;
+            cursor.current = valueStack[index2];
+            valueStack[index2] = null;
             {
-              fiberStack[index] = null;
+              fiberStack[index2] = null;
             }
-            index--;
+            index2--;
           }
           function push(cursor, value, fiber) {
-            index++;
-            valueStack[index] = cursor.current;
+            index2++;
+            valueStack[index2] = cursor.current;
             {
-              fiberStack[index] = fiber;
+              fiberStack[index2] = fiber;
             }
             cursor.current = value;
           }
@@ -10529,7 +10529,7 @@
             treeForkProvider = workInProgress2;
             treeForkCount = totalChildren;
           }
-          function pushTreeId(workInProgress2, totalChildren, index2) {
+          function pushTreeId(workInProgress2, totalChildren, index3) {
             warnIfNotHydrating();
             idStack[idStackIndex++] = treeContextId;
             idStack[idStackIndex++] = treeContextOverflow;
@@ -10539,7 +10539,7 @@
             var baseOverflow = treeContextOverflow;
             var baseLength = getBitLength(baseIdWithLeadingBit) - 1;
             var baseId = baseIdWithLeadingBit & ~(1 << baseLength);
-            var slot = index2 + 1;
+            var slot = index3 + 1;
             var length = getBitLength(totalChildren) + baseLength;
             if (length > 30) {
               var numberOfOverflowBits = baseLength - baseLength % 5;
@@ -10711,8 +10711,8 @@
                       didNotFindHydratableInstanceWithinContainer(parentContainer, type);
                       break;
                     case HostText:
-                      var text = fiber.pendingProps;
-                      didNotFindHydratableTextInstanceWithinContainer(parentContainer, text);
+                      var text2 = fiber.pendingProps;
+                      didNotFindHydratableTextInstanceWithinContainer(parentContainer, text2);
                       break;
                   }
                   break;
@@ -10779,8 +10779,8 @@
                 return false;
               }
               case HostText: {
-                var text = fiber.pendingProps;
-                var textInstance = canHydrateTextInstance(nextInstance, text);
+                var text2 = fiber.pendingProps;
+                var textInstance = canHydrateTextInstance(nextInstance, text2);
                 if (textInstance !== null) {
                   fiber.stateNode = textInstance;
                   hydrationParentFiber = fiber;
@@ -10903,11 +10903,11 @@
             return getNextHydratableInstanceAfterSuspenseInstance(suspenseInstance);
           }
           function popToNextHostParent(fiber) {
-            var parent = fiber.return;
-            while (parent !== null && parent.tag !== HostComponent && parent.tag !== HostRoot && parent.tag !== SuspenseComponent) {
-              parent = parent.return;
+            var parent2 = fiber.return;
+            while (parent2 !== null && parent2.tag !== HostComponent && parent2.tag !== HostRoot && parent2.tag !== SuspenseComponent) {
+              parent2 = parent2.return;
             }
-            hydrationParentFiber = parent;
+            hydrationParentFiber = parent2;
           }
           function popHydrationState(fiber) {
             if (fiber !== hydrationParentFiber) {
@@ -11223,8 +11223,8 @@
               }
             }
           }
-          function scheduleContextWorkOnParentPath(parent, renderLanes2, propagationRoot) {
-            var node = parent;
+          function scheduleContextWorkOnParentPath(parent2, renderLanes2, propagationRoot) {
+            var node = parent2;
             while (node !== null) {
               var alternate = node.alternate;
               if (!isSubsetOfLanes(node.childLanes, renderLanes2)) {
@@ -11458,21 +11458,21 @@
               }
             }
             var node = sourceFiber;
-            var parent = sourceFiber.return;
-            while (parent !== null) {
-              parent.childLanes = mergeLanes(parent.childLanes, lane);
-              alternate = parent.alternate;
+            var parent2 = sourceFiber.return;
+            while (parent2 !== null) {
+              parent2.childLanes = mergeLanes(parent2.childLanes, lane);
+              alternate = parent2.alternate;
               if (alternate !== null) {
                 alternate.childLanes = mergeLanes(alternate.childLanes, lane);
               } else {
                 {
-                  if ((parent.flags & (Placement | Hydrating)) !== NoFlags) {
+                  if ((parent2.flags & (Placement | Hydrating)) !== NoFlags) {
                     warnAboutUpdateOnNotYetMountedFiberInDEV(sourceFiber);
                   }
                 }
               }
-              node = parent;
-              parent = parent.return;
+              node = parent2;
+              parent2 = parent2.return;
             }
             if (node.tag === HostRoot) {
               var root2 = node.stateNode;
@@ -11838,7 +11838,7 @@
             }
           }
           var fakeInternalInstance = {};
-          var emptyRefsObject = new React13.Component().refs;
+          var emptyRefsObject = new React17.Component().refs;
           var didWarnAboutStateAssignmentForComponent;
           var didWarnAboutUninitializedState;
           var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -13437,7 +13437,7 @@
                 ReactCurrentDispatcher$1.current = HooksDispatcherOnMountInDEV;
               }
             }
-            var children = Component(props, secondArg);
+            var children2 = Component(props, secondArg);
             if (didScheduleRenderPhaseUpdateDuringThisPass) {
               var numberOfReRenders = 0;
               do {
@@ -13457,7 +13457,7 @@
                   hookTypesUpdateIndexDev = -1;
                 }
                 ReactCurrentDispatcher$1.current = HooksDispatcherOnRerenderInDEV;
-                children = Component(props, secondArg);
+                children2 = Component(props, secondArg);
               } while (didScheduleRenderPhaseUpdateDuringThisPass);
             }
             ReactCurrentDispatcher$1.current = ContextOnlyDispatcher;
@@ -13481,7 +13481,7 @@
             if (didRenderTooFewHooks) {
               throw new Error("Rendered fewer hooks than expected. This may be caused by an accidental early return statement.");
             }
-            return children;
+            return children2;
           }
           function checkDidRenderIdHook() {
             var didRenderIdHook = localIdCounter !== 0;
@@ -16638,31 +16638,31 @@
               }
             }
           }
-          function validateSuspenseListNestedChild(childSlot, index2) {
+          function validateSuspenseListNestedChild(childSlot, index3) {
             {
               var isAnArray = isArray(childSlot);
               var isIterable = !isAnArray && typeof getIteratorFn(childSlot) === "function";
               if (isAnArray || isIterable) {
                 var type = isAnArray ? "array" : "iterable";
-                error("A nested %s was passed to row #%s in <SuspenseList />. Wrap it in an additional SuspenseList to configure its revealOrder: <SuspenseList revealOrder=...> ... <SuspenseList revealOrder=...>{%s}</SuspenseList> ... </SuspenseList>", type, index2, type);
+                error("A nested %s was passed to row #%s in <SuspenseList />. Wrap it in an additional SuspenseList to configure its revealOrder: <SuspenseList revealOrder=...> ... <SuspenseList revealOrder=...>{%s}</SuspenseList> ... </SuspenseList>", type, index3, type);
                 return false;
               }
             }
             return true;
           }
-          function validateSuspenseListChildren(children, revealOrder) {
+          function validateSuspenseListChildren(children2, revealOrder) {
             {
-              if ((revealOrder === "forwards" || revealOrder === "backwards") && children !== void 0 && children !== null && children !== false) {
-                if (isArray(children)) {
-                  for (var i2 = 0; i2 < children.length; i2++) {
-                    if (!validateSuspenseListNestedChild(children[i2], i2)) {
+              if ((revealOrder === "forwards" || revealOrder === "backwards") && children2 !== void 0 && children2 !== null && children2 !== false) {
+                if (isArray(children2)) {
+                  for (var i2 = 0; i2 < children2.length; i2++) {
+                    if (!validateSuspenseListNestedChild(children2[i2], i2)) {
                       return;
                     }
                   }
                 } else {
-                  var iteratorFn = getIteratorFn(children);
+                  var iteratorFn = getIteratorFn(children2);
                   if (typeof iteratorFn === "function") {
-                    var childrenIterator = iteratorFn.call(children);
+                    var childrenIterator = iteratorFn.call(children2);
                     if (childrenIterator) {
                       var step = childrenIterator.next();
                       var _i = 0;
@@ -17151,11 +17151,11 @@
           var updateHostComponent$1;
           var updateHostText$1;
           {
-            appendAllChildren = function(parent, workInProgress2, needsVisibilityToggle, isHidden) {
+            appendAllChildren = function(parent2, workInProgress2, needsVisibilityToggle, isHidden) {
               var node = workInProgress2.child;
               while (node !== null) {
                 if (node.tag === HostComponent || node.tag === HostText) {
-                  appendInitialChild(parent, node.stateNode);
+                  appendInitialChild(parent2, node.stateNode);
                 } else if (node.tag === HostPortal)
                   ;
                 else if (node.child !== null) {
@@ -17570,7 +17570,7 @@
                         row = row.sibling;
                       }
                     }
-                    if (renderState.tail !== null && now() > getRenderTargetTime()) {
+                    if (renderState.tail !== null && now2() > getRenderTargetTime()) {
                       workInProgress2.flags |= DidCapture;
                       didSuspendAlready = true;
                       cutOffTailIfNeeded(renderState, false);
@@ -17595,7 +17595,7 @@
                         bubbleProperties(workInProgress2);
                         return null;
                       }
-                    } else if (now() * 2 - renderState.renderingStartTime > getRenderTargetTime() && renderLanes2 !== OffscreenLane) {
+                    } else if (now2() * 2 - renderState.renderingStartTime > getRenderTargetTime() && renderLanes2 !== OffscreenLane) {
                       workInProgress2.flags |= DidCapture;
                       didSuspendAlready = true;
                       cutOffTailIfNeeded(renderState, false);
@@ -17616,11 +17616,11 @@
                   }
                 }
                 if (renderState.tail !== null) {
-                  var next = renderState.tail;
-                  renderState.rendering = next;
-                  renderState.tail = next.sibling;
-                  renderState.renderingStartTime = now();
-                  next.sibling = null;
+                  var next2 = renderState.tail;
+                  renderState.rendering = next2;
+                  renderState.tail = next2.sibling;
+                  renderState.renderingStartTime = now2();
+                  next2.sibling = null;
                   var suspenseContext = suspenseStackCursor.current;
                   if (didSuspendAlready) {
                     suspenseContext = setShallowSuspenseContext(suspenseContext, ForceSuspenseFallback);
@@ -17628,7 +17628,7 @@
                     suspenseContext = setDefaultShallowSuspenseContext(suspenseContext);
                   }
                   pushSuspenseContext(workInProgress2, suspenseContext);
-                  return next;
+                  return next2;
                 }
                 bubbleProperties(workInProgress2);
                 return null;
@@ -18471,12 +18471,12 @@
             }
           }
           function getHostParentFiber(fiber) {
-            var parent = fiber.return;
-            while (parent !== null) {
-              if (isHostParent(parent)) {
-                return parent;
+            var parent2 = fiber.return;
+            while (parent2 !== null) {
+              if (isHostParent(parent2)) {
+                return parent2;
               }
-              parent = parent.return;
+              parent2 = parent2.return;
             }
             throw new Error("Expected to find a host parent. This error is likely caused by a bug in React. Please file an issue.");
           }
@@ -18515,13 +18515,13 @@
             var parentFiber = getHostParentFiber(finishedWork);
             switch (parentFiber.tag) {
               case HostComponent: {
-                var parent = parentFiber.stateNode;
+                var parent2 = parentFiber.stateNode;
                 if (parentFiber.flags & ContentReset) {
-                  resetTextContent(parent);
+                  resetTextContent(parent2);
                   parentFiber.flags &= ~ContentReset;
                 }
                 var before = getHostSibling(finishedWork);
-                insertOrAppendPlacementNode(finishedWork, before, parent);
+                insertOrAppendPlacementNode(finishedWork, before, parent2);
                 break;
               }
               case HostRoot:
@@ -18535,49 +18535,49 @@
                 throw new Error("Invalid host parent fiber. This error is likely caused by a bug in React. Please file an issue.");
             }
           }
-          function insertOrAppendPlacementNodeIntoContainer(node, before, parent) {
+          function insertOrAppendPlacementNodeIntoContainer(node, before, parent2) {
             var tag = node.tag;
             var isHost = tag === HostComponent || tag === HostText;
             if (isHost) {
               var stateNode = node.stateNode;
               if (before) {
-                insertInContainerBefore(parent, stateNode, before);
+                insertInContainerBefore(parent2, stateNode, before);
               } else {
-                appendChildToContainer(parent, stateNode);
+                appendChildToContainer(parent2, stateNode);
               }
             } else if (tag === HostPortal)
               ;
             else {
               var child = node.child;
               if (child !== null) {
-                insertOrAppendPlacementNodeIntoContainer(child, before, parent);
+                insertOrAppendPlacementNodeIntoContainer(child, before, parent2);
                 var sibling = child.sibling;
                 while (sibling !== null) {
-                  insertOrAppendPlacementNodeIntoContainer(sibling, before, parent);
+                  insertOrAppendPlacementNodeIntoContainer(sibling, before, parent2);
                   sibling = sibling.sibling;
                 }
               }
             }
           }
-          function insertOrAppendPlacementNode(node, before, parent) {
+          function insertOrAppendPlacementNode(node, before, parent2) {
             var tag = node.tag;
             var isHost = tag === HostComponent || tag === HostText;
             if (isHost) {
               var stateNode = node.stateNode;
               if (before) {
-                insertBefore(parent, stateNode, before);
+                insertBefore(parent2, stateNode, before);
               } else {
-                appendChild(parent, stateNode);
+                appendChild(parent2, stateNode);
               }
             } else if (tag === HostPortal)
               ;
             else {
               var child = node.child;
               if (child !== null) {
-                insertOrAppendPlacementNode(child, before, parent);
+                insertOrAppendPlacementNode(child, before, parent2);
                 var sibling = child.sibling;
                 while (sibling !== null) {
-                  insertOrAppendPlacementNode(sibling, before, parent);
+                  insertOrAppendPlacementNode(sibling, before, parent2);
                   sibling = sibling.sibling;
                 }
               }
@@ -18587,27 +18587,27 @@
           var hostParentIsContainer = false;
           function commitDeletionEffects(root2, returnFiber, deletedFiber) {
             {
-              var parent = returnFiber;
+              var parent2 = returnFiber;
               findParent:
-                while (parent !== null) {
-                  switch (parent.tag) {
+                while (parent2 !== null) {
+                  switch (parent2.tag) {
                     case HostComponent: {
-                      hostParent = parent.stateNode;
+                      hostParent = parent2.stateNode;
                       hostParentIsContainer = false;
                       break findParent;
                     }
                     case HostRoot: {
-                      hostParent = parent.stateNode.containerInfo;
+                      hostParent = parent2.stateNode.containerInfo;
                       hostParentIsContainer = true;
                       break findParent;
                     }
                     case HostPortal: {
-                      hostParent = parent.stateNode.containerInfo;
+                      hostParent = parent2.stateNode.containerInfo;
                       hostParentIsContainer = true;
                       break findParent;
                     }
                   }
-                  parent = parent.return;
+                  parent2 = parent2.return;
                 }
               if (hostParent === null) {
                 throw new Error("Expected to find a host parent. This error is likely caused by a bug in React. Please file an issue.");
@@ -18618,8 +18618,8 @@
             }
             detachFiberMutation(deletedFiber);
           }
-          function recursivelyTraverseDeletionEffects(finishedRoot, nearestMountedAncestor, parent) {
-            var child = parent.child;
+          function recursivelyTraverseDeletionEffects(finishedRoot, nearestMountedAncestor, parent2) {
+            var child = parent2.child;
             while (child !== null) {
               commitDeletionEffectsOnFiber(finishedRoot, nearestMountedAncestor, child);
               child = child.sibling;
@@ -19566,7 +19566,7 @@
           var RENDER_TIMEOUT_MS = 500;
           var workInProgressTransitions = null;
           function resetRenderTimer() {
-            workInProgressRootRenderTargetTime = now() + RENDER_TIMEOUT_MS;
+            workInProgressRootRenderTargetTime = now2() + RENDER_TIMEOUT_MS;
           }
           function getRenderTargetTime() {
             return workInProgressRootRenderTargetTime;
@@ -19595,12 +19595,12 @@
           }
           function requestEventTime() {
             if ((executionContext & (RenderContext | CommitContext)) !== NoContext) {
-              return now();
+              return now2();
             }
             if (currentEventTime !== NoTimestamp) {
               return currentEventTime;
             }
-            currentEventTime = now();
+            currentEventTime = now2();
             return currentEventTime;
           }
           function requestUpdateLane(fiber) {
@@ -19613,11 +19613,11 @@
             var isTransition = requestCurrentTransition() !== NoTransition;
             if (isTransition) {
               if (ReactCurrentBatchConfig$3.transition !== null) {
-                var transition = ReactCurrentBatchConfig$3.transition;
-                if (!transition._updatedFibers) {
-                  transition._updatedFibers = /* @__PURE__ */ new Set();
+                var transition2 = ReactCurrentBatchConfig$3.transition;
+                if (!transition2._updatedFibers) {
+                  transition2._updatedFibers = /* @__PURE__ */ new Set();
                 }
-                transition._updatedFibers.add(fiber);
+                transition2._updatedFibers.add(fiber);
               }
               if (currentEventTransitionLane === NoLane) {
                 currentEventTransitionLane = claimNextTransitionLane();
@@ -19789,7 +19789,7 @@
                 var fatalError = workInProgressRootFatalError;
                 prepareFreshStack(root2, NoLanes);
                 markRootSuspended$1(root2, lanes);
-                ensureRootIsScheduled(root2, now());
+                ensureRootIsScheduled(root2, now2());
                 throw fatalError;
               }
               if (exitStatus === RootDidNotComplete) {
@@ -19810,7 +19810,7 @@
                     var _fatalError = workInProgressRootFatalError;
                     prepareFreshStack(root2, NoLanes);
                     markRootSuspended$1(root2, lanes);
-                    ensureRootIsScheduled(root2, now());
+                    ensureRootIsScheduled(root2, now2());
                     throw _fatalError;
                   }
                 }
@@ -19819,7 +19819,7 @@
                 finishConcurrentRender(root2, exitStatus, lanes);
               }
             }
-            ensureRootIsScheduled(root2, now());
+            ensureRootIsScheduled(root2, now2());
             if (root2.callbackNode === originalCallbackNode) {
               return performConcurrentWorkOnRoot.bind(null, root2);
             }
@@ -19864,7 +19864,7 @@
               case RootSuspended: {
                 markRootSuspended$1(root2, lanes);
                 if (includesOnlyRetries(lanes) && !shouldForceFlushFallbacksInDEV()) {
-                  var msUntilTimeout = globalMostRecentFallbackTime + FALLBACK_THROTTLE_MS - now();
+                  var msUntilTimeout = globalMostRecentFallbackTime + FALLBACK_THROTTLE_MS - now2();
                   if (msUntilTimeout > 10) {
                     var nextLanes = getNextLanes(root2, NoLanes);
                     if (nextLanes !== NoLanes) {
@@ -19891,7 +19891,7 @@
                 if (!shouldForceFlushFallbacksInDEV()) {
                   var mostRecentEventTime = getMostRecentEventTime(root2, lanes);
                   var eventTimeMs = mostRecentEventTime;
-                  var timeElapsedMs = now() - eventTimeMs;
+                  var timeElapsedMs = now2() - eventTimeMs;
                   var _msUntilTimeout = jnd(timeElapsedMs) - timeElapsedMs;
                   if (_msUntilTimeout > 10) {
                     root2.timeoutHandle = scheduleTimeout(commitRoot.bind(null, root2, workInProgressRootRecoverableErrors, workInProgressTransitions), _msUntilTimeout);
@@ -19968,7 +19968,7 @@
             flushPassiveEffects();
             var lanes = getNextLanes(root2, NoLanes);
             if (!includesSomeLane(lanes, SyncLane)) {
-              ensureRootIsScheduled(root2, now());
+              ensureRootIsScheduled(root2, now2());
               return null;
             }
             var exitStatus = renderRootSync(root2, lanes);
@@ -19983,7 +19983,7 @@
               var fatalError = workInProgressRootFatalError;
               prepareFreshStack(root2, NoLanes);
               markRootSuspended$1(root2, lanes);
-              ensureRootIsScheduled(root2, now());
+              ensureRootIsScheduled(root2, now2());
               throw fatalError;
             }
             if (exitStatus === RootDidNotComplete) {
@@ -19993,13 +19993,13 @@
             root2.finishedWork = finishedWork;
             root2.finishedLanes = lanes;
             commitRoot(root2, workInProgressRootRecoverableErrors, workInProgressTransitions);
-            ensureRootIsScheduled(root2, now());
+            ensureRootIsScheduled(root2, now2());
             return null;
           }
           function flushRoot(root2, lanes) {
             if (lanes !== NoLanes) {
               markRootEntangled(root2, mergeLanes(lanes, SyncLane));
-              ensureRootIsScheduled(root2, now());
+              ensureRootIsScheduled(root2, now2());
               if ((executionContext & (RenderContext | CommitContext)) === NoContext) {
                 resetRenderTimer();
                 flushSyncCallbacks();
@@ -20158,7 +20158,7 @@
             ReactCurrentDispatcher$2.current = prevDispatcher;
           }
           function markCommitTimeOfFallback() {
-            globalMostRecentFallbackTime = now();
+            globalMostRecentFallbackTime = now2();
           }
           function markSkippedUpdateLanes(lane) {
             workInProgressRootSkippedLanes = mergeLanes(lane, workInProgressRootSkippedLanes);
@@ -20291,20 +20291,20 @@
           function performUnitOfWork(unitOfWork) {
             var current2 = unitOfWork.alternate;
             setCurrentFiber(unitOfWork);
-            var next;
+            var next2;
             if ((unitOfWork.mode & ProfileMode) !== NoMode) {
               startProfilerTimer(unitOfWork);
-              next = beginWork$1(current2, unitOfWork, subtreeRenderLanes);
+              next2 = beginWork$1(current2, unitOfWork, subtreeRenderLanes);
               stopProfilerTimerIfRunningAndRecordDelta(unitOfWork, true);
             } else {
-              next = beginWork$1(current2, unitOfWork, subtreeRenderLanes);
+              next2 = beginWork$1(current2, unitOfWork, subtreeRenderLanes);
             }
             resetCurrentFiber();
             unitOfWork.memoizedProps = unitOfWork.pendingProps;
-            if (next === null) {
+            if (next2 === null) {
               completeUnitOfWork(unitOfWork);
             } else {
-              workInProgress = next;
+              workInProgress = next2;
             }
             ReactCurrentOwner$2.current = null;
           }
@@ -20315,17 +20315,17 @@
               var returnFiber = completedWork.return;
               if ((completedWork.flags & Incomplete) === NoFlags) {
                 setCurrentFiber(completedWork);
-                var next = void 0;
+                var next2 = void 0;
                 if ((completedWork.mode & ProfileMode) === NoMode) {
-                  next = completeWork(current2, completedWork, subtreeRenderLanes);
+                  next2 = completeWork(current2, completedWork, subtreeRenderLanes);
                 } else {
                   startProfilerTimer(completedWork);
-                  next = completeWork(current2, completedWork, subtreeRenderLanes);
+                  next2 = completeWork(current2, completedWork, subtreeRenderLanes);
                   stopProfilerTimerIfRunningAndRecordDelta(completedWork, false);
                 }
                 resetCurrentFiber();
-                if (next !== null) {
-                  workInProgress = next;
+                if (next2 !== null) {
+                  workInProgress = next2;
                   return;
                 }
               } else {
@@ -20492,7 +20492,7 @@
             {
               onCommitRoot$1();
             }
-            ensureRootIsScheduled(root2, now());
+            ensureRootIsScheduled(root2, now2());
             if (recoverableErrors !== null) {
               var onRecoverableError = root2.onRecoverableError;
               for (var i2 = 0; i2 < recoverableErrors.length; i2++) {
@@ -20699,7 +20699,7 @@
             markRootPinged(root2, pingedLanes);
             warnIfSuspenseResolutionNotWrappedWithActDEV(root2);
             if (workInProgressRoot === root2 && isSubsetOfLanes(workInProgressRootRenderLanes, pingedLanes)) {
-              if (workInProgressRootExitStatus === RootSuspendedWithDelay || workInProgressRootExitStatus === RootSuspended && includesOnlyRetries(workInProgressRootRenderLanes) && now() - globalMostRecentFallbackTime < FALLBACK_THROTTLE_MS) {
+              if (workInProgressRootExitStatus === RootSuspendedWithDelay || workInProgressRootExitStatus === RootSuspended && includesOnlyRetries(workInProgressRootRenderLanes) && now2() - globalMostRecentFallbackTime < FALLBACK_THROTTLE_MS) {
                 prepareFreshStack(root2, NoLanes);
               } else {
                 workInProgressRootPingedLanes = mergeLanes(workInProgressRootPingedLanes, pingedLanes);
@@ -21743,7 +21743,7 @@
             return root2;
           }
           var ReactVersion = "18.2.0";
-          function createPortal(children, containerInfo, implementation) {
+          function createPortal(children2, containerInfo, implementation) {
             var key = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : null;
             {
               checkKeyStringCoercion(key);
@@ -21751,7 +21751,7 @@
             return {
               $$typeof: REACT_PORTAL_TYPE,
               key: key == null ? null : "" + key,
-              children,
+              children: children2,
               containerInfo,
               implementation
             };
@@ -21977,10 +21977,10 @@
           var setErrorHandler = null;
           var setSuspenseHandler = null;
           {
-            var copyWithDeleteImpl = function(obj, path, index2) {
-              var key = path[index2];
+            var copyWithDeleteImpl = function(obj, path, index3) {
+              var key = path[index3];
               var updated = isArray(obj) ? obj.slice() : assign({}, obj);
-              if (index2 + 1 === path.length) {
+              if (index3 + 1 === path.length) {
                 if (isArray(updated)) {
                   updated.splice(key, 1);
                 } else {
@@ -21988,17 +21988,17 @@
                 }
                 return updated;
               }
-              updated[key] = copyWithDeleteImpl(obj[key], path, index2 + 1);
+              updated[key] = copyWithDeleteImpl(obj[key], path, index3 + 1);
               return updated;
             };
             var copyWithDelete = function(obj, path) {
               return copyWithDeleteImpl(obj, path, 0);
             };
-            var copyWithRenameImpl = function(obj, oldPath, newPath, index2) {
-              var oldKey = oldPath[index2];
+            var copyWithRenameImpl = function(obj, oldPath, newPath, index3) {
+              var oldKey = oldPath[index3];
               var updated = isArray(obj) ? obj.slice() : assign({}, obj);
-              if (index2 + 1 === oldPath.length) {
-                var newKey = newPath[index2];
+              if (index3 + 1 === oldPath.length) {
+                var newKey = newPath[index3];
                 updated[newKey] = updated[oldKey];
                 if (isArray(updated)) {
                   updated.splice(oldKey, 1);
@@ -22006,7 +22006,7 @@
                   delete updated[oldKey];
                 }
               } else {
-                updated[oldKey] = copyWithRenameImpl(obj[oldKey], oldPath, newPath, index2 + 1);
+                updated[oldKey] = copyWithRenameImpl(obj[oldKey], oldPath, newPath, index3 + 1);
               }
               return updated;
             };
@@ -22024,13 +22024,13 @@
               }
               return copyWithRenameImpl(obj, oldPath, newPath, 0);
             };
-            var copyWithSetImpl = function(obj, path, index2, value) {
-              if (index2 >= path.length) {
+            var copyWithSetImpl = function(obj, path, index3, value) {
+              if (index3 >= path.length) {
                 return value;
               }
-              var key = path[index2];
+              var key = path[index3];
               var updated = isArray(obj) ? obj.slice() : assign({}, obj);
-              updated[key] = copyWithSetImpl(obj[key], path, index2 + 1, value);
+              updated[key] = copyWithSetImpl(obj[key], path, index3 + 1, value);
               return updated;
             };
             var copyWithSet = function(obj, path, value) {
@@ -22173,7 +22173,7 @@
           function ReactDOMRoot(internalRoot) {
             this._internalRoot = internalRoot;
           }
-          ReactDOMHydrationRoot.prototype.render = ReactDOMRoot.prototype.render = function(children) {
+          ReactDOMHydrationRoot.prototype.render = ReactDOMRoot.prototype.render = function(children2) {
             var root2 = this._internalRoot;
             if (root2 === null) {
               throw new Error("Cannot update an unmounted root.");
@@ -22196,7 +22196,7 @@
                 }
               }
             }
-            updateContainer(children, root2, null, null);
+            updateContainer(children2, root2, null, null);
           };
           ReactDOMHydrationRoot.prototype.unmount = ReactDOMRoot.prototype.unmount = function() {
             {
@@ -22406,7 +22406,7 @@
               }
             }
           }
-          function legacyRenderSubtreeIntoContainer(parentComponent, children, container, forceHydrate, callback) {
+          function legacyRenderSubtreeIntoContainer(parentComponent, children2, container, forceHydrate, callback) {
             {
               topLevelUpdateWarnings(container);
               warnOnInvalidCallback$1(callback === void 0 ? null : callback, "render");
@@ -22414,7 +22414,7 @@
             var maybeRoot = container._reactRootContainer;
             var root2;
             if (!maybeRoot) {
-              root2 = legacyCreateRootFromDOMContainer(container, children, parentComponent, callback, forceHydrate);
+              root2 = legacyCreateRootFromDOMContainer(container, children2, parentComponent, callback, forceHydrate);
             } else {
               root2 = maybeRoot;
               if (typeof callback === "function") {
@@ -22424,7 +22424,7 @@
                   originalCallback.call(instance);
                 };
               }
-              updateContainer(children, root2, parentComponent, callback);
+              updateContainer(children2, root2, parentComponent, callback);
             }
             return getPublicRootInstance(root2);
           }
@@ -22540,12 +22540,12 @@
           }
           setRestoreImplementation(restoreControlledState$3);
           setBatchingImplementation(batchedUpdates$1, discreteUpdates, flushSync);
-          function createPortal$1(children, container) {
+          function createPortal$1(children2, container) {
             var key = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : null;
             if (!isValidContainer(container)) {
               throw new Error("Target container is not a DOM element.");
             }
-            return createPortal(children, container, null, key);
+            return createPortal(children2, container, null, key);
           }
           function renderSubtreeIntoContainer(parentComponent, element, containerNode, callback) {
             return unstable_renderSubtreeIntoContainer(parentComponent, element, containerNode, callback);
@@ -23301,8 +23301,8 @@
             this._index--;
           }
         };
-        Tokenizer2.prototype.decodeNumericEntity = function(offset, base, strict) {
-          var sectionStart = this.sectionStart + offset;
+        Tokenizer2.prototype.decodeNumericEntity = function(offset2, base, strict) {
+          var sectionStart = this.sectionStart + offset2;
           if (sectionStart !== this._index) {
             var entity = this.buffer.substring(sectionStart, this._index);
             var parsed = parseInt(entity, base);
@@ -23987,8 +23987,8 @@
           get: function() {
             return this.parent;
           },
-          set: function(parent) {
-            this.parent = parent;
+          set: function(parent2) {
+            this.parent = parent2;
           },
           enumerable: false,
           configurable: true
@@ -23997,8 +23997,8 @@
           get: function() {
             return this.prev;
           },
-          set: function(prev) {
-            this.prev = prev;
+          set: function(prev2) {
+            this.prev = prev2;
           },
           enumerable: false,
           configurable: true
@@ -24007,8 +24007,8 @@
           get: function() {
             return this.next;
           },
-          set: function(next) {
-            this.next = next;
+          set: function(next2) {
+            this.next = next2;
           },
           enumerable: false,
           configurable: true
@@ -24070,9 +24070,9 @@
       exports.ProcessingInstruction = ProcessingInstruction;
       var NodeWithChildren = function(_super) {
         __extends(NodeWithChildren2, _super);
-        function NodeWithChildren2(type, children) {
+        function NodeWithChildren2(type, children2) {
           var _this = _super.call(this, type) || this;
-          _this.children = children;
+          _this.children = children2;
           return _this;
         }
         Object.defineProperty(NodeWithChildren2.prototype, "firstChild", {
@@ -24094,8 +24094,8 @@
           get: function() {
             return this.children;
           },
-          set: function(children) {
-            this.children = children;
+          set: function(children2) {
+            this.children = children2;
           },
           enumerable: false,
           configurable: true
@@ -24105,22 +24105,22 @@
       exports.NodeWithChildren = NodeWithChildren;
       var Document = function(_super) {
         __extends(Document2, _super);
-        function Document2(children) {
-          return _super.call(this, domelementtype_1.ElementType.Root, children) || this;
+        function Document2(children2) {
+          return _super.call(this, domelementtype_1.ElementType.Root, children2) || this;
         }
         return Document2;
       }(NodeWithChildren);
       exports.Document = Document;
       var Element = function(_super) {
         __extends(Element2, _super);
-        function Element2(name, attribs, children, type) {
-          if (children === void 0) {
-            children = [];
+        function Element2(name, attribs, children2, type) {
+          if (children2 === void 0) {
+            children2 = [];
           }
           if (type === void 0) {
             type = name === "script" ? domelementtype_1.ElementType.Script : name === "style" ? domelementtype_1.ElementType.Style : domelementtype_1.ElementType.Tag;
           }
-          var _this = _super.call(this, type, children) || this;
+          var _this = _super.call(this, type, children2) || this;
           _this.name = name;
           _this.attribs = attribs;
           return _this;
@@ -24192,9 +24192,9 @@
         } else if (isComment(node)) {
           result = new Comment(node.data);
         } else if (isTag(node)) {
-          var children = recursive ? cloneChildren(node.children) : [];
-          var clone_1 = new Element(node.name, __assign({}, node.attribs), children);
-          children.forEach(function(child) {
+          var children2 = recursive ? cloneChildren(node.children) : [];
+          var clone_1 = new Element(node.name, __assign({}, node.attribs), children2);
+          children2.forEach(function(child) {
             return child.parent = clone_1;
           });
           if (node.namespace != null) {
@@ -24208,16 +24208,16 @@
           }
           result = clone_1;
         } else if (isCDATA(node)) {
-          var children = recursive ? cloneChildren(node.children) : [];
-          var clone_2 = new NodeWithChildren(domelementtype_1.ElementType.CDATA, children);
-          children.forEach(function(child) {
+          var children2 = recursive ? cloneChildren(node.children) : [];
+          var clone_2 = new NodeWithChildren(domelementtype_1.ElementType.CDATA, children2);
+          children2.forEach(function(child) {
             return child.parent = clone_2;
           });
           result = clone_2;
         } else if (isDocument(node)) {
-          var children = recursive ? cloneChildren(node.children) : [];
-          var clone_3 = new Document(children);
-          children.forEach(function(child) {
+          var children2 = recursive ? cloneChildren(node.children) : [];
+          var clone_3 = new Document(children2);
+          children2.forEach(function(child) {
             return child.parent = clone_3;
           });
           if (node["x-mode"]) {
@@ -24244,14 +24244,14 @@
       }
       exports.cloneNode = cloneNode;
       function cloneChildren(childs) {
-        var children = childs.map(function(child) {
+        var children2 = childs.map(function(child) {
           return cloneNode(child, true);
         });
-        for (var i2 = 1; i2 < children.length; i2++) {
-          children[i2].prev = children[i2 - 1];
-          children[i2 - 1].next = children[i2];
+        for (var i2 = 1; i2 < children2.length; i2++) {
+          children2[i2].prev = children2[i2 - 1];
+          children2[i2 - 1].next = children2[i2];
         }
-        return children;
+        return children2;
       }
     }
   });
@@ -24382,11 +24382,11 @@
           this.lastNode = null;
         };
         DomHandler2.prototype.oncdatastart = function() {
-          var text = new node_1.Text("");
-          var node = new node_1.NodeWithChildren(domelementtype_1.ElementType.CDATA, [text]);
+          var text2 = new node_1.Text("");
+          var node = new node_1.NodeWithChildren(domelementtype_1.ElementType.CDATA, [text2]);
           this.addNode(node);
-          text.parent = node;
-          this.lastNode = text;
+          text2.parent = node;
+          this.lastNode = text2;
         };
         DomHandler2.prototype.oncdataend = function() {
           this.lastNode = null;
@@ -24403,20 +24403,20 @@
           }
         };
         DomHandler2.prototype.addNode = function(node) {
-          var parent = this.tagStack[this.tagStack.length - 1];
-          var previousSibling = parent.children[parent.children.length - 1];
+          var parent2 = this.tagStack[this.tagStack.length - 1];
+          var previousSibling = parent2.children[parent2.children.length - 1];
           if (this.options.withStartIndices) {
             node.startIndex = this.parser.startIndex;
           }
           if (this.options.withEndIndices) {
             node.endIndex = this.parser.endIndex;
           }
-          parent.children.push(node);
+          parent2.children.push(node);
           if (previousSibling) {
             node.prev = previousSibling;
             previousSibling.next = node;
           }
-          node.parent = parent;
+          node.parent = parent2;
           this.lastNode = null;
         };
         return DomHandler2;
@@ -24984,29 +24984,29 @@
       exports.prevElementSibling = exports.nextElementSibling = exports.getName = exports.hasAttrib = exports.getAttributeValue = exports.getSiblings = exports.getParent = exports.getChildren = void 0;
       var domhandler_1 = require_lib2();
       var emptyArray = [];
-      function getChildren(elem) {
+      function getChildren2(elem) {
         var _a;
         return (_a = elem.children) !== null && _a !== void 0 ? _a : emptyArray;
       }
-      exports.getChildren = getChildren;
+      exports.getChildren = getChildren2;
       function getParent(elem) {
         return elem.parent || null;
       }
       exports.getParent = getParent;
       function getSiblings(elem) {
         var _a, _b;
-        var parent = getParent(elem);
-        if (parent != null)
-          return getChildren(parent);
+        var parent2 = getParent(elem);
+        if (parent2 != null)
+          return getChildren2(parent2);
         var siblings = [elem];
-        var prev = elem.prev, next = elem.next;
-        while (prev != null) {
-          siblings.unshift(prev);
-          _a = prev, prev = _a.prev;
+        var prev2 = elem.prev, next2 = elem.next;
+        while (prev2 != null) {
+          siblings.unshift(prev2);
+          _a = prev2, prev2 = _a.prev;
         }
-        while (next != null) {
-          siblings.push(next);
-          _b = next, next = _b.next;
+        while (next2 != null) {
+          siblings.push(next2);
+          _b = next2, next2 = _b.next;
         }
         return siblings;
       }
@@ -25026,18 +25026,18 @@
       exports.getName = getName;
       function nextElementSibling(elem) {
         var _a;
-        var next = elem.next;
-        while (next !== null && !(0, domhandler_1.isTag)(next))
-          _a = next, next = _a.next;
-        return next;
+        var next2 = elem.next;
+        while (next2 !== null && !(0, domhandler_1.isTag)(next2))
+          _a = next2, next2 = _a.next;
+        return next2;
       }
       exports.nextElementSibling = nextElementSibling;
       function prevElementSibling(elem) {
         var _a;
-        var prev = elem.prev;
-        while (prev !== null && !(0, domhandler_1.isTag)(prev))
-          _a = prev, prev = _a.prev;
-        return prev;
+        var prev2 = elem.prev;
+        while (prev2 !== null && !(0, domhandler_1.isTag)(prev2))
+          _a = prev2, prev2 = _a.prev;
+        return prev2;
       }
       exports.prevElementSibling = prevElementSibling;
     }
@@ -25061,17 +25061,17 @@
       }
       exports.removeElement = removeElement;
       function replaceElement(elem, replacement) {
-        var prev = replacement.prev = elem.prev;
-        if (prev) {
-          prev.next = replacement;
+        var prev2 = replacement.prev = elem.prev;
+        if (prev2) {
+          prev2.next = replacement;
         }
-        var next = replacement.next = elem.next;
-        if (next) {
-          next.prev = replacement;
+        var next2 = replacement.next = elem.next;
+        if (next2) {
+          next2.prev = replacement;
         }
-        var parent = replacement.parent = elem.parent;
-        if (parent) {
-          var childs = parent.children;
+        var parent2 = replacement.parent = elem.parent;
+        if (parent2) {
+          var childs = parent2.children;
           childs[childs.lastIndexOf(elem)] = replacement;
         }
       }
@@ -25089,25 +25089,25 @@
         }
       }
       exports.appendChild = appendChild;
-      function append(elem, next) {
-        removeElement(next);
-        var parent = elem.parent;
+      function append2(elem, next2) {
+        removeElement(next2);
+        var parent2 = elem.parent;
         var currNext = elem.next;
-        next.next = currNext;
-        next.prev = elem;
-        elem.next = next;
-        next.parent = parent;
+        next2.next = currNext;
+        next2.prev = elem;
+        elem.next = next2;
+        next2.parent = parent2;
         if (currNext) {
-          currNext.prev = next;
-          if (parent) {
-            var childs = parent.children;
-            childs.splice(childs.lastIndexOf(currNext), 0, next);
+          currNext.prev = next2;
+          if (parent2) {
+            var childs = parent2.children;
+            childs.splice(childs.lastIndexOf(currNext), 0, next2);
           }
-        } else if (parent) {
-          parent.children.push(next);
+        } else if (parent2) {
+          parent2.children.push(next2);
         }
       }
-      exports.append = append;
+      exports.append = append2;
       function prependChild(elem, child) {
         removeElement(child);
         child.parent = elem;
@@ -25121,22 +25121,22 @@
         }
       }
       exports.prependChild = prependChild;
-      function prepend(elem, prev) {
-        removeElement(prev);
-        var parent = elem.parent;
-        if (parent) {
-          var childs = parent.children;
-          childs.splice(childs.indexOf(elem), 0, prev);
+      function prepend2(elem, prev2) {
+        removeElement(prev2);
+        var parent2 = elem.parent;
+        if (parent2) {
+          var childs = parent2.children;
+          childs.splice(childs.indexOf(elem), 0, prev2);
         }
         if (elem.prev) {
-          elem.prev.next = prev;
+          elem.prev.next = prev2;
         }
-        prev.parent = parent;
-        prev.prev = elem.prev;
-        prev.next = elem;
-        elem.prev = prev;
+        prev2.parent = parent2;
+        prev2.prev = elem.prev;
+        prev2.next = elem;
+        elem.prev = prev2;
       }
-      exports.prepend = prepend;
+      exports.prepend = prepend2;
     }
   });
 
@@ -25147,7 +25147,7 @@
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.findAll = exports.existsOne = exports.findOne = exports.findOneChild = exports.find = exports.filter = void 0;
       var domhandler_1 = require_lib2();
-      function filter(test, node, recurse, limit) {
+      function filter2(test, node, recurse, limit) {
         if (recurse === void 0) {
           recurse = true;
         }
@@ -25156,10 +25156,10 @@
         }
         if (!Array.isArray(node))
           node = [node];
-        return find(test, node, recurse, limit);
+        return find2(test, node, recurse, limit);
       }
-      exports.filter = filter;
-      function find(test, nodes, recurse, limit) {
+      exports.filter = filter2;
+      function find2(test, nodes, recurse, limit) {
         var result = [];
         for (var _i = 0, nodes_1 = nodes; _i < nodes_1.length; _i++) {
           var elem = nodes_1[_i];
@@ -25169,16 +25169,16 @@
               break;
           }
           if (recurse && (0, domhandler_1.hasChildren)(elem) && elem.children.length > 0) {
-            var children = find(test, elem.children, recurse, limit);
-            result.push.apply(result, children);
-            limit -= children.length;
+            var children2 = find2(test, elem.children, recurse, limit);
+            result.push.apply(result, children2);
+            limit -= children2.length;
             if (limit <= 0)
               break;
           }
         }
         return result;
       }
-      exports.find = find;
+      exports.find = find2;
       function findOneChild(test, nodes) {
         return nodes.find(test);
       }
@@ -25213,9 +25213,9 @@
         var stack = nodes.filter(domhandler_1.isTag);
         var elem;
         while (elem = stack.shift()) {
-          var children = (_a = elem.children) === null || _a === void 0 ? void 0 : _a.filter(domhandler_1.isTag);
-          if (children && children.length > 0) {
-            stack.unshift.apply(stack, children);
+          var children2 = (_a = elem.children) === null || _a === void 0 ? void 0 : _a.filter(domhandler_1.isTag);
+          if (children2 && children2.length > 0) {
+            stack.unshift.apply(stack, children2);
           }
           if (test(elem))
             result.push(elem);
@@ -25439,19 +25439,19 @@
           type: "atom",
           items: (0, legacy_1.getElementsByTagName)("entry", childs).map(function(item) {
             var _a2;
-            var children = item.children;
-            var entry = { media: getMediaElements(children) };
-            addConditionally(entry, "id", "id", children);
-            addConditionally(entry, "title", "title", children);
-            var href2 = (_a2 = getOneElement("link", children)) === null || _a2 === void 0 ? void 0 : _a2.attribs.href;
+            var children2 = item.children;
+            var entry = { media: getMediaElements(children2) };
+            addConditionally(entry, "id", "id", children2);
+            addConditionally(entry, "title", "title", children2);
+            var href2 = (_a2 = getOneElement("link", children2)) === null || _a2 === void 0 ? void 0 : _a2.attribs.href;
             if (href2) {
               entry.link = href2;
             }
-            var description = fetch2("summary", children) || fetch2("content", children);
+            var description = fetch2("summary", children2) || fetch2("content", children2);
             if (description) {
               entry.description = description;
             }
-            var pubDate = fetch2("updated", children);
+            var pubDate = fetch2("updated", children2);
             if (pubDate) {
               entry.pubDate = new Date(pubDate);
             }
@@ -25479,13 +25479,13 @@
           type: feedRoot.name.substr(0, 3),
           id: "",
           items: (0, legacy_1.getElementsByTagName)("item", feedRoot.children).map(function(item) {
-            var children = item.children;
-            var entry = { media: getMediaElements(children) };
-            addConditionally(entry, "id", "guid", children);
-            addConditionally(entry, "title", "title", children);
-            addConditionally(entry, "link", "link", children);
-            addConditionally(entry, "description", "description", children);
-            var pubDate = fetch2("pubDate", children);
+            var children2 = item.children;
+            var entry = { media: getMediaElements(children2) };
+            addConditionally(entry, "id", "guid", children2);
+            addConditionally(entry, "title", "title", children2);
+            addConditionally(entry, "link", "link", children2);
+            addConditionally(entry, "description", "description", children2);
+            var pubDate = fetch2("pubDate", children2);
             if (pubDate)
               entry.pubDate = new Date(pubDate);
             return entry;
@@ -25722,22 +25722,22 @@
             addConditionally(feed, "author", "email", childs, true);
             feed.items = getElements("entry", childs).map(function(item) {
               var entry = {};
-              var children = item.children;
-              addConditionally(entry, "id", "id", children);
-              addConditionally(entry, "title", "title", children);
-              var href2 = getAttribute("href", getOneElement("link", children));
+              var children2 = item.children;
+              addConditionally(entry, "id", "id", children2);
+              addConditionally(entry, "title", "title", children2);
+              var href2 = getAttribute("href", getOneElement("link", children2));
               if (href2) {
                 entry.link = href2;
               }
-              var description = fetch2("summary", children) || fetch2("content", children);
+              var description = fetch2("summary", children2) || fetch2("content", children2);
               if (description) {
                 entry.description = description;
               }
-              var pubDate = fetch2("updated", children);
+              var pubDate = fetch2("updated", children2);
               if (pubDate) {
                 entry.pubDate = new Date(pubDate);
               }
-              entry.media = getMediaElements(children);
+              entry.media = getMediaElements(children2);
               return entry;
             });
           } else {
@@ -25754,15 +25754,15 @@
             addConditionally(feed, "author", "managingEditor", childs, true);
             feed.items = getElements("item", feedRoot.children).map(function(item) {
               var entry = {};
-              var children = item.children;
-              addConditionally(entry, "id", "guid", children);
-              addConditionally(entry, "title", "title", children);
-              addConditionally(entry, "link", "link", children);
-              addConditionally(entry, "description", "description", children);
-              var pubDate = fetch2("pubDate", children);
+              var children2 = item.children;
+              addConditionally(entry, "id", "guid", children2);
+              addConditionally(entry, "title", "title", children2);
+              addConditionally(entry, "link", "link", children2);
+              addConditionally(entry, "description", "description", children2);
+              var pubDate = fetch2("pubDate", children2);
               if (pubDate)
                 entry.pubDate = new Date(pubDate);
-              entry.media = getMediaElements(children);
+              entry.media = getMediaElements(children2);
               return entry;
             });
           }
@@ -25960,18 +25960,18 @@
     "node_modules/is-plain-object/dist/is-plain-object.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
-      function isObject(o2) {
+      function isObject4(o2) {
         return Object.prototype.toString.call(o2) === "[object Object]";
       }
       function isPlainObject2(o2) {
         var ctor, prot;
-        if (isObject(o2) === false)
+        if (isObject4(o2) === false)
           return false;
         ctor = o2.constructor;
         if (ctor === void 0)
           return true;
         prot = ctor.prototype;
-        if (isObject(prot) === false)
+        if (isObject4(prot) === false)
           return false;
         if (prot.hasOwnProperty("isPrototypeOf") === false) {
           return false;
@@ -26076,8 +26076,8 @@
         if (!Array.isArray(array)) {
           throw new Error("first argument should be an array");
         }
-        return array.reduce(function(prev, next) {
-          return deepmerge(prev, next, options);
+        return array.reduce(function(prev2, next2) {
+          return deepmerge(prev2, next2, options);
         }, {});
       };
       var deepmerge_1 = deepmerge;
@@ -26305,27 +26305,27 @@
         showSourceCode(color) {
           if (!this.source)
             return "";
-          let css2 = this.source;
+          let css3 = this.source;
           if (color == null)
             color = pico.isColorSupported;
           if (terminalHighlight) {
             if (color)
-              css2 = terminalHighlight(css2);
+              css3 = terminalHighlight(css3);
           }
-          let lines = css2.split(/\r?\n/);
+          let lines = css3.split(/\r?\n/);
           let start = Math.max(this.line - 3, 0);
           let end = Math.min(this.line + 2, lines.length);
           let maxWidth = String(end).length;
           let mark, aside;
           if (color) {
             let { bold, red, gray } = pico.createColors(true);
-            mark = (text) => bold(red(text));
-            aside = (text) => gray(text);
+            mark = (text2) => bold(red(text2));
+            aside = (text2) => gray(text2);
           } else {
             mark = aside = (str) => str;
           }
-          return lines.slice(start, end).map((line, index) => {
-            let number = start + 1 + index;
+          return lines.slice(start, end).map((line, index2) => {
+            let number = start + 1 + index2;
             let gutter = " " + (" " + number).slice(-maxWidth) + " | ";
             if (number === this.line) {
               let spacing = aside(gutter.replace(/\d/g, " ")) + line.slice(0, this.column - 1).replace(/[^\t]/g, " ");
@@ -26470,16 +26470,16 @@
             if (typeof value !== "undefined")
               return value;
           }
-          let parent = node.parent;
+          let parent2 = node.parent;
           if (detect === "before") {
-            if (!parent || parent.type === "root" && parent.first === node) {
+            if (!parent2 || parent2.type === "root" && parent2.first === node) {
               return "";
             }
-            if (parent && parent.type === "document") {
+            if (parent2 && parent2.type === "document") {
               return "";
             }
           }
-          if (!parent)
+          if (!parent2)
             return DEFAULT_RAW[detect];
           let root = node.root();
           if (!root.rawCache)
@@ -26698,7 +26698,7 @@
       var CssSyntaxError = require_css_syntax_error();
       var Stringifier = require_stringifier();
       var stringify = require_stringify2();
-      function cloneNode(obj, parent) {
+      function cloneNode(obj, parent2) {
         let cloned = new obj.constructor();
         for (let i2 in obj) {
           if (!Object.prototype.hasOwnProperty.call(obj, i2)) {
@@ -26709,8 +26709,8 @@
           let value = obj[i2];
           let type = typeof value;
           if (i2 === "parent" && type === "object") {
-            if (parent)
-              cloned[i2] = parent;
+            if (parent2)
+              cloned[i2] = parent2;
           } else if (i2 === "source") {
             cloned[i2] = value;
           } else if (Array.isArray(value)) {
@@ -26750,11 +26750,11 @@
           }
           return new CssSyntaxError(message);
         }
-        warn(result, text, opts) {
+        warn(result, text2, opts) {
           let data = { node: this };
           for (let i2 in opts)
             data[i2] = opts[i2];
-          return result.warn(text, data);
+          return result.warn(text2, data);
         }
         remove() {
           if (this.parent) {
@@ -26818,14 +26818,14 @@
         next() {
           if (!this.parent)
             return void 0;
-          let index = this.parent.index(this);
-          return this.parent.nodes[index + 1];
+          let index2 = this.parent.index(this);
+          return this.parent.nodes[index2 + 1];
         }
         prev() {
           if (!this.parent)
             return void 0;
-          let index = this.parent.index(this);
-          return this.parent.nodes[index - 1];
+          let index2 = this.parent.index(this);
+          return this.parent.nodes[index2 - 1];
         }
         before(add) {
           this.parent.insertBefore(this, add);
@@ -26895,11 +26895,11 @@
           }
           return fixed;
         }
-        positionInside(index) {
+        positionInside(index2) {
           let string = this.toString();
           let column = this.source.start.column;
           let line = this.source.start.line;
-          for (let i2 = 0; i2 < index; i2++) {
+          for (let i2 = 0; i2 < index2; i2++) {
             if (string[i2] === "\n") {
               column = 1;
               line += 1;
@@ -26914,9 +26914,9 @@
           if (opts.index) {
             pos = this.positionInside(opts.index);
           } else if (opts.word) {
-            let index = this.toString().indexOf(opts.word);
-            if (index !== -1)
-              pos = this.positionInside(index);
+            let index2 = this.toString().indexOf(opts.word);
+            if (index2 !== -1)
+              pos = this.positionInside(index2);
           }
           return pos;
         }
@@ -26933,10 +26933,10 @@
             column: start.column + 1
           };
           if (opts.word) {
-            let index = this.toString().indexOf(opts.word);
-            if (index !== -1) {
-              start = this.positionInside(index);
-              end = this.positionInside(index + opts.word.length);
+            let index2 = this.toString().indexOf(opts.word);
+            if (index2 !== -1) {
+              start = this.positionInside(index2);
+              end = this.positionInside(index2 + opts.word.length);
             }
           } else {
             if (opts.start) {
@@ -27002,9 +27002,9 @@
         markDirty() {
           if (this[isClean]) {
             this[isClean] = false;
-            let next = this;
-            while (next = next.parent) {
-              next[isClean] = false;
+            let next2 = this;
+            while (next2 = next2.parent) {
+              next2[isClean] = false;
             }
           }
         }
@@ -27104,20 +27104,20 @@
         }
       }
       var PreviousMap = class {
-        constructor(css2, opts) {
+        constructor(css3, opts) {
           if (opts.map === false)
             return;
-          this.loadAnnotation(css2);
+          this.loadAnnotation(css3);
           this.inline = this.startWith(this.annotation, "data:");
-          let prev = opts.map ? opts.map.prev : void 0;
-          let text = this.loadMap(opts.from, prev);
+          let prev2 = opts.map ? opts.map.prev : void 0;
+          let text2 = this.loadMap(opts.from, prev2);
           if (!this.mapFile && opts.from) {
             this.mapFile = opts.from;
           }
           if (this.mapFile)
             this.root = dirname(this.mapFile);
-          if (text)
-            this.text = text;
+          if (text2)
+            this.text = text2;
         }
         consumer() {
           if (!this.consumerCache) {
@@ -27136,28 +27136,28 @@
         getAnnotationURL(sourceMapString) {
           return sourceMapString.replace(/^\/\*\s*# sourceMappingURL=/, "").trim();
         }
-        loadAnnotation(css2) {
-          let comments = css2.match(/\/\*\s*# sourceMappingURL=/gm);
+        loadAnnotation(css3) {
+          let comments = css3.match(/\/\*\s*# sourceMappingURL=/gm);
           if (!comments)
             return;
-          let start = css2.lastIndexOf(comments.pop());
-          let end = css2.indexOf("*/", start);
+          let start = css3.lastIndexOf(comments.pop());
+          let end = css3.indexOf("*/", start);
           if (start > -1 && end > -1) {
-            this.annotation = this.getAnnotationURL(css2.substring(start, end));
+            this.annotation = this.getAnnotationURL(css3.substring(start, end));
           }
         }
-        decodeInline(text) {
+        decodeInline(text2) {
           let baseCharsetUri = /^data:application\/json;charset=utf-?8;base64,/;
           let baseUri = /^data:application\/json;base64,/;
           let charsetUri = /^data:application\/json;charset=utf-?8,/;
           let uri = /^data:application\/json,/;
-          if (charsetUri.test(text) || uri.test(text)) {
-            return decodeURIComponent(text.substr(RegExp.lastMatch.length));
+          if (charsetUri.test(text2) || uri.test(text2)) {
+            return decodeURIComponent(text2.substr(RegExp.lastMatch.length));
           }
-          if (baseCharsetUri.test(text) || baseUri.test(text)) {
-            return fromBase64(text.substr(RegExp.lastMatch.length));
+          if (baseCharsetUri.test(text2) || baseUri.test(text2)) {
+            return fromBase64(text2.substr(RegExp.lastMatch.length));
           }
-          let encoding = text.match(/data:application\/json;([^,]+),/)[1];
+          let encoding = text2.match(/data:application\/json;([^,]+),/)[1];
           throw new Error("Unsupported source map encoding " + encoding);
         }
         loadFile(path) {
@@ -27167,14 +27167,14 @@
             return readFileSync(path, "utf-8").toString().trim();
           }
         }
-        loadMap(file, prev) {
-          if (prev === false)
+        loadMap(file, prev2) {
+          if (prev2 === false)
             return false;
-          if (prev) {
-            if (typeof prev === "string") {
-              return prev;
-            } else if (typeof prev === "function") {
-              let prevPath = prev(file);
+          if (prev2) {
+            if (typeof prev2 === "string") {
+              return prev2;
+            } else if (typeof prev2 === "function") {
+              let prevPath = prev2(file);
               if (prevPath) {
                 let map = this.loadFile(prevPath);
                 if (!map) {
@@ -27182,14 +27182,14 @@
                 }
                 return map;
               }
-            } else if (prev instanceof SourceMapConsumer) {
-              return SourceMapGenerator.fromSourceMap(prev).toString();
-            } else if (prev instanceof SourceMapGenerator) {
-              return prev.toString();
-            } else if (this.isMap(prev)) {
-              return JSON.stringify(prev);
+            } else if (prev2 instanceof SourceMapConsumer) {
+              return SourceMapGenerator.fromSourceMap(prev2).toString();
+            } else if (prev2 instanceof SourceMapGenerator) {
+              return prev2.toString();
+            } else if (this.isMap(prev2)) {
+              return JSON.stringify(prev2);
             } else {
-              throw new Error("Unsupported previous source map format: " + prev.toString());
+              throw new Error("Unsupported previous source map format: " + prev2.toString());
             }
           } else if (this.inline) {
             return this.decodeInline(this.annotation);
@@ -27226,11 +27226,11 @@
       var sourceMapAvailable = Boolean(SourceMapConsumer && SourceMapGenerator);
       var pathAvailable = Boolean(resolve && isAbsolute);
       var Input = class {
-        constructor(css2, opts = {}) {
-          if (css2 === null || typeof css2 === "undefined" || typeof css2 === "object" && !css2.toString) {
-            throw new Error(`PostCSS received ${css2} instead of CSS string`);
+        constructor(css3, opts = {}) {
+          if (css3 === null || typeof css3 === "undefined" || typeof css3 === "object" && !css3.toString) {
+            throw new Error(`PostCSS received ${css3} instead of CSS string`);
           }
-          this.css = css2.toString();
+          this.css = css3.toString();
           if (this.css[0] === "\uFEFF" || this.css[0] === "\uFFFE") {
             this.hasBOM = true;
             this.css = this.css.slice(1);
@@ -27259,7 +27259,7 @@
           if (this.map)
             this.map.file = this.from;
         }
-        fromOffset(offset) {
+        fromOffset(offset2) {
           let lastLine, lineToIndex;
           if (!this[fromOffsetCache]) {
             let lines = this.css.split("\n");
@@ -27275,16 +27275,16 @@
           }
           lastLine = lineToIndex[lineToIndex.length - 1];
           let min = 0;
-          if (offset >= lastLine) {
+          if (offset2 >= lastLine) {
             min = lineToIndex.length - 1;
           } else {
             let max = lineToIndex.length - 2;
             let mid;
             while (min < max) {
               mid = min + (max - min >> 1);
-              if (offset < lineToIndex[mid]) {
+              if (offset2 < lineToIndex[mid]) {
                 max = mid - 1;
-              } else if (offset >= lineToIndex[mid + 1]) {
+              } else if (offset2 >= lineToIndex[mid + 1]) {
                 min = mid + 1;
               } else {
                 min = mid;
@@ -27294,7 +27294,7 @@
           }
           return {
             line: min + 1,
-            col: offset - lineToIndex[min] + 1
+            col: offset2 - lineToIndex[min] + 1
           };
         }
         error(message, line, column, opts = {}) {
@@ -27508,17 +27508,17 @@
           }
         }
         applyPrevMaps() {
-          for (let prev of this.previous()) {
-            let from = this.toUrl(this.path(prev.file));
-            let root = prev.root || dirname(prev.file);
+          for (let prev2 of this.previous()) {
+            let from = this.toUrl(this.path(prev2.file));
+            let root = prev2.root || dirname(prev2.file);
             let map;
             if (this.mapOpts.sourcesContent === false) {
-              map = new SourceMapConsumer(prev.text);
+              map = new SourceMapConsumer(prev2.text);
               if (map.sourcesContent) {
                 map.sourcesContent = map.sourcesContent.map(() => null);
               }
             } else {
-              map = prev.consumer();
+              map = prev2.consumer();
             }
             this.map.applySourceMap(map, from, this.toUrl(this.path(root)));
           }
@@ -27571,9 +27571,9 @@
           if (this.root) {
             this.generateString();
           } else if (this.previous().length === 1) {
-            let prev = this.previous()[0].consumer();
-            prev.file = this.outputFile();
-            this.map = SourceMapGenerator.fromSourceMap(prev);
+            let prev2 = this.previous()[0].consumer();
+            prev2.file = this.outputFile();
+            this.map = SourceMapGenerator.fromSourceMap(prev2);
           } else {
             this.map = new SourceMapGenerator({ file: this.outputFile() });
             this.map.addMapping({
@@ -27756,10 +27756,10 @@
           if (!this.proxyOf.nodes)
             return void 0;
           let iterator = this.getIterator();
-          let index, result;
+          let index2, result;
           while (this.indexes[iterator] < this.proxyOf.nodes.length) {
-            index = this.indexes[iterator];
-            result = callback(this.proxyOf.nodes[index], index);
+            index2 = this.indexes[iterator];
+            result = callback(this.proxyOf.nodes[index2], index2);
             if (result === false)
               break;
             this.indexes[iterator] += 1;
@@ -27854,8 +27854,8 @@
             }
           });
         }
-        append(...children) {
-          for (let child of children) {
+        append(...children2) {
+          for (let child of children2) {
             let nodes = this.normalize(child, this.last);
             for (let node of nodes)
               this.proxyOf.nodes.push(node);
@@ -27863,9 +27863,9 @@
           this.markDirty();
           return this;
         }
-        prepend(...children) {
-          children = children.reverse();
-          for (let child of children) {
+        prepend(...children2) {
+          children2 = children2.reverse();
+          for (let child of children2) {
             let nodes = this.normalize(child, this.first, "prepend").reverse();
             for (let node of nodes)
               this.proxyOf.nodes.unshift(node);
@@ -27889,11 +27889,11 @@
           let nodes = this.normalize(add, this.proxyOf.nodes[exist], type).reverse();
           for (let node of nodes)
             this.proxyOf.nodes.splice(exist, 0, node);
-          let index;
+          let index2;
           for (let id in this.indexes) {
-            index = this.indexes[id];
-            if (exist <= index) {
-              this.indexes[id] = index + nodes.length;
+            index2 = this.indexes[id];
+            if (exist <= index2) {
+              this.indexes[id] = index2 + nodes.length;
             }
           }
           this.markDirty();
@@ -27904,11 +27904,11 @@
           let nodes = this.normalize(add, this.proxyOf.nodes[exist]).reverse();
           for (let node of nodes)
             this.proxyOf.nodes.splice(exist + 1, 0, node);
-          let index;
+          let index2;
           for (let id in this.indexes) {
-            index = this.indexes[id];
-            if (exist < index) {
-              this.indexes[id] = index + nodes.length;
+            index2 = this.indexes[id];
+            if (exist < index2) {
+              this.indexes[id] = index2 + nodes.length;
             }
           }
           this.markDirty();
@@ -27918,11 +27918,11 @@
           child = this.index(child);
           this.proxyOf.nodes[child].parent = void 0;
           this.proxyOf.nodes.splice(child, 1);
-          let index;
+          let index2;
           for (let id in this.indexes) {
-            index = this.indexes[id];
-            if (index >= child) {
-              this.indexes[id] = index - 1;
+            index2 = this.indexes[id];
+            if (index2 >= child) {
+              this.indexes[id] = index2 - 1;
             }
           }
           this.markDirty();
@@ -28044,7 +28044,7 @@
                 return (...args) => {
                   return node[prop](...args.map((i2) => {
                     if (typeof i2 === "function") {
-                      return (child, index) => i2(child.toProxy(), index);
+                      return (child, index2) => i2(child.toProxy(), index2);
                     } else {
                       return i2;
                     }
@@ -28159,9 +28159,9 @@
     "node_modules/postcss/lib/warning.js"(exports, module) {
       "use strict";
       var Warning = class {
-        constructor(text, opts = {}) {
+        constructor(text2, opts = {}) {
           this.type = "warning";
-          this.text = text;
+          this.text = text2;
           if (opts.node && opts.node.source) {
             let range = opts.node.rangeBy(opts);
             this.line = range.start.line;
@@ -28208,13 +28208,13 @@
         toString() {
           return this.css;
         }
-        warn(text, opts = {}) {
+        warn(text2, opts = {}) {
           if (!opts.plugin) {
             if (this.lastPlugin && this.lastPlugin.postcssPlugin) {
               opts.plugin = this.lastPlugin.postcssPlugin;
             }
           }
-          let warning2 = new Warning(text, opts);
+          let warning2 = new Warning(text2, opts);
           this.messages.push(warning2);
           return warning2;
         }
@@ -28258,11 +28258,11 @@
       var RE_BAD_BRACKET = /.[\n"'(/\\]/;
       var RE_HEX_ESCAPE = /[\da-f]/i;
       module.exports = function tokenizer(input, options = {}) {
-        let css2 = input.css.valueOf();
+        let css3 = input.css.valueOf();
         let ignore = options.ignoreErrors;
-        let code, next, quote, content, escape;
-        let escaped, escapePos, prev, n3, currentToken;
-        let length = css2.length;
+        let code, next2, quote, content, escape;
+        let escaped, escapePos, prev2, n3, currentToken;
+        let length = css3.length;
         let pos = 0;
         let buffer = [];
         let returned = [];
@@ -28281,20 +28281,20 @@
           if (pos >= length)
             return;
           let ignoreUnclosed = opts ? opts.ignoreUnclosed : false;
-          code = css2.charCodeAt(pos);
+          code = css3.charCodeAt(pos);
           switch (code) {
             case NEWLINE:
             case SPACE:
             case TAB:
             case CR:
             case FEED: {
-              next = pos;
+              next2 = pos;
               do {
-                next += 1;
-                code = css2.charCodeAt(next);
+                next2 += 1;
+                code = css3.charCodeAt(next2);
               } while (code === SPACE || code === NEWLINE || code === TAB || code === CR || code === FEED);
-              currentToken = ["space", css2.slice(pos, next)];
-              pos = next - 1;
+              currentToken = ["space", css3.slice(pos, next2)];
+              pos = next2 - 1;
               break;
             }
             case OPEN_SQUARE:
@@ -28309,37 +28309,37 @@
               break;
             }
             case OPEN_PARENTHESES: {
-              prev = buffer.length ? buffer.pop()[1] : "";
-              n3 = css2.charCodeAt(pos + 1);
-              if (prev === "url" && n3 !== SINGLE_QUOTE && n3 !== DOUBLE_QUOTE && n3 !== SPACE && n3 !== NEWLINE && n3 !== TAB && n3 !== FEED && n3 !== CR) {
-                next = pos;
+              prev2 = buffer.length ? buffer.pop()[1] : "";
+              n3 = css3.charCodeAt(pos + 1);
+              if (prev2 === "url" && n3 !== SINGLE_QUOTE && n3 !== DOUBLE_QUOTE && n3 !== SPACE && n3 !== NEWLINE && n3 !== TAB && n3 !== FEED && n3 !== CR) {
+                next2 = pos;
                 do {
                   escaped = false;
-                  next = css2.indexOf(")", next + 1);
-                  if (next === -1) {
+                  next2 = css3.indexOf(")", next2 + 1);
+                  if (next2 === -1) {
                     if (ignore || ignoreUnclosed) {
-                      next = pos;
+                      next2 = pos;
                       break;
                     } else {
                       unclosed("bracket");
                     }
                   }
-                  escapePos = next;
-                  while (css2.charCodeAt(escapePos - 1) === BACKSLASH) {
+                  escapePos = next2;
+                  while (css3.charCodeAt(escapePos - 1) === BACKSLASH) {
                     escapePos -= 1;
                     escaped = !escaped;
                   }
                 } while (escaped);
-                currentToken = ["brackets", css2.slice(pos, next + 1), pos, next];
-                pos = next;
+                currentToken = ["brackets", css3.slice(pos, next2 + 1), pos, next2];
+                pos = next2;
               } else {
-                next = css2.indexOf(")", pos + 1);
-                content = css2.slice(pos, next + 1);
-                if (next === -1 || RE_BAD_BRACKET.test(content)) {
+                next2 = css3.indexOf(")", pos + 1);
+                content = css3.slice(pos, next2 + 1);
+                if (next2 === -1 || RE_BAD_BRACKET.test(content)) {
                   currentToken = ["(", "(", pos];
                 } else {
-                  currentToken = ["brackets", content, pos, next];
-                  pos = next;
+                  currentToken = ["brackets", content, pos, next2];
+                  pos = next2;
                 }
               }
               break;
@@ -28347,86 +28347,86 @@
             case SINGLE_QUOTE:
             case DOUBLE_QUOTE: {
               quote = code === SINGLE_QUOTE ? "'" : '"';
-              next = pos;
+              next2 = pos;
               do {
                 escaped = false;
-                next = css2.indexOf(quote, next + 1);
-                if (next === -1) {
+                next2 = css3.indexOf(quote, next2 + 1);
+                if (next2 === -1) {
                   if (ignore || ignoreUnclosed) {
-                    next = pos + 1;
+                    next2 = pos + 1;
                     break;
                   } else {
                     unclosed("string");
                   }
                 }
-                escapePos = next;
-                while (css2.charCodeAt(escapePos - 1) === BACKSLASH) {
+                escapePos = next2;
+                while (css3.charCodeAt(escapePos - 1) === BACKSLASH) {
                   escapePos -= 1;
                   escaped = !escaped;
                 }
               } while (escaped);
-              currentToken = ["string", css2.slice(pos, next + 1), pos, next];
-              pos = next;
+              currentToken = ["string", css3.slice(pos, next2 + 1), pos, next2];
+              pos = next2;
               break;
             }
             case AT: {
               RE_AT_END.lastIndex = pos + 1;
-              RE_AT_END.test(css2);
+              RE_AT_END.test(css3);
               if (RE_AT_END.lastIndex === 0) {
-                next = css2.length - 1;
+                next2 = css3.length - 1;
               } else {
-                next = RE_AT_END.lastIndex - 2;
+                next2 = RE_AT_END.lastIndex - 2;
               }
-              currentToken = ["at-word", css2.slice(pos, next + 1), pos, next];
-              pos = next;
+              currentToken = ["at-word", css3.slice(pos, next2 + 1), pos, next2];
+              pos = next2;
               break;
             }
             case BACKSLASH: {
-              next = pos;
+              next2 = pos;
               escape = true;
-              while (css2.charCodeAt(next + 1) === BACKSLASH) {
-                next += 1;
+              while (css3.charCodeAt(next2 + 1) === BACKSLASH) {
+                next2 += 1;
                 escape = !escape;
               }
-              code = css2.charCodeAt(next + 1);
+              code = css3.charCodeAt(next2 + 1);
               if (escape && code !== SLASH && code !== SPACE && code !== NEWLINE && code !== TAB && code !== CR && code !== FEED) {
-                next += 1;
-                if (RE_HEX_ESCAPE.test(css2.charAt(next))) {
-                  while (RE_HEX_ESCAPE.test(css2.charAt(next + 1))) {
-                    next += 1;
+                next2 += 1;
+                if (RE_HEX_ESCAPE.test(css3.charAt(next2))) {
+                  while (RE_HEX_ESCAPE.test(css3.charAt(next2 + 1))) {
+                    next2 += 1;
                   }
-                  if (css2.charCodeAt(next + 1) === SPACE) {
-                    next += 1;
+                  if (css3.charCodeAt(next2 + 1) === SPACE) {
+                    next2 += 1;
                   }
                 }
               }
-              currentToken = ["word", css2.slice(pos, next + 1), pos, next];
-              pos = next;
+              currentToken = ["word", css3.slice(pos, next2 + 1), pos, next2];
+              pos = next2;
               break;
             }
             default: {
-              if (code === SLASH && css2.charCodeAt(pos + 1) === ASTERISK) {
-                next = css2.indexOf("*/", pos + 2) + 1;
-                if (next === 0) {
+              if (code === SLASH && css3.charCodeAt(pos + 1) === ASTERISK) {
+                next2 = css3.indexOf("*/", pos + 2) + 1;
+                if (next2 === 0) {
                   if (ignore || ignoreUnclosed) {
-                    next = css2.length;
+                    next2 = css3.length;
                   } else {
                     unclosed("comment");
                   }
                 }
-                currentToken = ["comment", css2.slice(pos, next + 1), pos, next];
-                pos = next;
+                currentToken = ["comment", css3.slice(pos, next2 + 1), pos, next2];
+                pos = next2;
               } else {
                 RE_WORD_END.lastIndex = pos + 1;
-                RE_WORD_END.test(css2);
+                RE_WORD_END.test(css3);
                 if (RE_WORD_END.lastIndex === 0) {
-                  next = css2.length - 1;
+                  next2 = css3.length - 1;
                 } else {
-                  next = RE_WORD_END.lastIndex - 2;
+                  next2 = RE_WORD_END.lastIndex - 2;
                 }
-                currentToken = ["word", css2.slice(pos, next + 1), pos, next];
+                currentToken = ["word", css3.slice(pos, next2 + 1), pos, next2];
                 buffer.push(currentToken);
-                pos = next;
+                pos = next2;
               }
               break;
             }
@@ -28457,15 +28457,15 @@
           super(defaults);
           this.type = "atrule";
         }
-        append(...children) {
+        append(...children2) {
           if (!this.proxyOf.nodes)
             this.nodes = [];
-          return super.append(...children);
+          return super.append(...children2);
         }
-        prepend(...children) {
+        prepend(...children2) {
           if (!this.proxyOf.nodes)
             this.nodes = [];
-          return super.prepend(...children);
+          return super.prepend(...children2);
         }
       };
       module.exports = AtRule;
@@ -28489,9 +28489,9 @@
             this.nodes = [];
         }
         removeChild(child, ignore) {
-          let index = this.index(child);
-          if (!ignore && index === 0 && this.nodes.length > 1) {
-            this.nodes[1].raws.before = this.nodes[index].raws.before;
+          let index2 = this.index(child);
+          if (!ignore && index2 === 0 && this.nodes.length > 1) {
+            this.nodes[1].raws.before = this.nodes[index2].raws.before;
           }
           return super.removeChild(child);
         }
@@ -28684,13 +28684,13 @@
           let node = new Comment();
           this.init(node, token[2]);
           node.source.end = this.getPosition(token[3] || token[2]);
-          let text = token[1].slice(2, -2);
-          if (/^\s*$/.test(text)) {
+          let text2 = token[1].slice(2, -2);
+          if (/^\s*$/.test(text2)) {
             node.text = "";
-            node.raws.left = text;
+            node.raws.left = text2;
             node.raws.right = "";
           } else {
-            let match = text.match(/^(\s*)([^]*\S)(\s*)$/);
+            let match = text2.match(/^(\s*)([^]*\S)(\s*)$/);
             node.text = match[2];
             node.raws.left = match[1];
             node.raws.right = match[3];
@@ -28816,10 +28816,10 @@
             node.prop = node.prop.slice(1);
           }
           let firstSpaces = [];
-          let next;
+          let next2;
           while (tokens.length) {
-            next = tokens[0][0];
-            if (next !== "space" && next !== "comment")
+            next2 = tokens[0][0];
+            if (next2 !== "space" && next2 !== "comment")
               break;
             firstSpaces.push(tokens.shift());
           }
@@ -28871,7 +28871,7 @@
           }
           this.init(node, token[2]);
           let type;
-          let prev;
+          let prev2;
           let shift;
           let last = false;
           let open = false;
@@ -28898,12 +28898,12 @@
               } else if (type === "}") {
                 if (params.length > 0) {
                   shift = params.length - 1;
-                  prev = params[shift];
-                  while (prev && prev[0] === "space") {
-                    prev = params[--shift];
+                  prev2 = params[shift];
+                  while (prev2 && prev2[0] === "space") {
+                    prev2 = params[--shift];
                   }
-                  if (prev) {
-                    node.source.end = this.getPosition(prev[3] || prev[2]);
+                  if (prev2) {
+                    node.source.end = this.getPosition(prev2[3] || prev2[2]);
                   }
                 }
                 this.end(token);
@@ -28963,25 +28963,25 @@
         freeSemicolon(token) {
           this.spaces += token[1];
           if (this.current.nodes) {
-            let prev = this.current.nodes[this.current.nodes.length - 1];
-            if (prev && prev.type === "rule" && !prev.raws.ownSemicolon) {
-              prev.raws.ownSemicolon = this.spaces;
+            let prev2 = this.current.nodes[this.current.nodes.length - 1];
+            if (prev2 && prev2.type === "rule" && !prev2.raws.ownSemicolon) {
+              prev2.raws.ownSemicolon = this.spaces;
               this.spaces = "";
             }
           }
         }
-        getPosition(offset) {
-          let pos = this.input.fromOffset(offset);
+        getPosition(offset2) {
+          let pos = this.input.fromOffset(offset2);
           return {
-            offset,
+            offset: offset2,
             line: pos.line,
             column: pos.col
           };
         }
-        init(node, offset) {
+        init(node, offset2) {
           this.current.push(node);
           node.source = {
-            start: this.getPosition(offset),
+            start: this.getPosition(offset2),
             input: this.input
           };
           node.raws.before = this.spaces;
@@ -28994,16 +28994,16 @@
           let length = tokens.length;
           let value = "";
           let clean = true;
-          let next, prev;
+          let next2, prev2;
           for (let i2 = 0; i2 < length; i2 += 1) {
             token = tokens[i2];
             type = token[0];
             if (type === "space" && i2 === length - 1 && !customProperty) {
               clean = false;
             } else if (type === "comment") {
-              prev = tokens[i2 - 1] ? tokens[i2 - 1][0] : "empty";
-              next = tokens[i2 + 1] ? tokens[i2 + 1][0] : "empty";
-              if (!SAFE_COMMENT_NEIGHBOR[prev] && !SAFE_COMMENT_NEIGHBOR[next]) {
+              prev2 = tokens[i2 - 1] ? tokens[i2 - 1][0] : "empty";
+              next2 = tokens[i2 + 1] ? tokens[i2 + 1][0] : "empty";
+              if (!SAFE_COMMENT_NEIGHBOR[prev2] && !SAFE_COMMENT_NEIGHBOR[next2]) {
                 if (value.slice(-1) === ",") {
                   clean = false;
                 } else {
@@ -29034,11 +29034,11 @@
           return spaces;
         }
         spacesAndCommentsFromStart(tokens) {
-          let next;
+          let next2;
           let spaces = "";
           while (tokens.length) {
-            next = tokens[0][0];
-            if (next !== "space" && next !== "comment")
+            next2 = tokens[0][0];
+            if (next2 !== "space" && next2 !== "comment")
               break;
             spaces += tokens.shift()[1];
           }
@@ -29065,7 +29065,7 @@
         }
         colon(tokens) {
           let brackets = 0;
-          let token, type, prev;
+          let token, type, prev2;
           for (let [i2, element] of tokens.entries()) {
             token = element;
             type = token[0];
@@ -29076,15 +29076,15 @@
               brackets -= 1;
             }
             if (brackets === 0 && type === ":") {
-              if (!prev) {
+              if (!prev2) {
                 this.doubleColon(token);
-              } else if (prev[0] === "word" && prev[1] === "progid") {
+              } else if (prev2[0] === "word" && prev2[1] === "progid") {
                 continue;
               } else {
                 return i2;
               }
             }
-            prev = token;
+            prev2 = token;
           }
           return false;
         }
@@ -29137,8 +29137,8 @@
       var Container = require_container();
       var Parser = require_parser();
       var Input = require_input();
-      function parse(css2, opts) {
-        let input = new Input(css2, opts);
+      function parse(css3, opts) {
+        let input = new Input(css3, opts);
         let parser = new Parser(input);
         try {
           parser.parse();
@@ -29237,17 +29237,17 @@
         }
       }
       function toStack(node) {
-        let events;
+        let events2;
         if (node.type === "document") {
-          events = ["Document", CHILDREN, "DocumentExit"];
+          events2 = ["Document", CHILDREN, "DocumentExit"];
         } else if (node.type === "root") {
-          events = ["Root", CHILDREN, "RootExit"];
+          events2 = ["Root", CHILDREN, "RootExit"];
         } else {
-          events = getEvents(node);
+          events2 = getEvents(node);
         }
         return {
           node,
-          events,
+          events: events2,
           eventIndex: 0,
           visitors: [],
           visitorIndex: 0,
@@ -29262,20 +29262,20 @@
       }
       var postcss = {};
       var LazyResult = class {
-        constructor(processor, css2, opts) {
+        constructor(processor, css3, opts) {
           this.stringified = false;
           this.processed = false;
           let root;
-          if (typeof css2 === "object" && css2 !== null && (css2.type === "root" || css2.type === "document")) {
-            root = cleanMarks(css2);
-          } else if (css2 instanceof LazyResult || css2 instanceof Result) {
-            root = cleanMarks(css2.root);
-            if (css2.map) {
+          if (typeof css3 === "object" && css3 !== null && (css3.type === "root" || css3.type === "document")) {
+            root = cleanMarks(css3);
+          } else if (css3 instanceof LazyResult || css3 instanceof Result) {
+            root = cleanMarks(css3.root);
+            if (css3.map) {
               if (typeof opts.map === "undefined")
                 opts.map = {};
               if (!opts.map.inline)
                 opts.map.inline = false;
-              opts.map.prev = css2.map;
+              opts.map.prev = css3.map;
             }
           } else {
             let parser = parse;
@@ -29286,7 +29286,7 @@
             if (parser.parse)
               parser = parser.parse;
             try {
-              root = parser(css2, opts);
+              root = parser(css3, opts);
             } catch (error) {
               this.processed = true;
               this.error = error;
@@ -29416,9 +29416,9 @@
         }
         walkSync(node) {
           node[isClean] = true;
-          let events = getEvents(node);
-          for (let event of events) {
-            if (event === CHILDREN) {
+          let events2 = getEvents(node);
+          for (let event2 of events2) {
+            if (event2 === CHILDREN) {
               if (node.nodes) {
                 node.each((child) => {
                   if (!child[isClean])
@@ -29426,7 +29426,7 @@
                 });
               }
             } else {
-              let visitors = this.listeners[event];
+              let visitors = this.listeners[event2];
               if (visitors) {
                 if (this.visitSync(visitors, node.toProxy()))
                   return;
@@ -29559,21 +29559,21 @@
           };
           for (let plugin of this.plugins) {
             if (typeof plugin === "object") {
-              for (let event in plugin) {
-                if (!PLUGIN_PROPS[event] && /^[A-Z]/.test(event)) {
-                  throw new Error(`Unknown event ${event} in ${plugin.postcssPlugin}. Try to update PostCSS (${this.processor.version} now).`);
+              for (let event2 in plugin) {
+                if (!PLUGIN_PROPS[event2] && /^[A-Z]/.test(event2)) {
+                  throw new Error(`Unknown event ${event2} in ${plugin.postcssPlugin}. Try to update PostCSS (${this.processor.version} now).`);
                 }
-                if (!NOT_VISITORS[event]) {
-                  if (typeof plugin[event] === "object") {
-                    for (let filter in plugin[event]) {
-                      if (filter === "*") {
-                        add(plugin, event, plugin[event][filter]);
+                if (!NOT_VISITORS[event2]) {
+                  if (typeof plugin[event2] === "object") {
+                    for (let filter2 in plugin[event2]) {
+                      if (filter2 === "*") {
+                        add(plugin, event2, plugin[event2][filter2]);
                       } else {
-                        add(plugin, event + "-" + filter.toLowerCase(), plugin[event][filter]);
+                        add(plugin, event2 + "-" + filter2.toLowerCase(), plugin[event2][filter2]);
                       }
                     }
-                  } else if (typeof plugin[event] === "function") {
-                    add(plugin, event, plugin[event]);
+                  } else if (typeof plugin[event2] === "function") {
+                    add(plugin, event2, plugin[event2]);
                   }
                 }
               }
@@ -29616,18 +29616,18 @@
             visit.iterator = 0;
             delete node.indexes[iterator];
           }
-          let events = visit.events;
-          while (visit.eventIndex < events.length) {
-            let event = events[visit.eventIndex];
+          let events2 = visit.events;
+          while (visit.eventIndex < events2.length) {
+            let event2 = events2[visit.eventIndex];
             visit.eventIndex += 1;
-            if (event === CHILDREN) {
+            if (event2 === CHILDREN) {
               if (node.nodes && node.nodes.length) {
                 node[isClean] = true;
                 visit.iterator = node.getIterator();
               }
               return;
-            } else if (this.listeners[event]) {
-              visit.visitors = this.listeners[event];
+            } else if (this.listeners[event2]) {
+              visit.visitors = this.listeners[event2];
               return;
             }
           }
@@ -29654,24 +29654,24 @@
       var parse = require_parse();
       var Result = require_result();
       var NoWorkResult = class {
-        constructor(processor, css2, opts) {
-          css2 = css2.toString();
+        constructor(processor, css3, opts) {
+          css3 = css3.toString();
           this.stringified = false;
           this._processor = processor;
-          this._css = css2;
+          this._css = css3;
           this._opts = opts;
           this._map = void 0;
           let root;
           let str = stringify;
           this.result = new Result(this._processor, root, this._opts);
-          this.result.css = css2;
+          this.result.css = css3;
           let self2 = this;
           Object.defineProperty(this.result, "root", {
             get() {
               return self2.root;
             }
           });
-          let map = new MapGenerator(str, root, this._opts, css2);
+          let map = new MapGenerator(str, root, this._opts, css3);
           if (map.isMap()) {
             let [generatedCSS, generatedMap] = map.generate();
             if (generatedCSS) {
@@ -29774,11 +29774,11 @@
           this.plugins = this.plugins.concat(this.normalize([plugin]));
           return this;
         }
-        process(css2, opts = {}) {
+        process(css3, opts = {}) {
           if (this.plugins.length === 0 && typeof opts.parser === "undefined" && typeof opts.stringifier === "undefined" && typeof opts.syntax === "undefined") {
-            return new NoWorkResult(this, css2, opts);
+            return new NoWorkResult(this, css3, opts);
           } else {
-            return new LazyResult(this, css2, opts);
+            return new LazyResult(this, css3, opts);
           }
         }
         normalize(plugins) {
@@ -29921,8 +29921,8 @@
             return cache;
           }
         });
-        creator.process = function(css2, processOpts, pluginOpts) {
-          return postcss([creator(pluginOpts)]).process(css2, processOpts);
+        creator.process = function(css3, processOpts, pluginOpts) {
+          return postcss([creator(pluginOpts)]).process(css3, processOpts);
         };
         return creator;
       };
@@ -29976,7 +29976,7 @@
         "embed"
       ];
       var vulnerableTags = ["script", "style"];
-      function each(obj, cb) {
+      function each2(obj, cb) {
         if (obj) {
           Object.keys(obj).forEach(function(key) {
             cb(obj[key], key);
@@ -29986,9 +29986,9 @@
       function has(obj, key) {
         return {}.hasOwnProperty.call(obj, key);
       }
-      function filter(a2, cb) {
+      function filter2(a2, cb) {
         const n3 = [];
-        each(a2, function(v4) {
+        each2(a2, function(v4) {
           if (cb(v4)) {
             n3.push(v4);
           }
@@ -30013,8 +30013,8 @@
       }
       module.exports = sanitizeHtml;
       var VALID_HTML_ATTRIBUTE_NAME = /^[^\0\t\n\f\r /<=>]+$/;
-      function sanitizeHtml(html, options, _recursing) {
-        if (html == null) {
+      function sanitizeHtml(html2, options, _recursing) {
+        if (html2 == null) {
           return "";
         }
         let result = "";
@@ -30064,7 +30064,7 @@ and ensure you are accounting for this risk.
         if (options.allowedAttributes) {
           allowedAttributesMap = {};
           allowedAttributesGlobMap = {};
-          each(options.allowedAttributes, function(attributes, tag) {
+          each2(options.allowedAttributes, function(attributes, tag) {
             allowedAttributesMap[tag] = [];
             const globRegex = [];
             attributes.forEach(function(obj) {
@@ -30082,7 +30082,7 @@ and ensure you are accounting for this risk.
         const allowedClassesMap = {};
         const allowedClassesGlobMap = {};
         const allowedClassesRegexMap = {};
-        each(options.allowedClasses, function(classes, tag) {
+        each2(options.allowedClasses, function(classes, tag) {
           if (allowedAttributesMap) {
             if (!has(allowedAttributesMap, tag)) {
               allowedAttributesMap[tag] = [];
@@ -30107,12 +30107,12 @@ and ensure you are accounting for this risk.
         });
         const transformTagsMap = {};
         let transformTagsAll;
-        each(options.transformTags, function(transform, tag) {
+        each2(options.transformTags, function(transform2, tag) {
           let transFun;
-          if (typeof transform === "function") {
-            transFun = transform;
-          } else if (typeof transform === "string") {
-            transFun = sanitizeHtml.simpleTransform(transform);
+          if (typeof transform2 === "function") {
+            transFun = transform2;
+          } else if (typeof transform2 === "string") {
+            transFun = sanitizeHtml.simpleTransform(transform2);
           }
           if (tag === "*") {
             transformTagsAll = transFun;
@@ -30187,7 +30187,7 @@ and ensure you are accounting for this risk.
               }
             }
             if (!allowedAttributesMap || has(allowedAttributesMap, name) || allowedAttributesMap["*"]) {
-              each(attribs, function(value, a2) {
+              each2(attribs, function(value, a2) {
                 if (!VALID_HTML_ATTRIBUTE_NAME.test(a2)) {
                   delete frame.attribs[a2];
                   return;
@@ -30287,14 +30287,14 @@ and ensure you are accounting for this risk.
                           value2.evil = true;
                         }
                       });
-                      parsed = filter(parsed, function(v4) {
+                      parsed = filter2(parsed, function(v4) {
                         return !v4.evil;
                       });
                       if (!parsed.length) {
                         delete frame.attribs[a2];
                         return;
                       } else {
-                        value = stringifySrcset(filter(parsed, function(v4) {
+                        value = stringifySrcset(filter2(parsed, function(v4) {
                           return !v4.evil;
                         }));
                         frame.attribs[a2] = value;
@@ -30363,7 +30363,7 @@ and ensure you are accounting for this risk.
               tempResult = "";
             }
           },
-          ontext: function(text) {
+          ontext: function(text2) {
             if (skipText) {
               return;
             }
@@ -30371,12 +30371,12 @@ and ensure you are accounting for this risk.
             let tag;
             if (lastFrame) {
               tag = lastFrame.tag;
-              text = lastFrame.innerText !== void 0 ? lastFrame.innerText : text;
+              text2 = lastFrame.innerText !== void 0 ? lastFrame.innerText : text2;
             }
             if (options.disallowedTagsMode === "discard" && (tag === "script" || tag === "style")) {
-              result += text;
+              result += text2;
             } else {
-              const escaped = escapeHtml(text, false);
+              const escaped = escapeHtml(text2, false);
               if (options.textFilter && !addedText) {
                 result += options.textFilter(escaped, tag);
               } else if (!addedText) {
@@ -30385,7 +30385,7 @@ and ensure you are accounting for this risk.
             }
             if (stack.length) {
               const frame = stack[stack.length - 1];
-              frame.text += text;
+              frame.text += text2;
             }
           },
           onclosetag: function(name) {
@@ -30438,7 +30438,7 @@ and ensure you are accounting for this risk.
             addedText = false;
           }
         }, options.parser);
-        parser.write(html);
+        parser.write(html2);
         parser.end();
         return result;
         function initializeState() {
@@ -30726,11 +30726,11 @@ and ensure you are accounting for this risk.
               this.context = context;
               this.once = once || false;
             }
-            function addListener(emitter, event, fn, context, once) {
+            function addListener(emitter, event2, fn, context, once) {
               if (typeof fn !== "function") {
                 throw new TypeError("The listener must be a function");
               }
-              var listener = new EE(fn, context || emitter, once), evt = prefix ? prefix + event : event;
+              var listener = new EE(fn, context || emitter, once), evt = prefix ? prefix + event2 : event2;
               if (!emitter._events[evt])
                 emitter._events[evt] = listener, emitter._eventsCount++;
               else if (!emitter._events[evt].fn)
@@ -30750,20 +30750,20 @@ and ensure you are accounting for this risk.
               this._eventsCount = 0;
             }
             EventEmitter.prototype.eventNames = function eventNames() {
-              var names = [], events, name;
+              var names = [], events2, name;
               if (this._eventsCount === 0)
                 return names;
-              for (name in events = this._events) {
-                if (has.call(events, name))
+              for (name in events2 = this._events) {
+                if (has.call(events2, name))
                   names.push(prefix ? name.slice(1) : name);
               }
               if (Object.getOwnPropertySymbols) {
-                return names.concat(Object.getOwnPropertySymbols(events));
+                return names.concat(Object.getOwnPropertySymbols(events2));
               }
               return names;
             };
-            EventEmitter.prototype.listeners = function listeners(event) {
-              var evt = prefix ? prefix + event : event, handlers = this._events[evt];
+            EventEmitter.prototype.listeners = function listeners(event2) {
+              var evt = prefix ? prefix + event2 : event2, handlers = this._events[evt];
               if (!handlers)
                 return [];
               if (handlers.fn)
@@ -30773,22 +30773,22 @@ and ensure you are accounting for this risk.
               }
               return ee2;
             };
-            EventEmitter.prototype.listenerCount = function listenerCount(event) {
-              var evt = prefix ? prefix + event : event, listeners = this._events[evt];
+            EventEmitter.prototype.listenerCount = function listenerCount(event2) {
+              var evt = prefix ? prefix + event2 : event2, listeners = this._events[evt];
               if (!listeners)
                 return 0;
               if (listeners.fn)
                 return 1;
               return listeners.length;
             };
-            EventEmitter.prototype.emit = function emit(event, a1, a2, a3, a4, a5) {
-              var evt = prefix ? prefix + event : event;
+            EventEmitter.prototype.emit = function emit(event2, a1, a2, a3, a4, a5) {
+              var evt = prefix ? prefix + event2 : event2;
               if (!this._events[evt])
                 return false;
               var listeners = this._events[evt], len = arguments.length, args, i2;
               if (listeners.fn) {
                 if (listeners.once)
-                  this.removeListener(event, listeners.fn, void 0, true);
+                  this.removeListener(event2, listeners.fn, void 0, true);
                 switch (len) {
                   case 1:
                     return listeners.fn.call(listeners.context), true;
@@ -30811,7 +30811,7 @@ and ensure you are accounting for this risk.
                 var length = listeners.length, j4;
                 for (i2 = 0; i2 < length; i2++) {
                   if (listeners[i2].once)
-                    this.removeListener(event, listeners[i2].fn, void 0, true);
+                    this.removeListener(event2, listeners[i2].fn, void 0, true);
                   switch (len) {
                     case 1:
                       listeners[i2].fn.call(listeners[i2].context);
@@ -30836,14 +30836,14 @@ and ensure you are accounting for this risk.
               }
               return true;
             };
-            EventEmitter.prototype.on = function on(event, fn, context) {
-              return addListener(this, event, fn, context, false);
+            EventEmitter.prototype.on = function on2(event2, fn, context) {
+              return addListener(this, event2, fn, context, false);
             };
-            EventEmitter.prototype.once = function once(event, fn, context) {
-              return addListener(this, event, fn, context, true);
+            EventEmitter.prototype.once = function once(event2, fn, context) {
+              return addListener(this, event2, fn, context, true);
             };
-            EventEmitter.prototype.removeListener = function removeListener(event, fn, context, once) {
-              var evt = prefix ? prefix + event : event;
+            EventEmitter.prototype.removeListener = function removeListener(event2, fn, context, once) {
+              var evt = prefix ? prefix + event2 : event2;
               if (!this._events[evt])
                 return this;
               if (!fn) {
@@ -30856,22 +30856,22 @@ and ensure you are accounting for this risk.
                   clearEvent(this, evt);
                 }
               } else {
-                for (var i2 = 0, events = [], length = listeners.length; i2 < length; i2++) {
+                for (var i2 = 0, events2 = [], length = listeners.length; i2 < length; i2++) {
                   if (listeners[i2].fn !== fn || once && !listeners[i2].once || context && listeners[i2].context !== context) {
-                    events.push(listeners[i2]);
+                    events2.push(listeners[i2]);
                   }
                 }
-                if (events.length)
-                  this._events[evt] = events.length === 1 ? events[0] : events;
+                if (events2.length)
+                  this._events[evt] = events2.length === 1 ? events2[0] : events2;
                 else
                   clearEvent(this, evt);
               }
               return this;
             };
-            EventEmitter.prototype.removeAllListeners = function removeAllListeners(event) {
+            EventEmitter.prototype.removeAllListeners = function removeAllListeners(event2) {
               var evt;
-              if (event) {
-                evt = prefix ? prefix + event : event;
+              if (event2) {
+                evt = prefix ? prefix + event2 : event2;
                 if (this._events[evt])
                   clearEvent(this, evt);
               } else {
@@ -31188,8 +31188,8 @@ and ensure you are accounting for this risk.
             var _utils_cues__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("./src/utils/cues.ts");
             var _utils_mediakeys_helper__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("./src/utils/mediakeys-helper.ts");
             var _utils_logger__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("./src/utils/logger.ts");
-            function _extends2() {
-              _extends2 = Object.assign || function(target) {
+            function _extends4() {
+              _extends4 = Object.assign || function(target) {
                 for (var i2 = 1; i2 < arguments.length; i2++) {
                   var source = arguments[i2];
                   for (var key in source) {
@@ -31200,7 +31200,7 @@ and ensure you are accounting for this risk.
                 }
                 return target;
               };
-              return _extends2.apply(this, arguments);
+              return _extends4.apply(this, arguments);
             }
             function ownKeys2(object, enumerableOnly) {
               var keys = Object.keys(object);
@@ -31351,7 +31351,7 @@ and ensure you are accounting for this risk.
               if (userConfig.liveMaxLatencyDuration !== void 0 && (userConfig.liveSyncDuration === void 0 || userConfig.liveMaxLatencyDuration <= userConfig.liveSyncDuration)) {
                 throw new Error('Illegal hls.js config: "liveMaxLatencyDuration" must be greater than "liveSyncDuration"');
               }
-              return _extends2({}, defaultConfig, userConfig);
+              return _extends4({}, defaultConfig, userConfig);
             }
             function enableStreamingMode(config) {
               var currentLoader = config.loader;
@@ -31435,7 +31435,7 @@ and ensure you are accounting for this risk.
                 this.hls = this.onCheck = null;
                 this.fragCurrent = this.partCurrent = null;
               };
-              _proto.onFragLoading = function onFragLoading(event, data) {
+              _proto.onFragLoading = function onFragLoading(event2, data) {
                 var frag = data.frag;
                 if (frag.type === _types_loader__WEBPACK_IMPORTED_MODULE_5__["PlaylistLevelType"].MAIN) {
                   if (!this.timer) {
@@ -31446,7 +31446,7 @@ and ensure you are accounting for this risk.
                   }
                 }
               };
-              _proto.onLevelLoaded = function onLevelLoaded(event, data) {
+              _proto.onLevelLoaded = function onLevelLoaded(event2, data) {
                 var config = this.hls.config;
                 if (data.details.live) {
                   this.bwEstimator.update(config.abrEwmaSlowLive, config.abrEwmaFastLive);
@@ -31513,7 +31513,7 @@ and ensure you are accounting for this risk.
                   stats
                 });
               };
-              _proto.onFragLoaded = function onFragLoaded(event, _ref) {
+              _proto.onFragLoaded = function onFragLoaded(event2, _ref) {
                 var frag = _ref.frag, part = _ref.part;
                 if (frag.type === _types_loader__WEBPACK_IMPORTED_MODULE_5__["PlaylistLevelType"].MAIN && Object(_home_runner_work_hls_js_hls_js_src_polyfills_number__WEBPACK_IMPORTED_MODULE_0__["isFiniteNumber"])(frag.sn)) {
                   var stats = part ? part.stats : frag.stats;
@@ -31543,7 +31543,7 @@ and ensure you are accounting for this risk.
                   }
                 }
               };
-              _proto.onFragBuffered = function onFragBuffered(event, data) {
+              _proto.onFragBuffered = function onFragBuffered(event2, data) {
                 var frag = data.frag, part = data.part;
                 var stats = part ? part.stats : frag.stats;
                 if (stats.aborted) {
@@ -31561,7 +31561,7 @@ and ensure you are accounting for this risk.
                   this.bitrateTestDelay = 0;
                 }
               };
-              _proto.onError = function onError(event, data) {
+              _proto.onError = function onError(event2, data) {
                 switch (data.details) {
                   case _errors__WEBPACK_IMPORTED_MODULE_4__["ErrorDetails"].FRAG_LOAD_ERROR:
                   case _errors__WEBPACK_IMPORTED_MODULE_4__["ErrorDetails"].FRAG_LOAD_TIMEOUT:
@@ -31673,8 +31673,8 @@ and ensure you are accounting for this risk.
             var _utils_discontinuities__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("./src/utils/discontinuities.ts");
             var _errors__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("./src/errors.ts");
             var _utils_logger__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("./src/utils/logger.ts");
-            function _extends2() {
-              _extends2 = Object.assign || function(target) {
+            function _extends4() {
+              _extends4 = Object.assign || function(target) {
                 for (var i2 = 1; i2 < arguments.length; i2++) {
                   var source = arguments[i2];
                   for (var key in source) {
@@ -31685,7 +31685,7 @@ and ensure you are accounting for this risk.
                 }
                 return target;
               };
-              return _extends2.apply(this, arguments);
+              return _extends4.apply(this, arguments);
             }
             function _inheritsLoose(subClass, superClass) {
               subClass.prototype = Object.create(superClass.prototype);
@@ -31753,7 +31753,7 @@ and ensure you are accounting for this risk.
                 hls.off(_events__WEBPACK_IMPORTED_MODULE_2__["Events"].INIT_PTS_FOUND, this.onInitPtsFound, this);
                 hls.off(_events__WEBPACK_IMPORTED_MODULE_2__["Events"].FRAG_BUFFERED, this.onFragBuffered, this);
               };
-              _proto.onInitPtsFound = function onInitPtsFound(event, _ref) {
+              _proto.onInitPtsFound = function onInitPtsFound(event2, _ref) {
                 var frag = _ref.frag, id = _ref.id, initPTS = _ref.initPTS;
                 if (id === "main") {
                   var cc = frag.cc;
@@ -31804,9 +31804,9 @@ and ensure you are accounting for this risk.
                   }
                   case _base_stream_controller__WEBPACK_IMPORTED_MODULE_1__["State"].FRAG_LOADING_WAITING_RETRY: {
                     var _this$media;
-                    var now = performance.now();
+                    var now2 = performance.now();
                     var retryDate = this.retryDate;
-                    if (!retryDate || now >= retryDate || (_this$media = this.media) !== null && _this$media !== void 0 && _this$media.seeking) {
+                    if (!retryDate || now2 >= retryDate || (_this$media = this.media) !== null && _this$media !== void 0 && _this$media.seeking) {
                       this.log("RetryDate reached, switch back to IDLE state");
                       this.state = _base_stream_controller__WEBPACK_IMPORTED_MODULE_1__["State"].IDLE;
                     }
@@ -31944,14 +31944,14 @@ and ensure you are accounting for this risk.
                 this.videoBuffer = null;
                 _BaseStreamController.prototype.onMediaDetaching.call(this);
               };
-              _proto.onAudioTracksUpdated = function onAudioTracksUpdated(event, _ref2) {
+              _proto.onAudioTracksUpdated = function onAudioTracksUpdated(event2, _ref2) {
                 var audioTracks = _ref2.audioTracks;
                 this.resetTransmuxer();
                 this.levels = audioTracks.map(function(mediaPlaylist) {
                   return new _types_level__WEBPACK_IMPORTED_MODULE_5__["Level"](mediaPlaylist);
                 });
               };
-              _proto.onAudioTrackSwitching = function onAudioTrackSwitching(event, data) {
+              _proto.onAudioTrackSwitching = function onAudioTrackSwitching(event2, data) {
                 var altAudio = !!data.url;
                 this.trackId = data.id;
                 var fragCurrent = this.fragCurrent;
@@ -31979,10 +31979,10 @@ and ensure you are accounting for this risk.
                 this.startPosition = this.lastCurrentTime = 0;
                 this.bufferFlushed = false;
               };
-              _proto.onLevelLoaded = function onLevelLoaded(event, data) {
+              _proto.onLevelLoaded = function onLevelLoaded(event2, data) {
                 this.mainDetails = data.details;
               };
-              _proto.onAudioTrackLoaded = function onAudioTrackLoaded(event, data) {
+              _proto.onAudioTrackLoaded = function onAudioTrackLoaded(event2, data) {
                 var _track$details;
                 var levels = this.levels;
                 var newDetails = data.details, trackId = data.id;
@@ -32067,7 +32067,7 @@ and ensure you are accounting for this risk.
                 this.mediaBuffer = this.videoBuffer = null;
                 this.loadedmetadata = false;
               };
-              _proto.onBufferCreated = function onBufferCreated(event, data) {
+              _proto.onBufferCreated = function onBufferCreated(event2, data) {
                 var audioTrack = data.tracks.audio;
                 if (audioTrack) {
                   this.mediaBuffer = audioTrack.buffer;
@@ -32076,7 +32076,7 @@ and ensure you are accounting for this risk.
                   this.videoBuffer = data.tracks.video.buffer;
                 }
               };
-              _proto.onFragBuffered = function onFragBuffered(event, data) {
+              _proto.onFragBuffered = function onFragBuffered(event2, data) {
                 var frag = data.frag, part = data.part;
                 if (frag.type !== _types_loader__WEBPACK_IMPORTED_MODULE_6__["PlaylistLevelType"].AUDIO) {
                   return;
@@ -32096,7 +32096,7 @@ and ensure you are accounting for this risk.
                 }
                 this.fragBufferedComplete(frag, part);
               };
-              _proto.onError = function onError(event, data) {
+              _proto.onError = function onError(event2, data) {
                 switch (data.details) {
                   case _errors__WEBPACK_IMPORTED_MODULE_13__["ErrorDetails"].FRAG_LOAD_ERROR:
                   case _errors__WEBPACK_IMPORTED_MODULE_13__["ErrorDetails"].FRAG_LOAD_TIMEOUT:
@@ -32130,7 +32130,7 @@ and ensure you are accounting for this risk.
                     break;
                 }
               };
-              _proto.onBufferFlushed = function onBufferFlushed(event, _ref3) {
+              _proto.onBufferFlushed = function onBufferFlushed(event2, _ref3) {
                 var type = _ref3.type;
                 if (type === _loader_fragment__WEBPACK_IMPORTED_MODULE_7__["ElementaryStreamTypes"].AUDIO) {
                   this.bufferFlushed = true;
@@ -32148,7 +32148,7 @@ and ensure you are accounting for this risk.
                   return;
                 }
                 var frag = context.frag, part = context.part;
-                var audio = remuxResult.audio, text = remuxResult.text, id3 = remuxResult.id3, initSegment = remuxResult.initSegment;
+                var audio = remuxResult.audio, text2 = remuxResult.text, id3 = remuxResult.id3, initSegment = remuxResult.initSegment;
                 if (this.fragContextChanged(frag)) {
                   return;
                 }
@@ -32178,17 +32178,17 @@ and ensure you are accounting for this risk.
                   this.bufferFragmentData(audio, frag, part, chunkMeta);
                 }
                 if (id3 !== null && id3 !== void 0 && (_id3$samples = id3.samples) !== null && _id3$samples !== void 0 && _id3$samples.length) {
-                  var emittedID3 = _extends2({
+                  var emittedID3 = _extends4({
                     frag,
                     id
                   }, id3);
                   hls.trigger(_events__WEBPACK_IMPORTED_MODULE_2__["Events"].FRAG_PARSING_METADATA, emittedID3);
                 }
-                if (text) {
-                  var emittedText = _extends2({
+                if (text2) {
+                  var emittedText = _extends4({
                     frag,
                     id
-                  }, text);
+                  }, text2);
                   hls.trigger(_events__WEBPACK_IMPORTED_MODULE_2__["Events"].FRAG_PARSING_USERDATA, emittedText);
                 }
               };
@@ -32334,10 +32334,10 @@ and ensure you are accounting for this risk.
                 this.trackName = "";
                 this.selectDefaultTrack = true;
               };
-              _proto.onManifestParsed = function onManifestParsed(event, data) {
+              _proto.onManifestParsed = function onManifestParsed(event2, data) {
                 this.tracks = data.audioTracks || [];
               };
-              _proto.onAudioTrackLoaded = function onAudioTrackLoaded(event, data) {
+              _proto.onAudioTrackLoaded = function onAudioTrackLoaded(event2, data) {
                 var id = data.id, details = data.details;
                 var currentTrack = this.tracksInGroup[id];
                 if (!currentTrack) {
@@ -32352,10 +32352,10 @@ and ensure you are accounting for this risk.
                   this.playlistLoaded(id, data, curDetails);
                 }
               };
-              _proto.onLevelLoading = function onLevelLoading(event, data) {
+              _proto.onLevelLoading = function onLevelLoading(event2, data) {
                 this.switchLevel(data.level);
               };
-              _proto.onLevelSwitching = function onLevelSwitching(event, data) {
+              _proto.onLevelSwitching = function onLevelSwitching(event2, data) {
                 this.switchLevel(data.level);
               };
               _proto.switchLevel = function switchLevel(levelIndex) {
@@ -32383,8 +32383,8 @@ and ensure you are accounting for this risk.
                   this.selectInitialTrack();
                 }
               };
-              _proto.onError = function onError(event, data) {
-                _BasePlaylistControll.prototype.onError.call(this, event, data);
+              _proto.onError = function onError(event2, data) {
+                _BasePlaylistControll.prototype.onError.call(this, event2, data);
                 if (data.fatal || !data.context) {
                   return;
                 }
@@ -32517,7 +32517,7 @@ and ensure you are accounting for this risk.
                 this.clearTimer();
                 this.hls = this.log = this.warn = null;
               };
-              _proto.onError = function onError(event, data) {
+              _proto.onError = function onError(event2, data) {
                 if (data.fatal && data.type === _errors__WEBPACK_IMPORTED_MODULE_4__["ErrorTypes"].NETWORK_ERROR) {
                   this.clearTimer();
                 }
@@ -32539,11 +32539,11 @@ and ensure you are accounting for this risk.
                 var renditionReports = previous === null || previous === void 0 ? void 0 : previous.renditionReports;
                 if (renditionReports) {
                   for (var i2 = 0; i2 < renditionReports.length; i2++) {
-                    var attr = renditionReports[i2];
-                    var uri = "" + attr.URI;
+                    var attr2 = renditionReports[i2];
+                    var uri = "" + attr2.URI;
                     if (uri === playlistUri.substr(-uri.length)) {
-                      var msn = parseInt(attr["LAST-MSN"]);
-                      var part = parseInt(attr["LAST-PART"]);
+                      var msn = parseInt(attr2["LAST-MSN"]);
+                      var part = parseInt(attr2["LAST-PART"]);
                       if (previous && this.hls.config.lowLatencyMode) {
                         var currentGoal = Math.min(previous.age - previous.partTarget, previous.targetduration);
                         if (part !== void 0 && currentGoal > previous.partTarget) {
@@ -32562,7 +32562,7 @@ and ensure you are accounting for this risk.
               _proto.shouldLoadTrack = function shouldLoadTrack(track) {
                 return this.canLoad && track && !!track.url && (!track.details || track.details.live);
               };
-              _proto.playlistLoaded = function playlistLoaded(index, data, previousDetails) {
+              _proto.playlistLoaded = function playlistLoaded(index2, data, previousDetails) {
                 var _this = this;
                 var details = data.details, stats = data.stats;
                 var elapsed = stats.loading.end ? Math.max(0, self.performance.now() - stats.loading.end) : 0;
@@ -32570,7 +32570,7 @@ and ensure you are accounting for this risk.
                 if (details.live || previousDetails !== null && previousDetails !== void 0 && previousDetails.live) {
                   details.reloaded(previousDetails);
                   if (previousDetails) {
-                    this.log("live playlist " + index + " " + (details.advanced ? "REFRESHED " + details.lastPartSn + "-" + details.lastPartIndex : "MISSED"));
+                    this.log("live playlist " + index2 + " " + (details.advanced ? "REFRESHED " + details.lastPartSn + "-" + details.lastPartIndex : "MISSED"));
                   }
                   if (previousDetails && details.fragments.length > 0) {
                     Object(_level_helper__WEBPACK_IMPORTED_MODULE_2__["mergeDetails"])(previousDetails, details);
@@ -32625,7 +32625,7 @@ and ensure you are accounting for this risk.
                   if (msn !== void 0 && details.canBlockReload) {
                     reloadInterval -= details.partTarget || 1;
                   }
-                  this.log("reload live playlist " + index + " in " + Math.round(reloadInterval) + " ms");
+                  this.log("reload live playlist " + index2 + " in " + Math.round(reloadInterval) + " ms");
                   this.timer = self.setTimeout(function() {
                     return _this.loadPlaylist(deliveryDirectives);
                   }, reloadInterval);
@@ -32822,7 +32822,7 @@ and ensure you are accounting for this risk.
                 }
                 return false;
               };
-              _proto.onMediaAttached = function onMediaAttached(event, data) {
+              _proto.onMediaAttached = function onMediaAttached(event2, data) {
                 var media2 = this.media = this.mediaBuffer = data.media;
                 this.onvseeking = this.onMediaSeeking.bind(this);
                 this.onvended = this.onMediaEnded.bind(this);
@@ -32880,7 +32880,7 @@ and ensure you are accounting for this risk.
               _proto.onMediaEnded = function onMediaEnded() {
                 this.startPosition = this.lastCurrentTime = 0;
               };
-              _proto.onKeyLoaded = function onKeyLoaded(event, data) {
+              _proto.onKeyLoaded = function onKeyLoaded(event2, data) {
                 if (this.state !== State.KEY_LOADING || data.frag !== this.fragCurrent || !this.levels) {
                   return;
                 }
@@ -33101,15 +33101,15 @@ and ensure you are accounting for this risk.
                 var _this5 = this;
                 return new Promise(function(resolve, reject) {
                   var partsLoaded = [];
-                  var loadPartIndex = function loadPartIndex2(index) {
-                    var part = partList[index];
+                  var loadPartIndex = function loadPartIndex2(index2) {
+                    var part = partList[index2];
                     _this5.fragmentLoader.loadPart(frag, part, progressCallback).then(function(partLoadedData) {
                       partsLoaded[part.index] = partLoadedData;
                       var loadedPart = partLoadedData.part;
                       _this5.hls.trigger(_events__WEBPACK_IMPORTED_MODULE_5__["Events"].FRAG_LOADED, partLoadedData);
-                      var nextPart = partList[index + 1];
+                      var nextPart = partList[index2 + 1];
                       if (nextPart && nextPart.fragment === frag) {
-                        loadPartIndex2(index + 1);
+                        loadPartIndex2(index2 + 1);
                       } else {
                         return resolve({
                           frag,
@@ -33140,10 +33140,10 @@ and ensure you are accounting for this risk.
                   return;
                 }
                 var frag = context.frag, part = context.part, level = context.level;
-                var now = self.performance.now();
-                frag.stats.parsing.end = now;
+                var now2 = self.performance.now();
+                frag.stats.parsing.end = now2;
                 if (part) {
-                  part.stats.parsing.end = now;
+                  part.stats.parsing.end = now2;
                 }
                 this.updateLevelTiming(frag, part, level, chunkMeta.partial);
               };
@@ -33691,7 +33691,7 @@ and ensure you are accounting for this risk.
                   audiovideo: []
                 };
               };
-              _proto.onManifestParsed = function onManifestParsed(event, data) {
+              _proto.onManifestParsed = function onManifestParsed(event2, data) {
                 var codecEvents = 2;
                 if (data.audio && !data.video || !data.altAudio) {
                   codecEvents = 1;
@@ -33700,7 +33700,7 @@ and ensure you are accounting for this risk.
                 this.details = null;
                 _utils_logger__WEBPACK_IMPORTED_MODULE_2__["logger"].log(this.bufferCodecEventsExpected + " bufferCodec event(s) expected");
               };
-              _proto.onMediaAttaching = function onMediaAttaching(event, data) {
+              _proto.onMediaAttaching = function onMediaAttaching(event2, data) {
                 var media2 = this.media = data.media;
                 if (media2 && MediaSource2) {
                   var ms = this.mediaSource = new MediaSource2();
@@ -33764,7 +33764,7 @@ and ensure you are accounting for this risk.
                 });
                 this._initSourceBuffer();
               };
-              _proto.onBufferCodecs = function onBufferCodecs(event, data) {
+              _proto.onBufferCodecs = function onBufferCodecs(event2, data) {
                 var _this3 = this;
                 var sourceBufferCount = this.getSourceBufferTypes().length;
                 Object.keys(data).forEach(function(trackName) {
@@ -33813,7 +33813,7 @@ and ensure you are accounting for this risk.
                 };
                 operationQueue.append(operation, type);
               };
-              _proto.onBufferAppending = function onBufferAppending(event, eventData) {
+              _proto.onBufferAppending = function onBufferAppending(event2, eventData) {
                 var _this5 = this;
                 var hls = this.hls, operationQueue = this.operationQueue, tracks = this.tracks;
                 var data = eventData.data, type = eventData.type, frag = eventData.frag, part = eventData.part, chunkMeta = eventData.chunkMeta;
@@ -33873,7 +33873,7 @@ and ensure you are accounting for this risk.
                   },
                   onError: function onError(err) {
                     _utils_logger__WEBPACK_IMPORTED_MODULE_2__["logger"].error("[buffer-controller]: Error encountered while trying to append to the " + type + " SourceBuffer", err);
-                    var event2 = {
+                    var event3 = {
                       type: _errors__WEBPACK_IMPORTED_MODULE_3__["ErrorTypes"].MEDIA_ERROR,
                       parent: frag.type,
                       details: _errors__WEBPACK_IMPORTED_MODULE_3__["ErrorDetails"].BUFFER_APPEND_ERROR,
@@ -33881,21 +33881,21 @@ and ensure you are accounting for this risk.
                       fatal: false
                     };
                     if (err.code === DOMException.QUOTA_EXCEEDED_ERR) {
-                      event2.details = _errors__WEBPACK_IMPORTED_MODULE_3__["ErrorDetails"].BUFFER_FULL_ERROR;
+                      event3.details = _errors__WEBPACK_IMPORTED_MODULE_3__["ErrorDetails"].BUFFER_FULL_ERROR;
                     } else {
                       _this5.appendError++;
-                      event2.details = _errors__WEBPACK_IMPORTED_MODULE_3__["ErrorDetails"].BUFFER_APPEND_ERROR;
+                      event3.details = _errors__WEBPACK_IMPORTED_MODULE_3__["ErrorDetails"].BUFFER_APPEND_ERROR;
                       if (_this5.appendError > hls.config.appendErrorMaxRetry) {
                         _utils_logger__WEBPACK_IMPORTED_MODULE_2__["logger"].error("[buffer-controller]: Failed " + hls.config.appendErrorMaxRetry + " times to append segment in sourceBuffer");
-                        event2.fatal = true;
+                        event3.fatal = true;
                       }
                     }
-                    hls.trigger(_events__WEBPACK_IMPORTED_MODULE_1__["Events"].ERROR, event2);
+                    hls.trigger(_events__WEBPACK_IMPORTED_MODULE_1__["Events"].ERROR, event3);
                   }
                 };
                 operationQueue.append(operation, type);
               };
-              _proto.onBufferFlushing = function onBufferFlushing(event, data) {
+              _proto.onBufferFlushing = function onBufferFlushing(event2, data) {
                 var _this6 = this;
                 var operationQueue = this.operationQueue;
                 var flushOperation = function flushOperation2(type) {
@@ -33921,7 +33921,7 @@ and ensure you are accounting for this risk.
                   });
                 }
               };
-              _proto.onFragParsed = function onFragParsed(event, data) {
+              _proto.onFragParsed = function onFragParsed(event2, data) {
                 var _this7 = this;
                 var frag = data.frag, part = data.part;
                 var buffersAppendedTo = [];
@@ -33937,10 +33937,10 @@ and ensure you are accounting for this risk.
                   }
                 }
                 var onUnblocked = function onUnblocked2() {
-                  var now = self.performance.now();
-                  frag.stats.buffering.end = now;
+                  var now2 = self.performance.now();
+                  frag.stats.buffering.end = now2;
                   if (part) {
-                    part.stats.buffering.end = now;
+                    part.stats.buffering.end = now2;
                   }
                   var stats = part ? part.stats : frag.stats;
                   _this7.hls.trigger(_events__WEBPACK_IMPORTED_MODULE_1__["Events"].FRAG_BUFFERED, {
@@ -33955,10 +33955,10 @@ and ensure you are accounting for this risk.
                 }
                 this.blockBuffers(onUnblocked, buffersAppendedTo);
               };
-              _proto.onFragChanged = function onFragChanged(event, data) {
+              _proto.onFragChanged = function onFragChanged(event2, data) {
                 this.flushBackBuffer();
               };
-              _proto.onBufferEos = function onBufferEos(event, data) {
+              _proto.onBufferEos = function onBufferEos(event2, data) {
                 var _this8 = this;
                 var ended = this.getSourceBufferTypes().reduce(function(acc, type) {
                   var sb = _this8.sourceBuffer[type];
@@ -33980,7 +33980,7 @@ and ensure you are accounting for this risk.
                   });
                 }
               };
-              _proto.onLevelUpdated = function onLevelUpdated(event, _ref) {
+              _proto.onLevelUpdated = function onLevelUpdated(event2, _ref) {
                 var details = _ref.details;
                 if (!details.fragments.length) {
                   return;
@@ -34137,8 +34137,8 @@ and ensure you are accounting for this risk.
                 operation.onComplete();
                 operationQueue.shiftAndExecuteNext(type);
               };
-              _proto._onSBUpdateError = function _onSBUpdateError(type, event) {
-                _utils_logger__WEBPACK_IMPORTED_MODULE_2__["logger"].error("[buffer-controller]: " + type + " SourceBuffer error", event);
+              _proto._onSBUpdateError = function _onSBUpdateError(type, event2) {
+                _utils_logger__WEBPACK_IMPORTED_MODULE_2__["logger"].error("[buffer-controller]: " + type + " SourceBuffer error", event2);
                 this.hls.trigger(_events__WEBPACK_IMPORTED_MODULE_1__["Events"].ERROR, {
                   type: _errors__WEBPACK_IMPORTED_MODULE_3__["ErrorTypes"].MEDIA_ERROR,
                   details: _errors__WEBPACK_IMPORTED_MODULE_3__["ErrorDetails"].BUFFER_APPENDING_ERROR,
@@ -34146,7 +34146,7 @@ and ensure you are accounting for this risk.
                 });
                 var operation = this.operationQueue.current(type);
                 if (operation) {
-                  operation.onError(event);
+                  operation.onError(event2);
                 }
               };
               _proto.removeExecutor = function removeExecutor(type, startOffset, endOffset) {
@@ -34208,17 +34208,17 @@ and ensure you are accounting for this risk.
               _proto.getSourceBufferTypes = function getSourceBufferTypes() {
                 return Object.keys(this.sourceBuffer);
               };
-              _proto.addBufferListener = function addBufferListener(type, event, fn) {
+              _proto.addBufferListener = function addBufferListener(type, event2, fn) {
                 var buffer = this.sourceBuffer[type];
                 if (!buffer) {
                   return;
                 }
                 var listener = fn.bind(this, type);
                 this.listeners[type].push({
-                  event,
+                  event: event2,
                   listener
                 });
-                buffer.addEventListener(event, listener);
+                buffer.addEventListener(event2, listener);
               };
               _proto.removeBufferListeners = function removeBufferListeners(type) {
                 var buffer = this.sourceBuffer[type];
@@ -34250,7 +34250,7 @@ and ensure you are accounting for this risk.
                 this.buffers = sourceBufferReference;
               }
               var _proto = BufferOperationQueue2.prototype;
-              _proto.append = function append(operation, type) {
+              _proto.append = function append2(operation, type) {
                 var queue = this.queues[type];
                 queue.push(operation);
                 if (queue.length === 1 && this.buffers[type]) {
@@ -34376,15 +34376,15 @@ and ensure you are accounting for this risk.
                 hls.off(_events__WEBPACK_IMPORTED_MODULE_0__["Events"].BUFFER_CODECS, this.onBufferCodecs, this);
                 hls.off(_events__WEBPACK_IMPORTED_MODULE_0__["Events"].MEDIA_DETACHING, this.onMediaDetaching, this);
               };
-              _proto.onFpsDropLevelCapping = function onFpsDropLevelCapping(event, data) {
+              _proto.onFpsDropLevelCapping = function onFpsDropLevelCapping(event2, data) {
                 if (CapLevelController2.isLevelAllowed(data.droppedLevel, this.restrictedLevels)) {
                   this.restrictedLevels.push(data.droppedLevel);
                 }
               };
-              _proto.onMediaAttaching = function onMediaAttaching(event, data) {
+              _proto.onMediaAttaching = function onMediaAttaching(event2, data) {
                 this.media = data.media instanceof HTMLVideoElement ? data.media : null;
               };
-              _proto.onManifestParsed = function onManifestParsed(event, data) {
+              _proto.onManifestParsed = function onManifestParsed(event2, data) {
                 var hls = this.hls;
                 this.restrictedLevels = [];
                 this.firstLevel = data.firstLevel;
@@ -34392,7 +34392,7 @@ and ensure you are accounting for this risk.
                   this.startCapping();
                 }
               };
-              _proto.onBufferCodecs = function onBufferCodecs(event, data) {
+              _proto.onBufferCodecs = function onBufferCodecs(event2, data) {
                 var hls = this.hls;
                 if (hls.config.capLevelToPlayerSize && data.video) {
                   this.startCapping();
@@ -34420,8 +34420,8 @@ and ensure you are accounting for this risk.
                 if (!levels.length) {
                   return -1;
                 }
-                var validLevels = levels.filter(function(level, index) {
-                  return CapLevelController2.isLevelAllowed(index, _this.restrictedLevels) && index <= capLevelIndex;
+                var validLevels = levels.filter(function(level, index2) {
+                  return CapLevelController2.isLevelAllowed(index2, _this.restrictedLevels) && index2 <= capLevelIndex;
                 });
                 this.clientRect = null;
                 return CapLevelController2.getMaxLevelByMediaSize(validLevels, this.mediaWidth, this.mediaHeight);
@@ -34581,8 +34581,8 @@ and ensure you are accounting for this risk.
               }
               return arr2;
             }
-            function _extends2() {
-              _extends2 = Object.assign || function(target) {
+            function _extends4() {
+              _extends4 = Object.assign || function(target) {
                 for (var i2 = 1; i2 < arguments.length; i2++) {
                   var source = arguments[i2];
                   for (var key in source) {
@@ -34593,7 +34593,7 @@ and ensure you are accounting for this risk.
                 }
                 return target;
               };
-              return _extends2.apply(this, arguments);
+              return _extends4.apply(this, arguments);
             }
             var CMCDController = /* @__PURE__ */ function() {
               function CMCDController2(hls) {
@@ -34680,7 +34680,7 @@ and ensure you are accounting for this risk.
                 this.unregisterListeners();
                 this.hls = this.config = this.audioBuffer = this.videoBuffer = null;
               };
-              _proto.onMediaAttached = function onMediaAttached(event, data) {
+              _proto.onMediaAttached = function onMediaAttached(event2, data) {
                 this.media = data.media;
                 this.media.addEventListener("waiting", this.onWaiting);
                 this.media.addEventListener("playing", this.onPlaying);
@@ -34693,7 +34693,7 @@ and ensure you are accounting for this risk.
                 this.media.removeEventListener("playing", this.onPlaying);
                 this.media = null;
               };
-              _proto.onBufferCreated = function onBufferCreated(event, data) {
+              _proto.onBufferCreated = function onBufferCreated(event2, data) {
                 var _data$tracks$audio, _data$tracks$video;
                 this.audioBuffer = (_data$tracks$audio = data.tracks.audio) === null || _data$tracks$audio === void 0 ? void 0 : _data$tracks$audio.buffer;
                 this.videoBuffer = (_data$tracks$video = data.tracks.video) === null || _data$tracks$video === void 0 ? void 0 : _data$tracks$video.buffer;
@@ -34713,7 +34713,7 @@ and ensure you are accounting for this risk.
                 if (data === void 0) {
                   data = {};
                 }
-                _extends2(data, this.createData());
+                _extends4(data, this.createData());
                 var isVideo = data.ot === _types_cmcd__WEBPACK_IMPORTED_MODULE_1__["CMCDObjectType"].INIT || data.ot === _types_cmcd__WEBPACK_IMPORTED_MODULE_1__["CMCDObjectType"].VIDEO || data.ot === _types_cmcd__WEBPACK_IMPORTED_MODULE_1__["CMCDObjectType"].MUXED;
                 if (this.starved && isVideo) {
                   data.bs = true;
@@ -34731,7 +34731,7 @@ and ensure you are accounting for this risk.
                   if (!context.headers) {
                     context.headers = {};
                   }
-                  _extends2(context.headers, headers);
+                  _extends4(context.headers, headers);
                 } else {
                   var query = CMCDController2.toQuery(data);
                   if (!query) {
@@ -34944,8 +34944,8 @@ and ensure you are accounting for this risk.
                 };
                 for (var _i = 0, _keys = keys; _i < _keys.length; _i++) {
                   var key = _keys[_i];
-                  var index = headerMap[key] != null ? headerMap[key] : 1;
-                  headerGroups[index][key] = data[key];
+                  var index2 = headerMap[key] != null ? headerMap[key] : 1;
+                  headerGroups[index2][key] = data[key];
                 }
                 for (var i2 = 0; i2 < headerGroups.length; i2++) {
                   var value = CMCDController2.serialize(headerGroups[i2]);
@@ -35118,8 +35118,8 @@ and ensure you are accounting for this risk.
               _proto._onNewMediaKeySession = function _onNewMediaKeySession(keySession) {
                 var _this4 = this;
                 _utils_logger__WEBPACK_IMPORTED_MODULE_2__["logger"].log("New key-system session " + keySession.sessionId);
-                keySession.addEventListener("message", function(event) {
-                  _this4._onKeySessionMessage(keySession, event.message);
+                keySession.addEventListener("message", function(event2) {
+                  _this4._onKeySessionMessage(keySession, event2.message);
                 }, false);
               };
               _proto._onKeySessionMessage = function _onKeySessionMessage(keySession, message) {
@@ -35311,7 +35311,7 @@ and ensure you are accounting for this risk.
                   });
                 }
               };
-              _proto.onMediaAttached = function onMediaAttached(event, data) {
+              _proto.onMediaAttached = function onMediaAttached(event2, data) {
                 if (!this._emeEnabled) {
                   return;
                 }
@@ -35338,7 +35338,7 @@ and ensure you are accounting for this risk.
                 }).catch(function() {
                 });
               };
-              _proto.onManifestParsed = function onManifestParsed(event, data) {
+              _proto.onManifestParsed = function onManifestParsed(event2, data) {
                 if (!this._emeEnabled) {
                   return;
                 }
@@ -35403,7 +35403,7 @@ and ensure you are accounting for this risk.
                 this.isVideoPlaybackQualityAvailable = false;
                 this.media = null;
               };
-              _proto.onMediaAttaching = function onMediaAttaching(event, data) {
+              _proto.onMediaAttaching = function onMediaAttaching(event2, data) {
                 var config = this.hls.config;
                 if (config.capLevelOnFPSDrop) {
                   var media2 = data.media instanceof self.HTMLVideoElement ? data.media : null;
@@ -35818,7 +35818,7 @@ and ensure you are accounting for this risk.
                 }
                 return false;
               };
-              _proto.onFragLoaded = function onFragLoaded(event, data) {
+              _proto.onFragLoaded = function onFragLoaded(event2, data) {
                 var frag = data.frag, part = data.part;
                 if (frag.sn === "initSegment" || frag.bitrateTest || part) {
                   return;
@@ -35832,7 +35832,7 @@ and ensure you are accounting for this risk.
                   range: /* @__PURE__ */ Object.create(null)
                 };
               };
-              _proto.onBufferAppended = function onBufferAppended(event, data) {
+              _proto.onBufferAppended = function onBufferAppended(event2, data) {
                 var _this3 = this;
                 var frag = data.frag, part = data.part, timeRanges = data.timeRanges;
                 if (frag.type === _types_loader__WEBPACK_IMPORTED_MODULE_1__["PlaylistLevelType"].MAIN) {
@@ -35858,7 +35858,7 @@ and ensure you are accounting for this risk.
                   }
                 });
               };
-              _proto.onFragBuffered = function onFragBuffered(event, data) {
+              _proto.onFragBuffered = function onFragBuffered(event2, data) {
                 this.detectPartialFragments(data);
               };
               _proto.hasFragment = function hasFragment(fragment) {
@@ -36125,7 +36125,7 @@ and ensure you are accounting for this risk.
                 hls.off(_events__WEBPACK_IMPORTED_MODULE_0__["Events"].FRAG_PARSING_METADATA, this.onFragParsingMetadata, this);
                 hls.off(_events__WEBPACK_IMPORTED_MODULE_0__["Events"].BUFFER_FLUSHING, this.onBufferFlushing, this);
               };
-              _proto.onMediaAttached = function onMediaAttached(event, data) {
+              _proto.onMediaAttached = function onMediaAttached(event2, data) {
                 this.media = data.media;
               };
               _proto.onMediaDetaching = function onMediaDetaching() {
@@ -36149,7 +36149,7 @@ and ensure you are accounting for this risk.
                 }
                 return this.media.addTextTrack("metadata", "id3");
               };
-              _proto.onFragParsingMetadata = function onFragParsingMetadata(event, data) {
+              _proto.onFragParsingMetadata = function onFragParsingMetadata(event2, data) {
                 if (!this.media) {
                   return;
                 }
@@ -36180,7 +36180,7 @@ and ensure you are accounting for this risk.
                   }
                 }
               };
-              _proto.onBufferFlushing = function onBufferFlushing(event, _ref) {
+              _proto.onBufferFlushing = function onBufferFlushing(event2, _ref) {
                 var startOffset = _ref.startOffset, endOffset = _ref.endOffset, type = _ref.type;
                 if (!type || type === "audio") {
                   var id3Track = this.id3Track;
@@ -36257,7 +36257,7 @@ and ensure you are accounting for this risk.
                 this.hls.off(_events__WEBPACK_IMPORTED_MODULE_1__["Events"].LEVEL_UPDATED, this.onLevelUpdated);
                 this.hls.off(_events__WEBPACK_IMPORTED_MODULE_1__["Events"].ERROR, this.onError);
               };
-              _proto.onMediaAttached = function onMediaAttached(event, data) {
+              _proto.onMediaAttached = function onMediaAttached(event2, data) {
                 this.media = data.media;
                 this.media.addEventListener("timeupdate", this.timeupdateHandler);
               };
@@ -36272,7 +36272,7 @@ and ensure you are accounting for this risk.
                 this._latency = null;
                 this.stallCount = 0;
               };
-              _proto.onLevelUpdated = function onLevelUpdated(event, _ref) {
+              _proto.onLevelUpdated = function onLevelUpdated(event2, _ref) {
                 var details = _ref.details;
                 this.levelDetails = details;
                 if (details.advanced) {
@@ -36282,7 +36282,7 @@ and ensure you are accounting for this risk.
                   this.media.removeEventListener("timeupdate", this.timeupdateHandler);
                 }
               };
-              _proto.onError = function onError(event, data) {
+              _proto.onError = function onError(event2, data) {
                 if (data.details !== _errors__WEBPACK_IMPORTED_MODULE_0__["ErrorDetails"].BUFFER_STALLED_ERROR) {
                   return;
                 }
@@ -36426,8 +36426,8 @@ and ensure you are accounting for this risk.
             var _level_helper__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./src/controller/level-helper.ts");
             var _base_playlist_controller__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./src/controller/base-playlist-controller.ts");
             var _types_loader__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./src/types/loader.ts");
-            function _extends2() {
-              _extends2 = Object.assign || function(target) {
+            function _extends4() {
+              _extends4 = Object.assign || function(target) {
                 for (var i2 = 1; i2 < arguments.length; i2++) {
                   var source = arguments[i2];
                   for (var key in source) {
@@ -36438,7 +36438,7 @@ and ensure you are accounting for this risk.
                 }
                 return target;
               };
-              return _extends2.apply(this, arguments);
+              return _extends4.apply(this, arguments);
             }
             function _defineProperties(target, props) {
               for (var i2 = 0; i2 < props.length; i2++) {
@@ -36514,7 +36514,7 @@ and ensure you are accounting for this risk.
                 });
                 _BasePlaylistControll.prototype.startLoad.call(this);
               };
-              _proto.onManifestLoaded = function onManifestLoaded(event, data) {
+              _proto.onManifestLoaded = function onManifestLoaded(event2, data) {
                 var levels = [];
                 var audioTracks = [];
                 var subtitleTracks = [];
@@ -36610,8 +36610,8 @@ and ensure you are accounting for this risk.
                   });
                 }
               };
-              _proto.onError = function onError(event, data) {
-                _BasePlaylistControll.prototype.onError.call(this, event, data);
+              _proto.onError = function onError(event2, data) {
+                _BasePlaylistControll.prototype.onError.call(this, event2, data);
                 if (data.fatal) {
                   return;
                 }
@@ -36700,7 +36700,7 @@ and ensure you are accounting for this risk.
                   this.level = levelIndex;
                 }
               };
-              _proto.onFragLoaded = function onFragLoaded(event, _ref3) {
+              _proto.onFragLoaded = function onFragLoaded(event2, _ref3) {
                 var frag = _ref3.frag;
                 if (frag !== void 0 && frag.type === _types_loader__WEBPACK_IMPORTED_MODULE_6__["PlaylistLevelType"].MAIN) {
                   var level = this._levels[frag.level];
@@ -36710,7 +36710,7 @@ and ensure you are accounting for this risk.
                   }
                 }
               };
-              _proto.onLevelLoaded = function onLevelLoaded(event, data) {
+              _proto.onLevelLoaded = function onLevelLoaded(event2, data) {
                 var _data$deliveryDirecti2;
                 var level = data.level, details = data.details;
                 var curLevel = this._levels[level];
@@ -36732,7 +36732,7 @@ and ensure you are accounting for this risk.
                   details.deltaUpdateFailed = true;
                 }
               };
-              _proto.onAudioTrackSwitched = function onAudioTrackSwitched(event, data) {
+              _proto.onAudioTrackSwitched = function onAudioTrackSwitched(event2, data) {
                 var currentLevel = this.hls.levels[this.currentLevelIndex];
                 if (!currentLevel) {
                   return;
@@ -36779,8 +36779,8 @@ and ensure you are accounting for this risk.
                 var filterLevelAndGroupByIdIndex = function filterLevelAndGroupByIdIndex2(url, id) {
                   return id !== urlId;
                 };
-                var levels = this._levels.filter(function(level, index) {
-                  if (index !== levelIndex) {
+                var levels = this._levels.filter(function(level, index2) {
+                  if (index2 !== levelIndex) {
                     return true;
                   }
                   if (level.url.length > 1 && urlId !== void 0) {
@@ -36795,11 +36795,11 @@ and ensure you are accounting for this risk.
                     return true;
                   }
                   return false;
-                }).map(function(level, index) {
+                }).map(function(level, index2) {
                   var details = level.details;
                   if (details !== null && details !== void 0 && details.fragments) {
                     details.fragments.forEach(function(fragment) {
-                      fragment.level = index;
+                      fragment.level = index2;
                     });
                   }
                   return level;
@@ -36851,7 +36851,7 @@ and ensure you are accounting for this risk.
                   var level = levels[newLevel];
                   this.log("switching to level " + newLevel + " from " + lastLevelIndex);
                   this.currentLevelIndex = newLevel;
-                  var levelSwitchingData = _extends2({}, level, {
+                  var levelSwitchingData = _extends4({}, level, {
                     level: newLevel,
                     maxBitrate: level.maxBitrate,
                     uri: level.uri,
@@ -37452,9 +37452,9 @@ and ensure you are accounting for this risk.
                   case _base_stream_controller__WEBPACK_IMPORTED_MODULE_1__["State"].FRAG_LOADING_WAITING_RETRY:
                     {
                       var _this$media;
-                      var now = self.performance.now();
+                      var now2 = self.performance.now();
                       var retryDate = this.retryDate;
-                      if (!retryDate || now >= retryDate || (_this$media = this.media) !== null && _this$media !== void 0 && _this$media.seeking) {
+                      if (!retryDate || now2 >= retryDate || (_this$media = this.media) !== null && _this$media !== void 0 && _this$media.seeking) {
                         this.log("retryDate reached, switch back to IDLE state");
                         this.state = _base_stream_controller__WEBPACK_IMPORTED_MODULE_1__["State"].IDLE;
                       }
@@ -37634,8 +37634,8 @@ and ensure you are accounting for this risk.
               _proto.flushMainBuffer = function flushMainBuffer(startOffset, endOffset) {
                 _BaseStreamController.prototype.flushMainBuffer.call(this, startOffset, endOffset, this.altAudio ? "video" : null);
               };
-              _proto.onMediaAttached = function onMediaAttached(event, data) {
-                _BaseStreamController.prototype.onMediaAttached.call(this, event, data);
+              _proto.onMediaAttached = function onMediaAttached(event2, data) {
+                _BaseStreamController.prototype.onMediaAttached.call(this, event2, data);
                 var media2 = data.media;
                 this.onvplaying = this.onMediaPlaying.bind(this);
                 this.onvseeked = this.onMediaSeeked.bind(this);
@@ -37677,7 +37677,7 @@ and ensure you are accounting for this risk.
                 this.startPosition = this.lastCurrentTime = 0;
                 this.fragPlaying = null;
               };
-              _proto.onManifestParsed = function onManifestParsed(event, data) {
+              _proto.onManifestParsed = function onManifestParsed(event2, data) {
                 var aac = false;
                 var heaac = false;
                 var codec;
@@ -37699,7 +37699,7 @@ and ensure you are accounting for this risk.
                 this.levels = data.levels;
                 this.startFragRequested = false;
               };
-              _proto.onLevelLoading = function onLevelLoading(event, data) {
+              _proto.onLevelLoading = function onLevelLoading(event2, data) {
                 var levels = this.levels;
                 if (!levels || this.state !== _base_stream_controller__WEBPACK_IMPORTED_MODULE_1__["State"].IDLE) {
                   return;
@@ -37709,7 +37709,7 @@ and ensure you are accounting for this risk.
                   this.state = _base_stream_controller__WEBPACK_IMPORTED_MODULE_1__["State"].WAITING_LEVEL;
                 }
               };
-              _proto.onLevelLoaded = function onLevelLoaded(event, data) {
+              _proto.onLevelLoaded = function onLevelLoaded(event2, data) {
                 var _curLevel$details;
                 var levels = this.levels;
                 var newLevelId = data.level;
@@ -37782,7 +37782,7 @@ and ensure you are accounting for this risk.
                 var initPTS = this.initPTS[frag.cc];
                 transmuxer.push(payload, initSegmentData, audioCodec, videoCodec, frag, part, details.totalduration, accurateTimeOffset, chunkMeta, initPTS);
               };
-              _proto.onAudioTrackSwitching = function onAudioTrackSwitching(event, data) {
+              _proto.onAudioTrackSwitching = function onAudioTrackSwitching(event2, data) {
                 var fromAltAudio = this.altAudio;
                 var altAudio = !!data.url;
                 var trackId = data.id;
@@ -37813,7 +37813,7 @@ and ensure you are accounting for this risk.
                   });
                 }
               };
-              _proto.onAudioTrackSwitched = function onAudioTrackSwitched(event, data) {
+              _proto.onAudioTrackSwitched = function onAudioTrackSwitched(event2, data) {
                 var trackId = data.id;
                 var altAudio = !!this.hls.audioTracks[trackId].url;
                 if (altAudio) {
@@ -37826,7 +37826,7 @@ and ensure you are accounting for this risk.
                 this.altAudio = altAudio;
                 this.tick();
               };
-              _proto.onBufferCreated = function onBufferCreated(event, data) {
+              _proto.onBufferCreated = function onBufferCreated(event2, data) {
                 var tracks = data.tracks;
                 var mediaTrack;
                 var name;
@@ -37853,7 +37853,7 @@ and ensure you are accounting for this risk.
                   this.mediaBuffer = this.media;
                 }
               };
-              _proto.onFragBuffered = function onFragBuffered(event, data) {
+              _proto.onFragBuffered = function onFragBuffered(event2, data) {
                 var frag = data.frag, part = data.part;
                 if (frag && frag.type !== _types_loader__WEBPACK_IMPORTED_MODULE_6__["PlaylistLevelType"].MAIN) {
                   return;
@@ -37872,7 +37872,7 @@ and ensure you are accounting for this risk.
                 }
                 this.fragBufferedComplete(frag, part);
               };
-              _proto.onError = function onError(event, data) {
+              _proto.onError = function onError(event2, data) {
                 switch (data.details) {
                   case _errors__WEBPACK_IMPORTED_MODULE_11__["ErrorDetails"].FRAG_LOAD_ERROR:
                   case _errors__WEBPACK_IMPORTED_MODULE_11__["ErrorDetails"].FRAG_LOAD_TIMEOUT:
@@ -37933,14 +37933,14 @@ and ensure you are accounting for this risk.
                 }
                 this.tickImmediate();
               };
-              _proto.onBufferFlushed = function onBufferFlushed(event, _ref) {
+              _proto.onBufferFlushed = function onBufferFlushed(event2, _ref) {
                 var type = _ref.type;
                 if (type !== _loader_fragment__WEBPACK_IMPORTED_MODULE_7__["ElementaryStreamTypes"].AUDIO || this.audioOnly && !this.altAudio) {
                   var media2 = (type === _loader_fragment__WEBPACK_IMPORTED_MODULE_7__["ElementaryStreamTypes"].VIDEO ? this.videoBuffer : this.mediaBuffer) || this.media;
                   this.afterBufferFlushed(media2, type, _types_loader__WEBPACK_IMPORTED_MODULE_6__["PlaylistLevelType"].MAIN);
                 }
               };
-              _proto.onLevelsUpdated = function onLevelsUpdated(event, data) {
+              _proto.onLevelsUpdated = function onLevelsUpdated(event2, data) {
                 this.levels = data.levels;
               };
               _proto.swapAudioCodec = function swapAudioCodec() {
@@ -38007,7 +38007,7 @@ and ensure you are accounting for this risk.
                   return;
                 }
                 var frag = context.frag, part = context.part, level = context.level;
-                var video = remuxResult.video, text = remuxResult.text, id3 = remuxResult.id3, initSegment = remuxResult.initSegment;
+                var video = remuxResult.video, text2 = remuxResult.text, id3 = remuxResult.id3, initSegment = remuxResult.initSegment;
                 var audio = this.altAudio ? void 0 : remuxResult.audio;
                 if (this.fragContextChanged(frag)) {
                   return;
@@ -38085,11 +38085,11 @@ and ensure you are accounting for this risk.
                   };
                   hls.trigger(_events__WEBPACK_IMPORTED_MODULE_3__["Events"].FRAG_PARSING_METADATA, emittedID3);
                 }
-                if (text) {
+                if (text2) {
                   var emittedText = {
                     frag,
                     id,
-                    samples: text.samples
+                    samples: text2.samples
                   };
                   hls.trigger(_events__WEBPACK_IMPORTED_MODULE_3__["Events"].FRAG_PARSING_USERDATA, emittedText);
                 }
@@ -38335,10 +38335,10 @@ and ensure you are accounting for this risk.
                 this.mainDetails = null;
                 this.fragmentTracker.removeAllFragments();
               };
-              _proto.onLevelLoaded = function onLevelLoaded(event, data) {
+              _proto.onLevelLoaded = function onLevelLoaded(event2, data) {
                 this.mainDetails = data.details;
               };
-              _proto.onSubtitleFragProcessed = function onSubtitleFragProcessed(event, data) {
+              _proto.onSubtitleFragProcessed = function onSubtitleFragProcessed(event2, data) {
                 var frag = data.frag, success = data.success;
                 this.fragPrevious = frag;
                 this.state = _base_stream_controller__WEBPACK_IMPORTED_MODULE_6__["State"].IDLE;
@@ -38369,7 +38369,7 @@ and ensure you are accounting for this risk.
                 }
                 this.fragmentTracker.fragBuffered(frag);
               };
-              _proto.onBufferFlushing = function onBufferFlushing(event, data) {
+              _proto.onBufferFlushing = function onBufferFlushing(event2, data) {
                 var startOffset = data.startOffset, endOffset = data.endOffset;
                 if (startOffset === 0 && endOffset !== Number.POSITIVE_INFINITY) {
                   var currentTrackId = this.currentTrackId, levels = this.levels;
@@ -38399,7 +38399,7 @@ and ensure you are accounting for this risk.
                   this.fragmentTracker.removeFragmentsInRange(startOffset, endOffsetSubtitles, _types_loader__WEBPACK_IMPORTED_MODULE_7__["PlaylistLevelType"].SUBTITLE);
                 }
               };
-              _proto.onError = function onError(event, data) {
+              _proto.onError = function onError(event2, data) {
                 var _this$fragCurrent;
                 var frag = data.frag;
                 if (!frag || frag.type !== _types_loader__WEBPACK_IMPORTED_MODULE_7__["PlaylistLevelType"].SUBTITLE) {
@@ -38410,7 +38410,7 @@ and ensure you are accounting for this risk.
                 }
                 this.state = _base_stream_controller__WEBPACK_IMPORTED_MODULE_6__["State"].IDLE;
               };
-              _proto.onSubtitleTracksUpdated = function onSubtitleTracksUpdated(event, _ref) {
+              _proto.onSubtitleTracksUpdated = function onSubtitleTracksUpdated(event2, _ref) {
                 var _this2 = this;
                 var subtitleTracks = _ref.subtitleTracks;
                 this.tracksBuffered = [];
@@ -38424,7 +38424,7 @@ and ensure you are accounting for this risk.
                 });
                 this.mediaBuffer = null;
               };
-              _proto.onSubtitleTrackSwitch = function onSubtitleTrackSwitch(event, data) {
+              _proto.onSubtitleTrackSwitch = function onSubtitleTrackSwitch(event2, data) {
                 this.currentTrackId = data.id;
                 if (!this.levels.length || this.currentTrackId === -1) {
                   this.clearInterval();
@@ -38440,7 +38440,7 @@ and ensure you are accounting for this risk.
                   this.setInterval(TICK_INTERVAL);
                 }
               };
-              _proto.onSubtitleTrackLoaded = function onSubtitleTrackLoaded(event, data) {
+              _proto.onSubtitleTrackLoaded = function onSubtitleTrackLoaded(event2, data) {
                 var _track$details;
                 var newDetails = data.details, trackId = data.id;
                 var currentTrackId = this.currentTrackId, levels = this.levels;
@@ -38649,7 +38649,7 @@ and ensure you are accounting for this risk.
                 hls.off(_events__WEBPACK_IMPORTED_MODULE_0__["Events"].SUBTITLE_TRACK_LOADED, this.onSubtitleTrackLoaded, this);
                 hls.off(_events__WEBPACK_IMPORTED_MODULE_0__["Events"].ERROR, this.onError, this);
               };
-              _proto.onMediaAttached = function onMediaAttached(event, data) {
+              _proto.onMediaAttached = function onMediaAttached(event2, data) {
                 this.media = data.media;
                 if (!this.media) {
                   return;
@@ -38694,10 +38694,10 @@ and ensure you are accounting for this risk.
                 this.trackId = -1;
                 this.selectDefaultTrack = true;
               };
-              _proto.onManifestParsed = function onManifestParsed(event, data) {
+              _proto.onManifestParsed = function onManifestParsed(event2, data) {
                 this.tracks = data.subtitleTracks;
               };
-              _proto.onSubtitleTrackLoaded = function onSubtitleTrackLoaded(event, data) {
+              _proto.onSubtitleTrackLoaded = function onSubtitleTrackLoaded(event2, data) {
                 var id = data.id, details = data.details;
                 var trackId = this.trackId;
                 var currentTrack = this.tracksInGroup[trackId];
@@ -38713,10 +38713,10 @@ and ensure you are accounting for this risk.
                   this.playlistLoaded(id, data, curDetails);
                 }
               };
-              _proto.onLevelLoading = function onLevelLoading(event, data) {
+              _proto.onLevelLoading = function onLevelLoading(event2, data) {
                 this.switchLevel(data.level);
               };
-              _proto.onLevelSwitching = function onLevelSwitching(event, data) {
+              _proto.onLevelSwitching = function onLevelSwitching(event2, data) {
                 this.switchLevel(data.level);
               };
               _proto.switchLevel = function switchLevel(levelIndex) {
@@ -38755,8 +38755,8 @@ and ensure you are accounting for this risk.
                 }
                 return -1;
               };
-              _proto.onError = function onError(event, data) {
-                _BasePlaylistControll.prototype.onError.call(this, event, data);
+              _proto.onError = function onError(event2, data) {
+                _BasePlaylistControll.prototype.onError.call(this, event2, data);
                 if (data.fatal || !data.context) {
                   return;
                 }
@@ -39020,7 +39020,7 @@ and ensure you are accounting for this risk.
                   });
                 }
               };
-              _proto.onInitPtsFound = function onInitPtsFound(event, _ref) {
+              _proto.onInitPtsFound = function onInitPtsFound(event2, _ref) {
                 var _this = this;
                 var frag = _ref.frag, id = _ref.id, initPTS = _ref.initPTS, timescale = _ref.timescale;
                 var unparsedVttFrags = this.unparsedVttFrags;
@@ -39101,7 +39101,7 @@ and ensure you are accounting for this risk.
                 }
                 return media2.addTextTrack(kind, label, lang);
               };
-              _proto.onMediaAttaching = function onMediaAttaching(event, data) {
+              _proto.onMediaAttaching = function onMediaAttaching(event2, data) {
                 this.media = data.media;
                 this._cleanTracks();
               };
@@ -39143,7 +39143,7 @@ and ensure you are accounting for this risk.
                   }
                 }
               };
-              _proto.onSubtitleTracksUpdated = function onSubtitleTracksUpdated(event, data) {
+              _proto.onSubtitleTracksUpdated = function onSubtitleTracksUpdated(event2, data) {
                 var _this2 = this;
                 this.textTracks = [];
                 var tracks = data.subtitleTracks || [];
@@ -39155,9 +39155,9 @@ and ensure you are accounting for this risk.
                   this.tracks = tracks || [];
                   if (this.config.renderTextTracksNatively) {
                     var inUseTracks = this.media ? this.media.textTracks : [];
-                    this.tracks.forEach(function(track, index) {
+                    this.tracks.forEach(function(track, index2) {
                       var textTrack;
-                      if (index < inUseTracks.length) {
+                      if (index2 < inUseTracks.length) {
                         var inUseTrack = null;
                         for (var i2 = 0; i2 < inUseTracks.length; i2++) {
                           if (canReuseVttTextTrack(inUseTracks[i2], track)) {
@@ -39197,7 +39197,7 @@ and ensure you are accounting for this risk.
                   }
                 }
               };
-              _proto.onManifestLoaded = function onManifestLoaded(event, data) {
+              _proto.onManifestLoaded = function onManifestLoaded(event2, data) {
                 var _this3 = this;
                 if (this.config.enableCEA708Captions && data.captions) {
                   data.captions.forEach(function(captionsTrack) {
@@ -39218,7 +39218,7 @@ and ensure you are accounting for this risk.
                   });
                 }
               };
-              _proto.onFragLoading = function onFragLoading(event, data) {
+              _proto.onFragLoading = function onFragLoading(event2, data) {
                 var cea608Parser1 = this.cea608Parser1, cea608Parser2 = this.cea608Parser2, lastSn = this.lastSn, lastPartIndex = this.lastPartIndex;
                 if (!this.enabled || !(cea608Parser1 && cea608Parser2)) {
                   return;
@@ -39235,7 +39235,7 @@ and ensure you are accounting for this risk.
                   this.lastPartIndex = partIndex;
                 }
               };
-              _proto.onFragLoaded = function onFragLoaded(event, data) {
+              _proto.onFragLoaded = function onFragLoaded(event2, data) {
                 var frag = data.frag, payload = data.payload;
                 var initPTS = this.initPTS, unparsedVttFrags = this.unparsedVttFrags;
                 if (frag.type === _types_loader__WEBPACK_IMPORTED_MODULE_7__["PlaylistLevelType"].SUBTITLE) {
@@ -39348,7 +39348,7 @@ and ensure you are accounting for this risk.
                   });
                 }
               };
-              _proto.onFragDecrypted = function onFragDecrypted(event, data) {
+              _proto.onFragDecrypted = function onFragDecrypted(event2, data) {
                 var frag = data.frag;
                 if (frag.type === _types_loader__WEBPACK_IMPORTED_MODULE_7__["PlaylistLevelType"].SUBTITLE) {
                   if (!Object(_home_runner_work_hls_js_hls_js_src_polyfills_number__WEBPACK_IMPORTED_MODULE_0__["isFiniteNumber"])(this.initPTS[frag.cc])) {
@@ -39362,7 +39362,7 @@ and ensure you are accounting for this risk.
                 this.tracks = [];
                 this.captionsTracks = {};
               };
-              _proto.onFragParsingUserdata = function onFragParsingUserdata(event, data) {
+              _proto.onFragParsingUserdata = function onFragParsingUserdata(event2, data) {
                 var cea608Parser1 = this.cea608Parser1, cea608Parser2 = this.cea608Parser2;
                 if (!this.enabled || !(cea608Parser1 && cea608Parser2)) {
                   return;
@@ -39376,7 +39376,7 @@ and ensure you are accounting for this risk.
                   }
                 }
               };
-              _proto.onBufferFlushing = function onBufferFlushing(event, _ref2) {
+              _proto.onBufferFlushing = function onBufferFlushing(event2, _ref2) {
                 var startOffset = _ref2.startOffset, endOffset = _ref2.endOffset, endOffsetSubtitles = _ref2.endOffsetSubtitles, type = _ref2.type;
                 var media2 = this.media;
                 if (!media2 || media2.currentTime < endOffset) {
@@ -39556,10 +39556,10 @@ and ensure you are accounting for this risk.
               _proto.expandKey = function expandKey(keyBuffer) {
                 var key = this.uint8ArrayToUint32Array_(keyBuffer);
                 var sameKey = true;
-                var offset = 0;
-                while (offset < key.length && sameKey) {
-                  sameKey = key[offset] === this.key[offset];
-                  offset++;
+                var offset2 = 0;
+                while (offset2 < key.length && sameKey) {
+                  sameKey = key[offset2] === this.key[offset2];
+                  offset2++;
                 }
                 if (sameKey) {
                   return;
@@ -39581,14 +39581,14 @@ and ensure you are accounting for this risk.
                 var invSubMix1 = invSubMix[1];
                 var invSubMix2 = invSubMix[2];
                 var invSubMix3 = invSubMix[3];
-                var prev;
+                var prev2;
                 var t2;
                 for (ksRow = 0; ksRow < ksRows; ksRow++) {
                   if (ksRow < keySize) {
-                    prev = keySchedule[ksRow] = key[ksRow];
+                    prev2 = keySchedule[ksRow] = key[ksRow];
                     continue;
                   }
-                  t2 = prev;
+                  t2 = prev2;
                   if (ksRow % keySize === 0) {
                     t2 = t2 << 8 | t2 >>> 24;
                     t2 = sbox[t2 >>> 24] << 24 | sbox[t2 >>> 16 & 255] << 16 | sbox[t2 >>> 8 & 255] << 8 | sbox[t2 & 255];
@@ -39596,7 +39596,7 @@ and ensure you are accounting for this risk.
                   } else if (keySize > 6 && ksRow % keySize === 4) {
                     t2 = sbox[t2 >>> 24] << 24 | sbox[t2 >>> 16 & 255] << 16 | sbox[t2 >>> 8 & 255] << 8 | sbox[t2 & 255];
                   }
-                  keySchedule[ksRow] = prev = (keySchedule[ksRow - keySize] ^ t2) >>> 0;
+                  keySchedule[ksRow] = prev2 = (keySchedule[ksRow - keySize] ^ t2) >>> 0;
                 }
                 for (invKsRow = 0; invKsRow < ksRows; invKsRow++) {
                   ksRow = ksRows - invKsRow;
@@ -39616,7 +39616,7 @@ and ensure you are accounting for this risk.
               _proto.networkToHostOrderSwap = function networkToHostOrderSwap(word) {
                 return word << 24 | (word & 65280) << 8 | (word & 16711680) >> 8 | word >>> 24;
               };
-              _proto.decrypt = function decrypt(inputArrayBuffer, offset, aesIV) {
+              _proto.decrypt = function decrypt(inputArrayBuffer, offset2, aesIV) {
                 var nRounds = this.keySize + 6;
                 var invKeySchedule = this.invKeySchedule;
                 var invSBOX = this.invSBox;
@@ -39637,11 +39637,11 @@ and ensure you are accounting for this risk.
                 var inputWords0, inputWords1, inputWords2, inputWords3;
                 var ksRow, i2;
                 var swapWord = this.networkToHostOrderSwap;
-                while (offset < inputInt32.length) {
-                  inputWords0 = swapWord(inputInt32[offset]);
-                  inputWords1 = swapWord(inputInt32[offset + 1]);
-                  inputWords2 = swapWord(inputInt32[offset + 2]);
-                  inputWords3 = swapWord(inputInt32[offset + 3]);
+                while (offset2 < inputInt32.length) {
+                  inputWords0 = swapWord(inputInt32[offset2]);
+                  inputWords1 = swapWord(inputInt32[offset2 + 1]);
+                  inputWords2 = swapWord(inputInt32[offset2 + 2]);
+                  inputWords3 = swapWord(inputInt32[offset2 + 3]);
                   s0 = inputWords0 ^ invKeySchedule[0];
                   s1 = inputWords3 ^ invKeySchedule[1];
                   s22 = inputWords2 ^ invKeySchedule[2];
@@ -39662,15 +39662,15 @@ and ensure you are accounting for this risk.
                   t1 = invSBOX[s1 >>> 24] << 24 ^ invSBOX[s22 >> 16 & 255] << 16 ^ invSBOX[s32 >> 8 & 255] << 8 ^ invSBOX[s0 & 255] ^ invKeySchedule[ksRow + 1];
                   t2 = invSBOX[s22 >>> 24] << 24 ^ invSBOX[s32 >> 16 & 255] << 16 ^ invSBOX[s0 >> 8 & 255] << 8 ^ invSBOX[s1 & 255] ^ invKeySchedule[ksRow + 2];
                   t3 = invSBOX[s32 >>> 24] << 24 ^ invSBOX[s0 >> 16 & 255] << 16 ^ invSBOX[s1 >> 8 & 255] << 8 ^ invSBOX[s22 & 255] ^ invKeySchedule[ksRow + 3];
-                  outputInt32[offset] = swapWord(t0 ^ initVector0);
-                  outputInt32[offset + 1] = swapWord(t3 ^ initVector1);
-                  outputInt32[offset + 2] = swapWord(t2 ^ initVector2);
-                  outputInt32[offset + 3] = swapWord(t1 ^ initVector3);
+                  outputInt32[offset2] = swapWord(t0 ^ initVector0);
+                  outputInt32[offset2 + 1] = swapWord(t3 ^ initVector1);
+                  outputInt32[offset2 + 2] = swapWord(t2 ^ initVector2);
+                  outputInt32[offset2 + 3] = swapWord(t1 ^ initVector3);
                   initVector0 = inputWords0;
                   initVector1 = inputWords1;
                   initVector2 = inputWords2;
                   initVector3 = inputWords3;
-                  offset = offset + 4;
+                  offset2 = offset2 + 4;
                 }
                 return outputInt32.buffer;
               };
@@ -39902,21 +39902,21 @@ and ensure you are accounting for this risk.
                   return false;
                 }
                 var id3Data = _demux_id3__WEBPACK_IMPORTED_MODULE_3__["getID3Data"](data, 0) || [];
-                var offset = id3Data.length;
-                for (var length = data.length; offset < length; offset++) {
-                  if (_adts__WEBPACK_IMPORTED_MODULE_1__["probe"](data, offset)) {
+                var offset2 = id3Data.length;
+                for (var length = data.length; offset2 < length; offset2++) {
+                  if (_adts__WEBPACK_IMPORTED_MODULE_1__["probe"](data, offset2)) {
                     _utils_logger__WEBPACK_IMPORTED_MODULE_2__["logger"].log("ADTS sync word found !");
                     return true;
                   }
                 }
                 return false;
               };
-              _proto.canParse = function canParse(data, offset) {
-                return _adts__WEBPACK_IMPORTED_MODULE_1__["canParse"](data, offset);
+              _proto.canParse = function canParse(data, offset2) {
+                return _adts__WEBPACK_IMPORTED_MODULE_1__["canParse"](data, offset2);
               };
-              _proto.appendFrame = function appendFrame(track, data, offset) {
-                _adts__WEBPACK_IMPORTED_MODULE_1__["initTrackConfig"](track, this.observer, data, offset, track.manifestCodec);
-                var frame = _adts__WEBPACK_IMPORTED_MODULE_1__["appendFrame"](track, data, offset, this.initPTS, this.frameIndex);
+              _proto.appendFrame = function appendFrame(track, data, offset2) {
+                _adts__WEBPACK_IMPORTED_MODULE_1__["initTrackConfig"](track, this.observer, data, offset2, track.manifestCodec);
+                var frame = _adts__WEBPACK_IMPORTED_MODULE_1__["appendFrame"](track, data, offset2, this.initPTS, this.frameIndex);
                 if (frame && frame.missing === 0) {
                   return frame;
                 }
@@ -39968,7 +39968,7 @@ and ensure you are accounting for this risk.
             var _utils_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/utils/logger.ts");
             var _errors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/errors.ts");
             var _events__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/events.ts");
-            function getAudioConfig(observer, data, offset, audioCodec) {
+            function getAudioConfig(observer, data, offset2, audioCodec) {
               var adtsObjectType;
               var adtsExtensionSamplingIndex;
               var adtsChanelConfig;
@@ -39976,8 +39976,8 @@ and ensure you are accounting for this risk.
               var userAgent = navigator.userAgent.toLowerCase();
               var manifestCodec = audioCodec;
               var adtsSampleingRates = [96e3, 88200, 64e3, 48e3, 44100, 32e3, 24e3, 22050, 16e3, 12e3, 11025, 8e3, 7350];
-              adtsObjectType = ((data[offset + 2] & 192) >>> 6) + 1;
-              var adtsSamplingIndex = (data[offset + 2] & 60) >>> 2;
+              adtsObjectType = ((data[offset2 + 2] & 192) >>> 6) + 1;
+              var adtsSamplingIndex = (data[offset2 + 2] & 60) >>> 2;
               if (adtsSamplingIndex > adtsSampleingRates.length - 1) {
                 observer.trigger(_events__WEBPACK_IMPORTED_MODULE_2__["Events"].ERROR, {
                   type: _errors__WEBPACK_IMPORTED_MODULE_1__["ErrorTypes"].MEDIA_ERROR,
@@ -39987,8 +39987,8 @@ and ensure you are accounting for this risk.
                 });
                 return;
               }
-              adtsChanelConfig = (data[offset + 2] & 1) << 2;
-              adtsChanelConfig |= (data[offset + 3] & 192) >>> 6;
+              adtsChanelConfig = (data[offset2 + 2] & 1) << 2;
+              adtsChanelConfig |= (data[offset2 + 3] & 192) >>> 6;
               _utils_logger__WEBPACK_IMPORTED_MODULE_0__["logger"].log("manifest codec:" + audioCodec + ", ADTS type:" + adtsObjectType + ", samplingIndex:" + adtsSamplingIndex);
               if (/firefox/i.test(userAgent)) {
                 if (adtsSamplingIndex >= 6) {
@@ -40035,42 +40035,42 @@ and ensure you are accounting for this risk.
                 manifestCodec
               };
             }
-            function isHeaderPattern(data, offset) {
-              return data[offset] === 255 && (data[offset + 1] & 246) === 240;
+            function isHeaderPattern(data, offset2) {
+              return data[offset2] === 255 && (data[offset2 + 1] & 246) === 240;
             }
-            function getHeaderLength(data, offset) {
-              return data[offset + 1] & 1 ? 7 : 9;
+            function getHeaderLength(data, offset2) {
+              return data[offset2 + 1] & 1 ? 7 : 9;
             }
-            function getFullFrameLength(data, offset) {
-              return (data[offset + 3] & 3) << 11 | data[offset + 4] << 3 | (data[offset + 5] & 224) >>> 5;
+            function getFullFrameLength(data, offset2) {
+              return (data[offset2 + 3] & 3) << 11 | data[offset2 + 4] << 3 | (data[offset2 + 5] & 224) >>> 5;
             }
-            function canGetFrameLength(data, offset) {
-              return offset + 5 < data.length;
+            function canGetFrameLength(data, offset2) {
+              return offset2 + 5 < data.length;
             }
-            function isHeader(data, offset) {
-              return offset + 1 < data.length && isHeaderPattern(data, offset);
+            function isHeader(data, offset2) {
+              return offset2 + 1 < data.length && isHeaderPattern(data, offset2);
             }
-            function canParse(data, offset) {
-              return canGetFrameLength(data, offset) && isHeaderPattern(data, offset) && getFullFrameLength(data, offset) <= data.length - offset;
+            function canParse(data, offset2) {
+              return canGetFrameLength(data, offset2) && isHeaderPattern(data, offset2) && getFullFrameLength(data, offset2) <= data.length - offset2;
             }
-            function probe(data, offset) {
-              if (isHeader(data, offset)) {
-                var headerLength = getHeaderLength(data, offset);
-                if (offset + headerLength >= data.length) {
+            function probe(data, offset2) {
+              if (isHeader(data, offset2)) {
+                var headerLength = getHeaderLength(data, offset2);
+                if (offset2 + headerLength >= data.length) {
                   return false;
                 }
-                var frameLength = getFullFrameLength(data, offset);
+                var frameLength = getFullFrameLength(data, offset2);
                 if (frameLength <= headerLength) {
                   return false;
                 }
-                var newOffset = offset + frameLength;
+                var newOffset = offset2 + frameLength;
                 return newOffset === data.length || isHeader(data, newOffset);
               }
               return false;
             }
-            function initTrackConfig(track, observer, data, offset, audioCodec) {
+            function initTrackConfig(track, observer, data, offset2, audioCodec) {
               if (!track.samplerate) {
-                var config = getAudioConfig(observer, data, offset, audioCodec);
+                var config = getAudioConfig(observer, data, offset2, audioCodec);
                 if (!config) {
                   return;
                 }
@@ -40085,9 +40085,9 @@ and ensure you are accounting for this risk.
             function getFrameDuration(samplerate) {
               return 1024 * 9e4 / samplerate;
             }
-            function parseFrameHeader(data, offset, pts, frameIndex, frameDuration) {
-              var headerLength = getHeaderLength(data, offset);
-              var frameLength = getFullFrameLength(data, offset);
+            function parseFrameHeader(data, offset2, pts, frameIndex, frameDuration) {
+              var headerLength = getHeaderLength(data, offset2);
+              var frameLength = getFullFrameLength(data, offset2);
               frameLength -= headerLength;
               if (frameLength > 0) {
                 var stamp = pts + frameIndex * frameDuration;
@@ -40098,19 +40098,19 @@ and ensure you are accounting for this risk.
                 };
               }
             }
-            function appendFrame(track, data, offset, pts, frameIndex) {
+            function appendFrame(track, data, offset2, pts, frameIndex) {
               var frameDuration = getFrameDuration(track.samplerate);
-              var header = parseFrameHeader(data, offset, pts, frameIndex, frameDuration);
+              var header = parseFrameHeader(data, offset2, pts, frameIndex, frameDuration);
               if (header) {
                 var frameLength = header.frameLength, headerLength = header.headerLength, stamp = header.stamp;
                 var length = headerLength + frameLength;
-                var missing = Math.max(0, offset + length - data.length);
+                var missing = Math.max(0, offset2 + length - data.length);
                 var unit;
                 if (missing) {
                   unit = new Uint8Array(length - headerLength);
-                  unit.set(data.subarray(offset + headerLength, data.length), 0);
+                  unit.set(data.subarray(offset2 + headerLength, data.length), 0);
                 } else {
-                  unit = data.subarray(offset + headerLength, offset + length);
+                  unit = data.subarray(offset2 + headerLength, offset2 + length);
                 }
                 var sample = {
                   unit,
@@ -40162,10 +40162,10 @@ and ensure you are accounting for this risk.
               };
               _proto.resetContiguity = function resetContiguity() {
               };
-              _proto.canParse = function canParse(data, offset) {
+              _proto.canParse = function canParse(data, offset2) {
                 return false;
               };
-              _proto.appendFrame = function appendFrame(track, data, offset) {
+              _proto.appendFrame = function appendFrame(track, data, offset2) {
               };
               _proto.demux = function demux(data, timeOffset) {
                 if (this.cachedData) {
@@ -40173,7 +40173,7 @@ and ensure you are accounting for this risk.
                   this.cachedData = null;
                 }
                 var id3Data = _demux_id3__WEBPACK_IMPORTED_MODULE_1__["getID3Data"](data, 0);
-                var offset = id3Data ? id3Data.length : 0;
+                var offset2 = id3Data ? id3Data.length : 0;
                 var lastDataIndex;
                 var pts;
                 var track = this._audioTrack;
@@ -40191,30 +40191,30 @@ and ensure you are accounting for this risk.
                   });
                 }
                 pts = this.initPTS;
-                while (offset < length) {
-                  if (this.canParse(data, offset)) {
-                    var frame = this.appendFrame(track, data, offset);
+                while (offset2 < length) {
+                  if (this.canParse(data, offset2)) {
+                    var frame = this.appendFrame(track, data, offset2);
                     if (frame) {
                       this.frameIndex++;
                       pts = frame.sample.pts;
-                      offset += frame.length;
-                      lastDataIndex = offset;
+                      offset2 += frame.length;
+                      lastDataIndex = offset2;
                     } else {
-                      offset = length;
+                      offset2 = length;
                     }
-                  } else if (_demux_id3__WEBPACK_IMPORTED_MODULE_1__["canParse"](data, offset)) {
-                    id3Data = _demux_id3__WEBPACK_IMPORTED_MODULE_1__["getID3Data"](data, offset);
+                  } else if (_demux_id3__WEBPACK_IMPORTED_MODULE_1__["canParse"](data, offset2)) {
+                    id3Data = _demux_id3__WEBPACK_IMPORTED_MODULE_1__["getID3Data"](data, offset2);
                     id3Track.samples.push({
                       pts,
                       dts: pts,
                       data: id3Data
                     });
-                    offset += id3Data.length;
-                    lastDataIndex = offset;
+                    offset2 += id3Data.length;
+                    lastDataIndex = offset2;
                   } else {
-                    offset++;
+                    offset2++;
                   }
-                  if (offset === length && lastDataIndex !== length) {
+                  if (offset2 === length && lastDataIndex !== length) {
                     var partialData = Object(_utils_typed_array__WEBPACK_IMPORTED_MODULE_4__["sliceUint8"])(data, lastDataIndex);
                     if (this.cachedData) {
                       this.cachedData = Object(_utils_mp4_tools__WEBPACK_IMPORTED_MODULE_3__["appendUint8Array"])(this.cachedData, partialData);
@@ -40293,11 +40293,11 @@ and ensure you are accounting for this risk.
             }();
             function concatUint8Arrays(chunks, dataLength) {
               var result = new Uint8Array(dataLength);
-              var offset = 0;
+              var offset2 = 0;
               for (var i2 = 0; i2 < chunks.length; i2++) {
                 var chunk = chunks[i2];
-                result.set(chunk, offset);
-                offset += chunk.length;
+                result.set(chunk, offset2);
+                offset2 += chunk.length;
               }
               return result;
             }
@@ -40617,11 +40617,11 @@ and ensure you are accounting for this risk.
             __webpack_require__.d(__webpack_exports__, "testables", function() {
               return testables;
             });
-            var isHeader = function isHeader2(data, offset) {
-              if (offset + 10 <= data.length) {
-                if (data[offset] === 73 && data[offset + 1] === 68 && data[offset + 2] === 51) {
-                  if (data[offset + 3] < 255 && data[offset + 4] < 255) {
-                    if (data[offset + 6] < 128 && data[offset + 7] < 128 && data[offset + 8] < 128 && data[offset + 9] < 128) {
+            var isHeader = function isHeader2(data, offset2) {
+              if (offset2 + 10 <= data.length) {
+                if (data[offset2] === 73 && data[offset2 + 1] === 68 && data[offset2 + 2] === 51) {
+                  if (data[offset2 + 3] < 255 && data[offset2 + 4] < 255) {
+                    if (data[offset2 + 6] < 128 && data[offset2 + 7] < 128 && data[offset2 + 8] < 128 && data[offset2 + 9] < 128) {
                       return true;
                     }
                   }
@@ -40629,11 +40629,11 @@ and ensure you are accounting for this risk.
               }
               return false;
             };
-            var isFooter = function isFooter2(data, offset) {
-              if (offset + 10 <= data.length) {
-                if (data[offset] === 51 && data[offset + 1] === 68 && data[offset + 2] === 73) {
-                  if (data[offset + 3] < 255 && data[offset + 4] < 255) {
-                    if (data[offset + 6] < 128 && data[offset + 7] < 128 && data[offset + 8] < 128 && data[offset + 9] < 128) {
+            var isFooter = function isFooter2(data, offset2) {
+              if (offset2 + 10 <= data.length) {
+                if (data[offset2] === 51 && data[offset2 + 1] === 68 && data[offset2 + 2] === 73) {
+                  if (data[offset2 + 3] < 255 && data[offset2 + 4] < 255) {
+                    if (data[offset2 + 6] < 128 && data[offset2 + 7] < 128 && data[offset2 + 8] < 128 && data[offset2 + 9] < 128) {
                       return true;
                     }
                   }
@@ -40641,33 +40641,33 @@ and ensure you are accounting for this risk.
               }
               return false;
             };
-            var getID3Data = function getID3Data2(data, offset) {
-              var front = offset;
+            var getID3Data = function getID3Data2(data, offset2) {
+              var front = offset2;
               var length = 0;
-              while (isHeader(data, offset)) {
+              while (isHeader(data, offset2)) {
                 length += 10;
-                var size = readSize(data, offset + 6);
+                var size = readSize(data, offset2 + 6);
                 length += size;
-                if (isFooter(data, offset + 10)) {
+                if (isFooter(data, offset2 + 10)) {
                   length += 10;
                 }
-                offset += length;
+                offset2 += length;
               }
               if (length > 0) {
                 return data.subarray(front, front + length);
               }
               return void 0;
             };
-            var readSize = function readSize2(data, offset) {
+            var readSize = function readSize2(data, offset2) {
               var size = 0;
-              size = (data[offset] & 127) << 21;
-              size |= (data[offset + 1] & 127) << 14;
-              size |= (data[offset + 2] & 127) << 7;
-              size |= data[offset + 3] & 127;
+              size = (data[offset2] & 127) << 21;
+              size |= (data[offset2 + 1] & 127) << 14;
+              size |= (data[offset2 + 2] & 127) << 7;
+              size |= data[offset2 + 3] & 127;
               return size;
             };
-            var canParse = function canParse2(data, offset) {
-              return isHeader(data, offset) && readSize(data, offset + 6) + 10 <= data.length - offset;
+            var canParse = function canParse2(data, offset2) {
+              return isHeader(data, offset2) && readSize(data, offset2 + 6) + 10 <= data.length - offset2;
             };
             var getTimeStamp = function getTimeStamp2(data) {
               var frames = getID3Frames(data);
@@ -40685,30 +40685,30 @@ and ensure you are accounting for this risk.
             var getFrameData = function getFrameData2(data) {
               var type = String.fromCharCode(data[0], data[1], data[2], data[3]);
               var size = readSize(data, 4);
-              var offset = 10;
+              var offset2 = 10;
               return {
                 type,
                 size,
-                data: data.subarray(offset, offset + size)
+                data: data.subarray(offset2, offset2 + size)
               };
             };
             var getID3Frames = function getID3Frames2(id3Data) {
-              var offset = 0;
+              var offset2 = 0;
               var frames = [];
-              while (isHeader(id3Data, offset)) {
-                var size = readSize(id3Data, offset + 6);
-                offset += 10;
-                var end = offset + size;
-                while (offset + 8 < end) {
-                  var frameData = getFrameData(id3Data.subarray(offset));
+              while (isHeader(id3Data, offset2)) {
+                var size = readSize(id3Data, offset2 + 6);
+                offset2 += 10;
+                var end = offset2 + size;
+                while (offset2 + 8 < end) {
+                  var frameData = getFrameData(id3Data.subarray(offset2));
                   var frame = decodeFrame(frameData);
                   if (frame) {
                     frames.push(frame);
                   }
-                  offset += frameData.size + 10;
+                  offset2 += frameData.size + 10;
                 }
-                if (isFooter(id3Data, offset)) {
-                  offset += 10;
+                if (isFooter(id3Data, offset2)) {
+                  offset2 += 10;
                 }
               }
               return frames;
@@ -40738,20 +40738,20 @@ and ensure you are accounting for this risk.
                 return void 0;
               }
               if (frame.type === "TXXX") {
-                var index = 1;
-                var description = utf8ArrayToStr(frame.data.subarray(index), true);
-                index += description.length + 1;
-                var value = utf8ArrayToStr(frame.data.subarray(index));
+                var index2 = 1;
+                var description = utf8ArrayToStr(frame.data.subarray(index2), true);
+                index2 += description.length + 1;
+                var value = utf8ArrayToStr(frame.data.subarray(index2));
                 return {
                   key: frame.type,
                   info: description,
                   data: value
                 };
               }
-              var text = utf8ArrayToStr(frame.data.subarray(1));
+              var text2 = utf8ArrayToStr(frame.data.subarray(1));
               return {
                 key: frame.type,
-                data: text
+                data: text2
               };
             };
             var decodeURLFrame = function decodeURLFrame2(frame) {
@@ -40759,10 +40759,10 @@ and ensure you are accounting for this risk.
                 if (frame.size < 2) {
                   return void 0;
                 }
-                var index = 1;
-                var description = utf8ArrayToStr(frame.data.subarray(index), true);
-                index += description.length + 1;
-                var value = utf8ArrayToStr(frame.data.subarray(index));
+                var index2 = 1;
+                var description = utf8ArrayToStr(frame.data.subarray(index2), true);
+                index2 += description.length + 1;
+                var value = utf8ArrayToStr(frame.data.subarray(index2));
                 return {
                   key: frame.type,
                   info: description,
@@ -40897,23 +40897,23 @@ and ensure you are accounting for this risk.
                   return false;
                 }
                 var id3Data = _demux_id3__WEBPACK_IMPORTED_MODULE_1__["getID3Data"](data, 0) || [];
-                var offset = id3Data.length;
-                for (var length = data.length; offset < length; offset++) {
-                  if (_mpegaudio__WEBPACK_IMPORTED_MODULE_3__["probe"](data, offset)) {
+                var offset2 = id3Data.length;
+                for (var length = data.length; offset2 < length; offset2++) {
+                  if (_mpegaudio__WEBPACK_IMPORTED_MODULE_3__["probe"](data, offset2)) {
                     _utils_logger__WEBPACK_IMPORTED_MODULE_2__["logger"].log("MPEG Audio sync word found !");
                     return true;
                   }
                 }
                 return false;
               };
-              _proto.canParse = function canParse(data, offset) {
-                return _mpegaudio__WEBPACK_IMPORTED_MODULE_3__["canParse"](data, offset);
+              _proto.canParse = function canParse(data, offset2) {
+                return _mpegaudio__WEBPACK_IMPORTED_MODULE_3__["canParse"](data, offset2);
               };
-              _proto.appendFrame = function appendFrame(track, data, offset) {
+              _proto.appendFrame = function appendFrame(track, data, offset2) {
                 if (this.initPTS === null) {
                   return;
                 }
-                return _mpegaudio__WEBPACK_IMPORTED_MODULE_3__["appendFrame"](track, data, offset, this.initPTS, this.frameIndex);
+                return _mpegaudio__WEBPACK_IMPORTED_MODULE_3__["appendFrame"](track, data, offset2, this.initPTS, this.frameIndex);
               };
               return MP3Demuxer2;
             }(_base_audio_demuxer__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -41042,16 +41042,16 @@ and ensure you are accounting for this risk.
               1,
               4
             ];
-            function appendFrame(track, data, offset, pts, frameIndex) {
-              if (offset + 24 > data.length) {
+            function appendFrame(track, data, offset2, pts, frameIndex) {
+              if (offset2 + 24 > data.length) {
                 return;
               }
-              var header = parseHeader(data, offset);
-              if (header && offset + header.frameLength <= data.length) {
+              var header = parseHeader(data, offset2);
+              if (header && offset2 + header.frameLength <= data.length) {
                 var frameDuration = header.samplesPerFrame * 9e4 / header.sampleRate;
                 var stamp = pts + frameIndex * frameDuration;
                 var sample = {
-                  unit: data.subarray(offset, offset + header.frameLength),
+                  unit: data.subarray(offset2, offset2 + header.frameLength),
                   pts: stamp,
                   dts: stamp
                 };
@@ -41066,14 +41066,14 @@ and ensure you are accounting for this risk.
                 };
               }
             }
-            function parseHeader(data, offset) {
-              var mpegVersion = data[offset + 1] >> 3 & 3;
-              var mpegLayer = data[offset + 1] >> 1 & 3;
-              var bitRateIndex = data[offset + 2] >> 4 & 15;
-              var sampleRateIndex = data[offset + 2] >> 2 & 3;
+            function parseHeader(data, offset2) {
+              var mpegVersion = data[offset2 + 1] >> 3 & 3;
+              var mpegLayer = data[offset2 + 1] >> 1 & 3;
+              var bitRateIndex = data[offset2 + 2] >> 4 & 15;
+              var sampleRateIndex = data[offset2 + 2] >> 2 & 3;
               if (mpegVersion !== 1 && bitRateIndex !== 0 && bitRateIndex !== 15 && sampleRateIndex !== 3) {
-                var paddingBit = data[offset + 2] >> 1 & 1;
-                var channelMode = data[offset + 3] >> 6;
+                var paddingBit = data[offset2 + 2] >> 1 & 1;
+                var channelMode = data[offset2 + 3] >> 6;
                 var columnInBitrates = mpegVersion === 3 ? 3 - mpegLayer : mpegLayer === 3 ? 3 : 4;
                 var bitRate = BitratesMap[columnInBitrates * 14 + bitRateIndex - 1] * 1e3;
                 var columnInSampleRates = mpegVersion === 3 ? 0 : mpegVersion === 2 ? 1 : 2;
@@ -41090,7 +41090,7 @@ and ensure you are accounting for this risk.
                 }
                 var needChromeFix = !!chromeVersion && chromeVersion <= 87;
                 if (needChromeFix && mpegLayer === 2 && bitRate >= 224e3 && channelMode === 0) {
-                  data[offset + 3] = data[offset + 3] | 128;
+                  data[offset2 + 3] = data[offset2 + 3] | 128;
                 }
                 return {
                   sampleRate,
@@ -41100,25 +41100,25 @@ and ensure you are accounting for this risk.
                 };
               }
             }
-            function isHeaderPattern(data, offset) {
-              return data[offset] === 255 && (data[offset + 1] & 224) === 224 && (data[offset + 1] & 6) !== 0;
+            function isHeaderPattern(data, offset2) {
+              return data[offset2] === 255 && (data[offset2 + 1] & 224) === 224 && (data[offset2 + 1] & 6) !== 0;
             }
-            function isHeader(data, offset) {
-              return offset + 1 < data.length && isHeaderPattern(data, offset);
+            function isHeader(data, offset2) {
+              return offset2 + 1 < data.length && isHeaderPattern(data, offset2);
             }
-            function canParse(data, offset) {
+            function canParse(data, offset2) {
               var headerSize = 4;
-              return isHeaderPattern(data, offset) && headerSize <= data.length - offset;
+              return isHeaderPattern(data, offset2) && headerSize <= data.length - offset2;
             }
-            function probe(data, offset) {
-              if (offset + 1 < data.length && isHeaderPattern(data, offset)) {
+            function probe(data, offset2) {
+              if (offset2 + 1 < data.length && isHeaderPattern(data, offset2)) {
                 var headerLength = 4;
-                var header = parseHeader(data, offset);
+                var header = parseHeader(data, offset2);
                 var frameLength = headerLength;
                 if (header !== null && header !== void 0 && header.frameLength) {
                   frameLength = header.frameLength;
                 }
-                var newOffset = offset + frameLength;
+                var newOffset = offset2 + frameLength;
                 return newOffset === data.length || isHeader(data, newOffset);
               }
               return false;
@@ -41289,13 +41289,13 @@ and ensure you are accounting for this risk.
                     worker = this.worker = webworkify_webpack__WEBPACK_IMPORTED_MODULE_0__("./src/demux/transmuxer-worker.ts");
                     this.onwmsg = this.onWorkerMessage.bind(this);
                     worker.addEventListener("message", this.onwmsg);
-                    worker.onerror = function(event) {
+                    worker.onerror = function(event2) {
                       hls.trigger(_events__WEBPACK_IMPORTED_MODULE_1__["Events"].ERROR, {
                         type: _errors__WEBPACK_IMPORTED_MODULE_4__["ErrorTypes"].OTHER_ERROR,
                         details: _errors__WEBPACK_IMPORTED_MODULE_4__["ErrorDetails"].INTERNAL_EXCEPTION,
                         fatal: true,
                         event: "demuxerWorker",
-                        error: new Error(event.message + "  (" + event.filename + ":" + event.lineno + ")")
+                        error: new Error(event2.message + "  (" + event2.filename + ":" + event2.lineno + ")")
                       });
                     };
                     worker.postMessage({
@@ -41350,12 +41350,12 @@ and ensure you are accounting for this risk.
                 var snDiff = lastFrag ? chunkMeta.sn - lastFrag.sn : -1;
                 var partDiff = this.part ? chunkMeta.part - this.part.index : 1;
                 var contiguous = !trackSwitch && (snDiff === 1 || snDiff === 0 && partDiff === 1);
-                var now = self.performance.now();
+                var now2 = self.performance.now();
                 if (trackSwitch || snDiff || frag.stats.parsing.start === 0) {
-                  frag.stats.parsing.start = now;
+                  frag.stats.parsing.start = now2;
                 }
                 if (part && (partDiff || !contiguous)) {
-                  part.stats.parsing.start = now;
+                  part.stats.parsing.start = now2;
                 }
                 var initSegmentChange = !(lastFrag && ((_frag$initSegment = frag.initSegment) === null || _frag$initSegment === void 0 ? void 0 : _frag$initSegment.url) === ((_lastFrag$initSegment = lastFrag.initSegment) === null || _lastFrag$initSegment === void 0 ? void 0 : _lastFrag$initSegment.url));
                 var state = new _demux_transmuxer__WEBPACK_IMPORTED_MODULE_2__["TransmuxState"](discontinuity, contiguous, accurateTimeOffset, trackSwitch, timeOffset, initSegmentChange);
@@ -41583,12 +41583,12 @@ and ensure you are accounting for this risk.
             var _chunk_cache__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("./src/demux/chunk-cache.ts");
             var _utils_mp4_tools__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("./src/utils/mp4-tools.ts");
             var _utils_logger__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("./src/utils/logger.ts");
-            var now;
+            var now2;
             try {
-              now = self.performance.now.bind(self.performance);
+              now2 = self.performance.now.bind(self.performance);
             } catch (err) {
               _utils_logger__WEBPACK_IMPORTED_MODULE_11__["logger"].debug("Unable to use Performance API on this environment");
-              now = self.Date.now;
+              now2 = self.Date.now;
             }
             var muxConfig = [{
               demux: _demux_tsdemuxer__WEBPACK_IMPORTED_MODULE_5__["default"],
@@ -41639,7 +41639,7 @@ and ensure you are accounting for this risk.
               _proto.push = function push(data, decryptdata, chunkMeta, state) {
                 var _this = this;
                 var stats = chunkMeta.transmuxing;
-                stats.executeStart = now();
+                stats.executeStart = now2();
                 var uintData = new Uint8Array(data);
                 var cache = this.cache, config = this.config, currentTransmuxState = this.currentTransmuxState, transmuxConfig = this.transmuxConfig;
                 if (state) {
@@ -41651,7 +41651,7 @@ and ensure you are accounting for this risk.
                   if (config.enableSoftwareAES) {
                     var decryptedData = decrypter.softwareDecrypt(uintData, keyData.key.buffer, keyData.iv.buffer);
                     if (!decryptedData) {
-                      stats.executeEnd = now();
+                      stats.executeEnd = now2();
                       return emptyResult(chunkMeta);
                     }
                     uintData = new Uint8Array(decryptedData);
@@ -41687,13 +41687,13 @@ and ensure you are accounting for this risk.
                 currentState.contiguous = true;
                 currentState.discontinuity = false;
                 currentState.trackSwitch = false;
-                stats.executeEnd = now();
+                stats.executeEnd = now2();
                 return result;
               };
               _proto.flush = function flush(chunkMeta) {
                 var _this2 = this;
                 var stats = chunkMeta.transmuxing;
-                stats.executeStart = now();
+                stats.executeStart = now2();
                 var decrypter = this.decrypter, cache = this.cache, currentTransmuxState = this.currentTransmuxState, decryptionPromise = this.decryptionPromise;
                 if (decryptionPromise) {
                   return decryptionPromise.then(function() {
@@ -41720,7 +41720,7 @@ and ensure you are accounting for this risk.
                       reason: "no demux matching with content found"
                     });
                   }
-                  stats.executeEnd = now();
+                  stats.executeEnd = now2();
                   return [emptyResult(chunkMeta)];
                 }
                 var demuxResultOrPromise = demuxer.flush(timeOffset);
@@ -41742,7 +41742,7 @@ and ensure you are accounting for this risk.
                   remuxResult,
                   chunkMeta
                 });
-                chunkMeta.transmuxing.executeEnd = now();
+                chunkMeta.transmuxing.executeEnd = now2();
               };
               _proto.resetInitialTimestamp = function resetInitialTimestamp(defaultInitPts) {
                 var demuxer = this.demuxer, remuxer = this.remuxer;
@@ -42054,14 +42054,14 @@ and ensure you are accounting for this risk.
                     var stt = !!(data[start + 1] & 64);
                     var pid = ((data[start + 1] & 31) << 8) + data[start + 2];
                     var atf = (data[start + 3] & 48) >> 4;
-                    var offset = void 0;
+                    var offset2 = void 0;
                     if (atf > 1) {
-                      offset = start + 5 + data[start + 4];
-                      if (offset === start + 188) {
+                      offset2 = start + 5 + data[start + 4];
+                      if (offset2 === start + 188) {
                         continue;
                       }
                     } else {
-                      offset = start + 4;
+                      offset2 = start + 4;
                     }
                     switch (pid) {
                       case avcId:
@@ -42075,8 +42075,8 @@ and ensure you are accounting for this risk.
                           };
                         }
                         if (avcData) {
-                          avcData.data.push(data.subarray(offset, start + 188));
-                          avcData.size += start + 188 - offset;
+                          avcData.data.push(data.subarray(offset2, start + 188));
+                          avcData.size += start + 188 - offset2;
                         }
                         break;
                       case audioId:
@@ -42094,8 +42094,8 @@ and ensure you are accounting for this risk.
                           };
                         }
                         if (audioData) {
-                          audioData.data.push(data.subarray(offset, start + 188));
-                          audioData.size += start + 188 - offset;
+                          audioData.data.push(data.subarray(offset2, start + 188));
+                          audioData.size += start + 188 - offset2;
                         }
                         break;
                       case id3Id:
@@ -42109,21 +42109,21 @@ and ensure you are accounting for this risk.
                           };
                         }
                         if (id3Data) {
-                          id3Data.data.push(data.subarray(offset, start + 188));
-                          id3Data.size += start + 188 - offset;
+                          id3Data.data.push(data.subarray(offset2, start + 188));
+                          id3Data.size += start + 188 - offset2;
                         }
                         break;
                       case 0:
                         if (stt) {
-                          offset += data[offset] + 1;
+                          offset2 += data[offset2] + 1;
                         }
-                        pmtId = this._pmtId = parsePAT(data, offset);
+                        pmtId = this._pmtId = parsePAT(data, offset2);
                         break;
                       case pmtId: {
                         if (stt) {
-                          offset += data[offset] + 1;
+                          offset2 += data[offset2] + 1;
                         }
-                        var parsedPIDs = parsePMT(data, offset, this.typeSupported.mpeg === true || this.typeSupported.mp3 === true, isSampleAes);
+                        var parsedPIDs = parsePMT(data, offset2, this.typeSupported.mpeg === true || this.typeSupported.mp3 === true, isSampleAes);
                         avcId = parsedPIDs.avc;
                         if (avcId > 0) {
                           avcTrack.pid = avcId;
@@ -42562,18 +42562,18 @@ and ensure you are accounting for this risk.
                   track.samples.push(aacOverFlow.sample);
                   startOffset = aacOverFlow.missing;
                 }
-                var offset;
+                var offset2;
                 var len;
-                for (offset = startOffset, len = data.length; offset < len - 1; offset++) {
-                  if (_adts__WEBPACK_IMPORTED_MODULE_0__["isHeader"](data, offset)) {
+                for (offset2 = startOffset, len = data.length; offset2 < len - 1; offset2++) {
+                  if (_adts__WEBPACK_IMPORTED_MODULE_0__["isHeader"](data, offset2)) {
                     break;
                   }
                 }
-                if (offset !== startOffset) {
+                if (offset2 !== startOffset) {
                   var reason;
                   var fatal;
-                  if (offset < len - 1) {
-                    reason = "AAC PES did not start with ADTS header,offset:" + offset;
+                  if (offset2 < len - 1) {
+                    reason = "AAC PES did not start with ADTS header,offset:" + offset2;
                     fatal = false;
                   } else {
                     reason = "no ADTS header found in AAC PES";
@@ -42590,7 +42590,7 @@ and ensure you are accounting for this risk.
                     return;
                   }
                 }
-                _adts__WEBPACK_IMPORTED_MODULE_0__["initTrackConfig"](track, this.observer, data, offset, this.audioCodec);
+                _adts__WEBPACK_IMPORTED_MODULE_0__["initTrackConfig"](track, this.observer, data, offset2, this.audioCodec);
                 var pts;
                 if (pes.pts !== void 0) {
                   pts = pes.pts;
@@ -42602,15 +42602,15 @@ and ensure you are accounting for this risk.
                   return;
                 }
                 var frameIndex = 0;
-                while (offset < len) {
-                  if (_adts__WEBPACK_IMPORTED_MODULE_0__["isHeader"](data, offset)) {
-                    if (offset + 5 < len) {
-                      var frame = _adts__WEBPACK_IMPORTED_MODULE_0__["appendFrame"](track, data, offset, pts, frameIndex);
+                while (offset2 < len) {
+                  if (_adts__WEBPACK_IMPORTED_MODULE_0__["isHeader"](data, offset2)) {
+                    if (offset2 + 5 < len) {
+                      var frame = _adts__WEBPACK_IMPORTED_MODULE_0__["appendFrame"](track, data, offset2, pts, frameIndex);
                       if (frame) {
                         if (frame.missing) {
                           this.aacOverFlow = frame;
                         } else {
-                          offset += frame.length;
+                          offset2 += frame.length;
                           frameIndex++;
                           continue;
                         }
@@ -42618,7 +42618,7 @@ and ensure you are accounting for this risk.
                     }
                     break;
                   } else {
-                    offset++;
+                    offset2++;
                   }
                 }
               };
@@ -42626,23 +42626,23 @@ and ensure you are accounting for this risk.
                 var data = pes.data;
                 var length = data.length;
                 var frameIndex = 0;
-                var offset = 0;
+                var offset2 = 0;
                 var pts = pes.pts;
                 if (pts === void 0) {
                   _utils_logger__WEBPACK_IMPORTED_MODULE_7__["logger"].warn("[tsdemuxer]: MPEG PES unknown PTS");
                   return;
                 }
-                while (offset < length) {
-                  if (_mpegaudio__WEBPACK_IMPORTED_MODULE_1__["isHeader"](data, offset)) {
-                    var frame = _mpegaudio__WEBPACK_IMPORTED_MODULE_1__["appendFrame"](this._audioTrack, data, offset, pts, frameIndex);
+                while (offset2 < length) {
+                  if (_mpegaudio__WEBPACK_IMPORTED_MODULE_1__["isHeader"](data, offset2)) {
+                    var frame = _mpegaudio__WEBPACK_IMPORTED_MODULE_1__["appendFrame"](this._audioTrack, data, offset2, pts, frameIndex);
                     if (frame) {
-                      offset += frame.length;
+                      offset2 += frame.length;
                       frameIndex++;
                     } else {
                       break;
                     }
                   } else {
-                    offset++;
+                    offset2++;
                   }
                 }
               };
@@ -42667,23 +42667,23 @@ and ensure you are accounting for this risk.
                 length: 0
               };
             }
-            function parsePAT(data, offset) {
-              return (data[offset + 10] & 31) << 8 | data[offset + 11];
+            function parsePAT(data, offset2) {
+              return (data[offset2 + 10] & 31) << 8 | data[offset2 + 11];
             }
-            function parsePMT(data, offset, mpegSupported, isSampleAes) {
+            function parsePMT(data, offset2, mpegSupported, isSampleAes) {
               var result = {
                 audio: -1,
                 avc: -1,
                 id3: -1,
                 isAAC: true
               };
-              var sectionLength = (data[offset + 1] & 15) << 8 | data[offset + 2];
-              var tableEnd = offset + 3 + sectionLength - 4;
-              var programInfoLength = (data[offset + 10] & 15) << 8 | data[offset + 11];
-              offset += 12 + programInfoLength;
-              while (offset < tableEnd) {
-                var pid = (data[offset + 1] & 31) << 8 | data[offset + 2];
-                switch (data[offset]) {
+              var sectionLength = (data[offset2 + 1] & 15) << 8 | data[offset2 + 2];
+              var tableEnd = offset2 + 3 + sectionLength - 4;
+              var programInfoLength = (data[offset2 + 10] & 15) << 8 | data[offset2 + 11];
+              offset2 += 12 + programInfoLength;
+              while (offset2 < tableEnd) {
+                var pid = (data[offset2 + 1] & 31) << 8 | data[offset2 + 2];
+                switch (data[offset2]) {
                   case 207:
                     if (!isSampleAes) {
                       _utils_logger__WEBPACK_IMPORTED_MODULE_7__["logger"].log("ADTS AAC with AES-128-CBC frame encryption found in unencrypted stream");
@@ -42724,7 +42724,7 @@ and ensure you are accounting for this risk.
                   default:
                     break;
                 }
-                offset += ((data[offset + 3] & 15) << 8 | data[offset + 4]) + 5;
+                offset2 += ((data[offset2 + 3] & 15) << 8 | data[offset2 + 4]) + 5;
               }
               return result;
             }
@@ -43096,54 +43096,54 @@ and ensure you are accounting for this risk.
                 }
                 return null;
               };
-              _proto.on = function on(event, listener, context) {
+              _proto.on = function on2(event2, listener, context) {
                 if (context === void 0) {
                   context = this;
                 }
-                this._emitter.on(event, listener, context);
+                this._emitter.on(event2, listener, context);
               };
-              _proto.once = function once(event, listener, context) {
+              _proto.once = function once(event2, listener, context) {
                 if (context === void 0) {
                   context = this;
                 }
-                this._emitter.once(event, listener, context);
+                this._emitter.once(event2, listener, context);
               };
-              _proto.removeAllListeners = function removeAllListeners(event) {
-                this._emitter.removeAllListeners(event);
+              _proto.removeAllListeners = function removeAllListeners(event2) {
+                this._emitter.removeAllListeners(event2);
               };
-              _proto.off = function off(event, listener, context, once) {
+              _proto.off = function off2(event2, listener, context, once) {
                 if (context === void 0) {
                   context = this;
                 }
-                this._emitter.off(event, listener, context, once);
+                this._emitter.off(event2, listener, context, once);
               };
-              _proto.listeners = function listeners(event) {
-                return this._emitter.listeners(event);
+              _proto.listeners = function listeners(event2) {
+                return this._emitter.listeners(event2);
               };
-              _proto.emit = function emit(event, name, eventObject) {
-                return this._emitter.emit(event, name, eventObject);
+              _proto.emit = function emit(event2, name, eventObject) {
+                return this._emitter.emit(event2, name, eventObject);
               };
-              _proto.trigger = function trigger(event, eventObject) {
+              _proto.trigger = function trigger2(event2, eventObject) {
                 if (this.config.debug) {
-                  return this.emit(event, event, eventObject);
+                  return this.emit(event2, event2, eventObject);
                 } else {
                   try {
-                    return this.emit(event, event, eventObject);
+                    return this.emit(event2, event2, eventObject);
                   } catch (e2) {
-                    _utils_logger__WEBPACK_IMPORTED_MODULE_9__["logger"].error("An internal error happened while handling event " + event + '. Error message: "' + e2.message + '". Here is a stacktrace:', e2);
+                    _utils_logger__WEBPACK_IMPORTED_MODULE_9__["logger"].error("An internal error happened while handling event " + event2 + '. Error message: "' + e2.message + '". Here is a stacktrace:', e2);
                     this.trigger(_events__WEBPACK_IMPORTED_MODULE_12__["Events"].ERROR, {
                       type: _errors__WEBPACK_IMPORTED_MODULE_13__["ErrorTypes"].OTHER_ERROR,
                       details: _errors__WEBPACK_IMPORTED_MODULE_13__["ErrorDetails"].INTERNAL_EXCEPTION,
                       fatal: false,
-                      event,
+                      event: event2,
                       error: e2
                     });
                   }
                 }
                 return false;
               };
-              _proto.listenerCount = function listenerCount(event) {
-                return this._emitter.listenerCount(event);
+              _proto.listenerCount = function listenerCount(event2) {
+                return this._emitter.listenerCount(event2);
               };
               _proto.destroy = function destroy() {
                 _utils_logger__WEBPACK_IMPORTED_MODULE_9__["logger"].log("destroy");
@@ -44095,7 +44095,7 @@ and ensure you are accounting for this risk.
             }(BaseSegment);
             var Part = /* @__PURE__ */ function(_BaseSegment2) {
               _inheritsLoose(Part2, _BaseSegment2);
-              function Part2(partAttrs, frag, baseurl, index, previous) {
+              function Part2(partAttrs, frag, baseurl, index2, previous) {
                 var _this2;
                 _this2 = _BaseSegment2.call(this, baseurl) || this;
                 _this2.fragOffset = 0;
@@ -44111,7 +44111,7 @@ and ensure you are accounting for this risk.
                 _this2.independent = partAttrs.bool("INDEPENDENT");
                 _this2.relurl = partAttrs.enumeratedString("URI");
                 _this2.fragment = frag;
-                _this2.index = index;
+                _this2.index = index2;
                 var byteRange = partAttrs.enumeratedString("BYTERANGE");
                 if (byteRange) {
                   _this2.setByteRange(byteRange, previous);
@@ -44176,7 +44176,7 @@ and ensure you are accounting for this risk.
                 }
                 this.loaders = {};
               };
-              _proto.onKeyLoading = function onKeyLoading(event, data) {
+              _proto.onKeyLoading = function onKeyLoading(event2, data) {
                 var frag = data.frag;
                 var type = frag.type;
                 var loader = this.loaders[type];
@@ -44864,8 +44864,8 @@ and ensure you are accounting for this risk.
                           partList = level.partList = [];
                         }
                         var previousFragmentPart = currentPart > 0 ? partList[partList.length - 1] : void 0;
-                        var index = currentPart++;
-                        var part = new _fragment__WEBPACK_IMPORTED_MODULE_2__["Part"](new _utils_attr_list__WEBPACK_IMPORTED_MODULE_5__["AttrList"](value1), frag, baseurl, index, previousFragmentPart);
+                        var index2 = currentPart++;
+                        var part = new _fragment__WEBPACK_IMPORTED_MODULE_2__["Part"](new _utils_attr_list__WEBPACK_IMPORTED_MODULE_5__["AttrList"](value1), frag, baseurl, index2, previousFragmentPart);
                         partList.push(part);
                         frag.duration += part.duration;
                         break;
@@ -45066,7 +45066,7 @@ and ensure you are accounting for this risk.
                 this.unregisterListeners();
                 this.destroyInternalLoaders();
               };
-              _proto.onManifestLoading = function onManifestLoading(event, data) {
+              _proto.onManifestLoading = function onManifestLoading(event2, data) {
                 var url = data.url;
                 this.load({
                   id: null,
@@ -45078,7 +45078,7 @@ and ensure you are accounting for this risk.
                   deliveryDirectives: null
                 });
               };
-              _proto.onLevelLoading = function onLevelLoading(event, data) {
+              _proto.onLevelLoading = function onLevelLoading(event2, data) {
                 var id = data.id, level = data.level, url = data.url, deliveryDirectives = data.deliveryDirectives;
                 this.load({
                   id,
@@ -45090,7 +45090,7 @@ and ensure you are accounting for this risk.
                   deliveryDirectives
                 });
               };
-              _proto.onAudioTrackLoading = function onAudioTrackLoading(event, data) {
+              _proto.onAudioTrackLoading = function onAudioTrackLoading(event2, data) {
                 var id = data.id, groupId = data.groupId, url = data.url, deliveryDirectives = data.deliveryDirectives;
                 this.load({
                   id,
@@ -45102,7 +45102,7 @@ and ensure you are accounting for this risk.
                   deliveryDirectives
                 });
               };
-              _proto.onSubtitleTrackLoading = function onSubtitleTrackLoading(event, data) {
+              _proto.onSubtitleTrackLoading = function onSubtitleTrackLoading(event2, data) {
                 var id = data.id, groupId = data.groupId, url = data.url, deliveryDirectives = data.deliveryDirectives;
                 this.load({
                   id,
@@ -45336,9 +45336,9 @@ and ensure you are accounting for this risk.
                 }
                 var sidxReferences = sidxInfo.references;
                 var levelDetails = context.levelDetails;
-                sidxReferences.forEach(function(segmentRef, index) {
+                sidxReferences.forEach(function(segmentRef, index2) {
                   var segRefInfo = segmentRef.info;
-                  var frag = levelDetails.fragments[index];
+                  var frag = levelDetails.fragments[index2];
                   if (frag.byteRange.length === 0) {
                     frag.setByteRange(String(1 + segRefInfo.end - segRefInfo.start) + "@" + String(segRefInfo.start));
                   }
@@ -46388,7 +46388,7 @@ and ensure you are accounting for this risk.
                   1
                 ]));
               };
-              MP42.trun = function trun(track, offset) {
+              MP42.trun = function trun(track, offset2) {
                 var samples = track.samples || [];
                 var len = samples.length;
                 var arraylen = 12 + 16 * len;
@@ -46399,7 +46399,7 @@ and ensure you are accounting for this risk.
                 var size;
                 var flags;
                 var cts;
-                offset += 8 + arraylen;
+                offset2 += 8 + arraylen;
                 array.set([
                   0,
                   0,
@@ -46409,10 +46409,10 @@ and ensure you are accounting for this risk.
                   len >>> 16 & 255,
                   len >>> 8 & 255,
                   len & 255,
-                  offset >>> 24 & 255,
-                  offset >>> 16 & 255,
-                  offset >>> 8 & 255,
-                  offset & 255
+                  offset2 >>> 24 & 255,
+                  offset2 >>> 16 & 255,
+                  offset2 >>> 8 & 255,
+                  offset2 & 255
                 ], 0);
                 for (i2 = 0; i2 < len; i2++) {
                   sample = samples[i2];
@@ -46483,8 +46483,8 @@ and ensure you are accounting for this risk.
             var _utils_logger__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./src/utils/logger.ts");
             var _types_loader__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./src/types/loader.ts");
             var _utils_timescale_conversion__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./src/utils/timescale-conversion.ts");
-            function _extends2() {
-              _extends2 = Object.assign || function(target) {
+            function _extends4() {
+              _extends4 = Object.assign || function(target) {
                 for (var i2 = 1; i2 < arguments.length; i2++) {
                   var source = arguments[i2];
                   for (var key in source) {
@@ -46495,7 +46495,7 @@ and ensure you are accounting for this risk.
                 }
                 return target;
               };
-              return _extends2.apply(this, arguments);
+              return _extends4.apply(this, arguments);
             }
             var MAX_SILENT_FRAME_DURATION = 10 * 1e3;
             var AAC_SAMPLES_PER_FRAME = 1024;
@@ -46571,7 +46571,7 @@ and ensure you are accounting for this risk.
                 var video;
                 var audio;
                 var initSegment;
-                var text;
+                var text2;
                 var id3;
                 var independent;
                 var audioTimeOffset = timeOffset;
@@ -46640,7 +46640,7 @@ and ensure you are accounting for this risk.
                     id3 = this.remuxID3(id3Track, timeOffset);
                   }
                   if (textTrack.samples.length) {
-                    text = this.remuxText(textTrack, timeOffset);
+                    text2 = this.remuxText(textTrack, timeOffset);
                   }
                 }
                 return {
@@ -46648,7 +46648,7 @@ and ensure you are accounting for this risk.
                   video,
                   initSegment,
                   independent,
-                  text,
+                  text: text2,
                   id3
                 };
               };
@@ -46729,7 +46729,7 @@ and ensure you are accounting for this risk.
                 var nbSamples = inputSamples.length;
                 var initPTS = this._initPTS;
                 var nextAvcDts = this.nextAvcDts;
-                var offset = 8;
+                var offset2 = 8;
                 var mp4SampleDuration;
                 var firstDTS;
                 var lastDTS;
@@ -46844,10 +46844,10 @@ and ensure you are accounting for this risk.
                     var unit = avcSampleUnits[_j];
                     var unitData = unit.data;
                     var unitDataLen = unit.data.byteLength;
-                    view.setUint32(offset, unitDataLen);
-                    offset += 4;
-                    mdat.set(unitData, offset);
-                    offset += unitDataLen;
+                    view.setUint32(offset2, unitDataLen);
+                    offset2 += 4;
+                    mdat.set(unitData, offset2);
+                    offset2 += unitDataLen;
                     mp4SampleLength += 4 + unitDataLen;
                   }
                   if (_i4 < nbSamples - 1) {
@@ -46882,7 +46882,7 @@ and ensure you are accounting for this risk.
                 console.assert(mp4SampleDuration !== void 0, "mp4SampleDuration must be computed");
                 this.nextAvcDts = nextAvcDts = lastDTS + mp4SampleDuration;
                 this.isVideoContiguous = true;
-                var moof = _mp4_generator__WEBPACK_IMPORTED_MODULE_2__["default"].moof(track.sequenceNumber++, firstDTS, _extends2({}, track, {
+                var moof = _mp4_generator__WEBPACK_IMPORTED_MODULE_2__["default"].moof(track.sequenceNumber++, firstDTS, _extends4({}, track, {
                   samples: outputSamples
                 }));
                 var type = "video";
@@ -46914,7 +46914,7 @@ and ensure you are accounting for this risk.
                 var rawMPEG = !track.isAAC && this.typeSupported.mpeg;
                 var outputSamples = [];
                 var inputSamples = track.samples;
-                var offset = rawMPEG ? 0 : 8;
+                var offset2 = rawMPEG ? 0 : 8;
                 var nextAudioPts = this.nextAudioPts || -1;
                 var timeOffsetMpegTS = timeOffset * inputTimeScale;
                 this.isAudioContiguous = contiguous = contiguous || inputSamples.length && nextAudioPts > 0 && (accurateTimeOffset && Math.abs(timeOffsetMpegTS - nextAudioPts) < 9e3 || Math.abs(normalizePts(inputSamples[0].pts - initPTS, timeOffsetMpegTS) - nextAudioPts) < 20 * inputSampleDuration);
@@ -47000,7 +47000,7 @@ and ensure you are accounting for this risk.
                     }
                     firstPTS = _pts;
                     if (mdatSize > 0) {
-                      mdatSize += offset;
+                      mdatSize += offset2;
                       try {
                         mdat = new Uint8Array(mdatSize);
                       } catch (err) {
@@ -47022,9 +47022,9 @@ and ensure you are accounting for this risk.
                       return;
                     }
                   }
-                  mdat.set(unit, offset);
+                  mdat.set(unit, offset2);
                   var unitLen = unit.byteLength;
-                  offset += unitLen;
+                  offset2 += unitLen;
                   outputSamples.push(new Mp4Sample(true, mp4SampleDuration, unitLen, 0));
                   lastPTS = _pts;
                 }
@@ -47034,7 +47034,7 @@ and ensure you are accounting for this risk.
                 }
                 var lastSample = outputSamples[outputSamples.length - 1];
                 this.nextAudioPts = nextAudioPts = lastPTS + scaleFactor * lastSample.duration;
-                var moof = rawMPEG ? new Uint8Array(0) : _mp4_generator__WEBPACK_IMPORTED_MODULE_2__["default"].moof(track.sequenceNumber++, firstPTS / scaleFactor, _extends2({}, track, {
+                var moof = rawMPEG ? new Uint8Array(0) : _mp4_generator__WEBPACK_IMPORTED_MODULE_2__["default"].moof(track.sequenceNumber++, firstPTS / scaleFactor, _extends4({}, track, {
                   samples: outputSamples
                 }));
                 track.samples = [];
@@ -47092,8 +47092,8 @@ and ensure you are accounting for this risk.
                 var inputTimeScale = track.inputTimeScale;
                 var initPTS = this._initPTS;
                 var initDTS = this._initDTS;
-                for (var index = 0; index < length; index++) {
-                  var sample = track.samples[index];
+                for (var index2 = 0; index2 < length; index2++) {
+                  var sample = track.samples[index2];
                   sample.pts = normalizePts(sample.pts - initPTS, timeOffset * inputTimeScale) / inputTimeScale;
                   sample.dts = normalizePts(sample.dts - initDTS, timeOffset * inputTimeScale) / inputTimeScale;
                 }
@@ -47110,8 +47110,8 @@ and ensure you are accounting for this risk.
                 }
                 var inputTimeScale = track.inputTimeScale;
                 var initPTS = this._initPTS;
-                for (var index = 0; index < length; index++) {
-                  var sample = track.samples[index];
+                for (var index2 = 0; index2 < length; index2++) {
+                  var sample = track.samples[index2];
                   sample.pts = normalizePts(sample.pts - initPTS, timeOffset * inputTimeScale) / inputTimeScale;
                 }
                 track.samples.sort(function(a2, b3) {
@@ -47126,17 +47126,17 @@ and ensure you are accounting for this risk.
               return MP4Remuxer2;
             }();
             function normalizePts(value, reference) {
-              var offset;
+              var offset2;
               if (reference === null) {
                 return value;
               }
               if (reference < value) {
-                offset = -8589934592;
+                offset2 = -8589934592;
               } else {
-                offset = 8589934592;
+                offset2 = 8589934592;
               }
               while (Math.abs(value - reference) > 4294967296) {
-                value += offset;
+                value += offset2;
               }
               return value;
             }
@@ -47672,9 +47672,9 @@ and ensure you are accounting for this risk.
                 if (typeof attrs === "string") {
                   attrs = AttrList2.parseAttrList(attrs);
                 }
-                for (var attr in attrs) {
-                  if (attrs.hasOwnProperty(attr)) {
-                    this[attr] = attrs[attr];
+                for (var attr2 in attrs) {
+                  if (attrs.hasOwnProperty(attr2)) {
+                    this[attr2] = attrs[attr2];
                   }
                 }
               }
@@ -48092,12 +48092,12 @@ and ensure you are accounting for this risk.
                 this.background = "black";
                 this.flash = false;
               };
-              _proto2.setStyles = function setStyles(styles) {
+              _proto2.setStyles = function setStyles(styles2) {
                 var attribs = ["foreground", "underline", "italics", "background", "flash"];
                 for (var i2 = 0; i2 < attribs.length; i2++) {
                   var style = attribs[i2];
-                  if (styles.hasOwnProperty(style)) {
-                    this[style] = styles[style];
+                  if (styles2.hasOwnProperty(style)) {
+                    this[style] = styles2[style];
                   }
                 }
               };
@@ -48258,8 +48258,8 @@ and ensure you are accounting for this risk.
                   return chars.join("");
                 }
               };
-              _proto4.setPenStyles = function setPenStyles(styles) {
-                this.currPenState.setStyles(styles);
+              _proto4.setPenStyles = function setPenStyles(styles2) {
+                this.currPenState.setStyles(styles2);
                 var currChar = this.chars[this.pos];
                 currChar.setPenState(this.currPenState);
               };
@@ -48326,9 +48326,9 @@ and ensure you are accounting for this risk.
                 var row = this.rows[this.currRow];
                 row.insertChar(_char3);
               };
-              _proto5.setPen = function setPen(styles) {
+              _proto5.setPen = function setPen(styles2) {
                 var row = this.rows[this.currRow];
-                row.setPenStyles(styles);
+                row.setPenStyles(styles2);
               };
               _proto5.moveCursor = function moveCursor(relPos) {
                 var row = this.rows[this.currRow];
@@ -48369,14 +48369,14 @@ and ensure you are accounting for this risk.
                   row.setCursor(pacData.indent);
                   pacData.color = row.chars[prevPos].penState.foreground;
                 }
-                var styles = {
+                var styles2 = {
                   foreground: pacData.color,
                   underline: pacData.underline,
                   italics: pacData.italics,
                   background: "black",
                   flash: false
                 };
-                this.setPen(styles);
+                this.setPen(styles2);
               };
               _proto5.setBkgData = function setBkgData(bkgData) {
                 this.logger.log(VerboseLevel.INFO, "bkgData = " + JSON.stringify(bkgData));
@@ -48402,7 +48402,7 @@ and ensure you are accounting for this risk.
               _proto5.getDisplayText = function getDisplayText(asOneRow) {
                 asOneRow = asOneRow || false;
                 var displayText = [];
-                var text = "";
+                var text2 = "";
                 var rowNr = -1;
                 for (var i2 = 0; i2 < NR_ROWS; i2++) {
                   var rowText = this.rows[i2].getTextString();
@@ -48417,12 +48417,12 @@ and ensure you are accounting for this risk.
                 }
                 if (displayText.length > 0) {
                   if (asOneRow) {
-                    text = "[" + displayText.join(" | ") + "]";
+                    text2 = "[" + displayText.join(" | ") + "]";
                   } else {
-                    text = displayText.join("\n");
+                    text2 = displayText.join("\n");
                   }
                 }
-                return text;
+                return text2;
               };
               _proto5.getTextAndFormat = function getTextAndFormat() {
                 return this.rows;
@@ -48585,20 +48585,20 @@ and ensure you are accounting for this risk.
                 this.writeScreen.moveCursor(nrCols);
               };
               _proto6.ccMIDROW = function ccMIDROW(secondByte) {
-                var styles = {
+                var styles2 = {
                   flash: false
                 };
-                styles.underline = secondByte % 2 === 1;
-                styles.italics = secondByte >= 46;
-                if (!styles.italics) {
+                styles2.underline = secondByte % 2 === 1;
+                styles2.italics = secondByte >= 46;
+                if (!styles2.italics) {
                   var colorIndex = Math.floor(secondByte / 2) - 16;
                   var colors = ["white", "green", "blue", "cyan", "red", "yellow", "magenta"];
-                  styles.foreground = colors[colorIndex];
+                  styles2.foreground = colors[colorIndex];
                 } else {
-                  styles.foreground = "white";
+                  styles2.foreground = "white";
                 }
-                this.logger.log(VerboseLevel.INFO, "MIDROW: " + JSON.stringify(styles));
-                this.writeScreen.setPen(styles);
+                this.logger.log(VerboseLevel.INFO, "MIDROW: " + JSON.stringify(styles2));
+                this.writeScreen.setPen(styles2);
               };
               _proto6.outputDataUpdate = function outputDataUpdate(dispatch) {
                 if (dispatch === void 0) {
@@ -48861,11 +48861,11 @@ and ensure you are accounting for this risk.
                 if (!(case1 || case2)) {
                   return false;
                 }
-                var index;
+                var index2;
                 var bkgData = {};
                 if (a2 === 16 || a2 === 24) {
-                  index = Math.floor((b3 - 32) / 2);
-                  bkgData.background = backgroundColors[index];
+                  index2 = Math.floor((b3 - 32) / 2);
+                  bkgData.background = backgroundColors[index2];
                   if (b3 % 2 === 1) {
                     bkgData.background = bkgData.background + "_semi";
                   }
@@ -49016,19 +49016,19 @@ and ensure you are accounting for this risk.
                 var cue;
                 var indenting;
                 var indent;
-                var text;
+                var text2;
                 var Cue = self.VTTCue || self.TextTrackCue;
                 for (var r2 = 0; r2 < captionScreen.rows.length; r2++) {
                   row = captionScreen.rows[r2];
                   indenting = true;
                   indent = 0;
-                  text = "";
+                  text2 = "";
                   if (!row.isEmpty()) {
                     for (var c3 = 0; c3 < row.chars.length; c3++) {
                       if (WHITESPACE_CHAR.test(row.chars[c3].uchar) && indenting) {
                         indent++;
                       } else {
-                        text += row.chars[c3].uchar;
+                        text2 += row.chars[c3].uchar;
                         indenting = false;
                       }
                     }
@@ -49041,7 +49041,7 @@ and ensure you are accounting for this risk.
                     } else {
                       indent++;
                     }
-                    var cueText = Object(_vttparser__WEBPACK_IMPORTED_MODULE_0__["fixLineBreaks"])(text.trim());
+                    var cueText = Object(_vttparser__WEBPACK_IMPORTED_MODULE_0__["fixLineBreaks"])(text2.trim());
                     var id = Object(_webvtt_parser__WEBPACK_IMPORTED_MODULE_1__["generateCueId"])(startTime, endTime, cueText);
                     if (!track || !track.cues || !track.cues.getCueById(id)) {
                       cue = new Cue(startTime, endTime, cueText);
@@ -49385,8 +49385,8 @@ and ensure you are accounting for this risk.
               };
               return _getPrototypeOf(o2);
             }
-            function _extends2() {
-              _extends2 = Object.assign || function(target) {
+            function _extends4() {
+              _extends4 = Object.assign || function(target) {
                 for (var i2 = 1; i2 < arguments.length; i2++) {
                   var source = arguments[i2];
                   for (var key in source) {
@@ -49397,7 +49397,7 @@ and ensure you are accounting for this risk.
                 }
                 return target;
               };
-              return _extends2.apply(this, arguments);
+              return _extends4.apply(this, arguments);
             }
             function fetchSupported() {
               if (self.fetch && self.AbortController && self.ReadableStream && self.Request) {
@@ -49552,7 +49552,7 @@ and ensure you are accounting for this risk.
                 mode: "cors",
                 credentials: "same-origin",
                 signal,
-                headers: new self.Headers(_extends2({}, context.headers))
+                headers: new self.Headers(_extends4({}, context.headers))
               };
               if (context.rangeEnd) {
                 initParams.headers.set("Range", "bytes=" + context.rangeStart + "-" + String(context.rangeEnd - 1));
@@ -49592,8 +49592,8 @@ and ensure you are accounting for this risk.
             var _demux_id3__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/demux/id3.ts");
             var _timescale_conversion__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./src/utils/timescale-conversion.ts");
             var _webvtt_parser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./src/utils/webvtt-parser.ts");
-            function _extends2() {
-              _extends2 = Object.assign || function(target) {
+            function _extends4() {
+              _extends4 = Object.assign || function(target) {
                 for (var i2 = 1; i2 < arguments.length; i2++) {
                   var source = arguments[i2];
                   for (var key in source) {
@@ -49604,7 +49604,7 @@ and ensure you are accounting for this risk.
                 }
                 return target;
               };
-              return _extends2.apply(this, arguments);
+              return _extends4.apply(this, arguments);
             }
             var IMSC1_CODEC = "stpp.ttml.im1t";
             var HMSF_REGEX = /^(\d{2,}):(\d{2}):(\d{2}):(\d{2})\.?(\d+)?$/;
@@ -49675,8 +49675,8 @@ and ensure you are accounting for this risk.
                 var style = styleElements[cueElement.getAttribute("style")];
                 cue.position = 10;
                 cue.size = 80;
-                var styles = getTtmlStyles(region, style);
-                var textAlign = styles.textAlign;
+                var styles2 = getTtmlStyles(region, style);
+                var textAlign = styles2.textAlign;
                 if (textAlign) {
                   var lineAlign = textAlignToLineAlign[textAlign];
                   if (lineAlign) {
@@ -49684,16 +49684,16 @@ and ensure you are accounting for this risk.
                   }
                   cue.align = textAlign;
                 }
-                _extends2(cue, styles);
+                _extends4(cue, styles2);
                 return cue;
               }).filter(function(cue) {
                 return cue !== null;
               });
             }
             function getElementCollection(fromElement, parentName, childName) {
-              var parent = fromElement.getElementsByTagName(parentName)[0];
-              if (parent) {
-                return [].slice.call(parent.querySelectorAll(childName));
+              var parent2 = fromElement.getElementsByTagName(parentName)[0];
+              if (parent2) {
+                return [].slice.call(parent2.querySelectorAll(childName));
               }
               return [];
             }
@@ -49730,12 +49730,12 @@ and ensure you are accounting for this risk.
                 "fontSize",
                 "fontFamily"
               ];
-              return styleAttributes.reduce(function(styles, name) {
+              return styleAttributes.reduce(function(styles2, name) {
                 var value = getAttributeNS(style, ttsNs, name) || getAttributeNS(region, ttsNs, name);
                 if (value) {
-                  styles[name] = value;
+                  styles2[name] = value;
                 }
-                return styles;
+                return styles2;
               }, {});
             }
             function getAttributeNS(element, ns, name) {
@@ -49912,31 +49912,31 @@ and ensure you are accounting for this risk.
             function bin2str(data) {
               return String.fromCharCode.apply(null, data);
             }
-            function readUint16(buffer, offset) {
+            function readUint16(buffer, offset2) {
               if ("data" in buffer) {
-                offset += buffer.start;
+                offset2 += buffer.start;
                 buffer = buffer.data;
               }
-              var val = buffer[offset] << 8 | buffer[offset + 1];
+              var val = buffer[offset2] << 8 | buffer[offset2 + 1];
               return val < 0 ? 65536 + val : val;
             }
-            function readUint32(buffer, offset) {
+            function readUint32(buffer, offset2) {
               if ("data" in buffer) {
-                offset += buffer.start;
+                offset2 += buffer.start;
                 buffer = buffer.data;
               }
-              var val = buffer[offset] << 24 | buffer[offset + 1] << 16 | buffer[offset + 2] << 8 | buffer[offset + 3];
+              var val = buffer[offset2] << 24 | buffer[offset2 + 1] << 16 | buffer[offset2 + 2] << 8 | buffer[offset2 + 3];
               return val < 0 ? 4294967296 + val : val;
             }
-            function writeUint32(buffer, offset, value) {
+            function writeUint32(buffer, offset2, value) {
               if ("data" in buffer) {
-                offset += buffer.start;
+                offset2 += buffer.start;
                 buffer = buffer.data;
               }
-              buffer[offset] = value >> 24;
-              buffer[offset + 1] = value >> 16 & 255;
-              buffer[offset + 2] = value >> 8 & 255;
-              buffer[offset + 3] = value & 255;
+              buffer[offset2] = value >> 24;
+              buffer[offset2 + 1] = value >> 16 & 255;
+              buffer[offset2 + 2] = value >> 8 & 255;
+              buffer[offset2 + 3] = value & 255;
             }
             function findBox(input, path) {
               var results = [];
@@ -49992,22 +49992,22 @@ and ensure you are accounting for this risk.
               var references = [];
               var sidx = sidxBox[0];
               var version = sidx.data[0];
-              var index = version === 0 ? 8 : 16;
-              var timescale = readUint32(sidx, index);
-              index += 4;
+              var index2 = version === 0 ? 8 : 16;
+              var timescale = readUint32(sidx, index2);
+              index2 += 4;
               var earliestPresentationTime = 0;
               var firstOffset = 0;
               if (version === 0) {
-                index += 8;
+                index2 += 8;
               } else {
-                index += 16;
+                index2 += 16;
               }
-              index += 2;
+              index2 += 2;
               var startByte = sidx.end + firstOffset;
-              var referencesCount = readUint16(sidx, index);
-              index += 2;
+              var referencesCount = readUint16(sidx, index2);
+              index2 += 2;
               for (var i2 = 0; i2 < referencesCount; i2++) {
-                var referenceIndex = index;
+                var referenceIndex = index2;
                 var referenceInfo = readUint32(sidx, referenceIndex);
                 referenceIndex += 4;
                 var referenceSize = referenceInfo & 2147483647;
@@ -50029,7 +50029,7 @@ and ensure you are accounting for this risk.
                 });
                 startByte += referenceSize;
                 referenceIndex += 4;
-                index = referenceIndex;
+                index2 = referenceIndex;
               }
               return {
                 earliestPresentationTime,
@@ -50175,29 +50175,29 @@ and ensure you are accounting for this risk.
             }
             function computeRawDurationFromSamples(trun) {
               var flags = readUint32(trun, 0);
-              var offset = 8;
+              var offset2 = 8;
               if (flags & 1) {
-                offset += 4;
+                offset2 += 4;
               }
               if (flags & 4) {
-                offset += 4;
+                offset2 += 4;
               }
               var duration = 0;
               var sampleCount = readUint32(trun, 4);
               for (var i2 = 0; i2 < sampleCount; i2++) {
                 if (flags & 256) {
-                  var sampleDuration = readUint32(trun, offset);
+                  var sampleDuration = readUint32(trun, offset2);
                   duration += sampleDuration;
-                  offset += 4;
+                  offset2 += 4;
                 }
                 if (flags & 512) {
-                  offset += 4;
+                  offset2 += 4;
                 }
                 if (flags & 1024) {
-                  offset += 4;
+                  offset2 += 4;
                 }
                 if (flags & 2048) {
-                  offset += 4;
+                  offset2 += 4;
                 }
               }
               return duration;
@@ -50314,15 +50314,15 @@ and ensure you are accounting for this risk.
             });
             var _logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/utils/logger.ts");
             function sendAddTrackEvent(track, videoEl) {
-              var event;
+              var event2;
               try {
-                event = new Event("addtrack");
+                event2 = new Event("addtrack");
               } catch (err) {
-                event = document.createEvent("Event");
-                event.initEvent("addtrack", false, false);
+                event2 = document.createEvent("Event");
+                event2.initEvent("addtrack", false, false);
               }
-              event.track = track;
-              videoEl.dispatchEvent(event);
+              event2.track = track;
+              videoEl.dispatchEvent(event2);
             }
             function addCueToTrack(track, cue) {
               var mode = track.mode;
@@ -50514,7 +50514,7 @@ and ensure you are accounting for this risk.
               function findAlignSetting(value) {
                 return isAllowedValue(AllowedAlignments, value);
               }
-              function extend(obj) {
+              function extend4(obj) {
                 for (var _len = arguments.length, rest = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
                   rest[_key - 1] = arguments[_key];
                 }
@@ -50527,7 +50527,7 @@ and ensure you are accounting for this risk.
                 }
                 return obj;
               }
-              function VTTCue(startTime, endTime, text) {
+              function VTTCue(startTime, endTime, text2) {
                 var cue = this;
                 var baseObj = {
                   enumerable: true
@@ -50537,7 +50537,7 @@ and ensure you are accounting for this risk.
                 var _pauseOnExit = false;
                 var _startTime = startTime;
                 var _endTime = endTime;
-                var _text = text;
+                var _text = text2;
                 var _region = null;
                 var _vertical = "";
                 var _snapToLines = true;
@@ -50547,7 +50547,7 @@ and ensure you are accounting for this risk.
                 var _positionAlign = "middle";
                 var _size = 50;
                 var _align = "middle";
-                Object.defineProperty(cue, "id", extend({}, baseObj, {
+                Object.defineProperty(cue, "id", extend4({}, baseObj, {
                   get: function get() {
                     return _id;
                   },
@@ -50555,7 +50555,7 @@ and ensure you are accounting for this risk.
                     _id = "" + value;
                   }
                 }));
-                Object.defineProperty(cue, "pauseOnExit", extend({}, baseObj, {
+                Object.defineProperty(cue, "pauseOnExit", extend4({}, baseObj, {
                   get: function get() {
                     return _pauseOnExit;
                   },
@@ -50563,7 +50563,7 @@ and ensure you are accounting for this risk.
                     _pauseOnExit = !!value;
                   }
                 }));
-                Object.defineProperty(cue, "startTime", extend({}, baseObj, {
+                Object.defineProperty(cue, "startTime", extend4({}, baseObj, {
                   get: function get() {
                     return _startTime;
                   },
@@ -50575,7 +50575,7 @@ and ensure you are accounting for this risk.
                     this.hasBeenReset = true;
                   }
                 }));
-                Object.defineProperty(cue, "endTime", extend({}, baseObj, {
+                Object.defineProperty(cue, "endTime", extend4({}, baseObj, {
                   get: function get() {
                     return _endTime;
                   },
@@ -50587,7 +50587,7 @@ and ensure you are accounting for this risk.
                     this.hasBeenReset = true;
                   }
                 }));
-                Object.defineProperty(cue, "text", extend({}, baseObj, {
+                Object.defineProperty(cue, "text", extend4({}, baseObj, {
                   get: function get() {
                     return _text;
                   },
@@ -50596,7 +50596,7 @@ and ensure you are accounting for this risk.
                     this.hasBeenReset = true;
                   }
                 }));
-                Object.defineProperty(cue, "region", extend({}, baseObj, {
+                Object.defineProperty(cue, "region", extend4({}, baseObj, {
                   get: function get() {
                     return _region;
                   },
@@ -50605,7 +50605,7 @@ and ensure you are accounting for this risk.
                     this.hasBeenReset = true;
                   }
                 }));
-                Object.defineProperty(cue, "vertical", extend({}, baseObj, {
+                Object.defineProperty(cue, "vertical", extend4({}, baseObj, {
                   get: function get() {
                     return _vertical;
                   },
@@ -50618,7 +50618,7 @@ and ensure you are accounting for this risk.
                     this.hasBeenReset = true;
                   }
                 }));
-                Object.defineProperty(cue, "snapToLines", extend({}, baseObj, {
+                Object.defineProperty(cue, "snapToLines", extend4({}, baseObj, {
                   get: function get() {
                     return _snapToLines;
                   },
@@ -50627,7 +50627,7 @@ and ensure you are accounting for this risk.
                     this.hasBeenReset = true;
                   }
                 }));
-                Object.defineProperty(cue, "line", extend({}, baseObj, {
+                Object.defineProperty(cue, "line", extend4({}, baseObj, {
                   get: function get() {
                     return _line;
                   },
@@ -50639,7 +50639,7 @@ and ensure you are accounting for this risk.
                     this.hasBeenReset = true;
                   }
                 }));
-                Object.defineProperty(cue, "lineAlign", extend({}, baseObj, {
+                Object.defineProperty(cue, "lineAlign", extend4({}, baseObj, {
                   get: function get() {
                     return _lineAlign;
                   },
@@ -50652,7 +50652,7 @@ and ensure you are accounting for this risk.
                     this.hasBeenReset = true;
                   }
                 }));
-                Object.defineProperty(cue, "position", extend({}, baseObj, {
+                Object.defineProperty(cue, "position", extend4({}, baseObj, {
                   get: function get() {
                     return _position;
                   },
@@ -50664,7 +50664,7 @@ and ensure you are accounting for this risk.
                     this.hasBeenReset = true;
                   }
                 }));
-                Object.defineProperty(cue, "positionAlign", extend({}, baseObj, {
+                Object.defineProperty(cue, "positionAlign", extend4({}, baseObj, {
                   get: function get() {
                     return _positionAlign;
                   },
@@ -50677,7 +50677,7 @@ and ensure you are accounting for this risk.
                     this.hasBeenReset = true;
                   }
                 }));
-                Object.defineProperty(cue, "size", extend({}, baseObj, {
+                Object.defineProperty(cue, "size", extend4({}, baseObj, {
                   get: function get() {
                     return _size;
                   },
@@ -50689,7 +50689,7 @@ and ensure you are accounting for this risk.
                     this.hasBeenReset = true;
                   }
                 }));
-                Object.defineProperty(cue, "align", extend({}, baseObj, {
+                Object.defineProperty(cue, "align", extend4({}, baseObj, {
                   get: function get() {
                     return _align;
                   },
@@ -51096,16 +51096,16 @@ and ensure you are accounting for this risk.
               ts += 60 * 60 * 1e3 * hours;
               return ts;
             };
-            var hash = function hash2(text) {
+            var hash = function hash2(text2) {
               var hash3 = 5381;
-              var i2 = text.length;
+              var i2 = text2.length;
               while (i2) {
-                hash3 = hash3 * 33 ^ text.charCodeAt(--i2);
+                hash3 = hash3 * 33 ^ text2.charCodeAt(--i2);
               }
               return (hash3 >>> 0).toString();
             };
-            function generateCueId(startTime, endTime, text) {
-              return hash(startTime.toString()) + hash(endTime.toString()) + hash(text);
+            function generateCueId(startTime, endTime, text2) {
+              return hash(startTime.toString()) + hash(endTime.toString()) + hash(text2);
             }
             var calculateOffset = function calculateOffset2(vttCCs, cc, presentationTime) {
               var currCC = vttCCs[cc];
@@ -51155,10 +51155,10 @@ and ensure you are accounting for this risk.
                   cue.startTime = startTime;
                   cue.endTime = startTime + duration;
                 }
-                var text = cue.text.trim();
-                cue.text = decodeURIComponent(encodeURIComponent(text));
+                var text2 = cue.text.trim();
+                cue.text = decodeURIComponent(encodeURIComponent(text2));
                 if (!cue.id) {
-                  cue.id = generateCueId(cue.startTime, cue.endTime, text);
+                  cue.id = generateCueId(cue.startTime, cue.endTime, text2);
                 }
                 if (cue.endTime > 0) {
                   cues.push(cue);
@@ -51383,11 +51383,11 @@ and ensure you are accounting for this risk.
                   callbacks.onTimeout(this.stats, this.context, this.loader);
                 }
               };
-              _proto.loadprogress = function loadprogress(event) {
+              _proto.loadprogress = function loadprogress(event2) {
                 var stats = this.stats;
-                stats.loaded = event.loaded;
-                if (event.lengthComputable) {
-                  stats.total = event.total;
+                stats.loaded = event2.loaded;
+                if (event2.lengthComputable) {
+                  stats.total = event2.total;
                 }
               };
               _proto.getCacheAge = function getCacheAge() {
@@ -51408,11 +51408,11 @@ and ensure you are accounting for this risk.
   });
 
   // src/dev.tsx
-  var import_react31 = __toESM(require_react());
+  var import_react38 = __toESM(require_react());
   var import_react_dom2 = __toESM(require_react_dom());
 
   // src/index.tsx
-  var import_react28 = __toESM(require_react());
+  var import_react35 = __toESM(require_react());
 
   // src/context/collection-context.tsx
   var import_react = __toESM(require_react());
@@ -52369,8 +52369,8 @@ and ensure you are accounting for this risk.
         }
         isSubscribed = false;
         ensureCanMutateNextListeners();
-        var index = nextListeners.indexOf(listener);
-        nextListeners.splice(index, 1);
+        var index2 = nextListeners.indexOf(listener);
+        nextListeners.splice(index2, 1);
         currentListeners = null;
       };
     }
@@ -53109,19 +53109,19 @@ and ensure you are accounting for this risk.
         this.batchQueue.push(action);
       }
     }
-    middleware = (store) => (next) => (action) => {
+    middleware = (store) => (next2) => (action) => {
       if (action.type === BATCH_ACTIONS) {
         for (const realAction of action.payload.actions) {
           this.emitter.emit(realAction.type, { realAction, state: store.getState() });
         }
-        const state2 = next(action);
+        const state2 = next2(action);
         for (const realAction of action.payload.actions) {
           this.emitter.emit(`after:${action.type}`, { action, state: state2 });
         }
         return state2;
       }
       this.emitter.emit(action.type, { action, state: store.getState() });
-      const state = next(action);
+      const state = next2(action);
       this.emitter.emit(`after:${action.type}`, { action, state });
       return state;
     };
@@ -53257,7 +53257,6 @@ and ensure you are accounting for this risk.
   // src/context/collection-context.tsx
   var defaultState = {
     isLoaded: false,
-    itemHeight: void 0,
     vault: new Vault()
   };
   var CollectionStateContext = import_react.default.createContext(defaultState);
@@ -53269,11 +53268,6 @@ and ensure you are accounting for this risk.
           isLoaded: action.isLoaded
         });
       }
-      case "updateItemHeight": {
-        return __spreadProps(__spreadValues({}, state), {
-          itemHeight: action.itemHeight
-        });
-      }
       default: {
         throw new Error(`Unhandled action type: ${action.type}`);
       }
@@ -53281,14 +53275,14 @@ and ensure you are accounting for this risk.
   }
   var CollectionProvider = ({
     initialState = defaultState,
-    children
+    children: children2
   }) => {
     const [state, dispatch] = import_react.default.useReducer(collectionReducer, initialState);
     return /* @__PURE__ */ import_react.default.createElement(CollectionStateContext.Provider, {
       value: state
     }, /* @__PURE__ */ import_react.default.createElement(CollectionDispatchContext.Provider, {
       value: dispatch
-    }, children));
+    }, children2));
   };
   function useCollectionState() {
     const context = import_react.default.useContext(CollectionStateContext);
@@ -53297,16 +53291,9 @@ and ensure you are accounting for this risk.
     }
     return context;
   }
-  function useCollectionDispatch() {
-    const context = import_react.default.useContext(CollectionDispatchContext);
-    if (context === void 0) {
-      throw new Error("useViewerDispatch must be used within a ViewerProvider");
-    }
-    return context;
-  }
 
   // src/components/Items/Items.tsx
-  var import_react26 = __toESM(require_react());
+  var import_react32 = __toESM(require_react());
 
   // src/components/Items/Item.tsx
   var import_react24 = __toESM(require_react());
@@ -53359,7 +53346,7 @@ and ensure you are accounting for this risk.
         for (c3 in e4) {
           const R2 = c3.charCodeAt(0) === 64, z4 = R2 && Array.isArray(e4[c3]) ? e4[c3] : [e4[c3]];
           for (g3 of z4) {
-            const e5 = /[A-Z]/.test($4 = c3) ? $4 : $4.replace(/-[^]/g, (e6) => e6[1].toUpperCase()), z5 = typeof g3 == "object" && g3 && g3.toString === B2 && (!n3.utils[e5] || !t3.length);
+            const e5 = /[A-Z]/.test($5 = c3) ? $5 : $5.replace(/-[^]/g, (e6) => e6[1].toUpperCase()), z5 = typeof g3 == "object" && g3 && g3.toString === B2 && (!n3.utils[e5] || !t3.length);
             if (e5 in n3.utils && !z5) {
               const t4 = n3.utils[e5];
               if (t4 !== l3) {
@@ -53383,7 +53370,7 @@ and ensure you are accounting for this risk.
               o2 === void 0 && (o2 = [[], t3, r3]), c3 = R2 || c3.charCodeAt(0) !== 36 ? c3 : `--${S2(n3.prefix)}${c3.slice(1).replace(/\$/g, "-")}`, g3 = z5 ? g3 : typeof g3 == "number" ? g3 && e5 in I2 ? String(g3) + "px" : String(g3) : k2(m2(e5, g3 == null ? "" : g3), n3.prefix, n3.themeMap[e5]), o2[0].push(`${R2 ? `${c3} ` : `${d2(c3)}:`}${g3}`);
           }
         }
-        var b3, $4;
+        var b3, $5;
       };
       p4(e3), o2 !== void 0 && i2(x2(...o2)), o2 = void 0;
     };
@@ -53898,7 +53885,7 @@ and ensure you are accounting for this risk.
   };
   var Nt = Mt;
 
-  // src/stitches.tsx
+  // src/stitches.ts
   var gr = (multiplier) => {
     return __pow(1.618, multiplier);
   };
@@ -54010,14 +53997,11 @@ and ensure you are accounting for this risk.
     variants: {
       isFocused: {
         true: {
-          margin: "-$2 -$2 0",
-          video: { opacity: "1" },
-          figcaption: {
-            padding: "$2",
-            color: "$accent"
+          video: {
+            opacity: "1"
           },
-          [`& ${Width}`]: {
-            width: "calc(100% - ($2 * 2))"
+          figcaption: {
+            color: "$accent"
           }
         }
       }
@@ -54084,8 +54068,8 @@ and ensure you are accounting for this risk.
 
   // node_modules/@radix-ui/react-slot/dist/index.module.js
   var $5e63c961fc1ce211$export$8c6ed5c666ac1360 = /* @__PURE__ */ (0, import_react17.forwardRef)((props, forwardedRef) => {
-    const { children, ...slotProps } = props;
-    const childrenArray = import_react17.Children.toArray(children);
+    const { children: children2, ...slotProps } = props;
+    const childrenArray = import_react17.Children.toArray(children2);
     const slottable = childrenArray.find($5e63c961fc1ce211$var$isSlottable);
     if (slottable) {
       const newElement = slottable.props.children;
@@ -54103,21 +54087,21 @@ and ensure you are accounting for this risk.
     }
     return /* @__PURE__ */ (0, import_react17.createElement)($5e63c961fc1ce211$var$SlotClone, _extends({}, slotProps, {
       ref: forwardedRef
-    }), children);
+    }), children2);
   });
   $5e63c961fc1ce211$export$8c6ed5c666ac1360.displayName = "Slot";
   var $5e63c961fc1ce211$var$SlotClone = /* @__PURE__ */ (0, import_react17.forwardRef)((props, forwardedRef) => {
-    const { children, ...slotProps } = props;
-    if (/* @__PURE__ */ (0, import_react17.isValidElement)(children))
-      return /* @__PURE__ */ (0, import_react17.cloneElement)(children, {
-        ...$5e63c961fc1ce211$var$mergeProps(slotProps, children.props),
-        ref: $6ed0406888f73fc4$export$43e446d32b3d21af(forwardedRef, children.ref)
+    const { children: children2, ...slotProps } = props;
+    if (/* @__PURE__ */ (0, import_react17.isValidElement)(children2))
+      return /* @__PURE__ */ (0, import_react17.cloneElement)(children2, {
+        ...$5e63c961fc1ce211$var$mergeProps(slotProps, children2.props),
+        ref: $6ed0406888f73fc4$export$43e446d32b3d21af(forwardedRef, children2.ref)
       });
-    return import_react17.Children.count(children) > 1 ? import_react17.Children.only(null) : null;
+    return import_react17.Children.count(children2) > 1 ? import_react17.Children.only(null) : null;
   });
   $5e63c961fc1ce211$var$SlotClone.displayName = "SlotClone";
-  var $5e63c961fc1ce211$export$d9f1ccf0bdb05d45 = ({ children }) => {
-    return /* @__PURE__ */ (0, import_react17.createElement)(import_react17.Fragment, null, children);
+  var $5e63c961fc1ce211$export$d9f1ccf0bdb05d45 = ({ children: children2 }) => {
+    return /* @__PURE__ */ (0, import_react17.createElement)(import_react17.Fragment, null, children2);
   };
   function $5e63c961fc1ce211$var$isSlottable(child) {
     return /* @__PURE__ */ (0, import_react17.isValidElement)(child) && child.type === $5e63c961fc1ce211$export$d9f1ccf0bdb05d45;
@@ -54212,30 +54196,12 @@ and ensure you are accounting for this risk.
 
   // src/components/Figure/Figure.tsx
   var Figure = ({
-    index,
     isFocused,
     label,
     summary,
     thumbnail
   }) => {
-    const dispatch = useCollectionDispatch();
-    const [loaded, setLoaded] = (0, import_react20.useState)(false);
     const widthRef = (0, import_react20.useRef)(null);
-    (0, import_react20.useEffect)(() => {
-      const resizeObserver = new ResizeObserver((entries) => {
-        for (let entry of entries) {
-          if (entry.contentBoxSize) {
-            const contentBoxSize = Array.isArray(entry.contentBoxSize) ? entry.contentBoxSize[0] : entry.contentBoxSize;
-            dispatch({
-              type: "updateItemHeight",
-              itemHeight: contentBoxSize.inlineSize
-            });
-          }
-        }
-      });
-      if (index === 0 && widthRef.current)
-        resizeObserver.observe(widthRef.current);
-    }, [index, loaded]);
     if (thumbnail[0].type === "ContentResource")
       return /* @__PURE__ */ import_react20.default.createElement(import_react20.default.Fragment, null);
     return /* @__PURE__ */ import_react20.default.createElement(FigureStyled, {
@@ -54246,8 +54212,6 @@ and ensure you are accounting for this risk.
       ref: widthRef
     }), /* @__PURE__ */ import_react20.default.createElement(Placeholder, null, /* @__PURE__ */ import_react20.default.createElement(Nt, {
       altAsLabel: label,
-      css: { objectFit: "cover", width: "100%", height: "100%" },
-      onLoad: () => setLoaded(true),
       thumbnail
     }))), /* @__PURE__ */ import_react20.default.createElement("figcaption", null, /* @__PURE__ */ import_react20.default.createElement(Title, {
       label
@@ -54264,18 +54228,8 @@ and ensure you are accounting for this risk.
   });
   var ItemStyled = styled("div", {
     position: "relative",
-    width: "calc(100% / 4)",
     zIndex: "0",
-    borderRadius: "3px",
-    [`> ${Anchor}:hover`]: {
-      [`${FigureStyled}`]: {
-        boxShadow: "3px 3px 11px #0003"
-      },
-      [`${Placeholder}`]: {
-        borderBottomLeftRadius: "0",
-        borderBottomRightRadius: "0"
-      }
-    }
+    borderRadius: "3px"
   });
 
   // src/components/Preview/Preview.tsx
@@ -54285,9 +54239,7 @@ and ensure you are accounting for this risk.
   var PreviewStyled = styled("div", {
     position: "absolute",
     zIndex: "2",
-    left: "-$2",
-    top: "-$2",
-    width: "calc(100% + (0.618rem * 2))",
+    width: "100%",
     opacity: "0",
     variants: {
       isFocused: {
@@ -54334,7 +54286,7 @@ and ensure you are accounting for this risk.
       }
     }
   });
-  var Label2 = styled("div", {
+  var Label = styled("div", {
     display: "flex",
     justifyContent: "center",
     backgroundColor: "rgba(0,0,0,0.7)",
@@ -54353,8 +54305,10 @@ and ensure you are accounting for this risk.
     }, /* @__PURE__ */ import_react21.default.createElement("title", null, "Next"), /* @__PURE__ */ import_react21.default.createElement("path", {
       fill: "none",
       stroke: "currentColor",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
       strokeMiterlimit: "10",
-      strokeWidth: "70",
+      strokeWidth: "45",
       d: "M268 112l144 144-144 144M392 256H100"
     }));
   };
@@ -54368,8 +54322,10 @@ and ensure you are accounting for this risk.
     }, /* @__PURE__ */ import_react22.default.createElement("title", null, "Previous"), /* @__PURE__ */ import_react22.default.createElement("path", {
       fill: "none",
       stroke: "currentColor",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
       strokeMiterlimit: "10",
-      strokeWidth: "70",
+      strokeWidth: "45",
       d: "M244 400L100 256l144-144M120 256h292"
     }));
   };
@@ -54403,7 +54359,7 @@ and ensure you are accounting for this risk.
     }, /* @__PURE__ */ import_react23.default.createElement(PreviousIcon, null)), /* @__PURE__ */ import_react23.default.createElement("button", {
       onClick: () => handleActiveCanvas(1),
       disabled: !hasNext
-    }, /* @__PURE__ */ import_react23.default.createElement(NextIcon, null))), /* @__PURE__ */ import_react23.default.createElement(Label2, {
+    }, /* @__PURE__ */ import_react23.default.createElement(NextIcon, null))), /* @__PURE__ */ import_react23.default.createElement(Label, {
       onClick: (e2) => e2.preventDefault()
     }, canvasCurrent, " of ", canvasCount))));
   };
@@ -54419,7 +54375,7 @@ and ensure you are accounting for this risk.
   };
 
   // src/components/Items/Item.tsx
-  var Item = ({ index, item }) => {
+  var Item = ({ index: index2, item }) => {
     var _a;
     const store = useCollectionState();
     const { vault } = store;
@@ -54469,7 +54425,7 @@ and ensure you are accounting for this risk.
       onMouseEnter: onFocus,
       onMouseLeave: onBlur
     }, /* @__PURE__ */ import_react24.default.createElement(Figure_default, {
-      index,
+      index: index2,
       isFocused,
       key: id,
       label: item.label,
@@ -54488,188 +54444,5732 @@ and ensure you are accounting for this risk.
   var ItemsStyled = styled("div", {
     position: "relative",
     display: "flex",
-    flexDirection: "row",
-    [`> ${ItemStyled}`]: {
-      marginRight: "$4",
-      "&:last-child": {
-        marginRight: "0"
+    flexDirection: "row"
+  });
+
+  // node_modules/ssr-window/ssr-window.esm.js
+  function isObject(obj) {
+    return obj !== null && typeof obj === "object" && "constructor" in obj && obj.constructor === Object;
+  }
+  function extend(target = {}, src = {}) {
+    Object.keys(src).forEach((key) => {
+      if (typeof target[key] === "undefined")
+        target[key] = src[key];
+      else if (isObject(src[key]) && isObject(target[key]) && Object.keys(src[key]).length > 0) {
+        extend(target[key], src[key]);
       }
-    }
-  });
-
-  // src/components/Items/Control.tsx
-  var import_react25 = __toESM(require_react());
-
-  // src/components/Items/Control.styled.ts
-  var Gradient = styled("div", {
-    position: "absolute",
-    background: "black",
-    borderRadius: "3px",
-    opacity: "0",
-    transition: "$all"
-  });
-  var Icon = styled("div", {
-    position: "absolute",
-    display: "flex",
-    flexDirection: "column",
-    width: "$4",
-    height: "$4",
-    borderRadius: "100%",
-    backgroundColor: "white",
-    justifyContent: "center",
-    textAlign: "center",
-    alignItems: "center",
-    boxShadow: "none",
-    transform: "none",
-    transition: "$all",
-    svg: {
-      display: "flex",
-      width: "$3",
-      height: "$3",
-      fill: "$primary",
-      stroke: "$primary",
-      color: "$primary",
-      transition: "$all"
-    }
-  });
-  var ControlStyled = styled("button", {
-    position: "absolute",
-    height: "100%",
-    zIndex: "1",
-    border: "none",
-    cursor: "pointer",
-    background: "transparent",
-    [`&:disabled`]: {
-      opacity: "0",
-      transform: "scale(0)"
+    });
+  }
+  var ssrDocument = {
+    body: {},
+    addEventListener() {
     },
-    [`&:hover`]: {
-      [`> ${Gradient}`]: {
-        opacity: 1
+    removeEventListener() {
+    },
+    activeElement: {
+      blur() {
       },
-      [`> ${Icon}`]: {
-        boxShadow: "3px 3px 11px #0003",
-        svg: {
-          fill: "$accent",
-          stroke: "$accent",
-          color: "$accent"
+      nodeName: ""
+    },
+    querySelector() {
+      return null;
+    },
+    querySelectorAll() {
+      return [];
+    },
+    getElementById() {
+      return null;
+    },
+    createEvent() {
+      return {
+        initEvent() {
         }
+      };
+    },
+    createElement() {
+      return {
+        children: [],
+        childNodes: [],
+        style: {},
+        setAttribute() {
+        },
+        getElementsByTagName() {
+          return [];
+        }
+      };
+    },
+    createElementNS() {
+      return {};
+    },
+    importNode() {
+      return null;
+    },
+    location: {
+      hash: "",
+      host: "",
+      hostname: "",
+      href: "",
+      origin: "",
+      pathname: "",
+      protocol: "",
+      search: ""
+    }
+  };
+  function getDocument() {
+    const doc = typeof document !== "undefined" ? document : {};
+    extend(doc, ssrDocument);
+    return doc;
+  }
+  var ssrWindow = {
+    document: ssrDocument,
+    navigator: {
+      userAgent: ""
+    },
+    location: {
+      hash: "",
+      host: "",
+      hostname: "",
+      href: "",
+      origin: "",
+      pathname: "",
+      protocol: "",
+      search: ""
+    },
+    history: {
+      replaceState() {
+      },
+      pushState() {
+      },
+      go() {
+      },
+      back() {
       }
     },
-    variants: {
-      value: {
-        next: {
-          left: "unset",
-          right: "0",
-          [`> ${Gradient}`]: {
-            left: "unset",
-            right: "0",
-            top: "0",
-            background: "linear-gradient(270deg, rgba(0,0,0,0.7) 38.2%, rgba(0,0,0,0) 98%)"
-          },
-          [`> ${Icon}`]: {
-            right: "calc(-$4 / 2)",
-            marginTop: "calc(-$4 / 2)"
-          },
-          [`&:hover > ${Icon}`]: {
-            marginRight: "$1"
-          }
-        },
-        previous: {
-          left: "0",
-          right: "unset",
-          [`> ${Gradient}`]: {
-            left: "0",
-            right: "unset",
-            top: "0",
-            background: "linear-gradient(90deg, rgba(0,0,0,0.7) 38.2%, rgba(0,0,0,0) 98%)"
-          },
-          [`> ${Icon}`]: {
-            left: "calc(-$4 / 2)",
-            marginTop: "calc(-$4 / 2)"
-          },
-          [`&:hover > ${Icon}`]: {
-            marginLeft: "$1"
+    CustomEvent: function CustomEvent() {
+      return this;
+    },
+    addEventListener() {
+    },
+    removeEventListener() {
+    },
+    getComputedStyle() {
+      return {
+        getPropertyValue() {
+          return "";
+        }
+      };
+    },
+    Image() {
+    },
+    Date() {
+    },
+    screen: {},
+    setTimeout() {
+    },
+    clearTimeout() {
+    },
+    matchMedia() {
+      return {};
+    },
+    requestAnimationFrame(callback) {
+      if (typeof setTimeout === "undefined") {
+        callback();
+        return null;
+      }
+      return setTimeout(callback, 0);
+    },
+    cancelAnimationFrame(id) {
+      if (typeof setTimeout === "undefined") {
+        return;
+      }
+      clearTimeout(id);
+    }
+  };
+  function getWindow() {
+    const win = typeof window !== "undefined" ? window : {};
+    extend(win, ssrWindow);
+    return win;
+  }
+
+  // node_modules/dom7/dom7.esm.js
+  function makeReactive(obj) {
+    const proto = obj.__proto__;
+    Object.defineProperty(obj, "__proto__", {
+      get() {
+        return proto;
+      },
+      set(value) {
+        proto.__proto__ = value;
+      }
+    });
+  }
+  var Dom7 = class extends Array {
+    constructor(items) {
+      if (typeof items === "number") {
+        super(items);
+      } else {
+        super(...items || []);
+        makeReactive(this);
+      }
+    }
+  };
+  function arrayFlat(arr = []) {
+    const res = [];
+    arr.forEach((el) => {
+      if (Array.isArray(el)) {
+        res.push(...arrayFlat(el));
+      } else {
+        res.push(el);
+      }
+    });
+    return res;
+  }
+  function arrayFilter(arr, callback) {
+    return Array.prototype.filter.call(arr, callback);
+  }
+  function arrayUnique(arr) {
+    const uniqueArray = [];
+    for (let i2 = 0; i2 < arr.length; i2 += 1) {
+      if (uniqueArray.indexOf(arr[i2]) === -1)
+        uniqueArray.push(arr[i2]);
+    }
+    return uniqueArray;
+  }
+  function qsa(selector, context) {
+    if (typeof selector !== "string") {
+      return [selector];
+    }
+    const a2 = [];
+    const res = context.querySelectorAll(selector);
+    for (let i2 = 0; i2 < res.length; i2 += 1) {
+      a2.push(res[i2]);
+    }
+    return a2;
+  }
+  function $4(selector, context) {
+    const window2 = getWindow();
+    const document2 = getDocument();
+    let arr = [];
+    if (!context && selector instanceof Dom7) {
+      return selector;
+    }
+    if (!selector) {
+      return new Dom7(arr);
+    }
+    if (typeof selector === "string") {
+      const html2 = selector.trim();
+      if (html2.indexOf("<") >= 0 && html2.indexOf(">") >= 0) {
+        let toCreate = "div";
+        if (html2.indexOf("<li") === 0)
+          toCreate = "ul";
+        if (html2.indexOf("<tr") === 0)
+          toCreate = "tbody";
+        if (html2.indexOf("<td") === 0 || html2.indexOf("<th") === 0)
+          toCreate = "tr";
+        if (html2.indexOf("<tbody") === 0)
+          toCreate = "table";
+        if (html2.indexOf("<option") === 0)
+          toCreate = "select";
+        const tempParent = document2.createElement(toCreate);
+        tempParent.innerHTML = html2;
+        for (let i2 = 0; i2 < tempParent.childNodes.length; i2 += 1) {
+          arr.push(tempParent.childNodes[i2]);
+        }
+      } else {
+        arr = qsa(selector.trim(), context || document2);
+      }
+    } else if (selector.nodeType || selector === window2 || selector === document2) {
+      arr.push(selector);
+    } else if (Array.isArray(selector)) {
+      if (selector instanceof Dom7)
+        return selector;
+      arr = selector;
+    }
+    return new Dom7(arrayUnique(arr));
+  }
+  $4.fn = Dom7.prototype;
+  function addClass(...classes) {
+    const classNames = arrayFlat(classes.map((c3) => c3.split(" ")));
+    this.forEach((el) => {
+      el.classList.add(...classNames);
+    });
+    return this;
+  }
+  function removeClass(...classes) {
+    const classNames = arrayFlat(classes.map((c3) => c3.split(" ")));
+    this.forEach((el) => {
+      el.classList.remove(...classNames);
+    });
+    return this;
+  }
+  function toggleClass(...classes) {
+    const classNames = arrayFlat(classes.map((c3) => c3.split(" ")));
+    this.forEach((el) => {
+      classNames.forEach((className) => {
+        el.classList.toggle(className);
+      });
+    });
+  }
+  function hasClass(...classes) {
+    const classNames = arrayFlat(classes.map((c3) => c3.split(" ")));
+    return arrayFilter(this, (el) => {
+      return classNames.filter((className) => el.classList.contains(className)).length > 0;
+    }).length > 0;
+  }
+  function attr(attrs, value) {
+    if (arguments.length === 1 && typeof attrs === "string") {
+      if (this[0])
+        return this[0].getAttribute(attrs);
+      return void 0;
+    }
+    for (let i2 = 0; i2 < this.length; i2 += 1) {
+      if (arguments.length === 2) {
+        this[i2].setAttribute(attrs, value);
+      } else {
+        for (const attrName in attrs) {
+          this[i2][attrName] = attrs[attrName];
+          this[i2].setAttribute(attrName, attrs[attrName]);
+        }
+      }
+    }
+    return this;
+  }
+  function removeAttr(attr2) {
+    for (let i2 = 0; i2 < this.length; i2 += 1) {
+      this[i2].removeAttribute(attr2);
+    }
+    return this;
+  }
+  function transform(transform2) {
+    for (let i2 = 0; i2 < this.length; i2 += 1) {
+      this[i2].style.transform = transform2;
+    }
+    return this;
+  }
+  function transition(duration) {
+    for (let i2 = 0; i2 < this.length; i2 += 1) {
+      this[i2].style.transitionDuration = typeof duration !== "string" ? `${duration}ms` : duration;
+    }
+    return this;
+  }
+  function on(...args) {
+    let [eventType, targetSelector, listener, capture] = args;
+    if (typeof args[1] === "function") {
+      [eventType, listener, capture] = args;
+      targetSelector = void 0;
+    }
+    if (!capture)
+      capture = false;
+    function handleLiveEvent(e2) {
+      const target = e2.target;
+      if (!target)
+        return;
+      const eventData = e2.target.dom7EventData || [];
+      if (eventData.indexOf(e2) < 0) {
+        eventData.unshift(e2);
+      }
+      if ($4(target).is(targetSelector))
+        listener.apply(target, eventData);
+      else {
+        const parents2 = $4(target).parents();
+        for (let k4 = 0; k4 < parents2.length; k4 += 1) {
+          if ($4(parents2[k4]).is(targetSelector))
+            listener.apply(parents2[k4], eventData);
+        }
+      }
+    }
+    function handleEvent(e2) {
+      const eventData = e2 && e2.target ? e2.target.dom7EventData || [] : [];
+      if (eventData.indexOf(e2) < 0) {
+        eventData.unshift(e2);
+      }
+      listener.apply(this, eventData);
+    }
+    const events2 = eventType.split(" ");
+    let j4;
+    for (let i2 = 0; i2 < this.length; i2 += 1) {
+      const el = this[i2];
+      if (!targetSelector) {
+        for (j4 = 0; j4 < events2.length; j4 += 1) {
+          const event2 = events2[j4];
+          if (!el.dom7Listeners)
+            el.dom7Listeners = {};
+          if (!el.dom7Listeners[event2])
+            el.dom7Listeners[event2] = [];
+          el.dom7Listeners[event2].push({
+            listener,
+            proxyListener: handleEvent
+          });
+          el.addEventListener(event2, handleEvent, capture);
+        }
+      } else {
+        for (j4 = 0; j4 < events2.length; j4 += 1) {
+          const event2 = events2[j4];
+          if (!el.dom7LiveListeners)
+            el.dom7LiveListeners = {};
+          if (!el.dom7LiveListeners[event2])
+            el.dom7LiveListeners[event2] = [];
+          el.dom7LiveListeners[event2].push({
+            listener,
+            proxyListener: handleLiveEvent
+          });
+          el.addEventListener(event2, handleLiveEvent, capture);
+        }
+      }
+    }
+    return this;
+  }
+  function off(...args) {
+    let [eventType, targetSelector, listener, capture] = args;
+    if (typeof args[1] === "function") {
+      [eventType, listener, capture] = args;
+      targetSelector = void 0;
+    }
+    if (!capture)
+      capture = false;
+    const events2 = eventType.split(" ");
+    for (let i2 = 0; i2 < events2.length; i2 += 1) {
+      const event2 = events2[i2];
+      for (let j4 = 0; j4 < this.length; j4 += 1) {
+        const el = this[j4];
+        let handlers;
+        if (!targetSelector && el.dom7Listeners) {
+          handlers = el.dom7Listeners[event2];
+        } else if (targetSelector && el.dom7LiveListeners) {
+          handlers = el.dom7LiveListeners[event2];
+        }
+        if (handlers && handlers.length) {
+          for (let k4 = handlers.length - 1; k4 >= 0; k4 -= 1) {
+            const handler = handlers[k4];
+            if (listener && handler.listener === listener) {
+              el.removeEventListener(event2, handler.proxyListener, capture);
+              handlers.splice(k4, 1);
+            } else if (listener && handler.listener && handler.listener.dom7proxy && handler.listener.dom7proxy === listener) {
+              el.removeEventListener(event2, handler.proxyListener, capture);
+              handlers.splice(k4, 1);
+            } else if (!listener) {
+              el.removeEventListener(event2, handler.proxyListener, capture);
+              handlers.splice(k4, 1);
+            }
           }
         }
       }
     }
-  });
+    return this;
+  }
+  function trigger(...args) {
+    const window2 = getWindow();
+    const events2 = args[0].split(" ");
+    const eventData = args[1];
+    for (let i2 = 0; i2 < events2.length; i2 += 1) {
+      const event2 = events2[i2];
+      for (let j4 = 0; j4 < this.length; j4 += 1) {
+        const el = this[j4];
+        if (window2.CustomEvent) {
+          const evt = new window2.CustomEvent(event2, {
+            detail: eventData,
+            bubbles: true,
+            cancelable: true
+          });
+          el.dom7EventData = args.filter((data, dataIndex) => dataIndex > 0);
+          el.dispatchEvent(evt);
+          el.dom7EventData = [];
+          delete el.dom7EventData;
+        }
+      }
+    }
+    return this;
+  }
+  function transitionEnd(callback) {
+    const dom = this;
+    function fireCallBack(e2) {
+      if (e2.target !== this)
+        return;
+      callback.call(this, e2);
+      dom.off("transitionend", fireCallBack);
+    }
+    if (callback) {
+      dom.on("transitionend", fireCallBack);
+    }
+    return this;
+  }
+  function outerWidth(includeMargins) {
+    if (this.length > 0) {
+      if (includeMargins) {
+        const styles2 = this.styles();
+        return this[0].offsetWidth + parseFloat(styles2.getPropertyValue("margin-right")) + parseFloat(styles2.getPropertyValue("margin-left"));
+      }
+      return this[0].offsetWidth;
+    }
+    return null;
+  }
+  function outerHeight(includeMargins) {
+    if (this.length > 0) {
+      if (includeMargins) {
+        const styles2 = this.styles();
+        return this[0].offsetHeight + parseFloat(styles2.getPropertyValue("margin-top")) + parseFloat(styles2.getPropertyValue("margin-bottom"));
+      }
+      return this[0].offsetHeight;
+    }
+    return null;
+  }
+  function offset() {
+    if (this.length > 0) {
+      const window2 = getWindow();
+      const document2 = getDocument();
+      const el = this[0];
+      const box = el.getBoundingClientRect();
+      const body = document2.body;
+      const clientTop = el.clientTop || body.clientTop || 0;
+      const clientLeft = el.clientLeft || body.clientLeft || 0;
+      const scrollTop = el === window2 ? window2.scrollY : el.scrollTop;
+      const scrollLeft = el === window2 ? window2.scrollX : el.scrollLeft;
+      return {
+        top: box.top + scrollTop - clientTop,
+        left: box.left + scrollLeft - clientLeft
+      };
+    }
+    return null;
+  }
+  function styles() {
+    const window2 = getWindow();
+    if (this[0])
+      return window2.getComputedStyle(this[0], null);
+    return {};
+  }
+  function css2(props, value) {
+    const window2 = getWindow();
+    let i2;
+    if (arguments.length === 1) {
+      if (typeof props === "string") {
+        if (this[0])
+          return window2.getComputedStyle(this[0], null).getPropertyValue(props);
+      } else {
+        for (i2 = 0; i2 < this.length; i2 += 1) {
+          for (const prop in props) {
+            this[i2].style[prop] = props[prop];
+          }
+        }
+        return this;
+      }
+    }
+    if (arguments.length === 2 && typeof props === "string") {
+      for (i2 = 0; i2 < this.length; i2 += 1) {
+        this[i2].style[props] = value;
+      }
+      return this;
+    }
+    return this;
+  }
+  function each(callback) {
+    if (!callback)
+      return this;
+    this.forEach((el, index2) => {
+      callback.apply(el, [el, index2]);
+    });
+    return this;
+  }
+  function filter(callback) {
+    const result = arrayFilter(this, callback);
+    return $4(result);
+  }
+  function html(html2) {
+    if (typeof html2 === "undefined") {
+      return this[0] ? this[0].innerHTML : null;
+    }
+    for (let i2 = 0; i2 < this.length; i2 += 1) {
+      this[i2].innerHTML = html2;
+    }
+    return this;
+  }
+  function text(text2) {
+    if (typeof text2 === "undefined") {
+      return this[0] ? this[0].textContent.trim() : null;
+    }
+    for (let i2 = 0; i2 < this.length; i2 += 1) {
+      this[i2].textContent = text2;
+    }
+    return this;
+  }
+  function is(selector) {
+    const window2 = getWindow();
+    const document2 = getDocument();
+    const el = this[0];
+    let compareWith;
+    let i2;
+    if (!el || typeof selector === "undefined")
+      return false;
+    if (typeof selector === "string") {
+      if (el.matches)
+        return el.matches(selector);
+      if (el.webkitMatchesSelector)
+        return el.webkitMatchesSelector(selector);
+      if (el.msMatchesSelector)
+        return el.msMatchesSelector(selector);
+      compareWith = $4(selector);
+      for (i2 = 0; i2 < compareWith.length; i2 += 1) {
+        if (compareWith[i2] === el)
+          return true;
+      }
+      return false;
+    }
+    if (selector === document2) {
+      return el === document2;
+    }
+    if (selector === window2) {
+      return el === window2;
+    }
+    if (selector.nodeType || selector instanceof Dom7) {
+      compareWith = selector.nodeType ? [selector] : selector;
+      for (i2 = 0; i2 < compareWith.length; i2 += 1) {
+        if (compareWith[i2] === el)
+          return true;
+      }
+      return false;
+    }
+    return false;
+  }
+  function index() {
+    let child = this[0];
+    let i2;
+    if (child) {
+      i2 = 0;
+      while ((child = child.previousSibling) !== null) {
+        if (child.nodeType === 1)
+          i2 += 1;
+      }
+      return i2;
+    }
+    return void 0;
+  }
+  function eq(index2) {
+    if (typeof index2 === "undefined")
+      return this;
+    const length = this.length;
+    if (index2 > length - 1) {
+      return $4([]);
+    }
+    if (index2 < 0) {
+      const returnIndex = length + index2;
+      if (returnIndex < 0)
+        return $4([]);
+      return $4([this[returnIndex]]);
+    }
+    return $4([this[index2]]);
+  }
+  function append(...els) {
+    let newChild;
+    const document2 = getDocument();
+    for (let k4 = 0; k4 < els.length; k4 += 1) {
+      newChild = els[k4];
+      for (let i2 = 0; i2 < this.length; i2 += 1) {
+        if (typeof newChild === "string") {
+          const tempDiv = document2.createElement("div");
+          tempDiv.innerHTML = newChild;
+          while (tempDiv.firstChild) {
+            this[i2].appendChild(tempDiv.firstChild);
+          }
+        } else if (newChild instanceof Dom7) {
+          for (let j4 = 0; j4 < newChild.length; j4 += 1) {
+            this[i2].appendChild(newChild[j4]);
+          }
+        } else {
+          this[i2].appendChild(newChild);
+        }
+      }
+    }
+    return this;
+  }
+  function prepend(newChild) {
+    const document2 = getDocument();
+    let i2;
+    let j4;
+    for (i2 = 0; i2 < this.length; i2 += 1) {
+      if (typeof newChild === "string") {
+        const tempDiv = document2.createElement("div");
+        tempDiv.innerHTML = newChild;
+        for (j4 = tempDiv.childNodes.length - 1; j4 >= 0; j4 -= 1) {
+          this[i2].insertBefore(tempDiv.childNodes[j4], this[i2].childNodes[0]);
+        }
+      } else if (newChild instanceof Dom7) {
+        for (j4 = 0; j4 < newChild.length; j4 += 1) {
+          this[i2].insertBefore(newChild[j4], this[i2].childNodes[0]);
+        }
+      } else {
+        this[i2].insertBefore(newChild, this[i2].childNodes[0]);
+      }
+    }
+    return this;
+  }
+  function next(selector) {
+    if (this.length > 0) {
+      if (selector) {
+        if (this[0].nextElementSibling && $4(this[0].nextElementSibling).is(selector)) {
+          return $4([this[0].nextElementSibling]);
+        }
+        return $4([]);
+      }
+      if (this[0].nextElementSibling)
+        return $4([this[0].nextElementSibling]);
+      return $4([]);
+    }
+    return $4([]);
+  }
+  function nextAll(selector) {
+    const nextEls = [];
+    let el = this[0];
+    if (!el)
+      return $4([]);
+    while (el.nextElementSibling) {
+      const next2 = el.nextElementSibling;
+      if (selector) {
+        if ($4(next2).is(selector))
+          nextEls.push(next2);
+      } else
+        nextEls.push(next2);
+      el = next2;
+    }
+    return $4(nextEls);
+  }
+  function prev(selector) {
+    if (this.length > 0) {
+      const el = this[0];
+      if (selector) {
+        if (el.previousElementSibling && $4(el.previousElementSibling).is(selector)) {
+          return $4([el.previousElementSibling]);
+        }
+        return $4([]);
+      }
+      if (el.previousElementSibling)
+        return $4([el.previousElementSibling]);
+      return $4([]);
+    }
+    return $4([]);
+  }
+  function prevAll(selector) {
+    const prevEls = [];
+    let el = this[0];
+    if (!el)
+      return $4([]);
+    while (el.previousElementSibling) {
+      const prev2 = el.previousElementSibling;
+      if (selector) {
+        if ($4(prev2).is(selector))
+          prevEls.push(prev2);
+      } else
+        prevEls.push(prev2);
+      el = prev2;
+    }
+    return $4(prevEls);
+  }
+  function parent(selector) {
+    const parents2 = [];
+    for (let i2 = 0; i2 < this.length; i2 += 1) {
+      if (this[i2].parentNode !== null) {
+        if (selector) {
+          if ($4(this[i2].parentNode).is(selector))
+            parents2.push(this[i2].parentNode);
+        } else {
+          parents2.push(this[i2].parentNode);
+        }
+      }
+    }
+    return $4(parents2);
+  }
+  function parents(selector) {
+    const parents2 = [];
+    for (let i2 = 0; i2 < this.length; i2 += 1) {
+      let parent2 = this[i2].parentNode;
+      while (parent2) {
+        if (selector) {
+          if ($4(parent2).is(selector))
+            parents2.push(parent2);
+        } else {
+          parents2.push(parent2);
+        }
+        parent2 = parent2.parentNode;
+      }
+    }
+    return $4(parents2);
+  }
+  function closest(selector) {
+    let closest2 = this;
+    if (typeof selector === "undefined") {
+      return $4([]);
+    }
+    if (!closest2.is(selector)) {
+      closest2 = closest2.parents(selector).eq(0);
+    }
+    return closest2;
+  }
+  function find(selector) {
+    const foundElements = [];
+    for (let i2 = 0; i2 < this.length; i2 += 1) {
+      const found = this[i2].querySelectorAll(selector);
+      for (let j4 = 0; j4 < found.length; j4 += 1) {
+        foundElements.push(found[j4]);
+      }
+    }
+    return $4(foundElements);
+  }
+  function children(selector) {
+    const children2 = [];
+    for (let i2 = 0; i2 < this.length; i2 += 1) {
+      const childNodes = this[i2].children;
+      for (let j4 = 0; j4 < childNodes.length; j4 += 1) {
+        if (!selector || $4(childNodes[j4]).is(selector)) {
+          children2.push(childNodes[j4]);
+        }
+      }
+    }
+    return $4(children2);
+  }
+  function remove() {
+    for (let i2 = 0; i2 < this.length; i2 += 1) {
+      if (this[i2].parentNode)
+        this[i2].parentNode.removeChild(this[i2]);
+    }
+    return this;
+  }
+  var noTrigger = "resize scroll".split(" ");
+  function shortcut(name) {
+    function eventHandler(...args) {
+      if (typeof args[0] === "undefined") {
+        for (let i2 = 0; i2 < this.length; i2 += 1) {
+          if (noTrigger.indexOf(name) < 0) {
+            if (name in this[i2])
+              this[i2][name]();
+            else {
+              $4(this[i2]).trigger(name);
+            }
+          }
+        }
+        return this;
+      }
+      return this.on(name, ...args);
+    }
+    return eventHandler;
+  }
+  var click = shortcut("click");
+  var blur = shortcut("blur");
+  var focus = shortcut("focus");
+  var focusin = shortcut("focusin");
+  var focusout = shortcut("focusout");
+  var keyup = shortcut("keyup");
+  var keydown = shortcut("keydown");
+  var keypress = shortcut("keypress");
+  var submit = shortcut("submit");
+  var change = shortcut("change");
+  var mousedown = shortcut("mousedown");
+  var mousemove = shortcut("mousemove");
+  var mouseup = shortcut("mouseup");
+  var mouseenter = shortcut("mouseenter");
+  var mouseleave = shortcut("mouseleave");
+  var mouseout = shortcut("mouseout");
+  var mouseover = shortcut("mouseover");
+  var touchstart = shortcut("touchstart");
+  var touchend = shortcut("touchend");
+  var touchmove = shortcut("touchmove");
+  var resize = shortcut("resize");
+  var scroll = shortcut("scroll");
 
-  // src/components/Items/Control.tsx
-  var ItemsControl = ({
-    disabled,
-    handleControl,
-    height,
-    increment,
-    label
-  }) => {
-    const width = height * 0.382;
-    return /* @__PURE__ */ import_react25.default.createElement(import_react25.default.Fragment, null, /* @__PURE__ */ import_react25.default.createElement(ControlStyled, {
-      "aria-label": label,
-      direction: label,
-      onClick: () => handleControl(increment),
-      style: { height: `${height}px`, width: `${width}px` },
-      disabled,
-      value: label
-    }, /* @__PURE__ */ import_react25.default.createElement(Gradient, {
-      style: { height: `${height}px`, width: `${width}px` }
-    }), /* @__PURE__ */ import_react25.default.createElement(Icon, null, label === "next" && /* @__PURE__ */ import_react25.default.createElement(NextIcon, null), label === "previous" && /* @__PURE__ */ import_react25.default.createElement(PreviousIcon, null))));
+  // node_modules/swiper/shared/dom.js
+  var Methods = {
+    addClass,
+    removeClass,
+    hasClass,
+    toggleClass,
+    attr,
+    removeAttr,
+    transform,
+    transition,
+    on,
+    off,
+    trigger,
+    transitionEnd,
+    outerWidth,
+    outerHeight,
+    styles,
+    offset,
+    css: css2,
+    each,
+    html,
+    text,
+    is,
+    index,
+    eq,
+    append,
+    prepend,
+    next,
+    nextAll,
+    prev,
+    prevAll,
+    parent,
+    parents,
+    closest,
+    find,
+    children,
+    filter,
+    remove
   };
-  var Control_default = ItemsControl;
+  Object.keys(Methods).forEach((methodName) => {
+    Object.defineProperty($4.fn, methodName, {
+      value: Methods[methodName],
+      writable: true
+    });
+  });
+  var dom_default = $4;
+
+  // node_modules/swiper/shared/utils.js
+  function deleteProps(obj) {
+    const object = obj;
+    Object.keys(object).forEach((key) => {
+      try {
+        object[key] = null;
+      } catch (e2) {
+      }
+      try {
+        delete object[key];
+      } catch (e2) {
+      }
+    });
+  }
+  function nextTick(callback, delay) {
+    if (delay === void 0) {
+      delay = 0;
+    }
+    return setTimeout(callback, delay);
+  }
+  function now() {
+    return Date.now();
+  }
+  function getComputedStyle2(el) {
+    const window2 = getWindow();
+    let style;
+    if (window2.getComputedStyle) {
+      style = window2.getComputedStyle(el, null);
+    }
+    if (!style && el.currentStyle) {
+      style = el.currentStyle;
+    }
+    if (!style) {
+      style = el.style;
+    }
+    return style;
+  }
+  function getTranslate(el, axis) {
+    if (axis === void 0) {
+      axis = "x";
+    }
+    const window2 = getWindow();
+    let matrix;
+    let curTransform;
+    let transformMatrix;
+    const curStyle = getComputedStyle2(el, null);
+    if (window2.WebKitCSSMatrix) {
+      curTransform = curStyle.transform || curStyle.webkitTransform;
+      if (curTransform.split(",").length > 6) {
+        curTransform = curTransform.split(", ").map((a2) => a2.replace(",", ".")).join(", ");
+      }
+      transformMatrix = new window2.WebKitCSSMatrix(curTransform === "none" ? "" : curTransform);
+    } else {
+      transformMatrix = curStyle.MozTransform || curStyle.OTransform || curStyle.MsTransform || curStyle.msTransform || curStyle.transform || curStyle.getPropertyValue("transform").replace("translate(", "matrix(1, 0, 0, 1,");
+      matrix = transformMatrix.toString().split(",");
+    }
+    if (axis === "x") {
+      if (window2.WebKitCSSMatrix)
+        curTransform = transformMatrix.m41;
+      else if (matrix.length === 16)
+        curTransform = parseFloat(matrix[12]);
+      else
+        curTransform = parseFloat(matrix[4]);
+    }
+    if (axis === "y") {
+      if (window2.WebKitCSSMatrix)
+        curTransform = transformMatrix.m42;
+      else if (matrix.length === 16)
+        curTransform = parseFloat(matrix[13]);
+      else
+        curTransform = parseFloat(matrix[5]);
+    }
+    return curTransform || 0;
+  }
+  function isObject2(o2) {
+    return typeof o2 === "object" && o2 !== null && o2.constructor && Object.prototype.toString.call(o2).slice(8, -1) === "Object";
+  }
+  function isNode(node) {
+    if (typeof window !== "undefined" && typeof window.HTMLElement !== "undefined") {
+      return node instanceof HTMLElement;
+    }
+    return node && (node.nodeType === 1 || node.nodeType === 11);
+  }
+  function extend2() {
+    const to = Object(arguments.length <= 0 ? void 0 : arguments[0]);
+    const noExtend = ["__proto__", "constructor", "prototype"];
+    for (let i2 = 1; i2 < arguments.length; i2 += 1) {
+      const nextSource = i2 < 0 || arguments.length <= i2 ? void 0 : arguments[i2];
+      if (nextSource !== void 0 && nextSource !== null && !isNode(nextSource)) {
+        const keysArray = Object.keys(Object(nextSource)).filter((key) => noExtend.indexOf(key) < 0);
+        for (let nextIndex = 0, len = keysArray.length; nextIndex < len; nextIndex += 1) {
+          const nextKey = keysArray[nextIndex];
+          const desc = Object.getOwnPropertyDescriptor(nextSource, nextKey);
+          if (desc !== void 0 && desc.enumerable) {
+            if (isObject2(to[nextKey]) && isObject2(nextSource[nextKey])) {
+              if (nextSource[nextKey].__swiper__) {
+                to[nextKey] = nextSource[nextKey];
+              } else {
+                extend2(to[nextKey], nextSource[nextKey]);
+              }
+            } else if (!isObject2(to[nextKey]) && isObject2(nextSource[nextKey])) {
+              to[nextKey] = {};
+              if (nextSource[nextKey].__swiper__) {
+                to[nextKey] = nextSource[nextKey];
+              } else {
+                extend2(to[nextKey], nextSource[nextKey]);
+              }
+            } else {
+              to[nextKey] = nextSource[nextKey];
+            }
+          }
+        }
+      }
+    }
+    return to;
+  }
+  function setCSSProperty(el, varName, varValue) {
+    el.style.setProperty(varName, varValue);
+  }
+  function animateCSSModeScroll(_ref) {
+    let {
+      swiper,
+      targetPosition,
+      side
+    } = _ref;
+    const window2 = getWindow();
+    const startPosition = -swiper.translate;
+    let startTime = null;
+    let time;
+    const duration = swiper.params.speed;
+    swiper.wrapperEl.style.scrollSnapType = "none";
+    window2.cancelAnimationFrame(swiper.cssModeFrameID);
+    const dir = targetPosition > startPosition ? "next" : "prev";
+    const isOutOfBound = (current, target) => {
+      return dir === "next" && current >= target || dir === "prev" && current <= target;
+    };
+    const animate = () => {
+      time = new Date().getTime();
+      if (startTime === null) {
+        startTime = time;
+      }
+      const progress = Math.max(Math.min((time - startTime) / duration, 1), 0);
+      const easeProgress = 0.5 - Math.cos(progress * Math.PI) / 2;
+      let currentPosition = startPosition + easeProgress * (targetPosition - startPosition);
+      if (isOutOfBound(currentPosition, targetPosition)) {
+        currentPosition = targetPosition;
+      }
+      swiper.wrapperEl.scrollTo({
+        [side]: currentPosition
+      });
+      if (isOutOfBound(currentPosition, targetPosition)) {
+        swiper.wrapperEl.style.overflow = "hidden";
+        swiper.wrapperEl.style.scrollSnapType = "";
+        setTimeout(() => {
+          swiper.wrapperEl.style.overflow = "";
+          swiper.wrapperEl.scrollTo({
+            [side]: currentPosition
+          });
+        });
+        window2.cancelAnimationFrame(swiper.cssModeFrameID);
+        return;
+      }
+      swiper.cssModeFrameID = window2.requestAnimationFrame(animate);
+    };
+    animate();
+  }
+
+  // node_modules/swiper/shared/get-support.js
+  var support;
+  function calcSupport() {
+    const window2 = getWindow();
+    const document2 = getDocument();
+    return {
+      smoothScroll: document2.documentElement && "scrollBehavior" in document2.documentElement.style,
+      touch: !!("ontouchstart" in window2 || window2.DocumentTouch && document2 instanceof window2.DocumentTouch),
+      passiveListener: function checkPassiveListener() {
+        let supportsPassive = false;
+        try {
+          const opts = Object.defineProperty({}, "passive", {
+            get() {
+              supportsPassive = true;
+            }
+          });
+          window2.addEventListener("testPassiveListener", null, opts);
+        } catch (e2) {
+        }
+        return supportsPassive;
+      }(),
+      gestures: function checkGestures() {
+        return "ongesturestart" in window2;
+      }()
+    };
+  }
+  function getSupport() {
+    if (!support) {
+      support = calcSupport();
+    }
+    return support;
+  }
+
+  // node_modules/swiper/shared/get-device.js
+  var deviceCached;
+  function calcDevice(_temp) {
+    let {
+      userAgent
+    } = _temp === void 0 ? {} : _temp;
+    const support2 = getSupport();
+    const window2 = getWindow();
+    const platform = window2.navigator.platform;
+    const ua = userAgent || window2.navigator.userAgent;
+    const device = {
+      ios: false,
+      android: false
+    };
+    const screenWidth = window2.screen.width;
+    const screenHeight = window2.screen.height;
+    const android = ua.match(/(Android);?[\s\/]+([\d.]+)?/);
+    let ipad = ua.match(/(iPad).*OS\s([\d_]+)/);
+    const ipod = ua.match(/(iPod)(.*OS\s([\d_]+))?/);
+    const iphone = !ipad && ua.match(/(iPhone\sOS|iOS)\s([\d_]+)/);
+    const windows = platform === "Win32";
+    let macos = platform === "MacIntel";
+    const iPadScreens = ["1024x1366", "1366x1024", "834x1194", "1194x834", "834x1112", "1112x834", "768x1024", "1024x768", "820x1180", "1180x820", "810x1080", "1080x810"];
+    if (!ipad && macos && support2.touch && iPadScreens.indexOf(`${screenWidth}x${screenHeight}`) >= 0) {
+      ipad = ua.match(/(Version)\/([\d.]+)/);
+      if (!ipad)
+        ipad = [0, 1, "13_0_0"];
+      macos = false;
+    }
+    if (android && !windows) {
+      device.os = "android";
+      device.android = true;
+    }
+    if (ipad || iphone || ipod) {
+      device.os = "ios";
+      device.ios = true;
+    }
+    return device;
+  }
+  function getDevice(overrides) {
+    if (overrides === void 0) {
+      overrides = {};
+    }
+    if (!deviceCached) {
+      deviceCached = calcDevice(overrides);
+    }
+    return deviceCached;
+  }
+
+  // node_modules/swiper/shared/get-browser.js
+  var browser;
+  function calcBrowser() {
+    const window2 = getWindow();
+    function isSafari() {
+      const ua = window2.navigator.userAgent.toLowerCase();
+      return ua.indexOf("safari") >= 0 && ua.indexOf("chrome") < 0 && ua.indexOf("android") < 0;
+    }
+    return {
+      isSafari: isSafari(),
+      isWebView: /(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i.test(window2.navigator.userAgent)
+    };
+  }
+  function getBrowser() {
+    if (!browser) {
+      browser = calcBrowser();
+    }
+    return browser;
+  }
+
+  // node_modules/swiper/core/modules/resize/resize.js
+  function Resize(_ref) {
+    let {
+      swiper,
+      on: on2,
+      emit
+    } = _ref;
+    const window2 = getWindow();
+    let observer = null;
+    let animationFrame = null;
+    const resizeHandler = () => {
+      if (!swiper || swiper.destroyed || !swiper.initialized)
+        return;
+      emit("beforeResize");
+      emit("resize");
+    };
+    const createObserver = () => {
+      if (!swiper || swiper.destroyed || !swiper.initialized)
+        return;
+      observer = new ResizeObserver((entries) => {
+        animationFrame = window2.requestAnimationFrame(() => {
+          const {
+            width,
+            height
+          } = swiper;
+          let newWidth = width;
+          let newHeight = height;
+          entries.forEach((_ref2) => {
+            let {
+              contentBoxSize,
+              contentRect,
+              target
+            } = _ref2;
+            if (target && target !== swiper.el)
+              return;
+            newWidth = contentRect ? contentRect.width : (contentBoxSize[0] || contentBoxSize).inlineSize;
+            newHeight = contentRect ? contentRect.height : (contentBoxSize[0] || contentBoxSize).blockSize;
+          });
+          if (newWidth !== width || newHeight !== height) {
+            resizeHandler();
+          }
+        });
+      });
+      observer.observe(swiper.el);
+    };
+    const removeObserver = () => {
+      if (animationFrame) {
+        window2.cancelAnimationFrame(animationFrame);
+      }
+      if (observer && observer.unobserve && swiper.el) {
+        observer.unobserve(swiper.el);
+        observer = null;
+      }
+    };
+    const orientationChangeHandler = () => {
+      if (!swiper || swiper.destroyed || !swiper.initialized)
+        return;
+      emit("orientationchange");
+    };
+    on2("init", () => {
+      if (swiper.params.resizeObserver && typeof window2.ResizeObserver !== "undefined") {
+        createObserver();
+        return;
+      }
+      window2.addEventListener("resize", resizeHandler);
+      window2.addEventListener("orientationchange", orientationChangeHandler);
+    });
+    on2("destroy", () => {
+      removeObserver();
+      window2.removeEventListener("resize", resizeHandler);
+      window2.removeEventListener("orientationchange", orientationChangeHandler);
+    });
+  }
+
+  // node_modules/swiper/core/modules/observer/observer.js
+  function Observer(_ref) {
+    let {
+      swiper,
+      extendParams,
+      on: on2,
+      emit
+    } = _ref;
+    const observers = [];
+    const window2 = getWindow();
+    const attach = function(target, options) {
+      if (options === void 0) {
+        options = {};
+      }
+      const ObserverFunc = window2.MutationObserver || window2.WebkitMutationObserver;
+      const observer = new ObserverFunc((mutations) => {
+        if (mutations.length === 1) {
+          emit("observerUpdate", mutations[0]);
+          return;
+        }
+        const observerUpdate = function observerUpdate2() {
+          emit("observerUpdate", mutations[0]);
+        };
+        if (window2.requestAnimationFrame) {
+          window2.requestAnimationFrame(observerUpdate);
+        } else {
+          window2.setTimeout(observerUpdate, 0);
+        }
+      });
+      observer.observe(target, {
+        attributes: typeof options.attributes === "undefined" ? true : options.attributes,
+        childList: typeof options.childList === "undefined" ? true : options.childList,
+        characterData: typeof options.characterData === "undefined" ? true : options.characterData
+      });
+      observers.push(observer);
+    };
+    const init = () => {
+      if (!swiper.params.observer)
+        return;
+      if (swiper.params.observeParents) {
+        const containerParents = swiper.$el.parents();
+        for (let i2 = 0; i2 < containerParents.length; i2 += 1) {
+          attach(containerParents[i2]);
+        }
+      }
+      attach(swiper.$el[0], {
+        childList: swiper.params.observeSlideChildren
+      });
+      attach(swiper.$wrapperEl[0], {
+        attributes: false
+      });
+    };
+    const destroy = () => {
+      observers.forEach((observer) => {
+        observer.disconnect();
+      });
+      observers.splice(0, observers.length);
+    };
+    extendParams({
+      observer: false,
+      observeParents: false,
+      observeSlideChildren: false
+    });
+    on2("init", init);
+    on2("destroy", destroy);
+  }
+
+  // node_modules/swiper/core/events-emitter.js
+  var events_emitter_default = {
+    on(events2, handler, priority) {
+      const self2 = this;
+      if (!self2.eventsListeners || self2.destroyed)
+        return self2;
+      if (typeof handler !== "function")
+        return self2;
+      const method = priority ? "unshift" : "push";
+      events2.split(" ").forEach((event2) => {
+        if (!self2.eventsListeners[event2])
+          self2.eventsListeners[event2] = [];
+        self2.eventsListeners[event2][method](handler);
+      });
+      return self2;
+    },
+    once(events2, handler, priority) {
+      const self2 = this;
+      if (!self2.eventsListeners || self2.destroyed)
+        return self2;
+      if (typeof handler !== "function")
+        return self2;
+      function onceHandler() {
+        self2.off(events2, onceHandler);
+        if (onceHandler.__emitterProxy) {
+          delete onceHandler.__emitterProxy;
+        }
+        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+          args[_key] = arguments[_key];
+        }
+        handler.apply(self2, args);
+      }
+      onceHandler.__emitterProxy = handler;
+      return self2.on(events2, onceHandler, priority);
+    },
+    onAny(handler, priority) {
+      const self2 = this;
+      if (!self2.eventsListeners || self2.destroyed)
+        return self2;
+      if (typeof handler !== "function")
+        return self2;
+      const method = priority ? "unshift" : "push";
+      if (self2.eventsAnyListeners.indexOf(handler) < 0) {
+        self2.eventsAnyListeners[method](handler);
+      }
+      return self2;
+    },
+    offAny(handler) {
+      const self2 = this;
+      if (!self2.eventsListeners || self2.destroyed)
+        return self2;
+      if (!self2.eventsAnyListeners)
+        return self2;
+      const index2 = self2.eventsAnyListeners.indexOf(handler);
+      if (index2 >= 0) {
+        self2.eventsAnyListeners.splice(index2, 1);
+      }
+      return self2;
+    },
+    off(events2, handler) {
+      const self2 = this;
+      if (!self2.eventsListeners || self2.destroyed)
+        return self2;
+      if (!self2.eventsListeners)
+        return self2;
+      events2.split(" ").forEach((event2) => {
+        if (typeof handler === "undefined") {
+          self2.eventsListeners[event2] = [];
+        } else if (self2.eventsListeners[event2]) {
+          self2.eventsListeners[event2].forEach((eventHandler, index2) => {
+            if (eventHandler === handler || eventHandler.__emitterProxy && eventHandler.__emitterProxy === handler) {
+              self2.eventsListeners[event2].splice(index2, 1);
+            }
+          });
+        }
+      });
+      return self2;
+    },
+    emit() {
+      const self2 = this;
+      if (!self2.eventsListeners || self2.destroyed)
+        return self2;
+      if (!self2.eventsListeners)
+        return self2;
+      let events2;
+      let data;
+      let context;
+      for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        args[_key2] = arguments[_key2];
+      }
+      if (typeof args[0] === "string" || Array.isArray(args[0])) {
+        events2 = args[0];
+        data = args.slice(1, args.length);
+        context = self2;
+      } else {
+        events2 = args[0].events;
+        data = args[0].data;
+        context = args[0].context || self2;
+      }
+      data.unshift(context);
+      const eventsArray = Array.isArray(events2) ? events2 : events2.split(" ");
+      eventsArray.forEach((event2) => {
+        if (self2.eventsAnyListeners && self2.eventsAnyListeners.length) {
+          self2.eventsAnyListeners.forEach((eventHandler) => {
+            eventHandler.apply(context, [event2, ...data]);
+          });
+        }
+        if (self2.eventsListeners && self2.eventsListeners[event2]) {
+          self2.eventsListeners[event2].forEach((eventHandler) => {
+            eventHandler.apply(context, data);
+          });
+        }
+      });
+      return self2;
+    }
+  };
+
+  // node_modules/swiper/core/update/updateSize.js
+  function updateSize() {
+    const swiper = this;
+    let width;
+    let height;
+    const $el = swiper.$el;
+    if (typeof swiper.params.width !== "undefined" && swiper.params.width !== null) {
+      width = swiper.params.width;
+    } else {
+      width = $el[0].clientWidth;
+    }
+    if (typeof swiper.params.height !== "undefined" && swiper.params.height !== null) {
+      height = swiper.params.height;
+    } else {
+      height = $el[0].clientHeight;
+    }
+    if (width === 0 && swiper.isHorizontal() || height === 0 && swiper.isVertical()) {
+      return;
+    }
+    width = width - parseInt($el.css("padding-left") || 0, 10) - parseInt($el.css("padding-right") || 0, 10);
+    height = height - parseInt($el.css("padding-top") || 0, 10) - parseInt($el.css("padding-bottom") || 0, 10);
+    if (Number.isNaN(width))
+      width = 0;
+    if (Number.isNaN(height))
+      height = 0;
+    Object.assign(swiper, {
+      width,
+      height,
+      size: swiper.isHorizontal() ? width : height
+    });
+  }
+
+  // node_modules/swiper/core/update/updateSlides.js
+  function updateSlides() {
+    const swiper = this;
+    function getDirectionLabel(property) {
+      if (swiper.isHorizontal()) {
+        return property;
+      }
+      return {
+        "width": "height",
+        "margin-top": "margin-left",
+        "margin-bottom ": "margin-right",
+        "margin-left": "margin-top",
+        "margin-right": "margin-bottom",
+        "padding-left": "padding-top",
+        "padding-right": "padding-bottom",
+        "marginRight": "marginBottom"
+      }[property];
+    }
+    function getDirectionPropertyValue(node, label) {
+      return parseFloat(node.getPropertyValue(getDirectionLabel(label)) || 0);
+    }
+    const params = swiper.params;
+    const {
+      $wrapperEl,
+      size: swiperSize,
+      rtlTranslate: rtl,
+      wrongRTL
+    } = swiper;
+    const isVirtual = swiper.virtual && params.virtual.enabled;
+    const previousSlidesLength = isVirtual ? swiper.virtual.slides.length : swiper.slides.length;
+    const slides = $wrapperEl.children(`.${swiper.params.slideClass}`);
+    const slidesLength = isVirtual ? swiper.virtual.slides.length : slides.length;
+    let snapGrid = [];
+    const slidesGrid = [];
+    const slidesSizesGrid = [];
+    let offsetBefore = params.slidesOffsetBefore;
+    if (typeof offsetBefore === "function") {
+      offsetBefore = params.slidesOffsetBefore.call(swiper);
+    }
+    let offsetAfter = params.slidesOffsetAfter;
+    if (typeof offsetAfter === "function") {
+      offsetAfter = params.slidesOffsetAfter.call(swiper);
+    }
+    const previousSnapGridLength = swiper.snapGrid.length;
+    const previousSlidesGridLength = swiper.slidesGrid.length;
+    let spaceBetween = params.spaceBetween;
+    let slidePosition = -offsetBefore;
+    let prevSlideSize = 0;
+    let index2 = 0;
+    if (typeof swiperSize === "undefined") {
+      return;
+    }
+    if (typeof spaceBetween === "string" && spaceBetween.indexOf("%") >= 0) {
+      spaceBetween = parseFloat(spaceBetween.replace("%", "")) / 100 * swiperSize;
+    }
+    swiper.virtualSize = -spaceBetween;
+    if (rtl)
+      slides.css({
+        marginLeft: "",
+        marginBottom: "",
+        marginTop: ""
+      });
+    else
+      slides.css({
+        marginRight: "",
+        marginBottom: "",
+        marginTop: ""
+      });
+    if (params.centeredSlides && params.cssMode) {
+      setCSSProperty(swiper.wrapperEl, "--swiper-centered-offset-before", "");
+      setCSSProperty(swiper.wrapperEl, "--swiper-centered-offset-after", "");
+    }
+    const gridEnabled = params.grid && params.grid.rows > 1 && swiper.grid;
+    if (gridEnabled) {
+      swiper.grid.initSlides(slidesLength);
+    }
+    let slideSize;
+    const shouldResetSlideSize = params.slidesPerView === "auto" && params.breakpoints && Object.keys(params.breakpoints).filter((key) => {
+      return typeof params.breakpoints[key].slidesPerView !== "undefined";
+    }).length > 0;
+    for (let i2 = 0; i2 < slidesLength; i2 += 1) {
+      slideSize = 0;
+      const slide = slides.eq(i2);
+      if (gridEnabled) {
+        swiper.grid.updateSlide(i2, slide, slidesLength, getDirectionLabel);
+      }
+      if (slide.css("display") === "none")
+        continue;
+      if (params.slidesPerView === "auto") {
+        if (shouldResetSlideSize) {
+          slides[i2].style[getDirectionLabel("width")] = ``;
+        }
+        const slideStyles = getComputedStyle(slide[0]);
+        const currentTransform = slide[0].style.transform;
+        const currentWebKitTransform = slide[0].style.webkitTransform;
+        if (currentTransform) {
+          slide[0].style.transform = "none";
+        }
+        if (currentWebKitTransform) {
+          slide[0].style.webkitTransform = "none";
+        }
+        if (params.roundLengths) {
+          slideSize = swiper.isHorizontal() ? slide.outerWidth(true) : slide.outerHeight(true);
+        } else {
+          const width = getDirectionPropertyValue(slideStyles, "width");
+          const paddingLeft = getDirectionPropertyValue(slideStyles, "padding-left");
+          const paddingRight = getDirectionPropertyValue(slideStyles, "padding-right");
+          const marginLeft = getDirectionPropertyValue(slideStyles, "margin-left");
+          const marginRight = getDirectionPropertyValue(slideStyles, "margin-right");
+          const boxSizing = slideStyles.getPropertyValue("box-sizing");
+          if (boxSizing && boxSizing === "border-box") {
+            slideSize = width + marginLeft + marginRight;
+          } else {
+            const {
+              clientWidth,
+              offsetWidth
+            } = slide[0];
+            slideSize = width + paddingLeft + paddingRight + marginLeft + marginRight + (offsetWidth - clientWidth);
+          }
+        }
+        if (currentTransform) {
+          slide[0].style.transform = currentTransform;
+        }
+        if (currentWebKitTransform) {
+          slide[0].style.webkitTransform = currentWebKitTransform;
+        }
+        if (params.roundLengths)
+          slideSize = Math.floor(slideSize);
+      } else {
+        slideSize = (swiperSize - (params.slidesPerView - 1) * spaceBetween) / params.slidesPerView;
+        if (params.roundLengths)
+          slideSize = Math.floor(slideSize);
+        if (slides[i2]) {
+          slides[i2].style[getDirectionLabel("width")] = `${slideSize}px`;
+        }
+      }
+      if (slides[i2]) {
+        slides[i2].swiperSlideSize = slideSize;
+      }
+      slidesSizesGrid.push(slideSize);
+      if (params.centeredSlides) {
+        slidePosition = slidePosition + slideSize / 2 + prevSlideSize / 2 + spaceBetween;
+        if (prevSlideSize === 0 && i2 !== 0)
+          slidePosition = slidePosition - swiperSize / 2 - spaceBetween;
+        if (i2 === 0)
+          slidePosition = slidePosition - swiperSize / 2 - spaceBetween;
+        if (Math.abs(slidePosition) < 1 / 1e3)
+          slidePosition = 0;
+        if (params.roundLengths)
+          slidePosition = Math.floor(slidePosition);
+        if (index2 % params.slidesPerGroup === 0)
+          snapGrid.push(slidePosition);
+        slidesGrid.push(slidePosition);
+      } else {
+        if (params.roundLengths)
+          slidePosition = Math.floor(slidePosition);
+        if ((index2 - Math.min(swiper.params.slidesPerGroupSkip, index2)) % swiper.params.slidesPerGroup === 0)
+          snapGrid.push(slidePosition);
+        slidesGrid.push(slidePosition);
+        slidePosition = slidePosition + slideSize + spaceBetween;
+      }
+      swiper.virtualSize += slideSize + spaceBetween;
+      prevSlideSize = slideSize;
+      index2 += 1;
+    }
+    swiper.virtualSize = Math.max(swiper.virtualSize, swiperSize) + offsetAfter;
+    if (rtl && wrongRTL && (params.effect === "slide" || params.effect === "coverflow")) {
+      $wrapperEl.css({
+        width: `${swiper.virtualSize + params.spaceBetween}px`
+      });
+    }
+    if (params.setWrapperSize) {
+      $wrapperEl.css({
+        [getDirectionLabel("width")]: `${swiper.virtualSize + params.spaceBetween}px`
+      });
+    }
+    if (gridEnabled) {
+      swiper.grid.updateWrapperSize(slideSize, snapGrid, getDirectionLabel);
+    }
+    if (!params.centeredSlides) {
+      const newSlidesGrid = [];
+      for (let i2 = 0; i2 < snapGrid.length; i2 += 1) {
+        let slidesGridItem = snapGrid[i2];
+        if (params.roundLengths)
+          slidesGridItem = Math.floor(slidesGridItem);
+        if (snapGrid[i2] <= swiper.virtualSize - swiperSize) {
+          newSlidesGrid.push(slidesGridItem);
+        }
+      }
+      snapGrid = newSlidesGrid;
+      if (Math.floor(swiper.virtualSize - swiperSize) - Math.floor(snapGrid[snapGrid.length - 1]) > 1) {
+        snapGrid.push(swiper.virtualSize - swiperSize);
+      }
+    }
+    if (snapGrid.length === 0)
+      snapGrid = [0];
+    if (params.spaceBetween !== 0) {
+      const key = swiper.isHorizontal() && rtl ? "marginLeft" : getDirectionLabel("marginRight");
+      slides.filter((_3, slideIndex) => {
+        if (!params.cssMode)
+          return true;
+        if (slideIndex === slides.length - 1) {
+          return false;
+        }
+        return true;
+      }).css({
+        [key]: `${spaceBetween}px`
+      });
+    }
+    if (params.centeredSlides && params.centeredSlidesBounds) {
+      let allSlidesSize = 0;
+      slidesSizesGrid.forEach((slideSizeValue) => {
+        allSlidesSize += slideSizeValue + (params.spaceBetween ? params.spaceBetween : 0);
+      });
+      allSlidesSize -= params.spaceBetween;
+      const maxSnap = allSlidesSize - swiperSize;
+      snapGrid = snapGrid.map((snap) => {
+        if (snap < 0)
+          return -offsetBefore;
+        if (snap > maxSnap)
+          return maxSnap + offsetAfter;
+        return snap;
+      });
+    }
+    if (params.centerInsufficientSlides) {
+      let allSlidesSize = 0;
+      slidesSizesGrid.forEach((slideSizeValue) => {
+        allSlidesSize += slideSizeValue + (params.spaceBetween ? params.spaceBetween : 0);
+      });
+      allSlidesSize -= params.spaceBetween;
+      if (allSlidesSize < swiperSize) {
+        const allSlidesOffset = (swiperSize - allSlidesSize) / 2;
+        snapGrid.forEach((snap, snapIndex) => {
+          snapGrid[snapIndex] = snap - allSlidesOffset;
+        });
+        slidesGrid.forEach((snap, snapIndex) => {
+          slidesGrid[snapIndex] = snap + allSlidesOffset;
+        });
+      }
+    }
+    Object.assign(swiper, {
+      slides,
+      snapGrid,
+      slidesGrid,
+      slidesSizesGrid
+    });
+    if (params.centeredSlides && params.cssMode && !params.centeredSlidesBounds) {
+      setCSSProperty(swiper.wrapperEl, "--swiper-centered-offset-before", `${-snapGrid[0]}px`);
+      setCSSProperty(swiper.wrapperEl, "--swiper-centered-offset-after", `${swiper.size / 2 - slidesSizesGrid[slidesSizesGrid.length - 1] / 2}px`);
+      const addToSnapGrid = -swiper.snapGrid[0];
+      const addToSlidesGrid = -swiper.slidesGrid[0];
+      swiper.snapGrid = swiper.snapGrid.map((v4) => v4 + addToSnapGrid);
+      swiper.slidesGrid = swiper.slidesGrid.map((v4) => v4 + addToSlidesGrid);
+    }
+    if (slidesLength !== previousSlidesLength) {
+      swiper.emit("slidesLengthChange");
+    }
+    if (snapGrid.length !== previousSnapGridLength) {
+      if (swiper.params.watchOverflow)
+        swiper.checkOverflow();
+      swiper.emit("snapGridLengthChange");
+    }
+    if (slidesGrid.length !== previousSlidesGridLength) {
+      swiper.emit("slidesGridLengthChange");
+    }
+    if (params.watchSlidesProgress) {
+      swiper.updateSlidesOffset();
+    }
+    if (!isVirtual && !params.cssMode && (params.effect === "slide" || params.effect === "fade")) {
+      const backFaceHiddenClass = `${params.containerModifierClass}backface-hidden`;
+      const hasClassBackfaceClassAdded = swiper.$el.hasClass(backFaceHiddenClass);
+      if (slidesLength <= params.maxBackfaceHiddenSlides) {
+        if (!hasClassBackfaceClassAdded)
+          swiper.$el.addClass(backFaceHiddenClass);
+      } else if (hasClassBackfaceClassAdded) {
+        swiper.$el.removeClass(backFaceHiddenClass);
+      }
+    }
+  }
+
+  // node_modules/swiper/core/update/updateAutoHeight.js
+  function updateAutoHeight(speed) {
+    const swiper = this;
+    const activeSlides = [];
+    const isVirtual = swiper.virtual && swiper.params.virtual.enabled;
+    let newHeight = 0;
+    let i2;
+    if (typeof speed === "number") {
+      swiper.setTransition(speed);
+    } else if (speed === true) {
+      swiper.setTransition(swiper.params.speed);
+    }
+    const getSlideByIndex = (index2) => {
+      if (isVirtual) {
+        return swiper.slides.filter((el) => parseInt(el.getAttribute("data-swiper-slide-index"), 10) === index2)[0];
+      }
+      return swiper.slides.eq(index2)[0];
+    };
+    if (swiper.params.slidesPerView !== "auto" && swiper.params.slidesPerView > 1) {
+      if (swiper.params.centeredSlides) {
+        (swiper.visibleSlides || dom_default([])).each((slide) => {
+          activeSlides.push(slide);
+        });
+      } else {
+        for (i2 = 0; i2 < Math.ceil(swiper.params.slidesPerView); i2 += 1) {
+          const index2 = swiper.activeIndex + i2;
+          if (index2 > swiper.slides.length && !isVirtual)
+            break;
+          activeSlides.push(getSlideByIndex(index2));
+        }
+      }
+    } else {
+      activeSlides.push(getSlideByIndex(swiper.activeIndex));
+    }
+    for (i2 = 0; i2 < activeSlides.length; i2 += 1) {
+      if (typeof activeSlides[i2] !== "undefined") {
+        const height = activeSlides[i2].offsetHeight;
+        newHeight = height > newHeight ? height : newHeight;
+      }
+    }
+    if (newHeight || newHeight === 0)
+      swiper.$wrapperEl.css("height", `${newHeight}px`);
+  }
+
+  // node_modules/swiper/core/update/updateSlidesOffset.js
+  function updateSlidesOffset() {
+    const swiper = this;
+    const slides = swiper.slides;
+    for (let i2 = 0; i2 < slides.length; i2 += 1) {
+      slides[i2].swiperSlideOffset = swiper.isHorizontal() ? slides[i2].offsetLeft : slides[i2].offsetTop;
+    }
+  }
+
+  // node_modules/swiper/core/update/updateSlidesProgress.js
+  function updateSlidesProgress(translate) {
+    if (translate === void 0) {
+      translate = this && this.translate || 0;
+    }
+    const swiper = this;
+    const params = swiper.params;
+    const {
+      slides,
+      rtlTranslate: rtl,
+      snapGrid
+    } = swiper;
+    if (slides.length === 0)
+      return;
+    if (typeof slides[0].swiperSlideOffset === "undefined")
+      swiper.updateSlidesOffset();
+    let offsetCenter = -translate;
+    if (rtl)
+      offsetCenter = translate;
+    slides.removeClass(params.slideVisibleClass);
+    swiper.visibleSlidesIndexes = [];
+    swiper.visibleSlides = [];
+    for (let i2 = 0; i2 < slides.length; i2 += 1) {
+      const slide = slides[i2];
+      let slideOffset = slide.swiperSlideOffset;
+      if (params.cssMode && params.centeredSlides) {
+        slideOffset -= slides[0].swiperSlideOffset;
+      }
+      const slideProgress = (offsetCenter + (params.centeredSlides ? swiper.minTranslate() : 0) - slideOffset) / (slide.swiperSlideSize + params.spaceBetween);
+      const originalSlideProgress = (offsetCenter - snapGrid[0] + (params.centeredSlides ? swiper.minTranslate() : 0) - slideOffset) / (slide.swiperSlideSize + params.spaceBetween);
+      const slideBefore = -(offsetCenter - slideOffset);
+      const slideAfter = slideBefore + swiper.slidesSizesGrid[i2];
+      const isVisible = slideBefore >= 0 && slideBefore < swiper.size - 1 || slideAfter > 1 && slideAfter <= swiper.size || slideBefore <= 0 && slideAfter >= swiper.size;
+      if (isVisible) {
+        swiper.visibleSlides.push(slide);
+        swiper.visibleSlidesIndexes.push(i2);
+        slides.eq(i2).addClass(params.slideVisibleClass);
+      }
+      slide.progress = rtl ? -slideProgress : slideProgress;
+      slide.originalProgress = rtl ? -originalSlideProgress : originalSlideProgress;
+    }
+    swiper.visibleSlides = dom_default(swiper.visibleSlides);
+  }
+
+  // node_modules/swiper/core/update/updateProgress.js
+  function updateProgress(translate) {
+    const swiper = this;
+    if (typeof translate === "undefined") {
+      const multiplier = swiper.rtlTranslate ? -1 : 1;
+      translate = swiper && swiper.translate && swiper.translate * multiplier || 0;
+    }
+    const params = swiper.params;
+    const translatesDiff = swiper.maxTranslate() - swiper.minTranslate();
+    let {
+      progress,
+      isBeginning,
+      isEnd
+    } = swiper;
+    const wasBeginning = isBeginning;
+    const wasEnd = isEnd;
+    if (translatesDiff === 0) {
+      progress = 0;
+      isBeginning = true;
+      isEnd = true;
+    } else {
+      progress = (translate - swiper.minTranslate()) / translatesDiff;
+      isBeginning = progress <= 0;
+      isEnd = progress >= 1;
+    }
+    Object.assign(swiper, {
+      progress,
+      isBeginning,
+      isEnd
+    });
+    if (params.watchSlidesProgress || params.centeredSlides && params.autoHeight)
+      swiper.updateSlidesProgress(translate);
+    if (isBeginning && !wasBeginning) {
+      swiper.emit("reachBeginning toEdge");
+    }
+    if (isEnd && !wasEnd) {
+      swiper.emit("reachEnd toEdge");
+    }
+    if (wasBeginning && !isBeginning || wasEnd && !isEnd) {
+      swiper.emit("fromEdge");
+    }
+    swiper.emit("progress", progress);
+  }
+
+  // node_modules/swiper/core/update/updateSlidesClasses.js
+  function updateSlidesClasses() {
+    const swiper = this;
+    const {
+      slides,
+      params,
+      $wrapperEl,
+      activeIndex,
+      realIndex
+    } = swiper;
+    const isVirtual = swiper.virtual && params.virtual.enabled;
+    slides.removeClass(`${params.slideActiveClass} ${params.slideNextClass} ${params.slidePrevClass} ${params.slideDuplicateActiveClass} ${params.slideDuplicateNextClass} ${params.slideDuplicatePrevClass}`);
+    let activeSlide;
+    if (isVirtual) {
+      activeSlide = swiper.$wrapperEl.find(`.${params.slideClass}[data-swiper-slide-index="${activeIndex}"]`);
+    } else {
+      activeSlide = slides.eq(activeIndex);
+    }
+    activeSlide.addClass(params.slideActiveClass);
+    if (params.loop) {
+      if (activeSlide.hasClass(params.slideDuplicateClass)) {
+        $wrapperEl.children(`.${params.slideClass}:not(.${params.slideDuplicateClass})[data-swiper-slide-index="${realIndex}"]`).addClass(params.slideDuplicateActiveClass);
+      } else {
+        $wrapperEl.children(`.${params.slideClass}.${params.slideDuplicateClass}[data-swiper-slide-index="${realIndex}"]`).addClass(params.slideDuplicateActiveClass);
+      }
+    }
+    let nextSlide = activeSlide.nextAll(`.${params.slideClass}`).eq(0).addClass(params.slideNextClass);
+    if (params.loop && nextSlide.length === 0) {
+      nextSlide = slides.eq(0);
+      nextSlide.addClass(params.slideNextClass);
+    }
+    let prevSlide = activeSlide.prevAll(`.${params.slideClass}`).eq(0).addClass(params.slidePrevClass);
+    if (params.loop && prevSlide.length === 0) {
+      prevSlide = slides.eq(-1);
+      prevSlide.addClass(params.slidePrevClass);
+    }
+    if (params.loop) {
+      if (nextSlide.hasClass(params.slideDuplicateClass)) {
+        $wrapperEl.children(`.${params.slideClass}:not(.${params.slideDuplicateClass})[data-swiper-slide-index="${nextSlide.attr("data-swiper-slide-index")}"]`).addClass(params.slideDuplicateNextClass);
+      } else {
+        $wrapperEl.children(`.${params.slideClass}.${params.slideDuplicateClass}[data-swiper-slide-index="${nextSlide.attr("data-swiper-slide-index")}"]`).addClass(params.slideDuplicateNextClass);
+      }
+      if (prevSlide.hasClass(params.slideDuplicateClass)) {
+        $wrapperEl.children(`.${params.slideClass}:not(.${params.slideDuplicateClass})[data-swiper-slide-index="${prevSlide.attr("data-swiper-slide-index")}"]`).addClass(params.slideDuplicatePrevClass);
+      } else {
+        $wrapperEl.children(`.${params.slideClass}.${params.slideDuplicateClass}[data-swiper-slide-index="${prevSlide.attr("data-swiper-slide-index")}"]`).addClass(params.slideDuplicatePrevClass);
+      }
+    }
+    swiper.emitSlidesClasses();
+  }
+
+  // node_modules/swiper/core/update/updateActiveIndex.js
+  function updateActiveIndex(newActiveIndex) {
+    const swiper = this;
+    const translate = swiper.rtlTranslate ? swiper.translate : -swiper.translate;
+    const {
+      slidesGrid,
+      snapGrid,
+      params,
+      activeIndex: previousIndex,
+      realIndex: previousRealIndex,
+      snapIndex: previousSnapIndex
+    } = swiper;
+    let activeIndex = newActiveIndex;
+    let snapIndex;
+    if (typeof activeIndex === "undefined") {
+      for (let i2 = 0; i2 < slidesGrid.length; i2 += 1) {
+        if (typeof slidesGrid[i2 + 1] !== "undefined") {
+          if (translate >= slidesGrid[i2] && translate < slidesGrid[i2 + 1] - (slidesGrid[i2 + 1] - slidesGrid[i2]) / 2) {
+            activeIndex = i2;
+          } else if (translate >= slidesGrid[i2] && translate < slidesGrid[i2 + 1]) {
+            activeIndex = i2 + 1;
+          }
+        } else if (translate >= slidesGrid[i2]) {
+          activeIndex = i2;
+        }
+      }
+      if (params.normalizeSlideIndex) {
+        if (activeIndex < 0 || typeof activeIndex === "undefined")
+          activeIndex = 0;
+      }
+    }
+    if (snapGrid.indexOf(translate) >= 0) {
+      snapIndex = snapGrid.indexOf(translate);
+    } else {
+      const skip = Math.min(params.slidesPerGroupSkip, activeIndex);
+      snapIndex = skip + Math.floor((activeIndex - skip) / params.slidesPerGroup);
+    }
+    if (snapIndex >= snapGrid.length)
+      snapIndex = snapGrid.length - 1;
+    if (activeIndex === previousIndex) {
+      if (snapIndex !== previousSnapIndex) {
+        swiper.snapIndex = snapIndex;
+        swiper.emit("snapIndexChange");
+      }
+      return;
+    }
+    const realIndex = parseInt(swiper.slides.eq(activeIndex).attr("data-swiper-slide-index") || activeIndex, 10);
+    Object.assign(swiper, {
+      snapIndex,
+      realIndex,
+      previousIndex,
+      activeIndex
+    });
+    swiper.emit("activeIndexChange");
+    swiper.emit("snapIndexChange");
+    if (previousRealIndex !== realIndex) {
+      swiper.emit("realIndexChange");
+    }
+    if (swiper.initialized || swiper.params.runCallbacksOnInit) {
+      swiper.emit("slideChange");
+    }
+  }
+
+  // node_modules/swiper/core/update/updateClickedSlide.js
+  function updateClickedSlide(e2) {
+    const swiper = this;
+    const params = swiper.params;
+    const slide = dom_default(e2).closest(`.${params.slideClass}`)[0];
+    let slideFound = false;
+    let slideIndex;
+    if (slide) {
+      for (let i2 = 0; i2 < swiper.slides.length; i2 += 1) {
+        if (swiper.slides[i2] === slide) {
+          slideFound = true;
+          slideIndex = i2;
+          break;
+        }
+      }
+    }
+    if (slide && slideFound) {
+      swiper.clickedSlide = slide;
+      if (swiper.virtual && swiper.params.virtual.enabled) {
+        swiper.clickedIndex = parseInt(dom_default(slide).attr("data-swiper-slide-index"), 10);
+      } else {
+        swiper.clickedIndex = slideIndex;
+      }
+    } else {
+      swiper.clickedSlide = void 0;
+      swiper.clickedIndex = void 0;
+      return;
+    }
+    if (params.slideToClickedSlide && swiper.clickedIndex !== void 0 && swiper.clickedIndex !== swiper.activeIndex) {
+      swiper.slideToClickedSlide();
+    }
+  }
+
+  // node_modules/swiper/core/update/index.js
+  var update_default = {
+    updateSize,
+    updateSlides,
+    updateAutoHeight,
+    updateSlidesOffset,
+    updateSlidesProgress,
+    updateProgress,
+    updateSlidesClasses,
+    updateActiveIndex,
+    updateClickedSlide
+  };
+
+  // node_modules/swiper/core/translate/getTranslate.js
+  function getSwiperTranslate(axis) {
+    if (axis === void 0) {
+      axis = this.isHorizontal() ? "x" : "y";
+    }
+    const swiper = this;
+    const {
+      params,
+      rtlTranslate: rtl,
+      translate,
+      $wrapperEl
+    } = swiper;
+    if (params.virtualTranslate) {
+      return rtl ? -translate : translate;
+    }
+    if (params.cssMode) {
+      return translate;
+    }
+    let currentTranslate = getTranslate($wrapperEl[0], axis);
+    if (rtl)
+      currentTranslate = -currentTranslate;
+    return currentTranslate || 0;
+  }
+
+  // node_modules/swiper/core/translate/setTranslate.js
+  function setTranslate(translate, byController) {
+    const swiper = this;
+    const {
+      rtlTranslate: rtl,
+      params,
+      $wrapperEl,
+      wrapperEl,
+      progress
+    } = swiper;
+    let x4 = 0;
+    let y4 = 0;
+    const z4 = 0;
+    if (swiper.isHorizontal()) {
+      x4 = rtl ? -translate : translate;
+    } else {
+      y4 = translate;
+    }
+    if (params.roundLengths) {
+      x4 = Math.floor(x4);
+      y4 = Math.floor(y4);
+    }
+    if (params.cssMode) {
+      wrapperEl[swiper.isHorizontal() ? "scrollLeft" : "scrollTop"] = swiper.isHorizontal() ? -x4 : -y4;
+    } else if (!params.virtualTranslate) {
+      $wrapperEl.transform(`translate3d(${x4}px, ${y4}px, ${z4}px)`);
+    }
+    swiper.previousTranslate = swiper.translate;
+    swiper.translate = swiper.isHorizontal() ? x4 : y4;
+    let newProgress;
+    const translatesDiff = swiper.maxTranslate() - swiper.minTranslate();
+    if (translatesDiff === 0) {
+      newProgress = 0;
+    } else {
+      newProgress = (translate - swiper.minTranslate()) / translatesDiff;
+    }
+    if (newProgress !== progress) {
+      swiper.updateProgress(translate);
+    }
+    swiper.emit("setTranslate", swiper.translate, byController);
+  }
+
+  // node_modules/swiper/core/translate/minTranslate.js
+  function minTranslate() {
+    return -this.snapGrid[0];
+  }
+
+  // node_modules/swiper/core/translate/maxTranslate.js
+  function maxTranslate() {
+    return -this.snapGrid[this.snapGrid.length - 1];
+  }
+
+  // node_modules/swiper/core/translate/translateTo.js
+  function translateTo(translate, speed, runCallbacks, translateBounds, internal) {
+    if (translate === void 0) {
+      translate = 0;
+    }
+    if (speed === void 0) {
+      speed = this.params.speed;
+    }
+    if (runCallbacks === void 0) {
+      runCallbacks = true;
+    }
+    if (translateBounds === void 0) {
+      translateBounds = true;
+    }
+    const swiper = this;
+    const {
+      params,
+      wrapperEl
+    } = swiper;
+    if (swiper.animating && params.preventInteractionOnTransition) {
+      return false;
+    }
+    const minTranslate2 = swiper.minTranslate();
+    const maxTranslate2 = swiper.maxTranslate();
+    let newTranslate;
+    if (translateBounds && translate > minTranslate2)
+      newTranslate = minTranslate2;
+    else if (translateBounds && translate < maxTranslate2)
+      newTranslate = maxTranslate2;
+    else
+      newTranslate = translate;
+    swiper.updateProgress(newTranslate);
+    if (params.cssMode) {
+      const isH = swiper.isHorizontal();
+      if (speed === 0) {
+        wrapperEl[isH ? "scrollLeft" : "scrollTop"] = -newTranslate;
+      } else {
+        if (!swiper.support.smoothScroll) {
+          animateCSSModeScroll({
+            swiper,
+            targetPosition: -newTranslate,
+            side: isH ? "left" : "top"
+          });
+          return true;
+        }
+        wrapperEl.scrollTo({
+          [isH ? "left" : "top"]: -newTranslate,
+          behavior: "smooth"
+        });
+      }
+      return true;
+    }
+    if (speed === 0) {
+      swiper.setTransition(0);
+      swiper.setTranslate(newTranslate);
+      if (runCallbacks) {
+        swiper.emit("beforeTransitionStart", speed, internal);
+        swiper.emit("transitionEnd");
+      }
+    } else {
+      swiper.setTransition(speed);
+      swiper.setTranslate(newTranslate);
+      if (runCallbacks) {
+        swiper.emit("beforeTransitionStart", speed, internal);
+        swiper.emit("transitionStart");
+      }
+      if (!swiper.animating) {
+        swiper.animating = true;
+        if (!swiper.onTranslateToWrapperTransitionEnd) {
+          swiper.onTranslateToWrapperTransitionEnd = function transitionEnd3(e2) {
+            if (!swiper || swiper.destroyed)
+              return;
+            if (e2.target !== this)
+              return;
+            swiper.$wrapperEl[0].removeEventListener("transitionend", swiper.onTranslateToWrapperTransitionEnd);
+            swiper.$wrapperEl[0].removeEventListener("webkitTransitionEnd", swiper.onTranslateToWrapperTransitionEnd);
+            swiper.onTranslateToWrapperTransitionEnd = null;
+            delete swiper.onTranslateToWrapperTransitionEnd;
+            if (runCallbacks) {
+              swiper.emit("transitionEnd");
+            }
+          };
+        }
+        swiper.$wrapperEl[0].addEventListener("transitionend", swiper.onTranslateToWrapperTransitionEnd);
+        swiper.$wrapperEl[0].addEventListener("webkitTransitionEnd", swiper.onTranslateToWrapperTransitionEnd);
+      }
+    }
+    return true;
+  }
+
+  // node_modules/swiper/core/translate/index.js
+  var translate_default = {
+    getTranslate: getSwiperTranslate,
+    setTranslate,
+    minTranslate,
+    maxTranslate,
+    translateTo
+  };
+
+  // node_modules/swiper/core/transition/setTransition.js
+  function setTransition(duration, byController) {
+    const swiper = this;
+    if (!swiper.params.cssMode) {
+      swiper.$wrapperEl.transition(duration);
+    }
+    swiper.emit("setTransition", duration, byController);
+  }
+
+  // node_modules/swiper/core/transition/transitionEmit.js
+  function transitionEmit(_ref) {
+    let {
+      swiper,
+      runCallbacks,
+      direction,
+      step
+    } = _ref;
+    const {
+      activeIndex,
+      previousIndex
+    } = swiper;
+    let dir = direction;
+    if (!dir) {
+      if (activeIndex > previousIndex)
+        dir = "next";
+      else if (activeIndex < previousIndex)
+        dir = "prev";
+      else
+        dir = "reset";
+    }
+    swiper.emit(`transition${step}`);
+    if (runCallbacks && activeIndex !== previousIndex) {
+      if (dir === "reset") {
+        swiper.emit(`slideResetTransition${step}`);
+        return;
+      }
+      swiper.emit(`slideChangeTransition${step}`);
+      if (dir === "next") {
+        swiper.emit(`slideNextTransition${step}`);
+      } else {
+        swiper.emit(`slidePrevTransition${step}`);
+      }
+    }
+  }
+
+  // node_modules/swiper/core/transition/transitionStart.js
+  function transitionStart(runCallbacks, direction) {
+    if (runCallbacks === void 0) {
+      runCallbacks = true;
+    }
+    const swiper = this;
+    const {
+      params
+    } = swiper;
+    if (params.cssMode)
+      return;
+    if (params.autoHeight) {
+      swiper.updateAutoHeight();
+    }
+    transitionEmit({
+      swiper,
+      runCallbacks,
+      direction,
+      step: "Start"
+    });
+  }
+
+  // node_modules/swiper/core/transition/transitionEnd.js
+  function transitionEnd2(runCallbacks, direction) {
+    if (runCallbacks === void 0) {
+      runCallbacks = true;
+    }
+    const swiper = this;
+    const {
+      params
+    } = swiper;
+    swiper.animating = false;
+    if (params.cssMode)
+      return;
+    swiper.setTransition(0);
+    transitionEmit({
+      swiper,
+      runCallbacks,
+      direction,
+      step: "End"
+    });
+  }
+
+  // node_modules/swiper/core/transition/index.js
+  var transition_default = {
+    setTransition,
+    transitionStart,
+    transitionEnd: transitionEnd2
+  };
+
+  // node_modules/swiper/core/slide/slideTo.js
+  function slideTo(index2, speed, runCallbacks, internal, initial) {
+    if (index2 === void 0) {
+      index2 = 0;
+    }
+    if (speed === void 0) {
+      speed = this.params.speed;
+    }
+    if (runCallbacks === void 0) {
+      runCallbacks = true;
+    }
+    if (typeof index2 !== "number" && typeof index2 !== "string") {
+      throw new Error(`The 'index' argument cannot have type other than 'number' or 'string'. [${typeof index2}] given.`);
+    }
+    if (typeof index2 === "string") {
+      const indexAsNumber = parseInt(index2, 10);
+      const isValidNumber = isFinite(indexAsNumber);
+      if (!isValidNumber) {
+        throw new Error(`The passed-in 'index' (string) couldn't be converted to 'number'. [${index2}] given.`);
+      }
+      index2 = indexAsNumber;
+    }
+    const swiper = this;
+    let slideIndex = index2;
+    if (slideIndex < 0)
+      slideIndex = 0;
+    const {
+      params,
+      snapGrid,
+      slidesGrid,
+      previousIndex,
+      activeIndex,
+      rtlTranslate: rtl,
+      wrapperEl,
+      enabled
+    } = swiper;
+    if (swiper.animating && params.preventInteractionOnTransition || !enabled && !internal && !initial) {
+      return false;
+    }
+    const skip = Math.min(swiper.params.slidesPerGroupSkip, slideIndex);
+    let snapIndex = skip + Math.floor((slideIndex - skip) / swiper.params.slidesPerGroup);
+    if (snapIndex >= snapGrid.length)
+      snapIndex = snapGrid.length - 1;
+    if ((activeIndex || params.initialSlide || 0) === (previousIndex || 0) && runCallbacks) {
+      swiper.emit("beforeSlideChangeStart");
+    }
+    const translate = -snapGrid[snapIndex];
+    swiper.updateProgress(translate);
+    if (params.normalizeSlideIndex) {
+      for (let i2 = 0; i2 < slidesGrid.length; i2 += 1) {
+        const normalizedTranslate = -Math.floor(translate * 100);
+        const normalizedGrid = Math.floor(slidesGrid[i2] * 100);
+        const normalizedGridNext = Math.floor(slidesGrid[i2 + 1] * 100);
+        if (typeof slidesGrid[i2 + 1] !== "undefined") {
+          if (normalizedTranslate >= normalizedGrid && normalizedTranslate < normalizedGridNext - (normalizedGridNext - normalizedGrid) / 2) {
+            slideIndex = i2;
+          } else if (normalizedTranslate >= normalizedGrid && normalizedTranslate < normalizedGridNext) {
+            slideIndex = i2 + 1;
+          }
+        } else if (normalizedTranslate >= normalizedGrid) {
+          slideIndex = i2;
+        }
+      }
+    }
+    if (swiper.initialized && slideIndex !== activeIndex) {
+      if (!swiper.allowSlideNext && translate < swiper.translate && translate < swiper.minTranslate()) {
+        return false;
+      }
+      if (!swiper.allowSlidePrev && translate > swiper.translate && translate > swiper.maxTranslate()) {
+        if ((activeIndex || 0) !== slideIndex)
+          return false;
+      }
+    }
+    let direction;
+    if (slideIndex > activeIndex)
+      direction = "next";
+    else if (slideIndex < activeIndex)
+      direction = "prev";
+    else
+      direction = "reset";
+    if (rtl && -translate === swiper.translate || !rtl && translate === swiper.translate) {
+      swiper.updateActiveIndex(slideIndex);
+      if (params.autoHeight) {
+        swiper.updateAutoHeight();
+      }
+      swiper.updateSlidesClasses();
+      if (params.effect !== "slide") {
+        swiper.setTranslate(translate);
+      }
+      if (direction !== "reset") {
+        swiper.transitionStart(runCallbacks, direction);
+        swiper.transitionEnd(runCallbacks, direction);
+      }
+      return false;
+    }
+    if (params.cssMode) {
+      const isH = swiper.isHorizontal();
+      const t2 = rtl ? translate : -translate;
+      if (speed === 0) {
+        const isVirtual = swiper.virtual && swiper.params.virtual.enabled;
+        if (isVirtual) {
+          swiper.wrapperEl.style.scrollSnapType = "none";
+          swiper._immediateVirtual = true;
+        }
+        wrapperEl[isH ? "scrollLeft" : "scrollTop"] = t2;
+        if (isVirtual) {
+          requestAnimationFrame(() => {
+            swiper.wrapperEl.style.scrollSnapType = "";
+            swiper._swiperImmediateVirtual = false;
+          });
+        }
+      } else {
+        if (!swiper.support.smoothScroll) {
+          animateCSSModeScroll({
+            swiper,
+            targetPosition: t2,
+            side: isH ? "left" : "top"
+          });
+          return true;
+        }
+        wrapperEl.scrollTo({
+          [isH ? "left" : "top"]: t2,
+          behavior: "smooth"
+        });
+      }
+      return true;
+    }
+    swiper.setTransition(speed);
+    swiper.setTranslate(translate);
+    swiper.updateActiveIndex(slideIndex);
+    swiper.updateSlidesClasses();
+    swiper.emit("beforeTransitionStart", speed, internal);
+    swiper.transitionStart(runCallbacks, direction);
+    if (speed === 0) {
+      swiper.transitionEnd(runCallbacks, direction);
+    } else if (!swiper.animating) {
+      swiper.animating = true;
+      if (!swiper.onSlideToWrapperTransitionEnd) {
+        swiper.onSlideToWrapperTransitionEnd = function transitionEnd3(e2) {
+          if (!swiper || swiper.destroyed)
+            return;
+          if (e2.target !== this)
+            return;
+          swiper.$wrapperEl[0].removeEventListener("transitionend", swiper.onSlideToWrapperTransitionEnd);
+          swiper.$wrapperEl[0].removeEventListener("webkitTransitionEnd", swiper.onSlideToWrapperTransitionEnd);
+          swiper.onSlideToWrapperTransitionEnd = null;
+          delete swiper.onSlideToWrapperTransitionEnd;
+          swiper.transitionEnd(runCallbacks, direction);
+        };
+      }
+      swiper.$wrapperEl[0].addEventListener("transitionend", swiper.onSlideToWrapperTransitionEnd);
+      swiper.$wrapperEl[0].addEventListener("webkitTransitionEnd", swiper.onSlideToWrapperTransitionEnd);
+    }
+    return true;
+  }
+
+  // node_modules/swiper/core/slide/slideToLoop.js
+  function slideToLoop(index2, speed, runCallbacks, internal) {
+    if (index2 === void 0) {
+      index2 = 0;
+    }
+    if (speed === void 0) {
+      speed = this.params.speed;
+    }
+    if (runCallbacks === void 0) {
+      runCallbacks = true;
+    }
+    if (typeof index2 === "string") {
+      const indexAsNumber = parseInt(index2, 10);
+      const isValidNumber = isFinite(indexAsNumber);
+      if (!isValidNumber) {
+        throw new Error(`The passed-in 'index' (string) couldn't be converted to 'number'. [${index2}] given.`);
+      }
+      index2 = indexAsNumber;
+    }
+    const swiper = this;
+    let newIndex = index2;
+    if (swiper.params.loop) {
+      newIndex += swiper.loopedSlides;
+    }
+    return swiper.slideTo(newIndex, speed, runCallbacks, internal);
+  }
+
+  // node_modules/swiper/core/slide/slideNext.js
+  function slideNext(speed, runCallbacks, internal) {
+    if (speed === void 0) {
+      speed = this.params.speed;
+    }
+    if (runCallbacks === void 0) {
+      runCallbacks = true;
+    }
+    const swiper = this;
+    const {
+      animating,
+      enabled,
+      params
+    } = swiper;
+    if (!enabled)
+      return swiper;
+    let perGroup = params.slidesPerGroup;
+    if (params.slidesPerView === "auto" && params.slidesPerGroup === 1 && params.slidesPerGroupAuto) {
+      perGroup = Math.max(swiper.slidesPerViewDynamic("current", true), 1);
+    }
+    const increment = swiper.activeIndex < params.slidesPerGroupSkip ? 1 : perGroup;
+    if (params.loop) {
+      if (animating && params.loopPreventsSlide)
+        return false;
+      swiper.loopFix();
+      swiper._clientLeft = swiper.$wrapperEl[0].clientLeft;
+    }
+    if (params.rewind && swiper.isEnd) {
+      return swiper.slideTo(0, speed, runCallbacks, internal);
+    }
+    return swiper.slideTo(swiper.activeIndex + increment, speed, runCallbacks, internal);
+  }
+
+  // node_modules/swiper/core/slide/slidePrev.js
+  function slidePrev(speed, runCallbacks, internal) {
+    if (speed === void 0) {
+      speed = this.params.speed;
+    }
+    if (runCallbacks === void 0) {
+      runCallbacks = true;
+    }
+    const swiper = this;
+    const {
+      params,
+      animating,
+      snapGrid,
+      slidesGrid,
+      rtlTranslate,
+      enabled
+    } = swiper;
+    if (!enabled)
+      return swiper;
+    if (params.loop) {
+      if (animating && params.loopPreventsSlide)
+        return false;
+      swiper.loopFix();
+      swiper._clientLeft = swiper.$wrapperEl[0].clientLeft;
+    }
+    const translate = rtlTranslate ? swiper.translate : -swiper.translate;
+    function normalize(val) {
+      if (val < 0)
+        return -Math.floor(Math.abs(val));
+      return Math.floor(val);
+    }
+    const normalizedTranslate = normalize(translate);
+    const normalizedSnapGrid = snapGrid.map((val) => normalize(val));
+    let prevSnap = snapGrid[normalizedSnapGrid.indexOf(normalizedTranslate) - 1];
+    if (typeof prevSnap === "undefined" && params.cssMode) {
+      let prevSnapIndex;
+      snapGrid.forEach((snap, snapIndex) => {
+        if (normalizedTranslate >= snap) {
+          prevSnapIndex = snapIndex;
+        }
+      });
+      if (typeof prevSnapIndex !== "undefined") {
+        prevSnap = snapGrid[prevSnapIndex > 0 ? prevSnapIndex - 1 : prevSnapIndex];
+      }
+    }
+    let prevIndex = 0;
+    if (typeof prevSnap !== "undefined") {
+      prevIndex = slidesGrid.indexOf(prevSnap);
+      if (prevIndex < 0)
+        prevIndex = swiper.activeIndex - 1;
+      if (params.slidesPerView === "auto" && params.slidesPerGroup === 1 && params.slidesPerGroupAuto) {
+        prevIndex = prevIndex - swiper.slidesPerViewDynamic("previous", true) + 1;
+        prevIndex = Math.max(prevIndex, 0);
+      }
+    }
+    if (params.rewind && swiper.isBeginning) {
+      const lastIndex = swiper.params.virtual && swiper.params.virtual.enabled && swiper.virtual ? swiper.virtual.slides.length - 1 : swiper.slides.length - 1;
+      return swiper.slideTo(lastIndex, speed, runCallbacks, internal);
+    }
+    return swiper.slideTo(prevIndex, speed, runCallbacks, internal);
+  }
+
+  // node_modules/swiper/core/slide/slideReset.js
+  function slideReset(speed, runCallbacks, internal) {
+    if (speed === void 0) {
+      speed = this.params.speed;
+    }
+    if (runCallbacks === void 0) {
+      runCallbacks = true;
+    }
+    const swiper = this;
+    return swiper.slideTo(swiper.activeIndex, speed, runCallbacks, internal);
+  }
+
+  // node_modules/swiper/core/slide/slideToClosest.js
+  function slideToClosest(speed, runCallbacks, internal, threshold) {
+    if (speed === void 0) {
+      speed = this.params.speed;
+    }
+    if (runCallbacks === void 0) {
+      runCallbacks = true;
+    }
+    if (threshold === void 0) {
+      threshold = 0.5;
+    }
+    const swiper = this;
+    let index2 = swiper.activeIndex;
+    const skip = Math.min(swiper.params.slidesPerGroupSkip, index2);
+    const snapIndex = skip + Math.floor((index2 - skip) / swiper.params.slidesPerGroup);
+    const translate = swiper.rtlTranslate ? swiper.translate : -swiper.translate;
+    if (translate >= swiper.snapGrid[snapIndex]) {
+      const currentSnap = swiper.snapGrid[snapIndex];
+      const nextSnap = swiper.snapGrid[snapIndex + 1];
+      if (translate - currentSnap > (nextSnap - currentSnap) * threshold) {
+        index2 += swiper.params.slidesPerGroup;
+      }
+    } else {
+      const prevSnap = swiper.snapGrid[snapIndex - 1];
+      const currentSnap = swiper.snapGrid[snapIndex];
+      if (translate - prevSnap <= (currentSnap - prevSnap) * threshold) {
+        index2 -= swiper.params.slidesPerGroup;
+      }
+    }
+    index2 = Math.max(index2, 0);
+    index2 = Math.min(index2, swiper.slidesGrid.length - 1);
+    return swiper.slideTo(index2, speed, runCallbacks, internal);
+  }
+
+  // node_modules/swiper/core/slide/slideToClickedSlide.js
+  function slideToClickedSlide() {
+    const swiper = this;
+    const {
+      params,
+      $wrapperEl
+    } = swiper;
+    const slidesPerView = params.slidesPerView === "auto" ? swiper.slidesPerViewDynamic() : params.slidesPerView;
+    let slideToIndex = swiper.clickedIndex;
+    let realIndex;
+    if (params.loop) {
+      if (swiper.animating)
+        return;
+      realIndex = parseInt(dom_default(swiper.clickedSlide).attr("data-swiper-slide-index"), 10);
+      if (params.centeredSlides) {
+        if (slideToIndex < swiper.loopedSlides - slidesPerView / 2 || slideToIndex > swiper.slides.length - swiper.loopedSlides + slidesPerView / 2) {
+          swiper.loopFix();
+          slideToIndex = $wrapperEl.children(`.${params.slideClass}[data-swiper-slide-index="${realIndex}"]:not(.${params.slideDuplicateClass})`).eq(0).index();
+          nextTick(() => {
+            swiper.slideTo(slideToIndex);
+          });
+        } else {
+          swiper.slideTo(slideToIndex);
+        }
+      } else if (slideToIndex > swiper.slides.length - slidesPerView) {
+        swiper.loopFix();
+        slideToIndex = $wrapperEl.children(`.${params.slideClass}[data-swiper-slide-index="${realIndex}"]:not(.${params.slideDuplicateClass})`).eq(0).index();
+        nextTick(() => {
+          swiper.slideTo(slideToIndex);
+        });
+      } else {
+        swiper.slideTo(slideToIndex);
+      }
+    } else {
+      swiper.slideTo(slideToIndex);
+    }
+  }
+
+  // node_modules/swiper/core/slide/index.js
+  var slide_default = {
+    slideTo,
+    slideToLoop,
+    slideNext,
+    slidePrev,
+    slideReset,
+    slideToClosest,
+    slideToClickedSlide
+  };
+
+  // node_modules/swiper/core/loop/loopCreate.js
+  function loopCreate() {
+    const swiper = this;
+    const document2 = getDocument();
+    const {
+      params,
+      $wrapperEl
+    } = swiper;
+    const $selector = $wrapperEl.children().length > 0 ? dom_default($wrapperEl.children()[0].parentNode) : $wrapperEl;
+    $selector.children(`.${params.slideClass}.${params.slideDuplicateClass}`).remove();
+    let slides = $selector.children(`.${params.slideClass}`);
+    if (params.loopFillGroupWithBlank) {
+      const blankSlidesNum = params.slidesPerGroup - slides.length % params.slidesPerGroup;
+      if (blankSlidesNum !== params.slidesPerGroup) {
+        for (let i2 = 0; i2 < blankSlidesNum; i2 += 1) {
+          const blankNode = dom_default(document2.createElement("div")).addClass(`${params.slideClass} ${params.slideBlankClass}`);
+          $selector.append(blankNode);
+        }
+        slides = $selector.children(`.${params.slideClass}`);
+      }
+    }
+    if (params.slidesPerView === "auto" && !params.loopedSlides)
+      params.loopedSlides = slides.length;
+    swiper.loopedSlides = Math.ceil(parseFloat(params.loopedSlides || params.slidesPerView, 10));
+    swiper.loopedSlides += params.loopAdditionalSlides;
+    if (swiper.loopedSlides > slides.length && swiper.params.loopedSlidesLimit) {
+      swiper.loopedSlides = slides.length;
+    }
+    const prependSlides = [];
+    const appendSlides = [];
+    slides.each((el, index2) => {
+      dom_default(el).attr("data-swiper-slide-index", index2);
+    });
+    for (let i2 = 0; i2 < swiper.loopedSlides; i2 += 1) {
+      const index2 = i2 - Math.floor(i2 / slides.length) * slides.length;
+      appendSlides.push(slides.eq(index2)[0]);
+      prependSlides.unshift(slides.eq(slides.length - index2 - 1)[0]);
+    }
+    for (let i2 = 0; i2 < appendSlides.length; i2 += 1) {
+      $selector.append(dom_default(appendSlides[i2].cloneNode(true)).addClass(params.slideDuplicateClass));
+    }
+    for (let i2 = prependSlides.length - 1; i2 >= 0; i2 -= 1) {
+      $selector.prepend(dom_default(prependSlides[i2].cloneNode(true)).addClass(params.slideDuplicateClass));
+    }
+  }
+
+  // node_modules/swiper/core/loop/loopFix.js
+  function loopFix() {
+    const swiper = this;
+    swiper.emit("beforeLoopFix");
+    const {
+      activeIndex,
+      slides,
+      loopedSlides,
+      allowSlidePrev,
+      allowSlideNext,
+      snapGrid,
+      rtlTranslate: rtl
+    } = swiper;
+    let newIndex;
+    swiper.allowSlidePrev = true;
+    swiper.allowSlideNext = true;
+    const snapTranslate = -snapGrid[activeIndex];
+    const diff = snapTranslate - swiper.getTranslate();
+    if (activeIndex < loopedSlides) {
+      newIndex = slides.length - loopedSlides * 3 + activeIndex;
+      newIndex += loopedSlides;
+      const slideChanged = swiper.slideTo(newIndex, 0, false, true);
+      if (slideChanged && diff !== 0) {
+        swiper.setTranslate((rtl ? -swiper.translate : swiper.translate) - diff);
+      }
+    } else if (activeIndex >= slides.length - loopedSlides) {
+      newIndex = -slides.length + activeIndex + loopedSlides;
+      newIndex += loopedSlides;
+      const slideChanged = swiper.slideTo(newIndex, 0, false, true);
+      if (slideChanged && diff !== 0) {
+        swiper.setTranslate((rtl ? -swiper.translate : swiper.translate) - diff);
+      }
+    }
+    swiper.allowSlidePrev = allowSlidePrev;
+    swiper.allowSlideNext = allowSlideNext;
+    swiper.emit("loopFix");
+  }
+
+  // node_modules/swiper/core/loop/loopDestroy.js
+  function loopDestroy() {
+    const swiper = this;
+    const {
+      $wrapperEl,
+      params,
+      slides
+    } = swiper;
+    $wrapperEl.children(`.${params.slideClass}.${params.slideDuplicateClass},.${params.slideClass}.${params.slideBlankClass}`).remove();
+    slides.removeAttr("data-swiper-slide-index");
+  }
+
+  // node_modules/swiper/core/loop/index.js
+  var loop_default = {
+    loopCreate,
+    loopFix,
+    loopDestroy
+  };
+
+  // node_modules/swiper/core/grab-cursor/setGrabCursor.js
+  function setGrabCursor(moving) {
+    const swiper = this;
+    if (swiper.support.touch || !swiper.params.simulateTouch || swiper.params.watchOverflow && swiper.isLocked || swiper.params.cssMode)
+      return;
+    const el = swiper.params.touchEventsTarget === "container" ? swiper.el : swiper.wrapperEl;
+    el.style.cursor = "move";
+    el.style.cursor = moving ? "grabbing" : "grab";
+  }
+
+  // node_modules/swiper/core/grab-cursor/unsetGrabCursor.js
+  function unsetGrabCursor() {
+    const swiper = this;
+    if (swiper.support.touch || swiper.params.watchOverflow && swiper.isLocked || swiper.params.cssMode) {
+      return;
+    }
+    swiper[swiper.params.touchEventsTarget === "container" ? "el" : "wrapperEl"].style.cursor = "";
+  }
+
+  // node_modules/swiper/core/grab-cursor/index.js
+  var grab_cursor_default = {
+    setGrabCursor,
+    unsetGrabCursor
+  };
+
+  // node_modules/swiper/core/events/onTouchStart.js
+  function closestElement(selector, base) {
+    if (base === void 0) {
+      base = this;
+    }
+    function __closestFrom(el) {
+      if (!el || el === getDocument() || el === getWindow())
+        return null;
+      if (el.assignedSlot)
+        el = el.assignedSlot;
+      const found = el.closest(selector);
+      if (!found && !el.getRootNode) {
+        return null;
+      }
+      return found || __closestFrom(el.getRootNode().host);
+    }
+    return __closestFrom(base);
+  }
+  function onTouchStart(event2) {
+    const swiper = this;
+    const document2 = getDocument();
+    const window2 = getWindow();
+    const data = swiper.touchEventsData;
+    const {
+      params,
+      touches,
+      enabled
+    } = swiper;
+    if (!enabled)
+      return;
+    if (swiper.animating && params.preventInteractionOnTransition) {
+      return;
+    }
+    if (!swiper.animating && params.cssMode && params.loop) {
+      swiper.loopFix();
+    }
+    let e2 = event2;
+    if (e2.originalEvent)
+      e2 = e2.originalEvent;
+    let $targetEl = dom_default(e2.target);
+    if (params.touchEventsTarget === "wrapper") {
+      if (!$targetEl.closest(swiper.wrapperEl).length)
+        return;
+    }
+    data.isTouchEvent = e2.type === "touchstart";
+    if (!data.isTouchEvent && "which" in e2 && e2.which === 3)
+      return;
+    if (!data.isTouchEvent && "button" in e2 && e2.button > 0)
+      return;
+    if (data.isTouched && data.isMoved)
+      return;
+    const swipingClassHasValue = !!params.noSwipingClass && params.noSwipingClass !== "";
+    if (swipingClassHasValue && e2.target && e2.target.shadowRoot && event2.path && event2.path[0]) {
+      $targetEl = dom_default(event2.path[0]);
+    }
+    const noSwipingSelector = params.noSwipingSelector ? params.noSwipingSelector : `.${params.noSwipingClass}`;
+    const isTargetShadow = !!(e2.target && e2.target.shadowRoot);
+    if (params.noSwiping && (isTargetShadow ? closestElement(noSwipingSelector, $targetEl[0]) : $targetEl.closest(noSwipingSelector)[0])) {
+      swiper.allowClick = true;
+      return;
+    }
+    if (params.swipeHandler) {
+      if (!$targetEl.closest(params.swipeHandler)[0])
+        return;
+    }
+    touches.currentX = e2.type === "touchstart" ? e2.targetTouches[0].pageX : e2.pageX;
+    touches.currentY = e2.type === "touchstart" ? e2.targetTouches[0].pageY : e2.pageY;
+    const startX = touches.currentX;
+    const startY = touches.currentY;
+    const edgeSwipeDetection = params.edgeSwipeDetection || params.iOSEdgeSwipeDetection;
+    const edgeSwipeThreshold = params.edgeSwipeThreshold || params.iOSEdgeSwipeThreshold;
+    if (edgeSwipeDetection && (startX <= edgeSwipeThreshold || startX >= window2.innerWidth - edgeSwipeThreshold)) {
+      if (edgeSwipeDetection === "prevent") {
+        event2.preventDefault();
+      } else {
+        return;
+      }
+    }
+    Object.assign(data, {
+      isTouched: true,
+      isMoved: false,
+      allowTouchCallbacks: true,
+      isScrolling: void 0,
+      startMoving: void 0
+    });
+    touches.startX = startX;
+    touches.startY = startY;
+    data.touchStartTime = now();
+    swiper.allowClick = true;
+    swiper.updateSize();
+    swiper.swipeDirection = void 0;
+    if (params.threshold > 0)
+      data.allowThresholdMove = false;
+    if (e2.type !== "touchstart") {
+      let preventDefault = true;
+      if ($targetEl.is(data.focusableElements)) {
+        preventDefault = false;
+        if ($targetEl[0].nodeName === "SELECT") {
+          data.isTouched = false;
+        }
+      }
+      if (document2.activeElement && dom_default(document2.activeElement).is(data.focusableElements) && document2.activeElement !== $targetEl[0]) {
+        document2.activeElement.blur();
+      }
+      const shouldPreventDefault = preventDefault && swiper.allowTouchMove && params.touchStartPreventDefault;
+      if ((params.touchStartForcePreventDefault || shouldPreventDefault) && !$targetEl[0].isContentEditable) {
+        e2.preventDefault();
+      }
+    }
+    if (swiper.params.freeMode && swiper.params.freeMode.enabled && swiper.freeMode && swiper.animating && !params.cssMode) {
+      swiper.freeMode.onTouchStart();
+    }
+    swiper.emit("touchStart", e2);
+  }
+
+  // node_modules/swiper/core/events/onTouchMove.js
+  function onTouchMove(event2) {
+    const document2 = getDocument();
+    const swiper = this;
+    const data = swiper.touchEventsData;
+    const {
+      params,
+      touches,
+      rtlTranslate: rtl,
+      enabled
+    } = swiper;
+    if (!enabled)
+      return;
+    let e2 = event2;
+    if (e2.originalEvent)
+      e2 = e2.originalEvent;
+    if (!data.isTouched) {
+      if (data.startMoving && data.isScrolling) {
+        swiper.emit("touchMoveOpposite", e2);
+      }
+      return;
+    }
+    if (data.isTouchEvent && e2.type !== "touchmove")
+      return;
+    const targetTouch = e2.type === "touchmove" && e2.targetTouches && (e2.targetTouches[0] || e2.changedTouches[0]);
+    const pageX = e2.type === "touchmove" ? targetTouch.pageX : e2.pageX;
+    const pageY = e2.type === "touchmove" ? targetTouch.pageY : e2.pageY;
+    if (e2.preventedByNestedSwiper) {
+      touches.startX = pageX;
+      touches.startY = pageY;
+      return;
+    }
+    if (!swiper.allowTouchMove) {
+      if (!dom_default(e2.target).is(data.focusableElements)) {
+        swiper.allowClick = false;
+      }
+      if (data.isTouched) {
+        Object.assign(touches, {
+          startX: pageX,
+          startY: pageY,
+          currentX: pageX,
+          currentY: pageY
+        });
+        data.touchStartTime = now();
+      }
+      return;
+    }
+    if (data.isTouchEvent && params.touchReleaseOnEdges && !params.loop) {
+      if (swiper.isVertical()) {
+        if (pageY < touches.startY && swiper.translate <= swiper.maxTranslate() || pageY > touches.startY && swiper.translate >= swiper.minTranslate()) {
+          data.isTouched = false;
+          data.isMoved = false;
+          return;
+        }
+      } else if (pageX < touches.startX && swiper.translate <= swiper.maxTranslate() || pageX > touches.startX && swiper.translate >= swiper.minTranslate()) {
+        return;
+      }
+    }
+    if (data.isTouchEvent && document2.activeElement) {
+      if (e2.target === document2.activeElement && dom_default(e2.target).is(data.focusableElements)) {
+        data.isMoved = true;
+        swiper.allowClick = false;
+        return;
+      }
+    }
+    if (data.allowTouchCallbacks) {
+      swiper.emit("touchMove", e2);
+    }
+    if (e2.targetTouches && e2.targetTouches.length > 1)
+      return;
+    touches.currentX = pageX;
+    touches.currentY = pageY;
+    const diffX = touches.currentX - touches.startX;
+    const diffY = touches.currentY - touches.startY;
+    if (swiper.params.threshold && Math.sqrt(diffX ** 2 + diffY ** 2) < swiper.params.threshold)
+      return;
+    if (typeof data.isScrolling === "undefined") {
+      let touchAngle;
+      if (swiper.isHorizontal() && touches.currentY === touches.startY || swiper.isVertical() && touches.currentX === touches.startX) {
+        data.isScrolling = false;
+      } else {
+        if (diffX * diffX + diffY * diffY >= 25) {
+          touchAngle = Math.atan2(Math.abs(diffY), Math.abs(diffX)) * 180 / Math.PI;
+          data.isScrolling = swiper.isHorizontal() ? touchAngle > params.touchAngle : 90 - touchAngle > params.touchAngle;
+        }
+      }
+    }
+    if (data.isScrolling) {
+      swiper.emit("touchMoveOpposite", e2);
+    }
+    if (typeof data.startMoving === "undefined") {
+      if (touches.currentX !== touches.startX || touches.currentY !== touches.startY) {
+        data.startMoving = true;
+      }
+    }
+    if (data.isScrolling) {
+      data.isTouched = false;
+      return;
+    }
+    if (!data.startMoving) {
+      return;
+    }
+    swiper.allowClick = false;
+    if (!params.cssMode && e2.cancelable) {
+      e2.preventDefault();
+    }
+    if (params.touchMoveStopPropagation && !params.nested) {
+      e2.stopPropagation();
+    }
+    if (!data.isMoved) {
+      if (params.loop && !params.cssMode) {
+        swiper.loopFix();
+      }
+      data.startTranslate = swiper.getTranslate();
+      swiper.setTransition(0);
+      if (swiper.animating) {
+        swiper.$wrapperEl.trigger("webkitTransitionEnd transitionend");
+      }
+      data.allowMomentumBounce = false;
+      if (params.grabCursor && (swiper.allowSlideNext === true || swiper.allowSlidePrev === true)) {
+        swiper.setGrabCursor(true);
+      }
+      swiper.emit("sliderFirstMove", e2);
+    }
+    swiper.emit("sliderMove", e2);
+    data.isMoved = true;
+    let diff = swiper.isHorizontal() ? diffX : diffY;
+    touches.diff = diff;
+    diff *= params.touchRatio;
+    if (rtl)
+      diff = -diff;
+    swiper.swipeDirection = diff > 0 ? "prev" : "next";
+    data.currentTranslate = diff + data.startTranslate;
+    let disableParentSwiper = true;
+    let resistanceRatio = params.resistanceRatio;
+    if (params.touchReleaseOnEdges) {
+      resistanceRatio = 0;
+    }
+    if (diff > 0 && data.currentTranslate > swiper.minTranslate()) {
+      disableParentSwiper = false;
+      if (params.resistance)
+        data.currentTranslate = swiper.minTranslate() - 1 + (-swiper.minTranslate() + data.startTranslate + diff) ** resistanceRatio;
+    } else if (diff < 0 && data.currentTranslate < swiper.maxTranslate()) {
+      disableParentSwiper = false;
+      if (params.resistance)
+        data.currentTranslate = swiper.maxTranslate() + 1 - (swiper.maxTranslate() - data.startTranslate - diff) ** resistanceRatio;
+    }
+    if (disableParentSwiper) {
+      e2.preventedByNestedSwiper = true;
+    }
+    if (!swiper.allowSlideNext && swiper.swipeDirection === "next" && data.currentTranslate < data.startTranslate) {
+      data.currentTranslate = data.startTranslate;
+    }
+    if (!swiper.allowSlidePrev && swiper.swipeDirection === "prev" && data.currentTranslate > data.startTranslate) {
+      data.currentTranslate = data.startTranslate;
+    }
+    if (!swiper.allowSlidePrev && !swiper.allowSlideNext) {
+      data.currentTranslate = data.startTranslate;
+    }
+    if (params.threshold > 0) {
+      if (Math.abs(diff) > params.threshold || data.allowThresholdMove) {
+        if (!data.allowThresholdMove) {
+          data.allowThresholdMove = true;
+          touches.startX = touches.currentX;
+          touches.startY = touches.currentY;
+          data.currentTranslate = data.startTranslate;
+          touches.diff = swiper.isHorizontal() ? touches.currentX - touches.startX : touches.currentY - touches.startY;
+          return;
+        }
+      } else {
+        data.currentTranslate = data.startTranslate;
+        return;
+      }
+    }
+    if (!params.followFinger || params.cssMode)
+      return;
+    if (params.freeMode && params.freeMode.enabled && swiper.freeMode || params.watchSlidesProgress) {
+      swiper.updateActiveIndex();
+      swiper.updateSlidesClasses();
+    }
+    if (swiper.params.freeMode && params.freeMode.enabled && swiper.freeMode) {
+      swiper.freeMode.onTouchMove();
+    }
+    swiper.updateProgress(data.currentTranslate);
+    swiper.setTranslate(data.currentTranslate);
+  }
+
+  // node_modules/swiper/core/events/onTouchEnd.js
+  function onTouchEnd(event2) {
+    const swiper = this;
+    const data = swiper.touchEventsData;
+    const {
+      params,
+      touches,
+      rtlTranslate: rtl,
+      slidesGrid,
+      enabled
+    } = swiper;
+    if (!enabled)
+      return;
+    let e2 = event2;
+    if (e2.originalEvent)
+      e2 = e2.originalEvent;
+    if (data.allowTouchCallbacks) {
+      swiper.emit("touchEnd", e2);
+    }
+    data.allowTouchCallbacks = false;
+    if (!data.isTouched) {
+      if (data.isMoved && params.grabCursor) {
+        swiper.setGrabCursor(false);
+      }
+      data.isMoved = false;
+      data.startMoving = false;
+      return;
+    }
+    if (params.grabCursor && data.isMoved && data.isTouched && (swiper.allowSlideNext === true || swiper.allowSlidePrev === true)) {
+      swiper.setGrabCursor(false);
+    }
+    const touchEndTime = now();
+    const timeDiff = touchEndTime - data.touchStartTime;
+    if (swiper.allowClick) {
+      const pathTree = e2.path || e2.composedPath && e2.composedPath();
+      swiper.updateClickedSlide(pathTree && pathTree[0] || e2.target);
+      swiper.emit("tap click", e2);
+      if (timeDiff < 300 && touchEndTime - data.lastClickTime < 300) {
+        swiper.emit("doubleTap doubleClick", e2);
+      }
+    }
+    data.lastClickTime = now();
+    nextTick(() => {
+      if (!swiper.destroyed)
+        swiper.allowClick = true;
+    });
+    if (!data.isTouched || !data.isMoved || !swiper.swipeDirection || touches.diff === 0 || data.currentTranslate === data.startTranslate) {
+      data.isTouched = false;
+      data.isMoved = false;
+      data.startMoving = false;
+      return;
+    }
+    data.isTouched = false;
+    data.isMoved = false;
+    data.startMoving = false;
+    let currentPos;
+    if (params.followFinger) {
+      currentPos = rtl ? swiper.translate : -swiper.translate;
+    } else {
+      currentPos = -data.currentTranslate;
+    }
+    if (params.cssMode) {
+      return;
+    }
+    if (swiper.params.freeMode && params.freeMode.enabled) {
+      swiper.freeMode.onTouchEnd({
+        currentPos
+      });
+      return;
+    }
+    let stopIndex = 0;
+    let groupSize = swiper.slidesSizesGrid[0];
+    for (let i2 = 0; i2 < slidesGrid.length; i2 += i2 < params.slidesPerGroupSkip ? 1 : params.slidesPerGroup) {
+      const increment2 = i2 < params.slidesPerGroupSkip - 1 ? 1 : params.slidesPerGroup;
+      if (typeof slidesGrid[i2 + increment2] !== "undefined") {
+        if (currentPos >= slidesGrid[i2] && currentPos < slidesGrid[i2 + increment2]) {
+          stopIndex = i2;
+          groupSize = slidesGrid[i2 + increment2] - slidesGrid[i2];
+        }
+      } else if (currentPos >= slidesGrid[i2]) {
+        stopIndex = i2;
+        groupSize = slidesGrid[slidesGrid.length - 1] - slidesGrid[slidesGrid.length - 2];
+      }
+    }
+    let rewindFirstIndex = null;
+    let rewindLastIndex = null;
+    if (params.rewind) {
+      if (swiper.isBeginning) {
+        rewindLastIndex = swiper.params.virtual && swiper.params.virtual.enabled && swiper.virtual ? swiper.virtual.slides.length - 1 : swiper.slides.length - 1;
+      } else if (swiper.isEnd) {
+        rewindFirstIndex = 0;
+      }
+    }
+    const ratio = (currentPos - slidesGrid[stopIndex]) / groupSize;
+    const increment = stopIndex < params.slidesPerGroupSkip - 1 ? 1 : params.slidesPerGroup;
+    if (timeDiff > params.longSwipesMs) {
+      if (!params.longSwipes) {
+        swiper.slideTo(swiper.activeIndex);
+        return;
+      }
+      if (swiper.swipeDirection === "next") {
+        if (ratio >= params.longSwipesRatio)
+          swiper.slideTo(params.rewind && swiper.isEnd ? rewindFirstIndex : stopIndex + increment);
+        else
+          swiper.slideTo(stopIndex);
+      }
+      if (swiper.swipeDirection === "prev") {
+        if (ratio > 1 - params.longSwipesRatio) {
+          swiper.slideTo(stopIndex + increment);
+        } else if (rewindLastIndex !== null && ratio < 0 && Math.abs(ratio) > params.longSwipesRatio) {
+          swiper.slideTo(rewindLastIndex);
+        } else {
+          swiper.slideTo(stopIndex);
+        }
+      }
+    } else {
+      if (!params.shortSwipes) {
+        swiper.slideTo(swiper.activeIndex);
+        return;
+      }
+      const isNavButtonTarget = swiper.navigation && (e2.target === swiper.navigation.nextEl || e2.target === swiper.navigation.prevEl);
+      if (!isNavButtonTarget) {
+        if (swiper.swipeDirection === "next") {
+          swiper.slideTo(rewindFirstIndex !== null ? rewindFirstIndex : stopIndex + increment);
+        }
+        if (swiper.swipeDirection === "prev") {
+          swiper.slideTo(rewindLastIndex !== null ? rewindLastIndex : stopIndex);
+        }
+      } else if (e2.target === swiper.navigation.nextEl) {
+        swiper.slideTo(stopIndex + increment);
+      } else {
+        swiper.slideTo(stopIndex);
+      }
+    }
+  }
+
+  // node_modules/swiper/core/events/onResize.js
+  function onResize() {
+    const swiper = this;
+    const {
+      params,
+      el
+    } = swiper;
+    if (el && el.offsetWidth === 0)
+      return;
+    if (params.breakpoints) {
+      swiper.setBreakpoint();
+    }
+    const {
+      allowSlideNext,
+      allowSlidePrev,
+      snapGrid
+    } = swiper;
+    swiper.allowSlideNext = true;
+    swiper.allowSlidePrev = true;
+    swiper.updateSize();
+    swiper.updateSlides();
+    swiper.updateSlidesClasses();
+    if ((params.slidesPerView === "auto" || params.slidesPerView > 1) && swiper.isEnd && !swiper.isBeginning && !swiper.params.centeredSlides) {
+      swiper.slideTo(swiper.slides.length - 1, 0, false, true);
+    } else {
+      swiper.slideTo(swiper.activeIndex, 0, false, true);
+    }
+    if (swiper.autoplay && swiper.autoplay.running && swiper.autoplay.paused) {
+      swiper.autoplay.run();
+    }
+    swiper.allowSlidePrev = allowSlidePrev;
+    swiper.allowSlideNext = allowSlideNext;
+    if (swiper.params.watchOverflow && snapGrid !== swiper.snapGrid) {
+      swiper.checkOverflow();
+    }
+  }
+
+  // node_modules/swiper/core/events/onClick.js
+  function onClick(e2) {
+    const swiper = this;
+    if (!swiper.enabled)
+      return;
+    if (!swiper.allowClick) {
+      if (swiper.params.preventClicks)
+        e2.preventDefault();
+      if (swiper.params.preventClicksPropagation && swiper.animating) {
+        e2.stopPropagation();
+        e2.stopImmediatePropagation();
+      }
+    }
+  }
+
+  // node_modules/swiper/core/events/onScroll.js
+  function onScroll() {
+    const swiper = this;
+    const {
+      wrapperEl,
+      rtlTranslate,
+      enabled
+    } = swiper;
+    if (!enabled)
+      return;
+    swiper.previousTranslate = swiper.translate;
+    if (swiper.isHorizontal()) {
+      swiper.translate = -wrapperEl.scrollLeft;
+    } else {
+      swiper.translate = -wrapperEl.scrollTop;
+    }
+    if (swiper.translate === 0)
+      swiper.translate = 0;
+    swiper.updateActiveIndex();
+    swiper.updateSlidesClasses();
+    let newProgress;
+    const translatesDiff = swiper.maxTranslate() - swiper.minTranslate();
+    if (translatesDiff === 0) {
+      newProgress = 0;
+    } else {
+      newProgress = (swiper.translate - swiper.minTranslate()) / translatesDiff;
+    }
+    if (newProgress !== swiper.progress) {
+      swiper.updateProgress(rtlTranslate ? -swiper.translate : swiper.translate);
+    }
+    swiper.emit("setTranslate", swiper.translate, false);
+  }
+
+  // node_modules/swiper/core/events/index.js
+  var dummyEventAttached = false;
+  function dummyEventListener() {
+  }
+  var events = (swiper, method) => {
+    const document2 = getDocument();
+    const {
+      params,
+      touchEvents,
+      el,
+      wrapperEl,
+      device,
+      support: support2
+    } = swiper;
+    const capture = !!params.nested;
+    const domMethod = method === "on" ? "addEventListener" : "removeEventListener";
+    const swiperMethod = method;
+    if (!support2.touch) {
+      el[domMethod](touchEvents.start, swiper.onTouchStart, false);
+      document2[domMethod](touchEvents.move, swiper.onTouchMove, capture);
+      document2[domMethod](touchEvents.end, swiper.onTouchEnd, false);
+    } else {
+      const passiveListener = touchEvents.start === "touchstart" && support2.passiveListener && params.passiveListeners ? {
+        passive: true,
+        capture: false
+      } : false;
+      el[domMethod](touchEvents.start, swiper.onTouchStart, passiveListener);
+      el[domMethod](touchEvents.move, swiper.onTouchMove, support2.passiveListener ? {
+        passive: false,
+        capture
+      } : capture);
+      el[domMethod](touchEvents.end, swiper.onTouchEnd, passiveListener);
+      if (touchEvents.cancel) {
+        el[domMethod](touchEvents.cancel, swiper.onTouchEnd, passiveListener);
+      }
+    }
+    if (params.preventClicks || params.preventClicksPropagation) {
+      el[domMethod]("click", swiper.onClick, true);
+    }
+    if (params.cssMode) {
+      wrapperEl[domMethod]("scroll", swiper.onScroll);
+    }
+    if (params.updateOnWindowResize) {
+      swiper[swiperMethod](device.ios || device.android ? "resize orientationchange observerUpdate" : "resize observerUpdate", onResize, true);
+    } else {
+      swiper[swiperMethod]("observerUpdate", onResize, true);
+    }
+  };
+  function attachEvents() {
+    const swiper = this;
+    const document2 = getDocument();
+    const {
+      params,
+      support: support2
+    } = swiper;
+    swiper.onTouchStart = onTouchStart.bind(swiper);
+    swiper.onTouchMove = onTouchMove.bind(swiper);
+    swiper.onTouchEnd = onTouchEnd.bind(swiper);
+    if (params.cssMode) {
+      swiper.onScroll = onScroll.bind(swiper);
+    }
+    swiper.onClick = onClick.bind(swiper);
+    if (support2.touch && !dummyEventAttached) {
+      document2.addEventListener("touchstart", dummyEventListener);
+      dummyEventAttached = true;
+    }
+    events(swiper, "on");
+  }
+  function detachEvents() {
+    const swiper = this;
+    events(swiper, "off");
+  }
+  var events_default = {
+    attachEvents,
+    detachEvents
+  };
+
+  // node_modules/swiper/core/breakpoints/setBreakpoint.js
+  var isGridEnabled = (swiper, params) => {
+    return swiper.grid && params.grid && params.grid.rows > 1;
+  };
+  function setBreakpoint() {
+    const swiper = this;
+    const {
+      activeIndex,
+      initialized,
+      loopedSlides = 0,
+      params,
+      $el
+    } = swiper;
+    const breakpoints = params.breakpoints;
+    if (!breakpoints || breakpoints && Object.keys(breakpoints).length === 0)
+      return;
+    const breakpoint = swiper.getBreakpoint(breakpoints, swiper.params.breakpointsBase, swiper.el);
+    if (!breakpoint || swiper.currentBreakpoint === breakpoint)
+      return;
+    const breakpointOnlyParams = breakpoint in breakpoints ? breakpoints[breakpoint] : void 0;
+    const breakpointParams = breakpointOnlyParams || swiper.originalParams;
+    const wasMultiRow = isGridEnabled(swiper, params);
+    const isMultiRow = isGridEnabled(swiper, breakpointParams);
+    const wasEnabled = params.enabled;
+    if (wasMultiRow && !isMultiRow) {
+      $el.removeClass(`${params.containerModifierClass}grid ${params.containerModifierClass}grid-column`);
+      swiper.emitContainerClasses();
+    } else if (!wasMultiRow && isMultiRow) {
+      $el.addClass(`${params.containerModifierClass}grid`);
+      if (breakpointParams.grid.fill && breakpointParams.grid.fill === "column" || !breakpointParams.grid.fill && params.grid.fill === "column") {
+        $el.addClass(`${params.containerModifierClass}grid-column`);
+      }
+      swiper.emitContainerClasses();
+    }
+    ["navigation", "pagination", "scrollbar"].forEach((prop) => {
+      const wasModuleEnabled = params[prop] && params[prop].enabled;
+      const isModuleEnabled = breakpointParams[prop] && breakpointParams[prop].enabled;
+      if (wasModuleEnabled && !isModuleEnabled) {
+        swiper[prop].disable();
+      }
+      if (!wasModuleEnabled && isModuleEnabled) {
+        swiper[prop].enable();
+      }
+    });
+    const directionChanged = breakpointParams.direction && breakpointParams.direction !== params.direction;
+    const needsReLoop = params.loop && (breakpointParams.slidesPerView !== params.slidesPerView || directionChanged);
+    if (directionChanged && initialized) {
+      swiper.changeDirection();
+    }
+    extend2(swiper.params, breakpointParams);
+    const isEnabled = swiper.params.enabled;
+    Object.assign(swiper, {
+      allowTouchMove: swiper.params.allowTouchMove,
+      allowSlideNext: swiper.params.allowSlideNext,
+      allowSlidePrev: swiper.params.allowSlidePrev
+    });
+    if (wasEnabled && !isEnabled) {
+      swiper.disable();
+    } else if (!wasEnabled && isEnabled) {
+      swiper.enable();
+    }
+    swiper.currentBreakpoint = breakpoint;
+    swiper.emit("_beforeBreakpoint", breakpointParams);
+    if (needsReLoop && initialized) {
+      swiper.loopDestroy();
+      swiper.loopCreate();
+      swiper.updateSlides();
+      swiper.slideTo(activeIndex - loopedSlides + swiper.loopedSlides, 0, false);
+    }
+    swiper.emit("breakpoint", breakpointParams);
+  }
+
+  // node_modules/swiper/core/breakpoints/getBreakpoint.js
+  function getBreakpoint(breakpoints, base, containerEl) {
+    if (base === void 0) {
+      base = "window";
+    }
+    if (!breakpoints || base === "container" && !containerEl)
+      return void 0;
+    let breakpoint = false;
+    const window2 = getWindow();
+    const currentHeight = base === "window" ? window2.innerHeight : containerEl.clientHeight;
+    const points = Object.keys(breakpoints).map((point) => {
+      if (typeof point === "string" && point.indexOf("@") === 0) {
+        const minRatio = parseFloat(point.substr(1));
+        const value = currentHeight * minRatio;
+        return {
+          value,
+          point
+        };
+      }
+      return {
+        value: point,
+        point
+      };
+    });
+    points.sort((a2, b3) => parseInt(a2.value, 10) - parseInt(b3.value, 10));
+    for (let i2 = 0; i2 < points.length; i2 += 1) {
+      const {
+        point,
+        value
+      } = points[i2];
+      if (base === "window") {
+        if (window2.matchMedia(`(min-width: ${value}px)`).matches) {
+          breakpoint = point;
+        }
+      } else if (value <= containerEl.clientWidth) {
+        breakpoint = point;
+      }
+    }
+    return breakpoint || "max";
+  }
+
+  // node_modules/swiper/core/breakpoints/index.js
+  var breakpoints_default = {
+    setBreakpoint,
+    getBreakpoint
+  };
+
+  // node_modules/swiper/core/classes/addClasses.js
+  function prepareClasses(entries, prefix) {
+    const resultClasses = [];
+    entries.forEach((item) => {
+      if (typeof item === "object") {
+        Object.keys(item).forEach((classNames) => {
+          if (item[classNames]) {
+            resultClasses.push(prefix + classNames);
+          }
+        });
+      } else if (typeof item === "string") {
+        resultClasses.push(prefix + item);
+      }
+    });
+    return resultClasses;
+  }
+  function addClasses() {
+    const swiper = this;
+    const {
+      classNames,
+      params,
+      rtl,
+      $el,
+      device,
+      support: support2
+    } = swiper;
+    const suffixes = prepareClasses(["initialized", params.direction, {
+      "pointer-events": !support2.touch
+    }, {
+      "free-mode": swiper.params.freeMode && params.freeMode.enabled
+    }, {
+      "autoheight": params.autoHeight
+    }, {
+      "rtl": rtl
+    }, {
+      "grid": params.grid && params.grid.rows > 1
+    }, {
+      "grid-column": params.grid && params.grid.rows > 1 && params.grid.fill === "column"
+    }, {
+      "android": device.android
+    }, {
+      "ios": device.ios
+    }, {
+      "css-mode": params.cssMode
+    }, {
+      "centered": params.cssMode && params.centeredSlides
+    }, {
+      "watch-progress": params.watchSlidesProgress
+    }], params.containerModifierClass);
+    classNames.push(...suffixes);
+    $el.addClass([...classNames].join(" "));
+    swiper.emitContainerClasses();
+  }
+
+  // node_modules/swiper/core/classes/removeClasses.js
+  function removeClasses() {
+    const swiper = this;
+    const {
+      $el,
+      classNames
+    } = swiper;
+    $el.removeClass(classNames.join(" "));
+    swiper.emitContainerClasses();
+  }
+
+  // node_modules/swiper/core/classes/index.js
+  var classes_default = {
+    addClasses,
+    removeClasses
+  };
+
+  // node_modules/swiper/core/images/loadImage.js
+  function loadImage(imageEl, src, srcset, sizes2, checkForComplete, callback) {
+    const window2 = getWindow();
+    let image;
+    function onReady() {
+      if (callback)
+        callback();
+    }
+    const isPicture = dom_default(imageEl).parent("picture")[0];
+    if (!isPicture && (!imageEl.complete || !checkForComplete)) {
+      if (src) {
+        image = new window2.Image();
+        image.onload = onReady;
+        image.onerror = onReady;
+        if (sizes2) {
+          image.sizes = sizes2;
+        }
+        if (srcset) {
+          image.srcset = srcset;
+        }
+        if (src) {
+          image.src = src;
+        }
+      } else {
+        onReady();
+      }
+    } else {
+      onReady();
+    }
+  }
+
+  // node_modules/swiper/core/images/preloadImages.js
+  function preloadImages() {
+    const swiper = this;
+    swiper.imagesToLoad = swiper.$el.find("img");
+    function onReady() {
+      if (typeof swiper === "undefined" || swiper === null || !swiper || swiper.destroyed)
+        return;
+      if (swiper.imagesLoaded !== void 0)
+        swiper.imagesLoaded += 1;
+      if (swiper.imagesLoaded === swiper.imagesToLoad.length) {
+        if (swiper.params.updateOnImagesReady)
+          swiper.update();
+        swiper.emit("imagesReady");
+      }
+    }
+    for (let i2 = 0; i2 < swiper.imagesToLoad.length; i2 += 1) {
+      const imageEl = swiper.imagesToLoad[i2];
+      swiper.loadImage(imageEl, imageEl.currentSrc || imageEl.getAttribute("src"), imageEl.srcset || imageEl.getAttribute("srcset"), imageEl.sizes || imageEl.getAttribute("sizes"), true, onReady);
+    }
+  }
+
+  // node_modules/swiper/core/images/index.js
+  var images_default = {
+    loadImage,
+    preloadImages
+  };
+
+  // node_modules/swiper/core/check-overflow/index.js
+  function checkOverflow() {
+    const swiper = this;
+    const {
+      isLocked: wasLocked,
+      params
+    } = swiper;
+    const {
+      slidesOffsetBefore
+    } = params;
+    if (slidesOffsetBefore) {
+      const lastSlideIndex = swiper.slides.length - 1;
+      const lastSlideRightEdge = swiper.slidesGrid[lastSlideIndex] + swiper.slidesSizesGrid[lastSlideIndex] + slidesOffsetBefore * 2;
+      swiper.isLocked = swiper.size > lastSlideRightEdge;
+    } else {
+      swiper.isLocked = swiper.snapGrid.length === 1;
+    }
+    if (params.allowSlideNext === true) {
+      swiper.allowSlideNext = !swiper.isLocked;
+    }
+    if (params.allowSlidePrev === true) {
+      swiper.allowSlidePrev = !swiper.isLocked;
+    }
+    if (wasLocked && wasLocked !== swiper.isLocked) {
+      swiper.isEnd = false;
+    }
+    if (wasLocked !== swiper.isLocked) {
+      swiper.emit(swiper.isLocked ? "lock" : "unlock");
+    }
+  }
+  var check_overflow_default = {
+    checkOverflow
+  };
+
+  // node_modules/swiper/core/defaults.js
+  var defaults_default = {
+    init: true,
+    direction: "horizontal",
+    touchEventsTarget: "wrapper",
+    initialSlide: 0,
+    speed: 300,
+    cssMode: false,
+    updateOnWindowResize: true,
+    resizeObserver: true,
+    nested: false,
+    createElements: false,
+    enabled: true,
+    focusableElements: "input, select, option, textarea, button, video, label",
+    width: null,
+    height: null,
+    preventInteractionOnTransition: false,
+    userAgent: null,
+    url: null,
+    edgeSwipeDetection: false,
+    edgeSwipeThreshold: 20,
+    autoHeight: false,
+    setWrapperSize: false,
+    virtualTranslate: false,
+    effect: "slide",
+    breakpoints: void 0,
+    breakpointsBase: "window",
+    spaceBetween: 0,
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    slidesPerGroupSkip: 0,
+    slidesPerGroupAuto: false,
+    centeredSlides: false,
+    centeredSlidesBounds: false,
+    slidesOffsetBefore: 0,
+    slidesOffsetAfter: 0,
+    normalizeSlideIndex: true,
+    centerInsufficientSlides: false,
+    watchOverflow: true,
+    roundLengths: false,
+    touchRatio: 1,
+    touchAngle: 45,
+    simulateTouch: true,
+    shortSwipes: true,
+    longSwipes: true,
+    longSwipesRatio: 0.5,
+    longSwipesMs: 300,
+    followFinger: true,
+    allowTouchMove: true,
+    threshold: 0,
+    touchMoveStopPropagation: false,
+    touchStartPreventDefault: true,
+    touchStartForcePreventDefault: false,
+    touchReleaseOnEdges: false,
+    uniqueNavElements: true,
+    resistance: true,
+    resistanceRatio: 0.85,
+    watchSlidesProgress: false,
+    grabCursor: false,
+    preventClicks: true,
+    preventClicksPropagation: true,
+    slideToClickedSlide: false,
+    preloadImages: true,
+    updateOnImagesReady: true,
+    loop: false,
+    loopAdditionalSlides: 0,
+    loopedSlides: null,
+    loopedSlidesLimit: true,
+    loopFillGroupWithBlank: false,
+    loopPreventsSlide: true,
+    rewind: false,
+    allowSlidePrev: true,
+    allowSlideNext: true,
+    swipeHandler: null,
+    noSwiping: true,
+    noSwipingClass: "swiper-no-swiping",
+    noSwipingSelector: null,
+    passiveListeners: true,
+    maxBackfaceHiddenSlides: 10,
+    containerModifierClass: "swiper-",
+    slideClass: "swiper-slide",
+    slideBlankClass: "swiper-slide-invisible-blank",
+    slideActiveClass: "swiper-slide-active",
+    slideDuplicateActiveClass: "swiper-slide-duplicate-active",
+    slideVisibleClass: "swiper-slide-visible",
+    slideDuplicateClass: "swiper-slide-duplicate",
+    slideNextClass: "swiper-slide-next",
+    slideDuplicateNextClass: "swiper-slide-duplicate-next",
+    slidePrevClass: "swiper-slide-prev",
+    slideDuplicatePrevClass: "swiper-slide-duplicate-prev",
+    wrapperClass: "swiper-wrapper",
+    runCallbacksOnInit: true,
+    _emitClasses: false
+  };
+
+  // node_modules/swiper/core/moduleExtendParams.js
+  function moduleExtendParams(params, allModulesParams) {
+    return function extendParams(obj) {
+      if (obj === void 0) {
+        obj = {};
+      }
+      const moduleParamName = Object.keys(obj)[0];
+      const moduleParams = obj[moduleParamName];
+      if (typeof moduleParams !== "object" || moduleParams === null) {
+        extend2(allModulesParams, obj);
+        return;
+      }
+      if (["navigation", "pagination", "scrollbar"].indexOf(moduleParamName) >= 0 && params[moduleParamName] === true) {
+        params[moduleParamName] = {
+          auto: true
+        };
+      }
+      if (!(moduleParamName in params && "enabled" in moduleParams)) {
+        extend2(allModulesParams, obj);
+        return;
+      }
+      if (params[moduleParamName] === true) {
+        params[moduleParamName] = {
+          enabled: true
+        };
+      }
+      if (typeof params[moduleParamName] === "object" && !("enabled" in params[moduleParamName])) {
+        params[moduleParamName].enabled = true;
+      }
+      if (!params[moduleParamName])
+        params[moduleParamName] = {
+          enabled: false
+        };
+      extend2(allModulesParams, obj);
+    };
+  }
+
+  // node_modules/swiper/core/core.js
+  var prototypes = {
+    eventsEmitter: events_emitter_default,
+    update: update_default,
+    translate: translate_default,
+    transition: transition_default,
+    slide: slide_default,
+    loop: loop_default,
+    grabCursor: grab_cursor_default,
+    events: events_default,
+    breakpoints: breakpoints_default,
+    checkOverflow: check_overflow_default,
+    classes: classes_default,
+    images: images_default
+  };
+  var extendedDefaults = {};
+  var Swiper = class {
+    constructor() {
+      let el;
+      let params;
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+      if (args.length === 1 && args[0].constructor && Object.prototype.toString.call(args[0]).slice(8, -1) === "Object") {
+        params = args[0];
+      } else {
+        [el, params] = args;
+      }
+      if (!params)
+        params = {};
+      params = extend2({}, params);
+      if (el && !params.el)
+        params.el = el;
+      if (params.el && dom_default(params.el).length > 1) {
+        const swipers = [];
+        dom_default(params.el).each((containerEl) => {
+          const newParams = extend2({}, params, {
+            el: containerEl
+          });
+          swipers.push(new Swiper(newParams));
+        });
+        return swipers;
+      }
+      const swiper = this;
+      swiper.__swiper__ = true;
+      swiper.support = getSupport();
+      swiper.device = getDevice({
+        userAgent: params.userAgent
+      });
+      swiper.browser = getBrowser();
+      swiper.eventsListeners = {};
+      swiper.eventsAnyListeners = [];
+      swiper.modules = [...swiper.__modules__];
+      if (params.modules && Array.isArray(params.modules)) {
+        swiper.modules.push(...params.modules);
+      }
+      const allModulesParams = {};
+      swiper.modules.forEach((mod) => {
+        mod({
+          swiper,
+          extendParams: moduleExtendParams(params, allModulesParams),
+          on: swiper.on.bind(swiper),
+          once: swiper.once.bind(swiper),
+          off: swiper.off.bind(swiper),
+          emit: swiper.emit.bind(swiper)
+        });
+      });
+      const swiperParams = extend2({}, defaults_default, allModulesParams);
+      swiper.params = extend2({}, swiperParams, extendedDefaults, params);
+      swiper.originalParams = extend2({}, swiper.params);
+      swiper.passedParams = extend2({}, params);
+      if (swiper.params && swiper.params.on) {
+        Object.keys(swiper.params.on).forEach((eventName) => {
+          swiper.on(eventName, swiper.params.on[eventName]);
+        });
+      }
+      if (swiper.params && swiper.params.onAny) {
+        swiper.onAny(swiper.params.onAny);
+      }
+      swiper.$ = dom_default;
+      Object.assign(swiper, {
+        enabled: swiper.params.enabled,
+        el,
+        classNames: [],
+        slides: dom_default(),
+        slidesGrid: [],
+        snapGrid: [],
+        slidesSizesGrid: [],
+        isHorizontal() {
+          return swiper.params.direction === "horizontal";
+        },
+        isVertical() {
+          return swiper.params.direction === "vertical";
+        },
+        activeIndex: 0,
+        realIndex: 0,
+        isBeginning: true,
+        isEnd: false,
+        translate: 0,
+        previousTranslate: 0,
+        progress: 0,
+        velocity: 0,
+        animating: false,
+        allowSlideNext: swiper.params.allowSlideNext,
+        allowSlidePrev: swiper.params.allowSlidePrev,
+        touchEvents: function touchEvents() {
+          const touch = ["touchstart", "touchmove", "touchend", "touchcancel"];
+          const desktop = ["pointerdown", "pointermove", "pointerup"];
+          swiper.touchEventsTouch = {
+            start: touch[0],
+            move: touch[1],
+            end: touch[2],
+            cancel: touch[3]
+          };
+          swiper.touchEventsDesktop = {
+            start: desktop[0],
+            move: desktop[1],
+            end: desktop[2]
+          };
+          return swiper.support.touch || !swiper.params.simulateTouch ? swiper.touchEventsTouch : swiper.touchEventsDesktop;
+        }(),
+        touchEventsData: {
+          isTouched: void 0,
+          isMoved: void 0,
+          allowTouchCallbacks: void 0,
+          touchStartTime: void 0,
+          isScrolling: void 0,
+          currentTranslate: void 0,
+          startTranslate: void 0,
+          allowThresholdMove: void 0,
+          focusableElements: swiper.params.focusableElements,
+          lastClickTime: now(),
+          clickTimeout: void 0,
+          velocities: [],
+          allowMomentumBounce: void 0,
+          isTouchEvent: void 0,
+          startMoving: void 0
+        },
+        allowClick: true,
+        allowTouchMove: swiper.params.allowTouchMove,
+        touches: {
+          startX: 0,
+          startY: 0,
+          currentX: 0,
+          currentY: 0,
+          diff: 0
+        },
+        imagesToLoad: [],
+        imagesLoaded: 0
+      });
+      swiper.emit("_swiper");
+      if (swiper.params.init) {
+        swiper.init();
+      }
+      return swiper;
+    }
+    enable() {
+      const swiper = this;
+      if (swiper.enabled)
+        return;
+      swiper.enabled = true;
+      if (swiper.params.grabCursor) {
+        swiper.setGrabCursor();
+      }
+      swiper.emit("enable");
+    }
+    disable() {
+      const swiper = this;
+      if (!swiper.enabled)
+        return;
+      swiper.enabled = false;
+      if (swiper.params.grabCursor) {
+        swiper.unsetGrabCursor();
+      }
+      swiper.emit("disable");
+    }
+    setProgress(progress, speed) {
+      const swiper = this;
+      progress = Math.min(Math.max(progress, 0), 1);
+      const min = swiper.minTranslate();
+      const max = swiper.maxTranslate();
+      const current = (max - min) * progress + min;
+      swiper.translateTo(current, typeof speed === "undefined" ? 0 : speed);
+      swiper.updateActiveIndex();
+      swiper.updateSlidesClasses();
+    }
+    emitContainerClasses() {
+      const swiper = this;
+      if (!swiper.params._emitClasses || !swiper.el)
+        return;
+      const cls = swiper.el.className.split(" ").filter((className) => {
+        return className.indexOf("swiper") === 0 || className.indexOf(swiper.params.containerModifierClass) === 0;
+      });
+      swiper.emit("_containerClasses", cls.join(" "));
+    }
+    getSlideClasses(slideEl) {
+      const swiper = this;
+      if (swiper.destroyed)
+        return "";
+      return slideEl.className.split(" ").filter((className) => {
+        return className.indexOf("swiper-slide") === 0 || className.indexOf(swiper.params.slideClass) === 0;
+      }).join(" ");
+    }
+    emitSlidesClasses() {
+      const swiper = this;
+      if (!swiper.params._emitClasses || !swiper.el)
+        return;
+      const updates = [];
+      swiper.slides.each((slideEl) => {
+        const classNames = swiper.getSlideClasses(slideEl);
+        updates.push({
+          slideEl,
+          classNames
+        });
+        swiper.emit("_slideClass", slideEl, classNames);
+      });
+      swiper.emit("_slideClasses", updates);
+    }
+    slidesPerViewDynamic(view, exact) {
+      if (view === void 0) {
+        view = "current";
+      }
+      if (exact === void 0) {
+        exact = false;
+      }
+      const swiper = this;
+      const {
+        params,
+        slides,
+        slidesGrid,
+        slidesSizesGrid,
+        size: swiperSize,
+        activeIndex
+      } = swiper;
+      let spv = 1;
+      if (params.centeredSlides) {
+        let slideSize = slides[activeIndex].swiperSlideSize;
+        let breakLoop;
+        for (let i2 = activeIndex + 1; i2 < slides.length; i2 += 1) {
+          if (slides[i2] && !breakLoop) {
+            slideSize += slides[i2].swiperSlideSize;
+            spv += 1;
+            if (slideSize > swiperSize)
+              breakLoop = true;
+          }
+        }
+        for (let i2 = activeIndex - 1; i2 >= 0; i2 -= 1) {
+          if (slides[i2] && !breakLoop) {
+            slideSize += slides[i2].swiperSlideSize;
+            spv += 1;
+            if (slideSize > swiperSize)
+              breakLoop = true;
+          }
+        }
+      } else {
+        if (view === "current") {
+          for (let i2 = activeIndex + 1; i2 < slides.length; i2 += 1) {
+            const slideInView = exact ? slidesGrid[i2] + slidesSizesGrid[i2] - slidesGrid[activeIndex] < swiperSize : slidesGrid[i2] - slidesGrid[activeIndex] < swiperSize;
+            if (slideInView) {
+              spv += 1;
+            }
+          }
+        } else {
+          for (let i2 = activeIndex - 1; i2 >= 0; i2 -= 1) {
+            const slideInView = slidesGrid[activeIndex] - slidesGrid[i2] < swiperSize;
+            if (slideInView) {
+              spv += 1;
+            }
+          }
+        }
+      }
+      return spv;
+    }
+    update() {
+      const swiper = this;
+      if (!swiper || swiper.destroyed)
+        return;
+      const {
+        snapGrid,
+        params
+      } = swiper;
+      if (params.breakpoints) {
+        swiper.setBreakpoint();
+      }
+      swiper.updateSize();
+      swiper.updateSlides();
+      swiper.updateProgress();
+      swiper.updateSlidesClasses();
+      function setTranslate2() {
+        const translateValue = swiper.rtlTranslate ? swiper.translate * -1 : swiper.translate;
+        const newTranslate = Math.min(Math.max(translateValue, swiper.maxTranslate()), swiper.minTranslate());
+        swiper.setTranslate(newTranslate);
+        swiper.updateActiveIndex();
+        swiper.updateSlidesClasses();
+      }
+      let translated;
+      if (swiper.params.freeMode && swiper.params.freeMode.enabled) {
+        setTranslate2();
+        if (swiper.params.autoHeight) {
+          swiper.updateAutoHeight();
+        }
+      } else {
+        if ((swiper.params.slidesPerView === "auto" || swiper.params.slidesPerView > 1) && swiper.isEnd && !swiper.params.centeredSlides) {
+          translated = swiper.slideTo(swiper.slides.length - 1, 0, false, true);
+        } else {
+          translated = swiper.slideTo(swiper.activeIndex, 0, false, true);
+        }
+        if (!translated) {
+          setTranslate2();
+        }
+      }
+      if (params.watchOverflow && snapGrid !== swiper.snapGrid) {
+        swiper.checkOverflow();
+      }
+      swiper.emit("update");
+    }
+    changeDirection(newDirection, needUpdate) {
+      if (needUpdate === void 0) {
+        needUpdate = true;
+      }
+      const swiper = this;
+      const currentDirection = swiper.params.direction;
+      if (!newDirection) {
+        newDirection = currentDirection === "horizontal" ? "vertical" : "horizontal";
+      }
+      if (newDirection === currentDirection || newDirection !== "horizontal" && newDirection !== "vertical") {
+        return swiper;
+      }
+      swiper.$el.removeClass(`${swiper.params.containerModifierClass}${currentDirection}`).addClass(`${swiper.params.containerModifierClass}${newDirection}`);
+      swiper.emitContainerClasses();
+      swiper.params.direction = newDirection;
+      swiper.slides.each((slideEl) => {
+        if (newDirection === "vertical") {
+          slideEl.style.width = "";
+        } else {
+          slideEl.style.height = "";
+        }
+      });
+      swiper.emit("changeDirection");
+      if (needUpdate)
+        swiper.update();
+      return swiper;
+    }
+    changeLanguageDirection(direction) {
+      const swiper = this;
+      if (swiper.rtl && direction === "rtl" || !swiper.rtl && direction === "ltr")
+        return;
+      swiper.rtl = direction === "rtl";
+      swiper.rtlTranslate = swiper.params.direction === "horizontal" && swiper.rtl;
+      if (swiper.rtl) {
+        swiper.$el.addClass(`${swiper.params.containerModifierClass}rtl`);
+        swiper.el.dir = "rtl";
+      } else {
+        swiper.$el.removeClass(`${swiper.params.containerModifierClass}rtl`);
+        swiper.el.dir = "ltr";
+      }
+      swiper.update();
+    }
+    mount(el) {
+      const swiper = this;
+      if (swiper.mounted)
+        return true;
+      const $el = dom_default(el || swiper.params.el);
+      el = $el[0];
+      if (!el) {
+        return false;
+      }
+      el.swiper = swiper;
+      const getWrapperSelector = () => {
+        return `.${(swiper.params.wrapperClass || "").trim().split(" ").join(".")}`;
+      };
+      const getWrapper = () => {
+        if (el && el.shadowRoot && el.shadowRoot.querySelector) {
+          const res = dom_default(el.shadowRoot.querySelector(getWrapperSelector()));
+          res.children = (options) => $el.children(options);
+          return res;
+        }
+        if (!$el.children) {
+          return dom_default($el).children(getWrapperSelector());
+        }
+        return $el.children(getWrapperSelector());
+      };
+      let $wrapperEl = getWrapper();
+      if ($wrapperEl.length === 0 && swiper.params.createElements) {
+        const document2 = getDocument();
+        const wrapper = document2.createElement("div");
+        $wrapperEl = dom_default(wrapper);
+        wrapper.className = swiper.params.wrapperClass;
+        $el.append(wrapper);
+        $el.children(`.${swiper.params.slideClass}`).each((slideEl) => {
+          $wrapperEl.append(slideEl);
+        });
+      }
+      Object.assign(swiper, {
+        $el,
+        el,
+        $wrapperEl,
+        wrapperEl: $wrapperEl[0],
+        mounted: true,
+        rtl: el.dir.toLowerCase() === "rtl" || $el.css("direction") === "rtl",
+        rtlTranslate: swiper.params.direction === "horizontal" && (el.dir.toLowerCase() === "rtl" || $el.css("direction") === "rtl"),
+        wrongRTL: $wrapperEl.css("display") === "-webkit-box"
+      });
+      return true;
+    }
+    init(el) {
+      const swiper = this;
+      if (swiper.initialized)
+        return swiper;
+      const mounted = swiper.mount(el);
+      if (mounted === false)
+        return swiper;
+      swiper.emit("beforeInit");
+      if (swiper.params.breakpoints) {
+        swiper.setBreakpoint();
+      }
+      swiper.addClasses();
+      if (swiper.params.loop) {
+        swiper.loopCreate();
+      }
+      swiper.updateSize();
+      swiper.updateSlides();
+      if (swiper.params.watchOverflow) {
+        swiper.checkOverflow();
+      }
+      if (swiper.params.grabCursor && swiper.enabled) {
+        swiper.setGrabCursor();
+      }
+      if (swiper.params.preloadImages) {
+        swiper.preloadImages();
+      }
+      if (swiper.params.loop) {
+        swiper.slideTo(swiper.params.initialSlide + swiper.loopedSlides, 0, swiper.params.runCallbacksOnInit, false, true);
+      } else {
+        swiper.slideTo(swiper.params.initialSlide, 0, swiper.params.runCallbacksOnInit, false, true);
+      }
+      swiper.attachEvents();
+      swiper.initialized = true;
+      swiper.emit("init");
+      swiper.emit("afterInit");
+      return swiper;
+    }
+    destroy(deleteInstance, cleanStyles) {
+      if (deleteInstance === void 0) {
+        deleteInstance = true;
+      }
+      if (cleanStyles === void 0) {
+        cleanStyles = true;
+      }
+      const swiper = this;
+      const {
+        params,
+        $el,
+        $wrapperEl,
+        slides
+      } = swiper;
+      if (typeof swiper.params === "undefined" || swiper.destroyed) {
+        return null;
+      }
+      swiper.emit("beforeDestroy");
+      swiper.initialized = false;
+      swiper.detachEvents();
+      if (params.loop) {
+        swiper.loopDestroy();
+      }
+      if (cleanStyles) {
+        swiper.removeClasses();
+        $el.removeAttr("style");
+        $wrapperEl.removeAttr("style");
+        if (slides && slides.length) {
+          slides.removeClass([params.slideVisibleClass, params.slideActiveClass, params.slideNextClass, params.slidePrevClass].join(" ")).removeAttr("style").removeAttr("data-swiper-slide-index");
+        }
+      }
+      swiper.emit("destroy");
+      Object.keys(swiper.eventsListeners).forEach((eventName) => {
+        swiper.off(eventName);
+      });
+      if (deleteInstance !== false) {
+        swiper.$el[0].swiper = null;
+        deleteProps(swiper);
+      }
+      swiper.destroyed = true;
+      return null;
+    }
+    static extendDefaults(newDefaults) {
+      extend2(extendedDefaults, newDefaults);
+    }
+    static get extendedDefaults() {
+      return extendedDefaults;
+    }
+    static get defaults() {
+      return defaults_default;
+    }
+    static installModule(mod) {
+      if (!Swiper.prototype.__modules__)
+        Swiper.prototype.__modules__ = [];
+      const modules = Swiper.prototype.__modules__;
+      if (typeof mod === "function" && modules.indexOf(mod) < 0) {
+        modules.push(mod);
+      }
+    }
+    static use(module) {
+      if (Array.isArray(module)) {
+        module.forEach((m3) => Swiper.installModule(m3));
+        return Swiper;
+      }
+      Swiper.installModule(module);
+      return Swiper;
+    }
+  };
+  Object.keys(prototypes).forEach((prototypeGroup) => {
+    Object.keys(prototypes[prototypeGroup]).forEach((protoMethod) => {
+      Swiper.prototype[protoMethod] = prototypes[prototypeGroup][protoMethod];
+    });
+  });
+  Swiper.use([Resize, Observer]);
+  var core_default = Swiper;
+
+  // node_modules/swiper/shared/create-element-if-not-defined.js
+  function createElementIfNotDefined(swiper, originalParams, params, checkProps) {
+    const document2 = getDocument();
+    if (swiper.params.createElements) {
+      Object.keys(checkProps).forEach((key) => {
+        if (!params[key] && params.auto === true) {
+          let element = swiper.$el.children(`.${checkProps[key]}`)[0];
+          if (!element) {
+            element = document2.createElement("div");
+            element.className = checkProps[key];
+            swiper.$el.append(element);
+          }
+          params[key] = element;
+          originalParams[key] = element;
+        }
+      });
+    }
+    return params;
+  }
+
+  // node_modules/swiper/modules/navigation/navigation.js
+  function Navigation(_ref) {
+    let {
+      swiper,
+      extendParams,
+      on: on2,
+      emit
+    } = _ref;
+    extendParams({
+      navigation: {
+        nextEl: null,
+        prevEl: null,
+        hideOnClick: false,
+        disabledClass: "swiper-button-disabled",
+        hiddenClass: "swiper-button-hidden",
+        lockClass: "swiper-button-lock",
+        navigationDisabledClass: "swiper-navigation-disabled"
+      }
+    });
+    swiper.navigation = {
+      nextEl: null,
+      $nextEl: null,
+      prevEl: null,
+      $prevEl: null
+    };
+    function getEl(el) {
+      let $el;
+      if (el) {
+        $el = dom_default(el);
+        if (swiper.params.uniqueNavElements && typeof el === "string" && $el.length > 1 && swiper.$el.find(el).length === 1) {
+          $el = swiper.$el.find(el);
+        }
+      }
+      return $el;
+    }
+    function toggleEl($el, disabled) {
+      const params = swiper.params.navigation;
+      if ($el && $el.length > 0) {
+        $el[disabled ? "addClass" : "removeClass"](params.disabledClass);
+        if ($el[0] && $el[0].tagName === "BUTTON")
+          $el[0].disabled = disabled;
+        if (swiper.params.watchOverflow && swiper.enabled) {
+          $el[swiper.isLocked ? "addClass" : "removeClass"](params.lockClass);
+        }
+      }
+    }
+    function update() {
+      if (swiper.params.loop)
+        return;
+      const {
+        $nextEl,
+        $prevEl
+      } = swiper.navigation;
+      toggleEl($prevEl, swiper.isBeginning && !swiper.params.rewind);
+      toggleEl($nextEl, swiper.isEnd && !swiper.params.rewind);
+    }
+    function onPrevClick(e2) {
+      e2.preventDefault();
+      if (swiper.isBeginning && !swiper.params.loop && !swiper.params.rewind)
+        return;
+      swiper.slidePrev();
+      emit("navigationPrev");
+    }
+    function onNextClick(e2) {
+      e2.preventDefault();
+      if (swiper.isEnd && !swiper.params.loop && !swiper.params.rewind)
+        return;
+      swiper.slideNext();
+      emit("navigationNext");
+    }
+    function init() {
+      const params = swiper.params.navigation;
+      swiper.params.navigation = createElementIfNotDefined(swiper, swiper.originalParams.navigation, swiper.params.navigation, {
+        nextEl: "swiper-button-next",
+        prevEl: "swiper-button-prev"
+      });
+      if (!(params.nextEl || params.prevEl))
+        return;
+      const $nextEl = getEl(params.nextEl);
+      const $prevEl = getEl(params.prevEl);
+      if ($nextEl && $nextEl.length > 0) {
+        $nextEl.on("click", onNextClick);
+      }
+      if ($prevEl && $prevEl.length > 0) {
+        $prevEl.on("click", onPrevClick);
+      }
+      Object.assign(swiper.navigation, {
+        $nextEl,
+        nextEl: $nextEl && $nextEl[0],
+        $prevEl,
+        prevEl: $prevEl && $prevEl[0]
+      });
+      if (!swiper.enabled) {
+        if ($nextEl)
+          $nextEl.addClass(params.lockClass);
+        if ($prevEl)
+          $prevEl.addClass(params.lockClass);
+      }
+    }
+    function destroy() {
+      const {
+        $nextEl,
+        $prevEl
+      } = swiper.navigation;
+      if ($nextEl && $nextEl.length) {
+        $nextEl.off("click", onNextClick);
+        $nextEl.removeClass(swiper.params.navigation.disabledClass);
+      }
+      if ($prevEl && $prevEl.length) {
+        $prevEl.off("click", onPrevClick);
+        $prevEl.removeClass(swiper.params.navigation.disabledClass);
+      }
+    }
+    on2("init", () => {
+      if (swiper.params.navigation.enabled === false) {
+        disable();
+      } else {
+        init();
+        update();
+      }
+    });
+    on2("toEdge fromEdge lock unlock", () => {
+      update();
+    });
+    on2("destroy", () => {
+      destroy();
+    });
+    on2("enable disable", () => {
+      const {
+        $nextEl,
+        $prevEl
+      } = swiper.navigation;
+      if ($nextEl) {
+        $nextEl[swiper.enabled ? "removeClass" : "addClass"](swiper.params.navigation.lockClass);
+      }
+      if ($prevEl) {
+        $prevEl[swiper.enabled ? "removeClass" : "addClass"](swiper.params.navigation.lockClass);
+      }
+    });
+    on2("click", (_s, e2) => {
+      const {
+        $nextEl,
+        $prevEl
+      } = swiper.navigation;
+      const targetEl = e2.target;
+      if (swiper.params.navigation.hideOnClick && !dom_default(targetEl).is($prevEl) && !dom_default(targetEl).is($nextEl)) {
+        if (swiper.pagination && swiper.params.pagination && swiper.params.pagination.clickable && (swiper.pagination.el === targetEl || swiper.pagination.el.contains(targetEl)))
+          return;
+        let isHidden;
+        if ($nextEl) {
+          isHidden = $nextEl.hasClass(swiper.params.navigation.hiddenClass);
+        } else if ($prevEl) {
+          isHidden = $prevEl.hasClass(swiper.params.navigation.hiddenClass);
+        }
+        if (isHidden === true) {
+          emit("navigationShow");
+        } else {
+          emit("navigationHide");
+        }
+        if ($nextEl) {
+          $nextEl.toggleClass(swiper.params.navigation.hiddenClass);
+        }
+        if ($prevEl) {
+          $prevEl.toggleClass(swiper.params.navigation.hiddenClass);
+        }
+      }
+    });
+    const enable = () => {
+      swiper.$el.removeClass(swiper.params.navigation.navigationDisabledClass);
+      init();
+      update();
+    };
+    const disable = () => {
+      swiper.$el.addClass(swiper.params.navigation.navigationDisabledClass);
+      destroy();
+    };
+    Object.assign(swiper.navigation, {
+      enable,
+      disable,
+      update,
+      init,
+      destroy
+    });
+  }
+
+  // node_modules/swiper/shared/classes-to-selector.js
+  function classesToSelector(classes) {
+    if (classes === void 0) {
+      classes = "";
+    }
+    return `.${classes.trim().replace(/([\.:!\/])/g, "\\$1").replace(/ /g, ".")}`;
+  }
+
+  // node_modules/swiper/modules/a11y/a11y.js
+  function A11y(_ref) {
+    let {
+      swiper,
+      extendParams,
+      on: on2
+    } = _ref;
+    extendParams({
+      a11y: {
+        enabled: true,
+        notificationClass: "swiper-notification",
+        prevSlideMessage: "Previous slide",
+        nextSlideMessage: "Next slide",
+        firstSlideMessage: "This is the first slide",
+        lastSlideMessage: "This is the last slide",
+        paginationBulletMessage: "Go to slide {{index}}",
+        slideLabelMessage: "{{index}} / {{slidesLength}}",
+        containerMessage: null,
+        containerRoleDescriptionMessage: null,
+        itemRoleDescriptionMessage: null,
+        slideRole: "group",
+        id: null
+      }
+    });
+    let liveRegion = null;
+    function notify(message) {
+      const notification = liveRegion;
+      if (notification.length === 0)
+        return;
+      notification.html("");
+      notification.html(message);
+    }
+    function getRandomNumber(size) {
+      if (size === void 0) {
+        size = 16;
+      }
+      const randomChar = () => Math.round(16 * Math.random()).toString(16);
+      return "x".repeat(size).replace(/x/g, randomChar);
+    }
+    function makeElFocusable($el) {
+      $el.attr("tabIndex", "0");
+    }
+    function makeElNotFocusable($el) {
+      $el.attr("tabIndex", "-1");
+    }
+    function addElRole($el, role) {
+      $el.attr("role", role);
+    }
+    function addElRoleDescription($el, description) {
+      $el.attr("aria-roledescription", description);
+    }
+    function addElControls($el, controls) {
+      $el.attr("aria-controls", controls);
+    }
+    function addElLabel($el, label) {
+      $el.attr("aria-label", label);
+    }
+    function addElId($el, id) {
+      $el.attr("id", id);
+    }
+    function addElLive($el, live) {
+      $el.attr("aria-live", live);
+    }
+    function disableEl($el) {
+      $el.attr("aria-disabled", true);
+    }
+    function enableEl($el) {
+      $el.attr("aria-disabled", false);
+    }
+    function onEnterOrSpaceKey(e2) {
+      if (e2.keyCode !== 13 && e2.keyCode !== 32)
+        return;
+      const params = swiper.params.a11y;
+      const $targetEl = dom_default(e2.target);
+      if (swiper.navigation && swiper.navigation.$nextEl && $targetEl.is(swiper.navigation.$nextEl)) {
+        if (!(swiper.isEnd && !swiper.params.loop)) {
+          swiper.slideNext();
+        }
+        if (swiper.isEnd) {
+          notify(params.lastSlideMessage);
+        } else {
+          notify(params.nextSlideMessage);
+        }
+      }
+      if (swiper.navigation && swiper.navigation.$prevEl && $targetEl.is(swiper.navigation.$prevEl)) {
+        if (!(swiper.isBeginning && !swiper.params.loop)) {
+          swiper.slidePrev();
+        }
+        if (swiper.isBeginning) {
+          notify(params.firstSlideMessage);
+        } else {
+          notify(params.prevSlideMessage);
+        }
+      }
+      if (swiper.pagination && $targetEl.is(classesToSelector(swiper.params.pagination.bulletClass))) {
+        $targetEl[0].click();
+      }
+    }
+    function updateNavigation() {
+      if (swiper.params.loop || swiper.params.rewind || !swiper.navigation)
+        return;
+      const {
+        $nextEl,
+        $prevEl
+      } = swiper.navigation;
+      if ($prevEl && $prevEl.length > 0) {
+        if (swiper.isBeginning) {
+          disableEl($prevEl);
+          makeElNotFocusable($prevEl);
+        } else {
+          enableEl($prevEl);
+          makeElFocusable($prevEl);
+        }
+      }
+      if ($nextEl && $nextEl.length > 0) {
+        if (swiper.isEnd) {
+          disableEl($nextEl);
+          makeElNotFocusable($nextEl);
+        } else {
+          enableEl($nextEl);
+          makeElFocusable($nextEl);
+        }
+      }
+    }
+    function hasPagination() {
+      return swiper.pagination && swiper.pagination.bullets && swiper.pagination.bullets.length;
+    }
+    function hasClickablePagination() {
+      return hasPagination() && swiper.params.pagination.clickable;
+    }
+    function updatePagination() {
+      const params = swiper.params.a11y;
+      if (!hasPagination())
+        return;
+      swiper.pagination.bullets.each((bulletEl) => {
+        const $bulletEl = dom_default(bulletEl);
+        if (swiper.params.pagination.clickable) {
+          makeElFocusable($bulletEl);
+          if (!swiper.params.pagination.renderBullet) {
+            addElRole($bulletEl, "button");
+            addElLabel($bulletEl, params.paginationBulletMessage.replace(/\{\{index\}\}/, $bulletEl.index() + 1));
+          }
+        }
+        if ($bulletEl.is(`.${swiper.params.pagination.bulletActiveClass}`)) {
+          $bulletEl.attr("aria-current", "true");
+        } else {
+          $bulletEl.removeAttr("aria-current");
+        }
+      });
+    }
+    const initNavEl = ($el, wrapperId, message) => {
+      makeElFocusable($el);
+      if ($el[0].tagName !== "BUTTON") {
+        addElRole($el, "button");
+        $el.on("keydown", onEnterOrSpaceKey);
+      }
+      addElLabel($el, message);
+      addElControls($el, wrapperId);
+    };
+    const handleFocus = (e2) => {
+      const slideEl = e2.target.closest(`.${swiper.params.slideClass}`);
+      if (!slideEl || !swiper.slides.includes(slideEl))
+        return;
+      const isActive = swiper.slides.indexOf(slideEl) === swiper.activeIndex;
+      const isVisible = swiper.params.watchSlidesProgress && swiper.visibleSlides && swiper.visibleSlides.includes(slideEl);
+      if (isActive || isVisible)
+        return;
+      if (swiper.isHorizontal()) {
+        swiper.el.scrollLeft = 0;
+      } else {
+        swiper.el.scrollTop = 0;
+      }
+      swiper.slideTo(swiper.slides.indexOf(slideEl), 0);
+    };
+    const initSlides = () => {
+      const params = swiper.params.a11y;
+      if (params.itemRoleDescriptionMessage) {
+        addElRoleDescription(dom_default(swiper.slides), params.itemRoleDescriptionMessage);
+      }
+      if (params.slideRole) {
+        addElRole(dom_default(swiper.slides), params.slideRole);
+      }
+      const slidesLength = swiper.params.loop ? swiper.slides.filter((el) => !el.classList.contains(swiper.params.slideDuplicateClass)).length : swiper.slides.length;
+      if (params.slideLabelMessage) {
+        swiper.slides.each((slideEl, index2) => {
+          const $slideEl = dom_default(slideEl);
+          const slideIndex = swiper.params.loop ? parseInt($slideEl.attr("data-swiper-slide-index"), 10) : index2;
+          const ariaLabelMessage = params.slideLabelMessage.replace(/\{\{index\}\}/, slideIndex + 1).replace(/\{\{slidesLength\}\}/, slidesLength);
+          addElLabel($slideEl, ariaLabelMessage);
+        });
+      }
+    };
+    const init = () => {
+      const params = swiper.params.a11y;
+      swiper.$el.append(liveRegion);
+      const $containerEl = swiper.$el;
+      if (params.containerRoleDescriptionMessage) {
+        addElRoleDescription($containerEl, params.containerRoleDescriptionMessage);
+      }
+      if (params.containerMessage) {
+        addElLabel($containerEl, params.containerMessage);
+      }
+      const $wrapperEl = swiper.$wrapperEl;
+      const wrapperId = params.id || $wrapperEl.attr("id") || `swiper-wrapper-${getRandomNumber(16)}`;
+      const live = swiper.params.autoplay && swiper.params.autoplay.enabled ? "off" : "polite";
+      addElId($wrapperEl, wrapperId);
+      addElLive($wrapperEl, live);
+      initSlides();
+      let $nextEl;
+      let $prevEl;
+      if (swiper.navigation && swiper.navigation.$nextEl) {
+        $nextEl = swiper.navigation.$nextEl;
+      }
+      if (swiper.navigation && swiper.navigation.$prevEl) {
+        $prevEl = swiper.navigation.$prevEl;
+      }
+      if ($nextEl && $nextEl.length) {
+        initNavEl($nextEl, wrapperId, params.nextSlideMessage);
+      }
+      if ($prevEl && $prevEl.length) {
+        initNavEl($prevEl, wrapperId, params.prevSlideMessage);
+      }
+      if (hasClickablePagination()) {
+        swiper.pagination.$el.on("keydown", classesToSelector(swiper.params.pagination.bulletClass), onEnterOrSpaceKey);
+      }
+      swiper.$el.on("focus", handleFocus, true);
+    };
+    function destroy() {
+      if (liveRegion && liveRegion.length > 0)
+        liveRegion.remove();
+      let $nextEl;
+      let $prevEl;
+      if (swiper.navigation && swiper.navigation.$nextEl) {
+        $nextEl = swiper.navigation.$nextEl;
+      }
+      if (swiper.navigation && swiper.navigation.$prevEl) {
+        $prevEl = swiper.navigation.$prevEl;
+      }
+      if ($nextEl) {
+        $nextEl.off("keydown", onEnterOrSpaceKey);
+      }
+      if ($prevEl) {
+        $prevEl.off("keydown", onEnterOrSpaceKey);
+      }
+      if (hasClickablePagination()) {
+        swiper.pagination.$el.off("keydown", classesToSelector(swiper.params.pagination.bulletClass), onEnterOrSpaceKey);
+      }
+      swiper.$el.off("focus", handleFocus, true);
+    }
+    on2("beforeInit", () => {
+      liveRegion = dom_default(`<span class="${swiper.params.a11y.notificationClass}" aria-live="assertive" aria-atomic="true"></span>`);
+    });
+    on2("afterInit", () => {
+      if (!swiper.params.a11y.enabled)
+        return;
+      init();
+    });
+    on2("slidesLengthChange snapGridLengthChange slidesGridLengthChange", () => {
+      if (!swiper.params.a11y.enabled)
+        return;
+      initSlides();
+    });
+    on2("fromEdge toEdge afterInit lock unlock", () => {
+      if (!swiper.params.a11y.enabled)
+        return;
+      updateNavigation();
+    });
+    on2("paginationUpdate", () => {
+      if (!swiper.params.a11y.enabled)
+        return;
+      updatePagination();
+    });
+    on2("destroy", () => {
+      if (!swiper.params.a11y.enabled)
+        return;
+      destroy();
+    });
+  }
+
+  // node_modules/swiper/react/swiper.js
+  var import_react30 = __toESM(require_react(), 1);
+
+  // node_modules/swiper/components-shared/utils.js
+  function isObject3(o2) {
+    return typeof o2 === "object" && o2 !== null && o2.constructor && Object.prototype.toString.call(o2).slice(8, -1) === "Object";
+  }
+  function extend3(target, src) {
+    const noExtend = ["__proto__", "constructor", "prototype"];
+    Object.keys(src).filter((key) => noExtend.indexOf(key) < 0).forEach((key) => {
+      if (typeof target[key] === "undefined")
+        target[key] = src[key];
+      else if (isObject3(src[key]) && isObject3(target[key]) && Object.keys(src[key]).length > 0) {
+        if (src[key].__swiper__)
+          target[key] = src[key];
+        else
+          extend3(target[key], src[key]);
+      } else {
+        target[key] = src[key];
+      }
+    });
+  }
+  function needsNavigation(params) {
+    if (params === void 0) {
+      params = {};
+    }
+    return params.navigation && typeof params.navigation.nextEl === "undefined" && typeof params.navigation.prevEl === "undefined";
+  }
+  function needsPagination(params) {
+    if (params === void 0) {
+      params = {};
+    }
+    return params.pagination && typeof params.pagination.el === "undefined";
+  }
+  function needsScrollbar(params) {
+    if (params === void 0) {
+      params = {};
+    }
+    return params.scrollbar && typeof params.scrollbar.el === "undefined";
+  }
+  function uniqueClasses(classNames) {
+    if (classNames === void 0) {
+      classNames = "";
+    }
+    const classes = classNames.split(" ").map((c3) => c3.trim()).filter((c3) => !!c3);
+    const unique = [];
+    classes.forEach((c3) => {
+      if (unique.indexOf(c3) < 0)
+        unique.push(c3);
+    });
+    return unique.join(" ");
+  }
+
+  // node_modules/swiper/components-shared/params-list.js
+  var paramsList = [
+    "modules",
+    "init",
+    "_direction",
+    "touchEventsTarget",
+    "initialSlide",
+    "_speed",
+    "cssMode",
+    "updateOnWindowResize",
+    "resizeObserver",
+    "nested",
+    "focusableElements",
+    "_enabled",
+    "_width",
+    "_height",
+    "preventInteractionOnTransition",
+    "userAgent",
+    "url",
+    "_edgeSwipeDetection",
+    "_edgeSwipeThreshold",
+    "_freeMode",
+    "_autoHeight",
+    "setWrapperSize",
+    "virtualTranslate",
+    "_effect",
+    "breakpoints",
+    "_spaceBetween",
+    "_slidesPerView",
+    "maxBackfaceHiddenSlides",
+    "_grid",
+    "_slidesPerGroup",
+    "_slidesPerGroupSkip",
+    "_slidesPerGroupAuto",
+    "_centeredSlides",
+    "_centeredSlidesBounds",
+    "_slidesOffsetBefore",
+    "_slidesOffsetAfter",
+    "normalizeSlideIndex",
+    "_centerInsufficientSlides",
+    "_watchOverflow",
+    "roundLengths",
+    "touchRatio",
+    "touchAngle",
+    "simulateTouch",
+    "_shortSwipes",
+    "_longSwipes",
+    "longSwipesRatio",
+    "longSwipesMs",
+    "_followFinger",
+    "allowTouchMove",
+    "_threshold",
+    "touchMoveStopPropagation",
+    "touchStartPreventDefault",
+    "touchStartForcePreventDefault",
+    "touchReleaseOnEdges",
+    "uniqueNavElements",
+    "_resistance",
+    "_resistanceRatio",
+    "_watchSlidesProgress",
+    "_grabCursor",
+    "preventClicks",
+    "preventClicksPropagation",
+    "_slideToClickedSlide",
+    "_preloadImages",
+    "updateOnImagesReady",
+    "_loop",
+    "_loopAdditionalSlides",
+    "_loopedSlides",
+    "_loopedSlidesLimit",
+    "_loopFillGroupWithBlank",
+    "loopPreventsSlide",
+    "_rewind",
+    "_allowSlidePrev",
+    "_allowSlideNext",
+    "_swipeHandler",
+    "_noSwiping",
+    "noSwipingClass",
+    "noSwipingSelector",
+    "passiveListeners",
+    "containerModifierClass",
+    "slideClass",
+    "slideBlankClass",
+    "slideActiveClass",
+    "slideDuplicateActiveClass",
+    "slideVisibleClass",
+    "slideDuplicateClass",
+    "slideNextClass",
+    "slideDuplicateNextClass",
+    "slidePrevClass",
+    "slideDuplicatePrevClass",
+    "wrapperClass",
+    "runCallbacksOnInit",
+    "observer",
+    "observeParents",
+    "observeSlideChildren",
+    "a11y",
+    "_autoplay",
+    "_controller",
+    "coverflowEffect",
+    "cubeEffect",
+    "fadeEffect",
+    "flipEffect",
+    "creativeEffect",
+    "cardsEffect",
+    "hashNavigation",
+    "history",
+    "keyboard",
+    "lazy",
+    "mousewheel",
+    "_navigation",
+    "_pagination",
+    "parallax",
+    "_scrollbar",
+    "_thumbs",
+    "virtual",
+    "zoom"
+  ];
+
+  // node_modules/swiper/components-shared/get-params.js
+  function getParams(obj, splitEvents) {
+    if (obj === void 0) {
+      obj = {};
+    }
+    if (splitEvents === void 0) {
+      splitEvents = true;
+    }
+    const params = {
+      on: {}
+    };
+    const events2 = {};
+    const passedParams = {};
+    extend3(params, core_default.defaults);
+    extend3(params, core_default.extendedDefaults);
+    params._emitClasses = true;
+    params.init = false;
+    const rest = {};
+    const allowedParams = paramsList.map((key) => key.replace(/_/, ""));
+    const plainObj = Object.assign({}, obj);
+    Object.keys(plainObj).forEach((key) => {
+      if (typeof obj[key] === "undefined")
+        return;
+      if (allowedParams.indexOf(key) >= 0) {
+        if (isObject3(obj[key])) {
+          params[key] = {};
+          passedParams[key] = {};
+          extend3(params[key], obj[key]);
+          extend3(passedParams[key], obj[key]);
+        } else {
+          params[key] = obj[key];
+          passedParams[key] = obj[key];
+        }
+      } else if (key.search(/on[A-Z]/) === 0 && typeof obj[key] === "function") {
+        if (splitEvents) {
+          events2[`${key[2].toLowerCase()}${key.substr(3)}`] = obj[key];
+        } else {
+          params.on[`${key[2].toLowerCase()}${key.substr(3)}`] = obj[key];
+        }
+      } else {
+        rest[key] = obj[key];
+      }
+    });
+    ["navigation", "pagination", "scrollbar"].forEach((key) => {
+      if (params[key] === true)
+        params[key] = {};
+      if (params[key] === false)
+        delete params[key];
+    });
+    return {
+      params,
+      passedParams,
+      rest,
+      events: events2
+    };
+  }
+
+  // node_modules/swiper/components-shared/mount-swiper.js
+  function mountSwiper(_ref, swiperParams) {
+    let {
+      el,
+      nextEl,
+      prevEl,
+      paginationEl,
+      scrollbarEl,
+      swiper
+    } = _ref;
+    if (needsNavigation(swiperParams) && nextEl && prevEl) {
+      swiper.params.navigation.nextEl = nextEl;
+      swiper.originalParams.navigation.nextEl = nextEl;
+      swiper.params.navigation.prevEl = prevEl;
+      swiper.originalParams.navigation.prevEl = prevEl;
+    }
+    if (needsPagination(swiperParams) && paginationEl) {
+      swiper.params.pagination.el = paginationEl;
+      swiper.originalParams.pagination.el = paginationEl;
+    }
+    if (needsScrollbar(swiperParams) && scrollbarEl) {
+      swiper.params.scrollbar.el = scrollbarEl;
+      swiper.originalParams.scrollbar.el = scrollbarEl;
+    }
+    swiper.init(el);
+  }
+
+  // node_modules/swiper/react/loop.js
+  var import_react25 = __toESM(require_react(), 1);
+  function calcLoopedSlides(slides, swiperParams) {
+    let slidesPerViewParams = swiperParams.slidesPerView;
+    if (swiperParams.breakpoints) {
+      const breakpoint = core_default.prototype.getBreakpoint(swiperParams.breakpoints);
+      const breakpointOnlyParams = breakpoint in swiperParams.breakpoints ? swiperParams.breakpoints[breakpoint] : void 0;
+      if (breakpointOnlyParams && breakpointOnlyParams.slidesPerView) {
+        slidesPerViewParams = breakpointOnlyParams.slidesPerView;
+      }
+    }
+    let loopedSlides = Math.ceil(parseFloat(swiperParams.loopedSlides || slidesPerViewParams, 10));
+    loopedSlides += swiperParams.loopAdditionalSlides;
+    if (loopedSlides > slides.length && swiperParams.loopedSlidesLimit) {
+      loopedSlides = slides.length;
+    }
+    return loopedSlides;
+  }
+  function renderLoop(swiper, slides, swiperParams) {
+    const modifiedSlides = slides.map((child, index2) => {
+      return /* @__PURE__ */ import_react25.default.cloneElement(child, {
+        swiper,
+        "data-swiper-slide-index": index2
+      });
+    });
+    function duplicateSlide(child, index2, position) {
+      return /* @__PURE__ */ import_react25.default.cloneElement(child, {
+        key: `${child.key}-duplicate-${index2}-${position}`,
+        className: `${child.props.className || ""} ${swiperParams.slideDuplicateClass}`
+      });
+    }
+    if (swiperParams.loopFillGroupWithBlank) {
+      const blankSlidesNum = swiperParams.slidesPerGroup - modifiedSlides.length % swiperParams.slidesPerGroup;
+      if (blankSlidesNum !== swiperParams.slidesPerGroup) {
+        for (let i2 = 0; i2 < blankSlidesNum; i2 += 1) {
+          const blankSlide = /* @__PURE__ */ import_react25.default.createElement("div", {
+            className: `${swiperParams.slideClass} ${swiperParams.slideBlankClass}`
+          });
+          modifiedSlides.push(blankSlide);
+        }
+      }
+    }
+    if (swiperParams.slidesPerView === "auto" && !swiperParams.loopedSlides) {
+      swiperParams.loopedSlides = modifiedSlides.length;
+    }
+    const loopedSlides = calcLoopedSlides(modifiedSlides, swiperParams);
+    const prependSlides = [];
+    const appendSlides = [];
+    for (let i2 = 0; i2 < loopedSlides; i2 += 1) {
+      const index2 = i2 - Math.floor(i2 / modifiedSlides.length) * modifiedSlides.length;
+      appendSlides.push(duplicateSlide(modifiedSlides[index2], i2, "append"));
+      prependSlides.unshift(duplicateSlide(modifiedSlides[modifiedSlides.length - index2 - 1], i2, "prepend"));
+    }
+    if (swiper) {
+      swiper.loopedSlides = loopedSlides;
+    }
+    return [...prependSlides, ...modifiedSlides, ...appendSlides];
+  }
+
+  // node_modules/swiper/components-shared/get-changed-params.js
+  function getChangedParams(swiperParams, oldParams, children2, oldChildren, getKey) {
+    const keys = [];
+    if (!oldParams)
+      return keys;
+    const addKey = (key) => {
+      if (keys.indexOf(key) < 0)
+        keys.push(key);
+    };
+    if (children2 && oldChildren) {
+      const oldChildrenKeys = oldChildren.map(getKey);
+      const childrenKeys = children2.map(getKey);
+      if (oldChildrenKeys.join("") !== childrenKeys.join(""))
+        addKey("children");
+      if (oldChildren.length !== children2.length)
+        addKey("children");
+    }
+    const watchParams = paramsList.filter((key) => key[0] === "_").map((key) => key.replace(/_/, ""));
+    watchParams.forEach((key) => {
+      if (key in swiperParams && key in oldParams) {
+        if (isObject3(swiperParams[key]) && isObject3(oldParams[key])) {
+          const newKeys = Object.keys(swiperParams[key]);
+          const oldKeys = Object.keys(oldParams[key]);
+          if (newKeys.length !== oldKeys.length) {
+            addKey(key);
+          } else {
+            newKeys.forEach((newKey) => {
+              if (swiperParams[key][newKey] !== oldParams[key][newKey]) {
+                addKey(key);
+              }
+            });
+            oldKeys.forEach((oldKey) => {
+              if (swiperParams[key][oldKey] !== oldParams[key][oldKey])
+                addKey(key);
+            });
+          }
+        } else if (swiperParams[key] !== oldParams[key]) {
+          addKey(key);
+        }
+      }
+    });
+    return keys;
+  }
+
+  // node_modules/swiper/react/get-children.js
+  var import_react26 = __toESM(require_react(), 1);
+  function processChildren(c3) {
+    const slides = [];
+    import_react26.default.Children.toArray(c3).forEach((child) => {
+      if (child.type && child.type.displayName === "SwiperSlide") {
+        slides.push(child);
+      } else if (child.props && child.props.children) {
+        processChildren(child.props.children).forEach((slide) => slides.push(slide));
+      }
+    });
+    return slides;
+  }
+  function getChildren(c3) {
+    const slides = [];
+    const slots = {
+      "container-start": [],
+      "container-end": [],
+      "wrapper-start": [],
+      "wrapper-end": []
+    };
+    import_react26.default.Children.toArray(c3).forEach((child) => {
+      if (child.type && child.type.displayName === "SwiperSlide") {
+        slides.push(child);
+      } else if (child.props && child.props.slot && slots[child.props.slot]) {
+        slots[child.props.slot].push(child);
+      } else if (child.props && child.props.children) {
+        const foundSlides = processChildren(child.props.children);
+        if (foundSlides.length > 0) {
+          foundSlides.forEach((slide) => slides.push(slide));
+        } else {
+          slots["container-end"].push(child);
+        }
+      } else {
+        slots["container-end"].push(child);
+      }
+    });
+    return {
+      slides,
+      slots
+    };
+  }
+
+  // node_modules/swiper/components-shared/update-swiper.js
+  function updateSwiper(_ref) {
+    let {
+      swiper,
+      slides,
+      passedParams,
+      changedParams,
+      nextEl,
+      prevEl,
+      scrollbarEl,
+      paginationEl
+    } = _ref;
+    const updateParams = changedParams.filter((key) => key !== "children" && key !== "direction");
+    const {
+      params: currentParams,
+      pagination,
+      navigation,
+      scrollbar,
+      virtual,
+      thumbs
+    } = swiper;
+    let needThumbsInit;
+    let needControllerInit;
+    let needPaginationInit;
+    let needScrollbarInit;
+    let needNavigationInit;
+    if (changedParams.includes("thumbs") && passedParams.thumbs && passedParams.thumbs.swiper && currentParams.thumbs && !currentParams.thumbs.swiper) {
+      needThumbsInit = true;
+    }
+    if (changedParams.includes("controller") && passedParams.controller && passedParams.controller.control && currentParams.controller && !currentParams.controller.control) {
+      needControllerInit = true;
+    }
+    if (changedParams.includes("pagination") && passedParams.pagination && (passedParams.pagination.el || paginationEl) && (currentParams.pagination || currentParams.pagination === false) && pagination && !pagination.el) {
+      needPaginationInit = true;
+    }
+    if (changedParams.includes("scrollbar") && passedParams.scrollbar && (passedParams.scrollbar.el || scrollbarEl) && (currentParams.scrollbar || currentParams.scrollbar === false) && scrollbar && !scrollbar.el) {
+      needScrollbarInit = true;
+    }
+    if (changedParams.includes("navigation") && passedParams.navigation && (passedParams.navigation.prevEl || prevEl) && (passedParams.navigation.nextEl || nextEl) && (currentParams.navigation || currentParams.navigation === false) && navigation && !navigation.prevEl && !navigation.nextEl) {
+      needNavigationInit = true;
+    }
+    const destroyModule = (mod) => {
+      if (!swiper[mod])
+        return;
+      swiper[mod].destroy();
+      if (mod === "navigation") {
+        currentParams[mod].prevEl = void 0;
+        currentParams[mod].nextEl = void 0;
+        swiper[mod].prevEl = void 0;
+        swiper[mod].nextEl = void 0;
+      } else {
+        currentParams[mod].el = void 0;
+        swiper[mod].el = void 0;
+      }
+    };
+    updateParams.forEach((key) => {
+      if (isObject3(currentParams[key]) && isObject3(passedParams[key])) {
+        extend3(currentParams[key], passedParams[key]);
+      } else {
+        const newValue = passedParams[key];
+        if ((newValue === true || newValue === false) && (key === "navigation" || key === "pagination" || key === "scrollbar")) {
+          if (newValue === false) {
+            destroyModule(key);
+          }
+        } else {
+          currentParams[key] = passedParams[key];
+        }
+      }
+    });
+    if (updateParams.includes("controller") && !needControllerInit && swiper.controller && swiper.controller.control && currentParams.controller && currentParams.controller.control) {
+      swiper.controller.control = currentParams.controller.control;
+    }
+    if (changedParams.includes("children") && slides && virtual && currentParams.virtual.enabled) {
+      virtual.slides = slides;
+      virtual.update(true);
+    } else if (changedParams.includes("children") && swiper.lazy && swiper.params.lazy.enabled) {
+      swiper.lazy.load();
+    }
+    if (needThumbsInit) {
+      const initialized = thumbs.init();
+      if (initialized)
+        thumbs.update(true);
+    }
+    if (needControllerInit) {
+      swiper.controller.control = currentParams.controller.control;
+    }
+    if (needPaginationInit) {
+      if (paginationEl)
+        currentParams.pagination.el = paginationEl;
+      pagination.init();
+      pagination.render();
+      pagination.update();
+    }
+    if (needScrollbarInit) {
+      if (scrollbarEl)
+        currentParams.scrollbar.el = scrollbarEl;
+      scrollbar.init();
+      scrollbar.updateSize();
+      scrollbar.setTranslate();
+    }
+    if (needNavigationInit) {
+      if (nextEl)
+        currentParams.navigation.nextEl = nextEl;
+      if (prevEl)
+        currentParams.navigation.prevEl = prevEl;
+      navigation.init();
+      navigation.update();
+    }
+    if (changedParams.includes("allowSlideNext")) {
+      swiper.allowSlideNext = passedParams.allowSlideNext;
+    }
+    if (changedParams.includes("allowSlidePrev")) {
+      swiper.allowSlidePrev = passedParams.allowSlidePrev;
+    }
+    if (changedParams.includes("direction")) {
+      swiper.changeDirection(passedParams.direction, false);
+    }
+    swiper.update();
+  }
+
+  // node_modules/swiper/react/virtual.js
+  var import_react27 = __toESM(require_react(), 1);
+  function renderVirtual(swiper, slides, virtualData) {
+    if (!virtualData)
+      return null;
+    const style = swiper.isHorizontal() ? {
+      [swiper.rtlTranslate ? "right" : "left"]: `${virtualData.offset}px`
+    } : {
+      top: `${virtualData.offset}px`
+    };
+    return slides.filter((child, index2) => index2 >= virtualData.from && index2 <= virtualData.to).map((child) => {
+      return /* @__PURE__ */ import_react27.default.cloneElement(child, {
+        swiper,
+        style
+      });
+    });
+  }
+
+  // node_modules/swiper/components-shared/update-on-virtual-data.js
+  var updateOnVirtualData = (swiper) => {
+    if (!swiper || swiper.destroyed || !swiper.params.virtual || swiper.params.virtual && !swiper.params.virtual.enabled)
+      return;
+    swiper.updateSlides();
+    swiper.updateProgress();
+    swiper.updateSlidesClasses();
+    if (swiper.lazy && swiper.params.lazy.enabled) {
+      swiper.lazy.load();
+    }
+    if (swiper.parallax && swiper.params.parallax && swiper.params.parallax.enabled) {
+      swiper.parallax.setTranslate();
+    }
+  };
+
+  // node_modules/swiper/react/use-isomorphic-layout-effect.js
+  var import_react28 = __toESM(require_react(), 1);
+  function useIsomorphicLayoutEffect(callback, deps) {
+    if (typeof window === "undefined")
+      return (0, import_react28.useEffect)(callback, deps);
+    return (0, import_react28.useLayoutEffect)(callback, deps);
+  }
+
+  // node_modules/swiper/react/context.js
+  var import_react29 = __toESM(require_react(), 1);
+  var SwiperSlideContext = /* @__PURE__ */ (0, import_react29.createContext)(null);
+  var SwiperContext = /* @__PURE__ */ (0, import_react29.createContext)(null);
+
+  // node_modules/swiper/react/swiper.js
+  function _extends2() {
+    _extends2 = Object.assign ? Object.assign.bind() : function(target) {
+      for (var i2 = 1; i2 < arguments.length; i2++) {
+        var source = arguments[i2];
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+      return target;
+    };
+    return _extends2.apply(this, arguments);
+  }
+  var Swiper2 = /* @__PURE__ */ (0, import_react30.forwardRef)(function(_temp, externalElRef) {
+    let {
+      className,
+      tag: Tag = "div",
+      wrapperTag: WrapperTag = "div",
+      children: children2,
+      onSwiper,
+      ...rest
+    } = _temp === void 0 ? {} : _temp;
+    let eventsAssigned = false;
+    const [containerClasses, setContainerClasses] = (0, import_react30.useState)("swiper");
+    const [virtualData, setVirtualData] = (0, import_react30.useState)(null);
+    const [breakpointChanged, setBreakpointChanged] = (0, import_react30.useState)(false);
+    const initializedRef = (0, import_react30.useRef)(false);
+    const swiperElRef = (0, import_react30.useRef)(null);
+    const swiperRef = (0, import_react30.useRef)(null);
+    const oldPassedParamsRef = (0, import_react30.useRef)(null);
+    const oldSlides = (0, import_react30.useRef)(null);
+    const nextElRef = (0, import_react30.useRef)(null);
+    const prevElRef = (0, import_react30.useRef)(null);
+    const paginationElRef = (0, import_react30.useRef)(null);
+    const scrollbarElRef = (0, import_react30.useRef)(null);
+    const {
+      params: swiperParams,
+      passedParams,
+      rest: restProps,
+      events: events2
+    } = getParams(rest);
+    const {
+      slides,
+      slots
+    } = getChildren(children2);
+    const onBeforeBreakpoint = () => {
+      setBreakpointChanged(!breakpointChanged);
+    };
+    Object.assign(swiperParams.on, {
+      _containerClasses(swiper, classes) {
+        setContainerClasses(classes);
+      }
+    });
+    const initSwiper = () => {
+      Object.assign(swiperParams.on, events2);
+      eventsAssigned = true;
+      swiperRef.current = new core_default(swiperParams);
+      swiperRef.current.loopCreate = () => {
+      };
+      swiperRef.current.loopDestroy = () => {
+      };
+      if (swiperParams.loop) {
+        swiperRef.current.loopedSlides = calcLoopedSlides(slides, swiperParams);
+      }
+      if (swiperRef.current.virtual && swiperRef.current.params.virtual.enabled) {
+        swiperRef.current.virtual.slides = slides;
+        const extendWith = {
+          cache: false,
+          slides,
+          renderExternal: setVirtualData,
+          renderExternalUpdate: false
+        };
+        extend3(swiperRef.current.params.virtual, extendWith);
+        extend3(swiperRef.current.originalParams.virtual, extendWith);
+      }
+    };
+    if (!swiperElRef.current) {
+      initSwiper();
+    }
+    if (swiperRef.current) {
+      swiperRef.current.on("_beforeBreakpoint", onBeforeBreakpoint);
+    }
+    const attachEvents2 = () => {
+      if (eventsAssigned || !events2 || !swiperRef.current)
+        return;
+      Object.keys(events2).forEach((eventName) => {
+        swiperRef.current.on(eventName, events2[eventName]);
+      });
+    };
+    const detachEvents2 = () => {
+      if (!events2 || !swiperRef.current)
+        return;
+      Object.keys(events2).forEach((eventName) => {
+        swiperRef.current.off(eventName, events2[eventName]);
+      });
+    };
+    (0, import_react30.useEffect)(() => {
+      return () => {
+        if (swiperRef.current)
+          swiperRef.current.off("_beforeBreakpoint", onBeforeBreakpoint);
+      };
+    });
+    (0, import_react30.useEffect)(() => {
+      if (!initializedRef.current && swiperRef.current) {
+        swiperRef.current.emitSlidesClasses();
+        initializedRef.current = true;
+      }
+    });
+    useIsomorphicLayoutEffect(() => {
+      if (externalElRef) {
+        externalElRef.current = swiperElRef.current;
+      }
+      if (!swiperElRef.current)
+        return;
+      if (swiperRef.current.destroyed) {
+        initSwiper();
+      }
+      mountSwiper({
+        el: swiperElRef.current,
+        nextEl: nextElRef.current,
+        prevEl: prevElRef.current,
+        paginationEl: paginationElRef.current,
+        scrollbarEl: scrollbarElRef.current,
+        swiper: swiperRef.current
+      }, swiperParams);
+      if (onSwiper)
+        onSwiper(swiperRef.current);
+      return () => {
+        if (swiperRef.current && !swiperRef.current.destroyed) {
+          swiperRef.current.destroy(true, false);
+        }
+      };
+    }, []);
+    useIsomorphicLayoutEffect(() => {
+      attachEvents2();
+      const changedParams = getChangedParams(passedParams, oldPassedParamsRef.current, slides, oldSlides.current, (c3) => c3.key);
+      oldPassedParamsRef.current = passedParams;
+      oldSlides.current = slides;
+      if (changedParams.length && swiperRef.current && !swiperRef.current.destroyed) {
+        updateSwiper({
+          swiper: swiperRef.current,
+          slides,
+          passedParams,
+          changedParams,
+          nextEl: nextElRef.current,
+          prevEl: prevElRef.current,
+          scrollbarEl: scrollbarElRef.current,
+          paginationEl: paginationElRef.current
+        });
+      }
+      return () => {
+        detachEvents2();
+      };
+    });
+    useIsomorphicLayoutEffect(() => {
+      updateOnVirtualData(swiperRef.current);
+    }, [virtualData]);
+    function renderSlides() {
+      if (swiperParams.virtual) {
+        return renderVirtual(swiperRef.current, slides, virtualData);
+      }
+      if (!swiperParams.loop || swiperRef.current && swiperRef.current.destroyed) {
+        return slides.map((child) => {
+          return /* @__PURE__ */ import_react30.default.cloneElement(child, {
+            swiper: swiperRef.current
+          });
+        });
+      }
+      return renderLoop(swiperRef.current, slides, swiperParams);
+    }
+    return /* @__PURE__ */ import_react30.default.createElement(Tag, _extends2({
+      ref: swiperElRef,
+      className: uniqueClasses(`${containerClasses}${className ? ` ${className}` : ""}`)
+    }, restProps), /* @__PURE__ */ import_react30.default.createElement(SwiperContext.Provider, {
+      value: swiperRef.current
+    }, slots["container-start"], /* @__PURE__ */ import_react30.default.createElement(WrapperTag, {
+      className: "swiper-wrapper"
+    }, slots["wrapper-start"], renderSlides(), slots["wrapper-end"]), needsNavigation(swiperParams) && /* @__PURE__ */ import_react30.default.createElement(import_react30.default.Fragment, null, /* @__PURE__ */ import_react30.default.createElement("div", {
+      ref: prevElRef,
+      className: "swiper-button-prev"
+    }), /* @__PURE__ */ import_react30.default.createElement("div", {
+      ref: nextElRef,
+      className: "swiper-button-next"
+    })), needsScrollbar(swiperParams) && /* @__PURE__ */ import_react30.default.createElement("div", {
+      ref: scrollbarElRef,
+      className: "swiper-scrollbar"
+    }), needsPagination(swiperParams) && /* @__PURE__ */ import_react30.default.createElement("div", {
+      ref: paginationElRef,
+      className: "swiper-pagination"
+    }), slots["container-end"]));
+  });
+  Swiper2.displayName = "Swiper";
+
+  // node_modules/swiper/react/swiper-slide.js
+  var import_react31 = __toESM(require_react(), 1);
+  function _extends3() {
+    _extends3 = Object.assign ? Object.assign.bind() : function(target) {
+      for (var i2 = 1; i2 < arguments.length; i2++) {
+        var source = arguments[i2];
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+      return target;
+    };
+    return _extends3.apply(this, arguments);
+  }
+  var SwiperSlide = /* @__PURE__ */ (0, import_react31.forwardRef)(function(_temp, externalRef) {
+    let {
+      tag: Tag = "div",
+      children: children2,
+      className = "",
+      swiper,
+      zoom,
+      virtualIndex,
+      ...rest
+    } = _temp === void 0 ? {} : _temp;
+    const slideElRef = (0, import_react31.useRef)(null);
+    const [slideClasses, setSlideClasses] = (0, import_react31.useState)("swiper-slide");
+    function updateClasses(_s, el, classNames) {
+      if (el === slideElRef.current) {
+        setSlideClasses(classNames);
+      }
+    }
+    useIsomorphicLayoutEffect(() => {
+      if (externalRef) {
+        externalRef.current = slideElRef.current;
+      }
+      if (!slideElRef.current || !swiper) {
+        return;
+      }
+      if (swiper.destroyed) {
+        if (slideClasses !== "swiper-slide") {
+          setSlideClasses("swiper-slide");
+        }
+        return;
+      }
+      swiper.on("_slideClass", updateClasses);
+      return () => {
+        if (!swiper)
+          return;
+        swiper.off("_slideClass", updateClasses);
+      };
+    });
+    useIsomorphicLayoutEffect(() => {
+      if (swiper && slideElRef.current && !swiper.destroyed) {
+        setSlideClasses(swiper.getSlideClasses(slideElRef.current));
+      }
+    }, [swiper]);
+    const slideData = {
+      isActive: slideClasses.indexOf("swiper-slide-active") >= 0 || slideClasses.indexOf("swiper-slide-duplicate-active") >= 0,
+      isVisible: slideClasses.indexOf("swiper-slide-visible") >= 0,
+      isDuplicate: slideClasses.indexOf("swiper-slide-duplicate") >= 0,
+      isPrev: slideClasses.indexOf("swiper-slide-prev") >= 0 || slideClasses.indexOf("swiper-slide-duplicate-prev") >= 0,
+      isNext: slideClasses.indexOf("swiper-slide-next") >= 0 || slideClasses.indexOf("swiper-slide-duplicate-next") >= 0
+    };
+    const renderChildren = () => {
+      return typeof children2 === "function" ? children2(slideData) : children2;
+    };
+    return /* @__PURE__ */ import_react31.default.createElement(Tag, _extends3({
+      ref: slideElRef,
+      className: uniqueClasses(`${slideClasses}${className ? ` ${className}` : ""}`),
+      "data-swiper-slide-index": virtualIndex
+    }, rest), /* @__PURE__ */ import_react31.default.createElement(SwiperSlideContext.Provider, {
+      value: slideData
+    }, zoom ? /* @__PURE__ */ import_react31.default.createElement("div", {
+      className: "swiper-zoom-container",
+      "data-swiper-zoom": typeof zoom === "number" ? zoom : void 0
+    }, renderChildren()) : renderChildren()));
+  });
+  SwiperSlide.displayName = "SwiperSlide";
 
   // src/components/Items/Items.tsx
   var Items = ({ items }) => {
-    const { itemHeight } = useCollectionState();
-    const [activeItems, setActiveItems] = (0, import_react26.useState)([0, 1, 2, 3, 4]);
-    const [hasPrev, setHasPrev] = (0, import_react26.useState)(false);
-    const [hasNext, setHasNext] = (0, import_react26.useState)(false);
-    const itemsRef = (0, import_react26.useRef)(null);
-    (0, import_react26.useEffect)(() => {
-      if (!items)
-        return;
-      activeItems.includes(0) ? setHasPrev(false) : setHasPrev(true);
-      activeItems.includes(items.length - 1) ? setHasNext(false) : setHasNext(true);
-    }, [activeItems]);
-    const handleActiveItems = (increment) => {
-      setActiveItems(activeItems.map((index) => index + increment));
-    };
-    return /* @__PURE__ */ import_react26.default.createElement(ItemsStyled, {
+    const [itemCount, setItemCount] = (0, import_react32.useState)(3);
+    const itemsRef = (0, import_react32.useRef)(null);
+    const length = items.length;
+    (0, import_react32.useEffect)(() => {
+      const resizeObserver = new ResizeObserver((entries) => {
+        var _a, _b;
+        for (let entry of entries) {
+          if (entry && ((_a = itemsRef.current) == null ? void 0 : _a.clientWidth)) {
+            let count = Math.ceil(((_b = itemsRef.current) == null ? void 0 : _b.clientWidth) / 290);
+            count <= length ? setItemCount(count) : setItemCount(length);
+          }
+        }
+      });
+      if (itemsRef.current)
+        resizeObserver.observe(itemsRef.current);
+    }, [itemsRef.current]);
+    return /* @__PURE__ */ import_react32.default.createElement(ItemsStyled, {
       ref: itemsRef
-    }, itemHeight && /* @__PURE__ */ import_react26.default.createElement(import_react26.default.Fragment, null, /* @__PURE__ */ import_react26.default.createElement(Control_default, {
-      increment: -1,
-      label: "previous",
-      handleControl: handleActiveItems,
-      height: itemHeight,
-      disabled: !hasPrev
-    }), /* @__PURE__ */ import_react26.default.createElement(Control_default, {
-      increment: 1,
-      label: "next",
-      handleControl: handleActiveItems,
-      height: itemHeight,
-      disabled: !hasNext
-    })), items.filter((item, index) => {
-      if (activeItems.includes(index))
-        return item;
-    }).map((item, index) => /* @__PURE__ */ import_react26.default.createElement(Item_default, {
-      index,
-      item,
-      key: item.id
-    })));
+    }, /* @__PURE__ */ import_react32.default.createElement(Swiper2, {
+      a11y: {
+        prevSlideMessage: "previous item",
+        nextSlideMessage: "next item"
+      },
+      spaceBetween: 31,
+      modules: [Navigation, A11y],
+      navigation: { nextEl: ".bloom-next", prevEl: ".bloom-previous" },
+      slidesPerGroup: itemCount,
+      slidesPerView: itemCount
+    }, items.map((item, index2) => /* @__PURE__ */ import_react32.default.createElement(SwiperSlide, {
+      key: `${item.id}-${index2}`
+    }, /* @__PURE__ */ import_react32.default.createElement(Item_default, {
+      index: index2,
+      item
+    })))));
   };
   var Items_default = Items;
 
   // src/components/Header/Header.tsx
-  var import_react27 = __toESM(require_react());
+  var import_react34 = __toESM(require_react());
 
   // src/components/Header/Header.styled.ts
+  var HeaderContent = styled("div", {
+    display: "flex",
+    flexDirection: "column"
+  });
+  var HeaderControls = styled("div", {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingLeft: "$5",
+    paddingRight: "$4",
+    "@xs": {
+      width: "100%",
+      justifyContent: "center",
+      padding: "$4 $1 0 0"
+    }
+  });
   var HeaderStyled = styled("div", {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",
+    justifyContent: "space-between",
     paddingBottom: "$4",
     margin: "0",
     color: "$primary",
     lineHeight: "1.4em",
+    alignItems: "flex-end",
+    "@xs": {
+      flexDirection: "column"
+    },
     ".bloom-header-homepage": {
       color: "$accent",
       textDecoration: "none"
@@ -54685,39 +60185,101 @@ and ensure you are accounting for this risk.
     }
   });
 
+  // src/components/Header/Control.styled.ts
+  var Icon = styled("div", {
+    display: "flex",
+    background: "none",
+    border: "none",
+    width: "2rem !important",
+    height: "2rem !important",
+    padding: "0",
+    margin: "0",
+    borderRadius: "2rem",
+    backgroundColor: "$accent",
+    color: "$secondary",
+    cursor: "pointer",
+    boxSizing: "content-box !important",
+    transition: "$all",
+    justifyContent: "center",
+    alignItems: "center",
+    svg: {
+      height: "60%",
+      width: "60%",
+      fill: "$secondary",
+      stroke: "$secondary",
+      opacity: "1",
+      filter: "drop-shadow(5px 5px 5px #000D)",
+      transition: "$all"
+    }
+  });
+  var ControlStyled = styled("button", {
+    zIndex: "1",
+    border: "none",
+    cursor: "pointer",
+    background: "transparent",
+    marginLeft: "$2",
+    padding: "0",
+    [`&:disabled`]: {
+      [`> ${Icon}`]: {
+        backgroundColor: "$secondaryAlt",
+        boxShadow: "none",
+        svg: {
+          fill: "$secondaryMuted",
+          stroke: "$secondaryMuted",
+          filter: "unset"
+        }
+      }
+    },
+    [`&:hover:enabled`]: {
+      [`> ${Icon}`]: {
+        backgroundColor: "$accentAlt",
+        boxShadow: "3px 3px 11px #0003",
+        [`&:disabled`]: {
+          boxShadow: "unset"
+        }
+      }
+    }
+  });
+
   // src/components/Header/Header.tsx
   var Header = ({ label, summary, homepage }) => {
-    const [hasHomepage, setHasHomepage] = (0, import_react27.useState)(false);
-    (0, import_react27.useEffect)(() => {
+    const [hasHomepage, setHasHomepage] = (0, import_react34.useState)(false);
+    (0, import_react34.useEffect)(() => {
       if (homepage.length > 0)
         setHasHomepage(true);
     }, [homepage]);
-    return /* @__PURE__ */ import_react27.default.createElement(HeaderStyled, null, hasHomepage ? /* @__PURE__ */ import_react27.default.createElement(Y3, {
+    return /* @__PURE__ */ import_react34.default.createElement(HeaderStyled, null, /* @__PURE__ */ import_react34.default.createElement(HeaderContent, null, hasHomepage ? /* @__PURE__ */ import_react34.default.createElement(Y3, {
       homepage,
       className: "bloom-header-homepage"
-    }, /* @__PURE__ */ import_react27.default.createElement(L3, {
+    }, /* @__PURE__ */ import_react34.default.createElement(L3, {
       label,
       as: "span",
       className: "bloom-header-label"
-    })) : /* @__PURE__ */ import_react27.default.createElement(L3, {
+    })) : /* @__PURE__ */ import_react34.default.createElement(L3, {
       label,
       as: "span",
       className: "bloom-header-label"
-    }), summary && /* @__PURE__ */ import_react27.default.createElement(ht2, {
+    }), summary && /* @__PURE__ */ import_react34.default.createElement(ht2, {
       summary,
       as: "span",
       className: "bloom-header-summary"
-    }));
+    })), /* @__PURE__ */ import_react34.default.createElement(HeaderControls, null, /* @__PURE__ */ import_react34.default.createElement(ControlStyled, {
+      className: "bloom-previous",
+      "aria-label": "previous"
+    }, /* @__PURE__ */ import_react34.default.createElement(Icon, null, /* @__PURE__ */ import_react34.default.createElement(PreviousIcon, null))), /* @__PURE__ */ import_react34.default.createElement(ControlStyled, {
+      className: "bloom-next",
+      "aria-label": "next"
+    }, /* @__PURE__ */ import_react34.default.createElement(Icon, null, /* @__PURE__ */ import_react34.default.createElement(NextIcon, null)))));
   };
   var Header_default = Header;
 
   // src/index.tsx
-  var App = (props) => /* @__PURE__ */ import_react28.default.createElement(CollectionProvider, null, /* @__PURE__ */ import_react28.default.createElement(Bloom, __spreadValues({}, props)));
+  var App = (props) => /* @__PURE__ */ import_react35.default.createElement(CollectionProvider, null, /* @__PURE__ */ import_react35.default.createElement(Bloom, __spreadValues({}, props)));
   var Bloom = ({ collectionId }) => {
     const store = useCollectionState();
     const { vault } = store;
-    const [collection, setCollection] = (0, import_react28.useState)();
-    (0, import_react28.useEffect)(() => {
+    const [collection, setCollection] = (0, import_react35.useState)();
+    (0, import_react35.useEffect)(() => {
       vault.loadCollection(collectionId).then((data) => setCollection(data)).catch((error) => {
         console.error(`Collection failed to load: ${error}`);
       }).finally(() => {
@@ -54725,17 +60287,17 @@ and ensure you are accounting for this risk.
     }, []);
     if (!collection || !collection.items) {
       console.log(`The IIIF Collection ${collectionId} failed to load.`);
-      return /* @__PURE__ */ import_react28.default.createElement(import_react28.default.Fragment, null);
+      return /* @__PURE__ */ import_react35.default.createElement(import_react35.default.Fragment, null);
     }
     if (collection.items.length === 0) {
       console.log(`The IIIF collection ${collectionId} does not contain items.`);
-      return /* @__PURE__ */ import_react28.default.createElement(import_react28.default.Fragment, null);
+      return /* @__PURE__ */ import_react35.default.createElement(import_react35.default.Fragment, null);
     }
-    return /* @__PURE__ */ import_react28.default.createElement(StyledBloom, null, /* @__PURE__ */ import_react28.default.createElement(Header_default, {
+    return /* @__PURE__ */ import_react35.default.createElement(StyledBloom, null, /* @__PURE__ */ import_react35.default.createElement(Header_default, {
       label: collection.label,
       summary: collection.summary,
       homepage: collection.homepage
-    }), /* @__PURE__ */ import_react28.default.createElement(Items_default, {
+    }), /* @__PURE__ */ import_react35.default.createElement(Items_default, {
       items: collection.items
     }));
   };
@@ -54743,7 +60305,7 @@ and ensure you are accounting for this risk.
   var src_default = App;
 
   // src/dev/DynamicUrl.tsx
-  var import_react30 = __toESM(require_react());
+  var import_react37 = __toESM(require_react());
 
   // src/dev/DynamicUrl.styled.tsx
   var DynamicUrlStyled = re2("section", {
@@ -54857,34 +60419,34 @@ and ensure you are accounting for this risk.
 
   // src/dev/DynamicUrl.tsx
   var DynamicUrl = ({ url, setUrl }) => {
-    const inputRef = (0, import_react30.useRef)(null);
+    const inputRef = (0, import_react37.useRef)(null);
     const handleSubmit = (e2) => {
       var _a;
       e2.preventDefault();
       const target = e2.target;
       setUrl((_a = target.url) == null ? void 0 : _a.value);
     };
-    (0, import_react30.useEffect)(() => {
+    (0, import_react37.useEffect)(() => {
       if (inputRef.current)
         inputRef.current.value = url;
     }, [url]);
-    return /* @__PURE__ */ import_react30.default.createElement(DynamicUrlStyled, null, /* @__PURE__ */ import_react30.default.createElement(ManualForm, {
+    return /* @__PURE__ */ import_react37.default.createElement(DynamicUrlStyled, null, /* @__PURE__ */ import_react37.default.createElement(ManualForm, {
       onSubmit: handleSubmit
-    }, /* @__PURE__ */ import_react30.default.createElement("label", {
+    }, /* @__PURE__ */ import_react37.default.createElement("label", {
       htmlFor: "manual-collection"
-    }, "View a IIIF Collection"), /* @__PURE__ */ import_react30.default.createElement("div", null, /* @__PURE__ */ import_react30.default.createElement("input", {
+    }, "View a IIIF Collection"), /* @__PURE__ */ import_react37.default.createElement("div", null, /* @__PURE__ */ import_react37.default.createElement("input", {
       type: "text",
       name: "url",
       id: "manual-collection",
       placeholder: "IIIF Collection",
       ref: inputRef
-    }), /* @__PURE__ */ import_react30.default.createElement("button", {
+    }), /* @__PURE__ */ import_react37.default.createElement("button", {
       type: "submit"
-    }, "View"))), collections.length > 0 && /* @__PURE__ */ import_react30.default.createElement(Curated, null, collections.map((obj) => /* @__PURE__ */ import_react30.default.createElement(ButtonForm, {
+    }, "View"))), collections.length > 0 && /* @__PURE__ */ import_react37.default.createElement(Curated, null, collections.map((obj) => /* @__PURE__ */ import_react37.default.createElement(ButtonForm, {
       key: obj.label,
       onSubmit: handleSubmit,
       "data-active": url === obj.url ? true : false
-    }, /* @__PURE__ */ import_react30.default.createElement("button", {
+    }, /* @__PURE__ */ import_react37.default.createElement("button", {
       name: "url",
       value: obj.url
     }, obj.label)))));
@@ -54894,16 +60456,16 @@ and ensure you are accounting for this risk.
   // src/dev.tsx
   var Wrapper = () => {
     const defaultUrl = collections[0].url;
-    const [url, setUrl] = import_react31.default.useState(defaultUrl);
-    return /* @__PURE__ */ import_react31.default.createElement(import_react31.default.Fragment, null, /* @__PURE__ */ import_react31.default.createElement(src_default, {
+    const [url, setUrl] = import_react38.default.useState(defaultUrl);
+    return /* @__PURE__ */ import_react38.default.createElement(import_react38.default.Fragment, null, /* @__PURE__ */ import_react38.default.createElement(src_default, {
       collectionId: url,
       key: url
-    }), /* @__PURE__ */ import_react31.default.createElement(DynamicUrl_default, {
+    }), /* @__PURE__ */ import_react38.default.createElement(DynamicUrl_default, {
       url,
       setUrl
     }));
   };
-  import_react_dom2.default.render(/* @__PURE__ */ import_react31.default.createElement(Wrapper, null), document.getElementById("root"));
+  import_react_dom2.default.render(/* @__PURE__ */ import_react38.default.createElement(Wrapper, null), document.getElementById("root"));
 })();
 /*!
  * is-plain-object <https://github.com/jonschlinkert/is-plain-object>
