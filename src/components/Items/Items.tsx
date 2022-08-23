@@ -4,7 +4,6 @@ import Item from "./Item";
 import { ItemsStyled } from "./Items.styled";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 interface ItemsProps {
   items: CollectionItems[];
@@ -25,7 +24,6 @@ const Items: React.FC<ItemsProps> = ({ items }) => {
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         slidesPerView={slidesPerView}
         navigation
-        pagination={{ clickable: true }}
       >
         {items.map((item, index) => (
           <SwiperSlide>
