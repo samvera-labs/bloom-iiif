@@ -12,11 +12,22 @@ interface ItemsProps {
 const Items: React.FC<ItemsProps> = ({ items }) => {
   const [itemCount, setItemCount] = useState(3);
   const itemsRef = useRef<HTMLDivElement>(null);
+  const length = items.length;
 
   useEffect(() => {
-    if (itemsRef.current?.clientWidth)
-      setItemCount(Math.ceil(itemsRef.current?.clientWidth / 290));
-  }, [itemsRef.current?.clientWidth]);
+    const resizeObserver = new ResizeObserver(
+      (entries: ResizeObserverEntry[]) => {
+        for (let entry of entries) {
+          if (entry && itemsRef.current?.clientWidth) {
+            let count = Math.ceil(itemsRef.current?.clientWidth / 290);
+            count <= length ? setItemCount(count) : setItemCount(length);
+          }
+        }
+      }
+    );
+
+    if (itemsRef.current) resizeObserver.observe(itemsRef.current);
+  }, [itemsRef.current]);
 
   return (
     <ItemsStyled ref={itemsRef}>

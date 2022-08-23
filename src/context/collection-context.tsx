@@ -3,19 +3,16 @@ import { Vault } from "@iiif/vault";
 
 interface CollectionContextStore {
   isLoaded: boolean;
-  itemHeight: number | undefined;
   vault: Vault;
 }
 
 interface CollectionAction {
   type: string;
-  itemHeight: number | undefined;
   isLoaded: boolean;
 }
 
 const defaultState: CollectionContextStore = {
   isLoaded: false,
-  itemHeight: undefined,
   vault: new Vault(),
 };
 
@@ -33,12 +30,6 @@ function collectionReducer(
       return {
         ...state,
         isLoaded: action.isLoaded,
-      };
-    }
-    case "updateItemHeight": {
-      return {
-        ...state,
-        itemHeight: action.itemHeight,
       };
     }
     default: {
