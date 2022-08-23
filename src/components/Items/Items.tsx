@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { CollectionItems, Collection, Manifest } from "@iiif/presentation-3";
 import Item from "./Item";
 import { ItemsStyled } from "./Items.styled";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Navigation, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 interface ItemsProps {
@@ -10,28 +10,31 @@ interface ItemsProps {
 }
 
 const Items: React.FC<ItemsProps> = ({ items }) => {
-  const [slidesPerView, setSlidesPerView] = useState(6);
+  const [itemCount, setItemCount] = useState(3);
   const itemsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (itemsRef.current?.clientWidth)
-      setSlidesPerView(Math.ceil(itemsRef.current?.clientWidth / 300));
+      setItemCount(Math.ceil(itemsRef.current?.clientWidth / 290));
   }, [itemsRef.current?.clientWidth]);
 
   return (
     <ItemsStyled ref={itemsRef}>
       <Swiper
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
-        slidesPerView={slidesPerView}
+        a11y={{
+          prevSlideMessage: "previous item",
+          nextSlideMessage: "next item",
+        }}
+        loop={true}
+        spaceBetween={31}
+        modules={[Navigation, A11y]}
         navigation
+        slidesPerGroup={itemCount}
+        slidesPerView={itemCount}
       >
         {items.map((item, index) => (
-          <SwiperSlide>
-            <Item
-              index={index}
-              item={item as Collection | Manifest}
-              key={item.id}
-            />
+          <SwiperSlide key={`${item.id}-${index}`}>
+            <Item index={index} item={item as Collection | Manifest} />
           </SwiperSlide>
         ))}
       </Swiper>
