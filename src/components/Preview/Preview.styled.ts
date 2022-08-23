@@ -3,9 +3,7 @@ import { styled } from "stitches";
 const PreviewStyled = styled("div", {
   position: "absolute",
   zIndex: "2",
-  left: "-$2",
-  top: "-$2",
-  width: "calc(100% + (0.618rem * 2))",
+  width: "100%",
   opacity: "0",
 
   variants: {

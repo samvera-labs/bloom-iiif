@@ -1,6 +1,8 @@
 # dev
 dist
 node_modules
+public/script.css
+public/script.css.map
 public/script.js
 public/script.js.map
 static

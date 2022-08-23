@@ -52,17 +52,12 @@ const FigureStyled = styled("figure", {
   variants: {
     isFocused: {
       true: {
-        margin: "-$2 -$2 0",
-
-        video: { opacity: "1" },
-
-        figcaption: {
-          padding: "$2",
-          color: "$accent",
+        video: {
+          opacity: "1",
         },
 
-        [`& ${Width}`]: {
-          width: "calc(100% - ($2 * 2))",
+        figcaption: {
+          color: "$accent",
         },
       },
     },

@@ -1,65 +1,53 @@
-import React, { useEffect, useState, useRef } from "react";
-import Item from "components/Items/Item";
+import React, { useEffect, useRef, useState } from "react";
 import { CollectionItems, Collection, Manifest } from "@iiif/presentation-3";
+import Item from "./Item";
 import { ItemsStyled } from "./Items.styled";
-import ItemsControl from "./Control";
-import { useCollectionState } from "context/collection-context";
+import { Navigation, A11y } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 interface ItemsProps {
   items: CollectionItems[];
 }
 
 const Items: React.FC<ItemsProps> = ({ items }) => {
-  const { itemHeight } = useCollectionState();
-  const [activeItems, setActiveItems] = useState<number[]>([0, 1, 2, 3, 4]);
-  const [hasPrev, setHasPrev] = useState<boolean>(false);
-  const [hasNext, setHasNext] = useState<boolean>(false);
-  const itemsRef = useRef<HTMLElement>(null);
+  const [itemCount, setItemCount] = useState(3);
+  const itemsRef = useRef<HTMLDivElement>(null);
+  const length = items.length;
 
   useEffect(() => {
-    if (!items) return;
+    const resizeObserver = new ResizeObserver(
+      (entries: ResizeObserverEntry[]) => {
+        for (let entry of entries) {
+          if (entry && itemsRef.current?.clientWidth) {
+            let count = Math.ceil(itemsRef.current?.clientWidth / 290);
+            count <= length ? setItemCount(count) : setItemCount(length);
+          }
+        }
+      }
+    );
 
-    activeItems.includes(0) ? setHasPrev(false) : setHasPrev(true);
-    activeItems.includes(items.length - 1)
-      ? setHasNext(false)
-      : setHasNext(true);
-  }, [activeItems]);
-
-  const handleActiveItems = (increment: number) => {
-    setActiveItems(activeItems.map((index) => index + increment));
-  };
+    if (itemsRef.current) resizeObserver.observe(itemsRef.current);
+  }, [itemsRef.current]);
 
   return (
     <ItemsStyled ref={itemsRef}>
-      {itemHeight && (
-        <>
-          <ItemsControl
-            increment={-1}
-            label="previous"
-            handleControl={handleActiveItems}
-            height={itemHeight}
-            disabled={!hasPrev}
-          />
-          <ItemsControl
-            increment={1}
-            label="next"
-            handleControl={handleActiveItems}
-            height={itemHeight}
-            disabled={!hasNext}
-          />
-        </>
-      )}
-      {items
-        .filter((item, index) => {
-          if (activeItems.includes(index)) return item;
-        })
-        .map((item, index) => (
-          <Item
-            index={index}
-            item={item as Collection | Manifest}
-            key={item.id}
-          />
+      <Swiper
+        a11y={{
+          prevSlideMessage: "previous item",
+          nextSlideMessage: "next item",
+        }}
+        spaceBetween={31}
+        modules={[Navigation, A11y]}
+        navigation={{ nextEl: ".bloom-next", prevEl: ".bloom-previous" }}
+        slidesPerGroup={itemCount}
+        slidesPerView={itemCount}
+      >
+        {items.map((item, index) => (
+          <SwiperSlide key={`${item.id}-${index}`}>
+            <Item index={index} item={item as Collection | Manifest} />
+          </SwiperSlide>
         ))}
+      </Swiper>
     </ItemsStyled>
   );
 };

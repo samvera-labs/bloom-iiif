@@ -55,7 +55,8 @@
     "@samvera/nectar-iiif": "^0.0.15",
     "@stitches/react": "^1.2.8",
     "react": "^16.13.1  || ^17 || ^18",
-    "react-dom": "^16.13.1  || ^17 || ^18"
+    "react-dom": "^16.13.1  || ^17 || ^18",
+    "swiper": "^8.3.2"
   },
   "files": [
     "dist"

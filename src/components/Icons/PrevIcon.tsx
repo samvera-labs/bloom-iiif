@@ -7,8 +7,10 @@ export const PreviousIcon: React.FC = () => {
       <path
         fill="none"
         stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         strokeMiterlimit="10"
-        strokeWidth="70"
+        strokeWidth="45"
         d="M244 400L100 256l144-144M120 256h292"
       />
     </svg>
