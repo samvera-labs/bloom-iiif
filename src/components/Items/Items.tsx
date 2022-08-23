@@ -4,12 +4,15 @@ import Item from "./Item";
 import { ItemsStyled } from "./Items.styled";
 import { Navigation, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useCollectionState } from "context/collection-context";
+import ItemsControl from "./Control";
 
 interface ItemsProps {
   items: CollectionItems[];
 }
 
 const Items: React.FC<ItemsProps> = ({ items }) => {
+  const { itemHeight } = useCollectionState();
   const [itemCount, setItemCount] = useState(3);
   const itemsRef = useRef<HTMLDivElement>(null);
 
@@ -25,10 +28,9 @@ const Items: React.FC<ItemsProps> = ({ items }) => {
           prevSlideMessage: "previous item",
           nextSlideMessage: "next item",
         }}
-        loop={true}
         spaceBetween={31}
         modules={[Navigation, A11y]}
-        navigation
+        navigation={{ nextEl: ".bloom-next", prevEl: ".bloom-previous" }}
         slidesPerGroup={itemCount}
         slidesPerView={itemCount}
       >

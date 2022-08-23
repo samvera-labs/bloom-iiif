@@ -4,7 +4,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import { styled } from "stitches";
-import { ItemStyled } from "./Item.styled";
 
 const ItemsStyled = styled("div", {
   position: "relative",

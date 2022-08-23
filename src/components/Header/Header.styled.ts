@@ -1,13 +1,27 @@
 import { styled } from "stitches";
-import { Label, Summary } from "@samvera/nectar-iiif";
+
+const HeaderContent = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+});
+
+const HeaderControls = styled("div", {
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  paddingLeft: "$5",
+  paddingRight: "$4",
+});
 
 const HeaderStyled = styled("div", {
   display: "flex",
-  flexDirection: "column",
+  flexDirection: "row",
+  justifyContent: "space-between",
   paddingBottom: "$4",
   margin: "0",
   color: "$primary",
   lineHeight: "1.4em",
+  alignItems: "flex-end",
 
   ".bloom-header-homepage": {
     color: "$accent",
@@ -26,4 +40,4 @@ const HeaderStyled = styled("div", {
   },
 });
 
-export { HeaderStyled };
+export { HeaderContent, HeaderControls, HeaderStyled };
