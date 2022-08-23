@@ -8,6 +8,7 @@ async function buildHTML(isStatic) {
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Bloom IIIF</title>
       ${isStatic ? ` <link rel="stylesheet" href="./default.css" />` : ``}
+      <link rel="stylesheet" href="./script.css" />
       <link rel="stylesheet" href="./styles.css" />
     </head>
     <body>
