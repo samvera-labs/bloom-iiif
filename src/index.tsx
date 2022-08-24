@@ -12,6 +12,7 @@ import {
   InternationalString,
 } from "@iiif/presentation-3";
 import { styled } from "stitches";
+import hash from "lib/hash";
 
 interface Props {
   collectionId: string;
@@ -54,14 +55,20 @@ const Bloom: React.FC<Props> = ({ collectionId }) => {
     return <></>;
   }
 
+  const instance = hash(collectionId);
+
   return (
     <StyledBloom>
       <Header
         label={collection.label as InternationalString}
         summary={collection.summary}
         homepage={collection.homepage as any as ContentResource[]}
+        instance={instance}
       />
-      <Items items={collection.items as CollectionItems[]} />
+      <Items
+        items={collection.items as CollectionItems[]}
+        instance={instance}
+      />
     </StyledBloom>
   );
 };

@@ -7,12 +7,18 @@ import { PreviousIcon } from "components/Icons/PrevIcon";
 import { ControlStyled, Icon } from "./Control.styled";
 
 interface HeaderProps {
+  homepage: ContentResource[];
+  instance: string;
   label: InternationalString;
   summary: InternationalString;
-  homepage: ContentResource[];
 }
 
-const Header: React.FC<HeaderProps> = ({ label, summary, homepage }) => {
+const Header: React.FC<HeaderProps> = ({
+  homepage,
+  instance,
+  label,
+  summary,
+}) => {
   const [hasHomepage, setHasHomepage] = useState<boolean>(false);
 
   useEffect(() => {
@@ -39,12 +45,15 @@ const Header: React.FC<HeaderProps> = ({ label, summary, homepage }) => {
         )}
       </HeaderContent>
       <HeaderControls>
-        <ControlStyled className="bloom-previous" aria-label="previous">
+        <ControlStyled
+          className={`bloom-previous-${instance}`}
+          aria-label="previous"
+        >
           <Icon>
             <PreviousIcon />
           </Icon>
         </ControlStyled>
-        <ControlStyled className="bloom-next" aria-label="next">
+        <ControlStyled className={`bloom-next-${instance}`} aria-label="next">
           <Icon>
             <NextIcon />
           </Icon>

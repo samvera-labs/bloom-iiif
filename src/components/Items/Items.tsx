@@ -6,10 +6,11 @@ import { Navigation, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 interface ItemsProps {
+  instance: string;
   items: CollectionItems[];
 }
 
-const Items: React.FC<ItemsProps> = ({ items }) => {
+const Items: React.FC<ItemsProps> = ({ instance, items }) => {
   const [itemCount, setItemCount] = useState(3);
   const itemsRef = useRef<HTMLDivElement>(null);
   const length = items.length;
@@ -38,7 +39,10 @@ const Items: React.FC<ItemsProps> = ({ items }) => {
         }}
         spaceBetween={31}
         modules={[Navigation, A11y]}
-        navigation={{ nextEl: ".bloom-next", prevEl: ".bloom-previous" }}
+        navigation={{
+          nextEl: `.bloom-next-${instance}`,
+          prevEl: `.bloom-previous-${instance}`,
+        }}
         slidesPerGroup={itemCount}
         slidesPerView={itemCount}
       >
