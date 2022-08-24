@@ -51096,16 +51096,16 @@ and ensure you are accounting for this risk.
               ts += 60 * 60 * 1e3 * hours;
               return ts;
             };
-            var hash = function hash2(text2) {
-              var hash3 = 5381;
+            var hash2 = function hash3(text2) {
+              var hash4 = 5381;
               var i2 = text2.length;
               while (i2) {
-                hash3 = hash3 * 33 ^ text2.charCodeAt(--i2);
+                hash4 = hash4 * 33 ^ text2.charCodeAt(--i2);
               }
-              return (hash3 >>> 0).toString();
+              return (hash4 >>> 0).toString();
             };
             function generateCueId(startTime, endTime, text2) {
-              return hash(startTime.toString()) + hash(endTime.toString()) + hash(text2);
+              return hash2(startTime.toString()) + hash2(endTime.toString()) + hash2(text2);
             }
             var calculateOffset = function calculateOffset2(vttCCs, cc, presentationTime) {
               var currCC = vttCCs[cc];
@@ -60100,7 +60100,7 @@ and ensure you are accounting for this risk.
   SwiperSlide.displayName = "SwiperSlide";
 
   // src/components/Items/Items.tsx
-  var Items = ({ items }) => {
+  var Items = ({ instance, items }) => {
     const [itemCount, setItemCount] = (0, import_react32.useState)(3);
     const itemsRef = (0, import_react32.useRef)(null);
     const length = items.length;
@@ -60126,7 +60126,10 @@ and ensure you are accounting for this risk.
       },
       spaceBetween: 31,
       modules: [Navigation, A11y],
-      navigation: { nextEl: ".bloom-next", prevEl: ".bloom-previous" },
+      navigation: {
+        nextEl: `.bloom-next-${instance}`,
+        prevEl: `.bloom-previous-${instance}`
+      },
       slidesPerGroup: itemCount,
       slidesPerView: itemCount
     }, items.map((item, index2) => /* @__PURE__ */ import_react32.default.createElement(SwiperSlide, {
@@ -60242,7 +60245,12 @@ and ensure you are accounting for this risk.
   });
 
   // src/components/Header/Header.tsx
-  var Header = ({ label, summary, homepage }) => {
+  var Header = ({
+    homepage,
+    instance,
+    label,
+    summary
+  }) => {
     const [hasHomepage, setHasHomepage] = (0, import_react34.useState)(false);
     (0, import_react34.useEffect)(() => {
       if (homepage.length > 0)
@@ -60264,14 +60272,24 @@ and ensure you are accounting for this risk.
       as: "span",
       className: "bloom-header-summary"
     })), /* @__PURE__ */ import_react34.default.createElement(HeaderControls, null, /* @__PURE__ */ import_react34.default.createElement(ControlStyled, {
-      className: "bloom-previous",
+      className: `bloom-previous-${instance}`,
       "aria-label": "previous"
     }, /* @__PURE__ */ import_react34.default.createElement(Icon, null, /* @__PURE__ */ import_react34.default.createElement(PreviousIcon, null))), /* @__PURE__ */ import_react34.default.createElement(ControlStyled, {
-      className: "bloom-next",
+      className: `bloom-next-${instance}`,
       "aria-label": "next"
     }, /* @__PURE__ */ import_react34.default.createElement(Icon, null, /* @__PURE__ */ import_react34.default.createElement(NextIcon, null)))));
   };
   var Header_default = Header;
+
+  // src/lib/hash.ts
+  var hash = (s4) => {
+    var h3 = 0, l3 = s4.length, i2 = 0;
+    if (l3 > 0)
+      while (i2 < l3)
+        h3 = (h3 << 5) - h3 + s4.charCodeAt(i2++) | 0;
+    return h3;
+  };
+  var hash_default = hash;
 
   // src/index.tsx
   var App = (props) => /* @__PURE__ */ import_react35.default.createElement(CollectionProvider, null, /* @__PURE__ */ import_react35.default.createElement(Bloom, __spreadValues({}, props)));
@@ -60293,12 +60311,15 @@ and ensure you are accounting for this risk.
       console.log(`The IIIF collection ${collectionId} does not contain items.`);
       return /* @__PURE__ */ import_react35.default.createElement(import_react35.default.Fragment, null);
     }
+    const instance = hash_default(collectionId);
     return /* @__PURE__ */ import_react35.default.createElement(StyledBloom, null, /* @__PURE__ */ import_react35.default.createElement(Header_default, {
       label: collection.label,
       summary: collection.summary,
-      homepage: collection.homepage
+      homepage: collection.homepage,
+      instance
     }), /* @__PURE__ */ import_react35.default.createElement(Items_default, {
-      items: collection.items
+      items: collection.items,
+      instance
     }));
   };
   var StyledBloom = styled("div", { padding: "$4 0" });
