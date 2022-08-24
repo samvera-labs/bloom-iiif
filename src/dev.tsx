@@ -1,3 +1,8 @@
+import "swiper/css";
+import "swiper/css/lazy";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./index";
