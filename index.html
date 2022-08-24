@@ -28,9 +28,9 @@
 <p>Install the component from your command line using <code>npm install</code>,</p>
 <pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #EEFFFF">npm install @samvera/bloom-iiif</span></span>
 <span class="line"></span></code></pre>
-<p><strong>OR</strong> if you prefer Yarn, use <code>yarn add</code>.</p>
 <pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #EEFFFF">yarn add @samvera/bloom-iiif</span></span>
 <span class="line"></span></code></pre>
+<p><strong>OR</strong> if you prefer Yarn, use <code>yarn add</code>.</p>
 <hr>
 <h2 id="basic-usage">Basic Usage</h2>
 <p>Add the BloomIIIF component to your <code>jsx</code> or <code>tsx</code> code.</p>
@@ -40,6 +40,18 @@
 <pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #C792EA">const</span><span style="color: #EEFFFF"> collectionId </span><span style="color: #89DDFF">=</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">`</span><span style="color: #C3E88D">https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json</span><span style="color: #89DDFF">`</span><span style="color: #89DDFF">;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color: #89DDFF; font-style: italic">return</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&lt;</span><span style="color: #FFCB6B">BloomIIIF</span><span style="color: #89DDFF"> </span><span style="color: #C792EA">collectionId</span><span style="color: #89DDFF">={</span><span style="color: #EEFFFF">collectionId</span><span style="color: #89DDFF">} /&gt;;</span></span>
+<span class="line"></span></code></pre>
+<h3>Next.js</h3>
+<p>Usage with Next.js requires a dynamic import using <code>next/dynamic</code></p>
+<pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #89DDFF; font-style: italic">import</span><span style="color: #EEFFFF"> dynamic </span><span style="color: #89DDFF; font-style: italic">from</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">next/dynamic</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C792EA">const</span><span style="color: #EEFFFF"> BloomIIIF </span><span style="color: #89DDFF">=</span><span style="color: #EEFFFF"> </span><span style="color: #82AAFF">dynamic</span><span style="color: #EEFFFF">(</span><span style="color: #89DDFF">()</span><span style="color: #EEFFFF"> </span><span style="color: #C792EA">=&gt;</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">import</span><span style="color: #EEFFFF">(</span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">@samvera/bloom-iiif</span><span style="color: #89DDFF">&quot;</span><span style="color: #EEFFFF">)</span><span style="color: #89DDFF">,</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">{</span></span>
+<span class="line"><span style="color: #EEFFFF">  </span><span style="color: #F07178">ssr</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #FF9CAC">false</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #89DDFF">}</span><span style="color: #EEFFFF">)</span><span style="color: #89DDFF">;</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #89DDFF; font-style: italic">return</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&lt;</span><span style="color: #FFCB6B">BloomIIIF</span><span style="color: #89DDFF"> </span><span style="color: #C792EA">collectionId</span><span style="color: #89DDFF">={</span><span style="color: #EEFFFF">collectionId</span><span style="color: #89DDFF">} /&gt;</span></span>
+<span class="line"></span>
 <span class="line"></span></code></pre>
 <hr>
 <h2 id="collection-anatomy">Collection Anatomy</h2>
