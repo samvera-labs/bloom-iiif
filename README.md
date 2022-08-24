@@ -27,11 +27,11 @@ Install the component from your command line using `npm install`,
 npm install @samvera/bloom-iiif
 ```
 
-**OR** if you prefer Yarn, use `yarn add`.
-
 ```shell
 yarn add @samvera/bloom-iiif
 ```
+
+**OR** if you prefer Yarn, use `yarn add`.
 
 ---
 
@@ -49,6 +49,23 @@ Minimal usage providing the `<BloomIIIF/>` component with an external manifest.
 const collectionId = `https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json`;
 
 return <BloomIIIF collectionId={collectionId} />;
+```
+
+<h3>Next.js</h3>
+
+Usage with Next.js requires a dynamic import using `next/dynamic`
+
+
+```jsx
+import dynamic from "next/dynamic";
+
+const BloomIIIF = dynamic(() => import("@samvera/bloom-iiif"), {
+  ssr: false,
+});
+
+
+return <BloomIIIF collectionId={collectionId} />
+
 ```
 
 ---
