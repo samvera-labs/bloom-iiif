@@ -1,4 +1,4 @@
-<img src="https://user-images.githubusercontent.com/7376450/160845852-39bf8942-1db4-41ee-881f-889ba2a4f61e.png" class="bloom-screenshot" alt="Bloom screenshot"/>
+<img src="https://user-images.githubusercontent.com/7376450/189417239-0dcf980a-5551-4ebd-923d-5e33bc37bd59.png" class="bloom-screenshot" alt="Bloom screenshot"/>
 
 # Bloom IIIF
 
@@ -70,7 +70,7 @@ return <BloomIIIF collectionId={collectionId} />
 
 ---
 
-<h2 id="collection-anatomy">Collection Anatomy</h2>
+<h2 id="collection-anatomy">IIIF Collection Anatomy</h2>
 
 Bloom accepts both Presentation API 2.x and Presentation API 3.0 Collections.
 
