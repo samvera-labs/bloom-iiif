@@ -6,7 +6,7 @@
 
 #### [Demo](https://samvera-labs.github.io/bloom-iiif)  |  [Code](https://github.com/samvera-labs/bloom-iiif)
 
-_Bloom is still in alpha development. It is not recommend adding this into production projects yet._
+_Note, Bloom is still in early development._
 
 ---
 
