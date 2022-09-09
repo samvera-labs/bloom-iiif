@@ -14,7 +14,7 @@ _Note, Bloom is still in early development._
 
 - [Installation](#installation)
 - [Basic Usage](#basic-usage)
-- [Collection Anatomy](#collection-anatomy)
+- [IIIF Collection Anatomy](#collection-anatomy)
 - [Development](#development)
 
 ---
