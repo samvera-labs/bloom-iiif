@@ -1,6 +1,6 @@
 {
   "@context": ["http://iiif.io/api/presentation/3/context.json"],
-  "id": "http://127.0.0.1:8080/fixtures/iiif/collection/masks-of-antonio-fava.json",
+  "id": "https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json",
   "type": "Collection",
   "label": {
     "none": ["Commedia dell'Arte: The Masks of Antonio Fava"]
