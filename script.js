@@ -54202,15 +54202,13 @@ and ensure you are accounting for this risk.
     thumbnail
   }) => {
     const widthRef = (0, import_react20.useRef)(null);
-    if (thumbnail[0].type === "ContentResource")
-      return /* @__PURE__ */ import_react20.default.createElement(import_react20.default.Fragment, null);
     return /* @__PURE__ */ import_react20.default.createElement(FigureStyled, {
       isFocused
     }, /* @__PURE__ */ import_react20.default.createElement($c1b5f66aac50e106$export$be92b6f5f03c0fe9, {
       ratio: 1 / 1
     }, /* @__PURE__ */ import_react20.default.createElement(Width, {
       ref: widthRef
-    }), /* @__PURE__ */ import_react20.default.createElement(Placeholder, null, /* @__PURE__ */ import_react20.default.createElement(Nt, {
+    }), /* @__PURE__ */ import_react20.default.createElement(Placeholder, null, thumbnail && /* @__PURE__ */ import_react20.default.createElement(Nt, {
       altAsLabel: label,
       thumbnail
     }))), /* @__PURE__ */ import_react20.default.createElement("figcaption", null, /* @__PURE__ */ import_react20.default.createElement(Title, {
@@ -54241,6 +54239,7 @@ and ensure you are accounting for this risk.
     zIndex: "2",
     width: "100%",
     opacity: "0",
+    top: "0",
     variants: {
       isFocused: {
         true: {
@@ -54387,13 +54386,15 @@ and ensure you are accounting for this risk.
     (0, import_react24.useEffect)(() => {
       isFocused ? setTimeout(() => {
         if (!manifest)
-          vault.loadManifest(item.id).then((data) => setManifest(data)).catch((error) => {
+          vault.load(item.id).then((data) => setManifest(data)).catch((error) => {
             console.error(`Manifest failed to load: ${error}`);
           });
       }, 1e3) : null;
       return;
     }, [isFocused]);
     (0, import_react24.useEffect)(() => {
+      if (!(item == null ? void 0 : item.thumbnail))
+        return;
       const thumbnail2 = vault.get(item.thumbnail);
       setThumbnail(thumbnail2);
     }, []);
