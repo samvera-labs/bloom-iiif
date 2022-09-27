@@ -32,7 +32,7 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
       ? setTimeout(() => {
           if (!manifest)
             vault
-              .loadManifest(item.id)
+              .load(item.id)
               .then((data: any) => setManifest(data))
               .catch((error: any) => {
                 console.error(`Manifest failed to load: ${error}`);
@@ -43,6 +43,7 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
   }, [isFocused]);
 
   useEffect(() => {
+    if (!item?.thumbnail) return;
     const thumbnail = vault.get(item.thumbnail);
     setThumbnail(thumbnail);
   }, []);
