@@ -27,14 +27,12 @@ const Figure: React.FC<FigureProps> = ({
 }) => {
   const widthRef = useRef<HTMLDivElement>(null);
 
-  if (thumbnail[0].type === "ContentResource") return <></>;
-
   return (
     <FigureStyled isFocused={isFocused}>
       <AspectRatio.Root ratio={1 / 1}>
         <Width ref={widthRef} />
         <Placeholder>
-          <Thumbnail altAsLabel={label} thumbnail={thumbnail} />
+          {thumbnail && <Thumbnail altAsLabel={label} thumbnail={thumbnail} />}
         </Placeholder>
       </AspectRatio.Root>
       <figcaption>

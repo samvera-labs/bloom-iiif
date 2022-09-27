@@ -5,6 +5,7 @@ const PreviewStyled = styled("div", {
   zIndex: "2",
   width: "100%",
   opacity: "0",
+  top: "0",
 
   variants: {
     isFocused: {
