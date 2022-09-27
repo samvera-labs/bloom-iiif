@@ -10,7 +10,6 @@ import { useCollectionState } from "context/collection-context";
 import { Anchor, ItemStyled } from "./Item.styled";
 import Preview from "components/Preview/Preview";
 import { getCanvasResource } from "lib/iiif";
-import { Homepage } from "@samvera/nectar-iiif";
 
 interface ItemProps {
   index: number;
@@ -24,7 +23,7 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [activeCanvas, setActiveCanvas] = useState<number>(0);
   const [thumbnail, setThumbnail] = useState<ContentResource>(item.thumbnail);
-  const [manifest, setManifest] = useState<Manifest>();
+  const [manifest, setManifest] = useState<Collection | Manifest>();
   const [id, setId] = useState<string>(item.id);
 
   useEffect(() => {
