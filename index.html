@@ -33,8 +33,14 @@
 <p><strong>OR</strong> if you prefer Yarn, use <code>yarn add</code>.</p>
 <hr>
 <h2 id="basic-usage">Basic Usage</h2>
-<p>Add the BloomIIIF component to your <code>jsx</code> or <code>tsx</code> code.</p>
+<p>Add the BloomIIIF component to your <code>jsx</code> or <code>tsx</code> code. Bloom does require you to load swiper.js styling to the side. These stylesheets are not compiled with the @samvera/bloom-iiif package, however are bundled as a dependency when installing Bloom.</p>
 <pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #89DDFF; font-style: italic">import</span><span style="color: #EEFFFF"> BloomIIIF </span><span style="color: #89DDFF; font-style: italic">from</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">@samvera/bloom-iiif</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #545454; font-style: italic">// import swiper.js styling</span></span>
+<span class="line"><span style="color: #89DDFF; font-style: italic">import</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">swiper/css</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">;</span></span>
+<span class="line"><span style="color: #89DDFF; font-style: italic">import</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">swiper/css/lazy</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">;</span></span>
+<span class="line"><span style="color: #89DDFF; font-style: italic">import</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">swiper/css/navigation</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">;</span></span>
+<span class="line"><span style="color: #89DDFF; font-style: italic">import</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">swiper/css/pagination</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">;</span></span>
 <span class="line"></span></code></pre>
 <p>Minimal usage providing the <code>&lt;BloomIIIF/&gt;</code> component with an external manifest.</p>
 <pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #C792EA">const</span><span style="color: #EEFFFF"> collectionId </span><span style="color: #89DDFF">=</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">`</span><span style="color: #C3E88D">https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json</span><span style="color: #89DDFF">`</span><span style="color: #89DDFF">;</span></span>
