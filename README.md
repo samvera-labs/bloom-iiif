@@ -37,10 +37,16 @@ yarn add @samvera/bloom-iiif
 
 <h2 id="basic-usage">Basic Usage</h2>
 
-Add the BloomIIIF component to your `jsx` or `tsx` code.
+Add the BloomIIIF component to your `jsx` or `tsx` code. Bloom does require you to load swiper.js styling to the side. These stylesheets are not compiled with the @samvera/bloom-iiif package, however are bundled as a dependency when installing Bloom.
 
 ```jsx
 import BloomIIIF from "@samvera/bloom-iiif";
+
+// import swiper.js styling
+import "swiper/css";
+import "swiper/css/lazy";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 ```
 
 Minimal usage providing the `<BloomIIIF/>` component with an external manifest.
