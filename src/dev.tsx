@@ -12,6 +12,12 @@ import { collections } from "./dev/collections";
 const Wrapper = () => {
   const defaultUrl: string = collections[0].url;
 
+  const oneItem =
+    "https://dcapi.rdc-staging.library.northwestern.edu/api/v2/search?query=subject.label:%22Sculpture,%20English--19th%20century%22&collectionLabel=Sculpture,%20English--19th%20century&collectionSummary=Subject&as=iiif";
+
+  const twoItems =
+    "https://dcapi.rdc-staging.library.northwestern.edu/api/v2/search?query=collection.title.keyword:%22Transportation%20Library%20Menu%20Collection%22&collectionLabel=Transportation%20Library%20Menu%20Collection&collectionSummary=Collection&as=iiif";
+
   const [url, setUrl] = React.useState(defaultUrl);
   return (
     <>

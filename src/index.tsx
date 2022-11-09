@@ -1,33 +1,36 @@
 import React, { useEffect, useState } from "react";
 import {
-  CollectionProvider,
-  useCollectionState,
-} from "context/collection-context";
-import Items from "components/Items/Items";
-import Header from "components/Header/Header";
-import {
   CollectionItems,
   CollectionNormalized,
   ContentResource,
   InternationalString,
 } from "@iiif/presentation-3";
-import { styled } from "stitches";
+import {
+  CollectionProvider,
+  useCollectionState,
+} from "context/collection-context";
+import { ConfigOptions } from "../types/types";
+import Header from "components/Header/Header";
+import Items from "components/Items/Items";
 import hash from "lib/hash";
+import { styled } from "stitches";
 
-interface Props {
+interface BloomProps {
   collectionId: string;
+  options?: ConfigOptions;
 }
 
-const App: React.FC<Props> = (props) => (
+const App: React.FC<BloomProps> = (props) => (
   <CollectionProvider>
     <Bloom {...props} />
   </CollectionProvider>
 );
 
-const Bloom: React.FC<Props> = ({ collectionId }) => {
+const Bloom: React.FC<BloomProps> = ({ collectionId, options = {} }) => {
   const store = useCollectionState();
   const { vault } = store;
   const [collection, setCollection] = useState<CollectionNormalized>();
+
   /**
    * todo: add wrapping context and store vault
    */
@@ -68,6 +71,9 @@ const Bloom: React.FC<Props> = ({ collectionId }) => {
       <Items
         items={collection.items as CollectionItems[]}
         instance={instance}
+        breakpoints={
+          Boolean(options.breakpoints) ? options.breakpoints : undefined
+        }
       />
     </StyledBloom>
   );

@@ -4,7 +4,7 @@
 
 **UI componentry for IIIF Collections**
 
-#### [Demo](https://samvera-labs.github.io/bloom-iiif)  |  [Code](https://github.com/samvera-labs/bloom-iiif)
+#### [Demo](https://samvera-labs.github.io/bloom-iiif) | [Code](https://github.com/samvera-labs/bloom-iiif)
 
 _Note, Bloom is still in early development._
 
@@ -57,10 +57,36 @@ const collectionId = `https://raw.githubusercontent.com/samvera-labs/bloom-iiif/
 return <BloomIIIF collectionId={collectionId} />;
 ```
 
+<h3>Responsive breakpoints</h3>
+Bloom uses default values per <a href="https://swiperjs.com/swiper-api#param-breakpoints" target="_blank">Swiper's `breakpoints` API </a>.  You may customize your own by passing in a `breakpoints` object, ie:
+
+```jsx
+const myBreakpoints = {
+  320: {
+    slidesPerView: 2,
+    spaceBetween: 20
+  },
+  480: {
+    slidesPerView: 3,
+    spaceBetween: 30
+  },
+  640: {
+    slidesPerView: 4,
+    spaceBetween: 40
+  }
+};
+
+<BloomIIIF
+  collectionId={...}
+  options={{
+    breakpoints: myBreakpoints
+  }}
+/>
+```
+
 <h3>Next.js</h3>
 
 Usage with Next.js requires a dynamic import using `next/dynamic`
-
 
 ```jsx
 import dynamic from "next/dynamic";
@@ -69,9 +95,7 @@ const BloomIIIF = dynamic(() => import("@samvera/bloom-iiif"), {
   ssr: false,
 });
 
-
-return <BloomIIIF collectionId={collectionId} />
-
+return <BloomIIIF collectionId={collectionId} />;
 ```
 
 ---
