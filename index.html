@@ -13,7 +13,7 @@
       <div class="documentation-wrapper"><img src="https://user-images.githubusercontent.com/7376450/189417239-0dcf980a-5551-4ebd-923d-5e33bc37bd59.png" class="bloom-screenshot" alt="Bloom screenshot"/>
 <h1>Bloom IIIF</h1>
 <p><strong>UI componentry for IIIF Collections</strong></p>
-<h4><a href="https://samvera-labs.github.io/bloom-iiif">Demo</a>  |  <a href="https://github.com/samvera-labs/bloom-iiif">Code</a></h4>
+<h4><a href="https://samvera-labs.github.io/bloom-iiif">Demo</a> | <a href="https://github.com/samvera-labs/bloom-iiif">Code</a></h4>
 <p><em>Note, Bloom is still in early development.</em></p>
 <hr>
 <h2>Documentation</h2>
@@ -47,6 +47,30 @@
 <span class="line"></span>
 <span class="line"><span style="color: #89DDFF; font-style: italic">return</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&lt;</span><span style="color: #FFCB6B">BloomIIIF</span><span style="color: #89DDFF"> </span><span style="color: #C792EA">collectionId</span><span style="color: #89DDFF">={</span><span style="color: #EEFFFF">collectionId</span><span style="color: #89DDFF">} /&gt;;</span></span>
 <span class="line"></span></code></pre>
+<h3>Responsive breakpoints</h3>
+Bloom uses default values per <a href="https://swiperjs.com/swiper-api#param-breakpoints" target="_blank">Swiper's `breakpoints` API </a>.  You may customize your own by passing in a `breakpoints` object, ie:
+<pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #C792EA">const</span><span style="color: #EEFFFF"> myBreakpoints </span><span style="color: #89DDFF">=</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">{</span></span>
+<span class="line"><span style="color: #EEFFFF">  </span><span style="color: #F78C6C">320</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">{</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #F07178">slidesPerView</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #F78C6C">2</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #F07178">spaceBetween</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #F78C6C">20</span></span>
+<span class="line"><span style="color: #EEFFFF">  </span><span style="color: #89DDFF">},</span></span>
+<span class="line"><span style="color: #EEFFFF">  </span><span style="color: #F78C6C">480</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">{</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #F07178">slidesPerView</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #F78C6C">3</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #F07178">spaceBetween</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #F78C6C">30</span></span>
+<span class="line"><span style="color: #EEFFFF">  </span><span style="color: #89DDFF">},</span></span>
+<span class="line"><span style="color: #EEFFFF">  </span><span style="color: #F78C6C">640</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">{</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #F07178">slidesPerView</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #F78C6C">4</span><span style="color: #89DDFF">,</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #F07178">spaceBetween</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #F78C6C">40</span></span>
+<span class="line"><span style="color: #EEFFFF">  </span><span style="color: #89DDFF">}</span></span>
+<span class="line"><span style="color: #89DDFF">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #89DDFF">&lt;</span><span style="color: #FFCB6B">BloomIIIF</span></span>
+<span class="line"><span style="color: #89DDFF">  </span><span style="color: #C792EA">collectionId</span><span style="color: #89DDFF">={...}</span></span>
+<span class="line"><span style="color: #89DDFF">  </span><span style="color: #C792EA">options</span><span style="color: #89DDFF">={{</span></span>
+<span class="line"><span style="color: #EEFFFF">    </span><span style="color: #F07178">breakpoints</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> myBreakpoints</span></span>
+<span class="line"><span style="color: #EEFFFF">  </span><span style="color: #89DDFF">}}</span></span>
+<span class="line"><span style="color: #89DDFF">/&gt;</span></span>
+<span class="line"></span></code></pre>
 <h3>Next.js</h3>
 <p>Usage with Next.js requires a dynamic import using <code>next/dynamic</code></p>
 <pre class="shiki" style="background-color: #212121"><code><span class="line"><span style="color: #89DDFF; font-style: italic">import</span><span style="color: #EEFFFF"> dynamic </span><span style="color: #89DDFF; font-style: italic">from</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">next/dynamic</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">;</span></span>
@@ -55,9 +79,7 @@
 <span class="line"><span style="color: #EEFFFF">  </span><span style="color: #F07178">ssr</span><span style="color: #89DDFF">:</span><span style="color: #EEFFFF"> </span><span style="color: #FF9CAC">false</span><span style="color: #89DDFF">,</span></span>
 <span class="line"><span style="color: #89DDFF">}</span><span style="color: #EEFFFF">)</span><span style="color: #89DDFF">;</span></span>
 <span class="line"></span>
-<span class="line"></span>
-<span class="line"><span style="color: #89DDFF; font-style: italic">return</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&lt;</span><span style="color: #FFCB6B">BloomIIIF</span><span style="color: #89DDFF"> </span><span style="color: #C792EA">collectionId</span><span style="color: #89DDFF">={</span><span style="color: #EEFFFF">collectionId</span><span style="color: #89DDFF">} /&gt;</span></span>
-<span class="line"></span>
+<span class="line"><span style="color: #89DDFF; font-style: italic">return</span><span style="color: #EEFFFF"> </span><span style="color: #89DDFF">&lt;</span><span style="color: #FFCB6B">BloomIIIF</span><span style="color: #89DDFF"> </span><span style="color: #C792EA">collectionId</span><span style="color: #89DDFF">={</span><span style="color: #EEFFFF">collectionId</span><span style="color: #89DDFF">} /&gt;;</span></span>
 <span class="line"></span></code></pre>
 <hr>
 <h2 id="collection-anatomy">IIIF Collection Anatomy</h2>

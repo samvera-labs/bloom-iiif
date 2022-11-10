@@ -53292,17 +53292,8 @@ and ensure you are accounting for this risk.
     return context;
   }
 
-  // src/components/Items/Items.tsx
-  var import_react32 = __toESM(require_react());
-
-  // src/components/Items/Item.tsx
-  var import_react24 = __toESM(require_react());
-
-  // src/components/Figure/Figure.tsx
-  var import_react20 = __toESM(require_react());
-
-  // node_modules/@samvera/nectar-iiif/dist/index.esm.js
-  var import_react3 = __toESM(require_react());
+  // src/components/Header/Header.tsx
+  var import_react18 = __toESM(require_react());
 
   // node_modules/@stitches/react/dist/index.mjs
   var import_react2 = __toESM(require_react(), 1);
@@ -53729,162 +53720,6 @@ and ensure you are accounting for this risk.
   var K2 = () => X2 || (X2 = q2());
   var re2 = (...e2) => K2().styled(...e2);
 
-  // node_modules/@samvera/nectar-iiif/dist/index.esm.js
-  var import_sanitize_html = __toESM(require_sanitize_html());
-  var import_react5 = __toESM(require_react());
-  var import_react6 = __toESM(require_react());
-  var import_react7 = __toESM(require_react());
-  var import_react8 = __toESM(require_react());
-  var import_react9 = __toESM(require_react());
-  var import_react10 = __toESM(require_react());
-  var import_react11 = __toESM(require_react());
-  var import_react12 = __toESM(require_react());
-  var import_react13 = __toESM(require_react());
-  var import_react14 = __toESM(require_react());
-  var import_hls = __toESM(require_hls());
-  var W3 = Object.defineProperty;
-  var _2 = Object.defineProperties;
-  var P3 = Object.getOwnPropertyDescriptors;
-  var w3 = Object.getOwnPropertySymbols;
-  var D2 = Object.prototype.hasOwnProperty;
-  var K3 = Object.prototype.propertyIsEnumerable;
-  var z3 = (t2, e2, r2) => e2 in t2 ? W3(t2, e2, { enumerable: true, configurable: true, writable: true, value: r2 }) : t2[e2] = r2;
-  var n2 = (t2, e2) => {
-    for (var r2 in e2 || (e2 = {}))
-      D2.call(e2, r2) && z3(t2, r2, e2[r2]);
-    if (w3)
-      for (var r2 of w3(e2))
-        K3.call(e2, r2) && z3(t2, r2, e2[r2]);
-    return t2;
-  };
-  var $3 = (t2, e2) => _2(t2, P3(e2));
-  var { styled: l2, css: Lt, keyframes: xt } = q2({ prefix: "nectar" });
-  var u3 = (t2, e2 = "none") => {
-    var a2;
-    if (!t2)
-      return null;
-    if (typeof t2 == "string")
-      return [t2];
-    if (!t2[e2]) {
-      let o2 = Object.getOwnPropertyNames(t2);
-      if (o2.length > 0)
-        return (a2 = t2[o2[0]]) == null ? void 0 : a2.join(", ");
-    }
-    return !t2[e2] || !Array.isArray(t2[e2]) ? null : t2[e2].join(", ");
-  };
-  function j3(t2) {
-    return { __html: Q2(t2) };
-  }
-  function s3(t2, e2) {
-    let r2 = Object.keys(t2).filter((o2) => e2.includes(o2) ? null : o2), a2 = new Object();
-    return r2.forEach((o2) => {
-      a2[o2] = t2[o2];
-    }), a2;
-  }
-  function Q2(t2) {
-    return (0, import_sanitize_html.default)(t2, { allowedAttributes: { a: ["href"], img: ["alt", "src"] }, allowedSchemes: ["http", "https", "mailto"], allowedTags: ["a", "b", "br", "i", "img", "p", "small", "span", "sub", "sup"] });
-  }
-  var U3 = l2("a", {});
-  var X3 = (t2) => {
-    let { children: e2, homepage: r2 } = t2, o2 = s3(t2, ["children", "homepage"]);
-    return import_react3.default.createElement(import_react3.default.Fragment, null, r2 && r2.map((i2) => {
-      let c3 = u3(i2.label, o2.lang);
-      return import_react3.default.createElement(U3, n2({ "aria-label": e2 ? c3 : void 0, href: i2.id, key: i2.id }, o2), e2 || c3);
-    }));
-  };
-  var Y3 = X3;
-  var tt2 = l2("span", {});
-  var et2 = (t2) => {
-    let { as: e2, label: r2 } = t2, o2 = s3(t2, ["as", "label"]);
-    return import_react5.default.createElement(tt2, n2({ as: e2 }, o2), u3(r2, o2.lang));
-  };
-  var L3 = et2;
-  var rt2 = l2("span", {});
-  var ot2 = (t2) => {
-    let { as: e2, markup: r2 } = t2;
-    if (!r2)
-      return import_react9.default.createElement(import_react9.default.Fragment, null);
-    let o2 = s3(t2, ["as", "markup"]), i2 = j3(u3(r2, o2.lang));
-    return import_react9.default.createElement(rt2, $3(n2({ as: e2 }, o2), { dangerouslySetInnerHTML: i2 }));
-  };
-  var S3 = ot2;
-  var st2 = l2("dl", {});
-  var ut2 = l2("dl", {});
-  var pt2 = l2("li", {});
-  var dt2 = l2("ul", {});
-  var St = (t2) => {
-    let { as: e2, summary: r2 } = t2, o2 = s3(t2, ["as", "summary"]);
-    return import_react12.default.createElement(S3, n2({ as: e2, markup: r2 }, o2));
-  };
-  var ht2 = St;
-  var q3 = (t2, e2 = "200,", r2 = "full") => {
-    Array.isArray(t2) && (t2 = t2[0]);
-    let { id: a2, service: o2 } = t2, i2;
-    if (!o2)
-      return a2;
-    if (Array.isArray(t2.service) && t2.service.length > 0 && (i2 = o2[0]), i2) {
-      if (i2["@id"])
-        return `${i2["@id"]}/${r2}/${e2}/0/default.jpg`;
-      if (i2.id)
-        return `${i2.id}/${r2}/${e2}/0/default.jpg`;
-    }
-  };
-  var O3 = l2("img", { objectFit: "cover" });
-  var At = (t2) => {
-    let e2 = (0, import_react14.useRef)(null), { contentResource: r2, altAsLabel: a2 } = t2, o2;
-    a2 && (o2 = u3(a2));
-    let c3 = s3(t2, ["contentResource", "altAsLabel"]), { type: M3, id: f3, width: N3 = 200, height: I3 = 200, format: It, duration: b3 } = r2;
-    (0, import_react14.useEffect)(() => {
-      if (!f3 && !e2.current || ["Image"].includes(M3) || !f3.includes("m3u8"))
-        return;
-      let m3 = new import_hls.default();
-      return e2.current && (m3.attachMedia(e2.current), m3.on(import_hls.default.Events.MEDIA_ATTACHED, function() {
-        m3.loadSource(f3);
-      })), m3.on(import_hls.default.Events.ERROR, function(d3, g3) {
-        if (g3.fatal)
-          switch (g3.type) {
-            case import_hls.default.ErrorTypes.NETWORK_ERROR:
-              console.error(`fatal ${d3} network error encountered, try to recover`), m3.startLoad();
-              break;
-            case import_hls.default.ErrorTypes.MEDIA_ERROR:
-              console.error(`fatal ${d3} media error encountered, try to recover`), m3.recoverMediaError();
-              break;
-            default:
-              m3.destroy();
-              break;
-          }
-      }), () => {
-        m3 && (m3.detachMedia(), m3.destroy());
-      };
-    }, []), (0, import_react14.useEffect)(() => R2(), []);
-    let R2 = () => {
-      if (!e2.current)
-        return;
-      let m3 = 0, d3 = 30;
-      if (b3 && (d3 = b3), !f3.split("#t=") && b3 && (m3 = b3 * 0.1), f3.split("#t=").pop()) {
-        let H3 = f3.split("#t=").pop();
-        H3 && (m3 = parseInt(H3.split(",")[0]));
-      }
-      let g3 = e2.current;
-      g3.currentTime = m3, g3.play(), setTimeout(() => R2(), d3 * 1e3);
-    };
-    switch (M3) {
-      case "Image":
-        let m3 = q3(r2, `${N3},${I3}`);
-        return import_react14.default.createElement(O3, n2({ as: "img", alt: o2, css: { width: N3, height: I3 }, key: f3, src: m3 }, c3));
-      case "Video":
-        return import_react14.default.createElement(O3, { as: "video", css: { width: N3, height: I3 }, disablePictureInPicture: true, key: f3, loop: true, muted: true, onPause: R2, ref: e2, src: f3 });
-      default:
-        return console.warn(`Resource type: ${M3} is not valid or not yet supported in Nectar.`), import_react14.default.createElement(import_react14.default.Fragment, null);
-    }
-  };
-  var V3 = At;
-  var Mt = (t2) => {
-    let { thumbnail: e2 } = t2, a2 = s3(t2, ["thumbnail"]);
-    return import_react13.default.createElement(import_react13.default.Fragment, null, e2 && e2.map((o2) => import_react13.default.createElement(V3, n2({ contentResource: o2, key: o2.id }, a2))));
-  };
-  var Nt = Mt;
-
   // src/stitches.ts
   var gr = (multiplier) => {
     return __pow(1.618, multiplier);
@@ -53949,6 +53784,343 @@ and ensure you are accounting for this risk.
     theme,
     media
   });
+
+  // src/components/Header/Header.styled.ts
+  var HeaderContent = styled("div", {
+    display: "flex",
+    flexDirection: "column"
+  });
+  var HeaderControls = styled("div", {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingLeft: "$5",
+    paddingRight: "$4",
+    "@xs": {
+      width: "100%",
+      justifyContent: "center",
+      padding: "$4 $1 0 0"
+    }
+  });
+  var HeaderStyled = styled("div", {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingBottom: "$4",
+    margin: "0",
+    color: "$primary",
+    lineHeight: "1.4em",
+    alignItems: "flex-end",
+    "@xs": {
+      flexDirection: "column"
+    },
+    ".bloom-header-homepage": {
+      color: "$accent",
+      textDecoration: "none"
+    },
+    ".bloom-header-label": {
+      fontSize: "$6",
+      fontWeight: "400",
+      fontFamily: "$display"
+    },
+    ".bloom-header-summary": {
+      fontSize: "$4",
+      marginTop: "$2"
+    }
+  });
+
+  // node_modules/@samvera/nectar-iiif/dist/index.esm.js
+  var import_react4 = __toESM(require_react());
+  var import_sanitize_html = __toESM(require_sanitize_html());
+  var import_react6 = __toESM(require_react());
+  var import_react7 = __toESM(require_react());
+  var import_react8 = __toESM(require_react());
+  var import_react9 = __toESM(require_react());
+  var import_react10 = __toESM(require_react());
+  var import_react11 = __toESM(require_react());
+  var import_react12 = __toESM(require_react());
+  var import_react13 = __toESM(require_react());
+  var import_react14 = __toESM(require_react());
+  var import_react15 = __toESM(require_react());
+  var import_hls = __toESM(require_hls());
+  var W3 = Object.defineProperty;
+  var _2 = Object.defineProperties;
+  var P3 = Object.getOwnPropertyDescriptors;
+  var w3 = Object.getOwnPropertySymbols;
+  var D2 = Object.prototype.hasOwnProperty;
+  var K3 = Object.prototype.propertyIsEnumerable;
+  var z3 = (t2, e2, r2) => e2 in t2 ? W3(t2, e2, { enumerable: true, configurable: true, writable: true, value: r2 }) : t2[e2] = r2;
+  var n2 = (t2, e2) => {
+    for (var r2 in e2 || (e2 = {}))
+      D2.call(e2, r2) && z3(t2, r2, e2[r2]);
+    if (w3)
+      for (var r2 of w3(e2))
+        K3.call(e2, r2) && z3(t2, r2, e2[r2]);
+    return t2;
+  };
+  var $3 = (t2, e2) => _2(t2, P3(e2));
+  var { styled: l2, css: Lt, keyframes: xt } = q2({ prefix: "nectar" });
+  var u3 = (t2, e2 = "none") => {
+    var a2;
+    if (!t2)
+      return null;
+    if (typeof t2 == "string")
+      return [t2];
+    if (!t2[e2]) {
+      let o2 = Object.getOwnPropertyNames(t2);
+      if (o2.length > 0)
+        return (a2 = t2[o2[0]]) == null ? void 0 : a2.join(", ");
+    }
+    return !t2[e2] || !Array.isArray(t2[e2]) ? null : t2[e2].join(", ");
+  };
+  function j3(t2) {
+    return { __html: Q2(t2) };
+  }
+  function s3(t2, e2) {
+    let r2 = Object.keys(t2).filter((o2) => e2.includes(o2) ? null : o2), a2 = new Object();
+    return r2.forEach((o2) => {
+      a2[o2] = t2[o2];
+    }), a2;
+  }
+  function Q2(t2) {
+    return (0, import_sanitize_html.default)(t2, { allowedAttributes: { a: ["href"], img: ["alt", "src"] }, allowedSchemes: ["http", "https", "mailto"], allowedTags: ["a", "b", "br", "i", "img", "p", "small", "span", "sub", "sup"] });
+  }
+  var U3 = l2("a", {});
+  var X3 = (t2) => {
+    let { children: e2, homepage: r2 } = t2, o2 = s3(t2, ["children", "homepage"]);
+    return import_react4.default.createElement(import_react4.default.Fragment, null, r2 && r2.map((i2) => {
+      let c3 = u3(i2.label, o2.lang);
+      return import_react4.default.createElement(U3, n2({ "aria-label": e2 ? c3 : void 0, href: i2.id, key: i2.id }, o2), e2 || c3);
+    }));
+  };
+  var Y3 = X3;
+  var tt2 = l2("span", {});
+  var et2 = (t2) => {
+    let { as: e2, label: r2 } = t2, o2 = s3(t2, ["as", "label"]);
+    return import_react6.default.createElement(tt2, n2({ as: e2 }, o2), u3(r2, o2.lang));
+  };
+  var L3 = et2;
+  var rt2 = l2("span", {});
+  var ot2 = (t2) => {
+    let { as: e2, markup: r2 } = t2;
+    if (!r2)
+      return import_react10.default.createElement(import_react10.default.Fragment, null);
+    let o2 = s3(t2, ["as", "markup"]), i2 = j3(u3(r2, o2.lang));
+    return import_react10.default.createElement(rt2, $3(n2({ as: e2 }, o2), { dangerouslySetInnerHTML: i2 }));
+  };
+  var S3 = ot2;
+  var st2 = l2("dl", {});
+  var ut2 = l2("dl", {});
+  var pt2 = l2("li", {});
+  var dt2 = l2("ul", {});
+  var St = (t2) => {
+    let { as: e2, summary: r2 } = t2, o2 = s3(t2, ["as", "summary"]);
+    return import_react13.default.createElement(S3, n2({ as: e2, markup: r2 }, o2));
+  };
+  var ht2 = St;
+  var q3 = (t2, e2 = "200,", r2 = "full") => {
+    Array.isArray(t2) && (t2 = t2[0]);
+    let { id: a2, service: o2 } = t2, i2;
+    if (!o2)
+      return a2;
+    if (Array.isArray(t2.service) && t2.service.length > 0 && (i2 = o2[0]), i2) {
+      if (i2["@id"])
+        return `${i2["@id"]}/${r2}/${e2}/0/default.jpg`;
+      if (i2.id)
+        return `${i2.id}/${r2}/${e2}/0/default.jpg`;
+    }
+  };
+  var O3 = l2("img", { objectFit: "cover" });
+  var At = (t2) => {
+    let e2 = (0, import_react15.useRef)(null), { contentResource: r2, altAsLabel: a2 } = t2, o2;
+    a2 && (o2 = u3(a2));
+    let c3 = s3(t2, ["contentResource", "altAsLabel"]), { type: M3, id: f3, width: N3 = 200, height: I3 = 200, format: It, duration: b3 } = r2;
+    (0, import_react15.useEffect)(() => {
+      if (!f3 && !e2.current || ["Image"].includes(M3) || !f3.includes("m3u8"))
+        return;
+      let m3 = new import_hls.default();
+      return e2.current && (m3.attachMedia(e2.current), m3.on(import_hls.default.Events.MEDIA_ATTACHED, function() {
+        m3.loadSource(f3);
+      })), m3.on(import_hls.default.Events.ERROR, function(d3, g3) {
+        if (g3.fatal)
+          switch (g3.type) {
+            case import_hls.default.ErrorTypes.NETWORK_ERROR:
+              console.error(`fatal ${d3} network error encountered, try to recover`), m3.startLoad();
+              break;
+            case import_hls.default.ErrorTypes.MEDIA_ERROR:
+              console.error(`fatal ${d3} media error encountered, try to recover`), m3.recoverMediaError();
+              break;
+            default:
+              m3.destroy();
+              break;
+          }
+      }), () => {
+        m3 && (m3.detachMedia(), m3.destroy());
+      };
+    }, []), (0, import_react15.useEffect)(() => R2(), []);
+    let R2 = () => {
+      if (!e2.current)
+        return;
+      let m3 = 0, d3 = 30;
+      if (b3 && (d3 = b3), !f3.split("#t=") && b3 && (m3 = b3 * 0.1), f3.split("#t=").pop()) {
+        let H3 = f3.split("#t=").pop();
+        H3 && (m3 = parseInt(H3.split(",")[0]));
+      }
+      let g3 = e2.current;
+      g3.currentTime = m3, g3.play(), setTimeout(() => R2(), d3 * 1e3);
+    };
+    switch (M3) {
+      case "Image":
+        let m3 = q3(r2, `${N3},${I3}`);
+        return import_react15.default.createElement(O3, n2({ as: "img", alt: o2, css: { width: N3, height: I3 }, key: f3, src: m3 }, c3));
+      case "Video":
+        return import_react15.default.createElement(O3, { as: "video", css: { width: N3, height: I3 }, disablePictureInPicture: true, key: f3, loop: true, muted: true, onPause: R2, ref: e2, src: f3 });
+      default:
+        return console.warn(`Resource type: ${M3} is not valid or not yet supported in Nectar.`), import_react15.default.createElement(import_react15.default.Fragment, null);
+    }
+  };
+  var V3 = At;
+  var Mt = (t2) => {
+    let { thumbnail: e2 } = t2, a2 = s3(t2, ["thumbnail"]);
+    return import_react14.default.createElement(import_react14.default.Fragment, null, e2 && e2.map((o2) => import_react14.default.createElement(V3, n2({ contentResource: o2, key: o2.id }, a2))));
+  };
+  var Nt = Mt;
+
+  // src/components/Icons/NextIcon.tsx
+  var import_react16 = __toESM(require_react());
+  var NextIcon = () => {
+    return /* @__PURE__ */ import_react16.default.createElement("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      viewBox: "0 0 512 512"
+    }, /* @__PURE__ */ import_react16.default.createElement("title", null, "Next"), /* @__PURE__ */ import_react16.default.createElement("path", {
+      fill: "none",
+      stroke: "currentColor",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      strokeMiterlimit: "10",
+      strokeWidth: "45",
+      d: "M268 112l144 144-144 144M392 256H100"
+    }));
+  };
+
+  // src/components/Icons/PrevIcon.tsx
+  var import_react17 = __toESM(require_react());
+  var PreviousIcon = () => {
+    return /* @__PURE__ */ import_react17.default.createElement("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      viewBox: "0 0 512 512"
+    }, /* @__PURE__ */ import_react17.default.createElement("title", null, "Previous"), /* @__PURE__ */ import_react17.default.createElement("path", {
+      fill: "none",
+      stroke: "currentColor",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      strokeMiterlimit: "10",
+      strokeWidth: "45",
+      d: "M244 400L100 256l144-144M120 256h292"
+    }));
+  };
+
+  // src/components/Header/Control.styled.ts
+  var Icon = styled("div", {
+    display: "flex",
+    background: "none",
+    border: "none",
+    width: "2rem !important",
+    height: "2rem !important",
+    padding: "0",
+    margin: "0",
+    borderRadius: "2rem",
+    backgroundColor: "$accent",
+    color: "$secondary",
+    cursor: "pointer",
+    boxSizing: "content-box !important",
+    transition: "$all",
+    justifyContent: "center",
+    alignItems: "center",
+    svg: {
+      height: "60%",
+      width: "60%",
+      fill: "$secondary",
+      stroke: "$secondary",
+      opacity: "1",
+      filter: "drop-shadow(5px 5px 5px #000D)",
+      transition: "$all"
+    }
+  });
+  var ControlStyled = styled("button", {
+    zIndex: "1",
+    border: "none",
+    cursor: "pointer",
+    background: "transparent",
+    marginLeft: "$2",
+    padding: "0",
+    [`&:disabled`]: {
+      [`> ${Icon}`]: {
+        backgroundColor: "$secondaryAlt",
+        boxShadow: "none",
+        svg: {
+          fill: "$secondaryMuted",
+          stroke: "$secondaryMuted",
+          filter: "unset"
+        }
+      }
+    },
+    [`&:hover:enabled`]: {
+      [`> ${Icon}`]: {
+        backgroundColor: "$accentAlt",
+        boxShadow: "3px 3px 11px #0003",
+        [`&:disabled`]: {
+          boxShadow: "unset"
+        }
+      }
+    }
+  });
+
+  // src/components/Header/Header.tsx
+  var Header = ({
+    homepage,
+    instance,
+    label,
+    summary
+  }) => {
+    const [hasHomepage, setHasHomepage] = (0, import_react18.useState)(false);
+    (0, import_react18.useEffect)(() => {
+      if (homepage.length > 0)
+        setHasHomepage(true);
+    }, [homepage]);
+    return /* @__PURE__ */ import_react18.default.createElement(HeaderStyled, null, /* @__PURE__ */ import_react18.default.createElement(HeaderContent, null, hasHomepage ? /* @__PURE__ */ import_react18.default.createElement(Y3, {
+      homepage,
+      className: "bloom-header-homepage"
+    }, /* @__PURE__ */ import_react18.default.createElement(L3, {
+      label,
+      as: "span",
+      className: "bloom-header-label"
+    })) : /* @__PURE__ */ import_react18.default.createElement(L3, {
+      label,
+      as: "span",
+      className: "bloom-header-label"
+    }), summary && /* @__PURE__ */ import_react18.default.createElement(ht2, {
+      summary,
+      as: "span",
+      className: "bloom-header-summary"
+    })), /* @__PURE__ */ import_react18.default.createElement(HeaderControls, null, /* @__PURE__ */ import_react18.default.createElement(ControlStyled, {
+      className: `bloom-previous-${instance}`,
+      "aria-label": "previous"
+    }, /* @__PURE__ */ import_react18.default.createElement(Icon, null, /* @__PURE__ */ import_react18.default.createElement(PreviousIcon, null))), /* @__PURE__ */ import_react18.default.createElement(ControlStyled, {
+      className: `bloom-next-${instance}`,
+      "aria-label": "next"
+    }, /* @__PURE__ */ import_react18.default.createElement(Icon, null, /* @__PURE__ */ import_react18.default.createElement(NextIcon, null)))));
+  };
+  var Header_default = Header;
+
+  // src/components/Items/Items.tsx
+  var import_react33 = __toESM(require_react());
+
+  // src/components/Items/Item.tsx
+  var import_react25 = __toESM(require_react());
+
+  // src/components/Figure/Figure.tsx
+  var import_react23 = __toESM(require_react());
 
   // src/components/Figure/Figure.styled.ts
   var Width = styled("div", {
@@ -54045,17 +54217,17 @@ and ensure you are accounting for this risk.
   }
 
   // node_modules/@radix-ui/react-aspect-ratio/dist/index.module.js
-  var import_react19 = __toESM(require_react());
+  var import_react22 = __toESM(require_react());
 
   // node_modules/@radix-ui/react-primitive/dist/index.module.js
-  var import_react18 = __toESM(require_react());
+  var import_react21 = __toESM(require_react());
   var import_react_dom = __toESM(require_react_dom());
 
   // node_modules/@radix-ui/react-slot/dist/index.module.js
-  var import_react17 = __toESM(require_react());
+  var import_react20 = __toESM(require_react());
 
   // node_modules/@radix-ui/react-compose-refs/dist/index.module.js
-  var import_react16 = __toESM(require_react());
+  var import_react19 = __toESM(require_react());
   function $6ed0406888f73fc4$var$setRef(ref, value) {
     if (typeof ref === "function")
       ref(value);
@@ -54067,44 +54239,44 @@ and ensure you are accounting for this risk.
   }
 
   // node_modules/@radix-ui/react-slot/dist/index.module.js
-  var $5e63c961fc1ce211$export$8c6ed5c666ac1360 = /* @__PURE__ */ (0, import_react17.forwardRef)((props, forwardedRef) => {
+  var $5e63c961fc1ce211$export$8c6ed5c666ac1360 = /* @__PURE__ */ (0, import_react20.forwardRef)((props, forwardedRef) => {
     const { children: children2, ...slotProps } = props;
-    const childrenArray = import_react17.Children.toArray(children2);
+    const childrenArray = import_react20.Children.toArray(children2);
     const slottable = childrenArray.find($5e63c961fc1ce211$var$isSlottable);
     if (slottable) {
       const newElement = slottable.props.children;
       const newChildren = childrenArray.map((child) => {
         if (child === slottable) {
-          if (import_react17.Children.count(newElement) > 1)
-            return import_react17.Children.only(null);
-          return /* @__PURE__ */ (0, import_react17.isValidElement)(newElement) ? newElement.props.children : null;
+          if (import_react20.Children.count(newElement) > 1)
+            return import_react20.Children.only(null);
+          return /* @__PURE__ */ (0, import_react20.isValidElement)(newElement) ? newElement.props.children : null;
         } else
           return child;
       });
-      return /* @__PURE__ */ (0, import_react17.createElement)($5e63c961fc1ce211$var$SlotClone, _extends({}, slotProps, {
+      return /* @__PURE__ */ (0, import_react20.createElement)($5e63c961fc1ce211$var$SlotClone, _extends({}, slotProps, {
         ref: forwardedRef
-      }), /* @__PURE__ */ (0, import_react17.isValidElement)(newElement) ? /* @__PURE__ */ (0, import_react17.cloneElement)(newElement, void 0, newChildren) : null);
+      }), /* @__PURE__ */ (0, import_react20.isValidElement)(newElement) ? /* @__PURE__ */ (0, import_react20.cloneElement)(newElement, void 0, newChildren) : null);
     }
-    return /* @__PURE__ */ (0, import_react17.createElement)($5e63c961fc1ce211$var$SlotClone, _extends({}, slotProps, {
+    return /* @__PURE__ */ (0, import_react20.createElement)($5e63c961fc1ce211$var$SlotClone, _extends({}, slotProps, {
       ref: forwardedRef
     }), children2);
   });
   $5e63c961fc1ce211$export$8c6ed5c666ac1360.displayName = "Slot";
-  var $5e63c961fc1ce211$var$SlotClone = /* @__PURE__ */ (0, import_react17.forwardRef)((props, forwardedRef) => {
+  var $5e63c961fc1ce211$var$SlotClone = /* @__PURE__ */ (0, import_react20.forwardRef)((props, forwardedRef) => {
     const { children: children2, ...slotProps } = props;
-    if (/* @__PURE__ */ (0, import_react17.isValidElement)(children2))
-      return /* @__PURE__ */ (0, import_react17.cloneElement)(children2, {
+    if (/* @__PURE__ */ (0, import_react20.isValidElement)(children2))
+      return /* @__PURE__ */ (0, import_react20.cloneElement)(children2, {
         ...$5e63c961fc1ce211$var$mergeProps(slotProps, children2.props),
         ref: $6ed0406888f73fc4$export$43e446d32b3d21af(forwardedRef, children2.ref)
       });
-    return import_react17.Children.count(children2) > 1 ? import_react17.Children.only(null) : null;
+    return import_react20.Children.count(children2) > 1 ? import_react20.Children.only(null) : null;
   });
   $5e63c961fc1ce211$var$SlotClone.displayName = "SlotClone";
   var $5e63c961fc1ce211$export$d9f1ccf0bdb05d45 = ({ children: children2 }) => {
-    return /* @__PURE__ */ (0, import_react17.createElement)(import_react17.Fragment, null, children2);
+    return /* @__PURE__ */ (0, import_react20.createElement)(import_react20.Fragment, null, children2);
   };
   function $5e63c961fc1ce211$var$isSlottable(child) {
-    return /* @__PURE__ */ (0, import_react17.isValidElement)(child) && child.type === $5e63c961fc1ce211$export$d9f1ccf0bdb05d45;
+    return /* @__PURE__ */ (0, import_react20.isValidElement)(child) && child.type === $5e63c961fc1ce211$export$d9f1ccf0bdb05d45;
   }
   function $5e63c961fc1ce211$var$mergeProps(slotProps, childProps) {
     const overrideProps = {
@@ -54153,13 +54325,13 @@ and ensure you are accounting for this risk.
     "ul"
   ];
   var $8927f6f2acc4f386$export$250ffa63cdc0d034 = $8927f6f2acc4f386$var$NODES.reduce((primitive, node) => {
-    const Node = /* @__PURE__ */ (0, import_react18.forwardRef)((props, forwardedRef) => {
+    const Node = /* @__PURE__ */ (0, import_react21.forwardRef)((props, forwardedRef) => {
       const { asChild, ...primitiveProps } = props;
       const Comp = asChild ? $5e63c961fc1ce211$export$8c6ed5c666ac1360 : node;
-      (0, import_react18.useEffect)(() => {
+      (0, import_react21.useEffect)(() => {
         window[Symbol.for("radix-ui")] = true;
       }, []);
-      return /* @__PURE__ */ (0, import_react18.createElement)(Comp, _extends({}, primitiveProps, {
+      return /* @__PURE__ */ (0, import_react21.createElement)(Comp, _extends({}, primitiveProps, {
         ref: forwardedRef
       }));
     });
@@ -54171,16 +54343,16 @@ and ensure you are accounting for this risk.
   }, {});
 
   // node_modules/@radix-ui/react-aspect-ratio/dist/index.module.js
-  var $c1b5f66aac50e106$export$e840e8869344ca38 = /* @__PURE__ */ (0, import_react19.forwardRef)((props, forwardedRef) => {
+  var $c1b5f66aac50e106$export$e840e8869344ca38 = /* @__PURE__ */ (0, import_react22.forwardRef)((props, forwardedRef) => {
     const { ratio = 1, style, ...aspectRatioProps } = props;
-    return /* @__PURE__ */ (0, import_react19.createElement)("div", {
+    return /* @__PURE__ */ (0, import_react22.createElement)("div", {
       style: {
         position: "relative",
         width: "100%",
         paddingBottom: `${100 / ratio}%`
       },
       "data-radix-aspect-ratio-wrapper": ""
-    }, /* @__PURE__ */ (0, import_react19.createElement)($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends({}, aspectRatioProps, {
+    }, /* @__PURE__ */ (0, import_react22.createElement)($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends({}, aspectRatioProps, {
       ref: forwardedRef,
       style: {
         ...style,
@@ -54201,19 +54373,19 @@ and ensure you are accounting for this risk.
     summary,
     thumbnail
   }) => {
-    const widthRef = (0, import_react20.useRef)(null);
-    return /* @__PURE__ */ import_react20.default.createElement(FigureStyled, {
+    const widthRef = (0, import_react23.useRef)(null);
+    return /* @__PURE__ */ import_react23.default.createElement(FigureStyled, {
       isFocused
-    }, /* @__PURE__ */ import_react20.default.createElement($c1b5f66aac50e106$export$be92b6f5f03c0fe9, {
+    }, /* @__PURE__ */ import_react23.default.createElement($c1b5f66aac50e106$export$be92b6f5f03c0fe9, {
       ratio: 1 / 1
-    }, /* @__PURE__ */ import_react20.default.createElement(Width, {
+    }, /* @__PURE__ */ import_react23.default.createElement(Width, {
       ref: widthRef
-    }), /* @__PURE__ */ import_react20.default.createElement(Placeholder, null, thumbnail && /* @__PURE__ */ import_react20.default.createElement(Nt, {
+    }), /* @__PURE__ */ import_react23.default.createElement(Placeholder, null, thumbnail && /* @__PURE__ */ import_react23.default.createElement(Nt, {
       altAsLabel: label,
       thumbnail
-    }))), /* @__PURE__ */ import_react20.default.createElement("figcaption", null, /* @__PURE__ */ import_react20.default.createElement(Title, {
+    }))), /* @__PURE__ */ import_react23.default.createElement("figcaption", null, /* @__PURE__ */ import_react23.default.createElement(Title, {
       label
-    }), summary && /* @__PURE__ */ import_react20.default.createElement(Description, {
+    }), summary && /* @__PURE__ */ import_react23.default.createElement(Description, {
       summary
     })));
   };
@@ -54231,7 +54403,7 @@ and ensure you are accounting for this risk.
   });
 
   // src/components/Preview/Preview.tsx
-  var import_react23 = __toESM(require_react());
+  var import_react24 = __toESM(require_react());
 
   // src/components/Preview/Preview.styled.ts
   var PreviewStyled = styled("div", {
@@ -54295,40 +54467,6 @@ and ensure you are accounting for this risk.
     cursor: "default"
   });
 
-  // src/components/Icons/NextIcon.tsx
-  var import_react21 = __toESM(require_react());
-  var NextIcon = () => {
-    return /* @__PURE__ */ import_react21.default.createElement("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 512 512"
-    }, /* @__PURE__ */ import_react21.default.createElement("title", null, "Next"), /* @__PURE__ */ import_react21.default.createElement("path", {
-      fill: "none",
-      stroke: "currentColor",
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      strokeMiterlimit: "10",
-      strokeWidth: "45",
-      d: "M268 112l144 144-144 144M392 256H100"
-    }));
-  };
-
-  // src/components/Icons/PrevIcon.tsx
-  var import_react22 = __toESM(require_react());
-  var PreviousIcon = () => {
-    return /* @__PURE__ */ import_react22.default.createElement("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 512 512"
-    }, /* @__PURE__ */ import_react22.default.createElement("title", null, "Previous"), /* @__PURE__ */ import_react22.default.createElement("path", {
-      fill: "none",
-      stroke: "currentColor",
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      strokeMiterlimit: "10",
-      strokeWidth: "45",
-      d: "M244 400L100 256l144-144M120 256h292"
-    }));
-  };
-
   // src/components/Preview/Preview.tsx
   var Preview = ({
     activeCanvas,
@@ -54336,29 +54474,29 @@ and ensure you are accounting for this risk.
     isFocused,
     manifest
   }) => {
-    const [hasPrev, setHasPrev] = (0, import_react23.useState)(false);
-    const [hasNext, setHasNext] = (0, import_react23.useState)(false);
+    const [hasPrev, setHasPrev] = (0, import_react24.useState)(false);
+    const [hasNext, setHasNext] = (0, import_react24.useState)(false);
     const canvasCurrent = activeCanvas + 1;
     let canvasCount = 0;
     if (manifest)
       canvasCount = manifest.items.length;
-    (0, import_react23.useEffect)(() => {
+    (0, import_react24.useEffect)(() => {
       canvasCurrent <= 1 ? setHasPrev(false) : setHasPrev(true);
       canvasCurrent >= canvasCount ? setHasNext(false) : setHasNext(true);
     }, [activeCanvas, manifest]);
-    return /* @__PURE__ */ import_react23.default.createElement(PreviewStyled, {
+    return /* @__PURE__ */ import_react24.default.createElement(PreviewStyled, {
       isFocused
-    }, /* @__PURE__ */ import_react23.default.createElement($c1b5f66aac50e106$export$be92b6f5f03c0fe9, {
+    }, /* @__PURE__ */ import_react24.default.createElement($c1b5f66aac50e106$export$be92b6f5f03c0fe9, {
       ratio: 1 / 1
-    }, manifest && /* @__PURE__ */ import_react23.default.createElement(Overlay, null, /* @__PURE__ */ import_react23.default.createElement(Controls, {
+    }, manifest && /* @__PURE__ */ import_react24.default.createElement(Overlay, null, /* @__PURE__ */ import_react24.default.createElement(Controls, {
       onClick: (e2) => e2.preventDefault()
-    }, /* @__PURE__ */ import_react23.default.createElement("button", {
+    }, /* @__PURE__ */ import_react24.default.createElement("button", {
       onClick: () => handleActiveCanvas(-1),
       disabled: !hasPrev
-    }, /* @__PURE__ */ import_react23.default.createElement(PreviousIcon, null)), /* @__PURE__ */ import_react23.default.createElement("button", {
+    }, /* @__PURE__ */ import_react24.default.createElement(PreviousIcon, null)), /* @__PURE__ */ import_react24.default.createElement("button", {
       onClick: () => handleActiveCanvas(1),
       disabled: !hasNext
-    }, /* @__PURE__ */ import_react23.default.createElement(NextIcon, null))), /* @__PURE__ */ import_react23.default.createElement(Label, {
+    }, /* @__PURE__ */ import_react24.default.createElement(NextIcon, null))), /* @__PURE__ */ import_react24.default.createElement(Label, {
       onClick: (e2) => e2.preventDefault()
     }, canvasCurrent, " of ", canvasCount))));
   };
@@ -54378,12 +54516,12 @@ and ensure you are accounting for this risk.
     var _a;
     const store = useCollectionState();
     const { vault } = store;
-    const [isFocused, setIsFocused] = (0, import_react24.useState)(false);
-    const [activeCanvas, setActiveCanvas] = (0, import_react24.useState)(0);
-    const [thumbnail, setThumbnail] = (0, import_react24.useState)(item.thumbnail);
-    const [manifest, setManifest] = (0, import_react24.useState)();
-    const [id, setId] = (0, import_react24.useState)(item.id);
-    (0, import_react24.useEffect)(() => {
+    const [isFocused, setIsFocused] = (0, import_react25.useState)(false);
+    const [activeCanvas, setActiveCanvas] = (0, import_react25.useState)(0);
+    const [thumbnail, setThumbnail] = (0, import_react25.useState)(item.thumbnail);
+    const [manifest, setManifest] = (0, import_react25.useState)();
+    const [id, setId] = (0, import_react25.useState)(item.id);
+    (0, import_react25.useEffect)(() => {
       isFocused ? setTimeout(() => {
         if (!manifest)
           vault.load(item.id).then((data) => setManifest(data)).catch((error) => {
@@ -54392,7 +54530,7 @@ and ensure you are accounting for this risk.
       }, 1e3) : null;
       return;
     }, [isFocused]);
-    (0, import_react24.useEffect)(() => {
+    (0, import_react25.useEffect)(() => {
       if (!(item == null ? void 0 : item.thumbnail))
         return;
       const thumbnail2 = vault.get(item.thumbnail);
@@ -54411,28 +54549,28 @@ and ensure you are accounting for this risk.
       setThumbnail(thumbnail2);
       setActiveCanvas(targetCanvas);
     };
-    (0, import_react24.useEffect)(() => {
+    (0, import_react25.useEffect)(() => {
       if (manifest)
         handleActiveCanvas(0);
     }, [manifest]);
     let href;
     if (((_a = item.homepage) == null ? void 0 : _a.length) > 0)
       href = item.homepage[0].id;
-    return /* @__PURE__ */ import_react24.default.createElement(ItemStyled, null, /* @__PURE__ */ import_react24.default.createElement(Anchor, {
+    return /* @__PURE__ */ import_react25.default.createElement(ItemStyled, null, /* @__PURE__ */ import_react25.default.createElement(Anchor, {
       href,
       tabIndex: 0,
       onFocus,
       onBlur,
       onMouseEnter: onFocus,
       onMouseLeave: onBlur
-    }, /* @__PURE__ */ import_react24.default.createElement(Figure_default, {
+    }, /* @__PURE__ */ import_react25.default.createElement(Figure_default, {
       index: index2,
       isFocused,
       key: id,
       label: item.label,
       summary: item.summary,
       thumbnail
-    }), /* @__PURE__ */ import_react24.default.createElement(Preview_default, {
+    }), /* @__PURE__ */ import_react25.default.createElement(Preview_default, {
       manifest,
       activeCanvas,
       handleActiveCanvas,
@@ -54443,9 +54581,7 @@ and ensure you are accounting for this risk.
 
   // src/components/Items/Items.styled.ts
   var ItemsStyled = styled("div", {
-    position: "relative",
-    display: "flex",
-    flexDirection: "row"
+    "& .swiper-slide": {}
   });
 
   // node_modules/ssr-window/ssr-window.esm.js
@@ -59257,7 +59393,7 @@ and ensure you are accounting for this risk.
   }
 
   // node_modules/swiper/react/swiper.js
-  var import_react30 = __toESM(require_react(), 1);
+  var import_react31 = __toESM(require_react(), 1);
 
   // node_modules/swiper/components-shared/utils.js
   function isObject3(o2) {
@@ -59513,7 +59649,7 @@ and ensure you are accounting for this risk.
   }
 
   // node_modules/swiper/react/loop.js
-  var import_react25 = __toESM(require_react(), 1);
+  var import_react26 = __toESM(require_react(), 1);
   function calcLoopedSlides(slides, swiperParams) {
     let slidesPerViewParams = swiperParams.slidesPerView;
     if (swiperParams.breakpoints) {
@@ -59532,13 +59668,13 @@ and ensure you are accounting for this risk.
   }
   function renderLoop(swiper, slides, swiperParams) {
     const modifiedSlides = slides.map((child, index2) => {
-      return /* @__PURE__ */ import_react25.default.cloneElement(child, {
+      return /* @__PURE__ */ import_react26.default.cloneElement(child, {
         swiper,
         "data-swiper-slide-index": index2
       });
     });
     function duplicateSlide(child, index2, position) {
-      return /* @__PURE__ */ import_react25.default.cloneElement(child, {
+      return /* @__PURE__ */ import_react26.default.cloneElement(child, {
         key: `${child.key}-duplicate-${index2}-${position}`,
         className: `${child.props.className || ""} ${swiperParams.slideDuplicateClass}`
       });
@@ -59547,7 +59683,7 @@ and ensure you are accounting for this risk.
       const blankSlidesNum = swiperParams.slidesPerGroup - modifiedSlides.length % swiperParams.slidesPerGroup;
       if (blankSlidesNum !== swiperParams.slidesPerGroup) {
         for (let i2 = 0; i2 < blankSlidesNum; i2 += 1) {
-          const blankSlide = /* @__PURE__ */ import_react25.default.createElement("div", {
+          const blankSlide = /* @__PURE__ */ import_react26.default.createElement("div", {
             className: `${swiperParams.slideClass} ${swiperParams.slideBlankClass}`
           });
           modifiedSlides.push(blankSlide);
@@ -59616,10 +59752,10 @@ and ensure you are accounting for this risk.
   }
 
   // node_modules/swiper/react/get-children.js
-  var import_react26 = __toESM(require_react(), 1);
+  var import_react27 = __toESM(require_react(), 1);
   function processChildren(c3) {
     const slides = [];
-    import_react26.default.Children.toArray(c3).forEach((child) => {
+    import_react27.default.Children.toArray(c3).forEach((child) => {
       if (child.type && child.type.displayName === "SwiperSlide") {
         slides.push(child);
       } else if (child.props && child.props.children) {
@@ -59636,7 +59772,7 @@ and ensure you are accounting for this risk.
       "wrapper-start": [],
       "wrapper-end": []
     };
-    import_react26.default.Children.toArray(c3).forEach((child) => {
+    import_react27.default.Children.toArray(c3).forEach((child) => {
       if (child.type && child.type.displayName === "SwiperSlide") {
         slides.push(child);
       } else if (child.props && child.props.slot && slots[child.props.slot]) {
@@ -59779,7 +59915,7 @@ and ensure you are accounting for this risk.
   }
 
   // node_modules/swiper/react/virtual.js
-  var import_react27 = __toESM(require_react(), 1);
+  var import_react28 = __toESM(require_react(), 1);
   function renderVirtual(swiper, slides, virtualData) {
     if (!virtualData)
       return null;
@@ -59789,7 +59925,7 @@ and ensure you are accounting for this risk.
       top: `${virtualData.offset}px`
     };
     return slides.filter((child, index2) => index2 >= virtualData.from && index2 <= virtualData.to).map((child) => {
-      return /* @__PURE__ */ import_react27.default.cloneElement(child, {
+      return /* @__PURE__ */ import_react28.default.cloneElement(child, {
         swiper,
         style
       });
@@ -59812,17 +59948,17 @@ and ensure you are accounting for this risk.
   };
 
   // node_modules/swiper/react/use-isomorphic-layout-effect.js
-  var import_react28 = __toESM(require_react(), 1);
+  var import_react29 = __toESM(require_react(), 1);
   function useIsomorphicLayoutEffect(callback, deps) {
     if (typeof window === "undefined")
-      return (0, import_react28.useEffect)(callback, deps);
-    return (0, import_react28.useLayoutEffect)(callback, deps);
+      return (0, import_react29.useEffect)(callback, deps);
+    return (0, import_react29.useLayoutEffect)(callback, deps);
   }
 
   // node_modules/swiper/react/context.js
-  var import_react29 = __toESM(require_react(), 1);
-  var SwiperSlideContext = /* @__PURE__ */ (0, import_react29.createContext)(null);
-  var SwiperContext = /* @__PURE__ */ (0, import_react29.createContext)(null);
+  var import_react30 = __toESM(require_react(), 1);
+  var SwiperSlideContext = /* @__PURE__ */ (0, import_react30.createContext)(null);
+  var SwiperContext = /* @__PURE__ */ (0, import_react30.createContext)(null);
 
   // node_modules/swiper/react/swiper.js
   function _extends2() {
@@ -59839,7 +59975,7 @@ and ensure you are accounting for this risk.
     };
     return _extends2.apply(this, arguments);
   }
-  var Swiper2 = /* @__PURE__ */ (0, import_react30.forwardRef)(function(_temp, externalElRef) {
+  var Swiper2 = /* @__PURE__ */ (0, import_react31.forwardRef)(function(_temp, externalElRef) {
     let {
       className,
       tag: Tag = "div",
@@ -59849,18 +59985,18 @@ and ensure you are accounting for this risk.
       ...rest
     } = _temp === void 0 ? {} : _temp;
     let eventsAssigned = false;
-    const [containerClasses, setContainerClasses] = (0, import_react30.useState)("swiper");
-    const [virtualData, setVirtualData] = (0, import_react30.useState)(null);
-    const [breakpointChanged, setBreakpointChanged] = (0, import_react30.useState)(false);
-    const initializedRef = (0, import_react30.useRef)(false);
-    const swiperElRef = (0, import_react30.useRef)(null);
-    const swiperRef = (0, import_react30.useRef)(null);
-    const oldPassedParamsRef = (0, import_react30.useRef)(null);
-    const oldSlides = (0, import_react30.useRef)(null);
-    const nextElRef = (0, import_react30.useRef)(null);
-    const prevElRef = (0, import_react30.useRef)(null);
-    const paginationElRef = (0, import_react30.useRef)(null);
-    const scrollbarElRef = (0, import_react30.useRef)(null);
+    const [containerClasses, setContainerClasses] = (0, import_react31.useState)("swiper");
+    const [virtualData, setVirtualData] = (0, import_react31.useState)(null);
+    const [breakpointChanged, setBreakpointChanged] = (0, import_react31.useState)(false);
+    const initializedRef = (0, import_react31.useRef)(false);
+    const swiperElRef = (0, import_react31.useRef)(null);
+    const swiperRef = (0, import_react31.useRef)(null);
+    const oldPassedParamsRef = (0, import_react31.useRef)(null);
+    const oldSlides = (0, import_react31.useRef)(null);
+    const nextElRef = (0, import_react31.useRef)(null);
+    const prevElRef = (0, import_react31.useRef)(null);
+    const paginationElRef = (0, import_react31.useRef)(null);
+    const scrollbarElRef = (0, import_react31.useRef)(null);
     const {
       params: swiperParams,
       passedParams,
@@ -59922,13 +60058,13 @@ and ensure you are accounting for this risk.
         swiperRef.current.off(eventName, events2[eventName]);
       });
     };
-    (0, import_react30.useEffect)(() => {
+    (0, import_react31.useEffect)(() => {
       return () => {
         if (swiperRef.current)
           swiperRef.current.off("_beforeBreakpoint", onBeforeBreakpoint);
       };
     });
-    (0, import_react30.useEffect)(() => {
+    (0, import_react31.useEffect)(() => {
       if (!initializedRef.current && swiperRef.current) {
         swiperRef.current.emitSlidesClasses();
         initializedRef.current = true;
@@ -59989,30 +60125,30 @@ and ensure you are accounting for this risk.
       }
       if (!swiperParams.loop || swiperRef.current && swiperRef.current.destroyed) {
         return slides.map((child) => {
-          return /* @__PURE__ */ import_react30.default.cloneElement(child, {
+          return /* @__PURE__ */ import_react31.default.cloneElement(child, {
             swiper: swiperRef.current
           });
         });
       }
       return renderLoop(swiperRef.current, slides, swiperParams);
     }
-    return /* @__PURE__ */ import_react30.default.createElement(Tag, _extends2({
+    return /* @__PURE__ */ import_react31.default.createElement(Tag, _extends2({
       ref: swiperElRef,
       className: uniqueClasses(`${containerClasses}${className ? ` ${className}` : ""}`)
-    }, restProps), /* @__PURE__ */ import_react30.default.createElement(SwiperContext.Provider, {
+    }, restProps), /* @__PURE__ */ import_react31.default.createElement(SwiperContext.Provider, {
       value: swiperRef.current
-    }, slots["container-start"], /* @__PURE__ */ import_react30.default.createElement(WrapperTag, {
+    }, slots["container-start"], /* @__PURE__ */ import_react31.default.createElement(WrapperTag, {
       className: "swiper-wrapper"
-    }, slots["wrapper-start"], renderSlides(), slots["wrapper-end"]), needsNavigation(swiperParams) && /* @__PURE__ */ import_react30.default.createElement(import_react30.default.Fragment, null, /* @__PURE__ */ import_react30.default.createElement("div", {
+    }, slots["wrapper-start"], renderSlides(), slots["wrapper-end"]), needsNavigation(swiperParams) && /* @__PURE__ */ import_react31.default.createElement(import_react31.default.Fragment, null, /* @__PURE__ */ import_react31.default.createElement("div", {
       ref: prevElRef,
       className: "swiper-button-prev"
-    }), /* @__PURE__ */ import_react30.default.createElement("div", {
+    }), /* @__PURE__ */ import_react31.default.createElement("div", {
       ref: nextElRef,
       className: "swiper-button-next"
-    })), needsScrollbar(swiperParams) && /* @__PURE__ */ import_react30.default.createElement("div", {
+    })), needsScrollbar(swiperParams) && /* @__PURE__ */ import_react31.default.createElement("div", {
       ref: scrollbarElRef,
       className: "swiper-scrollbar"
-    }), needsPagination(swiperParams) && /* @__PURE__ */ import_react30.default.createElement("div", {
+    }), needsPagination(swiperParams) && /* @__PURE__ */ import_react31.default.createElement("div", {
       ref: paginationElRef,
       className: "swiper-pagination"
     }), slots["container-end"]));
@@ -60020,7 +60156,7 @@ and ensure you are accounting for this risk.
   Swiper2.displayName = "Swiper";
 
   // node_modules/swiper/react/swiper-slide.js
-  var import_react31 = __toESM(require_react(), 1);
+  var import_react32 = __toESM(require_react(), 1);
   function _extends3() {
     _extends3 = Object.assign ? Object.assign.bind() : function(target) {
       for (var i2 = 1; i2 < arguments.length; i2++) {
@@ -60035,7 +60171,7 @@ and ensure you are accounting for this risk.
     };
     return _extends3.apply(this, arguments);
   }
-  var SwiperSlide = /* @__PURE__ */ (0, import_react31.forwardRef)(function(_temp, externalRef) {
+  var SwiperSlide = /* @__PURE__ */ (0, import_react32.forwardRef)(function(_temp, externalRef) {
     let {
       tag: Tag = "div",
       children: children2,
@@ -60045,8 +60181,8 @@ and ensure you are accounting for this risk.
       virtualIndex,
       ...rest
     } = _temp === void 0 ? {} : _temp;
-    const slideElRef = (0, import_react31.useRef)(null);
-    const [slideClasses, setSlideClasses] = (0, import_react31.useState)("swiper-slide");
+    const slideElRef = (0, import_react32.useRef)(null);
+    const [slideClasses, setSlideClasses] = (0, import_react32.useState)("swiper-slide");
     function updateClasses(_s, el, classNames) {
       if (el === slideElRef.current) {
         setSlideClasses(classNames);
@@ -60087,13 +60223,13 @@ and ensure you are accounting for this risk.
     const renderChildren = () => {
       return typeof children2 === "function" ? children2(slideData) : children2;
     };
-    return /* @__PURE__ */ import_react31.default.createElement(Tag, _extends3({
+    return /* @__PURE__ */ import_react32.default.createElement(Tag, _extends3({
       ref: slideElRef,
       className: uniqueClasses(`${slideClasses}${className ? ` ${className}` : ""}`),
       "data-swiper-slide-index": virtualIndex
-    }, rest), /* @__PURE__ */ import_react31.default.createElement(SwiperSlideContext.Provider, {
+    }, rest), /* @__PURE__ */ import_react32.default.createElement(SwiperSlideContext.Provider, {
       value: slideData
-    }, zoom ? /* @__PURE__ */ import_react31.default.createElement("div", {
+    }, zoom ? /* @__PURE__ */ import_react32.default.createElement("div", {
       className: "swiper-zoom-container",
       "data-swiper-zoom": typeof zoom === "number" ? zoom : void 0
     }, renderChildren()) : renderChildren()));
@@ -60101,26 +60237,42 @@ and ensure you are accounting for this risk.
   SwiperSlide.displayName = "SwiperSlide";
 
   // src/components/Items/Items.tsx
-  var Items = ({ instance, items }) => {
-    const [itemCount, setItemCount] = (0, import_react32.useState)(3);
-    const itemsRef = (0, import_react32.useRef)(null);
-    const length = items.length;
-    (0, import_react32.useEffect)(() => {
-      const resizeObserver = new ResizeObserver((entries) => {
-        var _a, _b;
-        for (let entry of entries) {
-          if (entry && ((_a = itemsRef.current) == null ? void 0 : _a.clientWidth)) {
-            let count = Math.ceil(((_b = itemsRef.current) == null ? void 0 : _b.clientWidth) / 290);
-            count <= length ? setItemCount(count) : setItemCount(length);
-          }
-        }
-      });
-      if (itemsRef.current)
-        resizeObserver.observe(itemsRef.current);
-    }, [itemsRef.current]);
-    return /* @__PURE__ */ import_react32.default.createElement(ItemsStyled, {
+  var defaultBreakpoints = {
+    640: {
+      slidesPerView: 2,
+      slidesPerGroup: 2,
+      spaceBetween: 20
+    },
+    768: {
+      slidesPerView: 3,
+      slidesPerGroup: 3,
+      spaceBetween: 30
+    },
+    1024: {
+      slidesPerView: 4,
+      slidesPerGroup: 4,
+      spaceBetween: 40
+    },
+    1366: {
+      slidesPerView: 5,
+      slidesPerGroup: 5,
+      spaceBetween: 50
+    },
+    1920: {
+      slidesPerView: 6,
+      slidesPerGroup: 6,
+      spaceBetween: 60
+    }
+  };
+  var Items = ({
+    breakpoints = defaultBreakpoints,
+    instance,
+    items
+  }) => {
+    const itemsRef = (0, import_react33.useRef)(null);
+    return /* @__PURE__ */ import_react33.default.createElement(ItemsStyled, {
       ref: itemsRef
-    }, /* @__PURE__ */ import_react32.default.createElement(Swiper2, {
+    }, /* @__PURE__ */ import_react33.default.createElement(Swiper2, {
       a11y: {
         prevSlideMessage: "previous item",
         nextSlideMessage: "next item"
@@ -60131,156 +60283,17 @@ and ensure you are accounting for this risk.
         nextEl: `.bloom-next-${instance}`,
         prevEl: `.bloom-previous-${instance}`
       },
-      slidesPerGroup: itemCount,
-      slidesPerView: itemCount
-    }, items.map((item, index2) => /* @__PURE__ */ import_react32.default.createElement(SwiperSlide, {
+      slidesPerView: 2,
+      slidesPerGroup: 2,
+      breakpoints
+    }, items.map((item, index2) => /* @__PURE__ */ import_react33.default.createElement(SwiperSlide, {
       key: `${item.id}-${index2}`
-    }, /* @__PURE__ */ import_react32.default.createElement(Item_default, {
+    }, /* @__PURE__ */ import_react33.default.createElement(Item_default, {
       index: index2,
       item
     })))));
   };
   var Items_default = Items;
-
-  // src/components/Header/Header.tsx
-  var import_react34 = __toESM(require_react());
-
-  // src/components/Header/Header.styled.ts
-  var HeaderContent = styled("div", {
-    display: "flex",
-    flexDirection: "column"
-  });
-  var HeaderControls = styled("div", {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    paddingLeft: "$5",
-    paddingRight: "$4",
-    "@xs": {
-      width: "100%",
-      justifyContent: "center",
-      padding: "$4 $1 0 0"
-    }
-  });
-  var HeaderStyled = styled("div", {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingBottom: "$4",
-    margin: "0",
-    color: "$primary",
-    lineHeight: "1.4em",
-    alignItems: "flex-end",
-    "@xs": {
-      flexDirection: "column"
-    },
-    ".bloom-header-homepage": {
-      color: "$accent",
-      textDecoration: "none"
-    },
-    ".bloom-header-label": {
-      fontSize: "$6",
-      fontWeight: "400",
-      fontFamily: "$display"
-    },
-    ".bloom-header-summary": {
-      fontSize: "$4",
-      marginTop: "$2"
-    }
-  });
-
-  // src/components/Header/Control.styled.ts
-  var Icon = styled("div", {
-    display: "flex",
-    background: "none",
-    border: "none",
-    width: "2rem !important",
-    height: "2rem !important",
-    padding: "0",
-    margin: "0",
-    borderRadius: "2rem",
-    backgroundColor: "$accent",
-    color: "$secondary",
-    cursor: "pointer",
-    boxSizing: "content-box !important",
-    transition: "$all",
-    justifyContent: "center",
-    alignItems: "center",
-    svg: {
-      height: "60%",
-      width: "60%",
-      fill: "$secondary",
-      stroke: "$secondary",
-      opacity: "1",
-      filter: "drop-shadow(5px 5px 5px #000D)",
-      transition: "$all"
-    }
-  });
-  var ControlStyled = styled("button", {
-    zIndex: "1",
-    border: "none",
-    cursor: "pointer",
-    background: "transparent",
-    marginLeft: "$2",
-    padding: "0",
-    [`&:disabled`]: {
-      [`> ${Icon}`]: {
-        backgroundColor: "$secondaryAlt",
-        boxShadow: "none",
-        svg: {
-          fill: "$secondaryMuted",
-          stroke: "$secondaryMuted",
-          filter: "unset"
-        }
-      }
-    },
-    [`&:hover:enabled`]: {
-      [`> ${Icon}`]: {
-        backgroundColor: "$accentAlt",
-        boxShadow: "3px 3px 11px #0003",
-        [`&:disabled`]: {
-          boxShadow: "unset"
-        }
-      }
-    }
-  });
-
-  // src/components/Header/Header.tsx
-  var Header = ({
-    homepage,
-    instance,
-    label,
-    summary
-  }) => {
-    const [hasHomepage, setHasHomepage] = (0, import_react34.useState)(false);
-    (0, import_react34.useEffect)(() => {
-      if (homepage.length > 0)
-        setHasHomepage(true);
-    }, [homepage]);
-    return /* @__PURE__ */ import_react34.default.createElement(HeaderStyled, null, /* @__PURE__ */ import_react34.default.createElement(HeaderContent, null, hasHomepage ? /* @__PURE__ */ import_react34.default.createElement(Y3, {
-      homepage,
-      className: "bloom-header-homepage"
-    }, /* @__PURE__ */ import_react34.default.createElement(L3, {
-      label,
-      as: "span",
-      className: "bloom-header-label"
-    })) : /* @__PURE__ */ import_react34.default.createElement(L3, {
-      label,
-      as: "span",
-      className: "bloom-header-label"
-    }), summary && /* @__PURE__ */ import_react34.default.createElement(ht2, {
-      summary,
-      as: "span",
-      className: "bloom-header-summary"
-    })), /* @__PURE__ */ import_react34.default.createElement(HeaderControls, null, /* @__PURE__ */ import_react34.default.createElement(ControlStyled, {
-      className: `bloom-previous-${instance}`,
-      "aria-label": "previous"
-    }, /* @__PURE__ */ import_react34.default.createElement(Icon, null, /* @__PURE__ */ import_react34.default.createElement(PreviousIcon, null))), /* @__PURE__ */ import_react34.default.createElement(ControlStyled, {
-      className: `bloom-next-${instance}`,
-      "aria-label": "next"
-    }, /* @__PURE__ */ import_react34.default.createElement(Icon, null, /* @__PURE__ */ import_react34.default.createElement(NextIcon, null)))));
-  };
-  var Header_default = Header;
 
   // src/lib/hash.ts
   var hash = (s4) => {
@@ -60294,7 +60307,7 @@ and ensure you are accounting for this risk.
 
   // src/index.tsx
   var App = (props) => /* @__PURE__ */ import_react35.default.createElement(CollectionProvider, null, /* @__PURE__ */ import_react35.default.createElement(Bloom, __spreadValues({}, props)));
-  var Bloom = ({ collectionId }) => {
+  var Bloom = ({ collectionId, options = {} }) => {
     const store = useCollectionState();
     const { vault } = store;
     const [collection, setCollection] = (0, import_react35.useState)();
@@ -60320,7 +60333,8 @@ and ensure you are accounting for this risk.
       instance
     }), /* @__PURE__ */ import_react35.default.createElement(Items_default, {
       items: collection.items,
-      instance
+      instance,
+      breakpoints: Boolean(options.breakpoints) ? options.breakpoints : void 0
     }));
   };
   var StyledBloom = styled("div", { padding: "$4 0" });
@@ -60478,6 +60492,8 @@ and ensure you are accounting for this risk.
   // src/dev.tsx
   var Wrapper = () => {
     const defaultUrl = collections[0].url;
+    const oneItem = "https://dcapi.rdc-staging.library.northwestern.edu/api/v2/search?query=subject.label:%22Sculpture,%20English--19th%20century%22&collectionLabel=Sculpture,%20English--19th%20century&collectionSummary=Subject&as=iiif";
+    const twoItems = "https://dcapi.rdc-staging.library.northwestern.edu/api/v2/search?query=collection.title.keyword:%22Transportation%20Library%20Menu%20Collection%22&collectionLabel=Transportation%20Library%20Menu%20Collection&collectionSummary=Collection&as=iiif";
     const [url, setUrl] = import_react38.default.useState(defaultUrl);
     return /* @__PURE__ */ import_react38.default.createElement(import_react38.default.Fragment, null, /* @__PURE__ */ import_react38.default.createElement(src_default, {
       collectionId: url,
