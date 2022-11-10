@@ -1,34 +1,51 @@
 import React, { useEffect, useRef, useState } from "react";
 import { CollectionItems, Collection, Manifest } from "@iiif/presentation-3";
+import { SwiperBreakpoints } from "../../../types/types";
 import Item from "./Item";
 import { ItemsStyled } from "./Items.styled";
 import { Navigation, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 interface ItemsProps {
+  breakpoints?: SwiperBreakpoints;
   instance: string;
   items: CollectionItems[];
 }
 
-const Items: React.FC<ItemsProps> = ({ instance, items }) => {
-  const [itemCount, setItemCount] = useState(3);
+const defaultBreakpoints = {
+  640: {
+    slidesPerView: 2,
+    slidesPerGroup: 2,
+    spaceBetween: 20,
+  },
+  768: {
+    slidesPerView: 3,
+    slidesPerGroup: 3,
+    spaceBetween: 30,
+  },
+  1024: {
+    slidesPerView: 4,
+    slidesPerGroup: 4,
+    spaceBetween: 40,
+  },
+  1366: {
+    slidesPerView: 5,
+    slidesPerGroup: 5,
+    spaceBetween: 50,
+  },
+  1920: {
+    slidesPerView: 6,
+    slidesPerGroup: 6,
+    spaceBetween: 60,
+  },
+};
+
+const Items: React.FC<ItemsProps> = ({
+  breakpoints = defaultBreakpoints,
+  instance,
+  items,
+}) => {
   const itemsRef = useRef<HTMLDivElement>(null);
-  const length = items.length;
-
-  useEffect(() => {
-    const resizeObserver = new ResizeObserver(
-      (entries: ResizeObserverEntry[]) => {
-        for (let entry of entries) {
-          if (entry && itemsRef.current?.clientWidth) {
-            let count = Math.ceil(itemsRef.current?.clientWidth / 290);
-            count <= length ? setItemCount(count) : setItemCount(length);
-          }
-        }
-      }
-    );
-
-    if (itemsRef.current) resizeObserver.observe(itemsRef.current);
-  }, [itemsRef.current]);
 
   return (
     <ItemsStyled ref={itemsRef}>
@@ -43,8 +60,9 @@ const Items: React.FC<ItemsProps> = ({ instance, items }) => {
           nextEl: `.bloom-next-${instance}`,
           prevEl: `.bloom-previous-${instance}`,
         }}
-        slidesPerGroup={itemCount}
-        slidesPerView={itemCount}
+        slidesPerView={2}
+        slidesPerGroup={2}
+        breakpoints={breakpoints}
       >
         {items.map((item, index) => (
           <SwiperSlide key={`${item.id}-${index}`}>
