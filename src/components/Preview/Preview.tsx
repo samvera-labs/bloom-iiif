@@ -1,56 +1,57 @@
-import { Manifest } from "@iiif/presentation-3";
-import Figure from "components/Figure/Figure";
-import { useGetLabel } from "hooks/useGetLabel";
-import React, { useEffect, useRef, useState } from "react";
+import { Collection, Manifest } from "@iiif/presentation-3";
+import React, { useEffect, useState } from "react";
 import { Controls, Label, Overlay, PreviewStyled } from "./Preview.styled";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { NextIcon } from "components/Icons/NextIcon";
 import { PreviousIcon } from "components/Icons/PrevIcon";
 
 interface PreviewProps {
-  activeCanvas: number;
-  handleActiveCanvas: (e: React.MouseEvent) => void;
+  activeResource: number;
+  handleActiveResource: (increment: number) => void;
   isFocused: boolean;
-  manifest: Manifest;
+  resource: Manifest | Collection;
 }
 
 const Preview: React.FC<PreviewProps> = ({
-  activeCanvas,
-  handleActiveCanvas,
+  activeResource,
+  handleActiveResource,
   isFocused,
-  manifest,
+  resource,
 }) => {
   const [hasPrev, setHasPrev] = useState<boolean>(false);
   const [hasNext, setHasNext] = useState<boolean>(false);
 
-  const canvasCurrent: number = activeCanvas + 1;
-  let canvasCount: number = 0;
+  const current: number = activeResource + 1;
+  let count: number = 0;
 
-  if (manifest) canvasCount = manifest.items.length;
+  if (resource) count = resource.items.length;
 
   useEffect(() => {
-    canvasCurrent <= 1 ? setHasPrev(false) : setHasPrev(true);
-    canvasCurrent >= canvasCount ? setHasNext(false) : setHasNext(true);
-  }, [activeCanvas, manifest]);
+    current <= 1 ? setHasPrev(false) : setHasPrev(true);
+    current >= count ? setHasNext(false) : setHasNext(true);
+  }, [activeResource, resource]);
 
   return (
     <PreviewStyled isFocused={isFocused}>
       <AspectRatio.Root ratio={1 / 1}>
-        {manifest && (
+        {resource && (
           <Overlay>
             <Controls onClick={(e) => e.preventDefault()}>
               <button
-                onClick={() => handleActiveCanvas(-1)}
+                onClick={() => handleActiveResource(-1)}
                 disabled={!hasPrev}
               >
                 <PreviousIcon />
               </button>
-              <button onClick={() => handleActiveCanvas(1)} disabled={!hasNext}>
+              <button
+                onClick={() => handleActiveResource(1)}
+                disabled={!hasNext}
+              >
                 <NextIcon />
               </button>
             </Controls>
             <Label onClick={(e) => e.preventDefault()}>
-              {canvasCurrent} of {canvasCount}
+              {current} of {count}
             </Label>
           </Overlay>
         )}

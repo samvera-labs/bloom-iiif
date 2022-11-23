@@ -1,10 +1,12 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Figure from "components/Figure/Figure";
 import {
   CanvasNormalized,
   Collection,
+  CollectionNormalized,
   ContentResource,
   Manifest,
+  ManifestNormalized,
 } from "@iiif/presentation-3";
 import { useCollectionState } from "context/collection-context";
 import { Anchor, ItemStyled } from "./Item.styled";
@@ -21,23 +23,14 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
   const { vault } = store;
 
   const [isFocused, setIsFocused] = useState<boolean>(false);
-  const [activeCanvas, setActiveCanvas] = useState<number>(0);
+  const [activeResource, setActiveResource] = useState<number>(0);
   const [thumbnail, setThumbnail] = useState<ContentResource>(item.thumbnail);
-  const [manifest, setManifest] = useState<Collection | Manifest>();
+  const [resource, setResource] = useState<Collection | Manifest>();
   const [id, setId] = useState<string>(item.id);
 
   useEffect(() => {
-    isFocused
-      ? setTimeout(() => {
-          if (!manifest)
-            vault
-              .load(item.id)
-              .then((data: any) => setManifest(data))
-              .catch((error: any) => {
-                console.error(`Manifest failed to load: ${error}`);
-              });
-        }, 1000)
-      : null;
+    if (isFocused && !resource)
+      vault.load(item.id).then((data: any) => setResource(data));
     return;
   }, [isFocused]);
 
@@ -50,24 +43,24 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
   const onFocus = () => setIsFocused(true);
   const onBlur = () => setIsFocused(false);
 
-  const handleActiveCanvas = (increment: number) => {
-    if (!manifest) return;
+  const handleActiveResource = (increment: number) => {
+    if (!resource) return;
 
-    const targetCanvas: number = activeCanvas + increment;
+    const target: number = activeResource + increment;
+    const targetResource:
+      | CanvasNormalized
+      | CollectionNormalized
+      | ManifestNormalized = vault.get(resource.items[target]);
+    const thumbnail = vault.get(targetResource.thumbnail);
 
-    const canvas: CanvasNormalized = vault.get(manifest.items[targetCanvas]);
-    const resource = getCanvasResource(canvas, vault);
-
-    const thumbnail = vault.get(resource);
-
-    setId(canvas.id);
+    setActiveResource(target);
+    setId(targetResource.id);
     setThumbnail(thumbnail);
-    setActiveCanvas(targetCanvas);
   };
 
   useEffect(() => {
-    if (manifest) handleActiveCanvas(0);
-  }, [manifest]);
+    if (resource) handleActiveResource(0);
+  }, [resource]);
 
   let href;
 
@@ -92,9 +85,9 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
           thumbnail={thumbnail}
         />
         <Preview
-          manifest={manifest as Manifest}
-          activeCanvas={activeCanvas}
-          handleActiveCanvas={handleActiveCanvas}
+          resource={resource as Manifest | Collection}
+          activeResource={activeResource}
+          handleActiveResource={handleActiveResource}
           isFocused={isFocused}
         />
       </Anchor>

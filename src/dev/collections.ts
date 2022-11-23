@@ -1,5 +1,9 @@
 export const collections = [
   {
+    url: "https://canopy-iiif.vercel.app/api/facet/date",
+    label: "canopy",
+  },
+  {
     url: "https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/athletic-department-footbal-films.json",
     label: "Football Films",
   },
