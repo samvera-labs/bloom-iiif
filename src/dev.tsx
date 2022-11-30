@@ -8,6 +8,7 @@ import ReactDOM from "react-dom";
 import App from "./index";
 import DynamicUrl from "./dev/DynamicUrl";
 import { collections } from "./dev/collections";
+import { createRoot } from "react-dom/client";
 
 const Wrapper = () => {
   const defaultUrl: string = collections[0].url;
@@ -27,4 +28,6 @@ const Wrapper = () => {
   );
 };
 
-ReactDOM.render(<Wrapper />, document.getElementById("root"));
+const container = document.getElementById("root");
+const root = createRoot(container!);
+root.render(<Wrapper />);
