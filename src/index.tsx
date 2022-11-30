@@ -13,6 +13,8 @@ import { ConfigOptions } from "../types/types";
 import Header from "components/Header/Header";
 import Items from "components/Items/Items";
 import hash from "lib/hash";
+import { convertPresentation2 } from "@iiif/parser/presentation-2";
+import { normalize } from "@iiif/parser/presentation-3";
 import { styled } from "stitches";
 
 interface BloomProps {
@@ -38,20 +40,47 @@ const Bloom: React.FC<BloomProps> = ({ collectionId, options = {} }) => {
   useEffect(() => {
     if (!collectionId) return;
 
+    async function doRequest() {
+      try {
+        const response = await fetch(collectionId);
+        const data = await response.json();
+        const p3Manifest = convertPresentation2(data);
+        const collectionEntity: {
+          [key: string]: CollectionNormalized;
+        } = normalize(p3Manifest).entities.Collection;
+        const normalizedCollection = collectionEntity[collectionId];
+        if (
+          normalizedCollection &&
+          Object.keys(normalizedCollection).length > 0
+        ) {
+          setCollection(normalizedCollection);
+        }
+      } catch (error) {
+        console.error("Error fetching collection", error);
+        setError(
+          error instanceof Error ? error.message : `Collection failed to load`
+        );
+      }
+    }
+    doRequest();
+
     /**
      * load collection using @iiif/vault
      */
 
-    vault
-      .loadCollection(collectionId)
-      .then((data: any) => setCollection(data))
-      .catch((error: any) => {
-        console.error(`Collection failed to load: ${error}`);
-        setError(
-          error instanceof Error ? error.message : `Collection failed to load`
-        );
-      })
-      .finally(() => {});
+    // vault
+    //   .loadCollection(collectionId)
+    //   .then((data: any) => {
+    //     setCollection(data);
+    //     console.log("vault data", data);
+    //   })
+    //   .catch((error: any) => {
+    //     console.error(`Collection failed to load: ${error}`);
+    //     setError(
+    //       error instanceof Error ? error.message : `Collection failed to load`
+    //     );
+    //   })
+    //   .finally(() => {});
   }, [collectionId]);
 
   if (collection?.items.length === 0) {

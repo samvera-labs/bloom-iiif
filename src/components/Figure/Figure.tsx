@@ -32,7 +32,12 @@ const Figure: React.FC<FigureProps> = ({
       <AspectRatio.Root ratio={1 / 1}>
         <Width ref={widthRef} />
         <Placeholder>
-          {thumbnail && <Thumbnail altAsLabel={label} thumbnail={thumbnail} />}
+          {thumbnail && thumbnail.length > 0 && (
+            // TODO: Something here is causing the image not to initiall load
+            // <Thumbnail altAsLabel={label} thumbnail={thumbnail} />
+
+            <img src={thumbnail[0].id} alt="" />
+          )}
         </Placeholder>
       </AspectRatio.Root>
       <figcaption>
