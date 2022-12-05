@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 interface ItemsProps {
   breakpoints?: SwiperBreakpoints;
-  instance: string;
+  instance: number;
   items: CollectionItems[];
 }
 

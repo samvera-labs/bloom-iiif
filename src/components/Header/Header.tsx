@@ -8,7 +8,7 @@ import { ControlStyled, Icon } from "./Control.styled";
 
 interface HeaderProps {
   homepage: ContentResource[];
-  instance: string;
+  instance: number;
   label: InternationalString;
   summary: InternationalString;
 }
