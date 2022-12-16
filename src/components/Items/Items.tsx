@@ -46,6 +46,7 @@ const Items: React.FC<ItemsProps> = ({
   items,
 }) => {
   const itemsRef = useRef<HTMLDivElement>(null);
+  console.log("items.length", items.length);
 
   return (
     <ItemsStyled ref={itemsRef}>

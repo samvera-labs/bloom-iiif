@@ -43,14 +43,19 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
 
   useEffect(() => {
     if (!item?.thumbnail) return;
-    const thumbnail = vault.get(item.thumbnail);
-    setThumbnail(thumbnail);
+    /** Vault grabs the thumbnail */
+    // const thumbnail = vault.get(item.thumbnail);
+    // setThumbnail(thumbnail);
+
+    /** Grab thumb direct */
+    setThumbnail(item.thumbnail);
   }, []);
 
   const onFocus = () => setIsFocused(true);
   const onBlur = () => setIsFocused(false);
 
   const handleActiveCanvas = (increment: number) => {
+    console.log("handleActiveCanvas");
     if (!manifest) return;
 
     const targetCanvas: number = activeCanvas + increment;
