@@ -1,9 +1,5 @@
 export const collections = [
   {
-    url: "https://dcapi.rdc-staging.library.northwestern.edu/api/v2/search?query=collection.id:%22b5ba2cce-8b7e-4b8a-ad5c-649dd40637b0%22&collectionLabel=Visibility%20Testing&collectionSummary=Collection&as=iiif",
-    label: "Visibility",
-  },
-  {
     url: "https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/athletic-department-footbal-films.json",
     label: "Football Films",
   },
@@ -26,5 +22,9 @@ export const collections = [
   {
     url: "https://figgy.princeton.edu/concern/scanned_resources/8b73b1bb-6417-4ae1-b516-bb68d999ed2f/manifest",
     label: "Clarissa",
+  },
+  {
+    url: "https://dcapi.rdc-staging.library.northwestern.edu/api/v2/search?query=collection.id:%22b5ba2cce-8b7e-4b8a-ad5c-649dd40637b0%22&collectionLabel=Visibility%20Testing&collectionSummary=Collection&as=iiif",
+    label: "Access Demonstration",
   },
 ];
