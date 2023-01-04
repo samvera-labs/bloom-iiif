@@ -1027,7 +1027,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useReducer(reducer, initialArg, init);
           }
-          function useRef8(initialValue) {
+          function useRef7(initialValue) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
@@ -1818,7 +1818,7 @@
           exports.useLayoutEffect = useLayoutEffect2;
           exports.useMemo = useMemo;
           exports.useReducer = useReducer;
-          exports.useRef = useRef8;
+          exports.useRef = useRef7;
           exports.useState = useState9;
           exports.useSyncExternalStore = useSyncExternalStore;
           exports.useTransition = useTransition;
@@ -31208,9 +31208,9 @@ and ensure you are accounting for this risk.
           if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
             __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
           }
-          var React17 = require_react();
+          var React19 = require_react();
           var Scheduler = require_scheduler();
-          var ReactSharedInternals = React17.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React19.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           var suppressWarning = false;
           function setSuppressWarning(newSuppressWarning) {
             {
@@ -32731,7 +32731,7 @@ and ensure you are accounting for this risk.
             {
               if (props.value == null) {
                 if (typeof props.children === "object" && props.children !== null) {
-                  React17.Children.forEach(props.children, function(child) {
+                  React19.Children.forEach(props.children, function(child) {
                     if (child == null) {
                       return;
                     }
@@ -40892,7 +40892,7 @@ and ensure you are accounting for this risk.
             }
           }
           var fakeInternalInstance = {};
-          var emptyRefsObject = new React17.Component().refs;
+          var emptyRefsObject = new React19.Component().refs;
           var didWarnAboutStateAssignmentForComponent;
           var didWarnAboutUninitializedState;
           var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -51809,10 +51809,10 @@ and ensure you are accounting for this risk.
   });
 
   // src/dev.tsx
-  var import_react40 = __toESM(require_react());
+  var import_react42 = __toESM(require_react());
 
   // src/index.tsx
-  var import_react37 = __toESM(require_react());
+  var import_react39 = __toESM(require_react());
 
   // src/context/collection-context.tsx
   var import_react = __toESM(require_react());
@@ -52604,8 +52604,39 @@ and ensure you are accounting for this risk.
   // node_modules/@iiif/vault/dist/esm/index.mjs
   var import_typesafe_actions = __toESM(require_typesafe_actions_umd_production(), 1);
 
+  // node_modules/@babel/runtime/helpers/esm/typeof.js
+  function _typeof(obj) {
+    "@babel/helpers - typeof";
+    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(obj2) {
+      return typeof obj2;
+    } : function(obj2) {
+      return obj2 && "function" == typeof Symbol && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+    }, _typeof(obj);
+  }
+
+  // node_modules/@babel/runtime/helpers/esm/toPrimitive.js
+  function _toPrimitive(input, hint) {
+    if (_typeof(input) !== "object" || input === null)
+      return input;
+    var prim = input[Symbol.toPrimitive];
+    if (prim !== void 0) {
+      var res = prim.call(input, hint || "default");
+      if (_typeof(res) !== "object")
+        return res;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return (hint === "string" ? String : Number)(input);
+  }
+
+  // node_modules/@babel/runtime/helpers/esm/toPropertyKey.js
+  function _toPropertyKey(arg) {
+    var key = _toPrimitive(arg, "string");
+    return _typeof(key) === "symbol" ? key : String(key);
+  }
+
   // node_modules/@babel/runtime/helpers/esm/defineProperty.js
   function _defineProperty(obj, key, value) {
+    key = _toPropertyKey(key);
     if (key in obj) {
       Object.defineProperty(obj, key, {
         value,
@@ -54517,91 +54548,10 @@ and ensure you are accounting for this risk.
   var Header_default = Header;
 
   // src/components/Items/Items.tsx
-  var import_react35 = __toESM(require_react());
+  var import_react37 = __toESM(require_react());
 
   // src/components/Items/Item.tsx
-  var import_react27 = __toESM(require_react());
-
-  // src/components/Figure/Figure.tsx
-  var import_react25 = __toESM(require_react());
-
-  // src/components/Figure/Figure.styled.ts
-  var Width = styled("div", {
-    position: "absolute",
-    width: "100%",
-    backgroundColor: "green"
-  });
-  var FigureStyled = styled("figure", {
-    display: "flex",
-    flexDirection: "column",
-    margin: "0 0 $2",
-    flexGrow: "0",
-    flexShrink: "0",
-    borderRadius: "3px",
-    transition: "$all",
-    img: {
-      position: "absolute",
-      display: "flex",
-      flexDirection: "column",
-      objectFit: "cover",
-      zIndex: "0",
-      width: "100%",
-      height: "100%",
-      color: "transparent"
-    },
-    video: {
-      position: "absolute",
-      display: "flex",
-      flexDirection: "column",
-      objectFit: "cover",
-      zIndex: "1",
-      width: "100%",
-      height: "100%",
-      color: "transparent",
-      opacity: "0",
-      transition: "$load",
-      borderRadius: "3px"
-    },
-    figcaption: {
-      display: "flex",
-      flexDirection: "column",
-      padding: "$2 0",
-      color: "$primary",
-      transition: "$all"
-    },
-    variants: {
-      isFocused: {
-        true: {
-          video: {
-            opacity: "1"
-          },
-          figcaption: {
-            color: "$accent"
-          }
-        }
-      }
-    }
-  });
-  var Placeholder = styled("span", {
-    display: "flex",
-    position: "relative",
-    backgroundColor: "$secondaryAlt",
-    width: "100%",
-    height: "100%",
-    overflow: "hidden",
-    borderRadius: "3px",
-    boxShadow: "none",
-    transition: "$all"
-  });
-  var Title = styled(R2, {
-    fontSize: "$3",
-    fontWeight: "700"
-  });
-  var Description = styled(Ft, {
-    fontSize: "$2",
-    marginTop: "$1",
-    color: "$primary"
-  });
+  var import_react29 = __toESM(require_react());
 
   // node_modules/@babel/runtime/helpers/esm/extends.js
   function _extends() {
@@ -54775,15 +54725,142 @@ and ensure you are accounting for this risk.
   });
   var $c1b5f66aac50e106$export$be92b6f5f03c0fe9 = $c1b5f66aac50e106$export$e840e8869344ca38;
 
+  // src/components/Figure/Figure.styled.ts
+  var Width = styled("div", {
+    position: "absolute",
+    width: "100%",
+    backgroundColor: "green"
+  });
+  var FigureStyled = styled("figure", {
+    display: "flex",
+    flexDirection: "column",
+    margin: "0 0 $2",
+    flexGrow: "0",
+    flexShrink: "0",
+    borderRadius: "3px",
+    transition: "$all",
+    img: {
+      position: "absolute",
+      display: "flex",
+      flexDirection: "column",
+      objectFit: "cover",
+      zIndex: "0",
+      width: "100%",
+      height: "100%",
+      color: "transparent"
+    },
+    video: {
+      position: "absolute",
+      display: "flex",
+      flexDirection: "column",
+      objectFit: "cover",
+      zIndex: "1",
+      width: "100%",
+      height: "100%",
+      color: "transparent",
+      opacity: "0",
+      transition: "$load",
+      borderRadius: "3px"
+    },
+    figcaption: {
+      display: "flex",
+      flexDirection: "column",
+      padding: "$2 0",
+      color: "$primary",
+      transition: "$all"
+    },
+    variants: {
+      isFocused: {
+        true: {
+          video: {
+            opacity: "1"
+          },
+          figcaption: {
+            color: "$accent"
+          }
+        }
+      }
+    }
+  });
+  var Placeholder = styled("span", {
+    display: "flex",
+    position: "relative",
+    width: "100%",
+    height: "100%",
+    overflow: "hidden",
+    borderRadius: "3px",
+    boxShadow: "none",
+    transition: "$all"
+  });
+  var Title = styled(R2, {
+    fontSize: "$3",
+    fontWeight: "700"
+  });
+  var Description = styled(Ft, {
+    fontSize: "$2",
+    marginTop: "$1",
+    color: "$primary"
+  });
+
+  // src/components/Figure/Figure.tsx
+  var import_react26 = __toESM(require_react());
+
+  // src/components/Figure/StatusIcon.tsx
+  var import_react25 = __toESM(require_react());
+  var IconLock = /* @__PURE__ */ import_react25.default.createElement(
+    "svg",
+    {
+      xmlns: "http://www.w3.org/2000/svg",
+      className: "icon-lock",
+      viewBox: "0 0 512 512"
+    },
+    /* @__PURE__ */ import_react25.default.createElement("title", null, "Restricted Item"),
+    /* @__PURE__ */ import_react25.default.createElement("path", { d: "M368 192h-16v-80a96 96 0 10-192 0v80h-16a64.07 64.07 0 00-64 64v176a64.07 64.07 0 0064 64h224a64.07 64.07 0 0064-64V256a64.07 64.07 0 00-64-64zm-48 0H192v-80a64 64 0 11128 0z" })
+  );
+  var StatusIcon = ({ status }) => {
+    const [icon, setIcon] = (0, import_react25.useState)(/* @__PURE__ */ import_react25.default.createElement(import_react25.default.Fragment, null));
+    (0, import_react25.useEffect)(() => {
+      switch (status) {
+        case 403:
+          setIcon(IconLock);
+          break;
+      }
+    }, [status]);
+    return /* @__PURE__ */ import_react25.default.createElement(StyledStatusIcon, null, icon);
+  };
+  var StyledStatusIcon = styled("div", {
+    width: "2rem",
+    height: "2rem",
+    backgroundColor: "#fff",
+    borderRadius: "50%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
+    left: "50%",
+    top: "50%",
+    margin: "-1rem 0 0 -1rem",
+    boxShadow: "5px 5px 13px #0003",
+    svg: {
+      height: "1rem",
+      width: "1rem",
+      color: "$accent",
+      fill: "$accent"
+    }
+  });
+  var StatusIcon_default = StatusIcon;
+
   // src/components/Figure/Figure.tsx
   var Figure = ({
     isFocused,
     label,
+    status,
     summary,
     thumbnail
   }) => {
-    const widthRef = (0, import_react25.useRef)(null);
-    return /* @__PURE__ */ import_react25.default.createElement(FigureStyled, { isFocused }, /* @__PURE__ */ import_react25.default.createElement($c1b5f66aac50e106$export$be92b6f5f03c0fe9, { ratio: 1 / 1 }, /* @__PURE__ */ import_react25.default.createElement(Width, { ref: widthRef }), /* @__PURE__ */ import_react25.default.createElement(Placeholder, null, thumbnail && /* @__PURE__ */ import_react25.default.createElement(zt, { altAsLabel: label, thumbnail }))), /* @__PURE__ */ import_react25.default.createElement("figcaption", null, /* @__PURE__ */ import_react25.default.createElement(Title, { label }), summary && /* @__PURE__ */ import_react25.default.createElement(Description, { summary })));
+    const widthRef = (0, import_react26.useRef)(null);
+    return /* @__PURE__ */ import_react26.default.createElement(FigureStyled, { isFocused }, /* @__PURE__ */ import_react26.default.createElement($c1b5f66aac50e106$export$be92b6f5f03c0fe9, { ratio: 1 / 1 }, /* @__PURE__ */ import_react26.default.createElement(Width, { ref: widthRef }), /* @__PURE__ */ import_react26.default.createElement(Placeholder, null, thumbnail && status === 200 ? /* @__PURE__ */ import_react26.default.createElement(zt, { altAsLabel: label, thumbnail }) : /* @__PURE__ */ import_react26.default.createElement(StatusIcon_default, { status }))), /* @__PURE__ */ import_react26.default.createElement("figcaption", null, /* @__PURE__ */ import_react26.default.createElement(Title, { label }), summary && /* @__PURE__ */ import_react26.default.createElement(Description, { summary })));
   };
   var Figure_default = Figure;
 
@@ -54799,7 +54876,7 @@ and ensure you are accounting for this risk.
   });
 
   // src/components/Preview/Preview.tsx
-  var import_react26 = __toESM(require_react());
+  var import_react27 = __toESM(require_react());
 
   // src/components/Preview/Preview.styled.ts
   var PreviewStyled = styled("div", {
@@ -54870,24 +54947,24 @@ and ensure you are accounting for this risk.
     isFocused,
     manifest
   }) => {
-    const [hasPrev, setHasPrev] = (0, import_react26.useState)(false);
-    const [hasNext, setHasNext] = (0, import_react26.useState)(false);
+    const [hasPrev, setHasPrev] = (0, import_react27.useState)(false);
+    const [hasNext, setHasNext] = (0, import_react27.useState)(false);
     const canvasCurrent = activeCanvas + 1;
     let canvasCount = 0;
     if (manifest)
       canvasCount = manifest.items.length;
-    (0, import_react26.useEffect)(() => {
+    (0, import_react27.useEffect)(() => {
       canvasCurrent <= 1 ? setHasPrev(false) : setHasPrev(true);
       canvasCurrent >= canvasCount ? setHasNext(false) : setHasNext(true);
     }, [activeCanvas, manifest]);
-    return /* @__PURE__ */ import_react26.default.createElement(PreviewStyled, { isFocused }, /* @__PURE__ */ import_react26.default.createElement($c1b5f66aac50e106$export$be92b6f5f03c0fe9, { ratio: 1 / 1 }, manifest && /* @__PURE__ */ import_react26.default.createElement(Overlay, null, /* @__PURE__ */ import_react26.default.createElement(Controls, { onClick: (e2) => e2.preventDefault() }, /* @__PURE__ */ import_react26.default.createElement(
+    return /* @__PURE__ */ import_react27.default.createElement(PreviewStyled, { isFocused }, /* @__PURE__ */ import_react27.default.createElement($c1b5f66aac50e106$export$be92b6f5f03c0fe9, { ratio: 1 / 1 }, manifest && /* @__PURE__ */ import_react27.default.createElement(Overlay, null, /* @__PURE__ */ import_react27.default.createElement(Controls, { onClick: (e2) => e2.preventDefault() }, /* @__PURE__ */ import_react27.default.createElement(
       "button",
       {
         onClick: () => handleActiveCanvas(-1),
         disabled: !hasPrev
       },
-      /* @__PURE__ */ import_react26.default.createElement(PreviousIcon, null)
-    ), /* @__PURE__ */ import_react26.default.createElement("button", { onClick: () => handleActiveCanvas(1), disabled: !hasNext }, /* @__PURE__ */ import_react26.default.createElement(NextIcon, null))), /* @__PURE__ */ import_react26.default.createElement(Label, { onClick: (e2) => e2.preventDefault() }, canvasCurrent, " of ", canvasCount))));
+      /* @__PURE__ */ import_react27.default.createElement(PreviousIcon, null)
+    ), /* @__PURE__ */ import_react27.default.createElement("button", { onClick: () => handleActiveCanvas(1), disabled: !hasNext }, /* @__PURE__ */ import_react27.default.createElement(NextIcon, null))), /* @__PURE__ */ import_react27.default.createElement(Label, { onClick: (e2) => e2.preventDefault() }, canvasCurrent, " of ", canvasCount))));
   };
   var Preview_default = Preview;
 
@@ -54900,17 +54977,47 @@ and ensure you are accounting for this risk.
     return annotation.body;
   };
 
+  // src/components/Items/Placeholder.tsx
+  var import_react28 = __toESM(require_react());
+  var Placeholder2 = ({ backgroundImage }) => {
+    return /* @__PURE__ */ import_react28.default.createElement(StyledPlaceholder, null, /* @__PURE__ */ import_react28.default.createElement(
+      BackgroundImage,
+      {
+        ratio: 1 / 1,
+        css: {
+          backgroundImage: `url(${backgroundImage})`
+        }
+      }
+    ));
+  };
+  var BackgroundImage = styled($c1b5f66aac50e106$export$be92b6f5f03c0fe9, {
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "50% 50%",
+    filter: "blur(3em)",
+    opacity: "0.7"
+  });
+  var StyledPlaceholder = styled("div", {
+    position: "absolute",
+    width: "100%",
+    overflow: "hidden",
+    backgroundColor: "#716C6B"
+  });
+  var Placeholder_default = Placeholder2;
+
   // src/components/Items/Item.tsx
   var Item = ({ index: index2, item }) => {
-    var _a;
     const store = useCollectionState();
     const { vault } = store;
-    const [isFocused, setIsFocused] = (0, import_react27.useState)(false);
-    const [activeCanvas, setActiveCanvas] = (0, import_react27.useState)(0);
-    const [thumbnail, setThumbnail] = (0, import_react27.useState)(item.thumbnail);
-    const [manifest, setManifest] = (0, import_react27.useState)();
-    const [id, setId] = (0, import_react27.useState)(item.id);
-    (0, import_react27.useEffect)(() => {
+    const [activeCanvas, setActiveCanvas] = (0, import_react29.useState)(0);
+    const [href, setHref] = (0, import_react29.useState)();
+    const [id, setId] = (0, import_react29.useState)(item.id);
+    const [isFocused, setIsFocused] = (0, import_react29.useState)(false);
+    const [manifest, setManifest] = (0, import_react29.useState)();
+    const [placeholder, setPlaceholder] = (0, import_react29.useState)();
+    const [status, setStatus] = (0, import_react29.useState)(200);
+    const [thumbnail, setThumbnail] = (0, import_react29.useState)([]);
+    (0, import_react29.useEffect)(() => {
       isFocused ? setTimeout(() => {
         if (!manifest)
           vault.load(item.id).then((data) => setManifest(data)).catch((error) => {
@@ -54919,11 +55026,17 @@ and ensure you are accounting for this risk.
       }, 1e3) : null;
       return;
     }, [isFocused]);
-    (0, import_react27.useEffect)(() => {
-      if (!(item == null ? void 0 : item.thumbnail))
-        return;
-      const thumbnail2 = vault.get(item.thumbnail);
-      setThumbnail(thumbnail2);
+    (0, import_react29.useEffect)(() => {
+      var _a, _b;
+      if ((item == null ? void 0 : item.thumbnail) && ((_a = item.thumbnail) == null ? void 0 : _a.length) > 0) {
+        const iiifThumbnail = vault.get(
+          item.thumbnail
+        );
+        setThumbnail(iiifThumbnail);
+        setPlaceholder(iiifThumbnail[0].id);
+      }
+      if ((item == null ? void 0 : item.homepage) && ((_b = item.homepage) == null ? void 0 : _b.length) > 0)
+        setHref(item.homepage[0].id);
     }, []);
     const onFocus = () => setIsFocused(true);
     const onBlur = () => setIsFocused(false);
@@ -54933,19 +55046,25 @@ and ensure you are accounting for this risk.
       const targetCanvas = activeCanvas + increment;
       const canvas = vault.get(manifest.items[targetCanvas]);
       const resource = getCanvasResource(canvas, vault);
-      const thumbnail2 = vault.get(resource);
+      const canvasThumbnail = vault.get(resource);
+      if (canvasThumbnail.length > 0 && canvasThumbnail[0].id) {
+        setThumbnail(canvasThumbnail);
+        fetch(canvasThumbnail[0].id, {
+          method: "GET",
+          headers: {
+            accept: "image/*"
+          },
+          credentials: "include"
+        }).then((response) => setStatus(response.status)).catch((error) => setStatus(error.status));
+      }
       setId(canvas.id);
-      setThumbnail(thumbnail2);
       setActiveCanvas(targetCanvas);
     };
-    (0, import_react27.useEffect)(() => {
+    (0, import_react29.useEffect)(() => {
       if (manifest)
         handleActiveCanvas(0);
     }, [manifest]);
-    let href;
-    if (((_a = item.homepage) == null ? void 0 : _a.length) > 0)
-      href = item.homepage[0].id;
-    return /* @__PURE__ */ import_react27.default.createElement(ItemStyled, null, /* @__PURE__ */ import_react27.default.createElement(
+    return /* @__PURE__ */ import_react29.default.createElement(ItemStyled, null, /* @__PURE__ */ import_react29.default.createElement(
       Anchor,
       {
         href,
@@ -54955,7 +55074,8 @@ and ensure you are accounting for this risk.
         onMouseEnter: onFocus,
         onMouseLeave: onBlur
       },
-      /* @__PURE__ */ import_react27.default.createElement(
+      placeholder && /* @__PURE__ */ import_react29.default.createElement(Placeholder_default, { backgroundImage: placeholder }),
+      /* @__PURE__ */ import_react29.default.createElement(
         Figure_default,
         {
           index: index2,
@@ -54963,10 +55083,11 @@ and ensure you are accounting for this risk.
           key: id,
           label: item.label,
           summary: item.summary,
+          status,
           thumbnail
         }
       ),
-      /* @__PURE__ */ import_react27.default.createElement(
+      /* @__PURE__ */ import_react29.default.createElement(
         Preview_default,
         {
           manifest,
@@ -59690,7 +59811,7 @@ and ensure you are accounting for this risk.
   }
 
   // node_modules/swiper/react/swiper.js
-  var import_react33 = __toESM(require_react(), 1);
+  var import_react35 = __toESM(require_react(), 1);
 
   // node_modules/swiper/components-shared/utils.js
   function isObject3(o2) {
@@ -59927,7 +60048,7 @@ and ensure you are accounting for this risk.
   }
 
   // node_modules/swiper/react/loop.js
-  var import_react28 = __toESM(require_react(), 1);
+  var import_react30 = __toESM(require_react(), 1);
 
   // node_modules/swiper/shared/calc-looped-slides.js
   var calcLoopedSlides = (slides, swiperParams) => {
@@ -59950,13 +60071,13 @@ and ensure you are accounting for this risk.
   // node_modules/swiper/react/loop.js
   function renderLoop(swiper, slides, swiperParams) {
     const modifiedSlides = slides.map((child, index2) => {
-      return /* @__PURE__ */ import_react28.default.cloneElement(child, {
+      return /* @__PURE__ */ import_react30.default.cloneElement(child, {
         swiper,
         "data-swiper-slide-index": index2
       });
     });
     function duplicateSlide(child, index2, position) {
-      return /* @__PURE__ */ import_react28.default.cloneElement(child, {
+      return /* @__PURE__ */ import_react30.default.cloneElement(child, {
         key: `${child.key}-duplicate-${index2}-${position}`,
         className: `${child.props.className || ""} ${swiperParams.slideDuplicateClass}`
       });
@@ -59965,7 +60086,7 @@ and ensure you are accounting for this risk.
       const blankSlidesNum = swiperParams.slidesPerGroup - modifiedSlides.length % swiperParams.slidesPerGroup;
       if (blankSlidesNum !== swiperParams.slidesPerGroup) {
         for (let i3 = 0; i3 < blankSlidesNum; i3 += 1) {
-          const blankSlide = /* @__PURE__ */ import_react28.default.createElement("div", {
+          const blankSlide = /* @__PURE__ */ import_react30.default.createElement("div", {
             className: `${swiperParams.slideClass} ${swiperParams.slideBlankClass}`
           });
           modifiedSlides.push(blankSlide);
@@ -60034,13 +60155,13 @@ and ensure you are accounting for this risk.
   }
 
   // node_modules/swiper/react/get-children.js
-  var import_react29 = __toESM(require_react(), 1);
+  var import_react31 = __toESM(require_react(), 1);
   function isChildSwiperSlide(child) {
     return child.type && child.type.displayName && child.type.displayName.includes("SwiperSlide");
   }
   function processChildren(c4) {
     const slides = [];
-    import_react29.default.Children.toArray(c4).forEach((child) => {
+    import_react31.default.Children.toArray(c4).forEach((child) => {
       if (isChildSwiperSlide(child)) {
         slides.push(child);
       } else if (child.props && child.props.children) {
@@ -60057,7 +60178,7 @@ and ensure you are accounting for this risk.
       "wrapper-start": [],
       "wrapper-end": []
     };
-    import_react29.default.Children.toArray(c4).forEach((child) => {
+    import_react31.default.Children.toArray(c4).forEach((child) => {
       if (isChildSwiperSlide(child)) {
         slides.push(child);
       } else if (child.props && child.props.slot && slots[child.props.slot]) {
@@ -60199,7 +60320,7 @@ and ensure you are accounting for this risk.
   }
 
   // node_modules/swiper/react/virtual.js
-  var import_react30 = __toESM(require_react(), 1);
+  var import_react32 = __toESM(require_react(), 1);
   function renderVirtual(swiper, slides, virtualData) {
     if (!virtualData)
       return null;
@@ -60209,7 +60330,7 @@ and ensure you are accounting for this risk.
       top: `${virtualData.offset}px`
     };
     return slides.filter((child, index2) => index2 >= virtualData.from && index2 <= virtualData.to).map((child) => {
-      return /* @__PURE__ */ import_react30.default.cloneElement(child, {
+      return /* @__PURE__ */ import_react32.default.cloneElement(child, {
         swiper,
         style
       });
@@ -60232,17 +60353,17 @@ and ensure you are accounting for this risk.
   };
 
   // node_modules/swiper/react/use-isomorphic-layout-effect.js
-  var import_react31 = __toESM(require_react(), 1);
+  var import_react33 = __toESM(require_react(), 1);
   function useIsomorphicLayoutEffect(callback, deps) {
     if (typeof window === "undefined")
-      return (0, import_react31.useEffect)(callback, deps);
-    return (0, import_react31.useLayoutEffect)(callback, deps);
+      return (0, import_react33.useEffect)(callback, deps);
+    return (0, import_react33.useLayoutEffect)(callback, deps);
   }
 
   // node_modules/swiper/react/context.js
-  var import_react32 = __toESM(require_react(), 1);
-  var SwiperSlideContext = /* @__PURE__ */ (0, import_react32.createContext)(null);
-  var SwiperContext = /* @__PURE__ */ (0, import_react32.createContext)(null);
+  var import_react34 = __toESM(require_react(), 1);
+  var SwiperSlideContext = /* @__PURE__ */ (0, import_react34.createContext)(null);
+  var SwiperContext = /* @__PURE__ */ (0, import_react34.createContext)(null);
 
   // node_modules/swiper/react/swiper.js
   function _extends2() {
@@ -60259,7 +60380,7 @@ and ensure you are accounting for this risk.
     };
     return _extends2.apply(this, arguments);
   }
-  var Swiper2 = /* @__PURE__ */ (0, import_react33.forwardRef)(function(_temp, externalElRef) {
+  var Swiper2 = /* @__PURE__ */ (0, import_react35.forwardRef)(function(_temp, externalElRef) {
     let {
       className,
       tag: Tag = "div",
@@ -60269,18 +60390,18 @@ and ensure you are accounting for this risk.
       ...rest
     } = _temp === void 0 ? {} : _temp;
     let eventsAssigned = false;
-    const [containerClasses, setContainerClasses] = (0, import_react33.useState)("swiper");
-    const [virtualData, setVirtualData] = (0, import_react33.useState)(null);
-    const [breakpointChanged, setBreakpointChanged] = (0, import_react33.useState)(false);
-    const initializedRef = (0, import_react33.useRef)(false);
-    const swiperElRef = (0, import_react33.useRef)(null);
-    const swiperRef = (0, import_react33.useRef)(null);
-    const oldPassedParamsRef = (0, import_react33.useRef)(null);
-    const oldSlides = (0, import_react33.useRef)(null);
-    const nextElRef = (0, import_react33.useRef)(null);
-    const prevElRef = (0, import_react33.useRef)(null);
-    const paginationElRef = (0, import_react33.useRef)(null);
-    const scrollbarElRef = (0, import_react33.useRef)(null);
+    const [containerClasses, setContainerClasses] = (0, import_react35.useState)("swiper");
+    const [virtualData, setVirtualData] = (0, import_react35.useState)(null);
+    const [breakpointChanged, setBreakpointChanged] = (0, import_react35.useState)(false);
+    const initializedRef = (0, import_react35.useRef)(false);
+    const swiperElRef = (0, import_react35.useRef)(null);
+    const swiperRef = (0, import_react35.useRef)(null);
+    const oldPassedParamsRef = (0, import_react35.useRef)(null);
+    const oldSlides = (0, import_react35.useRef)(null);
+    const nextElRef = (0, import_react35.useRef)(null);
+    const prevElRef = (0, import_react35.useRef)(null);
+    const paginationElRef = (0, import_react35.useRef)(null);
+    const scrollbarElRef = (0, import_react35.useRef)(null);
     const {
       params: swiperParams,
       passedParams,
@@ -60342,13 +60463,13 @@ and ensure you are accounting for this risk.
         swiperRef.current.off(eventName, events2[eventName]);
       });
     };
-    (0, import_react33.useEffect)(() => {
+    (0, import_react35.useEffect)(() => {
       return () => {
         if (swiperRef.current)
           swiperRef.current.off("_beforeBreakpoint", onBeforeBreakpoint);
       };
     });
-    (0, import_react33.useEffect)(() => {
+    (0, import_react35.useEffect)(() => {
       if (!initializedRef.current && swiperRef.current) {
         swiperRef.current.emitSlidesClasses();
         initializedRef.current = true;
@@ -60409,30 +60530,30 @@ and ensure you are accounting for this risk.
       }
       if (!swiperParams.loop || swiperRef.current && swiperRef.current.destroyed) {
         return slides.map((child) => {
-          return /* @__PURE__ */ import_react33.default.cloneElement(child, {
+          return /* @__PURE__ */ import_react35.default.cloneElement(child, {
             swiper: swiperRef.current
           });
         });
       }
       return renderLoop(swiperRef.current, slides, swiperParams);
     }
-    return /* @__PURE__ */ import_react33.default.createElement(Tag, _extends2({
+    return /* @__PURE__ */ import_react35.default.createElement(Tag, _extends2({
       ref: swiperElRef,
       className: uniqueClasses(`${containerClasses}${className ? ` ${className}` : ""}`)
-    }, restProps), /* @__PURE__ */ import_react33.default.createElement(SwiperContext.Provider, {
+    }, restProps), /* @__PURE__ */ import_react35.default.createElement(SwiperContext.Provider, {
       value: swiperRef.current
-    }, slots["container-start"], /* @__PURE__ */ import_react33.default.createElement(WrapperTag, {
+    }, slots["container-start"], /* @__PURE__ */ import_react35.default.createElement(WrapperTag, {
       className: "swiper-wrapper"
-    }, slots["wrapper-start"], renderSlides(), slots["wrapper-end"]), needsNavigation(swiperParams) && /* @__PURE__ */ import_react33.default.createElement(import_react33.default.Fragment, null, /* @__PURE__ */ import_react33.default.createElement("div", {
+    }, slots["wrapper-start"], renderSlides(), slots["wrapper-end"]), needsNavigation(swiperParams) && /* @__PURE__ */ import_react35.default.createElement(import_react35.default.Fragment, null, /* @__PURE__ */ import_react35.default.createElement("div", {
       ref: prevElRef,
       className: "swiper-button-prev"
-    }), /* @__PURE__ */ import_react33.default.createElement("div", {
+    }), /* @__PURE__ */ import_react35.default.createElement("div", {
       ref: nextElRef,
       className: "swiper-button-next"
-    })), needsScrollbar(swiperParams) && /* @__PURE__ */ import_react33.default.createElement("div", {
+    })), needsScrollbar(swiperParams) && /* @__PURE__ */ import_react35.default.createElement("div", {
       ref: scrollbarElRef,
       className: "swiper-scrollbar"
-    }), needsPagination(swiperParams) && /* @__PURE__ */ import_react33.default.createElement("div", {
+    }), needsPagination(swiperParams) && /* @__PURE__ */ import_react35.default.createElement("div", {
       ref: paginationElRef,
       className: "swiper-pagination"
     }), slots["container-end"]));
@@ -60440,7 +60561,7 @@ and ensure you are accounting for this risk.
   Swiper2.displayName = "Swiper";
 
   // node_modules/swiper/react/swiper-slide.js
-  var import_react34 = __toESM(require_react(), 1);
+  var import_react36 = __toESM(require_react(), 1);
   function _extends3() {
     _extends3 = Object.assign ? Object.assign.bind() : function(target) {
       for (var i3 = 1; i3 < arguments.length; i3++) {
@@ -60455,7 +60576,7 @@ and ensure you are accounting for this risk.
     };
     return _extends3.apply(this, arguments);
   }
-  var SwiperSlide = /* @__PURE__ */ (0, import_react34.forwardRef)(function(_temp, externalRef) {
+  var SwiperSlide = /* @__PURE__ */ (0, import_react36.forwardRef)(function(_temp, externalRef) {
     let {
       tag: Tag = "div",
       children: children2,
@@ -60465,8 +60586,8 @@ and ensure you are accounting for this risk.
       virtualIndex,
       ...rest
     } = _temp === void 0 ? {} : _temp;
-    const slideElRef = (0, import_react34.useRef)(null);
-    const [slideClasses, setSlideClasses] = (0, import_react34.useState)("swiper-slide");
+    const slideElRef = (0, import_react36.useRef)(null);
+    const [slideClasses, setSlideClasses] = (0, import_react36.useState)("swiper-slide");
     function updateClasses(_s, el, classNames) {
       if (el === slideElRef.current) {
         setSlideClasses(classNames);
@@ -60507,13 +60628,13 @@ and ensure you are accounting for this risk.
     const renderChildren = () => {
       return typeof children2 === "function" ? children2(slideData) : children2;
     };
-    return /* @__PURE__ */ import_react34.default.createElement(Tag, _extends3({
+    return /* @__PURE__ */ import_react36.default.createElement(Tag, _extends3({
       ref: slideElRef,
       className: uniqueClasses(`${slideClasses}${className ? ` ${className}` : ""}`),
       "data-swiper-slide-index": virtualIndex
-    }, rest), /* @__PURE__ */ import_react34.default.createElement(SwiperSlideContext.Provider, {
+    }, rest), /* @__PURE__ */ import_react36.default.createElement(SwiperSlideContext.Provider, {
       value: slideData
-    }, zoom ? /* @__PURE__ */ import_react34.default.createElement("div", {
+    }, zoom ? /* @__PURE__ */ import_react36.default.createElement("div", {
       className: "swiper-zoom-container",
       "data-swiper-zoom": typeof zoom === "number" ? zoom : void 0
     }, renderChildren()) : renderChildren()));
@@ -60553,8 +60674,8 @@ and ensure you are accounting for this risk.
     instance,
     items
   }) => {
-    const itemsRef = (0, import_react35.useRef)(null);
-    return /* @__PURE__ */ import_react35.default.createElement(ItemsStyled, { ref: itemsRef }, /* @__PURE__ */ import_react35.default.createElement(
+    const itemsRef = (0, import_react37.useRef)(null);
+    return /* @__PURE__ */ import_react37.default.createElement(ItemsStyled, { ref: itemsRef }, /* @__PURE__ */ import_react37.default.createElement(
       Swiper2,
       {
         a11y: {
@@ -60571,7 +60692,7 @@ and ensure you are accounting for this risk.
         slidesPerGroup: 2,
         breakpoints
       },
-      items.map((item, index2) => /* @__PURE__ */ import_react35.default.createElement(SwiperSlide, { key: `${item.id}-${index2}` }, /* @__PURE__ */ import_react35.default.createElement(Item_default, { index: index2, item })))
+      items.map((item, index2) => /* @__PURE__ */ import_react37.default.createElement(SwiperSlide, { key: `${item.id}-${index2}` }, /* @__PURE__ */ import_react37.default.createElement(Item_default, { index: index2, item })))
     ));
   };
   var Items_default = Items;
@@ -60587,13 +60708,13 @@ and ensure you are accounting for this risk.
   var hash_default = hash;
 
   // src/index.tsx
-  var App = (props) => /* @__PURE__ */ import_react37.default.createElement(CollectionProvider, null, /* @__PURE__ */ import_react37.default.createElement(Bloom, __spreadValues({}, props)));
+  var App = (props) => /* @__PURE__ */ import_react39.default.createElement(CollectionProvider, null, /* @__PURE__ */ import_react39.default.createElement(Bloom, __spreadValues({}, props)));
   var Bloom = ({ collectionId, options = {} }) => {
     const store = useCollectionState();
     const { vault } = store;
-    const [collection, setCollection] = (0, import_react37.useState)();
-    const [error, setError] = (0, import_react37.useState)("");
-    (0, import_react37.useEffect)(() => {
+    const [collection, setCollection] = (0, import_react39.useState)();
+    const [error, setError] = (0, import_react39.useState)("");
+    (0, import_react39.useEffect)(() => {
       if (!collectionId)
         return;
       vault.loadCollection(collectionId).then((data) => setCollection(data)).catch((error2) => {
@@ -60606,14 +60727,14 @@ and ensure you are accounting for this risk.
     }, [collectionId]);
     if ((collection == null ? void 0 : collection.items.length) === 0) {
       console.log(`The IIIF collection ${collectionId} does not contain items.`);
-      return /* @__PURE__ */ import_react37.default.createElement(import_react37.default.Fragment, null);
+      return /* @__PURE__ */ import_react39.default.createElement(import_react39.default.Fragment, null);
     }
     const instance = hash_default(collectionId);
     if (error)
-      return /* @__PURE__ */ import_react37.default.createElement("p", { style: { padding: "1rem" } }, "Error loading Collection: ", error);
+      return /* @__PURE__ */ import_react39.default.createElement("p", { style: { padding: "1rem" } }, "Error loading Collection: ", error);
     if (!collection)
-      return /* @__PURE__ */ import_react37.default.createElement(import_react37.default.Fragment, null);
-    return /* @__PURE__ */ import_react37.default.createElement(StyledBloom, null, /* @__PURE__ */ import_react37.default.createElement(
+      return /* @__PURE__ */ import_react39.default.createElement(import_react39.default.Fragment, null);
+    return /* @__PURE__ */ import_react39.default.createElement(StyledBloom, null, /* @__PURE__ */ import_react39.default.createElement(
       Header_default,
       {
         label: collection.label,
@@ -60621,7 +60742,7 @@ and ensure you are accounting for this risk.
         homepage: collection.homepage,
         instance
       }
-    ), /* @__PURE__ */ import_react37.default.createElement(
+    ), /* @__PURE__ */ import_react39.default.createElement(
       Items_default,
       {
         items: collection.items,
@@ -60634,7 +60755,7 @@ and ensure you are accounting for this risk.
   var src_default = App;
 
   // src/dev/DynamicUrl.tsx
-  var import_react39 = __toESM(require_react());
+  var import_react41 = __toESM(require_react());
 
   // src/dev/DynamicUrl.styled.tsx
   var DynamicUrlStyled = re2("section", {
@@ -60721,6 +60842,10 @@ and ensure you are accounting for this risk.
   // src/dev/collections.ts
   var collections = [
     {
+      url: "https://dcapi.rdc-staging.library.northwestern.edu/api/v2/search?query=collection.id:%22b5ba2cce-8b7e-4b8a-ad5c-649dd40637b0%22&collectionLabel=Visibility%20Testing&collectionSummary=Collection&as=iiif",
+      label: "Visibility"
+    },
+    {
       url: "https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/athletic-department-footbal-films.json",
       label: "Football Films"
     },
@@ -60748,18 +60873,18 @@ and ensure you are accounting for this risk.
 
   // src/dev/DynamicUrl.tsx
   var DynamicUrl = ({ url, setUrl }) => {
-    const inputRef = (0, import_react39.useRef)(null);
+    const inputRef = (0, import_react41.useRef)(null);
     const handleSubmit = (e2) => {
       var _a;
       e2.preventDefault();
       const target = e2.target;
       setUrl((_a = target.url) == null ? void 0 : _a.value);
     };
-    (0, import_react39.useEffect)(() => {
+    (0, import_react41.useEffect)(() => {
       if (inputRef.current)
         inputRef.current.value = url;
     }, [url]);
-    return /* @__PURE__ */ import_react39.default.createElement(DynamicUrlStyled, null, /* @__PURE__ */ import_react39.default.createElement(ManualForm, { onSubmit: handleSubmit }, /* @__PURE__ */ import_react39.default.createElement("label", { htmlFor: "manual-collection" }, "View a IIIF Collection"), /* @__PURE__ */ import_react39.default.createElement("div", null, /* @__PURE__ */ import_react39.default.createElement(
+    return /* @__PURE__ */ import_react41.default.createElement(DynamicUrlStyled, null, /* @__PURE__ */ import_react41.default.createElement(ManualForm, { onSubmit: handleSubmit }, /* @__PURE__ */ import_react41.default.createElement("label", { htmlFor: "manual-collection" }, "View a IIIF Collection"), /* @__PURE__ */ import_react41.default.createElement("div", null, /* @__PURE__ */ import_react41.default.createElement(
       "input",
       {
         type: "text",
@@ -60768,14 +60893,14 @@ and ensure you are accounting for this risk.
         placeholder: "IIIF Collection",
         ref: inputRef
       }
-    ), /* @__PURE__ */ import_react39.default.createElement("button", { type: "submit" }, "View"))), collections.length > 0 && /* @__PURE__ */ import_react39.default.createElement(Curated, null, collections.map((obj) => /* @__PURE__ */ import_react39.default.createElement(
+    ), /* @__PURE__ */ import_react41.default.createElement("button", { type: "submit" }, "View"))), collections.length > 0 && /* @__PURE__ */ import_react41.default.createElement(Curated, null, collections.map((obj) => /* @__PURE__ */ import_react41.default.createElement(
       ButtonForm,
       {
         key: obj.label,
         onSubmit: handleSubmit,
         "data-active": url === obj.url ? true : false
       },
-      /* @__PURE__ */ import_react39.default.createElement("button", { name: "url", value: obj.url }, obj.label)
+      /* @__PURE__ */ import_react41.default.createElement("button", { name: "url", value: obj.url }, obj.label)
     ))));
   };
   var DynamicUrl_default = DynamicUrl;
@@ -60786,12 +60911,12 @@ and ensure you are accounting for this risk.
     const defaultUrl = collections[0].url;
     const oneItem = "https://dcapi.rdc-staging.library.northwestern.edu/api/v2/search?query=subject.label:%22Sculpture,%20English--19th%20century%22&collectionLabel=Sculpture,%20English--19th%20century&collectionSummary=Subject&as=iiif";
     const twoItems = "https://dcapi.rdc-staging.library.northwestern.edu/api/v2/search?query=collection.title.keyword:%22Transportation%20Library%20Menu%20Collection%22&collectionLabel=Transportation%20Library%20Menu%20Collection&collectionSummary=Collection&as=iiif";
-    const [url, setUrl] = import_react40.default.useState(defaultUrl);
-    return /* @__PURE__ */ import_react40.default.createElement(import_react40.default.Fragment, null, /* @__PURE__ */ import_react40.default.createElement(src_default, { collectionId: url, key: url }), /* @__PURE__ */ import_react40.default.createElement(DynamicUrl_default, { url, setUrl }));
+    const [url, setUrl] = import_react42.default.useState(defaultUrl);
+    return /* @__PURE__ */ import_react42.default.createElement(import_react42.default.Fragment, null, /* @__PURE__ */ import_react42.default.createElement(src_default, { collectionId: url, key: url }), /* @__PURE__ */ import_react42.default.createElement(DynamicUrl_default, { url, setUrl }));
   };
   var container = document.getElementById("root");
   var root = (0, import_client.createRoot)(container);
-  root.render(/* @__PURE__ */ import_react40.default.createElement(Wrapper, null));
+  root.render(/* @__PURE__ */ import_react42.default.createElement(Wrapper, null));
 })();
 /*!
  * is-plain-object <https://github.com/jonschlinkert/is-plain-object>
