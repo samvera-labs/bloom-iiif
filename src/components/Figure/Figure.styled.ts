@@ -67,7 +67,6 @@ const FigureStyled = styled("figure", {
 const Placeholder = styled("span", {
   display: "flex",
   position: "relative",
-  backgroundColor: "$secondaryAlt",
   width: "100%",
   height: "100%",
   overflow: "hidden",

@@ -1,15 +1,16 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Figure from "components/Figure/Figure";
 import {
   CanvasNormalized,
   Collection,
-  ContentResource,
+  IIIFExternalWebResource,
   Manifest,
 } from "@iiif/presentation-3";
 import { useCollectionState } from "context/collection-context";
 import { Anchor, ItemStyled } from "./Item.styled";
 import Preview from "components/Preview/Preview";
 import { getCanvasResource } from "lib/iiif";
+import Placeholder from "./Placeholder";
 
 interface ItemProps {
   index: number;
@@ -20,11 +21,14 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
   const store = useCollectionState();
   const { vault } = store;
 
-  const [isFocused, setIsFocused] = useState<boolean>(false);
   const [activeCanvas, setActiveCanvas] = useState<number>(0);
-  const [thumbnail, setThumbnail] = useState<ContentResource>(item.thumbnail);
-  const [manifest, setManifest] = useState<Collection | Manifest>();
+  const [href, setHref] = useState<string>();
   const [id, setId] = useState<string>(item.id);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
+  const [manifest, setManifest] = useState<Collection | Manifest>();
+  const [placeholder, setPlaceholder] = useState<string>();
+  const [status, setStatus] = useState<number>(200);
+  const [thumbnail, setThumbnail] = useState<IIIFExternalWebResource[]>([]);
 
   useEffect(() => {
     isFocused
@@ -42,9 +46,16 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
   }, [isFocused]);
 
   useEffect(() => {
-    if (!item?.thumbnail) return;
-    const thumbnail = vault.get(item.thumbnail);
-    setThumbnail(thumbnail);
+    if (item?.thumbnail && item.thumbnail?.length > 0) {
+      const iiifThumbnail = vault.get(
+        item.thumbnail
+      ) as IIIFExternalWebResource[];
+
+      setThumbnail(iiifThumbnail);
+      setPlaceholder(iiifThumbnail[0].id);
+    }
+    if (item?.homepage && item.homepage?.length > 0)
+      setHref(item.homepage[0].id);
   }, []);
 
   const onFocus = () => setIsFocused(true);
@@ -57,21 +68,28 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
 
     const canvas: CanvasNormalized = vault.get(manifest.items[targetCanvas]);
     const resource = getCanvasResource(canvas, vault);
+    const canvasThumbnail = vault.get(resource) as IIIFExternalWebResource[];
 
-    const thumbnail = vault.get(resource);
+    if (canvasThumbnail.length > 0 && canvasThumbnail[0].id) {
+      setThumbnail(canvasThumbnail);
+      fetch(canvasThumbnail[0].id, {
+        method: "GET",
+        headers: {
+          accept: "image/*",
+        },
+        credentials: "include",
+      })
+        .then((response) => setStatus(response.status))
+        .catch((error) => setStatus(error.status));
+    }
 
     setId(canvas.id);
-    setThumbnail(thumbnail);
     setActiveCanvas(targetCanvas);
   };
 
   useEffect(() => {
     if (manifest) handleActiveCanvas(0);
   }, [manifest]);
-
-  let href;
-
-  if (item.homepage?.length > 0) href = item.homepage[0].id;
 
   return (
     <ItemStyled>
@@ -83,12 +101,14 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
         onMouseEnter={onFocus}
         onMouseLeave={onBlur}
       >
+        {placeholder && <Placeholder backgroundImage={placeholder} />}
         <Figure
           index={index}
           isFocused={isFocused}
           key={id}
           label={item.label}
           summary={item.summary}
+          status={status}
           thumbnail={thumbnail}
         />
         <Preview

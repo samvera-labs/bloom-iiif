@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import {
   Description,
   FigureStyled,
@@ -6,13 +6,14 @@ import {
   Title,
   Width,
 } from "./Figure.styled";
-import * as AspectRatio from "@radix-ui/react-aspect-ratio";
-import { useCollectionDispatch } from "context/collection-context";
-import { Thumbnail } from "@samvera/nectar-iiif";
+import React, { useRef } from "react";
 import { InternationalString } from "@iiif/presentation-3";
+import { Thumbnail } from "@samvera/nectar-iiif";
+import StatusIcon from "./StatusIcon";
 
 interface FigureProps {
   label: InternationalString;
+  status: number;
   summary?: InternationalString;
   thumbnail: any;
   index: number;
@@ -22,6 +23,7 @@ interface FigureProps {
 const Figure: React.FC<FigureProps> = ({
   isFocused,
   label,
+  status,
   summary,
   thumbnail,
 }) => {
@@ -32,7 +34,11 @@ const Figure: React.FC<FigureProps> = ({
       <AspectRatio.Root ratio={1 / 1}>
         <Width ref={widthRef} />
         <Placeholder>
-          {thumbnail && <Thumbnail altAsLabel={label} thumbnail={thumbnail} />}
+          {thumbnail && status === 200 ? (
+            <Thumbnail altAsLabel={label} thumbnail={thumbnail} />
+          ) : (
+            <StatusIcon status={status} />
+          )}
         </Placeholder>
       </AspectRatio.Root>
       <figcaption>
