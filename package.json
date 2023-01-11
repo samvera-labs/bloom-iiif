@@ -57,6 +57,7 @@
     "@stitches/react": "^1.2.8",
     "react": "^16.13.1  || ^17 || ^18",
     "react-dom": "^16.13.1  || ^17 || ^18",
+    "react-error-boundary": "^3.1.4",
     "swiper": "^8.4.5"
   },
   "files": [
