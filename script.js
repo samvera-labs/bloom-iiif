@@ -1019,7 +1019,7 @@
             }
             return dispatcher.useContext(Context);
           }
-          function useState9(initialState) {
+          function useState8(initialState) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState);
           }
@@ -1031,7 +1031,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect10(create, deps) {
+          function useEffect9(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -1811,7 +1811,7 @@
           exports.useContext = useContext2;
           exports.useDebugValue = useDebugValue;
           exports.useDeferredValue = useDeferredValue;
-          exports.useEffect = useEffect10;
+          exports.useEffect = useEffect9;
           exports.useId = useId;
           exports.useImperativeHandle = useImperativeHandle;
           exports.useInsertionEffect = useInsertionEffect;
@@ -1819,7 +1819,7 @@
           exports.useMemo = useMemo;
           exports.useReducer = useReducer;
           exports.useRef = useRef7;
-          exports.useState = useState9;
+          exports.useState = useState8;
           exports.useSyncExternalStore = useSyncExternalStore;
           exports.useTransition = useTransition;
           exports.version = ReactVersion;
@@ -31208,9 +31208,9 @@ and ensure you are accounting for this risk.
           if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
             __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
           }
-          var React19 = require_react();
+          var React21 = require_react();
           var Scheduler = require_scheduler();
-          var ReactSharedInternals = React19.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React21.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           var suppressWarning = false;
           function setSuppressWarning(newSuppressWarning) {
             {
@@ -32731,7 +32731,7 @@ and ensure you are accounting for this risk.
             {
               if (props.value == null) {
                 if (typeof props.children === "object" && props.children !== null) {
-                  React19.Children.forEach(props.children, function(child) {
+                  React21.Children.forEach(props.children, function(child) {
                     if (child == null) {
                       return;
                     }
@@ -40892,7 +40892,7 @@ and ensure you are accounting for this risk.
             }
           }
           var fakeInternalInstance = {};
-          var emptyRefsObject = new React19.Component().refs;
+          var emptyRefsObject = new React21.Component().refs;
           var didWarnAboutStateAssignmentForComponent;
           var didWarnAboutUninitializedState;
           var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -51777,6 +51777,147 @@ and ensure you are accounting for this risk.
     }
   });
 
+  // node_modules/react-error-boundary/dist/react-error-boundary.umd.js
+  var require_react_error_boundary_umd = __commonJS({
+    "node_modules/react-error-boundary/dist/react-error-boundary.umd.js"(exports, module) {
+      (function(global2, factory) {
+        typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require_react()) : typeof define === "function" && define.amd ? define(["exports", "react"], factory) : (global2 = typeof globalThis !== "undefined" ? globalThis : global2 || self, factory(global2.ReactErrorBoundary = {}, global2.React));
+      })(exports, function(exports2, React21) {
+        "use strict";
+        function _interopNamespace(e2) {
+          if (e2 && e2.__esModule)
+            return e2;
+          var n2 = /* @__PURE__ */ Object.create(null);
+          if (e2) {
+            Object.keys(e2).forEach(function(k3) {
+              if (k3 !== "default") {
+                var d4 = Object.getOwnPropertyDescriptor(e2, k3);
+                Object.defineProperty(n2, k3, d4.get ? d4 : {
+                  enumerable: true,
+                  get: function() {
+                    return e2[k3];
+                  }
+                });
+              }
+            });
+          }
+          n2["default"] = e2;
+          return Object.freeze(n2);
+        }
+        var React__namespace = /* @__PURE__ */ _interopNamespace(React21);
+        function _setPrototypeOf(o2, p3) {
+          _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p4) {
+            o3.__proto__ = p4;
+            return o3;
+          };
+          return _setPrototypeOf(o2, p3);
+        }
+        function _inheritsLoose(subClass, superClass) {
+          subClass.prototype = Object.create(superClass.prototype);
+          subClass.prototype.constructor = subClass;
+          _setPrototypeOf(subClass, superClass);
+        }
+        var changedArray = function changedArray2(a2, b3) {
+          if (a2 === void 0) {
+            a2 = [];
+          }
+          if (b3 === void 0) {
+            b3 = [];
+          }
+          return a2.length !== b3.length || a2.some(function(item, index2) {
+            return !Object.is(item, b3[index2]);
+          });
+        };
+        var initialState = {
+          error: null
+        };
+        var ErrorBoundary2 = /* @__PURE__ */ function(_React$Component) {
+          _inheritsLoose(ErrorBoundary3, _React$Component);
+          function ErrorBoundary3() {
+            var _this;
+            for (var _len = arguments.length, _args = new Array(_len), _key = 0; _key < _len; _key++) {
+              _args[_key] = arguments[_key];
+            }
+            _this = _React$Component.call.apply(_React$Component, [this].concat(_args)) || this;
+            _this.state = initialState;
+            _this.resetErrorBoundary = function() {
+              var _this$props;
+              for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+                args[_key2] = arguments[_key2];
+              }
+              _this.props.onReset == null ? void 0 : (_this$props = _this.props).onReset.apply(_this$props, args);
+              _this.reset();
+            };
+            return _this;
+          }
+          ErrorBoundary3.getDerivedStateFromError = function getDerivedStateFromError(error) {
+            return {
+              error
+            };
+          };
+          var _proto = ErrorBoundary3.prototype;
+          _proto.reset = function reset() {
+            this.setState(initialState);
+          };
+          _proto.componentDidCatch = function componentDidCatch(error, info) {
+            var _this$props$onError, _this$props2;
+            (_this$props$onError = (_this$props2 = this.props).onError) == null ? void 0 : _this$props$onError.call(_this$props2, error, info);
+          };
+          _proto.componentDidUpdate = function componentDidUpdate(prevProps, prevState) {
+            var error = this.state.error;
+            var resetKeys = this.props.resetKeys;
+            if (error !== null && prevState.error !== null && changedArray(prevProps.resetKeys, resetKeys)) {
+              var _this$props$onResetKe, _this$props3;
+              (_this$props$onResetKe = (_this$props3 = this.props).onResetKeysChange) == null ? void 0 : _this$props$onResetKe.call(_this$props3, prevProps.resetKeys, resetKeys);
+              this.reset();
+            }
+          };
+          _proto.render = function render() {
+            var error = this.state.error;
+            var _this$props4 = this.props, fallbackRender = _this$props4.fallbackRender, FallbackComponent = _this$props4.FallbackComponent, fallback = _this$props4.fallback;
+            if (error !== null) {
+              var _props = {
+                error,
+                resetErrorBoundary: this.resetErrorBoundary
+              };
+              if (/* @__PURE__ */ React__namespace.isValidElement(fallback)) {
+                return fallback;
+              } else if (typeof fallbackRender === "function") {
+                return fallbackRender(_props);
+              } else if (FallbackComponent) {
+                return /* @__PURE__ */ React__namespace.createElement(FallbackComponent, _props);
+              } else {
+                throw new Error("react-error-boundary requires either a fallback, fallbackRender, or FallbackComponent prop");
+              }
+            }
+            return this.props.children;
+          };
+          return ErrorBoundary3;
+        }(React__namespace.Component);
+        function withErrorBoundary(Component, errorBoundaryProps) {
+          var Wrapped = function Wrapped2(props) {
+            return /* @__PURE__ */ React__namespace.createElement(ErrorBoundary2, errorBoundaryProps, /* @__PURE__ */ React__namespace.createElement(Component, props));
+          };
+          var name = Component.displayName || Component.name || "Unknown";
+          Wrapped.displayName = "withErrorBoundary(" + name + ")";
+          return Wrapped;
+        }
+        function useErrorHandler(givenError) {
+          var _React$useState = React__namespace.useState(null), error = _React$useState[0], setError = _React$useState[1];
+          if (givenError != null)
+            throw givenError;
+          if (error != null)
+            throw error;
+          return setError;
+        }
+        exports2.ErrorBoundary = ErrorBoundary2;
+        exports2.useErrorHandler = useErrorHandler;
+        exports2.withErrorBoundary = withErrorBoundary;
+        Object.defineProperty(exports2, "__esModule", { value: true });
+      });
+    }
+  });
+
   // node_modules/react-dom/client.js
   var require_client = __commonJS({
     "node_modules/react-dom/client.js"(exports) {
@@ -51809,10 +51950,10 @@ and ensure you are accounting for this risk.
   });
 
   // src/dev.tsx
-  var import_react42 = __toESM(require_react());
+  var import_react44 = __toESM(require_react());
 
   // src/index.tsx
-  var import_react39 = __toESM(require_react());
+  var import_react41 = __toESM(require_react());
 
   // src/context/collection-context.tsx
   var import_react = __toESM(require_react());
@@ -53726,7 +53867,7 @@ and ensure you are accounting for this risk.
   }
 
   // src/components/Header/Header.tsx
-  var import_react20 = __toESM(require_react());
+  var import_react21 = __toESM(require_react());
 
   // node_modules/@stitches/react/dist/index.mjs
   var import_react2 = __toESM(require_react(), 1);
@@ -54517,6 +54658,38 @@ and ensure you are accounting for this risk.
     }
   });
 
+  // src/components/Header/ViewAll.tsx
+  var import_react20 = __toESM(require_react());
+  var ViewAllStyled = styled("span", {
+    display: "flex",
+    background: "none",
+    height: "2rem !important",
+    padding: "0 $3",
+    margin: "0 0 0 $3",
+    borderRadius: "2rem",
+    backgroundColor: "$accent",
+    color: "$secondary",
+    cursor: "pointer",
+    boxSizing: "content-box !important",
+    transition: "$all",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: "0.8333rem",
+    lineBreak: "none",
+    whiteSpace: "nowrap",
+    [`&:hover`]: {
+      backgroundColor: "$accentAlt",
+      boxShadow: "3px 3px 11px #0003",
+      [`&:disabled`]: {
+        boxShadow: "unset"
+      }
+    }
+  });
+  var ViewAll = () => {
+    return /* @__PURE__ */ import_react20.default.createElement(ViewAllStyled, null, "View All");
+  };
+  var ViewAll_default = ViewAll;
+
   // src/components/Header/Header.tsx
   var Header = ({
     homepage,
@@ -54524,34 +54697,34 @@ and ensure you are accounting for this risk.
     label,
     summary
   }) => {
-    const [hasHomepage, setHasHomepage] = (0, import_react20.useState)(false);
-    (0, import_react20.useEffect)(() => {
+    const [hasHomepage, setHasHomepage] = (0, import_react21.useState)(false);
+    (0, import_react21.useEffect)(() => {
       if (homepage.length > 0)
         setHasHomepage(true);
     }, [homepage]);
-    return /* @__PURE__ */ import_react20.default.createElement(HeaderStyled, null, /* @__PURE__ */ import_react20.default.createElement(HeaderContent, null, hasHomepage ? /* @__PURE__ */ import_react20.default.createElement(at, { homepage, className: "bloom-header-homepage" }, /* @__PURE__ */ import_react20.default.createElement(R2, { label, as: "span", className: "bloom-header-label" })) : /* @__PURE__ */ import_react20.default.createElement(R2, { label, as: "span", className: "bloom-header-label" }), summary && /* @__PURE__ */ import_react20.default.createElement(
+    return /* @__PURE__ */ import_react21.default.createElement(HeaderStyled, null, /* @__PURE__ */ import_react21.default.createElement(HeaderContent, null, hasHomepage ? /* @__PURE__ */ import_react21.default.createElement(at, { homepage, className: "bloom-header-homepage" }, /* @__PURE__ */ import_react21.default.createElement(R2, { label, as: "span", className: "bloom-header-label" })) : /* @__PURE__ */ import_react21.default.createElement(R2, { label, as: "span", className: "bloom-header-label" }), summary && /* @__PURE__ */ import_react21.default.createElement(
       Ft,
       {
         summary,
         as: "span",
         className: "bloom-header-summary"
       }
-    )), /* @__PURE__ */ import_react20.default.createElement(HeaderControls, null, /* @__PURE__ */ import_react20.default.createElement(
+    )), /* @__PURE__ */ import_react21.default.createElement(HeaderControls, null, /* @__PURE__ */ import_react21.default.createElement(
       ControlStyled,
       {
         className: `bloom-previous-${instance}`,
         "aria-label": "previous"
       },
-      /* @__PURE__ */ import_react20.default.createElement(Icon, null, /* @__PURE__ */ import_react20.default.createElement(PreviousIcon, null))
-    ), /* @__PURE__ */ import_react20.default.createElement(ControlStyled, { className: `bloom-next-${instance}`, "aria-label": "next" }, /* @__PURE__ */ import_react20.default.createElement(Icon, null, /* @__PURE__ */ import_react20.default.createElement(NextIcon, null)))));
+      /* @__PURE__ */ import_react21.default.createElement(Icon, null, /* @__PURE__ */ import_react21.default.createElement(PreviousIcon, null))
+    ), /* @__PURE__ */ import_react21.default.createElement(ControlStyled, { className: `bloom-next-${instance}`, "aria-label": "next" }, /* @__PURE__ */ import_react21.default.createElement(Icon, null, /* @__PURE__ */ import_react21.default.createElement(NextIcon, null))), hasHomepage && /* @__PURE__ */ import_react21.default.createElement(at, { homepage, className: "bloom-header-homepage" }, /* @__PURE__ */ import_react21.default.createElement(ViewAll_default, null))));
   };
   var Header_default = Header;
 
   // src/components/Items/Items.tsx
-  var import_react37 = __toESM(require_react());
+  var import_react38 = __toESM(require_react());
 
   // src/components/Items/Item.tsx
-  var import_react29 = __toESM(require_react());
+  var import_react30 = __toESM(require_react());
 
   // node_modules/@babel/runtime/helpers/esm/extends.js
   function _extends() {
@@ -54570,17 +54743,17 @@ and ensure you are accounting for this risk.
   }
 
   // node_modules/@radix-ui/react-aspect-ratio/dist/index.module.js
-  var import_react24 = __toESM(require_react());
+  var import_react25 = __toESM(require_react());
 
   // node_modules/@radix-ui/react-primitive/dist/index.module.js
-  var import_react23 = __toESM(require_react());
+  var import_react24 = __toESM(require_react());
   var import_react_dom = __toESM(require_react_dom());
 
   // node_modules/@radix-ui/react-slot/dist/index.module.js
-  var import_react22 = __toESM(require_react());
+  var import_react23 = __toESM(require_react());
 
   // node_modules/@radix-ui/react-compose-refs/dist/index.module.js
-  var import_react21 = __toESM(require_react());
+  var import_react22 = __toESM(require_react());
   function $6ed0406888f73fc4$var$setRef(ref, value) {
     if (typeof ref === "function")
       ref(value);
@@ -54594,44 +54767,44 @@ and ensure you are accounting for this risk.
   }
 
   // node_modules/@radix-ui/react-slot/dist/index.module.js
-  var $5e63c961fc1ce211$export$8c6ed5c666ac1360 = /* @__PURE__ */ (0, import_react22.forwardRef)((props, forwardedRef) => {
+  var $5e63c961fc1ce211$export$8c6ed5c666ac1360 = /* @__PURE__ */ (0, import_react23.forwardRef)((props, forwardedRef) => {
     const { children: children2, ...slotProps } = props;
-    const childrenArray = import_react22.Children.toArray(children2);
+    const childrenArray = import_react23.Children.toArray(children2);
     const slottable = childrenArray.find($5e63c961fc1ce211$var$isSlottable);
     if (slottable) {
       const newElement = slottable.props.children;
       const newChildren = childrenArray.map((child) => {
         if (child === slottable) {
-          if (import_react22.Children.count(newElement) > 1)
-            return import_react22.Children.only(null);
-          return /* @__PURE__ */ (0, import_react22.isValidElement)(newElement) ? newElement.props.children : null;
+          if (import_react23.Children.count(newElement) > 1)
+            return import_react23.Children.only(null);
+          return /* @__PURE__ */ (0, import_react23.isValidElement)(newElement) ? newElement.props.children : null;
         } else
           return child;
       });
-      return /* @__PURE__ */ (0, import_react22.createElement)($5e63c961fc1ce211$var$SlotClone, _extends({}, slotProps, {
+      return /* @__PURE__ */ (0, import_react23.createElement)($5e63c961fc1ce211$var$SlotClone, _extends({}, slotProps, {
         ref: forwardedRef
-      }), /* @__PURE__ */ (0, import_react22.isValidElement)(newElement) ? /* @__PURE__ */ (0, import_react22.cloneElement)(newElement, void 0, newChildren) : null);
+      }), /* @__PURE__ */ (0, import_react23.isValidElement)(newElement) ? /* @__PURE__ */ (0, import_react23.cloneElement)(newElement, void 0, newChildren) : null);
     }
-    return /* @__PURE__ */ (0, import_react22.createElement)($5e63c961fc1ce211$var$SlotClone, _extends({}, slotProps, {
+    return /* @__PURE__ */ (0, import_react23.createElement)($5e63c961fc1ce211$var$SlotClone, _extends({}, slotProps, {
       ref: forwardedRef
     }), children2);
   });
   $5e63c961fc1ce211$export$8c6ed5c666ac1360.displayName = "Slot";
-  var $5e63c961fc1ce211$var$SlotClone = /* @__PURE__ */ (0, import_react22.forwardRef)((props, forwardedRef) => {
+  var $5e63c961fc1ce211$var$SlotClone = /* @__PURE__ */ (0, import_react23.forwardRef)((props, forwardedRef) => {
     const { children: children2, ...slotProps } = props;
-    if (/* @__PURE__ */ (0, import_react22.isValidElement)(children2))
-      return /* @__PURE__ */ (0, import_react22.cloneElement)(children2, {
+    if (/* @__PURE__ */ (0, import_react23.isValidElement)(children2))
+      return /* @__PURE__ */ (0, import_react23.cloneElement)(children2, {
         ...$5e63c961fc1ce211$var$mergeProps(slotProps, children2.props),
         ref: $6ed0406888f73fc4$export$43e446d32b3d21af(forwardedRef, children2.ref)
       });
-    return import_react22.Children.count(children2) > 1 ? import_react22.Children.only(null) : null;
+    return import_react23.Children.count(children2) > 1 ? import_react23.Children.only(null) : null;
   });
   $5e63c961fc1ce211$var$SlotClone.displayName = "SlotClone";
   var $5e63c961fc1ce211$export$d9f1ccf0bdb05d45 = ({ children: children2 }) => {
-    return /* @__PURE__ */ (0, import_react22.createElement)(import_react22.Fragment, null, children2);
+    return /* @__PURE__ */ (0, import_react23.createElement)(import_react23.Fragment, null, children2);
   };
   function $5e63c961fc1ce211$var$isSlottable(child) {
-    return /* @__PURE__ */ (0, import_react22.isValidElement)(child) && child.type === $5e63c961fc1ce211$export$d9f1ccf0bdb05d45;
+    return /* @__PURE__ */ (0, import_react23.isValidElement)(child) && child.type === $5e63c961fc1ce211$export$d9f1ccf0bdb05d45;
   }
   function $5e63c961fc1ce211$var$mergeProps(slotProps, childProps) {
     const overrideProps = {
@@ -54684,13 +54857,13 @@ and ensure you are accounting for this risk.
     "ul"
   ];
   var $8927f6f2acc4f386$export$250ffa63cdc0d034 = $8927f6f2acc4f386$var$NODES.reduce((primitive, node) => {
-    const Node = /* @__PURE__ */ (0, import_react23.forwardRef)((props, forwardedRef) => {
+    const Node = /* @__PURE__ */ (0, import_react24.forwardRef)((props, forwardedRef) => {
       const { asChild, ...primitiveProps } = props;
       const Comp = asChild ? $5e63c961fc1ce211$export$8c6ed5c666ac1360 : node;
-      (0, import_react23.useEffect)(() => {
+      (0, import_react24.useEffect)(() => {
         window[Symbol.for("radix-ui")] = true;
       }, []);
-      return /* @__PURE__ */ (0, import_react23.createElement)(Comp, _extends({}, primitiveProps, {
+      return /* @__PURE__ */ (0, import_react24.createElement)(Comp, _extends({}, primitiveProps, {
         ref: forwardedRef
       }));
     });
@@ -54702,16 +54875,16 @@ and ensure you are accounting for this risk.
   }, {});
 
   // node_modules/@radix-ui/react-aspect-ratio/dist/index.module.js
-  var $c1b5f66aac50e106$export$e840e8869344ca38 = /* @__PURE__ */ (0, import_react24.forwardRef)((props, forwardedRef) => {
+  var $c1b5f66aac50e106$export$e840e8869344ca38 = /* @__PURE__ */ (0, import_react25.forwardRef)((props, forwardedRef) => {
     const { ratio = 1, style, ...aspectRatioProps } = props;
-    return /* @__PURE__ */ (0, import_react24.createElement)("div", {
+    return /* @__PURE__ */ (0, import_react25.createElement)("div", {
       style: {
         position: "relative",
         width: "100%",
         paddingBottom: `${100 / ratio}%`
       },
       "data-radix-aspect-ratio-wrapper": ""
-    }, /* @__PURE__ */ (0, import_react24.createElement)($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends({}, aspectRatioProps, {
+    }, /* @__PURE__ */ (0, import_react25.createElement)($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends({}, aspectRatioProps, {
       ref: forwardedRef,
       style: {
         ...style,
@@ -54803,30 +54976,35 @@ and ensure you are accounting for this risk.
   });
 
   // src/components/Figure/Figure.tsx
-  var import_react26 = __toESM(require_react());
+  var import_react27 = __toESM(require_react());
 
   // src/components/Figure/StatusIcon.tsx
-  var import_react25 = __toESM(require_react());
-  var IconLock = /* @__PURE__ */ import_react25.default.createElement(
-    "svg",
+  var import_react26 = __toESM(require_react());
+  var IconLock = /* @__PURE__ */ import_react26.default.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 512 512" }, /* @__PURE__ */ import_react26.default.createElement("title", null, "Restricted Item"), /* @__PURE__ */ import_react26.default.createElement("path", { d: "M368 192h-16v-80a96 96 0 10-192 0v80h-16a64.07 64.07 0 00-64 64v176a64.07 64.07 0 0064 64h224a64.07 64.07 0 0064-64V256a64.07 64.07 0 00-64-64zm-48 0H192v-80a64 64 0 11128 0z" }));
+  var IconUnknown = /* @__PURE__ */ import_react26.default.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 512 512" }, /* @__PURE__ */ import_react26.default.createElement("title", null, "Unknown Status"), /* @__PURE__ */ import_react26.default.createElement(
+    "path",
     {
-      xmlns: "http://www.w3.org/2000/svg",
-      className: "icon-lock",
-      viewBox: "0 0 512 512"
-    },
-    /* @__PURE__ */ import_react25.default.createElement("title", null, "Restricted Item"),
-    /* @__PURE__ */ import_react25.default.createElement("path", { d: "M368 192h-16v-80a96 96 0 10-192 0v80h-16a64.07 64.07 0 00-64 64v176a64.07 64.07 0 0064 64h224a64.07 64.07 0 0064-64V256a64.07 64.07 0 00-64-64zm-48 0H192v-80a64 64 0 11128 0z" })
-  );
+      d: "M160 164s1.44-33 33.54-59.46C212.6 88.83 235.49 84.28 256 84c18.73-.23 35.47 2.94 45.48 7.82C318.59 100.2 352 120.6 352 164c0 45.67-29.18 66.37-62.35 89.18S248 298.36 248 324",
+      fill: "none",
+      stroke: "currentColor",
+      "stroke-linecap": "round",
+      "stroke-miterlimit": "10",
+      "stroke-width": "40"
+    }
+  ), /* @__PURE__ */ import_react26.default.createElement("circle", { cx: "248", cy: "399.99", r: "32" }));
   var StatusIcon = ({ status }) => {
-    const [icon, setIcon] = (0, import_react25.useState)(/* @__PURE__ */ import_react25.default.createElement(import_react25.default.Fragment, null));
-    (0, import_react25.useEffect)(() => {
+    const [icon, setIcon] = (0, import_react26.useState)(/* @__PURE__ */ import_react26.default.createElement(import_react26.default.Fragment, null));
+    (0, import_react26.useEffect)(() => {
       switch (status) {
         case 403:
           setIcon(IconLock);
           break;
+        default:
+          setIcon(IconUnknown);
+          break;
       }
     }, [status]);
-    return /* @__PURE__ */ import_react25.default.createElement(StyledStatusIcon, null, icon);
+    return /* @__PURE__ */ import_react26.default.createElement(StyledStatusIcon, null, icon);
   };
   var StyledStatusIcon = styled("div", {
     width: "2rem",
@@ -54859,8 +55037,8 @@ and ensure you are accounting for this risk.
     summary,
     thumbnail
   }) => {
-    const widthRef = (0, import_react26.useRef)(null);
-    return /* @__PURE__ */ import_react26.default.createElement(FigureStyled, { isFocused }, /* @__PURE__ */ import_react26.default.createElement($c1b5f66aac50e106$export$be92b6f5f03c0fe9, { ratio: 1 / 1 }, /* @__PURE__ */ import_react26.default.createElement(Width, { ref: widthRef }), /* @__PURE__ */ import_react26.default.createElement(Placeholder, null, thumbnail && status === 200 ? /* @__PURE__ */ import_react26.default.createElement(zt, { altAsLabel: label, thumbnail }) : /* @__PURE__ */ import_react26.default.createElement(StatusIcon_default, { status }))), /* @__PURE__ */ import_react26.default.createElement("figcaption", null, /* @__PURE__ */ import_react26.default.createElement(Title, { label }), summary && /* @__PURE__ */ import_react26.default.createElement(Description, { summary })));
+    const widthRef = (0, import_react27.useRef)(null);
+    return /* @__PURE__ */ import_react27.default.createElement(FigureStyled, { isFocused }, /* @__PURE__ */ import_react27.default.createElement($c1b5f66aac50e106$export$be92b6f5f03c0fe9, { ratio: 1 / 1 }, /* @__PURE__ */ import_react27.default.createElement(Width, { ref: widthRef }), /* @__PURE__ */ import_react27.default.createElement(Placeholder, null, thumbnail && status === 200 ? /* @__PURE__ */ import_react27.default.createElement(zt, { altAsLabel: label, thumbnail }) : /* @__PURE__ */ import_react27.default.createElement(StatusIcon_default, { status }))), /* @__PURE__ */ import_react27.default.createElement("figcaption", null, /* @__PURE__ */ import_react27.default.createElement(Title, { label }), summary && /* @__PURE__ */ import_react27.default.createElement(Description, { summary })));
   };
   var Figure_default = Figure;
 
@@ -54876,7 +55054,7 @@ and ensure you are accounting for this risk.
   });
 
   // src/components/Preview/Preview.tsx
-  var import_react27 = __toESM(require_react());
+  var import_react28 = __toESM(require_react());
 
   // src/components/Preview/Preview.styled.ts
   var PreviewStyled = styled("div", {
@@ -54947,24 +55125,24 @@ and ensure you are accounting for this risk.
     isFocused,
     manifest
   }) => {
-    const [hasPrev, setHasPrev] = (0, import_react27.useState)(false);
-    const [hasNext, setHasNext] = (0, import_react27.useState)(false);
+    const [hasPrev, setHasPrev] = (0, import_react28.useState)(false);
+    const [hasNext, setHasNext] = (0, import_react28.useState)(false);
     const canvasCurrent = activeCanvas + 1;
     let canvasCount = 0;
     if (manifest)
       canvasCount = manifest.items.length;
-    (0, import_react27.useEffect)(() => {
+    (0, import_react28.useEffect)(() => {
       canvasCurrent <= 1 ? setHasPrev(false) : setHasPrev(true);
       canvasCurrent >= canvasCount ? setHasNext(false) : setHasNext(true);
     }, [activeCanvas, manifest]);
-    return /* @__PURE__ */ import_react27.default.createElement(PreviewStyled, { isFocused }, /* @__PURE__ */ import_react27.default.createElement($c1b5f66aac50e106$export$be92b6f5f03c0fe9, { ratio: 1 / 1 }, manifest && /* @__PURE__ */ import_react27.default.createElement(Overlay, null, /* @__PURE__ */ import_react27.default.createElement(Controls, { onClick: (e2) => e2.preventDefault() }, /* @__PURE__ */ import_react27.default.createElement(
+    return /* @__PURE__ */ import_react28.default.createElement(PreviewStyled, { isFocused }, /* @__PURE__ */ import_react28.default.createElement($c1b5f66aac50e106$export$be92b6f5f03c0fe9, { ratio: 1 / 1 }, manifest && /* @__PURE__ */ import_react28.default.createElement(Overlay, null, /* @__PURE__ */ import_react28.default.createElement(Controls, { onClick: (e2) => e2.preventDefault() }, /* @__PURE__ */ import_react28.default.createElement(
       "button",
       {
         onClick: () => handleActiveCanvas(-1),
         disabled: !hasPrev
       },
-      /* @__PURE__ */ import_react27.default.createElement(PreviousIcon, null)
-    ), /* @__PURE__ */ import_react27.default.createElement("button", { onClick: () => handleActiveCanvas(1), disabled: !hasNext }, /* @__PURE__ */ import_react27.default.createElement(NextIcon, null))), /* @__PURE__ */ import_react27.default.createElement(Label, { onClick: (e2) => e2.preventDefault() }, canvasCurrent, " of ", canvasCount))));
+      /* @__PURE__ */ import_react28.default.createElement(PreviousIcon, null)
+    ), /* @__PURE__ */ import_react28.default.createElement("button", { onClick: () => handleActiveCanvas(1), disabled: !hasNext }, /* @__PURE__ */ import_react28.default.createElement(NextIcon, null))), /* @__PURE__ */ import_react28.default.createElement(Label, { onClick: (e2) => e2.preventDefault() }, canvasCurrent, " of ", canvasCount))));
   };
   var Preview_default = Preview;
 
@@ -54978,9 +55156,9 @@ and ensure you are accounting for this risk.
   };
 
   // src/components/Items/Placeholder.tsx
-  var import_react28 = __toESM(require_react());
+  var import_react29 = __toESM(require_react());
   var Placeholder2 = ({ backgroundImage }) => {
-    return /* @__PURE__ */ import_react28.default.createElement(StyledPlaceholder, null, /* @__PURE__ */ import_react28.default.createElement(
+    return /* @__PURE__ */ import_react29.default.createElement(StyledPlaceholder, null, /* @__PURE__ */ import_react29.default.createElement(
       BackgroundImage,
       {
         ratio: 1 / 1,
@@ -55006,29 +55184,26 @@ and ensure you are accounting for this risk.
   var Placeholder_default = Placeholder2;
 
   // src/components/Items/Item.tsx
-  var Item = ({ index: index2, item }) => {
+  var Item = ({ credentials, index: index2, item }) => {
     const store = useCollectionState();
     const { vault } = store;
-    const [activeCanvas, setActiveCanvas] = (0, import_react29.useState)(0);
-    const [href, setHref] = (0, import_react29.useState)();
-    const [id, setId] = (0, import_react29.useState)(item.id);
-    const [isFocused, setIsFocused] = (0, import_react29.useState)(false);
-    const [manifest, setManifest] = (0, import_react29.useState)();
-    const [placeholder, setPlaceholder] = (0, import_react29.useState)();
-    const [status, setStatus] = (0, import_react29.useState)(200);
-    const [thumbnail, setThumbnail] = (0, import_react29.useState)([]);
-    (0, import_react29.useEffect)(() => {
-      isFocused ? setTimeout(() => {
-        if (!manifest)
-          vault.load(item.id).then((data) => setManifest(data)).catch((error) => {
-            console.error(`Manifest failed to load: ${error}`);
-          });
-      }, 1e3) : null;
+    const [activeCanvas, setActiveCanvas] = (0, import_react30.useState)(0);
+    const [href, setHref] = (0, import_react30.useState)();
+    const [id, setId] = (0, import_react30.useState)(item.id);
+    const [isFocused, setIsFocused] = (0, import_react30.useState)(false);
+    const [manifest, setManifest] = (0, import_react30.useState)();
+    const [placeholder, setPlaceholder] = (0, import_react30.useState)();
+    const [status, setStatus] = (0, import_react30.useState)(200);
+    const [thumbnail, setThumbnail] = (0, import_react30.useState)([]);
+    (0, import_react30.useEffect)(() => {
+      isFocused && !manifest ? vault.load(item.id).then((data) => setManifest(data)).catch((error) => {
+        console.error(`Manifest failed to load: ${error}`);
+      }) : null;
       return;
     }, [isFocused]);
-    (0, import_react29.useEffect)(() => {
+    (0, import_react30.useEffect)(() => {
       var _a, _b;
-      if ((item == null ? void 0 : item.thumbnail) && ((_a = item.thumbnail) == null ? void 0 : _a.length) > 0) {
+      if (item && (item == null ? void 0 : item.thumbnail) && ((_a = item.thumbnail) == null ? void 0 : _a.length) > 0) {
         const iiifThumbnail = vault.get(
           item.thumbnail
         );
@@ -55044,27 +55219,29 @@ and ensure you are accounting for this risk.
       if (!manifest)
         return;
       const targetCanvas = activeCanvas + increment;
-      const canvas = vault.get(manifest.items[targetCanvas]);
-      const resource = getCanvasResource(canvas, vault);
-      const canvasThumbnail = vault.get(resource);
-      if (canvasThumbnail.length > 0 && canvasThumbnail[0].id) {
-        setThumbnail(canvasThumbnail);
-        fetch(canvasThumbnail[0].id, {
-          method: "GET",
-          headers: {
-            accept: "image/*"
-          },
-          credentials: "include"
-        }).then((response) => setStatus(response.status)).catch((error) => setStatus(error.status));
+      if (Array.isArray(manifest.items) && manifest.items[targetCanvas]) {
+        const canvas = vault.get(manifest.items[targetCanvas]);
+        const resource = getCanvasResource(canvas, vault);
+        const canvasThumbnail = vault.get(resource);
+        if (canvasThumbnail.length > 0 && canvasThumbnail[0].id) {
+          setThumbnail(canvasThumbnail);
+          fetch(canvasThumbnail[0].id, {
+            method: "GET",
+            headers: {
+              accept: "image/*"
+            },
+            credentials
+          }).then((response) => setStatus(response.status)).catch((error) => setStatus(error.status));
+        }
+        setId(canvas.id);
+        setActiveCanvas(targetCanvas);
       }
-      setId(canvas.id);
-      setActiveCanvas(targetCanvas);
     };
-    (0, import_react29.useEffect)(() => {
+    (0, import_react30.useEffect)(() => {
       if (manifest)
         handleActiveCanvas(0);
     }, [manifest]);
-    return /* @__PURE__ */ import_react29.default.createElement(ItemStyled, null, /* @__PURE__ */ import_react29.default.createElement(
+    return /* @__PURE__ */ import_react30.default.createElement(ItemStyled, null, /* @__PURE__ */ import_react30.default.createElement(
       Anchor,
       {
         href,
@@ -55074,8 +55251,8 @@ and ensure you are accounting for this risk.
         onMouseEnter: onFocus,
         onMouseLeave: onBlur
       },
-      placeholder && /* @__PURE__ */ import_react29.default.createElement(Placeholder_default, { backgroundImage: placeholder }),
-      /* @__PURE__ */ import_react29.default.createElement(
+      placeholder && /* @__PURE__ */ import_react30.default.createElement(Placeholder_default, { backgroundImage: placeholder }),
+      /* @__PURE__ */ import_react30.default.createElement(
         Figure_default,
         {
           index: index2,
@@ -55087,7 +55264,7 @@ and ensure you are accounting for this risk.
           thumbnail
         }
       ),
-      /* @__PURE__ */ import_react29.default.createElement(
+      /* @__PURE__ */ import_react30.default.createElement(
         Preview_default,
         {
           manifest,
@@ -59811,7 +59988,7 @@ and ensure you are accounting for this risk.
   }
 
   // node_modules/swiper/react/swiper.js
-  var import_react35 = __toESM(require_react(), 1);
+  var import_react36 = __toESM(require_react(), 1);
 
   // node_modules/swiper/components-shared/utils.js
   function isObject3(o2) {
@@ -60048,7 +60225,7 @@ and ensure you are accounting for this risk.
   }
 
   // node_modules/swiper/react/loop.js
-  var import_react30 = __toESM(require_react(), 1);
+  var import_react31 = __toESM(require_react(), 1);
 
   // node_modules/swiper/shared/calc-looped-slides.js
   var calcLoopedSlides = (slides, swiperParams) => {
@@ -60071,13 +60248,13 @@ and ensure you are accounting for this risk.
   // node_modules/swiper/react/loop.js
   function renderLoop(swiper, slides, swiperParams) {
     const modifiedSlides = slides.map((child, index2) => {
-      return /* @__PURE__ */ import_react30.default.cloneElement(child, {
+      return /* @__PURE__ */ import_react31.default.cloneElement(child, {
         swiper,
         "data-swiper-slide-index": index2
       });
     });
     function duplicateSlide(child, index2, position) {
-      return /* @__PURE__ */ import_react30.default.cloneElement(child, {
+      return /* @__PURE__ */ import_react31.default.cloneElement(child, {
         key: `${child.key}-duplicate-${index2}-${position}`,
         className: `${child.props.className || ""} ${swiperParams.slideDuplicateClass}`
       });
@@ -60086,7 +60263,7 @@ and ensure you are accounting for this risk.
       const blankSlidesNum = swiperParams.slidesPerGroup - modifiedSlides.length % swiperParams.slidesPerGroup;
       if (blankSlidesNum !== swiperParams.slidesPerGroup) {
         for (let i3 = 0; i3 < blankSlidesNum; i3 += 1) {
-          const blankSlide = /* @__PURE__ */ import_react30.default.createElement("div", {
+          const blankSlide = /* @__PURE__ */ import_react31.default.createElement("div", {
             className: `${swiperParams.slideClass} ${swiperParams.slideBlankClass}`
           });
           modifiedSlides.push(blankSlide);
@@ -60155,13 +60332,13 @@ and ensure you are accounting for this risk.
   }
 
   // node_modules/swiper/react/get-children.js
-  var import_react31 = __toESM(require_react(), 1);
+  var import_react32 = __toESM(require_react(), 1);
   function isChildSwiperSlide(child) {
     return child.type && child.type.displayName && child.type.displayName.includes("SwiperSlide");
   }
   function processChildren(c4) {
     const slides = [];
-    import_react31.default.Children.toArray(c4).forEach((child) => {
+    import_react32.default.Children.toArray(c4).forEach((child) => {
       if (isChildSwiperSlide(child)) {
         slides.push(child);
       } else if (child.props && child.props.children) {
@@ -60178,7 +60355,7 @@ and ensure you are accounting for this risk.
       "wrapper-start": [],
       "wrapper-end": []
     };
-    import_react31.default.Children.toArray(c4).forEach((child) => {
+    import_react32.default.Children.toArray(c4).forEach((child) => {
       if (isChildSwiperSlide(child)) {
         slides.push(child);
       } else if (child.props && child.props.slot && slots[child.props.slot]) {
@@ -60320,7 +60497,7 @@ and ensure you are accounting for this risk.
   }
 
   // node_modules/swiper/react/virtual.js
-  var import_react32 = __toESM(require_react(), 1);
+  var import_react33 = __toESM(require_react(), 1);
   function renderVirtual(swiper, slides, virtualData) {
     if (!virtualData)
       return null;
@@ -60330,7 +60507,7 @@ and ensure you are accounting for this risk.
       top: `${virtualData.offset}px`
     };
     return slides.filter((child, index2) => index2 >= virtualData.from && index2 <= virtualData.to).map((child) => {
-      return /* @__PURE__ */ import_react32.default.cloneElement(child, {
+      return /* @__PURE__ */ import_react33.default.cloneElement(child, {
         swiper,
         style
       });
@@ -60353,17 +60530,17 @@ and ensure you are accounting for this risk.
   };
 
   // node_modules/swiper/react/use-isomorphic-layout-effect.js
-  var import_react33 = __toESM(require_react(), 1);
+  var import_react34 = __toESM(require_react(), 1);
   function useIsomorphicLayoutEffect(callback, deps) {
     if (typeof window === "undefined")
-      return (0, import_react33.useEffect)(callback, deps);
-    return (0, import_react33.useLayoutEffect)(callback, deps);
+      return (0, import_react34.useEffect)(callback, deps);
+    return (0, import_react34.useLayoutEffect)(callback, deps);
   }
 
   // node_modules/swiper/react/context.js
-  var import_react34 = __toESM(require_react(), 1);
-  var SwiperSlideContext = /* @__PURE__ */ (0, import_react34.createContext)(null);
-  var SwiperContext = /* @__PURE__ */ (0, import_react34.createContext)(null);
+  var import_react35 = __toESM(require_react(), 1);
+  var SwiperSlideContext = /* @__PURE__ */ (0, import_react35.createContext)(null);
+  var SwiperContext = /* @__PURE__ */ (0, import_react35.createContext)(null);
 
   // node_modules/swiper/react/swiper.js
   function _extends2() {
@@ -60380,7 +60557,7 @@ and ensure you are accounting for this risk.
     };
     return _extends2.apply(this, arguments);
   }
-  var Swiper2 = /* @__PURE__ */ (0, import_react35.forwardRef)(function(_temp, externalElRef) {
+  var Swiper2 = /* @__PURE__ */ (0, import_react36.forwardRef)(function(_temp, externalElRef) {
     let {
       className,
       tag: Tag = "div",
@@ -60390,18 +60567,18 @@ and ensure you are accounting for this risk.
       ...rest
     } = _temp === void 0 ? {} : _temp;
     let eventsAssigned = false;
-    const [containerClasses, setContainerClasses] = (0, import_react35.useState)("swiper");
-    const [virtualData, setVirtualData] = (0, import_react35.useState)(null);
-    const [breakpointChanged, setBreakpointChanged] = (0, import_react35.useState)(false);
-    const initializedRef = (0, import_react35.useRef)(false);
-    const swiperElRef = (0, import_react35.useRef)(null);
-    const swiperRef = (0, import_react35.useRef)(null);
-    const oldPassedParamsRef = (0, import_react35.useRef)(null);
-    const oldSlides = (0, import_react35.useRef)(null);
-    const nextElRef = (0, import_react35.useRef)(null);
-    const prevElRef = (0, import_react35.useRef)(null);
-    const paginationElRef = (0, import_react35.useRef)(null);
-    const scrollbarElRef = (0, import_react35.useRef)(null);
+    const [containerClasses, setContainerClasses] = (0, import_react36.useState)("swiper");
+    const [virtualData, setVirtualData] = (0, import_react36.useState)(null);
+    const [breakpointChanged, setBreakpointChanged] = (0, import_react36.useState)(false);
+    const initializedRef = (0, import_react36.useRef)(false);
+    const swiperElRef = (0, import_react36.useRef)(null);
+    const swiperRef = (0, import_react36.useRef)(null);
+    const oldPassedParamsRef = (0, import_react36.useRef)(null);
+    const oldSlides = (0, import_react36.useRef)(null);
+    const nextElRef = (0, import_react36.useRef)(null);
+    const prevElRef = (0, import_react36.useRef)(null);
+    const paginationElRef = (0, import_react36.useRef)(null);
+    const scrollbarElRef = (0, import_react36.useRef)(null);
     const {
       params: swiperParams,
       passedParams,
@@ -60463,13 +60640,13 @@ and ensure you are accounting for this risk.
         swiperRef.current.off(eventName, events2[eventName]);
       });
     };
-    (0, import_react35.useEffect)(() => {
+    (0, import_react36.useEffect)(() => {
       return () => {
         if (swiperRef.current)
           swiperRef.current.off("_beforeBreakpoint", onBeforeBreakpoint);
       };
     });
-    (0, import_react35.useEffect)(() => {
+    (0, import_react36.useEffect)(() => {
       if (!initializedRef.current && swiperRef.current) {
         swiperRef.current.emitSlidesClasses();
         initializedRef.current = true;
@@ -60530,30 +60707,30 @@ and ensure you are accounting for this risk.
       }
       if (!swiperParams.loop || swiperRef.current && swiperRef.current.destroyed) {
         return slides.map((child) => {
-          return /* @__PURE__ */ import_react35.default.cloneElement(child, {
+          return /* @__PURE__ */ import_react36.default.cloneElement(child, {
             swiper: swiperRef.current
           });
         });
       }
       return renderLoop(swiperRef.current, slides, swiperParams);
     }
-    return /* @__PURE__ */ import_react35.default.createElement(Tag, _extends2({
+    return /* @__PURE__ */ import_react36.default.createElement(Tag, _extends2({
       ref: swiperElRef,
       className: uniqueClasses(`${containerClasses}${className ? ` ${className}` : ""}`)
-    }, restProps), /* @__PURE__ */ import_react35.default.createElement(SwiperContext.Provider, {
+    }, restProps), /* @__PURE__ */ import_react36.default.createElement(SwiperContext.Provider, {
       value: swiperRef.current
-    }, slots["container-start"], /* @__PURE__ */ import_react35.default.createElement(WrapperTag, {
+    }, slots["container-start"], /* @__PURE__ */ import_react36.default.createElement(WrapperTag, {
       className: "swiper-wrapper"
-    }, slots["wrapper-start"], renderSlides(), slots["wrapper-end"]), needsNavigation(swiperParams) && /* @__PURE__ */ import_react35.default.createElement(import_react35.default.Fragment, null, /* @__PURE__ */ import_react35.default.createElement("div", {
+    }, slots["wrapper-start"], renderSlides(), slots["wrapper-end"]), needsNavigation(swiperParams) && /* @__PURE__ */ import_react36.default.createElement(import_react36.default.Fragment, null, /* @__PURE__ */ import_react36.default.createElement("div", {
       ref: prevElRef,
       className: "swiper-button-prev"
-    }), /* @__PURE__ */ import_react35.default.createElement("div", {
+    }), /* @__PURE__ */ import_react36.default.createElement("div", {
       ref: nextElRef,
       className: "swiper-button-next"
-    })), needsScrollbar(swiperParams) && /* @__PURE__ */ import_react35.default.createElement("div", {
+    })), needsScrollbar(swiperParams) && /* @__PURE__ */ import_react36.default.createElement("div", {
       ref: scrollbarElRef,
       className: "swiper-scrollbar"
-    }), needsPagination(swiperParams) && /* @__PURE__ */ import_react35.default.createElement("div", {
+    }), needsPagination(swiperParams) && /* @__PURE__ */ import_react36.default.createElement("div", {
       ref: paginationElRef,
       className: "swiper-pagination"
     }), slots["container-end"]));
@@ -60561,7 +60738,7 @@ and ensure you are accounting for this risk.
   Swiper2.displayName = "Swiper";
 
   // node_modules/swiper/react/swiper-slide.js
-  var import_react36 = __toESM(require_react(), 1);
+  var import_react37 = __toESM(require_react(), 1);
   function _extends3() {
     _extends3 = Object.assign ? Object.assign.bind() : function(target) {
       for (var i3 = 1; i3 < arguments.length; i3++) {
@@ -60576,7 +60753,7 @@ and ensure you are accounting for this risk.
     };
     return _extends3.apply(this, arguments);
   }
-  var SwiperSlide = /* @__PURE__ */ (0, import_react36.forwardRef)(function(_temp, externalRef) {
+  var SwiperSlide = /* @__PURE__ */ (0, import_react37.forwardRef)(function(_temp, externalRef) {
     let {
       tag: Tag = "div",
       children: children2,
@@ -60586,8 +60763,8 @@ and ensure you are accounting for this risk.
       virtualIndex,
       ...rest
     } = _temp === void 0 ? {} : _temp;
-    const slideElRef = (0, import_react36.useRef)(null);
-    const [slideClasses, setSlideClasses] = (0, import_react36.useState)("swiper-slide");
+    const slideElRef = (0, import_react37.useRef)(null);
+    const [slideClasses, setSlideClasses] = (0, import_react37.useState)("swiper-slide");
     function updateClasses(_s, el, classNames) {
       if (el === slideElRef.current) {
         setSlideClasses(classNames);
@@ -60628,13 +60805,13 @@ and ensure you are accounting for this risk.
     const renderChildren = () => {
       return typeof children2 === "function" ? children2(slideData) : children2;
     };
-    return /* @__PURE__ */ import_react36.default.createElement(Tag, _extends3({
+    return /* @__PURE__ */ import_react37.default.createElement(Tag, _extends3({
       ref: slideElRef,
       className: uniqueClasses(`${slideClasses}${className ? ` ${className}` : ""}`),
       "data-swiper-slide-index": virtualIndex
-    }, rest), /* @__PURE__ */ import_react36.default.createElement(SwiperSlideContext.Provider, {
+    }, rest), /* @__PURE__ */ import_react37.default.createElement(SwiperSlideContext.Provider, {
       value: slideData
-    }, zoom ? /* @__PURE__ */ import_react36.default.createElement("div", {
+    }, zoom ? /* @__PURE__ */ import_react37.default.createElement("div", {
       className: "swiper-zoom-container",
       "data-swiper-zoom": typeof zoom === "number" ? zoom : void 0
     }, renderChildren()) : renderChildren()));
@@ -60671,11 +60848,12 @@ and ensure you are accounting for this risk.
   };
   var Items = ({
     breakpoints = defaultBreakpoints,
+    credentials,
     instance,
     items
   }) => {
-    const itemsRef = (0, import_react37.useRef)(null);
-    return /* @__PURE__ */ import_react37.default.createElement(ItemsStyled, { ref: itemsRef }, /* @__PURE__ */ import_react37.default.createElement(
+    const itemsRef = (0, import_react38.useRef)(null);
+    return /* @__PURE__ */ import_react38.default.createElement(ItemsStyled, { ref: itemsRef }, /* @__PURE__ */ import_react38.default.createElement(
       Swiper2,
       {
         a11y: {
@@ -60692,7 +60870,14 @@ and ensure you are accounting for this risk.
         slidesPerGroup: 2,
         breakpoints
       },
-      items.map((item, index2) => /* @__PURE__ */ import_react37.default.createElement(SwiperSlide, { key: `${item.id}-${index2}` }, /* @__PURE__ */ import_react37.default.createElement(Item_default, { index: index2, item })))
+      items.map((item, index2) => /* @__PURE__ */ import_react38.default.createElement(SwiperSlide, { key: `${item.id}-${index2}` }, /* @__PURE__ */ import_react38.default.createElement(
+        Item_default,
+        {
+          credentials,
+          index: index2,
+          item
+        }
+      )))
     ));
   };
   var Items_default = Items;
@@ -60708,17 +60893,43 @@ and ensure you are accounting for this risk.
   var hash_default = hash;
 
   // src/index.tsx
-  var App = (props) => /* @__PURE__ */ import_react39.default.createElement(CollectionProvider, null, /* @__PURE__ */ import_react39.default.createElement(Bloom, __spreadValues({}, props)));
+  var import_react_error_boundary = __toESM(require_react_error_boundary_umd());
+
+  // src/components/ErrorFallback/ErrorFallback.tsx
+  var import_react40 = __toESM(require_react());
+
+  // src/components/ErrorFallback/ErrorFallback.styled.tsx
+  var ErrorFallbackStyled = styled("div", {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  });
+  var Headline = styled("p", {
+    fontWeight: "bold"
+  });
+  var ErrorBody = styled("span", {});
+
+  // src/components/ErrorFallback/ErrorFallback.tsx
+  var ErrorFallback = ({ error }) => {
+    const { message } = error;
+    return /* @__PURE__ */ import_react40.default.createElement(ErrorFallbackStyled, { role: "alert" }, /* @__PURE__ */ import_react40.default.createElement(Headline, { "data-testid": "headline" }, "Something went wrong"), message && /* @__PURE__ */ import_react40.default.createElement(ErrorBody, null, `Error message: ${message}`, " "));
+  };
+  var ErrorFallback_default = ErrorFallback;
+
+  // src/index.tsx
+  var App = (props) => /* @__PURE__ */ import_react41.default.createElement(CollectionProvider, null, /* @__PURE__ */ import_react41.default.createElement(Bloom, __spreadValues({}, props)));
   var Bloom = ({ collectionId, options = {} }) => {
     const store = useCollectionState();
     const { vault } = store;
-    const [collection, setCollection] = (0, import_react39.useState)();
-    const [error, setError] = (0, import_react39.useState)("");
-    (0, import_react39.useEffect)(() => {
+    const [collection, setCollection] = (0, import_react41.useState)();
+    const [error, setError] = (0, import_react41.useState)("");
+    (0, import_react41.useEffect)(() => {
       if (!collectionId)
         return;
       vault.loadCollection(collectionId).then((data) => setCollection(data)).catch((error2) => {
-        console.error(`Collection failed to load: ${error2}`);
+        console.error(
+          `The IIIF Collection ${collectionId} failed to load: ${error2}`
+        );
         setError(
           error2 instanceof Error ? error2.message : `Collection failed to load`
         );
@@ -60726,15 +60937,13 @@ and ensure you are accounting for this risk.
       });
     }, [collectionId]);
     if ((collection == null ? void 0 : collection.items.length) === 0) {
-      console.log(`The IIIF collection ${collectionId} does not contain items.`);
-      return /* @__PURE__ */ import_react39.default.createElement(import_react39.default.Fragment, null);
+      console.log(`The IIIF Collection ${collectionId} does not contain items.`);
+      return /* @__PURE__ */ import_react41.default.createElement(import_react41.default.Fragment, null);
     }
     const instance = hash_default(collectionId);
-    if (error)
-      return /* @__PURE__ */ import_react39.default.createElement("p", { style: { padding: "1rem" } }, "Error loading Collection: ", error);
     if (!collection)
-      return /* @__PURE__ */ import_react39.default.createElement(import_react39.default.Fragment, null);
-    return /* @__PURE__ */ import_react39.default.createElement(StyledBloom, null, /* @__PURE__ */ import_react39.default.createElement(
+      return /* @__PURE__ */ import_react41.default.createElement(import_react41.default.Fragment, null);
+    return /* @__PURE__ */ import_react41.default.createElement("div", null, /* @__PURE__ */ import_react41.default.createElement(import_react_error_boundary.ErrorBoundary, { FallbackComponent: ErrorFallback_default }, /* @__PURE__ */ import_react41.default.createElement(
       Header_default,
       {
         label: collection.label,
@@ -60742,20 +60951,20 @@ and ensure you are accounting for this risk.
         homepage: collection.homepage,
         instance
       }
-    ), /* @__PURE__ */ import_react39.default.createElement(
+    ), /* @__PURE__ */ import_react41.default.createElement(
       Items_default,
       {
         items: collection.items,
         instance,
-        breakpoints: Boolean(options.breakpoints) ? options.breakpoints : void 0
+        breakpoints: Boolean(options.breakpoints) ? options.breakpoints : void 0,
+        credentials: options.credentials ? options.credentials : "omit"
       }
-    ));
+    )));
   };
-  var StyledBloom = styled("div", { padding: "$4 0" });
   var src_default = App;
 
   // src/dev/DynamicUrl.tsx
-  var import_react41 = __toESM(require_react());
+  var import_react43 = __toESM(require_react());
 
   // src/dev/DynamicUrl.styled.tsx
   var DynamicUrlStyled = re2("section", {
@@ -60846,12 +61055,12 @@ and ensure you are accounting for this risk.
       label: "Football Films"
     },
     {
-      url: "https://digital.lib.utk.edu/assemble/collection/collections/rfta",
-      label: "Rising from the Ashes"
-    },
-    {
       url: "https://digital.lib.utk.edu/assemble/collection/gsmrc/pcard00",
       label: "Postcards from the Great Smoky Mountains"
+    },
+    {
+      url: "https://digital.lib.utk.edu/assemble/collection/collections/rfta",
+      label: "Rising from the Ashes"
     },
     {
       url: "https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json",
@@ -60868,23 +61077,31 @@ and ensure you are accounting for this risk.
     {
       url: "https://dcapi.rdc-staging.library.northwestern.edu/api/v2/search?query=collection.id:%22b5ba2cce-8b7e-4b8a-ad5c-649dd40637b0%22&collectionLabel=Visibility%20Testing&collectionSummary=Collection&as=iiif",
       label: "Access Demonstration"
+    },
+    {
+      url: "https://dcapi.rdc.library.northwestern.edu/api/v2/search?query=series:%22Berkeley%20Folk%20Music%20Festival%20--%206.%20Festival%20Programs%20&%20Additional%20Operating%20Files%20--%206.3.%20Wild%20West%20Festival%20Operating%20Files%22%20=&collectionLabel=Berkeley%20Folk%20Music%20Festival%20--%206.%20Festival%20Programs%20&%20Additional%20Operating%20Files%20--%206.3.%20Wild%20West%20Festival%20Operating%20Files=&collectionSummary=2%20Items&as=iiif",
+      label: "dev -  bad collection"
+    },
+    {
+      url: "https://dcapi.rdc-staging.library.northwestern.edu/api/v2/works/c483bcc2-a4be-4175-a2d7-b2bcb1e24d28/similar?collectionLabel=More%20Like%20This&collectionSummary=Similar%20to%20null&as=iiif",
+      label: "dev - bad manifest"
     }
   ];
 
   // src/dev/DynamicUrl.tsx
   var DynamicUrl = ({ url, setUrl }) => {
-    const inputRef = (0, import_react41.useRef)(null);
+    const inputRef = (0, import_react43.useRef)(null);
     const handleSubmit = (e2) => {
       var _a;
       e2.preventDefault();
       const target = e2.target;
       setUrl((_a = target.url) == null ? void 0 : _a.value);
     };
-    (0, import_react41.useEffect)(() => {
+    (0, import_react43.useEffect)(() => {
       if (inputRef.current)
         inputRef.current.value = url;
     }, [url]);
-    return /* @__PURE__ */ import_react41.default.createElement(DynamicUrlStyled, null, /* @__PURE__ */ import_react41.default.createElement(ManualForm, { onSubmit: handleSubmit }, /* @__PURE__ */ import_react41.default.createElement("label", { htmlFor: "manual-collection" }, "View a IIIF Collection"), /* @__PURE__ */ import_react41.default.createElement("div", null, /* @__PURE__ */ import_react41.default.createElement(
+    return /* @__PURE__ */ import_react43.default.createElement(DynamicUrlStyled, null, /* @__PURE__ */ import_react43.default.createElement(ManualForm, { onSubmit: handleSubmit }, /* @__PURE__ */ import_react43.default.createElement("label", { htmlFor: "manual-collection" }, "View a IIIF Collection"), /* @__PURE__ */ import_react43.default.createElement("div", null, /* @__PURE__ */ import_react43.default.createElement(
       "input",
       {
         type: "text",
@@ -60893,14 +61110,14 @@ and ensure you are accounting for this risk.
         placeholder: "IIIF Collection",
         ref: inputRef
       }
-    ), /* @__PURE__ */ import_react41.default.createElement("button", { type: "submit" }, "View"))), collections.length > 0 && /* @__PURE__ */ import_react41.default.createElement(Curated, null, collections.map((obj) => /* @__PURE__ */ import_react41.default.createElement(
+    ), /* @__PURE__ */ import_react43.default.createElement("button", { type: "submit" }, "View"))), collections.length > 0 && /* @__PURE__ */ import_react43.default.createElement(Curated, null, collections.map((obj) => /* @__PURE__ */ import_react43.default.createElement(
       ButtonForm,
       {
         key: obj.label,
         onSubmit: handleSubmit,
         "data-active": url === obj.url ? true : false
       },
-      /* @__PURE__ */ import_react41.default.createElement("button", { name: "url", value: obj.url }, obj.label)
+      /* @__PURE__ */ import_react43.default.createElement("button", { name: "url", value: obj.url }, obj.label)
     ))));
   };
   var DynamicUrl_default = DynamicUrl;
@@ -60909,14 +61126,12 @@ and ensure you are accounting for this risk.
   var import_client = __toESM(require_client());
   var Wrapper = () => {
     const defaultUrl = collections[0].url;
-    const oneItem = "https://dcapi.rdc-staging.library.northwestern.edu/api/v2/search?query=subject.label:%22Sculpture,%20English--19th%20century%22&collectionLabel=Sculpture,%20English--19th%20century&collectionSummary=Subject&as=iiif";
-    const twoItems = "https://dcapi.rdc-staging.library.northwestern.edu/api/v2/search?query=collection.title.keyword:%22Transportation%20Library%20Menu%20Collection%22&collectionLabel=Transportation%20Library%20Menu%20Collection&collectionSummary=Collection&as=iiif";
-    const [url, setUrl] = import_react42.default.useState(defaultUrl);
-    return /* @__PURE__ */ import_react42.default.createElement(import_react42.default.Fragment, null, /* @__PURE__ */ import_react42.default.createElement(src_default, { collectionId: url, key: url }), /* @__PURE__ */ import_react42.default.createElement(DynamicUrl_default, { url, setUrl }));
+    const [url, setUrl] = import_react44.default.useState(defaultUrl);
+    return /* @__PURE__ */ import_react44.default.createElement(import_react44.default.Fragment, null, /* @__PURE__ */ import_react44.default.createElement(src_default, { collectionId: url, key: url }), /* @__PURE__ */ import_react44.default.createElement(DynamicUrl_default, { url, setUrl }));
   };
   var container = document.getElementById("root");
   var root = (0, import_client.createRoot)(container);
-  root.render(/* @__PURE__ */ import_react42.default.createElement(Wrapper, null));
+  root.render(/* @__PURE__ */ import_react44.default.createElement(Wrapper, null));
 })();
 /*!
  * is-plain-object <https://github.com/jonschlinkert/is-plain-object>
