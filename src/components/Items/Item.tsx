@@ -11,13 +11,15 @@ import { Anchor, ItemStyled } from "./Item.styled";
 import Preview from "components/Preview/Preview";
 import { getCanvasResource } from "lib/iiif";
 import Placeholder from "./Placeholder";
+import { FetchCredentials } from "../../../types/types";
 
 interface ItemProps {
+  credentials: FetchCredentials;
   index: number;
   item: Collection | Manifest;
 }
 
-const Item: React.FC<ItemProps> = ({ index, item }) => {
+const Item: React.FC<ItemProps> = ({ credentials, index, item }) => {
   const store = useCollectionState();
   const { vault } = store;
 
@@ -31,22 +33,19 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
   const [thumbnail, setThumbnail] = useState<IIIFExternalWebResource[]>([]);
 
   useEffect(() => {
-    isFocused
-      ? setTimeout(() => {
-          if (!manifest)
-            vault
-              .load(item.id)
-              .then((data: any) => setManifest(data))
-              .catch((error: any) => {
-                console.error(`Manifest failed to load: ${error}`);
-              });
-        }, 1000)
+    isFocused && !manifest
+      ? vault
+          .load(item.id)
+          .then((data: any) => setManifest(data))
+          .catch((error: any) => {
+            console.error(`Manifest failed to load: ${error}`);
+          })
       : null;
     return;
   }, [isFocused]);
 
   useEffect(() => {
-    if (item?.thumbnail && item.thumbnail?.length > 0) {
+    if (item && item?.thumbnail && item.thumbnail?.length > 0) {
       const iiifThumbnail = vault.get(
         item.thumbnail
       ) as IIIFExternalWebResource[];
@@ -66,25 +65,27 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
 
     const targetCanvas: number = activeCanvas + increment;
 
-    const canvas: CanvasNormalized = vault.get(manifest.items[targetCanvas]);
-    const resource = getCanvasResource(canvas, vault);
-    const canvasThumbnail = vault.get(resource) as IIIFExternalWebResource[];
+    if (Array.isArray(manifest.items) && manifest.items[targetCanvas]) {
+      const canvas: CanvasNormalized = vault.get(manifest.items[targetCanvas]);
+      const resource = getCanvasResource(canvas, vault);
+      const canvasThumbnail = vault.get(resource) as IIIFExternalWebResource[];
 
-    if (canvasThumbnail.length > 0 && canvasThumbnail[0].id) {
-      setThumbnail(canvasThumbnail);
-      fetch(canvasThumbnail[0].id, {
-        method: "GET",
-        headers: {
-          accept: "image/*",
-        },
-        credentials: "include",
-      })
-        .then((response) => setStatus(response.status))
-        .catch((error) => setStatus(error.status));
+      if (canvasThumbnail.length > 0 && canvasThumbnail[0].id) {
+        setThumbnail(canvasThumbnail);
+        fetch(canvasThumbnail[0].id, {
+          method: "GET",
+          headers: {
+            accept: "image/*",
+          },
+          credentials: credentials,
+        })
+          .then((response) => setStatus(response.status))
+          .catch((error) => setStatus(error.status));
+      }
+
+      setId(canvas.id);
+      setActiveCanvas(targetCanvas);
     }
-
-    setId(canvas.id);
-    setActiveCanvas(targetCanvas);
   };
 
   useEffect(() => {

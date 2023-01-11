@@ -5,6 +5,7 @@ import { Homepage, Label, Summary } from "@samvera/nectar-iiif";
 import { NextIcon } from "components/Icons/NextIcon";
 import { PreviousIcon } from "components/Icons/PrevIcon";
 import { ControlStyled, Icon } from "./Control.styled";
+import ViewAll from "./ViewAll";
 
 interface HeaderProps {
   homepage: ContentResource[];
@@ -58,6 +59,11 @@ const Header: React.FC<HeaderProps> = ({
             <NextIcon />
           </Icon>
         </ControlStyled>
+        {hasHomepage && (
+          <Homepage homepage={homepage} className="bloom-header-homepage">
+            <ViewAll />
+          </Homepage>
+        )}
       </HeaderControls>
     </HeaderStyled>
   );

@@ -13,7 +13,8 @@ import { ConfigOptions } from "../types/types";
 import Header from "components/Header/Header";
 import Items from "components/Items/Items";
 import hash from "lib/hash";
-import { styled } from "stitches";
+import { ErrorBoundary } from "react-error-boundary";
+import ErrorFallback from "components/ErrorFallback/ErrorFallback";
 
 interface BloomProps {
   collectionId: string;
@@ -46,7 +47,9 @@ const Bloom: React.FC<BloomProps> = ({ collectionId, options = {} }) => {
       .loadCollection(collectionId)
       .then((data: any) => setCollection(data))
       .catch((error: any) => {
-        console.error(`Collection failed to load: ${error}`);
+        console.error(
+          `The IIIF Collection ${collectionId} failed to load: ${error}`
+        );
         setError(
           error instanceof Error ? error.message : `Collection failed to load`
         );
@@ -55,37 +58,38 @@ const Bloom: React.FC<BloomProps> = ({ collectionId, options = {} }) => {
   }, [collectionId]);
 
   if (collection?.items.length === 0) {
-    console.log(`The IIIF collection ${collectionId} does not contain items.`);
+    console.log(`The IIIF Collection ${collectionId} does not contain items.`);
     return <></>;
   }
 
   const instance = hash(collectionId);
 
-  if (error)
-    return <p style={{ padding: "1rem" }}>Error loading Collection: {error}</p>;
   if (!collection) return <></>;
 
   return (
-    <StyledBloom>
-      <Header
-        label={collection.label as InternationalString}
-        summary={
-          collection && collection.summary ? collection.summary : { none: [""] }
-        }
-        homepage={collection.homepage as any as ContentResource[]}
-        instance={instance}
-      />
-      <Items
-        items={collection.items as CollectionItems[]}
-        instance={instance}
-        breakpoints={
-          Boolean(options.breakpoints) ? options.breakpoints : undefined
-        }
-      />
-    </StyledBloom>
+    <div>
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <Header
+          label={collection.label as InternationalString}
+          summary={
+            collection && collection.summary
+              ? collection.summary
+              : { none: [""] }
+          }
+          homepage={collection.homepage as any as ContentResource[]}
+          instance={instance}
+        />
+        <Items
+          items={collection.items as CollectionItems[]}
+          instance={instance}
+          breakpoints={
+            Boolean(options.breakpoints) ? options.breakpoints : undefined
+          }
+          credentials={options.credentials ? options.credentials : "omit"}
+        />
+      </ErrorBoundary>
+    </div>
   );
 };
-
-const StyledBloom = styled("div", { padding: "$4 0" });
 
 export default App;

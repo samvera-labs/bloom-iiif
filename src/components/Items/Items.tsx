@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { CollectionItems, Collection, Manifest } from "@iiif/presentation-3";
-import { SwiperBreakpoints } from "../../../types/types";
+import { FetchCredentials, SwiperBreakpoints } from "../../../types/types";
 import Item from "./Item";
 import { ItemsStyled } from "./Items.styled";
 import { Navigation, A11y } from "swiper";
@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 interface ItemsProps {
   breakpoints?: SwiperBreakpoints;
+  credentials: FetchCredentials;
   instance: number;
   items: CollectionItems[];
 }
@@ -42,6 +43,7 @@ const defaultBreakpoints = {
 
 const Items: React.FC<ItemsProps> = ({
   breakpoints = defaultBreakpoints,
+  credentials,
   instance,
   items,
 }) => {
@@ -66,7 +68,11 @@ const Items: React.FC<ItemsProps> = ({
       >
         {items.map((item, index) => (
           <SwiperSlide key={`${item.id}-${index}`}>
-            <Item index={index} item={item as Collection | Manifest} />
+            <Item
+              credentials={credentials}
+              index={index}
+              item={item as Collection | Manifest}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

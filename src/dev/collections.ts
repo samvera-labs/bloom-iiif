@@ -4,12 +4,12 @@ export const collections = [
     label: "Football Films",
   },
   {
-    url: "https://digital.lib.utk.edu/assemble/collection/collections/rfta",
-    label: "Rising from the Ashes",
-  },
-  {
     url: "https://digital.lib.utk.edu/assemble/collection/gsmrc/pcard00",
     label: "Postcards from the Great Smoky Mountains",
+  },
+  {
+    url: "https://digital.lib.utk.edu/assemble/collection/collections/rfta",
+    label: "Rising from the Ashes",
   },
   {
     url: "https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json",
@@ -26,5 +26,13 @@ export const collections = [
   {
     url: "https://dcapi.rdc-staging.library.northwestern.edu/api/v2/search?query=collection.id:%22b5ba2cce-8b7e-4b8a-ad5c-649dd40637b0%22&collectionLabel=Visibility%20Testing&collectionSummary=Collection&as=iiif",
     label: "Access Demonstration",
+  },
+  {
+    url: "https://dcapi.rdc.library.northwestern.edu/api/v2/search?query=series:%22Berkeley%20Folk%20Music%20Festival%20--%206.%20Festival%20Programs%20&%20Additional%20Operating%20Files%20--%206.3.%20Wild%20West%20Festival%20Operating%20Files%22%20=&collectionLabel=Berkeley%20Folk%20Music%20Festival%20--%206.%20Festival%20Programs%20&%20Additional%20Operating%20Files%20--%206.3.%20Wild%20West%20Festival%20Operating%20Files=&collectionSummary=2%20Items&as=iiif",
+    label: "dev -  bad collection",
+  },
+  {
+    url: "https://dcapi.rdc-staging.library.northwestern.edu/api/v2/works/c483bcc2-a4be-4175-a2d7-b2bcb1e24d28/similar?collectionLabel=More%20Like%20This&collectionSummary=Similar%20to%20null&as=iiif",
+    label: "dev - bad manifest",
   },
 ];
