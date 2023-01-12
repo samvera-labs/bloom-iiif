@@ -60870,14 +60870,22 @@ and ensure you are accounting for this risk.
         slidesPerGroup: 2,
         breakpoints
       },
-      items.map((item, index2) => /* @__PURE__ */ import_react38.default.createElement(SwiperSlide, { key: `${item.id}-${index2}` }, /* @__PURE__ */ import_react38.default.createElement(
-        Item_default,
+      items.map((item, index2) => /* @__PURE__ */ import_react38.default.createElement(
+        SwiperSlide,
         {
-          credentials,
-          index: index2,
-          item
-        }
-      )))
+          key: `${item.id}-${index2}`,
+          "data-index": index2,
+          "data-type": item == null ? void 0 : item.type.toLowerCase()
+        },
+        /* @__PURE__ */ import_react38.default.createElement(
+          Item_default,
+          {
+            credentials,
+            index: index2,
+            item
+          }
+        )
+      ))
     ));
   };
   var Items_default = Items;
