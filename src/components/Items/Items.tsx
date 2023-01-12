@@ -67,7 +67,11 @@ const Items: React.FC<ItemsProps> = ({
         breakpoints={breakpoints}
       >
         {items.map((item, index) => (
-          <SwiperSlide key={`${item.id}-${index}`}>
+          <SwiperSlide
+            key={`${item.id}-${index}`}
+            data-index={index}
+            data-type={item?.type.toLowerCase()}
+          >
             <Item
               credentials={credentials}
               index={index}
