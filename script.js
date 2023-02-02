@@ -54716,7 +54716,7 @@ and ensure you are accounting for this risk.
         "aria-label": "previous"
       },
       /* @__PURE__ */ import_react21.default.createElement(Icon, null, /* @__PURE__ */ import_react21.default.createElement(PreviousIcon, null))
-    ), /* @__PURE__ */ import_react21.default.createElement(ControlStyled, { className: `bloom-next-${instance}`, "aria-label": "next" }, /* @__PURE__ */ import_react21.default.createElement(Icon, null, /* @__PURE__ */ import_react21.default.createElement(NextIcon, null))), hasHomepage && /* @__PURE__ */ import_react21.default.createElement(at, { homepage, className: "bloom-header-homepage" }, /* @__PURE__ */ import_react21.default.createElement(ViewAll_default, null))));
+    ), /* @__PURE__ */ import_react21.default.createElement(ControlStyled, { className: `bloom-next-${instance}`, "aria-label": "next" }, /* @__PURE__ */ import_react21.default.createElement(Icon, null, /* @__PURE__ */ import_react21.default.createElement(NextIcon, null))), hasHomepage && /* @__PURE__ */ import_react21.default.createElement(at, { homepage, className: "bloom-header-view-all" }, /* @__PURE__ */ import_react21.default.createElement(ViewAll_default, null))));
   };
   var Header_default = Header;
 
