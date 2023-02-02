@@ -60,7 +60,7 @@ const Header: React.FC<HeaderProps> = ({
           </Icon>
         </ControlStyled>
         {hasHomepage && (
-          <Homepage homepage={homepage} className="bloom-header-homepage">
+          <Homepage homepage={homepage} className="bloom-header-view-all">
             <ViewAll />
           </Homepage>
         )}
