@@ -3,6 +3,7 @@ import { SwiperProps } from "swiper/react";
 export interface ConfigOptions {
   breakpoints?: SwiperBreakpoints;
   credentials?: FetchCredentials;
+  enablePreview?: boolean;
 }
 
 export type SwiperBreakpoints = SwiperProps["breakpoints"];

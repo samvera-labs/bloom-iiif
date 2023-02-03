@@ -7,9 +7,10 @@ import {
 } from "@iiif/presentation-3";
 import {
   CollectionProvider,
+  defaultState,
   useCollectionState,
 } from "context/collection-context";
-import { ConfigOptions } from "../types/types";
+import { ConfigOptions } from "./types/types";
 import Header from "components/Header/Header";
 import Items from "components/Items/Items";
 import hash from "lib/hash";
@@ -22,27 +23,24 @@ interface BloomProps {
 }
 
 const App: React.FC<BloomProps> = (props) => (
-  <CollectionProvider>
+  <CollectionProvider
+    initialState={{
+      ...defaultState,
+      options: { ...props.options },
+    }}
+  >
     <Bloom {...props} />
   </CollectionProvider>
 );
 
-const Bloom: React.FC<BloomProps> = ({ collectionId, options = {} }) => {
+const Bloom: React.FC<BloomProps> = ({ collectionId }) => {
   const store = useCollectionState();
-  const { vault } = store;
+  const { vault, options } = store;
   const [collection, setCollection] = useState<CollectionNormalized>();
   const [error, setError] = useState("");
 
-  /**
-   * todo: add wrapping context and store vault
-   */
   useEffect(() => {
     if (!collectionId) return;
-
-    /**
-     * load collection using @iiif/vault
-     */
-
     vault
       .loadCollection(collectionId)
       .then((data: any) => setCollection(data))
@@ -82,10 +80,7 @@ const Bloom: React.FC<BloomProps> = ({ collectionId, options = {} }) => {
         <Items
           items={collection.items as CollectionItems[]}
           instance={instance}
-          breakpoints={
-            Boolean(options.breakpoints) ? options.breakpoints : undefined
-          }
-          credentials={options.credentials ? options.credentials : "omit"}
+          breakpoints={options.breakpoints}
         />
       </ErrorBoundary>
     </div>
