@@ -53829,6 +53829,10 @@ and ensure you are accounting for this risk.
   // src/context/collection-context.tsx
   var defaultState = {
     isLoaded: false,
+    options: {
+      enablePreview: false,
+      credentials: "omit"
+    },
     vault: new Vault()
   };
   var CollectionStateContext = import_react.default.createContext(defaultState);
@@ -55184,9 +55188,10 @@ and ensure you are accounting for this risk.
   var Placeholder_default = Placeholder2;
 
   // src/components/Items/Item.tsx
-  var Item = ({ credentials, index: index2, item }) => {
+  var Item = ({ index: index2, item }) => {
     const store = useCollectionState();
-    const { vault } = store;
+    const { vault, options } = store;
+    const { credentials, enablePreview } = options;
     const [activeCanvas, setActiveCanvas] = (0, import_react30.useState)(0);
     const [href, setHref] = (0, import_react30.useState)();
     const [id, setId] = (0, import_react30.useState)(item.id);
@@ -55196,7 +55201,7 @@ and ensure you are accounting for this risk.
     const [status, setStatus] = (0, import_react30.useState)(200);
     const [thumbnail, setThumbnail] = (0, import_react30.useState)([]);
     (0, import_react30.useEffect)(() => {
-      isFocused && !manifest ? vault.load(item.id).then((data) => setManifest(data)).catch((error) => {
+      enablePreview && isFocused && !manifest ? vault.load(item.id).then((data) => setManifest(data)).catch((error) => {
         console.error(`Manifest failed to load: ${error}`);
       }) : null;
       return;
@@ -55264,7 +55269,7 @@ and ensure you are accounting for this risk.
           thumbnail
         }
       ),
-      /* @__PURE__ */ import_react30.default.createElement(
+      enablePreview && /* @__PURE__ */ import_react30.default.createElement(
         Preview_default,
         {
           manifest,
@@ -60848,7 +60853,6 @@ and ensure you are accounting for this risk.
   };
   var Items = ({
     breakpoints = defaultBreakpoints,
-    credentials,
     instance,
     items
   }) => {
@@ -60877,14 +60881,7 @@ and ensure you are accounting for this risk.
           "data-index": index2,
           "data-type": item == null ? void 0 : item.type.toLowerCase()
         },
-        /* @__PURE__ */ import_react38.default.createElement(
-          Item_default,
-          {
-            credentials,
-            index: index2,
-            item
-          }
-        )
+        /* @__PURE__ */ import_react38.default.createElement(Item_default, { index: index2, item })
       ))
     ));
   };
@@ -60925,10 +60922,18 @@ and ensure you are accounting for this risk.
   var ErrorFallback_default = ErrorFallback;
 
   // src/index.tsx
-  var App = (props) => /* @__PURE__ */ import_react41.default.createElement(CollectionProvider, null, /* @__PURE__ */ import_react41.default.createElement(Bloom, __spreadValues({}, props)));
-  var Bloom = ({ collectionId, options = {} }) => {
+  var App = (props) => /* @__PURE__ */ import_react41.default.createElement(
+    CollectionProvider,
+    {
+      initialState: __spreadProps(__spreadValues({}, defaultState), {
+        options: __spreadValues({}, props.options)
+      })
+    },
+    /* @__PURE__ */ import_react41.default.createElement(Bloom, __spreadValues({}, props))
+  );
+  var Bloom = ({ collectionId }) => {
     const store = useCollectionState();
-    const { vault } = store;
+    const { vault, options } = store;
     const [collection, setCollection] = (0, import_react41.useState)();
     const [error, setError] = (0, import_react41.useState)("");
     (0, import_react41.useEffect)(() => {
@@ -60964,8 +60969,7 @@ and ensure you are accounting for this risk.
       {
         items: collection.items,
         instance,
-        breakpoints: Boolean(options.breakpoints) ? options.breakpoints : void 0,
-        credentials: options.credentials ? options.credentials : "omit"
+        breakpoints: options.breakpoints
       }
     )));
   };
@@ -61059,40 +61063,36 @@ and ensure you are accounting for this risk.
   // src/dev/collections.ts
   var collections = [
     {
-      url: "https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/athletic-department-footbal-films.json",
-      label: "Football Films"
+      url: "https://api.dc.library.northwestern.edu/api/v2/collections/c373ecd2-2c45-45f2-9f9e-52dc244870bd?as=iiif",
+      label: "Masks of Antonio Fava"
     },
     {
       url: "https://digital.lib.utk.edu/assemble/collection/gsmrc/pcard00",
       label: "Postcards from the Great Smoky Mountains"
     },
     {
-      url: "https://digital.lib.utk.edu/assemble/collection/collections/rfta",
-      label: "Rising from the Ashes"
-    },
-    {
-      url: "https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json",
-      label: "Masks of Antonio Fava"
-    },
-    {
       url: "https://iiif.bodleian.ox.ac.uk/iiif/collection/flora-and-fauna-graeca",
       label: "Flora and Fauna Graeca"
+    },
+    {
+      url: "https://api.dc.library.northwestern.edu/api/v2/collections/b46c9cf7-0e49-4993-9e0e-3cda030c4439?as=iiif&size=100",
+      label: "Charlotte Moorman Archive"
+    },
+    {
+      url: "https://canopy-iiif.vercel.app/api/facet/date/1910",
+      label: "Canopy IIIF - 1910 (Date)"
     },
     {
       url: "https://figgy.princeton.edu/concern/scanned_resources/8b73b1bb-6417-4ae1-b516-bb68d999ed2f/manifest",
       label: "Clarissa"
     },
     {
-      url: "https://dcapi.rdc-staging.library.northwestern.edu/api/v2/search?query=collection.id:%22b5ba2cce-8b7e-4b8a-ad5c-649dd40637b0%22&collectionLabel=Visibility%20Testing&collectionSummary=Collection&as=iiif",
-      label: "Access Demonstration"
+      url: "https://digital.lib.utk.edu/assemble/collection/collections/rfta",
+      label: "Rising from the Ashes"
     },
     {
-      url: "https://dcapi.rdc.library.northwestern.edu/api/v2/search?query=series:%22Berkeley%20Folk%20Music%20Festival%20--%206.%20Festival%20Programs%20&%20Additional%20Operating%20Files%20--%206.3.%20Wild%20West%20Festival%20Operating%20Files%22%20=&collectionLabel=Berkeley%20Folk%20Music%20Festival%20--%206.%20Festival%20Programs%20&%20Additional%20Operating%20Files%20--%206.3.%20Wild%20West%20Festival%20Operating%20Files=&collectionSummary=2%20Items&as=iiif",
-      label: "dev -  bad collection"
-    },
-    {
-      url: "https://dcapi.rdc-staging.library.northwestern.edu/api/v2/works/c483bcc2-a4be-4175-a2d7-b2bcb1e24d28/similar?collectionLabel=More%20Like%20This&collectionSummary=Similar%20to%20null&as=iiif",
-      label: "dev - bad manifest"
+      url: 'https://api.dc.library.northwestern.edu/api/v2/search?query=%22Joan%20Baez%22&collectionLabel=Joan Baez&collectionSummary=Search results for "Joan Baez" (Page 3)&as=iiif&size=40&page=3',
+      label: "Joan Baez (Search Results)"
     }
   ];
 
