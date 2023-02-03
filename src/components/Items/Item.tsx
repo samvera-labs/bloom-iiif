@@ -11,17 +11,16 @@ import { Anchor, ItemStyled } from "./Item.styled";
 import Preview from "components/Preview/Preview";
 import { getCanvasResource } from "lib/iiif";
 import Placeholder from "./Placeholder";
-import { FetchCredentials } from "../../../types/types";
 
 interface ItemProps {
-  credentials: FetchCredentials;
   index: number;
   item: Collection | Manifest;
 }
 
-const Item: React.FC<ItemProps> = ({ credentials, index, item }) => {
+const Item: React.FC<ItemProps> = ({ index, item }) => {
   const store = useCollectionState();
-  const { vault } = store;
+  const { vault, options } = store;
+  const { credentials, enablePreview } = options;
 
   const [activeCanvas, setActiveCanvas] = useState<number>(0);
   const [href, setHref] = useState<string>();
@@ -33,7 +32,7 @@ const Item: React.FC<ItemProps> = ({ credentials, index, item }) => {
   const [thumbnail, setThumbnail] = useState<IIIFExternalWebResource[]>([]);
 
   useEffect(() => {
-    isFocused && !manifest
+    enablePreview && isFocused && !manifest
       ? vault
           .load(item.id)
           .then((data: any) => setManifest(data))
@@ -112,12 +111,14 @@ const Item: React.FC<ItemProps> = ({ credentials, index, item }) => {
           status={status}
           thumbnail={thumbnail}
         />
-        <Preview
-          manifest={manifest as Manifest}
-          activeCanvas={activeCanvas}
-          handleActiveCanvas={handleActiveCanvas}
-          isFocused={isFocused}
-        />
+        {enablePreview && (
+          <Preview
+            manifest={manifest as Manifest}
+            activeCanvas={activeCanvas}
+            handleActiveCanvas={handleActiveCanvas}
+            isFocused={isFocused}
+          />
+        )}
       </Anchor>
     </ItemStyled>
   );

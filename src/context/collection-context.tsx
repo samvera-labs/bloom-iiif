@@ -1,8 +1,10 @@
 import React from "react";
 import { Vault } from "@iiif/vault";
+import { ConfigOptions } from "../types/types";
 
 interface CollectionContextStore {
   isLoaded: boolean;
+  options: ConfigOptions;
   vault: Vault;
 }
 
@@ -11,8 +13,12 @@ interface CollectionAction {
   isLoaded: boolean;
 }
 
-const defaultState: CollectionContextStore = {
+export const defaultState: CollectionContextStore = {
   isLoaded: false,
+  options: {
+    enablePreview: false,
+    credentials: "omit",
+  },
   vault: new Vault(),
 };
 

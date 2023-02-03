@@ -1,7 +1,7 @@
 export const collections = [
   {
-    url: "https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/athletic-department-footbal-films.json",
-    label: "Football Films",
+    url: "https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json",
+    label: "Masks of Antonio Fava",
   },
   {
     url: "https://digital.lib.utk.edu/assemble/collection/gsmrc/pcard00",
@@ -10,10 +10,6 @@ export const collections = [
   {
     url: "https://digital.lib.utk.edu/assemble/collection/collections/rfta",
     label: "Rising from the Ashes",
-  },
-  {
-    url: "https://raw.githubusercontent.com/samvera-labs/bloom-iiif/main/public/fixtures/iiif/collection/masks-of-antonio-fava.json",
-    label: "Masks of Antonio Fava",
   },
   {
     url: "https://iiif.bodleian.ox.ac.uk/iiif/collection/flora-and-fauna-graeca",
