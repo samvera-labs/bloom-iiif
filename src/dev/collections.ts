@@ -1,15 +1,11 @@
 export const collections = [
   {
-    url: "https://api.dc.library.northwestern.edu/api/v2/search?query=assembly&as=iiif",
-    label: "mixed access",
-  },
-  {
     url: "https://api.dc.library.northwestern.edu/api/v2/collections/c373ecd2-2c45-45f2-9f9e-52dc244870bd?as=iiif",
     label: "Masks of Antonio Fava",
   },
   {
-    url: "https://digital.lib.utk.edu/assemble/collection/gsmrc/pcard00",
-    label: "Postcards from the Great Smoky Mountains",
+    url: "https://api.dc.library.northwestern.edu/api/v2/search?query=assembly&as=iiif",
+    label: "Mixed Access (Example)",
   },
   {
     url: "https://iiif.bodleian.ox.ac.uk/iiif/collection/flora-and-fauna-graeca",
