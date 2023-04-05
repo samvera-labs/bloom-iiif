@@ -12,18 +12,18 @@
   var __propIsEnum = Object.prototype.propertyIsEnumerable;
   var __pow = Math.pow;
   var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-  var __spreadValues = (a2, b3) => {
-    for (var prop in b3 ||= {})
-      if (__hasOwnProp.call(b3, prop))
-        __defNormalProp(a2, prop, b3[prop]);
+  var __spreadValues = (a2, b2) => {
+    for (var prop in b2 ||= {})
+      if (__hasOwnProp.call(b2, prop))
+        __defNormalProp(a2, prop, b2[prop]);
     if (__getOwnPropSymbols)
-      for (var prop of __getOwnPropSymbols(b3)) {
-        if (__propIsEnum.call(b3, prop))
-          __defNormalProp(a2, prop, b3[prop]);
+      for (var prop of __getOwnPropSymbols(b2)) {
+        if (__propIsEnum.call(b2, prop))
+          __defNormalProp(a2, prop, b2[prop]);
       }
     return a2;
   };
-  var __spreadProps = (a2, b3) => __defProps(a2, __getOwnPropDescs(b3));
+  var __spreadProps = (a2, b2) => __defProps(a2, __getOwnPropDescs(b2));
   var __commonJS = (cb, mod) => function __require() {
     return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
   };
@@ -348,7 +348,7 @@
                   var init = lazyComponent._init;
                   try {
                     return getComponentNameFromType(init(payload));
-                  } catch (x4) {
+                  } catch (x3) {
                     return null;
                   }
                 }
@@ -643,8 +643,8 @@
                 if (childKey != null) {
                   escapedChildKey = escapeUserProvidedKey(childKey) + "/";
                 }
-                mapIntoArray(mappedChild, array, escapedChildKey, "", function(c4) {
-                  return c4;
+                mapIntoArray(mappedChild, array, escapedChildKey, "", function(c3) {
+                  return c3;
                 });
               } else if (mappedChild != null) {
                 if (isValidElement(mappedChild)) {
@@ -1019,7 +1019,7 @@
             }
             return dispatcher.useContext(Context);
           }
-          function useState8(initialState) {
+          function useState7(initialState) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState);
           }
@@ -1027,11 +1027,11 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useReducer(reducer, initialArg, init);
           }
-          function useRef7(initialValue) {
+          function useRef6(initialValue) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect9(create, deps) {
+          function useEffect8(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -1162,8 +1162,8 @@
               if (prefix === void 0) {
                 try {
                   throw Error();
-                } catch (x4) {
-                  var match = x4.stack.trim().match(/\n( *(at )?)/);
+                } catch (x3) {
+                  var match = x3.stack.trim().match(/\n( *(at )?)/);
                   prefix = match && match[1] || "";
                 }
               }
@@ -1209,23 +1209,23 @@
                 if (typeof Reflect === "object" && Reflect.construct) {
                   try {
                     Reflect.construct(Fake, []);
-                  } catch (x4) {
-                    control = x4;
+                  } catch (x3) {
+                    control = x3;
                   }
                   Reflect.construct(fn, [], Fake);
                 } else {
                   try {
                     Fake.call();
-                  } catch (x4) {
-                    control = x4;
+                  } catch (x3) {
+                    control = x3;
                   }
                   fn.call(Fake.prototype);
                 }
               } else {
                 try {
                   throw Error();
-                } catch (x4) {
-                  control = x4;
+                } catch (x3) {
+                  control = x3;
                 }
                 fn();
               }
@@ -1233,19 +1233,19 @@
               if (sample && control && typeof sample.stack === "string") {
                 var sampleLines = sample.stack.split("\n");
                 var controlLines = control.stack.split("\n");
-                var s4 = sampleLines.length - 1;
-                var c4 = controlLines.length - 1;
-                while (s4 >= 1 && c4 >= 0 && sampleLines[s4] !== controlLines[c4]) {
-                  c4--;
+                var s3 = sampleLines.length - 1;
+                var c3 = controlLines.length - 1;
+                while (s3 >= 1 && c3 >= 0 && sampleLines[s3] !== controlLines[c3]) {
+                  c3--;
                 }
-                for (; s4 >= 1 && c4 >= 0; s4--, c4--) {
-                  if (sampleLines[s4] !== controlLines[c4]) {
-                    if (s4 !== 1 || c4 !== 1) {
+                for (; s3 >= 1 && c3 >= 0; s3--, c3--) {
+                  if (sampleLines[s3] !== controlLines[c3]) {
+                    if (s3 !== 1 || c3 !== 1) {
                       do {
-                        s4--;
-                        c4--;
-                        if (c4 < 0 || sampleLines[s4] !== controlLines[c4]) {
-                          var _frame = "\n" + sampleLines[s4].replace(" at new ", " at ");
+                        s3--;
+                        c3--;
+                        if (c3 < 0 || sampleLines[s3] !== controlLines[c3]) {
+                          var _frame = "\n" + sampleLines[s3].replace(" at new ", " at ");
                           if (fn.displayName && _frame.includes("<anonymous>")) {
                             _frame = _frame.replace("<anonymous>", fn.displayName);
                           }
@@ -1256,7 +1256,7 @@
                           }
                           return _frame;
                         }
-                      } while (s4 >= 1 && c4 >= 0);
+                      } while (s3 >= 1 && c3 >= 0);
                     }
                     break;
                   }
@@ -1318,7 +1318,7 @@
                   var init = lazyComponent._init;
                   try {
                     return describeUnknownElementTypeFrameInDEV(init(payload), source, ownerFn);
-                  } catch (x4) {
+                  } catch (x3) {
                   }
                 }
               }
@@ -1811,15 +1811,15 @@
           exports.useContext = useContext2;
           exports.useDebugValue = useDebugValue;
           exports.useDeferredValue = useDeferredValue;
-          exports.useEffect = useEffect9;
+          exports.useEffect = useEffect8;
           exports.useId = useId;
           exports.useImperativeHandle = useImperativeHandle;
           exports.useInsertionEffect = useInsertionEffect;
           exports.useLayoutEffect = useLayoutEffect2;
           exports.useMemo = useMemo;
           exports.useReducer = useReducer;
-          exports.useRef = useRef7;
-          exports.useState = useState8;
+          exports.useRef = useRef6;
+          exports.useState = useState7;
           exports.useSyncExternalStore = useSyncExternalStore;
           exports.useTransition = useTransition;
           exports.version = ReactVersion;
@@ -1840,159 +1840,6 @@
       } else {
         module.exports = require_react_development();
       }
-    }
-  });
-
-  // node_modules/typesafe-actions/dist/typesafe-actions.umd.production.js
-  var require_typesafe_actions_umd_production = __commonJS({
-    "node_modules/typesafe-actions/dist/typesafe-actions.umd.production.js"(exports, module) {
-      !function(n2, t2) {
-        "object" == typeof exports && "undefined" != typeof module ? t2(exports) : "function" == typeof define && define.amd ? define(["exports"], t2) : t2((n2 = n2 || self).TypesafeActions = {});
-      }(exports, function(n2) {
-        "use strict";
-        function t2(n3) {
-          return null == n3;
-        }
-        function r2(n3) {
-          throw new Error("Argument " + n3 + " is empty.");
-        }
-        function e2(n3) {
-          return "function" == typeof n3 && "getType" in n3;
-        }
-        function i3(n3) {
-          throw new Error("Argument " + n3 + ' is invalid, it should be an action-creator instance from "typesafe-actions"');
-        }
-        function o2(n3, t3) {
-          if (null == n3)
-            throw new Error("Argument contains array with empty element at index " + t3);
-          if (null == n3.getType)
-            throw new Error("Argument contains array with invalid element at index " + t3 + ', it should be an action-creator instance from "typesafe-actions"');
-        }
-        function u3(n3) {
-          return "string" == typeof n3 || "symbol" == typeof n3;
-        }
-        function a2(n3) {
-          return !u3(n3);
-        }
-        function c4(n3) {
-          throw new Error("Argument " + n3 + " is invalid, it should be an action type of type: string | symbol");
-        }
-        function f3(n3, t3) {
-          if (null == n3)
-            throw new Error("Argument contains array with empty element at index " + t3);
-          if ("string" != typeof n3 && "symbol" != typeof n3)
-            throw new Error("Argument contains array with invalid element at index " + t3 + ", it should be of type: string | symbol");
-        }
-        function s4(n3, e3, o3, u4) {
-          return t2(n3) && r2(1), a2(n3) && i3(1), { type: n3, payload: e3, meta: o3, error: u4 };
-        }
-        function y3(n3, e3) {
-          t2(n3) && r2(1), a2(n3) && c4(1);
-          return Object.assign(function() {
-            var t3 = null != e3 ? e3.apply(void 0, arguments) : void 0;
-            return Object.assign({ type: n3 }, t3);
-          }, { getType: function() {
-            return n3;
-          }, toString: function() {
-            return n3;
-          } });
-        }
-        function l2(n3, e3, i4) {
-          return t2(n3) && r2(1), a2(n3) && c4(1), function() {
-            return y3(n3, function() {
-              var n4 = arguments.length <= 0 ? void 0 : arguments[0], t3 = arguments.length <= 1 ? void 0 : arguments[1];
-              return null == e3 && null == i4 || (n4 = null != e3 ? e3.apply(void 0, arguments) : void 0, t3 = null != i4 ? i4.apply(void 0, arguments) : void 0), Object.assign({}, void 0 !== n4 && { payload: n4 }, {}, void 0 !== t3 && { meta: t3 });
-            });
-          };
-        }
-        function p3(n3) {
-          return t2(n3) && r2(1), e2(n3) || i3(1), n3.getType();
-        }
-        function d4(n3, e3) {
-          t2(n3) && r2(1), a2(n3) && c4(1);
-          var i4 = null != e3 ? e3(n3) : function() {
-            return { type: n3 };
-          };
-          return Object.assign(i4, { getType: function() {
-            return n3;
-          }, toString: function() {
-            return n3;
-          } });
-        }
-        var g3 = { createAction: function(n3, t3) {
-          var r3 = null == t3 ? function() {
-            return s4(n3);
-          } : t3(s4.bind(null, n3));
-          return Object.assign(r3, { getType: function() {
-            return n3;
-          }, toString: function() {
-            return n3;
-          } });
-        }, createCustomAction: d4, createStandardAction: function(n3) {
-          return t2(n3) && r2(1), a2(n3) && c4(1), Object.assign(function() {
-            return d4(n3, function(n4) {
-              return function(t3, r3) {
-                return { type: n4, payload: t3, meta: r3 };
-              };
-            });
-          }, { map: function(t3) {
-            return d4(n3, function(n4) {
-              return function(r3, e3) {
-                return Object.assign(t3(r3, e3), { type: n4 });
-              };
-            });
-          } });
-        } };
-        n2.action = s4, n2.createAction = l2, n2.createAsyncAction = function(n3, t3, r3, e3) {
-          return function() {
-            var i4 = [n3, t3, r3, e3].map(function(n4, t4) {
-              return Array.isArray(n4) ? l2(n4[0], n4[1], n4[2])() : "string" == typeof n4 || "symbol" == typeof n4 ? l2(n4)() : void (t4 < 3 && function(n5) {
-                throw new Error("Argument " + n5 + ' is invalid, it should be an action type of "string | symbol" or a tuple of "[string | symbol, Function, Function?]"');
-              }(t4));
-            });
-            return { request: i4[0], success: i4[1], failure: i4[2], cancel: i4[3] };
-          };
-        }, n2.createCustomAction = y3, n2.createReducer = function n3(t3, r3) {
-          void 0 === r3 && (r3 = {});
-          var i4 = Object.assign({}, r3), o3 = function(r4, o4) {
-            var a3 = Array.isArray(r4) ? r4 : [r4], c5 = {};
-            return a3.map(function(n4, t4) {
-              return e2(n4) ? p3(n4) : u3(n4) ? n4 : function(n5) {
-                throw new Error("Argument " + n5 + ' is invalid, it should be an action-creator instance from "typesafe-actions" or action type of type: string | symbol');
-              }(t4 + 1);
-            }).forEach(function(n4) {
-              return c5[n4] = o4;
-            }), n3(t3, Object.assign({}, i4, {}, c5));
-          };
-          return Object.assign(function(n4, r4) {
-            if (void 0 === n4 && (n4 = t3), i4.hasOwnProperty(r4.type)) {
-              var e3 = i4[r4.type];
-              if ("function" != typeof e3)
-                throw Error('Reducer under "' + r4.type + '" key is not a valid reducer');
-              return e3(n4, r4);
-            }
-            return n4;
-          }, { handlers: Object.assign({}, i4), handleAction: o3, handleType: o3 });
-        }, n2.deprecated = g3, n2.getType = p3, n2.isActionOf = function(n3, e3) {
-          t2(n3) && r2(1);
-          var i4 = Array.isArray(n3) ? n3 : [n3];
-          i4.forEach(o2);
-          var u4 = function(n4) {
-            return i4.some(function(t3) {
-              return n4.type === t3.getType();
-            });
-          };
-          return void 0 === e3 ? u4 : u4(e3);
-        }, n2.isOfType = function(n3, e3) {
-          t2(n3) && r2(1);
-          var i4 = Array.isArray(n3) ? n3 : [n3];
-          i4.forEach(f3);
-          var o3 = function(n4) {
-            return i4.includes(n4.type);
-          };
-          return void 0 === e3 ? o3 : o3(e3);
-        };
-      });
     }
   });
 
@@ -2065,17 +1912,17 @@
       var entities_json_1 = __importDefault(require_entities());
       var legacy_json_1 = __importDefault(require_legacy());
       var xml_json_1 = __importDefault(require_xml());
-      function whitespace(c4) {
-        return c4 === " " || c4 === "\n" || c4 === "	" || c4 === "\f" || c4 === "\r";
+      function whitespace(c3) {
+        return c3 === " " || c3 === "\n" || c3 === "	" || c3 === "\f" || c3 === "\r";
       }
-      function isASCIIAlpha(c4) {
-        return c4 >= "a" && c4 <= "z" || c4 >= "A" && c4 <= "Z";
+      function isASCIIAlpha(c3) {
+        return c3 >= "a" && c3 <= "z" || c3 >= "A" && c3 <= "Z";
       }
       function ifElseState(upper, SUCCESS, FAILURE) {
         var lower = upper.toLowerCase();
         if (upper === lower) {
-          return function(t2, c4) {
-            if (c4 === lower) {
+          return function(t2, c3) {
+            if (c3 === lower) {
               t2._state = SUCCESS;
             } else {
               t2._state = FAILURE;
@@ -2083,8 +1930,8 @@
             }
           };
         }
-        return function(t2, c4) {
-          if (c4 === lower || c4 === upper) {
+        return function(t2, c3) {
+          if (c3 === lower || c3 === upper) {
             t2._state = SUCCESS;
           } else {
             t2._state = FAILURE;
@@ -2094,8 +1941,8 @@
       }
       function consumeSpecialNameChar(upper, NEXT_STATE) {
         var lower = upper.toLowerCase();
-        return function(t2, c4) {
-          if (c4 === lower || c4 === upper) {
+        return function(t2, c3) {
+          if (c3 === lower || c3 === upper) {
             t2._state = NEXT_STATE;
           } else {
             t2._state = 3;
@@ -2189,14 +2036,14 @@
         Tokenizer2.prototype.getAbsoluteIndex = function() {
           return this.bufferOffset + this._index;
         };
-        Tokenizer2.prototype.stateText = function(c4) {
-          if (c4 === "<") {
+        Tokenizer2.prototype.stateText = function(c3) {
+          if (c3 === "<") {
             if (this._index > this.sectionStart) {
               this.cbs.ontext(this.getSection());
             }
             this._state = 2;
             this.sectionStart = this._index;
-          } else if (this.decodeEntities && c4 === "&" && (this.special === 1 || this.special === 4)) {
+          } else if (this.decodeEntities && c3 === "&" && (this.special === 1 || this.special === 4)) {
             if (this._index > this.sectionStart) {
               this.cbs.ontext(this.getSection());
             }
@@ -2205,51 +2052,51 @@
             this.sectionStart = this._index;
           }
         };
-        Tokenizer2.prototype.isTagStartChar = function(c4) {
-          return isASCIIAlpha(c4) || this.xmlMode && !whitespace(c4) && c4 !== "/" && c4 !== ">";
+        Tokenizer2.prototype.isTagStartChar = function(c3) {
+          return isASCIIAlpha(c3) || this.xmlMode && !whitespace(c3) && c3 !== "/" && c3 !== ">";
         };
-        Tokenizer2.prototype.stateBeforeTagName = function(c4) {
-          if (c4 === "/") {
+        Tokenizer2.prototype.stateBeforeTagName = function(c3) {
+          if (c3 === "/") {
             this._state = 5;
-          } else if (c4 === "<") {
+          } else if (c3 === "<") {
             this.cbs.ontext(this.getSection());
             this.sectionStart = this._index;
-          } else if (c4 === ">" || this.special !== 1 || whitespace(c4)) {
+          } else if (c3 === ">" || this.special !== 1 || whitespace(c3)) {
             this._state = 1;
-          } else if (c4 === "!") {
+          } else if (c3 === "!") {
             this._state = 15;
             this.sectionStart = this._index + 1;
-          } else if (c4 === "?") {
+          } else if (c3 === "?") {
             this._state = 17;
             this.sectionStart = this._index + 1;
-          } else if (!this.isTagStartChar(c4)) {
+          } else if (!this.isTagStartChar(c3)) {
             this._state = 1;
           } else {
-            this._state = !this.xmlMode && (c4 === "s" || c4 === "S") ? 32 : !this.xmlMode && (c4 === "t" || c4 === "T") ? 52 : 3;
+            this._state = !this.xmlMode && (c3 === "s" || c3 === "S") ? 32 : !this.xmlMode && (c3 === "t" || c3 === "T") ? 52 : 3;
             this.sectionStart = this._index;
           }
         };
-        Tokenizer2.prototype.stateInTagName = function(c4) {
-          if (c4 === "/" || c4 === ">" || whitespace(c4)) {
+        Tokenizer2.prototype.stateInTagName = function(c3) {
+          if (c3 === "/" || c3 === ">" || whitespace(c3)) {
             this.emitToken("onopentagname");
             this._state = 8;
             this._index--;
           }
         };
-        Tokenizer2.prototype.stateBeforeClosingTagName = function(c4) {
-          if (whitespace(c4)) {
-          } else if (c4 === ">") {
+        Tokenizer2.prototype.stateBeforeClosingTagName = function(c3) {
+          if (whitespace(c3)) {
+          } else if (c3 === ">") {
             this._state = 1;
           } else if (this.special !== 1) {
-            if (this.special !== 4 && (c4 === "s" || c4 === "S")) {
+            if (this.special !== 4 && (c3 === "s" || c3 === "S")) {
               this._state = 33;
-            } else if (this.special === 4 && (c4 === "t" || c4 === "T")) {
+            } else if (this.special === 4 && (c3 === "t" || c3 === "T")) {
               this._state = 53;
             } else {
               this._state = 1;
               this._index--;
             }
-          } else if (!this.isTagStartChar(c4)) {
+          } else if (!this.isTagStartChar(c3)) {
             this._state = 20;
             this.sectionStart = this._index;
           } else {
@@ -2257,161 +2104,161 @@
             this.sectionStart = this._index;
           }
         };
-        Tokenizer2.prototype.stateInClosingTagName = function(c4) {
-          if (c4 === ">" || whitespace(c4)) {
+        Tokenizer2.prototype.stateInClosingTagName = function(c3) {
+          if (c3 === ">" || whitespace(c3)) {
             this.emitToken("onclosetag");
             this._state = 7;
             this._index--;
           }
         };
-        Tokenizer2.prototype.stateAfterClosingTagName = function(c4) {
-          if (c4 === ">") {
+        Tokenizer2.prototype.stateAfterClosingTagName = function(c3) {
+          if (c3 === ">") {
             this._state = 1;
             this.sectionStart = this._index + 1;
           }
         };
-        Tokenizer2.prototype.stateBeforeAttributeName = function(c4) {
-          if (c4 === ">") {
+        Tokenizer2.prototype.stateBeforeAttributeName = function(c3) {
+          if (c3 === ">") {
             this.cbs.onopentagend();
             this._state = 1;
             this.sectionStart = this._index + 1;
-          } else if (c4 === "/") {
+          } else if (c3 === "/") {
             this._state = 4;
-          } else if (!whitespace(c4)) {
+          } else if (!whitespace(c3)) {
             this._state = 9;
             this.sectionStart = this._index;
           }
         };
-        Tokenizer2.prototype.stateInSelfClosingTag = function(c4) {
-          if (c4 === ">") {
+        Tokenizer2.prototype.stateInSelfClosingTag = function(c3) {
+          if (c3 === ">") {
             this.cbs.onselfclosingtag();
             this._state = 1;
             this.sectionStart = this._index + 1;
             this.special = 1;
-          } else if (!whitespace(c4)) {
+          } else if (!whitespace(c3)) {
             this._state = 8;
             this._index--;
           }
         };
-        Tokenizer2.prototype.stateInAttributeName = function(c4) {
-          if (c4 === "=" || c4 === "/" || c4 === ">" || whitespace(c4)) {
+        Tokenizer2.prototype.stateInAttributeName = function(c3) {
+          if (c3 === "=" || c3 === "/" || c3 === ">" || whitespace(c3)) {
             this.cbs.onattribname(this.getSection());
             this.sectionStart = -1;
             this._state = 10;
             this._index--;
           }
         };
-        Tokenizer2.prototype.stateAfterAttributeName = function(c4) {
-          if (c4 === "=") {
+        Tokenizer2.prototype.stateAfterAttributeName = function(c3) {
+          if (c3 === "=") {
             this._state = 11;
-          } else if (c4 === "/" || c4 === ">") {
+          } else if (c3 === "/" || c3 === ">") {
             this.cbs.onattribend(void 0);
             this._state = 8;
             this._index--;
-          } else if (!whitespace(c4)) {
+          } else if (!whitespace(c3)) {
             this.cbs.onattribend(void 0);
             this._state = 9;
             this.sectionStart = this._index;
           }
         };
-        Tokenizer2.prototype.stateBeforeAttributeValue = function(c4) {
-          if (c4 === '"') {
+        Tokenizer2.prototype.stateBeforeAttributeValue = function(c3) {
+          if (c3 === '"') {
             this._state = 12;
             this.sectionStart = this._index + 1;
-          } else if (c4 === "'") {
+          } else if (c3 === "'") {
             this._state = 13;
             this.sectionStart = this._index + 1;
-          } else if (!whitespace(c4)) {
+          } else if (!whitespace(c3)) {
             this._state = 14;
             this.sectionStart = this._index;
             this._index--;
           }
         };
-        Tokenizer2.prototype.handleInAttributeValue = function(c4, quote) {
-          if (c4 === quote) {
+        Tokenizer2.prototype.handleInAttributeValue = function(c3, quote) {
+          if (c3 === quote) {
             this.emitToken("onattribdata");
             this.cbs.onattribend(quote);
             this._state = 8;
-          } else if (this.decodeEntities && c4 === "&") {
+          } else if (this.decodeEntities && c3 === "&") {
             this.emitToken("onattribdata");
             this.baseState = this._state;
             this._state = 62;
             this.sectionStart = this._index;
           }
         };
-        Tokenizer2.prototype.stateInAttributeValueDoubleQuotes = function(c4) {
-          this.handleInAttributeValue(c4, '"');
+        Tokenizer2.prototype.stateInAttributeValueDoubleQuotes = function(c3) {
+          this.handleInAttributeValue(c3, '"');
         };
-        Tokenizer2.prototype.stateInAttributeValueSingleQuotes = function(c4) {
-          this.handleInAttributeValue(c4, "'");
+        Tokenizer2.prototype.stateInAttributeValueSingleQuotes = function(c3) {
+          this.handleInAttributeValue(c3, "'");
         };
-        Tokenizer2.prototype.stateInAttributeValueNoQuotes = function(c4) {
-          if (whitespace(c4) || c4 === ">") {
+        Tokenizer2.prototype.stateInAttributeValueNoQuotes = function(c3) {
+          if (whitespace(c3) || c3 === ">") {
             this.emitToken("onattribdata");
             this.cbs.onattribend(null);
             this._state = 8;
             this._index--;
-          } else if (this.decodeEntities && c4 === "&") {
+          } else if (this.decodeEntities && c3 === "&") {
             this.emitToken("onattribdata");
             this.baseState = this._state;
             this._state = 62;
             this.sectionStart = this._index;
           }
         };
-        Tokenizer2.prototype.stateBeforeDeclaration = function(c4) {
-          this._state = c4 === "[" ? 23 : c4 === "-" ? 18 : 16;
+        Tokenizer2.prototype.stateBeforeDeclaration = function(c3) {
+          this._state = c3 === "[" ? 23 : c3 === "-" ? 18 : 16;
         };
-        Tokenizer2.prototype.stateInDeclaration = function(c4) {
-          if (c4 === ">") {
+        Tokenizer2.prototype.stateInDeclaration = function(c3) {
+          if (c3 === ">") {
             this.cbs.ondeclaration(this.getSection());
             this._state = 1;
             this.sectionStart = this._index + 1;
           }
         };
-        Tokenizer2.prototype.stateInProcessingInstruction = function(c4) {
-          if (c4 === ">") {
+        Tokenizer2.prototype.stateInProcessingInstruction = function(c3) {
+          if (c3 === ">") {
             this.cbs.onprocessinginstruction(this.getSection());
             this._state = 1;
             this.sectionStart = this._index + 1;
           }
         };
-        Tokenizer2.prototype.stateBeforeComment = function(c4) {
-          if (c4 === "-") {
+        Tokenizer2.prototype.stateBeforeComment = function(c3) {
+          if (c3 === "-") {
             this._state = 19;
             this.sectionStart = this._index + 1;
           } else {
             this._state = 16;
           }
         };
-        Tokenizer2.prototype.stateInComment = function(c4) {
-          if (c4 === "-")
+        Tokenizer2.prototype.stateInComment = function(c3) {
+          if (c3 === "-")
             this._state = 21;
         };
-        Tokenizer2.prototype.stateInSpecialComment = function(c4) {
-          if (c4 === ">") {
+        Tokenizer2.prototype.stateInSpecialComment = function(c3) {
+          if (c3 === ">") {
             this.cbs.oncomment(this.buffer.substring(this.sectionStart, this._index));
             this._state = 1;
             this.sectionStart = this._index + 1;
           }
         };
-        Tokenizer2.prototype.stateAfterComment1 = function(c4) {
-          if (c4 === "-") {
+        Tokenizer2.prototype.stateAfterComment1 = function(c3) {
+          if (c3 === "-") {
             this._state = 22;
           } else {
             this._state = 19;
           }
         };
-        Tokenizer2.prototype.stateAfterComment2 = function(c4) {
-          if (c4 === ">") {
+        Tokenizer2.prototype.stateAfterComment2 = function(c3) {
+          if (c3 === ">") {
             this.cbs.oncomment(this.buffer.substring(this.sectionStart, this._index - 2));
             this._state = 1;
             this.sectionStart = this._index + 1;
-          } else if (c4 !== "-") {
+          } else if (c3 !== "-") {
             this._state = 19;
           }
         };
-        Tokenizer2.prototype.stateBeforeCdata6 = function(c4) {
-          if (c4 === "[") {
+        Tokenizer2.prototype.stateBeforeCdata6 = function(c3) {
+          if (c3 === "[") {
             this._state = 29;
             this.sectionStart = this._index + 1;
           } else {
@@ -2419,52 +2266,52 @@
             this._index--;
           }
         };
-        Tokenizer2.prototype.stateInCdata = function(c4) {
-          if (c4 === "]")
+        Tokenizer2.prototype.stateInCdata = function(c3) {
+          if (c3 === "]")
             this._state = 30;
         };
-        Tokenizer2.prototype.stateAfterCdata1 = function(c4) {
-          if (c4 === "]")
+        Tokenizer2.prototype.stateAfterCdata1 = function(c3) {
+          if (c3 === "]")
             this._state = 31;
           else
             this._state = 29;
         };
-        Tokenizer2.prototype.stateAfterCdata2 = function(c4) {
-          if (c4 === ">") {
+        Tokenizer2.prototype.stateAfterCdata2 = function(c3) {
+          if (c3 === ">") {
             this.cbs.oncdata(this.buffer.substring(this.sectionStart, this._index - 2));
             this._state = 1;
             this.sectionStart = this._index + 1;
-          } else if (c4 !== "]") {
+          } else if (c3 !== "]") {
             this._state = 29;
           }
         };
-        Tokenizer2.prototype.stateBeforeSpecialS = function(c4) {
-          if (c4 === "c" || c4 === "C") {
+        Tokenizer2.prototype.stateBeforeSpecialS = function(c3) {
+          if (c3 === "c" || c3 === "C") {
             this._state = 34;
-          } else if (c4 === "t" || c4 === "T") {
+          } else if (c3 === "t" || c3 === "T") {
             this._state = 44;
           } else {
             this._state = 3;
             this._index--;
           }
         };
-        Tokenizer2.prototype.stateBeforeSpecialSEnd = function(c4) {
-          if (this.special === 2 && (c4 === "c" || c4 === "C")) {
+        Tokenizer2.prototype.stateBeforeSpecialSEnd = function(c3) {
+          if (this.special === 2 && (c3 === "c" || c3 === "C")) {
             this._state = 39;
-          } else if (this.special === 3 && (c4 === "t" || c4 === "T")) {
+          } else if (this.special === 3 && (c3 === "t" || c3 === "T")) {
             this._state = 48;
           } else
             this._state = 1;
         };
-        Tokenizer2.prototype.stateBeforeSpecialLast = function(c4, special) {
-          if (c4 === "/" || c4 === ">" || whitespace(c4)) {
+        Tokenizer2.prototype.stateBeforeSpecialLast = function(c3, special) {
+          if (c3 === "/" || c3 === ">" || whitespace(c3)) {
             this.special = special;
           }
           this._state = 3;
           this._index--;
         };
-        Tokenizer2.prototype.stateAfterSpecialLast = function(c4, sectionStartOffset) {
-          if (c4 === ">" || whitespace(c4)) {
+        Tokenizer2.prototype.stateAfterSpecialLast = function(c3, sectionStartOffset) {
+          if (c3 === ">" || whitespace(c3)) {
             this.special = 1;
             this._state = 6;
             this.sectionStart = this._index - sectionStartOffset;
@@ -2497,17 +2344,17 @@
             limit--;
           }
         };
-        Tokenizer2.prototype.stateInNamedEntity = function(c4) {
-          if (c4 === ";") {
+        Tokenizer2.prototype.stateInNamedEntity = function(c3) {
+          if (c3 === ";") {
             this.parseFixedEntity();
             if (this.baseState === 1 && this.sectionStart + 1 < this._index && !this.xmlMode) {
               this.parseLegacyEntity();
             }
             this._state = this.baseState;
-          } else if ((c4 < "0" || c4 > "9") && !isASCIIAlpha(c4)) {
+          } else if ((c3 < "0" || c3 > "9") && !isASCIIAlpha(c3)) {
             if (this.xmlMode || this.sectionStart + 1 === this._index) {
             } else if (this.baseState !== 1) {
-              if (c4 !== "=") {
+              if (c3 !== "=") {
                 this.parseFixedEntity(legacy_json_1.default);
               }
             } else {
@@ -2527,10 +2374,10 @@
           }
           this._state = this.baseState;
         };
-        Tokenizer2.prototype.stateInNumericEntity = function(c4) {
-          if (c4 === ";") {
+        Tokenizer2.prototype.stateInNumericEntity = function(c3) {
+          if (c3 === ";") {
             this.decodeNumericEntity(2, 10, true);
-          } else if (c4 < "0" || c4 > "9") {
+          } else if (c3 < "0" || c3 > "9") {
             if (!this.xmlMode) {
               this.decodeNumericEntity(2, 10, false);
             } else {
@@ -2539,10 +2386,10 @@
             this._index--;
           }
         };
-        Tokenizer2.prototype.stateInHexEntity = function(c4) {
-          if (c4 === ";") {
+        Tokenizer2.prototype.stateInHexEntity = function(c3) {
+          if (c3 === ";") {
             this.decodeNumericEntity(3, 16, true);
-          } else if ((c4 < "a" || c4 > "f") && (c4 < "A" || c4 > "F") && (c4 < "0" || c4 > "9")) {
+          } else if ((c3 < "a" || c3 > "f") && (c3 < "A" || c3 > "F") && (c3 < "0" || c3 > "9")) {
             if (!this.xmlMode) {
               this.decodeNumericEntity(3, 16, false);
             } else {
@@ -2578,139 +2425,139 @@
         };
         Tokenizer2.prototype.parse = function() {
           while (this._index < this.buffer.length && this.running) {
-            var c4 = this.buffer.charAt(this._index);
+            var c3 = this.buffer.charAt(this._index);
             if (this._state === 1) {
-              this.stateText(c4);
+              this.stateText(c3);
             } else if (this._state === 12) {
-              this.stateInAttributeValueDoubleQuotes(c4);
+              this.stateInAttributeValueDoubleQuotes(c3);
             } else if (this._state === 9) {
-              this.stateInAttributeName(c4);
+              this.stateInAttributeName(c3);
             } else if (this._state === 19) {
-              this.stateInComment(c4);
+              this.stateInComment(c3);
             } else if (this._state === 20) {
-              this.stateInSpecialComment(c4);
+              this.stateInSpecialComment(c3);
             } else if (this._state === 8) {
-              this.stateBeforeAttributeName(c4);
+              this.stateBeforeAttributeName(c3);
             } else if (this._state === 3) {
-              this.stateInTagName(c4);
+              this.stateInTagName(c3);
             } else if (this._state === 6) {
-              this.stateInClosingTagName(c4);
+              this.stateInClosingTagName(c3);
             } else if (this._state === 2) {
-              this.stateBeforeTagName(c4);
+              this.stateBeforeTagName(c3);
             } else if (this._state === 10) {
-              this.stateAfterAttributeName(c4);
+              this.stateAfterAttributeName(c3);
             } else if (this._state === 13) {
-              this.stateInAttributeValueSingleQuotes(c4);
+              this.stateInAttributeValueSingleQuotes(c3);
             } else if (this._state === 11) {
-              this.stateBeforeAttributeValue(c4);
+              this.stateBeforeAttributeValue(c3);
             } else if (this._state === 5) {
-              this.stateBeforeClosingTagName(c4);
+              this.stateBeforeClosingTagName(c3);
             } else if (this._state === 7) {
-              this.stateAfterClosingTagName(c4);
+              this.stateAfterClosingTagName(c3);
             } else if (this._state === 32) {
-              this.stateBeforeSpecialS(c4);
+              this.stateBeforeSpecialS(c3);
             } else if (this._state === 21) {
-              this.stateAfterComment1(c4);
+              this.stateAfterComment1(c3);
             } else if (this._state === 14) {
-              this.stateInAttributeValueNoQuotes(c4);
+              this.stateInAttributeValueNoQuotes(c3);
             } else if (this._state === 4) {
-              this.stateInSelfClosingTag(c4);
+              this.stateInSelfClosingTag(c3);
             } else if (this._state === 16) {
-              this.stateInDeclaration(c4);
+              this.stateInDeclaration(c3);
             } else if (this._state === 15) {
-              this.stateBeforeDeclaration(c4);
+              this.stateBeforeDeclaration(c3);
             } else if (this._state === 22) {
-              this.stateAfterComment2(c4);
+              this.stateAfterComment2(c3);
             } else if (this._state === 18) {
-              this.stateBeforeComment(c4);
+              this.stateBeforeComment(c3);
             } else if (this._state === 33) {
-              this.stateBeforeSpecialSEnd(c4);
+              this.stateBeforeSpecialSEnd(c3);
             } else if (this._state === 53) {
-              stateAfterSpecialTEnd(this, c4);
+              stateAfterSpecialTEnd(this, c3);
             } else if (this._state === 39) {
-              stateAfterScript1(this, c4);
+              stateAfterScript1(this, c3);
             } else if (this._state === 40) {
-              stateAfterScript2(this, c4);
+              stateAfterScript2(this, c3);
             } else if (this._state === 41) {
-              stateAfterScript3(this, c4);
+              stateAfterScript3(this, c3);
             } else if (this._state === 34) {
-              stateBeforeScript1(this, c4);
+              stateBeforeScript1(this, c3);
             } else if (this._state === 35) {
-              stateBeforeScript2(this, c4);
+              stateBeforeScript2(this, c3);
             } else if (this._state === 36) {
-              stateBeforeScript3(this, c4);
+              stateBeforeScript3(this, c3);
             } else if (this._state === 37) {
-              stateBeforeScript4(this, c4);
+              stateBeforeScript4(this, c3);
             } else if (this._state === 38) {
-              this.stateBeforeSpecialLast(c4, 2);
+              this.stateBeforeSpecialLast(c3, 2);
             } else if (this._state === 42) {
-              stateAfterScript4(this, c4);
+              stateAfterScript4(this, c3);
             } else if (this._state === 43) {
-              this.stateAfterSpecialLast(c4, 6);
+              this.stateAfterSpecialLast(c3, 6);
             } else if (this._state === 44) {
-              stateBeforeStyle1(this, c4);
+              stateBeforeStyle1(this, c3);
             } else if (this._state === 29) {
-              this.stateInCdata(c4);
+              this.stateInCdata(c3);
             } else if (this._state === 45) {
-              stateBeforeStyle2(this, c4);
+              stateBeforeStyle2(this, c3);
             } else if (this._state === 46) {
-              stateBeforeStyle3(this, c4);
+              stateBeforeStyle3(this, c3);
             } else if (this._state === 47) {
-              this.stateBeforeSpecialLast(c4, 3);
+              this.stateBeforeSpecialLast(c3, 3);
             } else if (this._state === 48) {
-              stateAfterStyle1(this, c4);
+              stateAfterStyle1(this, c3);
             } else if (this._state === 49) {
-              stateAfterStyle2(this, c4);
+              stateAfterStyle2(this, c3);
             } else if (this._state === 50) {
-              stateAfterStyle3(this, c4);
+              stateAfterStyle3(this, c3);
             } else if (this._state === 51) {
-              this.stateAfterSpecialLast(c4, 5);
+              this.stateAfterSpecialLast(c3, 5);
             } else if (this._state === 52) {
-              stateBeforeSpecialT(this, c4);
+              stateBeforeSpecialT(this, c3);
             } else if (this._state === 54) {
-              stateBeforeTitle1(this, c4);
+              stateBeforeTitle1(this, c3);
             } else if (this._state === 55) {
-              stateBeforeTitle2(this, c4);
+              stateBeforeTitle2(this, c3);
             } else if (this._state === 56) {
-              stateBeforeTitle3(this, c4);
+              stateBeforeTitle3(this, c3);
             } else if (this._state === 57) {
-              this.stateBeforeSpecialLast(c4, 4);
+              this.stateBeforeSpecialLast(c3, 4);
             } else if (this._state === 58) {
-              stateAfterTitle1(this, c4);
+              stateAfterTitle1(this, c3);
             } else if (this._state === 59) {
-              stateAfterTitle2(this, c4);
+              stateAfterTitle2(this, c3);
             } else if (this._state === 60) {
-              stateAfterTitle3(this, c4);
+              stateAfterTitle3(this, c3);
             } else if (this._state === 61) {
-              this.stateAfterSpecialLast(c4, 5);
+              this.stateAfterSpecialLast(c3, 5);
             } else if (this._state === 17) {
-              this.stateInProcessingInstruction(c4);
+              this.stateInProcessingInstruction(c3);
             } else if (this._state === 64) {
-              this.stateInNamedEntity(c4);
+              this.stateInNamedEntity(c3);
             } else if (this._state === 23) {
-              stateBeforeCdata1(this, c4);
+              stateBeforeCdata1(this, c3);
             } else if (this._state === 62) {
-              stateBeforeEntity(this, c4);
+              stateBeforeEntity(this, c3);
             } else if (this._state === 24) {
-              stateBeforeCdata2(this, c4);
+              stateBeforeCdata2(this, c3);
             } else if (this._state === 25) {
-              stateBeforeCdata3(this, c4);
+              stateBeforeCdata3(this, c3);
             } else if (this._state === 30) {
-              this.stateAfterCdata1(c4);
+              this.stateAfterCdata1(c3);
             } else if (this._state === 31) {
-              this.stateAfterCdata2(c4);
+              this.stateAfterCdata2(c3);
             } else if (this._state === 26) {
-              stateBeforeCdata4(this, c4);
+              stateBeforeCdata4(this, c3);
             } else if (this._state === 27) {
-              stateBeforeCdata5(this, c4);
+              stateBeforeCdata5(this, c3);
             } else if (this._state === 28) {
-              this.stateBeforeCdata6(c4);
+              this.stateBeforeCdata6(c3);
             } else if (this._state === 66) {
-              this.stateInHexEntity(c4);
+              this.stateInHexEntity(c3);
             } else if (this._state === 65) {
-              this.stateInNumericEntity(c4);
+              this.stateInNumericEntity(c3);
             } else if (this._state === 63) {
-              stateBeforeNumericEntity(this, c4);
+              stateBeforeNumericEntity(this, c3);
             } else {
               this.cbs.onerror(Error("unknown _state"), this._state);
             }
@@ -2880,7 +2727,7 @@
           if (options === void 0) {
             options = {};
           }
-          var _a, _b, _c, _d, _e2;
+          var _a, _b, _c, _d, _e;
           this.startIndex = 0;
           this.endIndex = null;
           this.tagname = "";
@@ -2894,7 +2741,7 @@
           this.lowerCaseTagNames = (_a = options.lowerCaseTags) !== null && _a !== void 0 ? _a : !options.xmlMode;
           this.lowerCaseAttributeNames = (_b = options.lowerCaseAttributeNames) !== null && _b !== void 0 ? _b : !options.xmlMode;
           this.tokenizer = new ((_c = options.Tokenizer) !== null && _c !== void 0 ? _c : Tokenizer_1.default)(this.options, this);
-          (_e2 = (_d = this.cbs).onparserinit) === null || _e2 === void 0 ? void 0 : _e2.call(_d, this);
+          (_e = (_d = this.cbs).onparserinit) === null || _e === void 0 ? void 0 : _e.call(_d, this);
         }
         Parser2.prototype.updatePosition = function(initialOffset) {
           if (this.endIndex === null) {
@@ -3038,12 +2885,12 @@
           (_d = (_c = this.cbs).oncommentend) === null || _d === void 0 ? void 0 : _d.call(_c);
         };
         Parser2.prototype.oncdata = function(value) {
-          var _a, _b, _c, _d, _e2, _f;
+          var _a, _b, _c, _d, _e, _f;
           this.updatePosition(1);
           if (this.options.xmlMode || this.options.recognizeCDATA) {
             (_b = (_a = this.cbs).oncdatastart) === null || _b === void 0 ? void 0 : _b.call(_a);
             (_d = (_c = this.cbs).ontext) === null || _d === void 0 ? void 0 : _d.call(_c, value);
-            (_f = (_e2 = this.cbs).oncdataend) === null || _f === void 0 ? void 0 : _f.call(_e2);
+            (_f = (_e = this.cbs).oncdataend) === null || _f === void 0 ? void 0 : _f.call(_e);
           } else {
             this.oncomment("[CDATA[" + value + "]]");
           }
@@ -3137,33 +2984,33 @@
     "node_modules/domhandler/lib/node.js"(exports) {
       "use strict";
       var __extends = exports && exports.__extends || function() {
-        var extendStatics = function(d4, b3) {
-          extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d5, b4) {
-            d5.__proto__ = b4;
-          } || function(d5, b4) {
-            for (var p3 in b4)
-              if (Object.prototype.hasOwnProperty.call(b4, p3))
-                d5[p3] = b4[p3];
+        var extendStatics = function(d3, b2) {
+          extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d4, b3) {
+            d4.__proto__ = b3;
+          } || function(d4, b3) {
+            for (var p2 in b3)
+              if (Object.prototype.hasOwnProperty.call(b3, p2))
+                d4[p2] = b3[p2];
           };
-          return extendStatics(d4, b3);
+          return extendStatics(d3, b2);
         };
-        return function(d4, b3) {
-          if (typeof b3 !== "function" && b3 !== null)
-            throw new TypeError("Class extends value " + String(b3) + " is not a constructor or null");
-          extendStatics(d4, b3);
+        return function(d3, b2) {
+          if (typeof b2 !== "function" && b2 !== null)
+            throw new TypeError("Class extends value " + String(b2) + " is not a constructor or null");
+          extendStatics(d3, b2);
           function __() {
-            this.constructor = d4;
+            this.constructor = d3;
           }
-          d4.prototype = b3 === null ? Object.create(b3) : (__.prototype = b3.prototype, new __());
+          d3.prototype = b2 === null ? Object.create(b2) : (__.prototype = b2.prototype, new __());
         };
       }();
       var __assign = exports && exports.__assign || function() {
         __assign = Object.assign || function(t2) {
-          for (var s4, i3 = 1, n2 = arguments.length; i3 < n2; i3++) {
-            s4 = arguments[i3];
-            for (var p3 in s4)
-              if (Object.prototype.hasOwnProperty.call(s4, p3))
-                t2[p3] = s4[p3];
+          for (var s3, i3 = 1, n2 = arguments.length; i3 < n2; i3++) {
+            s3 = arguments[i3];
+            for (var p2 in s3)
+              if (Object.prototype.hasOwnProperty.call(s3, p2))
+                t2[p2] = s3[p2];
           }
           return t2;
         };
@@ -3476,25 +3323,25 @@
   var require_lib2 = __commonJS({
     "node_modules/domhandler/lib/index.js"(exports) {
       "use strict";
-      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o2, m4, k3, k22) {
+      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o2, m3, k2, k22) {
         if (k22 === void 0)
-          k22 = k3;
-        var desc = Object.getOwnPropertyDescriptor(m4, k3);
-        if (!desc || ("get" in desc ? !m4.__esModule : desc.writable || desc.configurable)) {
+          k22 = k2;
+        var desc = Object.getOwnPropertyDescriptor(m3, k2);
+        if (!desc || ("get" in desc ? !m3.__esModule : desc.writable || desc.configurable)) {
           desc = { enumerable: true, get: function() {
-            return m4[k3];
+            return m3[k2];
           } };
         }
         Object.defineProperty(o2, k22, desc);
-      } : function(o2, m4, k3, k22) {
+      } : function(o2, m3, k2, k22) {
         if (k22 === void 0)
-          k22 = k3;
-        o2[k22] = m4[k3];
+          k22 = k2;
+        o2[k22] = m3[k2];
       });
-      var __exportStar = exports && exports.__exportStar || function(m4, exports2) {
-        for (var p3 in m4)
-          if (p3 !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p3))
-            __createBinding(exports2, m4, p3);
+      var __exportStar = exports && exports.__exportStar || function(m3, exports2) {
+        for (var p2 in m3)
+          if (p2 !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p2))
+            __createBinding(exports2, m3, p2);
       };
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.DomHandler = void 0;
@@ -3661,26 +3508,26 @@
         var keys = Object.keys(map).join("|");
         var replace = getReplacer(map);
         keys += "|#[xX][\\da-fA-F]+|#\\d+";
-        var re3 = new RegExp("&(?:" + keys + ");", "g");
+        var re2 = new RegExp("&(?:" + keys + ");", "g");
         return function(str) {
-          return String(str).replace(re3, replace);
+          return String(str).replace(re2, replace);
         };
       }
-      var sorter = function(a2, b3) {
-        return a2 < b3 ? 1 : -1;
+      var sorter = function(a2, b2) {
+        return a2 < b2 ? 1 : -1;
       };
       exports.decodeHTML = function() {
         var legacy = Object.keys(legacy_json_1.default).sort(sorter);
         var keys = Object.keys(entities_json_1.default).sort(sorter);
-        for (var i3 = 0, j4 = 0; i3 < keys.length; i3++) {
-          if (legacy[j4] === keys[i3]) {
+        for (var i3 = 0, j3 = 0; i3 < keys.length; i3++) {
+          if (legacy[j3] === keys[i3]) {
             keys[i3] += ";?";
-            j4++;
+            j3++;
           } else {
             keys[i3] += ";";
           }
         }
-        var re3 = new RegExp("&(?:" + keys.join("|") + "|#[xX][\\da-fA-F]+;?|#\\d+;?)", "g");
+        var re2 = new RegExp("&(?:" + keys.join("|") + "|#[xX][\\da-fA-F]+;?|#\\d+;?)", "g");
         var replace = getReplacer(entities_json_1.default);
         function replacer(str) {
           if (str.substr(-1) !== ";")
@@ -3688,7 +3535,7 @@
           return replace(str);
         }
         return function(str) {
-          return String(str).replace(re3, replacer);
+          return String(str).replace(re2, replacer);
         };
       }();
       function getReplacer(map) {
@@ -3733,11 +3580,11 @@
         var single = [];
         var multiple = [];
         for (var _i = 0, _a = Object.keys(inverse); _i < _a.length; _i++) {
-          var k3 = _a[_i];
-          if (k3.length === 1) {
-            single.push("\\" + k3);
+          var k2 = _a[_i];
+          if (k2.length === 1) {
+            single.push("\\" + k2);
           } else {
-            multiple.push(k3);
+            multiple.push(k2);
           }
         }
         single.sort();
@@ -3755,12 +3602,12 @@
         return new RegExp(multiple.join("|"), "g");
       }
       var reNonASCII = /(?:[\x80-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])/g;
-      function singleCharReplacer(c4) {
-        return "&#x" + c4.codePointAt(0).toString(16).toUpperCase() + ";";
+      function singleCharReplacer(c3) {
+        return "&#x" + c3.codePointAt(0).toString(16).toUpperCase() + ";";
       }
-      function getInverse(inverse, re3) {
+      function getInverse(inverse, re2) {
         return function(data) {
-          return data.replace(re3, function(name) {
+          return data.replace(re2, function(name) {
             return inverse[name];
           }).replace(reNonASCII, singleCharReplacer);
         };
@@ -3952,40 +3799,40 @@
       "use strict";
       var __assign = exports && exports.__assign || function() {
         __assign = Object.assign || function(t2) {
-          for (var s4, i3 = 1, n2 = arguments.length; i3 < n2; i3++) {
-            s4 = arguments[i3];
-            for (var p3 in s4)
-              if (Object.prototype.hasOwnProperty.call(s4, p3))
-                t2[p3] = s4[p3];
+          for (var s3, i3 = 1, n2 = arguments.length; i3 < n2; i3++) {
+            s3 = arguments[i3];
+            for (var p2 in s3)
+              if (Object.prototype.hasOwnProperty.call(s3, p2))
+                t2[p2] = s3[p2];
           }
           return t2;
         };
         return __assign.apply(this, arguments);
       };
-      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o2, m4, k3, k22) {
+      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o2, m3, k2, k22) {
         if (k22 === void 0)
-          k22 = k3;
+          k22 = k2;
         Object.defineProperty(o2, k22, { enumerable: true, get: function() {
-          return m4[k3];
+          return m3[k2];
         } });
-      } : function(o2, m4, k3, k22) {
+      } : function(o2, m3, k2, k22) {
         if (k22 === void 0)
-          k22 = k3;
-        o2[k22] = m4[k3];
+          k22 = k2;
+        o2[k22] = m3[k2];
       });
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? function(o2, v4) {
-        Object.defineProperty(o2, "default", { enumerable: true, value: v4 });
-      } : function(o2, v4) {
-        o2["default"] = v4;
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? function(o2, v3) {
+        Object.defineProperty(o2, "default", { enumerable: true, value: v3 });
+      } : function(o2, v3) {
+        o2["default"] = v3;
       });
       var __importStar = exports && exports.__importStar || function(mod) {
         if (mod && mod.__esModule)
           return mod;
         var result = {};
         if (mod != null) {
-          for (var k3 in mod)
-            if (k3 !== "default" && Object.prototype.hasOwnProperty.call(mod, k3))
-              __createBinding(result, mod, k3);
+          for (var k2 in mod)
+            if (k2 !== "default" && Object.prototype.hasOwnProperty.call(mod, k2))
+              __createBinding(result, mod, k2);
         }
         __setModuleDefault(result, mod);
         return result;
@@ -4494,9 +4341,9 @@
           return (0, domhandler_1.isTag)(elem) && elem.attribs[attrib] === value;
         };
       }
-      function combineFuncs(a2, b3) {
+      function combineFuncs(a2, b2) {
         return function(elem) {
-          return a2(elem) || b3(elem);
+          return a2(elem) || b2(elem);
         };
       }
       function compileTest(options) {
@@ -4620,8 +4467,8 @@
         nodes = nodes.filter(function(node, i3, arr) {
           return !arr.includes(node, i3 + 1);
         });
-        nodes.sort(function(a2, b3) {
-          var relative = compareDocumentPosition(a2, b3);
+        nodes.sort(function(a2, b2) {
+          var relative = compareDocumentPosition(a2, b2);
           if (relative & 2) {
             return -1;
           } else if (relative & 4) {
@@ -4780,21 +4627,21 @@
   var require_lib5 = __commonJS({
     "node_modules/domutils/lib/index.js"(exports) {
       "use strict";
-      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o2, m4, k3, k22) {
+      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o2, m3, k2, k22) {
         if (k22 === void 0)
-          k22 = k3;
+          k22 = k2;
         Object.defineProperty(o2, k22, { enumerable: true, get: function() {
-          return m4[k3];
+          return m3[k2];
         } });
-      } : function(o2, m4, k3, k22) {
+      } : function(o2, m3, k2, k22) {
         if (k22 === void 0)
-          k22 = k3;
-        o2[k22] = m4[k3];
+          k22 = k2;
+        o2[k22] = m3[k2];
       });
-      var __exportStar = exports && exports.__exportStar || function(m4, exports2) {
-        for (var p3 in m4)
-          if (p3 !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p3))
-            __createBinding(exports2, m4, p3);
+      var __exportStar = exports && exports.__exportStar || function(m3, exports2) {
+        for (var p2 in m3)
+          if (p2 !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p2))
+            __createBinding(exports2, m3, p2);
       };
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.hasChildren = exports.isDocument = exports.isComment = exports.isText = exports.isCDATA = exports.isTag = void 0;
@@ -4832,50 +4679,50 @@
     "node_modules/htmlparser2/lib/FeedHandler.js"(exports) {
       "use strict";
       var __extends = exports && exports.__extends || function() {
-        var extendStatics = function(d4, b3) {
-          extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d5, b4) {
-            d5.__proto__ = b4;
-          } || function(d5, b4) {
-            for (var p3 in b4)
-              if (Object.prototype.hasOwnProperty.call(b4, p3))
-                d5[p3] = b4[p3];
+        var extendStatics = function(d3, b2) {
+          extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d4, b3) {
+            d4.__proto__ = b3;
+          } || function(d4, b3) {
+            for (var p2 in b3)
+              if (Object.prototype.hasOwnProperty.call(b3, p2))
+                d4[p2] = b3[p2];
           };
-          return extendStatics(d4, b3);
+          return extendStatics(d3, b2);
         };
-        return function(d4, b3) {
-          if (typeof b3 !== "function" && b3 !== null)
-            throw new TypeError("Class extends value " + String(b3) + " is not a constructor or null");
-          extendStatics(d4, b3);
+        return function(d3, b2) {
+          if (typeof b2 !== "function" && b2 !== null)
+            throw new TypeError("Class extends value " + String(b2) + " is not a constructor or null");
+          extendStatics(d3, b2);
           function __() {
-            this.constructor = d4;
+            this.constructor = d3;
           }
-          d4.prototype = b3 === null ? Object.create(b3) : (__.prototype = b3.prototype, new __());
+          d3.prototype = b2 === null ? Object.create(b2) : (__.prototype = b2.prototype, new __());
         };
       }();
-      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o2, m4, k3, k22) {
+      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o2, m3, k2, k22) {
         if (k22 === void 0)
-          k22 = k3;
+          k22 = k2;
         Object.defineProperty(o2, k22, { enumerable: true, get: function() {
-          return m4[k3];
+          return m3[k2];
         } });
-      } : function(o2, m4, k3, k22) {
+      } : function(o2, m3, k2, k22) {
         if (k22 === void 0)
-          k22 = k3;
-        o2[k22] = m4[k3];
+          k22 = k2;
+        o2[k22] = m3[k2];
       });
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? function(o2, v4) {
-        Object.defineProperty(o2, "default", { enumerable: true, value: v4 });
-      } : function(o2, v4) {
-        o2["default"] = v4;
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? function(o2, v3) {
+        Object.defineProperty(o2, "default", { enumerable: true, value: v3 });
+      } : function(o2, v3) {
+        o2["default"] = v3;
       });
       var __importStar = exports && exports.__importStar || function(mod) {
         if (mod && mod.__esModule)
           return mod;
         var result = {};
         if (mod != null) {
-          for (var k3 in mod)
-            if (k3 !== "default" && Object.prototype.hasOwnProperty.call(mod, k3))
-              __createBinding(result, mod, k3);
+          for (var k2 in mod)
+            if (k2 !== "default" && Object.prototype.hasOwnProperty.call(mod, k2))
+              __createBinding(result, mod, k2);
         }
         __setModuleDefault(result, mod);
         return result;
@@ -5079,38 +4926,38 @@
   var require_lib6 = __commonJS({
     "node_modules/htmlparser2/lib/index.js"(exports) {
       "use strict";
-      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o2, m4, k3, k22) {
+      var __createBinding = exports && exports.__createBinding || (Object.create ? function(o2, m3, k2, k22) {
         if (k22 === void 0)
-          k22 = k3;
+          k22 = k2;
         Object.defineProperty(o2, k22, { enumerable: true, get: function() {
-          return m4[k3];
+          return m3[k2];
         } });
-      } : function(o2, m4, k3, k22) {
+      } : function(o2, m3, k2, k22) {
         if (k22 === void 0)
-          k22 = k3;
-        o2[k22] = m4[k3];
+          k22 = k2;
+        o2[k22] = m3[k2];
       });
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? function(o2, v4) {
-        Object.defineProperty(o2, "default", { enumerable: true, value: v4 });
-      } : function(o2, v4) {
-        o2["default"] = v4;
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? function(o2, v3) {
+        Object.defineProperty(o2, "default", { enumerable: true, value: v3 });
+      } : function(o2, v3) {
+        o2["default"] = v3;
       });
       var __importStar = exports && exports.__importStar || function(mod) {
         if (mod && mod.__esModule)
           return mod;
         var result = {};
         if (mod != null) {
-          for (var k3 in mod)
-            if (k3 !== "default" && Object.prototype.hasOwnProperty.call(mod, k3))
-              __createBinding(result, mod, k3);
+          for (var k2 in mod)
+            if (k2 !== "default" && Object.prototype.hasOwnProperty.call(mod, k2))
+              __createBinding(result, mod, k2);
         }
         __setModuleDefault(result, mod);
         return result;
       };
-      var __exportStar = exports && exports.__exportStar || function(m4, exports2) {
-        for (var p3 in m4)
-          if (p3 !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p3))
-            __createBinding(exports2, m4, p3);
+      var __exportStar = exports && exports.__exportStar || function(m3, exports2) {
+        for (var p2 in m3)
+          if (p2 !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p2))
+            __createBinding(exports2, m3, p2);
       };
       var __importDefault = exports && exports.__importDefault || function(mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
@@ -5179,7 +5026,7 @@
       function isObject4(o2) {
         return Object.prototype.toString.call(o2) === "[object Object]";
       }
-      function isPlainObject2(o2) {
+      function isPlainObject(o2) {
         var ctor, prot;
         if (isObject4(o2) === false)
           return false;
@@ -5194,7 +5041,7 @@
         }
         return true;
       }
-      exports.isPlainObject = isPlainObject2;
+      exports.isPlainObject = isPlainObject;
     }
   });
 
@@ -5246,7 +5093,7 @@
       function propertyIsOnObject(object, property) {
         try {
           return property in object;
-        } catch (_2) {
+        } catch (_) {
           return false;
         }
       }
@@ -5314,8 +5161,8 @@
         }
       })(exports, function() {
         return function(input) {
-          function isSpace(c5) {
-            return c5 === " " || c5 === "	" || c5 === "\n" || c5 === "\f" || c5 === "\r";
+          function isSpace(c4) {
+            return c4 === " " || c4 === "	" || c4 === "\n" || c4 === "\f" || c4 === "\r";
           }
           function collectCharacters(regEx) {
             var chars, match = regEx.exec(input.substring(pos));
@@ -5325,7 +5172,7 @@
               return chars;
             }
           }
-          var inputLength = input.length, regexLeadingSpaces = /^[ \t\n\r\u000c]+/, regexLeadingCommasOrSpaces = /^[, \t\n\r\u000c]+/, regexLeadingNotSpaces = /^[^ \t\n\r\u000c]+/, regexTrailingCommas = /[,]+$/, regexNonNegativeInteger = /^\d+$/, regexFloatingPoint = /^-?(?:[0-9]+|[0-9]*\.[0-9]+)(?:[eE][+-]?[0-9]+)?$/, url, descriptors, currentDescriptor, state, c4, pos = 0, candidates = [];
+          var inputLength = input.length, regexLeadingSpaces = /^[ \t\n\r\u000c]+/, regexLeadingCommasOrSpaces = /^[, \t\n\r\u000c]+/, regexLeadingNotSpaces = /^[^ \t\n\r\u000c]+/, regexTrailingCommas = /[,]+$/, regexNonNegativeInteger = /^\d+$/, regexFloatingPoint = /^-?(?:[0-9]+|[0-9]*\.[0-9]+)(?:[eE][+-]?[0-9]+)?$/, url, descriptors, currentDescriptor, state, c3, pos = 0, candidates = [];
           while (true) {
             collectCharacters(regexLeadingCommasOrSpaces);
             if (pos >= inputLength) {
@@ -5345,47 +5192,47 @@
             currentDescriptor = "";
             state = "in descriptor";
             while (true) {
-              c4 = input.charAt(pos);
+              c3 = input.charAt(pos);
               if (state === "in descriptor") {
-                if (isSpace(c4)) {
+                if (isSpace(c3)) {
                   if (currentDescriptor) {
                     descriptors.push(currentDescriptor);
                     currentDescriptor = "";
                     state = "after descriptor";
                   }
-                } else if (c4 === ",") {
+                } else if (c3 === ",") {
                   pos += 1;
                   if (currentDescriptor) {
                     descriptors.push(currentDescriptor);
                   }
                   parseDescriptors();
                   return;
-                } else if (c4 === "(") {
-                  currentDescriptor = currentDescriptor + c4;
+                } else if (c3 === "(") {
+                  currentDescriptor = currentDescriptor + c3;
                   state = "in parens";
-                } else if (c4 === "") {
+                } else if (c3 === "") {
                   if (currentDescriptor) {
                     descriptors.push(currentDescriptor);
                   }
                   parseDescriptors();
                   return;
                 } else {
-                  currentDescriptor = currentDescriptor + c4;
+                  currentDescriptor = currentDescriptor + c3;
                 }
               } else if (state === "in parens") {
-                if (c4 === ")") {
-                  currentDescriptor = currentDescriptor + c4;
+                if (c3 === ")") {
+                  currentDescriptor = currentDescriptor + c3;
                   state = "in descriptor";
-                } else if (c4 === "") {
+                } else if (c3 === "") {
                   descriptors.push(currentDescriptor);
                   parseDescriptors();
                   return;
                 } else {
-                  currentDescriptor = currentDescriptor + c4;
+                  currentDescriptor = currentDescriptor + c3;
                 }
               } else if (state === "after descriptor") {
-                if (isSpace(c4)) {
-                } else if (c4 === "") {
+                if (isSpace(c3)) {
+                } else if (c3 === "") {
                   parseDescriptors();
                   return;
                 } else {
@@ -5397,7 +5244,7 @@
             }
           }
           function parseDescriptors() {
-            var pError = false, w3, d4, h4, i3, candidate = {}, desc, lastChar, value, intVal, floatVal;
+            var pError = false, w2, d3, h3, i3, candidate = {}, desc, lastChar, value, intVal, floatVal;
             for (i3 = 0; i3 < descriptors.length; i3++) {
               desc = descriptors[i3];
               lastChar = desc[desc.length - 1];
@@ -5405,31 +5252,31 @@
               intVal = parseInt(value, 10);
               floatVal = parseFloat(value);
               if (regexNonNegativeInteger.test(value) && lastChar === "w") {
-                if (w3 || d4) {
+                if (w2 || d3) {
                   pError = true;
                 }
                 if (intVal === 0) {
                   pError = true;
                 } else {
-                  w3 = intVal;
+                  w2 = intVal;
                 }
               } else if (regexFloatingPoint.test(value) && lastChar === "x") {
-                if (w3 || d4 || h4) {
+                if (w2 || d3 || h3) {
                   pError = true;
                 }
                 if (floatVal < 0) {
                   pError = true;
                 } else {
-                  d4 = floatVal;
+                  d3 = floatVal;
                 }
               } else if (regexNonNegativeInteger.test(value) && lastChar === "h") {
-                if (h4 || d4) {
+                if (h3 || d3) {
                   pError = true;
                 }
                 if (intVal === 0) {
                   pError = true;
                 } else {
-                  h4 = intVal;
+                  h3 = intVal;
                 }
               } else {
                 pError = true;
@@ -5437,14 +5284,14 @@
             }
             if (!pError) {
               candidate.url = url;
-              if (w3) {
-                candidate.w = w3;
+              if (w2) {
+                candidate.w = w2;
               }
-              if (d4) {
-                candidate.d = d4;
+              if (d3) {
+                candidate.d = d3;
               }
-              if (h4) {
-                candidate.h = h4;
+              if (h3) {
+                candidate.h = h3;
               }
               candidates.push(candidate);
             } else if (console && console.log) {
@@ -5459,9 +5306,9 @@
   // node_modules/picocolors/picocolors.browser.js
   var require_picocolors_browser = __commonJS({
     "node_modules/picocolors/picocolors.browser.js"(exports, module) {
-      var x4 = String;
+      var x3 = String;
       var create = function() {
-        return { isColorSupported: false, reset: x4, bold: x4, dim: x4, italic: x4, underline: x4, inverse: x4, hidden: x4, strikethrough: x4, black: x4, red: x4, green: x4, yellow: x4, blue: x4, magenta: x4, cyan: x4, white: x4, gray: x4, bgBlack: x4, bgRed: x4, bgGreen: x4, bgYellow: x4, bgBlue: x4, bgMagenta: x4, bgCyan: x4, bgWhite: x4 };
+        return { isColorSupported: false, reset: x3, bold: x3, dim: x3, italic: x3, underline: x3, inverse: x3, hidden: x3, strikethrough: x3, black: x3, red: x3, green: x3, yellow: x3, blue: x3, magenta: x3, cyan: x3, white: x3, gray: x3, bgBlack: x3, bgRed: x3, bgGreen: x3, bgYellow: x3, bgBlue: x3, bgMagenta: x3, bgCyan: x3, bgWhite: x3 };
       };
       module.exports = create();
       module.exports.createColors = create;
@@ -5751,8 +5598,8 @@
             return root2.raws.indent;
           let value;
           root2.walk((i3) => {
-            let p3 = i3.parent;
-            if (p3 && p3 !== root2 && p3.parent && p3.parent === root2) {
+            let p2 = i3.parent;
+            if (p2 && p2 !== root2 && p2.parent && p2.parent === root2) {
               if (typeof i3.raws.before !== "undefined") {
                 let parts = i3.raws.before.split("\n");
                 value = parts[parts.length - 1];
@@ -5932,7 +5779,7 @@
           } else if (i3 === "source") {
             cloned[i3] = value;
           } else if (Array.isArray(value)) {
-            cloned[i3] = value.map((j4) => cloneNode(j4, cloned));
+            cloned[i3] = value.map((j3) => cloneNode(j3, cloned));
           } else {
             if (type === "object" && value !== null)
               value = cloneNode(value);
@@ -6075,7 +5922,7 @@
           if (!keepBetween)
             delete this.raws.between;
         }
-        toJSON(_2, inputs) {
+        toJSON(_, inputs) {
           let fixed = {};
           let emitInputs = inputs == null;
           inputs = inputs || /* @__PURE__ */ new Map();
@@ -6217,10 +6064,10 @@
         addToError(error) {
           error.postcssNode = this;
           if (error.stack && this.source && /\n\s{4}at /.test(error.stack)) {
-            let s4 = this.source;
+            let s3 = this.source;
             error.stack = error.stack.replace(
               /\n\s{4}at /,
-              `$&${s4.input.from}:${s4.start.line}:${s4.start.column}$&`
+              `$&${s3.input.from}:${s3.start.line}:${s3.start.column}$&`
             );
           }
           return error;
@@ -6917,8 +6764,8 @@
               column += str.length;
             }
             if (node && type !== "start") {
-              let p3 = node.parent || { raws: {} };
-              if (node.type !== "decl" || node !== p3.last || p3.raws.semicolon) {
+              let p2 = node.parent || { raws: {} };
+              if (node.type !== "decl" || node !== p2.last || p2.raws.semicolon) {
                 if (node.source && node.source.end) {
                   mapping.source = this.sourcePath(node);
                   mapping.original.line = node.source.end.line;
@@ -7470,9 +7317,9 @@
               opts.plugin = this.lastPlugin.postcssPlugin;
             }
           }
-          let warning2 = new Warning(text2, opts);
-          this.messages.push(warning2);
-          return warning2;
+          let warning = new Warning(text2, opts);
+          this.messages.push(warning);
+          return warning;
         }
         warnings() {
           return this.messages.filter((i3) => i3.type === "warning");
@@ -8094,8 +7941,8 @@
             } else if (token[1].toLowerCase() === "important") {
               let cache = tokens.slice(0);
               let str = "";
-              for (let j4 = i3; j4 > 0; j4--) {
-                let type = cache[j4][0];
+              for (let j3 = i3; j3 > 0; j3--) {
+                let type = cache[j3][0];
                 if (str.trim().indexOf("!") === 0 && type !== "space") {
                   break;
                 }
@@ -8393,8 +8240,8 @@
             return;
           let founded = 0;
           let token;
-          for (let j4 = colon - 1; j4 >= 0; j4--) {
-            token = tokens[j4];
+          for (let j3 = colon - 1; j3 >= 0; j3--) {
+            token = tokens[j3];
             if (token[0] !== "space") {
               founded += 1;
               if (founded === 2)
@@ -8773,8 +8620,8 @@
                 let pluginVer = plugin.postcssVersion;
                 let runtimeVer = this.result.processor.version;
                 let a2 = pluginVer.split(".");
-                let b3 = runtimeVer.split(".");
-                if (a2[0] !== b3[0] || parseInt(a2[1]) > parseInt(b3[1])) {
+                let b2 = runtimeVer.split(".");
+                if (a2[0] !== b2[0] || parseInt(a2[1]) > parseInt(b2[1])) {
                   console.error(
                     "Unknown error from PostCSS plugin. Your current PostCSS version is " + runtimeVer + ", but " + pluginName + " uses " + pluginVer + ". Perhaps this is the source of the error below."
                   );
@@ -9263,7 +9110,7 @@
     "node_modules/sanitize-html/index.js"(exports, module) {
       var htmlparser = require_lib6();
       var escapeStringRegexp = require_escape_string_regexp();
-      var { isPlainObject: isPlainObject2 } = require_is_plain_object();
+      var { isPlainObject } = require_is_plain_object();
       var deepmerge = require_cjs();
       var parseSrcset = require_parse_srcset();
       var { parse: postcssParse } = require_postcss();
@@ -9291,9 +9138,9 @@
       }
       function filter2(a2, cb) {
         const n2 = [];
-        each2(a2, function(v4) {
-          if (cb(v4)) {
-            n2.push(v4);
+        each2(a2, function(v3) {
+          if (cb(v3)) {
+            n2.push(v3);
           }
         });
         return n2;
@@ -9501,17 +9348,17 @@ and ensure you are accounting for this risk.
                   passedAllowedAttributesMapCheck = true;
                 } else if (allowedAttributesMap && allowedAttributesMap[name]) {
                   for (const o2 of allowedAttributesMap[name]) {
-                    if (isPlainObject2(o2) && o2.name && o2.name === a2) {
+                    if (isPlainObject(o2) && o2.name && o2.name === a2) {
                       passedAllowedAttributesMapCheck = true;
                       let newValue = "";
                       if (o2.multiple === true) {
                         const splitStrArray = value.split(" ");
-                        for (const s4 of splitStrArray) {
-                          if (o2.values.indexOf(s4) !== -1) {
+                        for (const s3 of splitStrArray) {
+                          if (o2.values.indexOf(s3) !== -1) {
                             if (newValue === "") {
-                              newValue = s4;
+                              newValue = s3;
                             } else {
-                              newValue += " " + s4;
+                              newValue += " " + s3;
                             }
                           }
                         }
@@ -9590,15 +9437,15 @@ and ensure you are accounting for this risk.
                           value2.evil = true;
                         }
                       });
-                      parsed = filter2(parsed, function(v4) {
-                        return !v4.evil;
+                      parsed = filter2(parsed, function(v3) {
+                        return !v3.evil;
                       });
                       if (!parsed.length) {
                         delete frame.attribs[a2];
                         return;
                       } else {
-                        value = stringifySrcset(filter2(parsed, function(v4) {
-                          return !v4.evil;
+                        value = stringifySrcset(filter2(parsed, function(v3) {
+                          return !v3.evil;
                         }));
                         frame.attribs[a2] = value;
                       }
@@ -9753,21 +9600,21 @@ and ensure you are accounting for this risk.
           skipText = false;
           skipTextDepth = 0;
         }
-        function escapeHtml(s4, quote) {
-          if (typeof s4 !== "string") {
-            s4 = s4 + "";
+        function escapeHtml(s3, quote) {
+          if (typeof s3 !== "string") {
+            s3 = s3 + "";
           }
           if (options.parser.decodeEntities) {
-            s4 = s4.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            s3 = s3.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
             if (quote) {
-              s4 = s4.replace(/"/g, "&quot;");
+              s3 = s3.replace(/"/g, "&quot;");
             }
           }
-          s4 = s4.replace(/&(?![a-zA-Z0-9#]{1,20};)/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+          s3 = s3.replace(/&(?![a-zA-Z0-9#]{1,20};)/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
           if (quote) {
-            s4 = s4.replace(/"/g, "&quot;");
+            s3 = s3.replace(/"/g, "&quot;");
           }
-          return s4;
+          return s3;
         }
         function naughtyHref(name, href) {
           href = href.replace(/[\x00-\x20]+/g, "");
@@ -10076,10 +9923,10 @@ and ensure you are accounting for this risk.
                 return [];
               if (handlers.fn)
                 return [handlers.fn];
-              for (var i3 = 0, l2 = handlers.length, ee2 = new Array(l2); i3 < l2; i3++) {
-                ee2[i3] = handlers[i3].fn;
+              for (var i3 = 0, l2 = handlers.length, ee = new Array(l2); i3 < l2; i3++) {
+                ee[i3] = handlers[i3].fn;
               }
-              return ee2;
+              return ee;
             };
             EventEmitter.prototype.listenerCount = function listenerCount(event2) {
               var evt = prefix ? prefix + event2 : event2, listeners = this._events[evt];
@@ -10116,7 +9963,7 @@ and ensure you are accounting for this risk.
                 }
                 listeners.fn.apply(listeners.context, args);
               } else {
-                var length = listeners.length, j4;
+                var length = listeners.length, j3;
                 for (i3 = 0; i3 < length; i3++) {
                   if (listeners[i3].once)
                     this.removeListener(event2, listeners[i3].fn, void 0, true);
@@ -10135,8 +9982,8 @@ and ensure you are accounting for this risk.
                       break;
                     default:
                       if (!args)
-                        for (j4 = 1, args = new Array(len - 1); j4 < len; j4++) {
-                          args[j4 - 1] = arguments[j4];
+                        for (j3 = 1, args = new Array(len - 1); j3 < len; j3++) {
+                          args[j3 - 1] = arguments[j3];
                         }
                       listeners[i3].fn.apply(listeners[i3].context, args);
                   }
@@ -10353,8 +10200,8 @@ and ensure you are accounting for this risk.
                 console.error(err);
                 throw err;
               };
-              var f3 = __webpack_require__2(__webpack_require__2.s = ENTRY_MODULE);
-              return f3.default || f3;
+              var f2 = __webpack_require__2(__webpack_require__2.s = ENTRY_MODULE);
+              return f2.default || f2;
             }
             var moduleNameReqExp = "[\\.|\\-|\\+|\\w|/|@]+";
             var dependencyRegExp = "\\(\\s*(/\\*.*?\\*/)?\\s*.*?(" + moduleNameReqExp + ").*?\\)";
@@ -10372,15 +10219,15 @@ and ensure you are accounting for this risk.
               if (!wrapperSignature)
                 return retval;
               var webpackRequireName = wrapperSignature[1];
-              var re3 = new RegExp("(\\\\n|\\W)" + quoteRegExp(webpackRequireName) + dependencyRegExp, "g");
+              var re2 = new RegExp("(\\\\n|\\W)" + quoteRegExp(webpackRequireName) + dependencyRegExp, "g");
               var match;
-              while (match = re3.exec(fnString)) {
+              while (match = re2.exec(fnString)) {
                 if (match[3] === "dll-reference")
                   continue;
                 retval[queueName].push(match[3]);
               }
-              re3 = new RegExp("\\(" + quoteRegExp(webpackRequireName) + '\\("(dll-reference\\s(' + moduleNameReqExp + '))"\\)\\)' + dependencyRegExp, "g");
-              while (match = re3.exec(fnString)) {
+              re2 = new RegExp("\\(" + quoteRegExp(webpackRequireName) + '\\("(dll-reference\\s(' + moduleNameReqExp + '))"\\)\\)' + dependencyRegExp, "g");
+              while (match = re2.exec(fnString)) {
                 if (!sources[match[2]]) {
                   retval[queueName].push(match[1]);
                   sources[match[2]] = __webpack_require__(match[1]).m;
@@ -10390,9 +10237,9 @@ and ensure you are accounting for this risk.
               }
               var keys = Object.keys(retval);
               for (var i3 = 0; i3 < keys.length; i3++) {
-                for (var j4 = 0; j4 < retval[keys[i3]].length; j4++) {
-                  if (isNumeric(retval[keys[i3]][j4])) {
-                    retval[keys[i3]][j4] = 1 * retval[keys[i3]][j4];
+                for (var j3 = 0; j3 < retval[keys[i3]].length; j3++) {
+                  if (isNumeric(retval[keys[i3]][j3])) {
+                    retval[keys[i3]][j3] = 1 * retval[keys[i3]][j3];
                   }
                 }
               }
@@ -10428,9 +10275,9 @@ and ensure you are accounting for this risk.
                   requiredModules[queueName].push(moduleToCheck);
                   var newModules = getModuleDependencies(sources, sources[queueName][moduleToCheck], queueName);
                   var newModulesKeys = Object.keys(newModules);
-                  for (var j4 = 0; j4 < newModulesKeys.length; j4++) {
-                    modulesQueue[newModulesKeys[j4]] = modulesQueue[newModulesKeys[j4]] || [];
-                    modulesQueue[newModulesKeys[j4]] = modulesQueue[newModulesKeys[j4]].concat(newModules[newModulesKeys[j4]]);
+                  for (var j3 = 0; j3 < newModulesKeys.length; j3++) {
+                    modulesQueue[newModulesKeys[j3]] = modulesQueue[newModulesKeys[j3]] || [];
+                    modulesQueue[newModulesKeys[j3]] = modulesQueue[newModulesKeys[j3]].concat(newModules[newModulesKeys[j3]]);
                   }
                 }
               }
@@ -10443,8 +10290,8 @@ and ensure you are accounting for this risk.
               };
               var requiredModules = options.all ? { main: Object.keys(sources.main) } : getRequiredModules(sources, moduleId);
               var src = "";
-              Object.keys(requiredModules).filter(function(m4) {
-                return m4 !== "main";
+              Object.keys(requiredModules).filter(function(m3) {
+                return m3 !== "main";
               }).forEach(function(module3) {
                 var entryModule = 0;
                 while (requiredModules[module3][entryModule]) {
@@ -10512,7 +10359,7 @@ and ensure you are accounting for this risk.
               };
               return _extends4.apply(this, arguments);
             }
-            function ownKeys2(object, enumerableOnly) {
+            function ownKeys(object, enumerableOnly) {
               var keys = Object.keys(object);
               if (Object.getOwnPropertySymbols) {
                 var symbols = Object.getOwnPropertySymbols(object);
@@ -10529,20 +10376,20 @@ and ensure you are accounting for this risk.
               for (var i3 = 1; i3 < arguments.length; i3++) {
                 var source = arguments[i3] != null ? arguments[i3] : {};
                 if (i3 % 2) {
-                  ownKeys2(Object(source), true).forEach(function(key) {
-                    _defineProperty2(target, key, source[key]);
+                  ownKeys(Object(source), true).forEach(function(key) {
+                    _defineProperty(target, key, source[key]);
                   });
                 } else if (Object.getOwnPropertyDescriptors) {
                   Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
                 } else {
-                  ownKeys2(Object(source)).forEach(function(key) {
+                  ownKeys(Object(source)).forEach(function(key) {
                     Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
                   });
                 }
               }
               return target;
             }
-            function _defineProperty2(obj, key, value) {
+            function _defineProperty(obj, key, value) {
               if (key in obj) {
                 Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true });
               } else {
@@ -11002,12 +10849,12 @@ and ensure you are accounting for this risk.
               subClass.prototype.constructor = subClass;
               _setPrototypeOf(subClass, superClass);
             }
-            function _setPrototypeOf(o2, p3) {
-              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p4) {
-                o3.__proto__ = p4;
+            function _setPrototypeOf(o2, p2) {
+              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p3) {
+                o3.__proto__ = p3;
                 return o3;
               };
-              return _setPrototypeOf(o2, p3);
+              return _setPrototypeOf(o2, p2);
             }
             var TICK_INTERVAL = 100;
             var AudioStreamController = /* @__PURE__ */ function(_BaseStreamController) {
@@ -11590,12 +11437,12 @@ and ensure you are accounting for this risk.
               subClass.prototype.constructor = subClass;
               _setPrototypeOf(subClass, superClass);
             }
-            function _setPrototypeOf(o2, p3) {
-              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p4) {
-                o3.__proto__ = p4;
+            function _setPrototypeOf(o2, p2) {
+              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p3) {
+                o3.__proto__ = p3;
                 return o3;
               };
-              return _setPrototypeOf(o2, p3);
+              return _setPrototypeOf(o2, p2);
             }
             var AudioTrackController = /* @__PURE__ */ function(_BasePlaylistControll) {
               _inheritsLoose(AudioTrackController2, _BasePlaylistControll);
@@ -12032,12 +11879,12 @@ and ensure you are accounting for this risk.
               subClass.prototype.constructor = subClass;
               _setPrototypeOf(subClass, superClass);
             }
-            function _setPrototypeOf(o2, p3) {
-              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p4) {
-                o3.__proto__ = p4;
+            function _setPrototypeOf(o2, p2) {
+              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p3) {
+                o3.__proto__ = p3;
                 return o3;
               };
-              return _setPrototypeOf(o2, p3);
+              return _setPrototypeOf(o2, p2);
             }
             var State = {
               STOPPED: "STOPPED",
@@ -13855,12 +13702,12 @@ and ensure you are accounting for this risk.
               return Constructor;
             }
             function _createForOfIteratorHelperLoose(o2, allowArrayLike) {
-              var it3 = typeof Symbol !== "undefined" && o2[Symbol.iterator] || o2["@@iterator"];
-              if (it3)
-                return (it3 = it3.call(o2)).next.bind(it3);
-              if (Array.isArray(o2) || (it3 = _unsupportedIterableToArray(o2)) || allowArrayLike && o2 && typeof o2.length === "number") {
-                if (it3)
-                  o2 = it3;
+              var it2 = typeof Symbol !== "undefined" && o2[Symbol.iterator] || o2["@@iterator"];
+              if (it2)
+                return (it2 = it2.call(o2)).next.bind(it2);
+              if (Array.isArray(o2) || (it2 = _unsupportedIterableToArray(o2)) || allowArrayLike && o2 && typeof o2.length === "number") {
+                if (it2)
+                  o2 = it2;
                 var i3 = 0;
                 return function() {
                   if (i3 >= o2.length)
@@ -13945,15 +13792,15 @@ and ensure you are accounting for this risk.
                   try {
                     var fragment = context.frag;
                     var level = _this.hls.levels[fragment.level];
-                    var ot3 = _this.getObjectType(fragment);
+                    var ot2 = _this.getObjectType(fragment);
                     var data = {
                       d: fragment.duration * 1e3,
-                      ot: ot3
+                      ot: ot2
                     };
-                    if (ot3 === _types_cmcd__WEBPACK_IMPORTED_MODULE_1__["CMCDObjectType"].VIDEO || ot3 === _types_cmcd__WEBPACK_IMPORTED_MODULE_1__["CMCDObjectType"].AUDIO || ot3 == _types_cmcd__WEBPACK_IMPORTED_MODULE_1__["CMCDObjectType"].MUXED) {
+                    if (ot2 === _types_cmcd__WEBPACK_IMPORTED_MODULE_1__["CMCDObjectType"].VIDEO || ot2 === _types_cmcd__WEBPACK_IMPORTED_MODULE_1__["CMCDObjectType"].AUDIO || ot2 == _types_cmcd__WEBPACK_IMPORTED_MODULE_1__["CMCDObjectType"].MUXED) {
                       data.br = level.bitrate / 1e3;
-                      data.tb = _this.getTopBandwidth(ot3) / 1e3;
-                      data.bl = _this.getBufferLength(ot3);
+                      data.tb = _this.getTopBandwidth(ot2) / 1e3;
+                      data.bl = _this.getBufferLength(ot2);
                     }
                     _this.apply(context, data);
                   } catch (error) {
@@ -15479,8 +15326,8 @@ and ensure you are accounting for this risk.
                     if (timeDiff <= 0) {
                       endTime = startTime + MIN_CUE_DURATION;
                     }
-                    for (var j4 = 0; j4 < frames.length; j4++) {
-                      var frame = frames[j4];
+                    for (var j3 = 0; j3 < frames.length; j3++) {
+                      var frame = frames[j3];
                       if (!_demux_id3__WEBPACK_IMPORTED_MODULE_2__["isTimeStampFrame"](frame)) {
                         var cue = new Cue(startTime, endTime, "");
                         cue.value = frame;
@@ -15772,12 +15619,12 @@ and ensure you are accounting for this risk.
               subClass.prototype.constructor = subClass;
               _setPrototypeOf(subClass, superClass);
             }
-            function _setPrototypeOf(o2, p3) {
-              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p4) {
-                o3.__proto__ = p4;
+            function _setPrototypeOf(o2, p2) {
+              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p3) {
+                o3.__proto__ = p3;
                 return o3;
               };
-              return _setPrototypeOf(o2, p3);
+              return _setPrototypeOf(o2, p2);
             }
             var chromeOrFirefox = /chrome|firefox/.test(navigator.userAgent.toLowerCase());
             var LevelController = /* @__PURE__ */ function(_BasePlaylistControll) {
@@ -15882,8 +15729,8 @@ and ensure you are accounting for this risk.
                 }
                 if (levels.length > 0) {
                   bitrateStart = levels[0].bitrate;
-                  levels.sort(function(a2, b3) {
-                    return a2.bitrate - b3.bitrate;
+                  levels.sort(function(a2, b2) {
+                    return a2.bitrate - b2.bitrate;
                   });
                   this._levels = levels;
                   for (var i3 = 0; i3 < levels.length; i3++) {
@@ -16637,12 +16484,12 @@ and ensure you are accounting for this risk.
               subClass.prototype.constructor = subClass;
               _setPrototypeOf(subClass, superClass);
             }
-            function _setPrototypeOf(o2, p3) {
-              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p4) {
-                o3.__proto__ = p4;
+            function _setPrototypeOf(o2, p2) {
+              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p3) {
+                o3.__proto__ = p3;
                 return o3;
               };
-              return _setPrototypeOf(o2, p3);
+              return _setPrototypeOf(o2, p2);
             }
             var TICK_INTERVAL = 100;
             var StreamController = /* @__PURE__ */ function(_BaseStreamController) {
@@ -17584,12 +17431,12 @@ and ensure you are accounting for this risk.
               subClass.prototype.constructor = subClass;
               _setPrototypeOf(subClass, superClass);
             }
-            function _setPrototypeOf(o2, p3) {
-              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p4) {
-                o3.__proto__ = p4;
+            function _setPrototypeOf(o2, p2) {
+              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p3) {
+                o3.__proto__ = p3;
                 return o3;
               };
-              return _setPrototypeOf(o2, p3);
+              return _setPrototypeOf(o2, p2);
             }
             var TICK_INTERVAL = 500;
             var SubtitleStreamController = /* @__PURE__ */ function(_BaseStreamController) {
@@ -17898,12 +17745,12 @@ and ensure you are accounting for this risk.
               subClass.prototype.constructor = subClass;
               _setPrototypeOf(subClass, superClass);
             }
-            function _setPrototypeOf(o2, p3) {
-              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p4) {
-                o3.__proto__ = p4;
+            function _setPrototypeOf(o2, p2) {
+              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p3) {
+                o3.__proto__ = p3;
                 return o3;
               };
-              return _setPrototypeOf(o2, p3);
+              return _setPrototypeOf(o2, p2);
             }
             var SubtitleTrackController = /* @__PURE__ */ function(_BasePlaylistControll) {
               _inheritsLoose(SubtitleTrackController2, _BasePlaylistControll);
@@ -18711,7 +18558,7 @@ and ensure you are accounting for this risk.
                 var count = byteArray[0] & 31;
                 var position = 2;
                 var actualCCBytes = [[], []];
-                for (var j4 = 0; j4 < count; j4++) {
+                for (var j3 = 0; j3 < count; j3++) {
                   var tmpByte = byteArray[position++];
                   var ccbyte1 = 127 & byteArray[position++];
                   var ccbyte2 = 127 & byteArray[position++];
@@ -18734,8 +18581,8 @@ and ensure you are accounting for this risk.
             function canReuseVttTextTrack(inUseTrack, manifestTrack) {
               return inUseTrack && inUseTrack.label === manifestTrack.name && !(inUseTrack.textTrack1 || inUseTrack.textTrack2);
             }
-            function intersection(x1, x22, y1, y22) {
-              return Math.min(x22, y22) - Math.max(x1, y1);
+            function intersection(x1, x22, y1, y2) {
+              return Math.min(x22, y2) - Math.max(x1, y1);
             }
             function newVTTCCs() {
               return {
@@ -18826,40 +18673,40 @@ and ensure you are accounting for this risk.
                 var invSubMix1 = invSubMix[1];
                 var invSubMix2 = invSubMix[2];
                 var invSubMix3 = invSubMix[3];
-                var d4 = new Uint32Array(256);
-                var x4 = 0;
+                var d3 = new Uint32Array(256);
+                var x3 = 0;
                 var xi = 0;
                 var i3 = 0;
                 for (i3 = 0; i3 < 256; i3++) {
                   if (i3 < 128) {
-                    d4[i3] = i3 << 1;
+                    d3[i3] = i3 << 1;
                   } else {
-                    d4[i3] = i3 << 1 ^ 283;
+                    d3[i3] = i3 << 1 ^ 283;
                   }
                 }
                 for (i3 = 0; i3 < 256; i3++) {
                   var sx = xi ^ xi << 1 ^ xi << 2 ^ xi << 3 ^ xi << 4;
                   sx = sx >>> 8 ^ sx & 255 ^ 99;
-                  sBox[x4] = sx;
-                  invSBox[sx] = x4;
-                  var x22 = d4[x4];
-                  var x42 = d4[x22];
-                  var x8 = d4[x42];
-                  var t2 = d4[sx] * 257 ^ sx * 16843008;
-                  subMix0[x4] = t2 << 24 | t2 >>> 8;
-                  subMix1[x4] = t2 << 16 | t2 >>> 16;
-                  subMix2[x4] = t2 << 8 | t2 >>> 24;
-                  subMix3[x4] = t2;
-                  t2 = x8 * 16843009 ^ x42 * 65537 ^ x22 * 257 ^ x4 * 16843008;
+                  sBox[x3] = sx;
+                  invSBox[sx] = x3;
+                  var x22 = d3[x3];
+                  var x4 = d3[x22];
+                  var x8 = d3[x4];
+                  var t2 = d3[sx] * 257 ^ sx * 16843008;
+                  subMix0[x3] = t2 << 24 | t2 >>> 8;
+                  subMix1[x3] = t2 << 16 | t2 >>> 16;
+                  subMix2[x3] = t2 << 8 | t2 >>> 24;
+                  subMix3[x3] = t2;
+                  t2 = x8 * 16843009 ^ x4 * 65537 ^ x22 * 257 ^ x3 * 16843008;
                   invSubMix0[sx] = t2 << 24 | t2 >>> 8;
                   invSubMix1[sx] = t2 << 16 | t2 >>> 16;
                   invSubMix2[sx] = t2 << 8 | t2 >>> 24;
                   invSubMix3[sx] = t2;
-                  if (!x4) {
-                    x4 = xi = 1;
+                  if (!x3) {
+                    x3 = xi = 1;
                   } else {
-                    x4 = x22 ^ d4[d4[d4[x8 ^ x22]]];
-                    xi ^= d4[d4[xi]];
+                    x3 = x22 ^ d3[d3[d3[x8 ^ x22]]];
+                    xi ^= d3[d3[xi]];
                   }
                 }
               };
@@ -18943,7 +18790,7 @@ and ensure you are accounting for this risk.
                 var inputInt32 = new Int32Array(inputArrayBuffer);
                 var outputInt32 = new Int32Array(inputInt32.length);
                 var t0, t1, t2, t3;
-                var s0, s1, s22, s32;
+                var s0, s1, s22, s3;
                 var inputWords0, inputWords1, inputWords2, inputWords3;
                 var ksRow, i3;
                 var swapWord = this.networkToHostOrderSwap;
@@ -18955,23 +18802,23 @@ and ensure you are accounting for this risk.
                   s0 = inputWords0 ^ invKeySchedule[0];
                   s1 = inputWords3 ^ invKeySchedule[1];
                   s22 = inputWords2 ^ invKeySchedule[2];
-                  s32 = inputWords1 ^ invKeySchedule[3];
+                  s3 = inputWords1 ^ invKeySchedule[3];
                   ksRow = 4;
                   for (i3 = 1; i3 < nRounds; i3++) {
-                    t0 = invSubMix0[s0 >>> 24] ^ invSubMix1[s1 >> 16 & 255] ^ invSubMix2[s22 >> 8 & 255] ^ invSubMix3[s32 & 255] ^ invKeySchedule[ksRow];
-                    t1 = invSubMix0[s1 >>> 24] ^ invSubMix1[s22 >> 16 & 255] ^ invSubMix2[s32 >> 8 & 255] ^ invSubMix3[s0 & 255] ^ invKeySchedule[ksRow + 1];
-                    t2 = invSubMix0[s22 >>> 24] ^ invSubMix1[s32 >> 16 & 255] ^ invSubMix2[s0 >> 8 & 255] ^ invSubMix3[s1 & 255] ^ invKeySchedule[ksRow + 2];
-                    t3 = invSubMix0[s32 >>> 24] ^ invSubMix1[s0 >> 16 & 255] ^ invSubMix2[s1 >> 8 & 255] ^ invSubMix3[s22 & 255] ^ invKeySchedule[ksRow + 3];
+                    t0 = invSubMix0[s0 >>> 24] ^ invSubMix1[s1 >> 16 & 255] ^ invSubMix2[s22 >> 8 & 255] ^ invSubMix3[s3 & 255] ^ invKeySchedule[ksRow];
+                    t1 = invSubMix0[s1 >>> 24] ^ invSubMix1[s22 >> 16 & 255] ^ invSubMix2[s3 >> 8 & 255] ^ invSubMix3[s0 & 255] ^ invKeySchedule[ksRow + 1];
+                    t2 = invSubMix0[s22 >>> 24] ^ invSubMix1[s3 >> 16 & 255] ^ invSubMix2[s0 >> 8 & 255] ^ invSubMix3[s1 & 255] ^ invKeySchedule[ksRow + 2];
+                    t3 = invSubMix0[s3 >>> 24] ^ invSubMix1[s0 >> 16 & 255] ^ invSubMix2[s1 >> 8 & 255] ^ invSubMix3[s22 & 255] ^ invKeySchedule[ksRow + 3];
                     s0 = t0;
                     s1 = t1;
                     s22 = t2;
-                    s32 = t3;
+                    s3 = t3;
                     ksRow = ksRow + 4;
                   }
-                  t0 = invSBOX[s0 >>> 24] << 24 ^ invSBOX[s1 >> 16 & 255] << 16 ^ invSBOX[s22 >> 8 & 255] << 8 ^ invSBOX[s32 & 255] ^ invKeySchedule[ksRow];
-                  t1 = invSBOX[s1 >>> 24] << 24 ^ invSBOX[s22 >> 16 & 255] << 16 ^ invSBOX[s32 >> 8 & 255] << 8 ^ invSBOX[s0 & 255] ^ invKeySchedule[ksRow + 1];
-                  t2 = invSBOX[s22 >>> 24] << 24 ^ invSBOX[s32 >> 16 & 255] << 16 ^ invSBOX[s0 >> 8 & 255] << 8 ^ invSBOX[s1 & 255] ^ invKeySchedule[ksRow + 2];
-                  t3 = invSBOX[s32 >>> 24] << 24 ^ invSBOX[s0 >> 16 & 255] << 16 ^ invSBOX[s1 >> 8 & 255] << 8 ^ invSBOX[s22 & 255] ^ invKeySchedule[ksRow + 3];
+                  t0 = invSBOX[s0 >>> 24] << 24 ^ invSBOX[s1 >> 16 & 255] << 16 ^ invSBOX[s22 >> 8 & 255] << 8 ^ invSBOX[s3 & 255] ^ invKeySchedule[ksRow];
+                  t1 = invSBOX[s1 >>> 24] << 24 ^ invSBOX[s22 >> 16 & 255] << 16 ^ invSBOX[s3 >> 8 & 255] << 8 ^ invSBOX[s0 & 255] ^ invKeySchedule[ksRow + 1];
+                  t2 = invSBOX[s22 >>> 24] << 24 ^ invSBOX[s3 >> 16 & 255] << 16 ^ invSBOX[s0 >> 8 & 255] << 8 ^ invSBOX[s1 & 255] ^ invKeySchedule[ksRow + 2];
+                  t3 = invSBOX[s3 >>> 24] << 24 ^ invSBOX[s0 >> 16 & 255] << 16 ^ invSBOX[s1 >> 8 & 255] << 8 ^ invSBOX[s22 & 255] ^ invKeySchedule[ksRow + 3];
                   outputInt32[offset2] = swapWord(t0 ^ initVector0);
                   outputInt32[offset2 + 1] = swapWord(t3 ^ initVector1);
                   outputInt32[offset2 + 2] = swapWord(t2 ^ initVector2);
@@ -19172,12 +19019,12 @@ and ensure you are accounting for this risk.
               subClass.prototype.constructor = subClass;
               _setPrototypeOf(subClass, superClass);
             }
-            function _setPrototypeOf(o2, p3) {
-              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p4) {
-                o3.__proto__ = p4;
+            function _setPrototypeOf(o2, p2) {
+              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p3) {
+                o3.__proto__ = p3;
                 return o3;
               };
-              return _setPrototypeOf(o2, p3);
+              return _setPrototypeOf(o2, p2);
             }
             var AACDemuxer = /* @__PURE__ */ function(_BaseAudioDemuxer) {
               _inheritsLoose(AACDemuxer2, _BaseAudioDemuxer);
@@ -19740,7 +19587,7 @@ and ensure you are accounting for this risk.
                 var lastScale = 8;
                 var nextScale = 8;
                 var deltaScale;
-                for (var j4 = 0; j4 < count; j4++) {
+                for (var j3 = 0; j3 < count; j3++) {
                   if (nextScale !== 0) {
                     deltaScale = this.readEG();
                     nextScale = (lastScale + deltaScale + 256) % 256;
@@ -20112,19 +19959,19 @@ and ensure you are accounting for this risk.
                 return decoded.replace(/\0/g, "");
               }
               var len = array.length;
-              var c4;
+              var c3;
               var char2;
               var char3;
               var out = "";
               var i3 = 0;
               while (i3 < len) {
-                c4 = array[i3++];
-                if (c4 === 0 && exitOnNull) {
+                c3 = array[i3++];
+                if (c3 === 0 && exitOnNull) {
                   return out;
-                } else if (c4 === 0 || c4 === 3) {
+                } else if (c3 === 0 || c3 === 3) {
                   continue;
                 }
-                switch (c4 >> 4) {
+                switch (c3 >> 4) {
                   case 0:
                   case 1:
                   case 2:
@@ -20133,17 +19980,17 @@ and ensure you are accounting for this risk.
                   case 5:
                   case 6:
                   case 7:
-                    out += String.fromCharCode(c4);
+                    out += String.fromCharCode(c3);
                     break;
                   case 12:
                   case 13:
                     char2 = array[i3++];
-                    out += String.fromCharCode((c4 & 31) << 6 | char2 & 63);
+                    out += String.fromCharCode((c3 & 31) << 6 | char2 & 63);
                     break;
                   case 14:
                     char2 = array[i3++];
                     char3 = array[i3++];
-                    out += String.fromCharCode((c4 & 15) << 12 | (char2 & 63) << 6 | (char3 & 63) << 0);
+                    out += String.fromCharCode((c3 & 15) << 12 | (char2 & 63) << 6 | (char3 & 63) << 0);
                     break;
                   default:
                 }
@@ -20173,12 +20020,12 @@ and ensure you are accounting for this risk.
               subClass.prototype.constructor = subClass;
               _setPrototypeOf(subClass, superClass);
             }
-            function _setPrototypeOf(o2, p3) {
-              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p4) {
-                o3.__proto__ = p4;
+            function _setPrototypeOf(o2, p2) {
+              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p3) {
+                o3.__proto__ = p3;
                 return o3;
               };
-              return _setPrototypeOf(o2, p3);
+              return _setPrototypeOf(o2, p2);
             }
             var MP3Demuxer = /* @__PURE__ */ function(_BaseAudioDemuxer) {
               _inheritsLoose(MP3Demuxer2, _BaseAudioDemuxer);
@@ -20630,10 +20477,10 @@ and ensure you are accounting for this risk.
               }
               var _proto = TransmuxerInterface2.prototype;
               _proto.destroy = function destroy() {
-                var w3 = this.worker;
-                if (w3) {
-                  w3.removeEventListener("message", this.onwmsg);
-                  w3.terminate();
+                var w2 = this.worker;
+                if (w2) {
+                  w2.removeEventListener("message", this.onwmsg);
+                  w2.terminate();
                   this.worker = null;
                 } else {
                   var transmuxer = this.transmuxer;
@@ -21171,8 +21018,8 @@ and ensure you are accounting for this risk.
                 chunkMeta
               };
             };
-            function isPromise(p3) {
-              return "then" in p3 && p3.then instanceof Function;
+            function isPromise(p2) {
+              return "then" in p2 && p2.then instanceof Function;
             }
             var TransmuxConfig = function TransmuxConfig2(audioCodec, videoCodec, initSegmentData, duration, defaultInitPts) {
               this.audioCodec = void 0;
@@ -21623,18 +21470,18 @@ and ensure you are accounting for this risk.
                       var payloadType = 0;
                       var payloadSize = 0;
                       var endOfCaptions = false;
-                      var b3 = 0;
+                      var b2 = 0;
                       while (!endOfCaptions && expGolombDecoder.bytesAvailable > 1) {
                         payloadType = 0;
                         do {
-                          b3 = expGolombDecoder.readUByte();
-                          payloadType += b3;
-                        } while (b3 === 255);
+                          b2 = expGolombDecoder.readUByte();
+                          payloadType += b2;
+                        } while (b2 === 255);
                         payloadSize = 0;
                         do {
-                          b3 = expGolombDecoder.readUByte();
-                          payloadSize += b3;
-                        } while (b3 === 255);
+                          b2 = expGolombDecoder.readUByte();
+                          payloadSize += b2;
+                        } while (b2 === 255);
                         if (payloadType === 4 && expGolombDecoder.bytesAvailable !== 0) {
                           endOfCaptions = true;
                           var countryCode = expGolombDecoder.readUByte();
@@ -21711,11 +21558,11 @@ and ensure you are accounting for this risk.
                         var codecarray = unit.data.subarray(1, 4);
                         var codecstring = "avc1.";
                         for (var _i4 = 0; _i4 < 3; _i4++) {
-                          var h4 = codecarray[_i4].toString(16);
-                          if (h4.length < 2) {
-                            h4 = "0" + h4;
+                          var h3 = codecarray[_i4].toString(16);
+                          if (h3.length < 2) {
+                            h3 = "0" + h3;
                           }
-                          codecstring += h4;
+                          codecstring += h3;
                         }
                         track.codec = codecstring;
                       }
@@ -22083,8 +21930,8 @@ and ensure you are accounting for this risk.
                 }
                 stream.size -= payloadStartOffset;
                 var pesData = new Uint8Array(stream.size);
-                for (var j4 = 0, dataLen = data.length; j4 < dataLen; j4++) {
-                  frag = data[j4];
+                for (var j3 = 0, dataLen = data.length; j3 < dataLen; j3++) {
+                  frag = data[j3];
                   var len = frag.byteLength;
                   if (payloadStartOffset) {
                     if (payloadStartOffset > len) {
@@ -22906,12 +22753,12 @@ and ensure you are accounting for this risk.
             function _isNativeFunction(fn) {
               return Function.toString.call(fn).indexOf("[native code]") !== -1;
             }
-            function _setPrototypeOf(o2, p3) {
-              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p4) {
-                o3.__proto__ = p4;
+            function _setPrototypeOf(o2, p2) {
+              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p3) {
+                o3.__proto__ = p3;
                 return o3;
               };
-              return _setPrototypeOf(o2, p3);
+              return _setPrototypeOf(o2, p2);
             }
             function _getPrototypeOf(o2) {
               _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf2(o3) {
@@ -23191,12 +23038,12 @@ and ensure you are accounting for this risk.
               subClass.prototype.constructor = subClass;
               _setPrototypeOf(subClass, superClass);
             }
-            function _setPrototypeOf(o2, p3) {
-              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p4) {
-                o3.__proto__ = p4;
+            function _setPrototypeOf(o2, p2) {
+              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p3) {
+                o3.__proto__ = p3;
                 return o3;
               };
-              return _setPrototypeOf(o2, p3);
+              return _setPrototypeOf(o2, p2);
             }
             function _defineProperties(target, props) {
               for (var i3 = 0; i3 < props.length; i3++) {
@@ -23906,8 +23753,8 @@ and ensure you are accounting for this risk.
                       level.width = resolution.width;
                       level.height = resolution.height;
                     }
-                    setCodecs((attrs.CODECS || "").split(/[ ,]+/).filter(function(c4) {
-                      return c4;
+                    setCodecs((attrs.CODECS || "").split(/[ ,]+/).filter(function(c3) {
+                      return c3;
                     }), level);
                     if (level.videoCodec && level.videoCodec.indexOf("avc1") !== -1) {
                       level.videoCodec = M3U8Parser2.convertAVC1ToAVCOTI(level.videoCodec);
@@ -26077,9 +25924,9 @@ and ensure you are accounting for this risk.
                   }
                 }
                 if (sortSamples) {
-                  inputSamples.sort(function(a2, b3) {
-                    var deltadts = a2.dts - b3.dts;
-                    var deltapts = a2.pts - b3.pts;
+                  inputSamples.sort(function(a2, b2) {
+                    var deltadts = a2.dts - b2.dts;
+                    var deltapts = a2.pts - b2.pts;
                     return deltadts || deltapts;
                   });
                 }
@@ -26129,8 +25976,8 @@ and ensure you are accounting for this risk.
                   var units = _sample.units;
                   var nbUnits = units.length;
                   var sampleLen = 0;
-                  for (var j4 = 0; j4 < nbUnits; j4++) {
-                    sampleLen += units[j4].data.length;
+                  for (var j3 = 0; j3 < nbUnits; j3++) {
+                    sampleLen += units[j3].data.length;
                   }
                   naluLen += sampleLen;
                   nbNalu += nbUnits;
@@ -26282,7 +26129,7 @@ and ensure you are accounting for this risk.
                         this.nextAudioPts = nextAudioPts = nextPts;
                       }
                       _utils_logger__WEBPACK_IMPORTED_MODULE_5__["logger"].warn("[mp4-remuxer]: Injecting " + missing + " audio frame @ " + (nextPts / inputTimeScale).toFixed(3) + "s due to " + Math.round(1e3 * delta / inputTimeScale) + " ms gap.");
-                      for (var j4 = 0; j4 < missing; j4++) {
+                      for (var j3 = 0; j3 < missing; j3++) {
                         var newStamp = Math.max(nextPts, 0);
                         var fillFrame = _aac_helper__WEBPACK_IMPORTED_MODULE_1__["default"].getSilentFrame(track.manifestCodec || track.codec, track.channelCount);
                         if (!fillFrame) {
@@ -26436,8 +26283,8 @@ and ensure you are accounting for this risk.
                   var sample = track.samples[index2];
                   sample.pts = normalizePts(sample.pts - initPTS, timeOffset * inputTimeScale) / inputTimeScale;
                 }
-                track.samples.sort(function(a2, b3) {
-                  return a2.pts - b3.pts;
+                track.samples.sort(function(a2, b2) {
+                  return a2.pts - b2.pts;
                 });
                 var samples = track.samples;
                 track.samples = [];
@@ -26884,8 +26731,8 @@ and ensure you are accounting for this risk.
                 this.audioCodec = data.audioCodec;
                 this.videoCodec = data.videoCodec;
                 this.unknownCodecs = data.unknownCodecs;
-                this.codecSet = [data.videoCodec, data.audioCodec].filter(function(c4) {
-                  return c4;
+                this.codecSet = [data.videoCodec, data.audioCodec].filter(function(c3) {
+                  return c3;
                 }).join(",").replace(/\.[^.,]+/g, "");
               }
               _createClass(Level2, [{
@@ -27152,12 +26999,12 @@ and ensure you are accounting for this risk.
               };
               BufferHelper2.bufferedInfo = function bufferedInfo(buffered, pos, maxHoleDuration) {
                 pos = Math.max(0, pos);
-                buffered.sort(function(a2, b3) {
-                  var diff = a2.start - b3.start;
+                buffered.sort(function(a2, b2) {
+                  var diff = a2.start - b2.start;
                   if (diff) {
                     return diff;
                   } else {
-                    return b3.end - a2.end;
+                    return b2.end - a2.end;
                   }
                 });
                 var buffered2 = [];
@@ -27388,8 +27235,8 @@ and ensure you are accounting for this risk.
             }();
             var numArrayToHexArray = function numArrayToHexArray2(numArray) {
               var hexArray = [];
-              for (var j4 = 0; j4 < numArray.length; j4++) {
-                hexArray.push(numArray[j4].toString(16));
+              for (var j3 = 0; j3 < numArray.length; j3++) {
+                hexArray.push(numArray[j3].toString(16));
               }
               return hexArray;
             };
@@ -27978,29 +27825,29 @@ and ensure you are accounting for this risk.
               _proto7.addData = function addData(time, byteList) {
                 var cmdFound;
                 var a2;
-                var b3;
+                var b2;
                 var charsFound = false;
                 this.logger.time = time;
                 for (var i3 = 0; i3 < byteList.length; i3 += 2) {
                   a2 = byteList[i3] & 127;
-                  b3 = byteList[i3 + 1] & 127;
-                  if (a2 === 0 && b3 === 0) {
+                  b2 = byteList[i3 + 1] & 127;
+                  if (a2 === 0 && b2 === 0) {
                     continue;
                   } else {
-                    this.logger.log(VerboseLevel.DATA, "[" + numArrayToHexArray([byteList[i3], byteList[i3 + 1]]) + "] -> (" + numArrayToHexArray([a2, b3]) + ")");
+                    this.logger.log(VerboseLevel.DATA, "[" + numArrayToHexArray([byteList[i3], byteList[i3 + 1]]) + "] -> (" + numArrayToHexArray([a2, b2]) + ")");
                   }
-                  cmdFound = this.parseCmd(a2, b3);
+                  cmdFound = this.parseCmd(a2, b2);
                   if (!cmdFound) {
-                    cmdFound = this.parseMidrow(a2, b3);
-                  }
-                  if (!cmdFound) {
-                    cmdFound = this.parsePAC(a2, b3);
+                    cmdFound = this.parseMidrow(a2, b2);
                   }
                   if (!cmdFound) {
-                    cmdFound = this.parseBackgroundAttributes(a2, b3);
+                    cmdFound = this.parsePAC(a2, b2);
                   }
                   if (!cmdFound) {
-                    charsFound = this.parseChars(a2, b3);
+                    cmdFound = this.parseBackgroundAttributes(a2, b2);
+                  }
+                  if (!cmdFound) {
+                    charsFound = this.parseChars(a2, b2);
                     if (charsFound) {
                       var currChNr = this.currentChannel;
                       if (currChNr && currChNr > 0) {
@@ -28012,68 +27859,68 @@ and ensure you are accounting for this risk.
                     }
                   }
                   if (!cmdFound && !charsFound) {
-                    this.logger.log(VerboseLevel.WARNING, "Couldn't parse cleaned data " + numArrayToHexArray([a2, b3]) + " orig: " + numArrayToHexArray([byteList[i3], byteList[i3 + 1]]));
+                    this.logger.log(VerboseLevel.WARNING, "Couldn't parse cleaned data " + numArrayToHexArray([a2, b2]) + " orig: " + numArrayToHexArray([byteList[i3], byteList[i3 + 1]]));
                   }
                 }
               };
-              _proto7.parseCmd = function parseCmd(a2, b3) {
+              _proto7.parseCmd = function parseCmd(a2, b2) {
                 var cmdHistory = this.cmdHistory;
-                var cond1 = (a2 === 20 || a2 === 28 || a2 === 21 || a2 === 29) && b3 >= 32 && b3 <= 47;
-                var cond2 = (a2 === 23 || a2 === 31) && b3 >= 33 && b3 <= 35;
+                var cond1 = (a2 === 20 || a2 === 28 || a2 === 21 || a2 === 29) && b2 >= 32 && b2 <= 47;
+                var cond2 = (a2 === 23 || a2 === 31) && b2 >= 33 && b2 <= 35;
                 if (!(cond1 || cond2)) {
                   return false;
                 }
-                if (hasCmdRepeated(a2, b3, cmdHistory)) {
+                if (hasCmdRepeated(a2, b2, cmdHistory)) {
                   setLastCmd(null, null, cmdHistory);
-                  this.logger.log(VerboseLevel.DEBUG, "Repeated command (" + numArrayToHexArray([a2, b3]) + ") is dropped");
+                  this.logger.log(VerboseLevel.DEBUG, "Repeated command (" + numArrayToHexArray([a2, b2]) + ") is dropped");
                   return true;
                 }
                 var chNr = a2 === 20 || a2 === 21 || a2 === 23 ? 1 : 2;
                 var channel = this.channels[chNr];
                 if (a2 === 20 || a2 === 21 || a2 === 28 || a2 === 29) {
-                  if (b3 === 32) {
+                  if (b2 === 32) {
                     channel.ccRCL();
-                  } else if (b3 === 33) {
+                  } else if (b2 === 33) {
                     channel.ccBS();
-                  } else if (b3 === 34) {
+                  } else if (b2 === 34) {
                     channel.ccAOF();
-                  } else if (b3 === 35) {
+                  } else if (b2 === 35) {
                     channel.ccAON();
-                  } else if (b3 === 36) {
+                  } else if (b2 === 36) {
                     channel.ccDER();
-                  } else if (b3 === 37) {
+                  } else if (b2 === 37) {
                     channel.ccRU(2);
-                  } else if (b3 === 38) {
+                  } else if (b2 === 38) {
                     channel.ccRU(3);
-                  } else if (b3 === 39) {
+                  } else if (b2 === 39) {
                     channel.ccRU(4);
-                  } else if (b3 === 40) {
+                  } else if (b2 === 40) {
                     channel.ccFON();
-                  } else if (b3 === 41) {
+                  } else if (b2 === 41) {
                     channel.ccRDC();
-                  } else if (b3 === 42) {
+                  } else if (b2 === 42) {
                     channel.ccTR();
-                  } else if (b3 === 43) {
+                  } else if (b2 === 43) {
                     channel.ccRTD();
-                  } else if (b3 === 44) {
+                  } else if (b2 === 44) {
                     channel.ccEDM();
-                  } else if (b3 === 45) {
+                  } else if (b2 === 45) {
                     channel.ccCR();
-                  } else if (b3 === 46) {
+                  } else if (b2 === 46) {
                     channel.ccENM();
-                  } else if (b3 === 47) {
+                  } else if (b2 === 47) {
                     channel.ccEOC();
                   }
                 } else {
-                  channel.ccTO(b3 - 32);
+                  channel.ccTO(b2 - 32);
                 }
-                setLastCmd(a2, b3, cmdHistory);
+                setLastCmd(a2, b2, cmdHistory);
                 this.currentChannel = chNr;
                 return true;
               };
-              _proto7.parseMidrow = function parseMidrow(a2, b3) {
+              _proto7.parseMidrow = function parseMidrow(a2, b2) {
                 var chNr = 0;
-                if ((a2 === 17 || a2 === 25) && b3 >= 32 && b3 <= 47) {
+                if ((a2 === 17 || a2 === 25) && b2 >= 32 && b2 <= 47) {
                   if (a2 === 17) {
                     chNr = 1;
                   } else {
@@ -28087,26 +27934,26 @@ and ensure you are accounting for this risk.
                   if (!channel) {
                     return false;
                   }
-                  channel.ccMIDROW(b3);
-                  this.logger.log(VerboseLevel.DEBUG, "MIDROW (" + numArrayToHexArray([a2, b3]) + ")");
+                  channel.ccMIDROW(b2);
+                  this.logger.log(VerboseLevel.DEBUG, "MIDROW (" + numArrayToHexArray([a2, b2]) + ")");
                   return true;
                 }
                 return false;
               };
-              _proto7.parsePAC = function parsePAC(a2, b3) {
+              _proto7.parsePAC = function parsePAC(a2, b2) {
                 var row;
                 var cmdHistory = this.cmdHistory;
-                var case1 = (a2 >= 17 && a2 <= 23 || a2 >= 25 && a2 <= 31) && b3 >= 64 && b3 <= 127;
-                var case2 = (a2 === 16 || a2 === 24) && b3 >= 64 && b3 <= 95;
+                var case1 = (a2 >= 17 && a2 <= 23 || a2 >= 25 && a2 <= 31) && b2 >= 64 && b2 <= 127;
+                var case2 = (a2 === 16 || a2 === 24) && b2 >= 64 && b2 <= 95;
                 if (!(case1 || case2)) {
                   return false;
                 }
-                if (hasCmdRepeated(a2, b3, cmdHistory)) {
+                if (hasCmdRepeated(a2, b2, cmdHistory)) {
                   setLastCmd(null, null, cmdHistory);
                   return true;
                 }
                 var chNr = a2 <= 23 ? 1 : 2;
-                if (b3 >= 64 && b3 <= 95) {
+                if (b2 >= 64 && b2 <= 95) {
                   row = chNr === 1 ? rowsLowCh1[a2] : rowsLowCh2[a2];
                 } else {
                   row = chNr === 1 ? rowsHighCh1[a2] : rowsHighCh2[a2];
@@ -28115,8 +27962,8 @@ and ensure you are accounting for this risk.
                 if (!channel) {
                   return false;
                 }
-                channel.setPAC(this.interpretPAC(row, b3));
-                setLastCmd(a2, b3, cmdHistory);
+                channel.setPAC(this.interpretPAC(row, b2));
+                setLastCmd(a2, b2, cmdHistory);
                 this.currentChannel = chNr;
                 return true;
               };
@@ -28145,7 +27992,7 @@ and ensure you are accounting for this risk.
                 }
                 return pacData;
               };
-              _proto7.parseChars = function parseChars(a2, b3) {
+              _proto7.parseChars = function parseChars(a2, b2) {
                 var channelNr;
                 var charCodes = null;
                 var charCode1 = null;
@@ -28159,50 +28006,50 @@ and ensure you are accounting for this risk.
                 if (charCode1 >= 17 && charCode1 <= 19) {
                   var oneCode;
                   if (charCode1 === 17) {
-                    oneCode = b3 + 80;
+                    oneCode = b2 + 80;
                   } else if (charCode1 === 18) {
-                    oneCode = b3 + 112;
+                    oneCode = b2 + 112;
                   } else {
-                    oneCode = b3 + 144;
+                    oneCode = b2 + 144;
                   }
                   this.logger.log(VerboseLevel.INFO, "Special char '" + getCharForByte(oneCode) + "' in channel " + channelNr);
                   charCodes = [oneCode];
                 } else if (a2 >= 32 && a2 <= 127) {
-                  charCodes = b3 === 0 ? [a2] : [a2, b3];
+                  charCodes = b2 === 0 ? [a2] : [a2, b2];
                 }
                 if (charCodes) {
                   var hexCodes = numArrayToHexArray(charCodes);
                   this.logger.log(VerboseLevel.DEBUG, "Char codes =  " + hexCodes.join(","));
-                  setLastCmd(a2, b3, this.cmdHistory);
+                  setLastCmd(a2, b2, this.cmdHistory);
                 }
                 return charCodes;
               };
-              _proto7.parseBackgroundAttributes = function parseBackgroundAttributes(a2, b3) {
-                var case1 = (a2 === 16 || a2 === 24) && b3 >= 32 && b3 <= 47;
-                var case2 = (a2 === 23 || a2 === 31) && b3 >= 45 && b3 <= 47;
+              _proto7.parseBackgroundAttributes = function parseBackgroundAttributes(a2, b2) {
+                var case1 = (a2 === 16 || a2 === 24) && b2 >= 32 && b2 <= 47;
+                var case2 = (a2 === 23 || a2 === 31) && b2 >= 45 && b2 <= 47;
                 if (!(case1 || case2)) {
                   return false;
                 }
                 var index2;
                 var bkgData = {};
                 if (a2 === 16 || a2 === 24) {
-                  index2 = Math.floor((b3 - 32) / 2);
+                  index2 = Math.floor((b2 - 32) / 2);
                   bkgData.background = backgroundColors[index2];
-                  if (b3 % 2 === 1) {
+                  if (b2 % 2 === 1) {
                     bkgData.background = bkgData.background + "_semi";
                   }
-                } else if (b3 === 45) {
+                } else if (b2 === 45) {
                   bkgData.background = "transparent";
                 } else {
                   bkgData.foreground = "black";
-                  if (b3 === 47) {
+                  if (b2 === 47) {
                     bkgData.underline = true;
                   }
                 }
                 var chNr = a2 <= 23 ? 1 : 2;
                 var channel = this.channels[chNr];
                 channel.setBkgData(bkgData);
-                setLastCmd(a2, b3, this.cmdHistory);
+                setLastCmd(a2, b2, this.cmdHistory);
                 return true;
               };
               _proto7.reset = function reset() {
@@ -28224,12 +28071,12 @@ and ensure you are accounting for this risk.
               };
               return Cea608Parser2;
             }();
-            function setLastCmd(a2, b3, cmdHistory) {
+            function setLastCmd(a2, b2, cmdHistory) {
               cmdHistory.a = a2;
-              cmdHistory.b = b3;
+              cmdHistory.b = b2;
             }
-            function hasCmdRepeated(a2, b3, cmdHistory) {
-              return cmdHistory.a === a2 && cmdHistory.b === b3;
+            function hasCmdRepeated(a2, b2, cmdHistory) {
+              return cmdHistory.a === a2 && cmdHistory.b === b2;
             }
             function createCmdHistory() {
               return {
@@ -28346,11 +28193,11 @@ and ensure you are accounting for this risk.
                   indent = 0;
                   text2 = "";
                   if (!row.isEmpty()) {
-                    for (var c4 = 0; c4 < row.chars.length; c4++) {
-                      if (WHITESPACE_CHAR.test(row.chars[c4].uchar) && indenting) {
+                    for (var c3 = 0; c3 < row.chars.length; c3++) {
+                      if (WHITESPACE_CHAR.test(row.chars[c3].uchar) && indenting) {
                         indent++;
                       } else {
-                        text2 += row.chars[c4].uchar;
+                        text2 += row.chars[c3].uchar;
                         indenting = false;
                       }
                     }
@@ -28694,12 +28541,12 @@ and ensure you are accounting for this risk.
             function _isNativeFunction(fn) {
               return Function.toString.call(fn).indexOf("[native code]") !== -1;
             }
-            function _setPrototypeOf(o2, p3) {
-              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p4) {
-                o3.__proto__ = p4;
+            function _setPrototypeOf(o2, p2) {
+              _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p3) {
+                o3.__proto__ = p3;
                 return o3;
               };
-              return _setPrototypeOf(o2, p3);
+              return _setPrototypeOf(o2, p2);
             }
             function _getPrototypeOf(o2) {
               _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf2(o3) {
@@ -28956,8 +28803,8 @@ and ensure you are accounting for this risk.
             function parseTTML(ttml, syncTime) {
               var parser = new DOMParser();
               var xmlDoc = parser.parseFromString(ttml, "text/xml");
-              var tt3 = xmlDoc.getElementsByTagName("tt")[0];
-              if (!tt3) {
+              var tt2 = xmlDoc.getElementsByTagName("tt")[0];
+              if (!tt2) {
                 throw new Error("Invalid ttml");
               }
               var defaultRateInfo = {
@@ -28967,13 +28814,13 @@ and ensure you are accounting for this risk.
                 tickRate: 0
               };
               var rateInfo = Object.keys(defaultRateInfo).reduce(function(result, key) {
-                result[key] = tt3.getAttribute("ttp:" + key) || defaultRateInfo[key];
+                result[key] = tt2.getAttribute("ttp:" + key) || defaultRateInfo[key];
                 return result;
               }, {});
-              var trim = tt3.getAttribute("xml:space") !== "preserve";
-              var styleElements = collectionToDictionary(getElementCollection(tt3, "styling", "style"));
-              var regionElements = collectionToDictionary(getElementCollection(tt3, "layout", "region"));
-              var cueElements = getElementCollection(tt3, "body", "[begin]");
+              var trim = tt2.getAttribute("xml:space") !== "preserve";
+              var styleElements = collectionToDictionary(getElementCollection(tt2, "styling", "style"));
+              var regionElements = collectionToDictionary(getElementCollection(tt2, "layout", "region"));
+              var cueElements = getElementCollection(tt2, "body", "[begin]");
               return [].map.call(cueElements, function(cueElement) {
                 var cueText = getTextContent(cueElement, trim);
                 if (!cueText || !cueElement.hasAttribute("begin")) {
@@ -29081,14 +28928,14 @@ and ensure you are accounting for this risk.
               return seconds;
             }
             function parseHoursMinutesSecondsFrames(timeAttributeValue, rateInfo) {
-              var m4 = HMSF_REGEX.exec(timeAttributeValue);
-              var frames = (m4[4] | 0) + (m4[5] | 0) / rateInfo.subFrameRate;
-              return (m4[1] | 0) * 3600 + (m4[2] | 0) * 60 + (m4[3] | 0) + frames / rateInfo.frameRate;
+              var m3 = HMSF_REGEX.exec(timeAttributeValue);
+              var frames = (m3[4] | 0) + (m3[5] | 0) / rateInfo.subFrameRate;
+              return (m3[1] | 0) * 3600 + (m3[2] | 0) * 60 + (m3[3] | 0) + frames / rateInfo.frameRate;
             }
             function parseTimeUnits(timeAttributeValue, rateInfo) {
-              var m4 = TIME_UNIT_REGEX.exec(timeAttributeValue);
-              var value = Number(m4[1]);
-              var unit = m4[2];
+              var m3 = TIME_UNIT_REGEX.exec(timeAttributeValue);
+              var value = Number(m3[1]);
+              var unit = m3[2];
               switch (unit) {
                 case "h":
                   return value * 3600;
@@ -29476,10 +29323,10 @@ and ensure you are accounting for this risk.
                 }
                 var timescale = track.timescale || 9e4;
                 var truns = findBox(traf, ["trun"]);
-                for (var j4 = 0; j4 < truns.length; j4++) {
-                  rawDuration = computeRawDurationFromSamples(truns[j4]);
+                for (var j3 = 0; j3 < truns.length; j3++) {
+                  rawDuration = computeRawDurationFromSamples(truns[j3]);
                   if (!rawDuration && sampleDuration) {
-                    var sampleCount = readUint32(truns[j4], 4);
+                    var sampleCount = readUint32(truns[j3], 4);
                     rawDuration = sampleDuration * sampleCount;
                   }
                   if (track.type === _loader_fragment__WEBPACK_IMPORTED_MODULE_1__["ElementaryStreamTypes"].VIDEO) {
@@ -29850,8 +29697,8 @@ and ensure you are accounting for this risk.
                 var i3 = 1;
                 for (; i3 < arguments.length; i3++) {
                   var cobj = arguments[i3];
-                  for (var p3 in cobj) {
-                    obj[p3] = cobj[p3];
+                  for (var p2 in cobj) {
+                    obj[p2] = cobj[p2];
                   }
                 }
                 return obj;
@@ -30069,55 +29916,55 @@ and ensure you are accounting for this risk.
               return StringDecoder2;
             }();
             function parseTimeStamp(input) {
-              function computeSeconds(h4, m5, s4, f3) {
-                return (h4 | 0) * 3600 + (m5 | 0) * 60 + (s4 | 0) + parseFloat(f3 || 0);
+              function computeSeconds(h3, m4, s3, f2) {
+                return (h3 | 0) * 3600 + (m4 | 0) * 60 + (s3 | 0) + parseFloat(f2 || 0);
               }
-              var m4 = input.match(/^(?:(\d+):)?(\d{2}):(\d{2})(\.\d+)?/);
-              if (!m4) {
+              var m3 = input.match(/^(?:(\d+):)?(\d{2}):(\d{2})(\.\d+)?/);
+              if (!m3) {
                 return null;
               }
-              if (parseFloat(m4[2]) > 59) {
-                return computeSeconds(m4[2], m4[3], 0, m4[4]);
+              if (parseFloat(m3[2]) > 59) {
+                return computeSeconds(m3[2], m3[3], 0, m3[4]);
               }
-              return computeSeconds(m4[1], m4[2], m4[3], m4[4]);
+              return computeSeconds(m3[1], m3[2], m3[3], m3[4]);
             }
             var Settings = /* @__PURE__ */ function() {
               function Settings2() {
                 this.values = /* @__PURE__ */ Object.create(null);
               }
               var _proto2 = Settings2.prototype;
-              _proto2.set = function set(k3, v4) {
-                if (!this.get(k3) && v4 !== "") {
-                  this.values[k3] = v4;
+              _proto2.set = function set(k2, v3) {
+                if (!this.get(k2) && v3 !== "") {
+                  this.values[k2] = v3;
                 }
               };
-              _proto2.get = function get(k3, dflt, defaultKey) {
+              _proto2.get = function get(k2, dflt, defaultKey) {
                 if (defaultKey) {
-                  return this.has(k3) ? this.values[k3] : dflt[defaultKey];
+                  return this.has(k2) ? this.values[k2] : dflt[defaultKey];
                 }
-                return this.has(k3) ? this.values[k3] : dflt;
+                return this.has(k2) ? this.values[k2] : dflt;
               };
-              _proto2.has = function has(k3) {
-                return k3 in this.values;
+              _proto2.has = function has(k2) {
+                return k2 in this.values;
               };
-              _proto2.alt = function alt(k3, v4, a2) {
+              _proto2.alt = function alt(k2, v3, a2) {
                 for (var n2 = 0; n2 < a2.length; ++n2) {
-                  if (v4 === a2[n2]) {
-                    this.set(k3, v4);
+                  if (v3 === a2[n2]) {
+                    this.set(k2, v3);
                     break;
                   }
                 }
               };
-              _proto2.integer = function integer(k3, v4) {
-                if (/^-?\d+$/.test(v4)) {
-                  this.set(k3, parseInt(v4, 10));
+              _proto2.integer = function integer(k2, v3) {
+                if (/^-?\d+$/.test(v3)) {
+                  this.set(k2, parseInt(v3, 10));
                 }
               };
-              _proto2.percent = function percent(k3, v4) {
-                if (/^([\d]{1,3})(\.[\d]*)?%$/.test(v4)) {
-                  var percent2 = parseFloat(v4);
+              _proto2.percent = function percent(k2, v3) {
+                if (/^([\d]{1,3})(\.[\d]*)?%$/.test(v3)) {
+                  var percent2 = parseFloat(v3);
                   if (percent2 >= 0 && percent2 <= 100) {
-                    this.set(k3, percent2);
+                    this.set(k2, percent2);
                     return true;
                   }
                 }
@@ -30154,43 +30001,43 @@ and ensure you are accounting for this risk.
               }
               function consumeCueSettings(input2, cue2) {
                 var settings = new Settings();
-                parseOptions(input2, function(k3, v4) {
+                parseOptions(input2, function(k2, v3) {
                   var vals;
-                  switch (k3) {
+                  switch (k2) {
                     case "region":
                       for (var i3 = regionList.length - 1; i3 >= 0; i3--) {
-                        if (regionList[i3].id === v4) {
-                          settings.set(k3, regionList[i3].region);
+                        if (regionList[i3].id === v3) {
+                          settings.set(k2, regionList[i3].region);
                           break;
                         }
                       }
                       break;
                     case "vertical":
-                      settings.alt(k3, v4, ["rl", "lr"]);
+                      settings.alt(k2, v3, ["rl", "lr"]);
                       break;
                     case "line":
-                      vals = v4.split(",");
-                      settings.integer(k3, vals[0]);
-                      if (settings.percent(k3, vals[0])) {
+                      vals = v3.split(",");
+                      settings.integer(k2, vals[0]);
+                      if (settings.percent(k2, vals[0])) {
                         settings.set("snapToLines", false);
                       }
-                      settings.alt(k3, vals[0], ["auto"]);
+                      settings.alt(k2, vals[0], ["auto"]);
                       if (vals.length === 2) {
                         settings.alt("lineAlign", vals[1], ["start", center, "end"]);
                       }
                       break;
                     case "position":
-                      vals = v4.split(",");
-                      settings.percent(k3, vals[0]);
+                      vals = v3.split(",");
+                      settings.percent(k2, vals[0]);
                       if (vals.length === 2) {
                         settings.alt("positionAlign", vals[1], ["start", center, "end", "line-left", "line-right", "auto"]);
                       }
                       break;
                     case "size":
-                      settings.percent(k3, v4);
+                      settings.percent(k2, v3);
                       break;
                     case "align":
-                      settings.alt(k3, v4, ["start", center, "end", "left", "right"]);
+                      settings.alt(k2, v3, ["start", center, "end", "left", "right"]);
                       break;
                   }
                 }, /:/, /\s/);
@@ -30266,7 +30113,7 @@ and ensure you are accounting for this risk.
                   return line2;
                 }
                 function parseHeader(input) {
-                  parseOptions(input, function(k3, v4) {
+                  parseOptions(input, function(k2, v3) {
                   }, /:/);
                 }
                 try {
@@ -30276,8 +30123,8 @@ and ensure you are accounting for this risk.
                       return this;
                     }
                     line = collectNextLine();
-                    var m4 = line.match(/^(ï»¿)?WEBVTT([ \t].*)?$/);
-                    if (!m4 || !m4[0]) {
+                    var m3 = line.match(/^(ï»¿)?WEBVTT([ \t].*)?$/);
+                    if (!m3 || !m3[0]) {
                       throw new Error("Malformed WebVTT signature.");
                     }
                     _this.state = "HEADER";
@@ -30811,9 +30658,9 @@ and ensure you are accounting for this risk.
               }
             }
           }
-          function compare(a2, b3) {
-            var diff = a2.sortIndex - b3.sortIndex;
-            return diff !== 0 ? diff : a2.id - b3.id;
+          function compare(a2, b2) {
+            var diff = a2.sortIndex - b2.sortIndex;
+            return diff !== 0 ? diff : a2.id - b2.id;
           }
           var ImmediatePriority = 1;
           var UserBlockingPriority = 2;
@@ -31208,9 +31055,9 @@ and ensure you are accounting for this risk.
           if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
             __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
           }
-          var React21 = require_react();
+          var React20 = require_react();
           var Scheduler = require_scheduler();
-          var ReactSharedInternals = React21.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React20.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           var suppressWarning = false;
           function setSuppressWarning(newSuppressWarning) {
             {
@@ -32039,8 +31886,8 @@ and ensure you are accounting for this risk.
               if (prefix === void 0) {
                 try {
                   throw Error();
-                } catch (x4) {
-                  var match = x4.stack.trim().match(/\n( *(at )?)/);
+                } catch (x3) {
+                  var match = x3.stack.trim().match(/\n( *(at )?)/);
                   prefix = match && match[1] || "";
                 }
               }
@@ -32086,23 +31933,23 @@ and ensure you are accounting for this risk.
                 if (typeof Reflect === "object" && Reflect.construct) {
                   try {
                     Reflect.construct(Fake, []);
-                  } catch (x4) {
-                    control = x4;
+                  } catch (x3) {
+                    control = x3;
                   }
                   Reflect.construct(fn, [], Fake);
                 } else {
                   try {
                     Fake.call();
-                  } catch (x4) {
-                    control = x4;
+                  } catch (x3) {
+                    control = x3;
                   }
                   fn.call(Fake.prototype);
                 }
               } else {
                 try {
                   throw Error();
-                } catch (x4) {
-                  control = x4;
+                } catch (x3) {
+                  control = x3;
                 }
                 fn();
               }
@@ -32110,19 +31957,19 @@ and ensure you are accounting for this risk.
               if (sample && control && typeof sample.stack === "string") {
                 var sampleLines = sample.stack.split("\n");
                 var controlLines = control.stack.split("\n");
-                var s4 = sampleLines.length - 1;
-                var c4 = controlLines.length - 1;
-                while (s4 >= 1 && c4 >= 0 && sampleLines[s4] !== controlLines[c4]) {
-                  c4--;
+                var s3 = sampleLines.length - 1;
+                var c3 = controlLines.length - 1;
+                while (s3 >= 1 && c3 >= 0 && sampleLines[s3] !== controlLines[c3]) {
+                  c3--;
                 }
-                for (; s4 >= 1 && c4 >= 0; s4--, c4--) {
-                  if (sampleLines[s4] !== controlLines[c4]) {
-                    if (s4 !== 1 || c4 !== 1) {
+                for (; s3 >= 1 && c3 >= 0; s3--, c3--) {
+                  if (sampleLines[s3] !== controlLines[c3]) {
+                    if (s3 !== 1 || c3 !== 1) {
                       do {
-                        s4--;
-                        c4--;
-                        if (c4 < 0 || sampleLines[s4] !== controlLines[c4]) {
-                          var _frame = "\n" + sampleLines[s4].replace(" at new ", " at ");
+                        s3--;
+                        c3--;
+                        if (c3 < 0 || sampleLines[s3] !== controlLines[c3]) {
+                          var _frame = "\n" + sampleLines[s3].replace(" at new ", " at ");
                           if (fn.displayName && _frame.includes("<anonymous>")) {
                             _frame = _frame.replace("<anonymous>", fn.displayName);
                           }
@@ -32133,7 +31980,7 @@ and ensure you are accounting for this risk.
                           }
                           return _frame;
                         }
-                      } while (s4 >= 1 && c4 >= 0);
+                      } while (s3 >= 1 && c3 >= 0);
                     }
                     break;
                   }
@@ -32200,7 +32047,7 @@ and ensure you are accounting for this risk.
                   var init = lazyComponent._init;
                   try {
                     return describeUnknownElementTypeFrameInDEV(init(payload), source, ownerFn);
-                  } catch (x4) {
+                  } catch (x3) {
                   }
                 }
               }
@@ -32240,8 +32087,8 @@ and ensure you are accounting for this risk.
                 node = node.return;
               } while (node);
               return info;
-            } catch (x4) {
-              return "\nError generating stack: " + x4.message + "\n" + x4.stack;
+            } catch (x3) {
+              return "\nError generating stack: " + x3.message + "\n" + x3.stack;
             }
           }
           function getWrappedName(outerType, innerType, wrapperName) {
@@ -32306,7 +32153,7 @@ and ensure you are accounting for this risk.
                   var init = lazyComponent._init;
                   try {
                     return getComponentNameFromType(init(payload));
-                  } catch (x4) {
+                  } catch (x3) {
                     return null;
                   }
                 }
@@ -32731,7 +32578,7 @@ and ensure you are accounting for this risk.
             {
               if (props.value == null) {
                 if (typeof props.children === "object" && props.children !== null) {
-                  React21.Children.forEach(props.children, function(child) {
+                  React20.Children.forEach(props.children, function(child) {
                     if (child == null) {
                       return;
                     }
@@ -33162,7 +33009,7 @@ and ensure you are accounting for this risk.
             var warnedForNaNValue = false;
             var warnedForInfinityValue = false;
             var camelize = function(string) {
-              return string.replace(hyphenPattern, function(_2, character) {
+              return string.replace(hyphenPattern, function(_, character) {
                 return character.toUpperCase();
               });
             };
@@ -34202,13 +34049,13 @@ and ensure you are accounting for this risk.
               restoreStateIfNeeded();
             }
           }
-          function batchedUpdates(fn, a2, b3) {
+          function batchedUpdates(fn, a2, b2) {
             if (isInsideEventHandler) {
-              return fn(a2, b3);
+              return fn(a2, b2);
             }
             isInsideEventHandler = true;
             try {
-              return batchedUpdatesImpl(fn, a2, b3);
+              return batchedUpdatesImpl(fn, a2, b2);
             } finally {
               isInsideEventHandler = false;
               finishEventHandler();
@@ -34272,7 +34119,7 @@ and ensure you are accounting for this risk.
               passiveBrowserEventsSupported = false;
             }
           }
-          function invokeGuardedCallbackProd(name, func, context, a2, b3, c4, d4, e2, f3) {
+          function invokeGuardedCallbackProd(name, func, context, a2, b2, c3, d3, e2, f2) {
             var funcArgs = Array.prototype.slice.call(arguments, 3);
             try {
               func.apply(context, funcArgs);
@@ -34284,7 +34131,7 @@ and ensure you are accounting for this risk.
           {
             if (typeof window !== "undefined" && typeof window.dispatchEvent === "function" && typeof document !== "undefined" && typeof document.createEvent === "function") {
               var fakeNode = document.createElement("react");
-              invokeGuardedCallbackImpl = function invokeGuardedCallbackDev(name, func, context, a2, b3, c4, d4, e2, f3) {
+              invokeGuardedCallbackImpl = function invokeGuardedCallbackDev(name, func, context, a2, b2, c3, d3, e2, f2) {
                 if (typeof document === "undefined" || document === null) {
                   throw new Error("The `document` global was defined when React was initialized, but is not defined anymore. This can happen in a test environment if a component schedules an update from an asynchronous callback, but the test has already finished running. To solve this, you can either unmount the component at the end of your test (and ensure that any asynchronous operations get canceled in `componentWillUnmount`), or you can change the test itself to be asynchronous.");
                 }
@@ -34359,12 +34206,12 @@ and ensure you are accounting for this risk.
               caughtError = error2;
             }
           };
-          function invokeGuardedCallback(name, func, context, a2, b3, c4, d4, e2, f3) {
+          function invokeGuardedCallback(name, func, context, a2, b2, c3, d3, e2, f2) {
             hasError = false;
             caughtError = null;
             invokeGuardedCallbackImpl$1.apply(reporter, arguments);
           }
-          function invokeGuardedCallbackAndCatchFirstError(name, func, context, a2, b3, c4, d4, e2, f3) {
+          function invokeGuardedCallbackAndCatchFirstError(name, func, context, a2, b2, c3, d3, e2, f2) {
             invokeGuardedCallback.apply(this, arguments);
             if (hasError) {
               var error2 = clearCaughtError();
@@ -34515,7 +34362,7 @@ and ensure you are accounting for this risk.
               return fiber;
             }
             var a2 = fiber;
-            var b3 = alternate;
+            var b2 = alternate;
             while (true) {
               var parentA = a2.return;
               if (parentA === null) {
@@ -34525,7 +34372,7 @@ and ensure you are accounting for this risk.
               if (parentB === null) {
                 var nextParent = parentA.return;
                 if (nextParent !== null) {
-                  a2 = b3 = nextParent;
+                  a2 = b2 = nextParent;
                   continue;
                 }
                 break;
@@ -34537,7 +34384,7 @@ and ensure you are accounting for this risk.
                     assertIsMounted(parentA);
                     return fiber;
                   }
-                  if (child === b3) {
+                  if (child === b2) {
                     assertIsMounted(parentA);
                     return alternate;
                   }
@@ -34545,9 +34392,9 @@ and ensure you are accounting for this risk.
                 }
                 throw new Error("Unable to find node on an unmounted component.");
               }
-              if (a2.return !== b3.return) {
+              if (a2.return !== b2.return) {
                 a2 = parentA;
-                b3 = parentB;
+                b2 = parentB;
               } else {
                 var didFindChild = false;
                 var _child = parentA.child;
@@ -34555,12 +34402,12 @@ and ensure you are accounting for this risk.
                   if (_child === a2) {
                     didFindChild = true;
                     a2 = parentA;
-                    b3 = parentB;
+                    b2 = parentB;
                     break;
                   }
-                  if (_child === b3) {
+                  if (_child === b2) {
                     didFindChild = true;
-                    b3 = parentA;
+                    b2 = parentA;
                     a2 = parentB;
                     break;
                   }
@@ -34572,12 +34419,12 @@ and ensure you are accounting for this risk.
                     if (_child === a2) {
                       didFindChild = true;
                       a2 = parentB;
-                      b3 = parentA;
+                      b2 = parentA;
                       break;
                     }
-                    if (_child === b3) {
+                    if (_child === b2) {
                       didFindChild = true;
-                      b3 = parentB;
+                      b2 = parentB;
                       a2 = parentA;
                       break;
                     }
@@ -34588,7 +34435,7 @@ and ensure you are accounting for this risk.
                   }
                 }
               }
-              if (a2.alternate !== b3) {
+              if (a2.alternate !== b2) {
                 throw new Error("Return fibers should always be each others' alternates. This error is likely caused by a bug in React. Please file an issue.");
               }
             }
@@ -34980,8 +34827,8 @@ and ensure you are accounting for this risk.
           var clz32 = Math.clz32 ? Math.clz32 : clz32Fallback;
           var log = Math.log;
           var LN2 = Math.LN2;
-          function clz32Fallback(x4) {
-            var asUint = x4 >>> 0;
+          function clz32Fallback(x3) {
+            var asUint = x3 >>> 0;
             if (asUint === 0) {
               return 32;
             }
@@ -35320,26 +35167,26 @@ and ensure you are accounting for this risk.
           function laneToIndex(lane) {
             return pickArbitraryLaneIndex(lane);
           }
-          function includesSomeLane(a2, b3) {
-            return (a2 & b3) !== NoLanes;
+          function includesSomeLane(a2, b2) {
+            return (a2 & b2) !== NoLanes;
           }
           function isSubsetOfLanes(set2, subset) {
             return (set2 & subset) === subset;
           }
-          function mergeLanes(a2, b3) {
-            return a2 | b3;
+          function mergeLanes(a2, b2) {
+            return a2 | b2;
           }
           function removeLanes(set2, subset) {
             return set2 & ~subset;
           }
-          function intersectLanes(a2, b3) {
-            return a2 & b3;
+          function intersectLanes(a2, b2) {
+            return a2 & b2;
           }
           function laneToLanes(lane) {
             return lane;
           }
-          function higherPriorityLane(a2, b3) {
-            return a2 !== NoLane && a2 < b3 ? a2 : b3;
+          function higherPriorityLane(a2, b2) {
+            return a2 !== NoLane && a2 < b2 ? a2 : b2;
           }
           function createLaneMap(initial) {
             var laneMap = [];
@@ -35512,14 +35359,14 @@ and ensure you are accounting for this risk.
               currentUpdatePriority = previousPriority;
             }
           }
-          function higherEventPriority(a2, b3) {
-            return a2 !== 0 && a2 < b3 ? a2 : b3;
+          function higherEventPriority(a2, b2) {
+            return a2 !== 0 && a2 < b2 ? a2 : b2;
           }
-          function lowerEventPriority(a2, b3) {
-            return a2 === 0 || a2 > b3 ? a2 : b3;
+          function lowerEventPriority(a2, b2) {
+            return a2 === 0 || a2 > b2 ? a2 : b2;
           }
-          function isHigherEventPriority(a2, b3) {
-            return a2 !== 0 && a2 < b3;
+          function isHigherEventPriority(a2, b2) {
+            return a2 !== 0 && a2 < b2;
           }
           function lanesToEventPriority(lanes) {
             var lane = getHighestPriorityLane(lanes);
@@ -36865,8 +36712,8 @@ and ensure you are accounting for this risk.
             }
             accumulateEnterLeaveTwoPhaseListeners(dispatchQueue, leave, enter, from, to);
           }
-          function is2(x4, y3) {
-            return x4 === y3 && (x4 !== 0 || 1 / x4 === 1 / y3) || x4 !== x4 && y3 !== y3;
+          function is2(x3, y2) {
+            return x3 === y2 && (x3 !== 0 || 1 / x3 === 1 / y2) || x3 !== x3 && y2 !== y2;
           }
           var objectIs = typeof Object.is === "function" ? Object.is : is2;
           function shallowEqual(objA, objB) {
@@ -40892,7 +40739,7 @@ and ensure you are accounting for this risk.
             }
           }
           var fakeInternalInstance = {};
-          var emptyRefsObject = new React21.Component().refs;
+          var emptyRefsObject = new React20.Component().refs;
           var didWarnAboutStateAssignmentForComponent;
           var didWarnAboutUninitializedState;
           var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -42234,11 +42081,11 @@ and ensure you are accounting for this risk.
           var contextStackCursor$1 = createCursor(NO_CONTEXT);
           var contextFiberStackCursor = createCursor(NO_CONTEXT);
           var rootInstanceStackCursor = createCursor(NO_CONTEXT);
-          function requiredContext(c4) {
-            if (c4 === NO_CONTEXT) {
+          function requiredContext(c3) {
+            if (c3 === NO_CONTEXT) {
               throw new Error("Expected host context to exist. This error is likely caused by a bug in React. Please file an issue.");
             }
-            return c4;
+            return c3;
           }
           function getRootHostContainer() {
             var rootInstance = requiredContext(rootInstanceStackCursor.current);
@@ -44733,7 +44580,7 @@ and ensure you are accounting for this risk.
                   var init = lazyComponent._init;
                   try {
                     outerMemoType = init(payload);
-                  } catch (x4) {
+                  } catch (x3) {
                     outerMemoType = null;
                   }
                   var outerPropTypes = outerMemoType && outerMemoType.propTypes;
@@ -49146,13 +48993,13 @@ and ensure you are accounting for this risk.
               }
             }
           }
-          function discreteUpdates(fn, a2, b3, c4, d4) {
+          function discreteUpdates(fn, a2, b2, c3, d3) {
             var previousPriority = getCurrentUpdatePriority();
             var prevTransition = ReactCurrentBatchConfig$3.transition;
             try {
               ReactCurrentBatchConfig$3.transition = null;
               setCurrentUpdatePriority(DiscreteEventPriority);
-              return fn(a2, b3, c4, d4);
+              return fn(a2, b2, c3, d3);
             } finally {
               setCurrentUpdatePriority(previousPriority);
               ReactCurrentBatchConfig$3.transition = prevTransition;
@@ -51777,25 +51624,446 @@ and ensure you are accounting for this risk.
     }
   });
 
+  // node_modules/@iiif/parser/dist/upgrader/index.umd.js
+  var require_index_umd = __commonJS({
+    "node_modules/@iiif/parser/dist/upgrader/index.umd.js"(exports, module) {
+      var __defProp2 = Object.defineProperty;
+      var __defNormalProp2 = (e2, t2, i3) => t2 in e2 ? __defProp2(e2, t2, { enumerable: true, configurable: true, writable: true, value: i3 }) : e2[t2] = i3;
+      var __publicField = (e2, t2, i3) => (__defNormalProp2(e2, "symbol" != typeof t2 ? t2 + "" : t2, i3), i3);
+      !function(e2, t2) {
+        "object" == typeof exports && "undefined" != typeof module ? t2(exports) : "function" == typeof define && define.amd ? define(["exports"], t2) : t2((e2 = "undefined" != typeof globalThis ? globalThis : e2 || self).IIIFUpgrader = {});
+      }(exports, function(e2) {
+        "use strict";
+        const t2 = "http://library.stanford.edu/iiif/image-api/compliance.html#level1", i3 = "http://library.stanford.edu/iiif/image-api/compliance.html#level2", r2 = "http://library.stanford.edu/iiif/image-api/conformance.html#level1", n2 = "http://library.stanford.edu/iiif/image-api/conformance.html#level2", s3 = "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level1", a2 = "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2", o2 = "http://library.stanford.edu/iiif/image-api/1.1/conformance.html#level1", c3 = "http://library.stanford.edu/iiif/image-api/1.1/conformance.html#level2", l2 = "http://iiif.io/api/image/1/level1.json", p2 = "http://iiif.io/api/image/1/profiles/level1.json", h3 = "http://iiif.io/api/image/1/level2.json", u2 = "http://iiif.io/api/image/1/profiles/level2.json", v3 = "http://iiif.io/api/image/2/level1.json", f2 = "http://iiif.io/api/image/2/profiles/level1.json", m3 = "http://iiif.io/api/image/2/level2.json", y2 = "http://iiif.io/api/image/2/profiles/level2.json", g2 = "level1", d3 = "level2", A2 = "http://iiif.io/api/image/2/level1", b2 = "http://iiif.io/api/image/2/level2", C2 = [A2, b2, t2, i3, r2, n2, s3, a2, o2, c3, l2, p2, h3, u2, v3, f2, m3, y2, g2, d3], x3 = ["http://iiif.io/api/image/2/level0", A2, b2, "http://library.stanford.edu/iiif/image-api/compliance.html#level0", t2, i3, "http://library.stanford.edu/iiif/image-api/conformance.html#level0", r2, n2, "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level0", s3, a2, "http://library.stanford.edu/iiif/image-api/1.1/conformance.html#level0", o2, c3, "http://iiif.io/api/image/1/level0.json", "http://iiif.io/api/image/1/profiles/level0.json", l2, p2, h3, u2, "http://iiif.io/api/image/2/level0.json", "http://iiif.io/api/image/2/profiles/level0.json", v3, f2, m3, y2, "level0", g2, d3], w2 = ["sc:Collection", "sc:Manifest", "sc:Canvas", "sc:AnnotationList", "oa:Annotation", "sc:Range", "sc:Layer", "sc:Sequence", "oa:Choice", "Service", "ContentResource"];
+        class L2 {
+          constructor(e3, t3 = {}) {
+            __publicField(this, "traversals"), __publicField(this, "options"), this.traversals = { collection: [], manifest: [], canvas: [], annotationList: [], sequence: [], annotation: [], contentResource: [], choice: [], range: [], service: [], layer: [], ...e3 }, this.options = { convertPropsToArray: true, mergeMemberProperties: true, allowUndefinedReturn: false, ...t3 };
+          }
+          static all(e3) {
+            return new L2({ collection: [e3], manifest: [e3], canvas: [e3], annotationList: [e3], sequence: [e3], annotation: [e3], contentResource: [e3], choice: [e3], range: [e3], service: [e3], layer: [e3] });
+          }
+          traverseCollection(e3) {
+            return this.traverseType(this.traverseDescriptive(this.traverseLinking(this.traverseCollectionItems(e3))), this.traversals.collection);
+          }
+          traverseCollectionItems(e3) {
+            if (this.options.mergeMemberProperties) {
+              const t3 = [...(e3.manifests || []).map((e4) => "string" == typeof e4 ? { "@id": e4, "@type": "sc:Manifest" } : e4), ...(e3.collections || []).map((e4) => "string" == typeof e4 ? { "@id": e4, "@type": "sc:Collection" } : e4), ...e3.members || []];
+              delete e3.collections, delete e3.manifests, e3.members = t3;
+            }
+            return e3.manifests && (e3.manifests = e3.manifests.map((e4) => this.traverseManifest("string" == typeof e4 ? { "@id": e4, "@type": "sc:Manifest" } : e4))), e3.collections && (e3.collections = e3.collections.map((e4) => this.traverseCollection("string" == typeof e4 ? { "@id": e4, "@type": "sc:Collection" } : e4))), e3.members && (e3.members = e3.members.map((e4) => "string" == typeof e4 ? e4 : this.traverseUnknown(e4))), e3;
+          }
+          traverseManifest(e3) {
+            return this.traverseType(this.traverseDescriptive(this.traverseLinking(this.traverseManifestItems(e3))), this.traversals.manifest);
+          }
+          traverseManifestItems(e3) {
+            return e3.sequences && (e3.sequences = e3.sequences.map((e4) => this.traverseSequence(e4))), e3.structures && (e3.structures = e3.structures.map((e4) => this.traverseRange(e4))), e3;
+          }
+          traverseSequence(e3) {
+            return this.traverseType(this.traverseDescriptive(this.traverseLinking(this.traverseSequenceItems(e3))), this.traversals.sequence);
+          }
+          traverseSequenceItems(e3) {
+            return e3.canvases && (e3.canvases = e3.canvases.map((e4) => this.traverseCanvas(e4))), e3;
+          }
+          traverseCanvas(e3) {
+            return this.traverseType(this.traverseDescriptive(this.traverseLinking(this.traverseCanvasItems(e3))), this.traversals.canvas);
+          }
+          traverseCanvasItems(e3) {
+            return e3.images && (e3.images = e3.images.map((e4) => this.traverseAnnotation(e4))), e3.otherContent && (e3.otherContent = e3.otherContent.map((e4) => this.traverseAnnotationList(e4))), e3;
+          }
+          traverseRange(e3) {
+            return this.traverseType(this.traverseDescriptive(this.traverseLinking(this.traverseRangeItems(e3))), this.traversals.range);
+          }
+          traverseRangeItems(e3) {
+            if (this.options.mergeMemberProperties) {
+              const t3 = [...(e3.ranges || []).map((e4) => "string" == typeof e4 ? { "@id": e4, "@type": "sc:Range" } : e4), ...(e3.canvases || []).map((e4) => "string" == typeof e4 ? { "@id": e4, "@type": "sc:Canvas" } : e4), ...e3.members || []];
+              delete e3.ranges, delete e3.canvases, e3.members = t3.length ? t3.map((e4) => this.traverseUnknown(e4)) : void 0;
+            }
+            return e3;
+          }
+          traverseAnnotationList(e3) {
+            const t3 = "string" == typeof e3 ? { "@id": e3, "@type": "sc:AnnotationList" } : e3;
+            return this.traverseType(this.traverseDescriptive(this.traverseAnnotationListItems(t3)), this.traversals.annotationList);
+          }
+          traverseAnnotationListItems(e3) {
+            return e3.resources && (e3.resources = e3.resources.map((e4) => this.traverseAnnotation(e4))), e3;
+          }
+          traverseAnnotation(e3) {
+            return this.traverseType(this.traverseDescriptive(this.traverseLinking(this.traverseAnnotationItems(e3))), this.traversals.annotation);
+          }
+          traverseAnnotationItems(e3) {
+            return e3.resource && (Array.isArray(e3.resource) ? e3.resource = e3.resource.map((e4) => this.traverseContentResource(e4)) : e3.resource = this.traverseContentResource(e3.resource)), e3.on, e3;
+          }
+          traverseLayer(e3) {
+            return this.traverseType(this.traverseLinking(this.traverseLayerItems(e3)), this.traversals.layer);
+          }
+          traverseLayerItems(e3) {
+            return e3.otherContent && (e3.otherContent = e3.otherContent.map((e4) => this.traverseAnnotationList(e4))), e3;
+          }
+          traverseChoice(e3) {
+            return this.traverseType(this.traverseChoiceItems(e3), this.traversals.choice);
+          }
+          traverseChoiceItems(e3) {
+            return e3.default && "rdf:nil" !== e3.default && (e3.default = this.traverseContentResource(e3.default)), e3.item && "rdf:nil" !== e3.item && (e3.item = e3.item.map((e4) => this.traverseContentResource(e4))), e3;
+          }
+          traverseService(e3) {
+            return this.traverseType(this.traverseLinking(e3), this.traversals.service);
+          }
+          traverseContentResource(e3) {
+            return "oa:Choice" === e3["@type"] ? this.traverseChoice(e3) : this.traverseType(this.traverseDescriptive(this.traverseLinking(e3)), this.traversals.contentResource);
+          }
+          traverseUnknown(e3) {
+            if (!e3["@type"] || "string" == typeof e3)
+              return e3;
+            switch (function(e4) {
+              if (null == e4)
+                throw new Error("Null or undefined is not a valid entity.");
+              if (Array.isArray(e4))
+                throw new Error("Array is not a valid entity");
+              if ("object" != typeof e4)
+                throw new Error(typeof e4 + " is not a valid entity");
+              if ("string" == typeof e4["@type"]) {
+                const t3 = w2.indexOf(e4["@type"]);
+                if (-1 !== t3)
+                  return w2[t3];
+              }
+              if (e4.profile)
+                return "Service";
+              if (e4.format)
+                return "ContentResource";
+              if (e4["@type"])
+                return "ContentResource";
+              throw new Error("Resource type is not known");
+            }(e3)) {
+              case "sc:Collection":
+                return this.traverseCollection(e3);
+              case "sc:Manifest":
+                return this.traverseManifest(e3);
+              case "sc:Canvas":
+                return this.traverseCanvas(e3);
+              case "sc:Sequence":
+                return this.traverseSequence(e3);
+              case "sc:Range":
+                return this.traverseRange(e3);
+              case "oa:Annotation":
+                return this.traverseAnnotation(e3);
+              case "sc:AnnotationList":
+                return this.traverseAnnotationList(e3);
+              case "sc:Layer":
+                return this.traverseLayer(e3);
+              case "Service":
+                return this.traverseService(e3);
+              case "oa:Choice":
+                return this.traverseChoice(e3);
+              case "ContentResource":
+                return this.traverseContentResource(e3);
+            }
+            return e3.profile ? this.traverseService(e3) : e3;
+          }
+          traverseImageResource(e3) {
+            const t3 = Array.isArray(e3), i4 = Array.isArray(e3) ? e3 : [e3], r3 = [];
+            for (const n3 of i4)
+              "string" == typeof n3 ? r3.push(this.traverseContentResource({ "@id": n3, "@type": "dctypes:Image" })) : r3.push(this.traverseContentResource(n3));
+            return t3 || this.options.convertPropsToArray ? r3 : r3[0];
+          }
+          traverseDescriptive(e3) {
+            return e3.thumbnail && (e3.thumbnail = this.traverseImageResource(e3.thumbnail)), e3.logo && (e3.logo = this.traverseImageResource(e3.logo)), e3;
+          }
+          traverseOneOrMoreServices(e3) {
+            const t3 = Array.isArray(e3), i4 = Array.isArray(e3) ? e3 : [e3], r3 = [];
+            for (const n3 of i4)
+              r3.push(this.traverseService(n3));
+            return t3 || this.options.convertPropsToArray ? r3 : r3[0];
+          }
+          traverseLinking(e3) {
+            return e3.related && (e3.related = this.traverseOneOrManyType(e3.related, this.traversals.contentResource)), e3.rendering && (e3.rendering = this.traverseOneOrManyType(e3.rendering, this.traversals.contentResource)), e3.service && (e3.service = this.traverseOneOrMoreServices(e3.service)), e3.seeAlso && (e3.seeAlso = this.traverseOneOrManyType(e3.seeAlso, this.traversals.contentResource)), e3.within && ("string" == typeof e3.within || (e3.within = this.traverseOneOrManyType(e3.within, this.traversals.contentResource))), e3.startCanvas && ("string" == typeof e3.startCanvas ? e3.startCanvas = this.traverseType({ "@id": e3.startCanvas, "@type": "sc:Canvas" }, this.traversals.canvas) : e3.startCanvas && this.traverseType(e3.startCanvas, this.traversals.canvas)), e3.contentLayer && ("string" == typeof e3.contentLayer ? e3.contentLayer = this.traverseLayer({ "@id": e3.contentLayer, "@type": "sc:Layer" }) : e3.contentLayer = this.traverseLayer(e3.contentLayer)), e3;
+          }
+          traverseOneOrManyType(e3, t3) {
+            if (!Array.isArray(e3)) {
+              if (!this.options.convertPropsToArray)
+                return this.traverseType(e3, t3);
+              e3 = [e3];
+            }
+            return e3.map((e4) => this.traverseType(e4, t3));
+          }
+          traverseType(e3, t3) {
+            return t3.reduce((e4, t4) => {
+              const i4 = t4(e4);
+              return void 0 !== i4 || this.options.allowUndefinedReturn ? i4 : e4;
+            }, e3);
+          }
+        }
+        const S3 = "Attribution", j3 = "http://example.org/provider", R3 = "Unknown";
+        function I2(e3, t3 = "none") {
+          if (!e3)
+            return {};
+          const i4 = Array.isArray(e3) ? e3 : [e3], r3 = {};
+          for (const n3 of i4) {
+            if ("string" == typeof n3) {
+              r3[t3] = r3[t3] ? r3[t3] : [], r3[t3].push(n3 || "");
+              continue;
+            }
+            if (!n3["@language"]) {
+              r3[t3] = r3[t3] ? r3[t3] : [], r3[t3].push(n3["@value"] || "");
+              continue;
+            }
+            const e4 = n3["@language"];
+            r3[e4] = r3[e4] ? r3[e4] : [], r3[e4].push(n3["@value"] || "");
+          }
+          return r3;
+        }
+        function T2(e3) {
+          return Array.isArray(e3) ? T2(e3.find((e4) => "string" == typeof e4)) : -1 !== x3.indexOf(e3) ? "level2" : -1 !== C2.indexOf(e3) ? "level1" : "string" == typeof e3 ? e3 : void 0;
+        }
+        function k2(e3) {
+          for (const t3 of ["sc", "oa", "dcterms", "dctypes", "iiif"])
+            if (e3.startsWith(`${t3}:`))
+              return e3.slice(t3.length + 1);
+          return e3;
+        }
+        const O3 = ["Collection", "Manifest", "Annotation", "AnnotationPage", "Range", "Service"];
+        function M3(e3) {
+          const t3 = e3["@id"] || e3.id;
+          let i4 = e3["@type"] || e3.type;
+          const r3 = e3.profile || void 0, n3 = e3["@context"] || void 0;
+          if (r3) {
+            const e4 = function(e5) {
+              switch (e5) {
+                case "http://iiif.io/api/image/2/level0.json":
+                case "http://iiif.io/api/image/2/level1.json":
+                case "http://iiif.io/api/image/2/level2.json":
+                  return "ImageService2";
+                case "http://iiif.io/api/auth/1/kiosk":
+                case "http://iiif.io/api/auth/1/login":
+                case "http://iiif.io/api/auth/1/clickthrough":
+                case "http://iiif.io/api/auth/1/external":
+                case "http://iiif.io/api/auth/0/kiosk":
+                case "http://iiif.io/api/auth/0/login":
+                case "http://iiif.io/api/auth/0/clickthrough":
+                case "http://iiif.io/api/auth/0/external":
+                  return "AuthCookieService1";
+                case "http://iiif.io/api/auth/1/token":
+                case "http://iiif.io/api/auth/0/token":
+                  return "AuthTokenService1";
+                case "http://iiif.io/api/auth/1/logout":
+                case "http://iiif.io/api/auth/0/logout":
+                  return "AuthLogoutService1";
+                case "http://iiif.io/api/search/1/search":
+                case "http://iiif.io/api/search/0/search":
+                  return "SearchService1";
+                case "http://iiif.io/api/search/1/autocomplete":
+                case "http://iiif.io/api/search/0/autocomplete":
+                  return "AutoCompleteService1";
+              }
+            }(r3);
+            if (e4)
+              return e4;
+          }
+          if (n3) {
+            const e4 = function(e5) {
+              const t4 = Array.isArray(e5) ? e5 : [e5];
+              for (const i5 of t4)
+                switch (i5) {
+                  case "http://iiif.io/api/image/2/context.json":
+                  case "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2":
+                    return "ImageService2";
+                  case "http://iiif.io/api/image/1/context.json":
+                  case "http://library.stanford.edu/iiif/image-api/1.1/context.json":
+                    return "ImageService1";
+                  case "http://iiif.io/api/annex/openannotation/context.json":
+                    return "ImageApiSelector";
+                }
+            }(n3);
+            if (e4)
+              return e4;
+          }
+          if (i4) {
+            if (Array.isArray(i4)) {
+              if (-1 !== i4.indexOf("oa:CssStylesheet"))
+                return "CssStylesheet";
+              if (-1 !== i4.indexOf("cnt:ContentAsText"))
+                return "TextualBody";
+              i4 = i4[0];
+            }
+            for (const e4 of ["sc", "oa", "dcterms", "dctypes", "iiif"])
+              if (i4.startsWith(`${e4}:`)) {
+                i4 = i4.slice(e4.length + 1);
+                break;
+              }
+            switch (i4) {
+              case "Layer":
+                return "AnnotationCollection";
+              case "AnnotationList":
+                return "AnnotationPage";
+              case "cnt:ContentAsText":
+                return "TextualBody";
+            }
+          }
+          if (i4 && -1 !== O3.indexOf(i4))
+            return i4;
+          if (e3.format) {
+            if (e3.format.startsWith("image/"))
+              return "Image";
+            if (e3.format.startsWith("text/"))
+              return "Text";
+            if ("application/pdf" === e3.format)
+              return "Text";
+            if (e3.format.startsWith("application/"))
+              return "Dataset";
+          }
+          return t3 && (t3.endsWith(".jpg") || t3.endsWith(".png") || t3.endsWith(".jpeg")) ? "Image" : i4 || "unknown";
+        }
+        const q2 = /http(s)?:\/\/(creativecommons.org|rightsstatements.org)[^"'\\<\n]+/gm;
+        function P3(e3) {
+          const t3 = e3.match(q2);
+          return t3 ? t3[0] : e3;
+        }
+        const _ = ["http://iiif.io/api/presentation/2/context.json", "http://iiif.io/api/image/2/context.json", "http://iiif.io/api/image/1/context.json", "http://library.stanford.edu/iiif/image-api/1.1/context.json", "http://iiif.io/api/search/1/context.json", "http://iiif.io/api/search/0/context.json", "http://iiif.io/api/auth/1/context.json", "http://iiif.io/api/auth/0/context.json", "http://iiif.io/api/annex/openannotation/context.json"];
+        function D3(e3) {
+          if (e3) {
+            const t3 = Array.isArray(e3) ? e3 : [e3], i4 = [];
+            for (const e4 of t3)
+              "http://iiif.io/api/presentation/2/context.json" === e4 && i4.push("http://iiif.io/api/presentation/3/context.json"), -1 === _.indexOf(e4) && i4.push(e4);
+            if (t3.length)
+              return 1 === i4.length ? i4[0] : i4;
+          }
+        }
+        function U3(e3) {
+          for (const t3 in e3)
+            void 0 !== e3[t3] && null !== e3[t3] || delete e3[t3];
+          return e3;
+        }
+        let $4 = 0;
+        function W3(e3, t3) {
+          const i4 = encodeURI(e3.id || e3["@id"] || "").trim();
+          return i4 && t3 ? `${i4}/${t3}` : i4 || ($4++, `http://example.org/${e3["@type"]}${t3 ? `/${t3}` : ""}/${$4}`);
+        }
+        function E3(e3) {
+          const t3 = [...e3.behavior || []];
+          let i4;
+          return e3.viewingHint && t3.push(e3.viewingHint), Array.isArray(e3.motivation) ? i4 = e3.motivation.map(k2) : e3.motivation && (i4 = k2(e3.motivation)), { "@context": e3["@context"] ? D3(e3["@context"]) : void 0, id: (e3["@id"] || W3(e3)).trim(), type: M3(e3), behavior: t3.length ? t3 : void 0, height: e3.height ? e3.height : void 0, width: e3.width ? e3.width : void 0, motivation: i4, viewingDirection: e3.viewingDirection, profile: e3.profile, format: e3.format ? e3.format : void 0, duration: void 0, timeMode: void 0 };
+        }
+        function F3(e3) {
+          const [t3, i4] = function(e4, t4 = "Rights/License", i5 = "none") {
+            let r4 = null;
+            const n4 = [], s4 = Array.isArray(e4) ? e4 : [e4];
+            for (const a3 of s4) {
+              const e5 = a3 ? P3(a3) : void 0;
+              !e5 || -1 === e5.indexOf("creativecommons.org") && -1 === e5.indexOf("rightsstatements.org") ? e5 && n4.push({ label: { [i5]: [t4] }, value: { [i5]: [e5] } }) : r4 = e5.startsWith("https://") ? `http://${e5.slice(8)}` : e5;
+            }
+            return [r4, n4];
+          }(e3.license), r3 = [...e3.metadata ? (n3 = e3.metadata, n3 ? n3.map((e4) => ({ label: I2(e4.label), value: I2(e4.value) })) : []) : [], ...i4];
+          var n3;
+          return { rights: t3, metadata: r3.length ? r3 : void 0, label: e3.label ? I2(e3.label) : void 0, requiredStatement: e3.attribution ? { label: I2(S3), value: I2(e3.attribution) } : void 0, navDate: e3.navDate, summary: e3.description ? I2(e3.description) : void 0, thumbnail: e3.thumbnail };
+        }
+        function H3(e3) {
+          if (!e3.within)
+            return;
+          const t3 = Array.isArray(e3.within) ? e3.within : [e3.within], i4 = [];
+          for (const r3 of t3)
+            if ("string" == typeof r3) {
+              if (r3 && "sc:Manifest" === e3["@type"])
+                i4.push({ id: r3, type: "Collection" });
+            } else
+              r3["@id"] && i4.push({ id: r3["@id"], type: M3(r3) });
+          return i4.length ? i4 : void 0;
+        }
+        function N3(e3) {
+          const t3 = e3.related ? Array.isArray(e3.related) ? e3.related : [e3.related] : [], i4 = e3.contentLayer;
+          return { provider: e3.logo || t3.length ? [{ id: j3, type: "Agent", homepage: t3.length ? [t3[0]] : void 0, logo: e3.logo ? Array.isArray(e3.logo) ? e3.logo : [e3.logo] : void 0, label: I2(R3) }] : void 0, partOf: H3(e3), rendering: e3.rendering, seeAlso: e3.seeAlso, start: e3.startCanvas, service: e3.service ? (r3 = e3.service, Array.isArray(r3) ? r3 : [r3]) : void 0, supplementary: i4 ? [i4] : void 0 };
+          var r3;
+        }
+        function B3(e3) {
+          const t3 = e3;
+          return U3({ ...E3(t3), ...F3(t3), ...N3(t3), ...(i4 = t3, { chars: i4.chars, format: i4.format ? i4.format : void 0, language: i4.language }) });
+          var i4;
+        }
+        const z3 = new L2({ collection: [function(e3) {
+          return U3({ ...E3(e3), ...F3(e3), ...N3(e3), items: e3.members });
+        }], manifest: [function(e3) {
+          const t3 = [], i4 = [];
+          for (const n3 of e3.sequences || [])
+            n3.canvases.length && t3.push(...n3.canvases), n3.behavior && i4.push(...n3.behavior);
+          const r3 = E3(e3);
+          return i4.length && (r3.behavior ? r3.behavior.push(...i4) : r3.behavior = i4), U3({ ...r3, ...F3(e3), ...N3(e3), items: t3, structures: e3.structures });
+        }], canvas: [function(e3) {
+          return U3({ ...E3(e3), ...F3(e3), ...N3(e3), annotations: e3.otherContent && e3.otherContent.length ? e3.otherContent : void 0, items: e3.images && e3.images.length ? [{ id: W3(e3, "annotation-page"), type: "AnnotationPage", items: e3.images }] : void 0 });
+        }], annotationList: [function(e3) {
+          return U3({ ...E3(e3), ...F3(e3), ...N3(e3), items: e3.resources && e3.resources.length ? e3.resources : void 0 });
+        }], sequence: [function(e3) {
+          return e3.canvases && 0 !== e3.canvases.length ? { canvases: e3.canvases, behavior: e3.viewingHint ? [e3.viewingHint] : [] } : { canvases: [], behavior: [] };
+        }], annotation: [function(e3) {
+          return U3({ ...E3(e3), ...F3(e3), ...N3(e3), target: function e4(t3) {
+            if (Array.isArray(t3)) {
+              if (t3.length > 1)
+                return { type: "List", items: t3.map(e4) };
+              t3 = t3[0];
+            }
+            if ("string" == typeof t3)
+              return encodeURI(t3).trim();
+            if ("@type" in t3) {
+              let e5;
+              if ("string" == typeof t3.full)
+                e5 = t3.full;
+              else if ("dctypes:Image" === t3.full["@type"])
+                e5 = { id: t3.full["@id"], type: "Image" };
+              else {
+                if ("sc:Canvas" !== t3.full["@type"])
+                  throw new Error(`Unsupported source type on annotation: ${t3.full["@type"]}`);
+                e5 = { id: t3.full["@id"], type: "Canvas" };
+              }
+              return { type: "SpecificResource", source: e5, selector: G3(t3.selector) };
+            }
+            return encodeURI(t3["@id"]).trim();
+          }(e3.on), body: Array.isArray(e3.resource) ? e3.resource.map(B3) : B3(e3.resource) });
+        }], contentResource: [B3], choice: [function(e3) {
+          const t3 = [];
+          return e3.default && "rdf:nil" !== e3.default && t3.push(e3.default), e3.item && "rdf:nil" !== e3.item && t3.push(...e3.item), { ...E3(e3), ...F3(e3), items: t3 };
+        }], range: [function(e3) {
+          return U3({ ...E3(e3), ...F3(e3), ...N3(e3), items: e3.members });
+        }], service: [function(e3) {
+          const { "@id": t3, "@type": i4, "@context": r3, profile: n3, ...s4 } = e3, a3 = {};
+          return t3 && (a3["@id"] = t3), a3["@type"] = M3(e3), "unknown" === a3["@type"] && (r3 && r3.length && (a3["@context"] = r3), a3["@type"] = "Service"), n3 && (a3.profile = T2(n3)), U3({ ...a3, ...s4 });
+        }], layer: [function(e3) {
+          return U3({ ...E3(e3), ...F3(e3), ...N3(e3) });
+        }] });
+        function G3(e3) {
+          if ((Array.isArray(e3["@type"]) && e3["@type"].includes("oa:SvgSelector") || "oa:SvgSelector" == e3["@type"]) && ("chars" in e3 || "value" in e3))
+            return { type: "SvgSelector", value: "chars" in e3 ? e3.chars : e3.value };
+          if ("oa:FragmentSelector" === e3["@type"])
+            return { type: "FragmentSelector", value: e3.value };
+          if ("oa:Choice" === e3["@type"])
+            return [G3(e3.default), ...(Array.isArray(e3.item) ? e3.item : [e3.item]).map(G3)];
+          if ("iiif:ImageApiSelector" == e3["@type"])
+            return { type: "ImageApiSelector", region: "region" in e3 ? e3.region : void 0, rotation: "rotation" in e3 ? e3.rotation : void 0 };
+          throw new Error(`Unsupported selector type: ${e3["@type"]}`);
+        }
+        const J3 = function(e3) {
+          return e3 && e3["@context"] && ("http://iiif.io/api/presentation/2/context.json" === e3["@context"] || -1 !== e3["@context"].indexOf("http://iiif.io/api/presentation/2/context.json") || "http://www.shared-canvas.org/ns/context.json" === e3["@context"]) || "http://iiif.io/api/image/2/context.json" === e3["@context"] ? z3.traverseUnknown(e3) : e3;
+        };
+        e2.upgrade = J3, Object.defineProperties(e2, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
+      });
+    }
+  });
+
   // node_modules/react-error-boundary/dist/react-error-boundary.umd.js
   var require_react_error_boundary_umd = __commonJS({
     "node_modules/react-error-boundary/dist/react-error-boundary.umd.js"(exports, module) {
-      (function(global2, factory) {
-        typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require_react()) : typeof define === "function" && define.amd ? define(["exports", "react"], factory) : (global2 = typeof globalThis !== "undefined" ? globalThis : global2 || self, factory(global2.ReactErrorBoundary = {}, global2.React));
-      })(exports, function(exports2, React21) {
+      (function(global, factory) {
+        typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require_react()) : typeof define === "function" && define.amd ? define(["exports", "react"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ReactErrorBoundary = {}, global.React));
+      })(exports, function(exports2, React20) {
         "use strict";
         function _interopNamespace(e2) {
           if (e2 && e2.__esModule)
             return e2;
           var n2 = /* @__PURE__ */ Object.create(null);
           if (e2) {
-            Object.keys(e2).forEach(function(k3) {
-              if (k3 !== "default") {
-                var d4 = Object.getOwnPropertyDescriptor(e2, k3);
-                Object.defineProperty(n2, k3, d4.get ? d4 : {
+            Object.keys(e2).forEach(function(k2) {
+              if (k2 !== "default") {
+                var d3 = Object.getOwnPropertyDescriptor(e2, k2);
+                Object.defineProperty(n2, k2, d3.get ? d3 : {
                   enumerable: true,
                   get: function() {
-                    return e2[k3];
+                    return e2[k2];
                   }
                 });
               }
@@ -51804,28 +52072,28 @@ and ensure you are accounting for this risk.
           n2["default"] = e2;
           return Object.freeze(n2);
         }
-        var React__namespace = /* @__PURE__ */ _interopNamespace(React21);
-        function _setPrototypeOf(o2, p3) {
-          _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p4) {
-            o3.__proto__ = p4;
+        var React__namespace = /* @__PURE__ */ _interopNamespace(React20);
+        function _setPrototypeOf(o2, p2) {
+          _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p3) {
+            o3.__proto__ = p3;
             return o3;
           };
-          return _setPrototypeOf(o2, p3);
+          return _setPrototypeOf(o2, p2);
         }
         function _inheritsLoose(subClass, superClass) {
           subClass.prototype = Object.create(superClass.prototype);
           subClass.prototype.constructor = subClass;
           _setPrototypeOf(subClass, superClass);
         }
-        var changedArray = function changedArray2(a2, b3) {
+        var changedArray = function changedArray2(a2, b2) {
           if (a2 === void 0) {
             a2 = [];
           }
-          if (b3 === void 0) {
-            b3 = [];
+          if (b2 === void 0) {
+            b2 = [];
           }
-          return a2.length !== b3.length || a2.some(function(item, index2) {
-            return !Object.is(item, b3[index2]);
+          return a2.length !== b2.length || a2.some(function(item, index2) {
+            return !Object.is(item, b2[index2]);
           });
         };
         var initialState = {
@@ -51922,24 +52190,24 @@ and ensure you are accounting for this risk.
   var require_client = __commonJS({
     "node_modules/react-dom/client.js"(exports) {
       "use strict";
-      var m4 = require_react_dom();
+      var m3 = require_react_dom();
       if (false) {
-        exports.createRoot = m4.createRoot;
-        exports.hydrateRoot = m4.hydrateRoot;
+        exports.createRoot = m3.createRoot;
+        exports.hydrateRoot = m3.hydrateRoot;
       } else {
-        i3 = m4.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-        exports.createRoot = function(c4, o2) {
+        i3 = m3.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+        exports.createRoot = function(c3, o2) {
           i3.usingClientEntryPoint = true;
           try {
-            return m4.createRoot(c4, o2);
+            return m3.createRoot(c3, o2);
           } finally {
             i3.usingClientEntryPoint = false;
           }
         };
-        exports.hydrateRoot = function(c4, h4, o2) {
+        exports.hydrateRoot = function(c3, h3, o2) {
           i3.usingClientEntryPoint = true;
           try {
-            return m4.hydrateRoot(c4, h4, o2);
+            return m3.hydrateRoot(c3, h3, o2);
           } finally {
             i3.usingClientEntryPoint = false;
           }
@@ -51950,1890 +52218,19 @@ and ensure you are accounting for this risk.
   });
 
   // src/dev.tsx
-  var import_react44 = __toESM(require_react());
+  var import_react43 = __toESM(require_react());
 
   // src/index.tsx
-  var import_react41 = __toESM(require_react());
+  var import_react40 = __toESM(require_react());
 
   // src/context/collection-context.tsx
   var import_react = __toESM(require_react());
-
-  // node_modules/@iiif/parser/dist/esm/index.mjs
-  var k = { id: "https://iiif-parser/annotation-page", type: "AnnotationPage", behavior: [], motivation: null, label: null, thumbnail: [], summary: null, requiredStatement: null, metadata: [], rights: null, provider: [], items: [], seeAlso: [], homepage: [], logo: [], rendering: [], service: [] };
-  var N = { id: "https://iiif-parser/empty-canvas", type: "Canvas", label: null, behavior: [], motivation: null, thumbnail: [], posterCanvas: null, accompanyingCanvas: null, placeholderCanvas: null, summary: null, requiredStatement: null, metadata: [], rights: null, navDate: null, provider: [], items: [], annotations: [], seeAlso: [], homepage: [], logo: [], partOf: [], rendering: [], service: [], duration: 0, height: 0, width: 0 };
-  var $ = { id: "https://iiif-parser/empty-collection", type: "Collection", label: null, viewingDirection: "left-to-right", behavior: [], motivation: null, thumbnail: [], posterCanvas: null, accompanyingCanvas: null, placeholderCanvas: null, summary: null, requiredStatement: null, metadata: [], rights: null, navDate: null, provider: [], items: [], annotations: [], seeAlso: [], homepage: [], logo: [], partOf: [], rendering: [], service: [], services: [] };
-  var j = { id: "https://iiif-parser/empty-manifest", type: "Manifest", annotations: [], behavior: [], homepage: [], items: [], label: null, logo: [], metadata: [], motivation: null, navDate: null, provider: [], partOf: [], posterCanvas: null, accompanyingCanvas: null, placeholderCanvas: null, rendering: [], requiredStatement: null, rights: null, seeAlso: [], service: [], services: [], start: null, structures: [], summary: null, thumbnail: [], viewingDirection: "left-to-right" };
-  var G = { id: "https://iiif-parser/empty-canvas", type: "Range", label: null, behavior: [], motivation: null, thumbnail: [], posterCanvas: null, accompanyingCanvas: null, placeholderCanvas: null, summary: null, requiredStatement: null, metadata: [], rights: null, navDate: null, provider: [], items: [], annotations: [], seeAlso: [], homepage: [], logo: [], partOf: [], rendering: [], service: [], start: null, supplementary: null, viewingDirection: "left-to-right" };
-  var q = { id: "https://iiif-parser/empty-agent", type: "Agent", label: {}, logo: [], seeAlso: [], homepage: [] };
-  var M = ["Collection", "Manifest", "Canvas", "AnnotationPage", "AnnotationCollection", "Annotation", "ContentResource", "Range", "Service", "Selector", "Agent"];
-  function U(t2) {
-    if (typeof t2 == "undefined" || t2 === null)
-      throw new Error("Null or undefined is not a valid entity.");
-    if (Array.isArray(t2))
-      throw new Error("Array is not a valid entity");
-    if (typeof t2 != "object")
-      throw new Error(`${typeof t2} is not a valid entity`);
-    if (typeof t2.type == "string") {
-      const e2 = M.indexOf(t2.type);
-      if (e2 !== -1)
-        return M[e2];
-    }
-    if (t2.profile)
-      return "Service";
-    throw new Error("Resource type is not known");
-  }
-  var L = class {
-    traversals;
-    options;
-    constructor(e2, i3 = {}) {
-      this.traversals = { collection: [], manifest: [], canvas: [], annotationCollection: [], annotationPage: [], annotation: [], contentResource: [], choice: [], range: [], service: [], agent: [], ...e2 }, this.options = { allowUndefinedReturn: false, ...i3 };
-    }
-    static all(e2) {
-      return new L({ collection: [e2], manifest: [e2], canvas: [e2], annotationCollection: [e2], annotationPage: [e2], annotation: [e2], contentResource: [e2], choice: [e2], range: [e2], service: [e2] });
-    }
-    traverseDescriptive(e2) {
-      return e2.thumbnail && (e2.thumbnail = e2.thumbnail.map((i3) => this.traverseType(i3, this.traversals.contentResource))), e2.provider && (e2.provider = e2.provider.map((i3) => this.traverseAgent(i3))), e2;
-    }
-    traverseLinking(e2) {
-      return e2.seeAlso && (e2.seeAlso = e2.seeAlso.map((i3) => this.traverseType(i3, this.traversals.contentResource))), e2.service && (e2.service = e2.service.map((i3) => this.traverseType(i3, this.traversals.service))), e2.services && (e2.services = e2.services.map((i3) => this.traverseType(i3, this.traversals.service))), e2.logo && (e2.logo = e2.logo.map((i3) => this.traverseType(i3, this.traversals.contentResource))), e2.homepage && (e2.homepage = e2.homepage.map((i3) => this.traverseType(i3, this.traversals.contentResource))), e2.partOf && (e2.partOf = e2.partOf.map((i3) => typeof i3 == "string" || !i3.type ? this.traverseType(i3, this.traversals.contentResource) : i3.type === "Canvas" ? this.traverseType(i3, this.traversals.canvas) : i3.type === "AnnotationCollection" ? this.traverseType(i3, this.traversals.annotationCollection) : this.traverseType(i3, this.traversals.contentResource))), e2.start && (e2.start = e2.start ? this.traverseType(e2.start, this.traversals.canvas) : null), e2.rendering && (e2.rendering = e2.rendering.map((i3) => this.traverseType(i3, this.traversals.contentResource))), e2.supplementary && (e2.supplementary = e2.supplementary.map((i3) => this.traverseType(i3, this.traversals.contentResource))), e2;
-    }
-    traverseCollectionItems(e2) {
-      return e2.items && e2.items.map((i3) => i3.type === "Collection" ? this.traverseCollection(i3) : this.traverseManifest(i3)), e2;
-    }
-    traverseCollection(e2) {
-      return this.traverseType(this.traverseDescriptive(this.traverseInlineAnnotationPages(this.traverseLinking(this.traversePosterCanvas(this.traverseCollectionItems(e2))))), this.traversals.collection);
-    }
-    traverseManifestItems(e2) {
-      return e2.items && (e2.items = e2.items.map((i3) => this.traverseCanvas(i3))), e2;
-    }
-    traverseManifestStructures(e2) {
-      return e2.structures && (e2.structures = e2.structures.map((i3) => this.traverseRange(i3))), e2;
-    }
-    traverseManifest(e2) {
-      return this.traverseType(this.traverseInlineAnnotationPages(this.traverseManifestStructures(this.traversePosterCanvas(this.traverseDescriptive(this.traverseLinking(this.traverseManifestItems(e2)))))), this.traversals.manifest);
-    }
-    traverseCanvasItems(e2) {
-      return e2.items = (e2.items || []).map((i3) => this.traverseAnnotationPage(i3)), e2;
-    }
-    traverseInlineAnnotationPages(e2) {
-      return typeof e2 == "string" || !e2 || e2.annotations && (e2.annotations = e2.annotations.map((i3) => this.traverseAnnotationPage(i3))), e2;
-    }
-    traverseCanvas(e2) {
-      return this.traverseType(this.traverseInlineAnnotationPages(this.traversePosterCanvas(this.traverseDescriptive(this.traverseLinking(this.traverseCanvasItems(e2))))), this.traversals.canvas);
-    }
-    traverseAnnotationPageItems(e2) {
-      return e2.items && (e2.items = e2.items.map((i3) => this.traverseAnnotation(i3))), e2;
-    }
-    traverseAnnotationPage(e2) {
-      return this.traverseType(this.traverseDescriptive(this.traverseLinking(this.traverseAnnotationPageItems(e2))), this.traversals.annotationPage);
-    }
-    traverseAnnotationBody(e2) {
-      return Array.isArray(e2.body) ? e2.body = e2.body.map((i3) => this.traverseContentResource(i3)) : e2.body && (e2.body = this.traverseContentResource(e2.body)), e2;
-    }
-    traversePosterCanvas(e2) {
-      return e2.posterCanvas && (e2.posterCanvas = this.traverseCanvas(e2.posterCanvas)), e2.placeholderCanvas && (e2.placeholderCanvas = this.traverseCanvas(e2.placeholderCanvas)), e2.accompanyingCanvas && (e2.accompanyingCanvas = this.traverseCanvas(e2.accompanyingCanvas)), e2;
-    }
-    traverseAnnotation(e2) {
-      return this.traverseType(this.traverseLinking(this.traverseAnnotationBody(e2)), this.traversals.annotation);
-    }
-    traverseContentResourceLinking(e2) {
-      return typeof e2 == "string" || !e2 || e2 && e2.service && (e2.service = (e2.service || []).map((i3) => this.traverseType(i3, this.traversals.service))), e2;
-    }
-    traverseContentResource(e2) {
-      return e2.type === "Choice" && (e2.items = e2.items.map((i3) => this.traverseContentResource(i3))), this.traverseType(this.traverseInlineAnnotationPages(this.traverseContentResourceLinking(e2)), this.traversals.contentResource);
-    }
-    traverseRangeRanges(e2) {
-      return e2.items && (e2.items = e2.items.map((i3) => typeof i3 == "string" ? this.traverseCanvas({ id: i3, type: "Canvas" }) : i3.type === "Manifest" ? this.traverseManifest(i3) : this.traverseRange(i3))), e2;
-    }
-    traverseRange(e2) {
-      return this.traverseType(this.traversePosterCanvas(this.traverseDescriptive(this.traverseLinking(this.traverseRangeRanges(e2)))), this.traversals.range);
-    }
-    traverseAgent(e2) {
-      return this.traverseType(this.traverseDescriptive(this.traverseLinking(e2)), this.traversals.agent);
-    }
-    traverseType(e2, i3) {
-      return i3.reduce((n2, r2) => {
-        const a2 = r2(n2);
-        return typeof a2 == "undefined" && !this.options.allowUndefinedReturn ? n2 : a2;
-      }, e2);
-    }
-    traverseService(e2) {
-      return this.traverseType(e2, this.traversals.service);
-    }
-    traverseUnknown(e2) {
-      const i3 = U(e2);
-      switch (i3) {
-        case "Collection":
-          return this.traverseCollection(e2);
-        case "Manifest":
-          return this.traverseManifest(e2);
-        case "Canvas":
-          return this.traverseCanvas(e2);
-        case "AnnotationPage":
-          return this.traverseAnnotationPage(e2);
-        case "Annotation":
-          return this.traverseAnnotation(e2);
-        case "ContentResource":
-          return this.traverseContentResource(e2);
-        case "Range":
-          return this.traverseRange(e2);
-        case "Service":
-          return this.traverseService(e2);
-        case "Agent":
-          return this.traverseAgent(e2);
-        default:
-          throw new Error(`Unknown or unsupported resource type of ${i3}`);
-      }
-    }
-  };
-  var V = ["sc:Collection", "sc:Manifest", "sc:Canvas", "oa:AnnotationList", "oa:Annotation", "sc:Range", "sc:Layer", "sc:Sequence", "oa:Choice", "Service", "ContentResource"];
-  function Ie(t2) {
-    if (typeof t2 == "undefined" || t2 === null)
-      throw new Error("Null or undefined is not a valid entity.");
-    if (Array.isArray(t2))
-      throw new Error("Array is not a valid entity");
-    if (typeof t2 != "object")
-      throw new Error(`${typeof t2} is not a valid entity`);
-    if (typeof t2["@type"] == "string") {
-      const e2 = V.indexOf(t2["@type"]);
-      if (e2 !== -1)
-        return V[e2];
-    }
-    if (t2.profile)
-      return "Service";
-    if (t2.format || t2["@type"])
-      return "ContentResource";
-    throw new Error("Resource type is not known");
-  }
-  var x = class {
-    traversals;
-    options;
-    constructor(e2, i3 = {}) {
-      this.traversals = { collection: [], manifest: [], canvas: [], annotationList: [], sequence: [], annotation: [], contentResource: [], choice: [], range: [], service: [], layer: [], ...e2 }, this.options = { convertPropsToArray: true, mergeMemberProperties: true, allowUndefinedReturn: false, ...i3 };
-    }
-    static all(e2) {
-      return new x({ collection: [e2], manifest: [e2], canvas: [e2], annotationList: [e2], sequence: [e2], annotation: [e2], contentResource: [e2], choice: [e2], range: [e2], service: [e2], layer: [e2] });
-    }
-    traverseCollection(e2) {
-      return this.traverseType(this.traverseDescriptive(this.traverseLinking(this.traverseCollectionItems(e2))), this.traversals.collection);
-    }
-    traverseCollectionItems(e2) {
-      if (this.options.mergeMemberProperties) {
-        const i3 = [...(e2.manifests || []).map((n2) => typeof n2 == "string" ? { "@id": n2, "@type": "sc:Manifest" } : n2), ...(e2.collections || []).map((n2) => typeof n2 == "string" ? { "@id": n2, "@type": "sc:Collection" } : n2), ...e2.members || []];
-        delete e2.collections, delete e2.manifests, e2.members = i3;
-      }
-      return e2.manifests && (e2.manifests = e2.manifests.map((i3) => this.traverseManifest(typeof i3 == "string" ? { "@id": i3, "@type": "sc:Manifest" } : i3))), e2.collections && (e2.collections = e2.collections.map((i3) => this.traverseCollection(typeof i3 == "string" ? { "@id": i3, "@type": "sc:Collection" } : i3))), e2.members && (e2.members = e2.members.map((i3) => typeof i3 == "string" ? i3 : this.traverseUnknown(i3))), e2;
-    }
-    traverseManifest(e2) {
-      return this.traverseType(this.traverseDescriptive(this.traverseLinking(this.traverseManifestItems(e2))), this.traversals.manifest);
-    }
-    traverseManifestItems(e2) {
-      return e2.sequences && (e2.sequences = e2.sequences.map((i3) => this.traverseSequence(i3))), e2.structures && (e2.structures = e2.structures.map((i3) => this.traverseRange(i3))), e2;
-    }
-    traverseSequence(e2) {
-      return this.traverseType(this.traverseDescriptive(this.traverseLinking(this.traverseSequenceItems(e2))), this.traversals.sequence);
-    }
-    traverseSequenceItems(e2) {
-      return e2.canvases && (e2.canvases = e2.canvases.map((i3) => this.traverseCanvas(i3))), e2;
-    }
-    traverseCanvas(e2) {
-      return this.traverseType(this.traverseDescriptive(this.traverseLinking(this.traverseCanvasItems(e2))), this.traversals.canvas);
-    }
-    traverseCanvasItems(e2) {
-      return e2.images && (e2.images = e2.images.map((i3) => this.traverseAnnotation(i3))), e2.otherContent && (e2.otherContent = e2.otherContent.map((i3) => this.traverseAnnotationList(i3))), e2;
-    }
-    traverseRange(e2) {
-      return this.traverseType(this.traverseDescriptive(this.traverseLinking(this.traverseRangeItems(e2))), this.traversals.range);
-    }
-    traverseRangeItems(e2) {
-      if (this.options.mergeMemberProperties) {
-        const i3 = [...(e2.ranges || []).map((n2) => typeof n2 == "string" ? { "@id": n2, "@type": "sc:Range" } : n2), ...(e2.canvases || []).map((n2) => typeof n2 == "string" ? { "@id": n2, "@type": "sc:Canvas" } : n2), ...e2.members || []];
-        delete e2.ranges, delete e2.canvases, e2.members = i3.length ? i3.map((n2) => this.traverseUnknown(n2)) : void 0;
-      }
-      return e2;
-    }
-    traverseAnnotationList(e2) {
-      const i3 = typeof e2 == "string" ? { "@id": e2, "@type": "oa:AnnotationList" } : e2;
-      return this.traverseType(this.traverseDescriptive(this.traverseAnnotationListItems(i3)), this.traversals.annotationList);
-    }
-    traverseAnnotationListItems(e2) {
-      return e2.resources && (e2.resources = e2.resources.map((i3) => this.traverseAnnotation(i3))), e2;
-    }
-    traverseAnnotation(e2) {
-      return this.traverseType(this.traverseDescriptive(this.traverseLinking(this.traverseAnnotationItems(e2))), this.traversals.annotation);
-    }
-    traverseAnnotationItems(e2) {
-      return e2.resource && (e2.resource = this.traverseContentResource(e2.resource)), e2.on, e2;
-    }
-    traverseLayer(e2) {
-      return this.traverseType(this.traverseLinking(this.traverseLayerItems(e2)), this.traversals.layer);
-    }
-    traverseLayerItems(e2) {
-      return e2.otherContent && (e2.otherContent = e2.otherContent.map((i3) => this.traverseAnnotationList(i3))), e2;
-    }
-    traverseChoice(e2) {
-      return this.traverseType(this.traverseChoiceItems(e2), this.traversals.choice);
-    }
-    traverseChoiceItems(e2) {
-      return e2.default && e2.default !== "rdf:nil" && (e2.default = this.traverseContentResource(e2.default)), e2.item && e2.item !== "rdf:nil" && (e2.item = e2.item.map((i3) => this.traverseContentResource(i3))), e2;
-    }
-    traverseService(e2) {
-      return this.traverseType(this.traverseLinking(e2), this.traversals.service);
-    }
-    traverseContentResource(e2) {
-      return e2["@type"] === "oa:Choice" ? this.traverseChoice(e2) : this.traverseType(this.traverseDescriptive(this.traverseLinking(e2)), this.traversals.contentResource);
-    }
-    traverseUnknown(e2) {
-      if (!e2["@type"] || typeof e2 == "string")
-        return e2;
-      switch (Ie(e2)) {
-        case "sc:Collection":
-          return this.traverseCollection(e2);
-        case "sc:Manifest":
-          return this.traverseManifest(e2);
-        case "sc:Canvas":
-          return this.traverseCanvas(e2);
-        case "sc:Sequence":
-          return this.traverseSequence(e2);
-        case "sc:Range":
-          return this.traverseRange(e2);
-        case "oa:Annotation":
-          return this.traverseAnnotation(e2);
-        case "oa:AnnotationList":
-          return this.traverseAnnotationList(e2);
-        case "sc:Layer":
-          return this.traverseLayer(e2);
-        case "Service":
-          return this.traverseService(e2);
-        case "oa:Choice":
-          return this.traverseChoice(e2);
-        case "ContentResource":
-          return this.traverseContentResource(e2);
-      }
-      return e2.profile ? this.traverseService(e2) : e2;
-    }
-    traverseImageResource(e2) {
-      const i3 = Array.isArray(e2), n2 = Array.isArray(e2) ? e2 : [e2], r2 = [];
-      for (const a2 of n2)
-        typeof a2 == "string" ? r2.push(this.traverseContentResource({ "@id": a2, "@type": "dctypes:Image" })) : r2.push(this.traverseContentResource(a2));
-      return !i3 && !this.options.convertPropsToArray ? r2[0] : r2;
-    }
-    traverseDescriptive(e2) {
-      return e2.thumbnail && (e2.thumbnail = this.traverseImageResource(e2.thumbnail)), e2.logo && (e2.logo = this.traverseImageResource(e2.logo)), e2;
-    }
-    traverseOneOrMoreServices(e2) {
-      const i3 = Array.isArray(e2), n2 = Array.isArray(e2) ? e2 : [e2], r2 = [];
-      for (const a2 of n2)
-        r2.push(this.traverseService(a2));
-      return !i3 && !this.options.convertPropsToArray ? r2[0] : r2;
-    }
-    traverseLinking(e2) {
-      return e2.related && (e2.related = this.traverseOneOrManyType(e2.related, this.traversals.contentResource)), e2.rendering && (e2.rendering = this.traverseOneOrManyType(e2.rendering, this.traversals.contentResource)), e2.service && (e2.service = this.traverseOneOrMoreServices(e2.service)), e2.seeAlso && (e2.seeAlso = this.traverseOneOrManyType(e2.seeAlso, this.traversals.contentResource)), e2.within && (typeof e2.within == "string" || (e2.within = this.traverseOneOrManyType(e2.within, this.traversals.contentResource))), e2.startCanvas && (typeof e2.startCanvas == "string" ? e2.startCanvas = this.traverseType({ "@id": e2.startCanvas, "@type": "sc:Canvas" }, this.traversals.canvas) : e2.startCanvas && this.traverseType(e2.startCanvas, this.traversals.canvas)), e2.contentLayer && (typeof e2.contentLayer == "string" ? e2.contentLayer = this.traverseLayer({ "@id": e2.contentLayer, "@type": "sc:Layer" }) : e2.contentLayer = this.traverseLayer(e2.contentLayer)), e2;
-    }
-    traverseOneOrManyType(e2, i3) {
-      if (!Array.isArray(e2))
-        if (this.options.convertPropsToArray)
-          e2 = [e2];
-        else
-          return this.traverseType(e2, i3);
-      return e2.map((n2) => this.traverseType(n2, i3));
-    }
-    traverseType(e2, i3) {
-      return i3.reduce((n2, r2) => {
-        const a2 = r2(n2);
-        return typeof a2 == "undefined" && !this.options.allowUndefinedReturn ? n2 : a2;
-      }, e2);
-    }
-  };
-  var _e = "http://library.stanford.edu/iiif/image-api/compliance.html#level0";
-  var W = "http://library.stanford.edu/iiif/image-api/compliance.html#level1";
-  var z = "http://library.stanford.edu/iiif/image-api/compliance.html#level2";
-  var be = "http://library.stanford.edu/iiif/image-api/conformance.html#level0";
-  var B = "http://library.stanford.edu/iiif/image-api/conformance.html#level1";
-  var H = "http://library.stanford.edu/iiif/image-api/conformance.html#level2";
-  var Re = "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level0";
-  var K = "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level1";
-  var Q = "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2";
-  var we = "http://library.stanford.edu/iiif/image-api/1.1/conformance.html#level0";
-  var X = "http://library.stanford.edu/iiif/image-api/1.1/conformance.html#level1";
-  var Y = "http://library.stanford.edu/iiif/image-api/1.1/conformance.html#level2";
-  var Ee = "http://iiif.io/api/image/1/level0.json";
-  var Le = "http://iiif.io/api/image/1/profiles/level0.json";
-  var Z = "http://iiif.io/api/image/1/level1.json";
-  var J = "http://iiif.io/api/image/1/profiles/level1.json";
-  var ee = "http://iiif.io/api/image/1/level2.json";
-  var te = "http://iiif.io/api/image/1/profiles/level2.json";
-  var Te = "http://iiif.io/api/image/2/level0.json";
-  var Me = "http://iiif.io/api/image/2/profiles/level0.json";
-  var ie = "http://iiif.io/api/image/2/level1.json";
-  var ne = "http://iiif.io/api/image/2/profiles/level1.json";
-  var re = "http://iiif.io/api/image/2/level2.json";
-  var ae = "http://iiif.io/api/image/2/profiles/level2.json";
-  var xe = "level0";
-  var se = "level1";
-  var oe = "level2";
-  var Se = "http://iiif.io/api/image/2/level0";
-  var le = "http://iiif.io/api/image/2/level1";
-  var ve = "http://iiif.io/api/image/2/level2";
-  var Oe = [le, ve, W, z, B, H, K, Q, X, Y, Z, J, ee, te, ie, ne, re, ae, se, oe];
-  var Pe = [Se, le, ve, _e, W, z, be, B, H, Re, K, Q, we, X, Y, Ee, Le, Z, J, ee, te, Te, Me, ie, ne, re, ae, xe, se, oe];
-  var S = { attributionLabel: "Attribution", lang: "none", providerId: "http://example.org/provider", providerName: "Unknown" };
-  function d(t2, e2 = "none") {
-    if (!t2)
-      return {};
-    const i3 = Array.isArray(t2) ? t2 : [t2], n2 = {};
-    for (const r2 of i3) {
-      if (typeof r2 == "string") {
-        n2[e2] = n2[e2] ? n2[e2] : [], n2[e2].push(r2 || "");
-        continue;
-      }
-      if (!r2["@language"]) {
-        n2[e2] = n2[e2] ? n2[e2] : [], n2[e2].push(r2["@value"] || "");
-        continue;
-      }
-      const a2 = r2["@language"];
-      n2[a2] = n2[a2] ? n2[a2] : [], n2[a2].push(r2["@value"] || "");
-    }
-    return n2;
-  }
-  function pe(t2) {
-    if (Array.isArray(t2))
-      return pe(t2.find((e2) => typeof e2 == "string"));
-    if (Pe.indexOf(t2) !== -1)
-      return "level2";
-    if (Oe.indexOf(t2) !== -1)
-      return "level1";
-    if (typeof t2 == "string")
-      return t2;
-  }
-  function Fe(t2) {
-    const e2 = Array.isArray(t2) ? t2 : [t2];
-    for (const i3 of e2)
-      switch (i3) {
-        case "http://iiif.io/api/image/2/context.json":
-        case "http://library.stanford.edu/iiif/image-api/1.1/compliance.html#level2":
-          return "ImageService2";
-        case "http://iiif.io/api/image/1/context.json":
-        case "http://library.stanford.edu/iiif/image-api/1.1/context.json":
-          return "ImageService1";
-        case "http://iiif.io/api/annex/openannotation/context.json":
-          return "ImageApiSelector";
-      }
-  }
-  function De(t2) {
-    switch (t2) {
-      case "http://iiif.io/api/image/2/level0.json":
-      case "http://iiif.io/api/image/2/level1.json":
-      case "http://iiif.io/api/image/2/level2.json":
-        return "ImageService2";
-      case "http://iiif.io/api/auth/1/kiosk":
-      case "http://iiif.io/api/auth/1/login":
-      case "http://iiif.io/api/auth/1/clickthrough":
-      case "http://iiif.io/api/auth/1/external":
-      case "http://iiif.io/api/auth/0/kiosk":
-      case "http://iiif.io/api/auth/0/login":
-      case "http://iiif.io/api/auth/0/clickthrough":
-      case "http://iiif.io/api/auth/0/external":
-        return "AuthCookieService1";
-      case "http://iiif.io/api/auth/1/token":
-      case "http://iiif.io/api/auth/0/token":
-        return "AuthTokenService1";
-      case "http://iiif.io/api/auth/1/logout":
-      case "http://iiif.io/api/auth/0/logout":
-        return "AuthLogoutService1";
-      case "http://iiif.io/api/search/1/search":
-      case "http://iiif.io/api/search/0/search":
-        return "SearchService1";
-      case "http://iiif.io/api/search/1/autocomplete":
-      case "http://iiif.io/api/search/0/autocomplete":
-        return "AutoCompleteService1";
-    }
-  }
-  function ke(t2) {
-    return Array.isArray(t2) ? t2 : [t2];
-  }
-  function Ne(t2) {
-    for (const e2 of ["sc", "oa", "dcterms", "dctypes", "iiif"])
-      if (t2.startsWith(`${e2}:`))
-        return t2.slice(e2.length + 1);
-    return t2;
-  }
-  var $e = ["Collection", "Manifest", "Annotation", "AnnotationPage", "Range", "Service"];
-  function O(t2) {
-    const e2 = t2["@id"] || t2.id;
-    let i3 = t2["@type"] || t2.type;
-    const n2 = t2.profile || void 0, r2 = t2["@context"] || void 0;
-    if (n2) {
-      const a2 = De(n2);
-      if (a2)
-        return a2;
-    }
-    if (r2) {
-      const a2 = Fe(r2);
-      if (a2)
-        return a2;
-    }
-    if (i3) {
-      if (Array.isArray(i3)) {
-        if (i3.indexOf("oa:CssStylesheet") !== -1)
-          return "CssStylesheet";
-        if (i3.indexOf("cnt:ContentAsText") !== -1)
-          return "TextualBody";
-        i3 = i3[0];
-      }
-      for (const a2 of ["sc", "oa", "dcterms", "dctypes", "iiif"])
-        if (i3.startsWith(`${a2}:`)) {
-          i3 = i3.slice(a2.length + 1);
-          break;
-        }
-      switch (i3) {
-        case "Layer":
-          return "AnnotationCollection";
-        case "AnnotationList":
-          return "AnnotationPage";
-        case "cnt:ContentAsText":
-          return "TextualBody";
-      }
-    }
-    if (i3 && $e.indexOf(i3) !== -1)
-      return i3;
-    if (t2.format) {
-      if (t2.format.startsWith("image/"))
-        return "Image";
-      if (t2.format.startsWith("text/") || t2.format === "application/pdf")
-        return "Text";
-      if (t2.format.startsWith("application/"))
-        return "Dataset";
-    }
-    return e2 && (e2.endsWith(".jpg") || e2.endsWith(".png") || e2.endsWith(".jpeg")) ? "Image" : i3 || "unknown";
-  }
-  var je = /http(s)?:\/\/(creativecommons.org|rightsstatements.org)[^"'\\<\n]+/gm;
-  function Ge(t2) {
-    const e2 = t2.match(je);
-    return e2 ? e2[0] : t2;
-  }
-  function qe(t2, e2 = "Rights/License", i3 = "none") {
-    let n2 = null;
-    const r2 = [], a2 = Array.isArray(t2) ? t2 : [t2];
-    for (const o2 of a2) {
-      const l2 = o2 ? Ge(o2) : void 0;
-      if (l2 && (l2.indexOf("creativecommons.org") !== -1 || l2.indexOf("rightsstatements.org") !== -1)) {
-        l2.startsWith("https://") ? n2 = `http://${l2.slice(8)}` : n2 = l2;
-        continue;
-      }
-      l2 && r2.push({ label: { [i3]: [e2] }, value: { [i3]: [l2] } });
-    }
-    return [n2, r2];
-  }
-  var Ue = ["http://iiif.io/api/presentation/2/context.json", "http://iiif.io/api/image/2/context.json", "http://iiif.io/api/image/1/context.json", "http://library.stanford.edu/iiif/image-api/1.1/context.json", "http://iiif.io/api/search/1/context.json", "http://iiif.io/api/search/0/context.json", "http://iiif.io/api/auth/1/context.json", "http://iiif.io/api/auth/0/context.json", "http://iiif.io/api/annex/openannotation/context.json"];
-  function Ve(t2) {
-    if (t2) {
-      const e2 = Array.isArray(t2) ? t2 : [t2], i3 = [];
-      for (const n2 of e2)
-        n2 === "http://iiif.io/api/presentation/2/context.json" && i3.push("http://iiif.io/api/presentation/3/context.json"), Ue.indexOf(n2) === -1 && i3.push(n2);
-      if (e2.length)
-        return i3.length === 1 ? i3[0] : i3;
-    }
-  }
-  function We(t2) {
-    return t2 ? t2.map((e2) => ({ label: d(e2.label), value: d(e2.value) })) : [];
-  }
-  function v(t2) {
-    for (const e2 in t2)
-      (typeof t2[e2] == "undefined" || t2[e2] === null) && delete t2[e2];
-    return t2;
-  }
-  var he = 0;
-  function ce(t2, e2) {
-    const i3 = encodeURI(t2.id || t2["@id"] || "").trim();
-    return i3 && e2 ? `${i3}/${e2}` : i3 || (he++, `http://example.org/${t2["@type"]}${e2 ? `/${e2}` : ""}/${he}`);
-  }
-  function p(t2) {
-    const e2 = [...t2.behavior || []];
-    return t2.viewingHint && e2.push(t2.viewingHint), { "@context": t2["@context"] ? Ve(t2["@context"]) : void 0, id: (t2["@id"] || ce(t2)).trim(), type: O(t2), behavior: e2.length ? e2 : void 0, height: t2.height ? t2.height : void 0, width: t2.width ? t2.width : void 0, motivation: t2.motivation ? Ne(t2.motivation) : void 0, viewingDirection: t2.viewingDirection, profile: t2.profile, format: t2.format ? t2.format : void 0, duration: void 0, timeMode: void 0 };
-  }
-  function h(t2) {
-    const [e2, i3] = qe(t2.license), n2 = [...t2.metadata ? We(t2.metadata) : [], ...i3];
-    return { rights: e2, metadata: n2.length ? n2 : void 0, label: t2.label ? d(t2.label) : void 0, requiredStatement: t2.attribution ? { label: d(S.attributionLabel), value: d(t2.attribution) } : void 0, navDate: t2.navDate, summary: t2.description ? d(t2.description) : void 0, thumbnail: t2.thumbnail };
-  }
-  function ze(t2) {
-    if (!t2.within)
-      return;
-    const e2 = Array.isArray(t2.within) ? t2.within : [t2.within], i3 = [];
-    for (const n2 of e2)
-      if (typeof n2 == "string") {
-        if (n2)
-          switch (t2["@type"]) {
-            case "sc:Manifest":
-              i3.push({ id: n2, type: "Collection" });
-              break;
-          }
-      } else
-        n2["@id"] && i3.push({ id: n2["@id"], type: O(n2) });
-    return i3.length ? i3 : void 0;
-  }
-  function c(t2) {
-    const e2 = t2.related ? Array.isArray(t2.related) ? t2.related : [t2.related] : [], i3 = t2.contentLayer;
-    return { provider: t2.logo || e2.length ? [{ id: S.providerId, type: "Agent", homepage: e2.length ? [e2[0]] : void 0, logo: t2.logo ? Array.isArray(t2.logo) ? t2.logo : [t2.logo] : void 0, label: d(S.providerName) }] : void 0, partOf: ze(t2), rendering: t2.rendering, seeAlso: t2.seeAlso, start: t2.startCanvas, service: t2.service ? ke(t2.service) : void 0, supplementary: i3 ? [i3] : void 0 };
-  }
-  function Be(t2) {
-    return v({ ...p(t2), ...h(t2), ...c(t2), items: t2.members });
-  }
-  function He(t2) {
-    const e2 = [], i3 = [];
-    for (const r2 of t2.sequences || [])
-      r2.canvases.length && e2.push(...r2.canvases), r2.behavior && i3.push(...r2.behavior);
-    const n2 = p(t2);
-    return i3.length && (n2.behavior ? n2.behavior.push(...i3) : n2.behavior = i3), v({ ...n2, ...h(t2), ...c(t2), items: e2, structures: t2.structures });
-  }
-  function Ke(t2) {
-    return v({ ...p(t2), ...h(t2), ...c(t2), annotations: t2.otherContent && t2.otherContent.length ? t2.otherContent : void 0, items: t2.images && t2.images.length ? [{ id: ce(t2, "annotation-page"), type: "AnnotationPage", items: t2.images }] : void 0 });
-  }
-  function Qe(t2) {
-    return v({ ...p(t2), ...h(t2), ...c(t2), items: t2.resources && t2.resources.length ? t2.resources : void 0 });
-  }
-  function Xe(t2) {
-    return !t2.canvases || t2.canvases.length === 0 ? { canvases: [], behavior: [] } : { canvases: t2.canvases, behavior: t2.viewingHint ? [t2.viewingHint] : [] };
-  }
-  function Ye(t2) {
-    return v({ ...p(t2), ...h(t2), ...c(t2), target: typeof t2.on == "string" ? encodeURI(t2.on).trim() : t2.on, body: t2.resource });
-  }
-  function Ze(t2) {
-    const e2 = t2;
-    return v({ ...p(e2), ...h(e2), ...c(e2) });
-  }
-  function Je(t2) {
-    const e2 = [];
-    return t2.default && t2.default !== "rdf:nil" && e2.push(t2.default), t2.item && t2.item !== "rdf:nil" && e2.push(...t2.item), { ...p(t2), ...h(t2), items: e2 };
-  }
-  function et(t2) {
-    return v({ ...p(t2), ...h(t2), ...c(t2), items: t2.members });
-  }
-  function tt(t2) {
-    const { "@id": e2, "@type": i3, "@context": n2, profile: r2, ...a2 } = t2, o2 = {};
-    return e2 && (o2["@id"] = e2), o2["@type"] = O(t2), o2["@type"] === "unknown" && (n2 && n2.length && (o2["@context"] = n2), o2["@type"] = "Service"), r2 && (o2.profile = pe(r2)), v({ ...o2, ...a2 });
-  }
-  function it(t2) {
-    return v({ ...p(t2), ...h(t2), ...c(t2) });
-  }
-  var nt = new x({ collection: [Be], manifest: [He], canvas: [Ke], annotationList: [Qe], sequence: [Xe], annotation: [Ye], contentResource: [Ze], choice: [Je], range: [et], service: [tt], layer: [it] });
-  function rt(t2) {
-    return t2 && t2["@context"] && (t2["@context"] === "http://iiif.io/api/presentation/2/context.json" || t2["@context"].indexOf("http://iiif.io/api/presentation/2/context.json") !== -1 || t2["@context"] === "http://www.shared-canvas.org/ns/context.json") || t2["@context"] === "http://iiif.io/api/image/2/context.json" ? nt.traverseUnknown(t2) : t2;
-  }
-  function fe() {
-    return { Collection: {}, Manifest: {}, Canvas: {}, AnnotationPage: {}, AnnotationCollection: {}, Annotation: {}, ContentResource: {}, Range: {}, Service: {}, Selector: {}, Agent: {} };
-  }
-  function ue(t2, e2) {
-    if (typeof t2 == "string")
-      return { id: t2, type: e2 };
-    if (!t2.id)
-      throw new Error(`Invalid resource does not have an ID (${e2})`);
-    return t2;
-  }
-  function st(t2) {
-    return (e2, i3) => {
-      const n2 = t2[e2] ? t2[e2] : {};
-      return (r2) => {
-        const a2 = ue(r2, i3 || e2);
-        return a2 && a2.id && e2 ? (n2[a2.id] = n2[a2.id] ? Object.assign({}, n2[a2.id], a2) : Object.assign({}, a2), { id: a2.id, type: e2 === "ContentResource" ? e2 : a2.type }) : a2;
-      };
-    };
-  }
-  function ot(t2) {
-    return (e2, i3) => (n2) => {
-      const { id: r2, type: a2 } = ue(n2, i3 || e2);
-      if (typeof r2 == "undefined")
-        throw new Error("Found invalid entity without an ID.");
-      return e2 === "ContentResource" ? t2[r2] = e2 : t2[r2] = a2, n2;
-    };
-  }
-  function lt(t2) {
-    const e2 = JSON.stringify(t2);
-    let i3 = 5381, n2 = e2.length;
-    for (; n2; )
-      i3 = i3 * 33 ^ e2.charCodeAt(--n2);
-    const a2 = (i3 >>> 0).toString(16);
-    return a2.length % 2 ? "0" + a2 : a2;
-  }
-  function P(t2) {
-    return (e2) => typeof e2 == "string" ? { id: e2, type: t2 } : e2.id ? e2.type ? e2 : { type: t2, ...e2 } : { id: `vault://${lt(e2)}`, type: t2, ...e2 };
-  }
-  function _(t2) {
-    return (e2) => ({ ...t2, ...e2 });
-  }
-  function b(t2) {
-    return Array.isArray(t2) ? t2 : [t2];
-  }
-  function vt(t2) {
-    return t2.body && (t2.body = b(t2.body)), t2.seeAlso && (t2.seeAlso = b(t2.seeAlso)), t2.body && (t2.body = b(t2.body)), t2.audience && (t2.audience = b(t2.audience)), t2.accessibility && (t2.accessibility = b(t2.accessibility)), t2.motivation && (t2.motivation = b(t2.motivation)), t2;
-  }
-  function pt(t2) {
-    const e2 = rt(t2), i3 = fe(), n2 = {}, r2 = st(i3), a2 = ot(n2), l2 = new L({ collection: [_($), a2("Collection"), r2("Collection")], manifest: [_(j), a2("Manifest"), r2("Manifest")], canvas: [_(N), a2("Canvas"), r2("Canvas")], annotationPage: [P("AnnotationPage"), _(k), a2("AnnotationPage"), r2("AnnotationPage")], annotation: [P("Annotation"), vt, a2("Annotation"), r2("Annotation")], contentResource: [P("ContentResource"), a2("ContentResource"), r2("ContentResource")], range: [_(G), a2("Range", "Canvas"), r2("Range", "Canvas")], agent: [_(q), a2("Agent"), r2("Agent")] }).traverseUnknown(e2);
-    return { entities: i3, resource: l2, mapping: n2 };
-  }
-  var f = "__$UNSET$__";
-  var F = "__$UNWRAP$__";
-  function ht(t2, e2) {
-    const i3 = t2.requests[e2], n2 = t2.mapping[e2];
-    if (!(!n2 || i3 && i3.resourceUri && !t2.entities[n2][i3.resourceUri]))
-      return t2.entities[n2][i3 ? i3.resourceUri : e2];
-  }
-  function de(t2) {
-    const e2 = {};
-    for (const [i3, n2] of t2) {
-      if (i3 === F && n2 !== f)
-        return n2;
-      n2 !== f && typeof n2 != "undefined" && n2 !== null && (e2[i3] = n2);
-    }
-    return e2;
-  }
-  function ct(t2, e2, i3) {
-    if (!e2.type || !e2.id)
-      throw new Error("Unknown entity");
-    if (!i3[e2.type])
-      throw new Error(`Serializer not found for ${e2.type}`);
-    function n2(r2) {
-      const a2 = i3[r2.type];
-      if (!a2)
-        return f;
-      const o2 = ht(t2, r2.id) || (r2.id && r2.type ? r2 : null);
-      if (!o2)
-        return f;
-      const l2 = a2(o2, t2, { isTopLevel: e2.id === r2.id });
-      let R3 = l2.next();
-      for (; !R3.done; ) {
-        const E3 = R3.value;
-        let T2 = f;
-        if (E3)
-          if (Array.isArray(E3)) {
-            const D3 = [];
-            for (const Ae of E3)
-              D3.push(n2(Ae));
-            T2 = D3;
-          } else
-            T2 = n2(E3);
-        R3 = l2.next(T2);
-      }
-      return R3.value === f ? f : de(R3.value);
-    }
-    return n2(e2);
-  }
-  function m(t2) {
-    if (!t2)
-      return;
-    const e2 = Object.keys(t2);
-    if (e2.length !== 0) {
-      if (e2.length === 1) {
-        const i3 = e2[0];
-        if (!i3)
-          return "";
-        const n2 = (t2[i3] || []).join("");
-        return i3 === "@none" || i3 === "none" || i3 === "en" ? n2 : { "@language": i3, "@value": n2 };
-      }
-      return e2.map((i3) => ({ "@language": i3, "@value": (t2[i3] || []).join("") }));
-    }
-  }
-  function me(t2) {
-    return Array.isArray(t2) ? t2.map((e2) => me(e2)) : typeof t2 == "string" ? t2 : t2.type && t2.type === "Canvas" ? t2.id : t2;
-  }
-  function u(t2, e2 = false) {
-    if (!!t2)
-      return t2.length > 1 && !e2 ? t2 : t2[0] || void 0;
-  }
-  function ft(t2) {
-    if (!!t2) {
-      if (typeof t2 == "string")
-        return { "@id": t2 };
-      if ("@id" in t2) {
-        const e2 = { ...t2 };
-        return delete e2["@type"], e2;
-      }
-      return { "@context": "http://iiif.io/api/image/2/context.json", "@id": t2.id, profile: `http://iiif.io/api/image/2/profiles/${t2.profile}.json` };
-    }
-  }
-  function g(t2, e2) {
-    return [["@id", t2.id], ["@type", e2], ["format", t2.format], ["height", t2.height], ["width", t2.width], ["viewingDirection", t2.viewingDirection !== "left-to-right" ? t2.viewingDirection : void 0]];
-  }
-  function* y(t2) {
-    const e2 = t2.provider ? yield t2.provider[0] : void 0;
-    return [["label", m(t2.label)], ["metadata", t2.metadata && t2.metadata.length ? t2.metadata.map((i3) => ({ label: m(i3.label) || "", value: m(i3.value) || "" })) : void 0], ["description", m(t2.summary)], ["thumbnail", u(yield t2.thumbnail)], ["navDate", t2.navDate], ["logo", e2 ? u(e2.logo) : void 0], ["homepage", e2 ? e2.homepage : void 0], ["attribution", t2.requiredStatement ? m(t2.requiredStatement.value) : void 0]];
-  }
-  function* w(t2) {
-    return [["seeAlso", u(yield t2.seeAlso)], ["service", u((t2.service || []).map(ft))], ["rendering", u(yield t2.rendering)], ["startCanvas", t2.start ? t2.start.id : void 0]];
-  }
-  var ut = { Manifest: function* (t2) {
-    return [...g(t2, "sc:Manifest"), ...yield* y(t2), ...yield* w(t2), ["sequences", [{ "@id": `${t2.id}/sequence0`, "@type": "sc:Sequence", canvases: yield t2.items }]], ["structures", yield t2.structures]];
-  }, Canvas: function* (t2) {
-    const i3 = (yield t2.items)[0];
-    return [...g(t2, "sc:Canvas"), ...yield* y(t2), ...yield* w(t2), ["images", i3 ? [i3.resources] : void 0], ["annotations", t2.annotations && t2.annotations.length ? u(yield t2.annotations) : void 0]];
-  }, AnnotationPage: function* (t2) {
-    return [...g(t2, "sc:AnnotationList"), ...yield* y(t2), ["resources", t2.items && t2.items.length ? u(yield t2.items) : void 0]];
-  }, Annotation: function* (t2) {
-    return [["@id", t2.id], ["@type", "oa:Annotation"], ["motivation", "sc:painting"], ["on", me(t2.target)], ["resource", u(yield t2.body, true)]];
-  }, ContentResource: function* (t2) {
-    switch (t2.type) {
-      case "Image":
-        return [...g(t2, "dctypes:Image"), ...yield* y(t2), ...yield* w(t2)];
-      case "Text":
-      case "Dataset":
-      default:
-        return [...g(t2, void 0), ...yield* y(t2)];
-    }
-  }, AnnotationCollection: function* (t2) {
-    return [["@id", t2.id], ["@type", "sc:Layer"], ["label", m(t2.label)]];
-  }, Collection: function* (t2) {
-    return [...g(t2, "sc:Collection"), ...yield* y(t2), ...yield* w(t2), ["members", yield* t2.items]];
-  }, Range: function* (t2) {
-    const e2 = [], i3 = [];
-    if (t2.items)
-      for (const n2 of t2.items) {
-        const r2 = yield n2;
-        e2.push({ "@id": n2.id, "@type": n2.type, label: r2 ? r2.label : void 0, within: t2.id }), n2.type === "Canvas" && i3.push(n2.id);
-      }
-    return [...g(t2, "sc:Range"), ...yield* y(t2), ...yield* w(t2), ["canvases", i3.length === e2.length ? i3 : void 0], ["members", i3.length !== e2.length ? e2 : void 0]];
-  } };
-  function A(t2) {
-    return [["id", t2.id?.startsWith("vault://") ? void 0 : t2.id], ["type", t2.type], ["format", t2.format], ["profile", t2.profile], ["height", t2.height], ["width", t2.width], ["duration", t2.duration || void 0], ["viewingDirection", t2.viewingDirection !== "left-to-right" ? t2.viewingDirection : void 0], ["behavior", t2.behavior && t2.behavior.length ? t2.behavior : void 0], ["timeMode", t2.timeMode], ["motivation", Array.isArray(t2.motivation) ? t2.motivation[0] : t2.motivation]];
-  }
-  function s(t2) {
-    if (!(!t2 || t2.length === 0))
-      return t2;
-  }
-  function ge(t2) {
-    if (t2 && t2.type && t2.type === "ImageService2") {
-      const { id: e2, type: i3, profile: n2, ...r2 } = t2;
-      return { "@id": e2, "@type": i3, profile: n2.startsWith("http") ? n2 : `http://iiif.io/api/image/2/${n2}.json`, ...r2 };
-    }
-    return t2;
-  }
-  function ye(t2) {
-    if (!(!t2 || t2.length === 0))
-      return t2.map(ge);
-  }
-  function* C(t2) {
-    return [["label", t2.label], ["metadata", s(t2.metadata)], ["summary", t2.summary], ["requiredStatement", t2.requiredStatement], ["rights", t2.rights], ["navDate", t2.navDate], ["language", t2.language], ["thumbnail", s(yield t2.thumbnail)], ["placeholderCanvas", yield t2.placeholderCanvas], ["accompanyingCanvas", yield t2.accompanyingCanvas], ["provider", s(yield t2.provider)]];
-  }
-  function* I(t2) {
-    return [["seeAlso", s(yield t2.seeAlso)], ["service", ye(t2.service)], ["services", ye(t2.services)], ["rendering", s(yield t2.rendering)], ["supplementary", s(yield t2.supplementary)], ["homepage", s(yield t2.homepage)], ["logo", s(yield t2.logo)], ["partOf", s(yield t2.partOf)], ["start", t2.start]];
-  }
-  var dt = { Manifest: function* (t2, e2, { isTopLevel: i3 }) {
-    return i3 ? [["@context", "http://iiif.io/api/presentation/3/context.json"], ...A(t2), ...yield* C(t2), ...yield* I(t2), ["items", yield t2.items], ["structures", s(yield t2.structures)], ["annotations", s(yield t2.annotations)]] : [...A(t2), ...yield* C(t2)];
-  }, Canvas: function* (t2) {
-    return [...A(t2), ...yield* C(t2), ...yield* I(t2), ["items", yield t2.items], ["annotations", s(yield t2.annotations)]];
-  }, Agent: function* (t2) {
-    return [["id", t2.id], ["type", "Agent"], ["label", t2.label], ...yield* I(t2)];
-  }, AnnotationPage: function* (t2) {
-    return [...Object.entries(t2).map(([i3, n2]) => [i3, Array.isArray(n2) ? s(n2) : n2]).filter(([i3, n2]) => i3 !== "items"), ...yield* I(t2), ["items", yield t2.items]];
-  }, Service: function* (t2) {
-    return [[F, ge(t2)]];
-  }, Annotation: function* (t2) {
-    const e2 = Object.entries(t2).map(([n2, r2]) => n2 === "motivation" ? [n2, Array.isArray(r2) ? r2[0] : r2] : [n2, Array.isArray(r2) ? s(r2) : r2]).filter(([n2]) => n2 !== "body"), i3 = yield t2.body;
-    return [...e2, ["body", i3.length === 1 ? i3[0] : i3]];
-  }, ContentResource: function* (t2) {
-    return [...A(t2), ...yield* C(t2), ...yield* I(t2), ["annotations", s(yield t2.annotations)], ["items", s(yield t2.items)]];
-  }, AnnotationCollection: function* (t2) {
-    return [["id", t2.id], ["type", "AnnotationCollection"], ["label", t2.label]];
-  }, Collection: function* (t2, e2, { isTopLevel: i3 }) {
-    return i3 ? [["@context", "http://iiif.io/api/presentation/3/context.json"], ...A(t2), ...yield* C(t2), ...yield* I(t2), ["items", s(yield t2.items)]] : [...A(t2), ...yield* C(t2)];
-  }, Range: function* (t2) {
-    const e2 = [];
-    for (const i3 of t2.items)
-      i3.type === "Range" ? e2.push(yield i3) : e2.push(i3);
-    return [...A(t2), ...yield* C(t2), ...yield* I(t2), ["items", e2], ["annotations", s(yield t2.annotations)]];
-  } };
-
-  // node_modules/@iiif/vault/dist/esm/index.mjs
-  var import_typesafe_actions = __toESM(require_typesafe_actions_umd_production(), 1);
-
-  // node_modules/@babel/runtime/helpers/esm/typeof.js
-  function _typeof(obj) {
-    "@babel/helpers - typeof";
-    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(obj2) {
-      return typeof obj2;
-    } : function(obj2) {
-      return obj2 && "function" == typeof Symbol && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-    }, _typeof(obj);
-  }
-
-  // node_modules/@babel/runtime/helpers/esm/toPrimitive.js
-  function _toPrimitive(input, hint) {
-    if (_typeof(input) !== "object" || input === null)
-      return input;
-    var prim = input[Symbol.toPrimitive];
-    if (prim !== void 0) {
-      var res = prim.call(input, hint || "default");
-      if (_typeof(res) !== "object")
-        return res;
-      throw new TypeError("@@toPrimitive must return a primitive value.");
-    }
-    return (hint === "string" ? String : Number)(input);
-  }
-
-  // node_modules/@babel/runtime/helpers/esm/toPropertyKey.js
-  function _toPropertyKey(arg) {
-    var key = _toPrimitive(arg, "string");
-    return _typeof(key) === "symbol" ? key : String(key);
-  }
-
-  // node_modules/@babel/runtime/helpers/esm/defineProperty.js
-  function _defineProperty(obj, key, value) {
-    key = _toPropertyKey(key);
-    if (key in obj) {
-      Object.defineProperty(obj, key, {
-        value,
-        enumerable: true,
-        configurable: true,
-        writable: true
-      });
-    } else {
-      obj[key] = value;
-    }
-    return obj;
-  }
-
-  // node_modules/@babel/runtime/helpers/esm/objectSpread2.js
-  function ownKeys(object, enumerableOnly) {
-    var keys = Object.keys(object);
-    if (Object.getOwnPropertySymbols) {
-      var symbols = Object.getOwnPropertySymbols(object);
-      enumerableOnly && (symbols = symbols.filter(function(sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      })), keys.push.apply(keys, symbols);
-    }
-    return keys;
-  }
-  function _objectSpread2(target) {
-    for (var i3 = 1; i3 < arguments.length; i3++) {
-      var source = null != arguments[i3] ? arguments[i3] : {};
-      i3 % 2 ? ownKeys(Object(source), true).forEach(function(key) {
-        _defineProperty(target, key, source[key]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function(key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-    return target;
-  }
-
-  // node_modules/redux/es/redux.js
-  var $$observable = function() {
-    return typeof Symbol === "function" && Symbol.observable || "@@observable";
-  }();
-  var randomString = function randomString2() {
-    return Math.random().toString(36).substring(7).split("").join(".");
-  };
-  var ActionTypes = {
-    INIT: "@@redux/INIT" + randomString(),
-    REPLACE: "@@redux/REPLACE" + randomString(),
-    PROBE_UNKNOWN_ACTION: function PROBE_UNKNOWN_ACTION() {
-      return "@@redux/PROBE_UNKNOWN_ACTION" + randomString();
-    }
-  };
-  function isPlainObject(obj) {
-    if (typeof obj !== "object" || obj === null)
-      return false;
-    var proto = obj;
-    while (Object.getPrototypeOf(proto) !== null) {
-      proto = Object.getPrototypeOf(proto);
-    }
-    return Object.getPrototypeOf(obj) === proto;
-  }
-  function miniKindOf(val) {
-    if (val === void 0)
-      return "undefined";
-    if (val === null)
-      return "null";
-    var type = typeof val;
-    switch (type) {
-      case "boolean":
-      case "string":
-      case "number":
-      case "symbol":
-      case "function": {
-        return type;
-      }
-    }
-    if (Array.isArray(val))
-      return "array";
-    if (isDate(val))
-      return "date";
-    if (isError(val))
-      return "error";
-    var constructorName = ctorName(val);
-    switch (constructorName) {
-      case "Symbol":
-      case "Promise":
-      case "WeakMap":
-      case "WeakSet":
-      case "Map":
-      case "Set":
-        return constructorName;
-    }
-    return type.slice(8, -1).toLowerCase().replace(/\s/g, "");
-  }
-  function ctorName(val) {
-    return typeof val.constructor === "function" ? val.constructor.name : null;
-  }
-  function isError(val) {
-    return val instanceof Error || typeof val.message === "string" && val.constructor && typeof val.constructor.stackTraceLimit === "number";
-  }
-  function isDate(val) {
-    if (val instanceof Date)
-      return true;
-    return typeof val.toDateString === "function" && typeof val.getDate === "function" && typeof val.setDate === "function";
-  }
-  function kindOf(val) {
-    var typeOfVal = typeof val;
-    if (true) {
-      typeOfVal = miniKindOf(val);
-    }
-    return typeOfVal;
-  }
-  function createStore(reducer, preloadedState, enhancer) {
-    var _ref2;
-    if (typeof preloadedState === "function" && typeof enhancer === "function" || typeof enhancer === "function" && typeof arguments[3] === "function") {
-      throw new Error(false ? formatProdErrorMessage(0) : "It looks like you are passing several store enhancers to createStore(). This is not supported. Instead, compose them together to a single function. See https://redux.js.org/tutorials/fundamentals/part-4-store#creating-a-store-with-enhancers for an example.");
-    }
-    if (typeof preloadedState === "function" && typeof enhancer === "undefined") {
-      enhancer = preloadedState;
-      preloadedState = void 0;
-    }
-    if (typeof enhancer !== "undefined") {
-      if (typeof enhancer !== "function") {
-        throw new Error(false ? formatProdErrorMessage(1) : "Expected the enhancer to be a function. Instead, received: '" + kindOf(enhancer) + "'");
-      }
-      return enhancer(createStore)(reducer, preloadedState);
-    }
-    if (typeof reducer !== "function") {
-      throw new Error(false ? formatProdErrorMessage(2) : "Expected the root reducer to be a function. Instead, received: '" + kindOf(reducer) + "'");
-    }
-    var currentReducer = reducer;
-    var currentState = preloadedState;
-    var currentListeners = [];
-    var nextListeners = currentListeners;
-    var isDispatching = false;
-    function ensureCanMutateNextListeners() {
-      if (nextListeners === currentListeners) {
-        nextListeners = currentListeners.slice();
-      }
-    }
-    function getState() {
-      if (isDispatching) {
-        throw new Error(false ? formatProdErrorMessage(3) : "You may not call store.getState() while the reducer is executing. The reducer has already received the state as an argument. Pass it down from the top reducer instead of reading it from the store.");
-      }
-      return currentState;
-    }
-    function subscribe(listener) {
-      if (typeof listener !== "function") {
-        throw new Error(false ? formatProdErrorMessage(4) : "Expected the listener to be a function. Instead, received: '" + kindOf(listener) + "'");
-      }
-      if (isDispatching) {
-        throw new Error(false ? formatProdErrorMessage(5) : "You may not call store.subscribe() while the reducer is executing. If you would like to be notified after the store has been updated, subscribe from a component and invoke store.getState() in the callback to access the latest state. See https://redux.js.org/api/store#subscribelistener for more details.");
-      }
-      var isSubscribed = true;
-      ensureCanMutateNextListeners();
-      nextListeners.push(listener);
-      return function unsubscribe() {
-        if (!isSubscribed) {
-          return;
-        }
-        if (isDispatching) {
-          throw new Error(false ? formatProdErrorMessage(6) : "You may not unsubscribe from a store listener while the reducer is executing. See https://redux.js.org/api/store#subscribelistener for more details.");
-        }
-        isSubscribed = false;
-        ensureCanMutateNextListeners();
-        var index2 = nextListeners.indexOf(listener);
-        nextListeners.splice(index2, 1);
-        currentListeners = null;
-      };
-    }
-    function dispatch(action) {
-      if (!isPlainObject(action)) {
-        throw new Error(false ? formatProdErrorMessage(7) : "Actions must be plain objects. Instead, the actual type was: '" + kindOf(action) + "'. You may need to add middleware to your store setup to handle dispatching other values, such as 'redux-thunk' to handle dispatching functions. See https://redux.js.org/tutorials/fundamentals/part-4-store#middleware and https://redux.js.org/tutorials/fundamentals/part-6-async-logic#using-the-redux-thunk-middleware for examples.");
-      }
-      if (typeof action.type === "undefined") {
-        throw new Error(false ? formatProdErrorMessage(8) : 'Actions may not have an undefined "type" property. You may have misspelled an action type string constant.');
-      }
-      if (isDispatching) {
-        throw new Error(false ? formatProdErrorMessage(9) : "Reducers may not dispatch actions.");
-      }
-      try {
-        isDispatching = true;
-        currentState = currentReducer(currentState, action);
-      } finally {
-        isDispatching = false;
-      }
-      var listeners = currentListeners = nextListeners;
-      for (var i3 = 0; i3 < listeners.length; i3++) {
-        var listener = listeners[i3];
-        listener();
-      }
-      return action;
-    }
-    function replaceReducer(nextReducer) {
-      if (typeof nextReducer !== "function") {
-        throw new Error(false ? formatProdErrorMessage(10) : "Expected the nextReducer to be a function. Instead, received: '" + kindOf(nextReducer));
-      }
-      currentReducer = nextReducer;
-      dispatch({
-        type: ActionTypes.REPLACE
-      });
-    }
-    function observable() {
-      var _ref;
-      var outerSubscribe = subscribe;
-      return _ref = {
-        subscribe: function subscribe2(observer) {
-          if (typeof observer !== "object" || observer === null) {
-            throw new Error(false ? formatProdErrorMessage(11) : "Expected the observer to be an object. Instead, received: '" + kindOf(observer) + "'");
-          }
-          function observeState() {
-            if (observer.next) {
-              observer.next(getState());
-            }
-          }
-          observeState();
-          var unsubscribe = outerSubscribe(observeState);
-          return {
-            unsubscribe
-          };
-        }
-      }, _ref[$$observable] = function() {
-        return this;
-      }, _ref;
-    }
-    dispatch({
-      type: ActionTypes.INIT
-    });
-    return _ref2 = {
-      dispatch,
-      subscribe,
-      getState,
-      replaceReducer
-    }, _ref2[$$observable] = observable, _ref2;
-  }
-  function warning(message) {
-    if (typeof console !== "undefined" && typeof console.error === "function") {
-      console.error(message);
-    }
-    try {
-      throw new Error(message);
-    } catch (e2) {
-    }
-  }
-  function getUnexpectedStateShapeWarningMessage(inputState, reducers2, action, unexpectedKeyCache) {
-    var reducerKeys = Object.keys(reducers2);
-    var argumentName = action && action.type === ActionTypes.INIT ? "preloadedState argument passed to createStore" : "previous state received by the reducer";
-    if (reducerKeys.length === 0) {
-      return "Store does not have a valid reducer. Make sure the argument passed to combineReducers is an object whose values are reducers.";
-    }
-    if (!isPlainObject(inputState)) {
-      return "The " + argumentName + ' has unexpected type of "' + kindOf(inputState) + '". Expected argument to be an object with the following ' + ('keys: "' + reducerKeys.join('", "') + '"');
-    }
-    var unexpectedKeys = Object.keys(inputState).filter(function(key) {
-      return !reducers2.hasOwnProperty(key) && !unexpectedKeyCache[key];
-    });
-    unexpectedKeys.forEach(function(key) {
-      unexpectedKeyCache[key] = true;
-    });
-    if (action && action.type === ActionTypes.REPLACE)
-      return;
-    if (unexpectedKeys.length > 0) {
-      return "Unexpected " + (unexpectedKeys.length > 1 ? "keys" : "key") + " " + ('"' + unexpectedKeys.join('", "') + '" found in ' + argumentName + ". ") + "Expected to find one of the known reducer keys instead: " + ('"' + reducerKeys.join('", "') + '". Unexpected keys will be ignored.');
-    }
-  }
-  function assertReducerShape(reducers2) {
-    Object.keys(reducers2).forEach(function(key) {
-      var reducer = reducers2[key];
-      var initialState = reducer(void 0, {
-        type: ActionTypes.INIT
-      });
-      if (typeof initialState === "undefined") {
-        throw new Error(false ? formatProdErrorMessage(12) : 'The slice reducer for key "' + key + `" returned undefined during initialization. If the state passed to the reducer is undefined, you must explicitly return the initial state. The initial state may not be undefined. If you don't want to set a value for this reducer, you can use null instead of undefined.`);
-      }
-      if (typeof reducer(void 0, {
-        type: ActionTypes.PROBE_UNKNOWN_ACTION()
-      }) === "undefined") {
-        throw new Error(false ? formatProdErrorMessage(13) : 'The slice reducer for key "' + key + '" returned undefined when probed with a random type. ' + ("Don't try to handle '" + ActionTypes.INIT + `' or other actions in "redux/*" `) + "namespace. They are considered private. Instead, you must return the current state for any unknown actions, unless it is undefined, in which case you must return the initial state, regardless of the action type. The initial state may not be undefined, but can be null.");
-      }
-    });
-  }
-  function combineReducers(reducers2) {
-    var reducerKeys = Object.keys(reducers2);
-    var finalReducers = {};
-    for (var i3 = 0; i3 < reducerKeys.length; i3++) {
-      var key = reducerKeys[i3];
-      if (true) {
-        if (typeof reducers2[key] === "undefined") {
-          warning('No reducer provided for key "' + key + '"');
-        }
-      }
-      if (typeof reducers2[key] === "function") {
-        finalReducers[key] = reducers2[key];
-      }
-    }
-    var finalReducerKeys = Object.keys(finalReducers);
-    var unexpectedKeyCache;
-    if (true) {
-      unexpectedKeyCache = {};
-    }
-    var shapeAssertionError;
-    try {
-      assertReducerShape(finalReducers);
-    } catch (e2) {
-      shapeAssertionError = e2;
-    }
-    return function combination(state, action) {
-      if (state === void 0) {
-        state = {};
-      }
-      if (shapeAssertionError) {
-        throw shapeAssertionError;
-      }
-      if (true) {
-        var warningMessage = getUnexpectedStateShapeWarningMessage(state, finalReducers, action, unexpectedKeyCache);
-        if (warningMessage) {
-          warning(warningMessage);
-        }
-      }
-      var hasChanged = false;
-      var nextState = {};
-      for (var _i = 0; _i < finalReducerKeys.length; _i++) {
-        var _key = finalReducerKeys[_i];
-        var reducer = finalReducers[_key];
-        var previousStateForKey = state[_key];
-        var nextStateForKey = reducer(previousStateForKey, action);
-        if (typeof nextStateForKey === "undefined") {
-          var actionType = action && action.type;
-          throw new Error(false ? formatProdErrorMessage(14) : "When called with an action of type " + (actionType ? '"' + String(actionType) + '"' : "(unknown type)") + ', the slice reducer for key "' + _key + '" returned undefined. To ignore an action, you must explicitly return the previous state. If you want this reducer to hold no value, you can return null instead of undefined.');
-        }
-        nextState[_key] = nextStateForKey;
-        hasChanged = hasChanged || nextStateForKey !== previousStateForKey;
-      }
-      hasChanged = hasChanged || finalReducerKeys.length !== Object.keys(state).length;
-      return hasChanged ? nextState : state;
-    };
-  }
-  function compose() {
-    for (var _len = arguments.length, funcs = new Array(_len), _key = 0; _key < _len; _key++) {
-      funcs[_key] = arguments[_key];
-    }
-    if (funcs.length === 0) {
-      return function(arg) {
-        return arg;
-      };
-    }
-    if (funcs.length === 1) {
-      return funcs[0];
-    }
-    return funcs.reduce(function(a2, b3) {
-      return function() {
-        return a2(b3.apply(void 0, arguments));
-      };
-    });
-  }
-  function applyMiddleware() {
-    for (var _len = arguments.length, middlewares = new Array(_len), _key = 0; _key < _len; _key++) {
-      middlewares[_key] = arguments[_key];
-    }
-    return function(createStore3) {
-      return function() {
-        var store = createStore3.apply(void 0, arguments);
-        var _dispatch = function dispatch() {
-          throw new Error(false ? formatProdErrorMessage(15) : "Dispatching while constructing your middleware is not allowed. Other middleware would not be applied to this dispatch.");
-        };
-        var middlewareAPI = {
-          getState: store.getState,
-          dispatch: function dispatch() {
-            return _dispatch.apply(void 0, arguments);
-          }
-        };
-        var chain = middlewares.map(function(middleware) {
-          return middleware(middlewareAPI);
-        });
-        _dispatch = compose.apply(void 0, chain)(store.dispatch);
-        return _objectSpread2(_objectSpread2({}, store), {}, {
-          dispatch: _dispatch
-        });
-      };
-    };
-  }
-  function isCrushed() {
-  }
-  if (typeof isCrushed.name === "string" && isCrushed.name !== "isCrushed") {
-    warning('You are currently using minified code outside of NODE_ENV === "production". This means that you are running a slower development build of Redux. You can use loose-envify (https://github.com/zertosh/loose-envify) for browserify or setting mode to production in webpack (https://webpack.js.org/concepts/mode/) to ensure you have the correct code for your production build.');
-  }
-
-  // node_modules/@iiif/vault/dist/esm/index.mjs
-  var IMPORT_ENTITIES = "@iiif/IMPORT_ENTITIES";
-  var MODIFY_ENTITY_FIELD = "@iiif/MODIFY_ENTITY_FIELD";
-  var REORDER_ENTITY_FIELD = "@iiif/REORDER_ENTITY_FIELD";
-  var ADD_REFERENCE = "@iiif/ADD_REFERENCE";
-  var REMOVE_REFERENCE = "@iiif/REMOVE_REFERENCE";
-  var importEntities = (0, import_typesafe_actions.createAction)(IMPORT_ENTITIES)();
-  var modifyEntityField = (0, import_typesafe_actions.createAction)(MODIFY_ENTITY_FIELD)();
-  var reorderEntityField = (0, import_typesafe_actions.createAction)(REORDER_ENTITY_FIELD)();
-  var addReference = (0, import_typesafe_actions.createAction)(ADD_REFERENCE)();
-  var removeReference = (0, import_typesafe_actions.createAction)(REMOVE_REFERENCE)();
-  var entityActions = { importEntities, modifyEntityField, reorderEntityField, addReference, removeReference };
-  var ADD_MAPPING = "@iiif/ADD_MAPPING";
-  var ADD_MAPPINGS = "@iiif/ADD_MAPPINGS";
-  var addMapping = (0, import_typesafe_actions.createAction)(ADD_MAPPING)();
-  var addMappings = (0, import_typesafe_actions.createAction)(ADD_MAPPINGS)();
-  var SET_META_VALUE = "@iiif/SET_META_VALUE";
-  var SET_META_VALUE_DYNAMIC = "@iiif/SET_META_VALUE_DYNAMIC";
-  var UNSET_META_VALUE = "@iiif/UNSET_META_VALUE";
-  var setMetaValue = (0, import_typesafe_actions.createAction)(SET_META_VALUE)();
-  var setMetaValueDynamic = (0, import_typesafe_actions.createAction)(SET_META_VALUE_DYNAMIC)();
-  var unsetMetaValue = (0, import_typesafe_actions.createAction)(UNSET_META_VALUE)();
-  var metaActions = {
-    setMetaValue,
-    setMetaValueDynamic,
-    unsetMetaValue
-  };
-  var RESOURCE_ERROR = "RESOURCE_ERROR";
-  var RESOURCE_LOADING = "RESOURCE_LOADING";
-  var RESOURCE_READY = "RESOURCE_READY";
-  var REQUEST_RESOURCE = "@iiif/REQUEST_RESOURCE";
-  var REQUEST_ERROR = "@iiif/REQUEST_ERROR";
-  var REQUEST_MISMATCH = "@iiif/REQUEST_MISMATCH";
-  var REQUEST_COMPLETE = "@iiif/REQUEST_COMPLETE";
-  var REQUEST_OFFLINE_RESOURCE = "@iiif/REQUEST_OFFLINE_RESOURCE";
-  var requestResource = (0, import_typesafe_actions.createAction)(REQUEST_RESOURCE)();
-  var requestError = (0, import_typesafe_actions.createAction)(REQUEST_ERROR)();
-  var requestMismatch = (0, import_typesafe_actions.createAction)(REQUEST_MISMATCH)();
-  var requestComplete = (0, import_typesafe_actions.createAction)(REQUEST_COMPLETE)();
-  (0, import_typesafe_actions.createAction)(REQUEST_OFFLINE_RESOURCE)();
-  var BATCH_ACTIONS = "@iiif/BATCH";
-  var BATCH_IMPORT = "@iiif/BATCH_IMPORT";
-  var batchActions = (0, import_typesafe_actions.createAction)(BATCH_ACTIONS)();
-  (0, import_typesafe_actions.createAction)(BATCH_IMPORT)();
-  var actionListFromResource = (id, response) => {
-    const { entities, resource, mapping } = pt(response);
-    if (resource.id === void 0) {
-      return [requestError({ id, message: "ID is not defined in resource." })];
-    }
-    const actions = [importEntities({ entities }), addMappings({ mapping })];
-    if (resource.id !== id) {
-      actions.push(addMapping({ id, type: resource.type }));
-      actions.push(requestMismatch({ requestId: id, actualId: resource.id }));
-    }
-    actions.push(requestComplete({ id }));
-    return actions;
-  };
-  var safeIsNaN = Number.isNaN || function ponyfill(value) {
-    return typeof value === "number" && value !== value;
-  };
-  function isEqual(first, second) {
-    if (first === second) {
-      return true;
-    }
-    if (safeIsNaN(first) && safeIsNaN(second)) {
-      return true;
-    }
-    return false;
-  }
-  function areInputsEqual(newInputs, lastInputs) {
-    if (!Array.isArray(newInputs) || !Array.isArray(lastInputs)) {
-      return newInputs === lastInputs;
-    }
-    if (newInputs.length !== lastInputs.length) {
-      return false;
-    }
-    for (let i3 = 0; i3 < newInputs.length; i3++) {
-      if (!isEqual(newInputs[i3], lastInputs[i3])) {
-        return false;
-      }
-    }
-    return true;
-  }
-  function resolveIfExists(state, url) {
-    const request = state.iiif.requests[url];
-    const resourceType = state.iiif.mapping[url];
-    if (!resourceType || !state.iiif.entities[resourceType][request.resourceUri]) {
-      return void 0;
-    }
-    return state.iiif.entities[resourceType][request.resourceUri];
-  }
-  function createFetchHelper(store, fetcher, { waitTimeout = 30 } = {}) {
-    return async (url, options) => {
-      const state = store.getState();
-      const request = state.iiif.requests[url];
-      if (request) {
-        switch (request.loadingState) {
-          case RESOURCE_ERROR:
-            break;
-          case RESOURCE_LOADING: {
-            let cleanupSubscription;
-            let didContinue = false;
-            try {
-              const resolvedEntity = await Promise.race([
-                new Promise((resolve, reject) => {
-                  if (didContinue) {
-                    return;
-                  }
-                  cleanupSubscription = store.subscribe(() => {
-                    const latestState = store.getState();
-                    if (latestState.iiif.requests[url].loadingState === RESOURCE_ERROR) {
-                      reject();
-                      return;
-                    }
-                    if (latestState.iiif.requests[url].loadingState === RESOURCE_READY) {
-                      const maybeResolvedEntity = resolveIfExists(latestState, url);
-                      if (maybeResolvedEntity) {
-                        resolve(maybeResolvedEntity);
-                      } else {
-                        reject();
-                      }
-                    }
-                  });
-                }),
-                new Promise((resolve, reject) => setTimeout(() => {
-                  didContinue = true;
-                  reject();
-                }, waitTimeout * 60))
-              ]);
-              if (cleanupSubscription) {
-                cleanupSubscription();
-              }
-              if (resolvedEntity) {
-                return resolvedEntity;
-              }
-            } catch (e2) {
-              if (cleanupSubscription) {
-                cleanupSubscription();
-              }
-              break;
-            }
-            break;
-          }
-          case RESOURCE_READY: {
-            const resolvedEntity = resolveIfExists(state, url);
-            if (resolvedEntity) {
-              return resolvedEntity;
-            }
-            break;
-          }
-        }
-      }
-      store.dispatch(requestResource({ id: url }));
-      try {
-        const resource = await fetcher(url, options);
-        if (!resource.id && !resource["@id"]) {
-          if (resource["@type"]) {
-            resource["@id"] = url;
-            resource.id = url;
-          } else {
-            resource.id = url;
-          }
-        }
-        const toDispatch = actionListFromResource(url, resource);
-        store.dispatch(batchActions({ actions: toDispatch }));
-        return resolveIfExists(store.getState(), url);
-      } catch (err) {
-        store.dispatch(requestError({ id: url, message: err.toString() }));
-        throw err;
-      }
-    };
-  }
-  function getDefaultEntities() {
-    return {
-      Collection: {},
-      Manifest: {},
-      Canvas: {},
-      AnnotationPage: {},
-      AnnotationCollection: {},
-      Annotation: {},
-      ContentResource: {},
-      Range: {},
-      Service: {},
-      Selector: {},
-      Agent: {}
-    };
-  }
-  var mappingReducer = (state = {}, action) => {
-    switch (action.type) {
-      case ADD_MAPPING:
-        return {
-          ...state,
-          [action.payload.id]: action.payload.type
-        };
-      case ADD_MAPPINGS:
-        return {
-          ...state,
-          ...action.payload.mapping
-        };
-      default:
-        return state;
-    }
-  };
-  function isReferenceList(state, id, type, key) {
-    return !(!state[type] || !state[type][id] || !state[type][id][key] || !Array.isArray(state[type][id][key]));
-  }
-  var entitiesReducer = (state = getDefaultEntities(), action) => {
-    switch (action.type) {
-      case MODIFY_ENTITY_FIELD: {
-        if (!state[action.payload.type] || !state[action.payload.type][action.payload.id]) {
-          return state;
-        }
-        const entity = state[action.payload.type][action.payload.id];
-        if (typeof entity === "string") {
-          return state;
-        }
-        return {
-          ...state,
-          [action.payload.type]: {
-            ...state[action.payload.type],
-            [action.payload.id]: {
-              ...entity,
-              [action.payload.key]: action.payload.value
-            }
-          }
-        };
-      }
-      case REORDER_ENTITY_FIELD: {
-        if (!isReferenceList(state, action.payload.id, action.payload.type, action.payload.key)) {
-          return state;
-        }
-        const entity = state[action.payload.type][action.payload.id];
-        if (typeof entity === "string") {
-          return state;
-        }
-        const result = Array.from(entity[action.payload.key]);
-        const [removed] = result.splice(action.payload.startIndex, 1);
-        result.splice(action.payload.endIndex, 0, removed);
-        return {
-          ...state,
-          [action.payload.type]: {
-            ...state[action.payload.type],
-            [action.payload.id]: {
-              ...entity,
-              [action.payload.key]: result
-            }
-          }
-        };
-      }
-      case IMPORT_ENTITIES: {
-        const keys = Object.keys(action.payload.entities);
-        const toReturn = { ...state };
-        for (const key of keys) {
-          toReturn[key] = {
-            ...state[key] || {},
-            ...action.payload.entities[key] || {}
-          };
-        }
-        return toReturn;
-      }
-      case ADD_REFERENCE: {
-        if (!isReferenceList(state, action.payload.id, action.payload.type, action.payload.key)) {
-          return state;
-        }
-        const entity = state[action.payload.type][action.payload.id];
-        const result = Array.from(entity[action.payload.key]);
-        result.splice(action.payload.index || result.length + 1, 0, action.payload.reference);
-        return {
-          ...state,
-          [action.payload.type]: {
-            ...state[action.payload.type],
-            [action.payload.id]: {
-              ...entity,
-              [action.payload.key]: result
-            }
-          }
-        };
-      }
-      case REMOVE_REFERENCE: {
-        if (!isReferenceList(state, action.payload.id, action.payload.type, action.payload.key)) {
-          return state;
-        }
-        const entity = state[action.payload.type][action.payload.id];
-        const result = Array.from(entity[action.payload.key]);
-        const indexToRemove = action.payload.index || result.findIndex((e2) => e2 && e2.id === action.payload.reference.id);
-        if (indexToRemove === -1) {
-          return state;
-        }
-        if (result[indexToRemove]?.id !== action.payload.reference.id) {
-          return state;
-        }
-        result.splice(indexToRemove, 1);
-        return {
-          ...state,
-          [action.payload.type]: {
-            ...state[action.payload.type],
-            [action.payload.id]: {
-              ...entity,
-              [action.payload.key]: result
-            }
-          }
-        };
-      }
-      default:
-        return state;
-    }
-  };
-  var requestReducer = (state = {}, action) => {
-    switch (action.type) {
-      case REQUEST_RESOURCE:
-      case REQUEST_OFFLINE_RESOURCE:
-        return {
-          ...state,
-          [action.payload.id]: {
-            requestUri: action.payload.id,
-            loadingState: RESOURCE_LOADING,
-            uriMismatch: false,
-            resourceUri: action.payload.id
-          }
-        };
-      case REQUEST_MISMATCH:
-        return {
-          ...state,
-          [action.payload.requestId]: {
-            ...state[action.payload.requestId] || {},
-            uriMismatch: true,
-            resourceUri: action.payload.actualId
-          },
-          [action.payload.actualId]: {
-            requestUri: action.payload.requestId,
-            loadingState: state[action.payload.requestId].loadingState,
-            uriMismatch: true,
-            resourceUri: action.payload.actualId
-          }
-        };
-      case REQUEST_ERROR:
-        return {
-          ...state,
-          [action.payload.id]: {
-            ...state[action.payload.id] || {},
-            loadingState: RESOURCE_ERROR,
-            error: action.payload.message
-          }
-        };
-      case REQUEST_COMPLETE:
-        return {
-          ...state,
-          [action.payload.id]: {
-            ...state[action.payload.id] || {},
-            loadingState: RESOURCE_READY,
-            error: void 0
-          }
-        };
-    }
-    return state;
-  };
-  var metaReducer = (state = {}, action) => {
-    const { id, updateValue, value, meta, key } = action && action.payload || {};
-    switch (action.type) {
-      case SET_META_VALUE: {
-        return {
-          ...state,
-          [id]: {
-            ...state[id] || {},
-            [meta]: {
-              ...state[id] ? state[id][meta] || {} : {},
-              [key]: value
-            }
-          }
-        };
-      }
-      case SET_META_VALUE_DYNAMIC: {
-        return {
-          ...state,
-          [id]: {
-            ...state[id] || {},
-            [meta]: {
-              ...state[id] ? state[id][meta] || {} : {},
-              [key]: state[id] && state[id][meta] ? updateValue(state[id][meta][key]) : updateValue(void 0)
-            }
-          }
-        };
-      }
-      case UNSET_META_VALUE: {
-        if (state[id] && state[id][meta] && state[id][meta][key]) {
-          return {
-            ...state,
-            [id]: {
-              ...state[id] || {},
-              [meta]: {
-                ...state[id] ? state[id][meta] || {} : {},
-                [key]: void 0
-              }
-            }
-          };
-        }
-        return state;
-      }
-      default:
-        return state;
-    }
-  };
-  function createBatchReducer(rootReducer) {
-    return (state, action) => {
-      if (action && action.type === BATCH_ACTIONS) {
-        return action.payload.actions.reduce(rootReducer, state);
-      }
-      if (action && action.type === BATCH_IMPORT) {
-        return action.payload.state;
-      }
-      return rootReducer(state, action);
-    };
-  }
-  var reducers = combineReducers({
-    mapping: mappingReducer,
-    entities: entitiesReducer,
-    requests: requestReducer,
-    meta: metaReducer
-  });
-  var composeEnhancers = typeof window !== "undefined" ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose : compose;
-  function createStore2(options = {}) {
-    const {
-      enableDevtools = true,
-      iiifStoreName = "iiif",
-      defaultState: defaultState2 = {},
-      extraMiddleware = [],
-      customReducers = {}
-    } = options;
-    const rootReducer = combineReducers({ [iiifStoreName]: reducers, ...customReducers });
-    const store = createStore(createBatchReducer(rootReducer), defaultState2, enableDevtools ? composeEnhancers(applyMiddleware(...extraMiddleware)) : compose(applyMiddleware(...extraMiddleware)));
-    return store;
-  }
-  function mitt(n2) {
-    return { all: n2 = n2 || /* @__PURE__ */ new Map(), on: function(t2, e2) {
-      var i3 = n2.get(t2);
-      i3 ? i3.push(e2) : n2.set(t2, [e2]);
-    }, off: function(t2, e2) {
-      var i3 = n2.get(t2);
-      i3 && (e2 ? i3.splice(i3.indexOf(e2) >>> 0, 1) : n2.set(t2, []));
-    }, emit: function(t2, e2) {
-      var i3 = n2.get(t2);
-      i3 && i3.slice().map(function(n3) {
-        n3(e2);
-      }), (i3 = n2.get("*")) && i3.slice().map(function(n3) {
-        n3(t2, e2);
-      });
-    } };
-  }
-  var Vault = class {
-    options;
-    store;
-    emitter;
-    isBatching = false;
-    batchQueue = [];
-    remoteFetcher;
-    staticFetcher;
-    constructor(options, store) {
-      this.options = Object.assign({
-        reducers: {},
-        middleware: [],
-        defaultState: {},
-        customFetcher: this.defaultFetcher,
-        enableDevtools: true
-      }, options || {});
-      this.store = store || createStore2({
-        customReducers: this.options.reducers,
-        extraMiddleware: [...this.options.middleware, this.middleware],
-        defaultState: this.options.defaultState,
-        enableDevtools: this.options.enableDevtools
-      });
-      this.emitter = mitt();
-      this.remoteFetcher = createFetchHelper(this.store, this.options.customFetcher);
-      this.staticFetcher = createFetchHelper(this.store, (id, json) => json);
-    }
-    defaultFetcher = (url) => {
-      return fetch(url).then((r2) => r2.json());
-    };
-    batch(cb) {
-      this.isBatching = true;
-      try {
-        cb(this);
-        this.store.dispatch(batchActions({ actions: this.batchQueue }));
-      } catch (e2) {
-        this.batchQueue = [];
-        this.isBatching = false;
-        throw e2;
-      }
-      this.batchQueue = [];
-      this.isBatching = false;
-    }
-    async asyncBatch(cb) {
-      this.isBatching = true;
-      try {
-        await cb(this);
-        this.store.dispatch(batchActions({ actions: this.batchQueue }));
-      } catch (e2) {
-        this.batchQueue = [];
-        this.isBatching = false;
-        throw e2;
-      }
-      this.batchQueue = [];
-      this.isBatching = false;
-    }
-    modifyEntityField(entity, key, value) {
-      this.dispatch(entityActions.modifyEntityField({
-        id: entity.id,
-        type: entity.type,
-        key,
-        value
-      }));
-    }
-    dispatch(action) {
-      if (!this.isBatching) {
-        this.store.dispatch(action);
-      } else {
-        this.batchQueue.push(action);
-      }
-    }
-    middleware = (store) => (next2) => (action) => {
-      if (action.type === BATCH_ACTIONS) {
-        for (const realAction of action.payload.actions) {
-          this.emitter.emit(realAction.type, { realAction, state: store.getState() });
-        }
-        const state2 = next2(action);
-        for (const realAction of action.payload.actions) {
-          this.emitter.emit(`after:${action.type}`, { action, state: state2 });
-        }
-        return state2;
-      }
-      this.emitter.emit(action.type, { action, state: store.getState() });
-      const state = next2(action);
-      this.emitter.emit(`after:${action.type}`, { action, state });
-      return state;
-    };
-    serialize(entity, config) {
-      return ct(this.getState().iiif, entity, config);
-    }
-    toPresentation2(entity) {
-      return this.serialize(entity, ut);
-    }
-    toPresentation3(entity) {
-      return this.serialize(entity, dt);
-    }
-    hydrate(reference, type) {
-      return this.get(reference, type, { skipSelfReturn: false });
-    }
-    get(reference, type, options = {}) {
-      if (typeof type !== "string") {
-        options = type || {};
-        type = void 0;
-      }
-      const { skipSelfReturn = true } = options || {};
-      if (Array.isArray(reference)) {
-        return reference.map((i3) => this.get(i3, options));
-      }
-      const state = this.getState();
-      if (typeof reference === "string") {
-        const _type2 = type ? type : state.iiif.mapping[reference];
-        if (!_type2) {
-          if (skipSelfReturn) {
-            return null;
-          }
-          return { id: reference, type: "unknown" };
-        }
-        reference = { id: reference, type: _type2 };
-      }
-      const _type = type ? type : reference.type;
-      const _id = reference.id;
-      const entities = state.iiif.entities[_type];
-      if (!entities) {
-        const request = state.iiif.requests[_id];
-        if (request && request.resourceUri !== _id) {
-          return this.get(request.resourceUri, options);
-        }
-        if (skipSelfReturn) {
-          return null;
-        }
-        return reference;
-      }
-      return entities[reference.id] || (skipSelfReturn ? null : reference);
-    }
-    select(selector) {
-      return selector(this.getState());
-    }
-    getStore() {
-      return this.store;
-    }
-    getState() {
-      return this.store.getState();
-    }
-    loadManifest(id, json) {
-      const _id = typeof id === "string" ? id : id.id;
-      return this.load(_id, json);
-    }
-    loadCollection(id, json) {
-      const _id = typeof id === "string" ? id : id.id;
-      return this.load(_id, json);
-    }
-    load(id, json) {
-      const _id = typeof id === "string" ? id : id.id;
-      if (json) {
-        return this.staticFetcher(_id, json);
-      }
-      return this.remoteFetcher(_id);
-    }
-    areInputsEqual(newInputs, lastInputs) {
-      return areInputsEqual(newInputs, lastInputs);
-    }
-    subscribe(selector, subscription, skipInitial) {
-      if (typeof skipInitial === "undefined" && (typeof subscription === "undefined" || subscription === false || subscription === true)) {
-        skipInitial = subscription;
-        subscription = selector;
-        selector = (a2) => a2;
-      }
-      let lastState = skipInitial ? null : selector(this.store.getState());
-      if (!skipInitial) {
-        subscription(lastState, this);
-      }
-      return this.store.subscribe(() => {
-        const state = this.store.getState();
-        const selectedState = selector(state);
-        if (lastState !== selectedState && !areInputsEqual(lastState, selectedState)) {
-          subscription(selectedState, this);
-        }
-        lastState = selectedState;
-      });
-    }
-    async ensureLoaded(_id) {
-      const id = typeof _id === "string" ? _id : _id.id;
-      if (!this.requestStatus(id)) {
-        await this.load(id);
-      }
-    }
-    requestStatus(id) {
-      return this.select((state) => {
-        return state.iiif.requests[id];
-      });
-    }
-    getResourceMeta(resource, metaKey) {
-      const resourceMeta = this.getState().iiif.meta[resource];
-      if (!resourceMeta) {
-        return void 0;
-      }
-      if (!metaKey) {
-        return resourceMeta;
-      }
-      return resourceMeta[metaKey];
-    }
-    setMetaValue([id, meta, key], newValueOrUpdate) {
-      this.dispatch(typeof newValueOrUpdate === "function" ? metaActions.setMetaValueDynamic({
-        id,
-        meta,
-        key,
-        updateValue: newValueOrUpdate
-      }) : metaActions.setMetaValue({
-        id,
-        meta,
-        key,
-        value: newValueOrUpdate
-      }));
-    }
-  };
-
-  // src/context/collection-context.tsx
   var defaultState = {
     isLoaded: false,
     options: {
       enablePreview: false,
       credentials: "omit"
-    },
-    vault: new Vault()
+    }
   };
   var CollectionStateContext = import_react.default.createContext(defaultState);
   var CollectionDispatchContext = import_react.default.createContext(defaultState);
@@ -53888,67 +52285,67 @@ and ensure you are accounting for this risk.
     };
   };
   var l = Symbol.for("sxs.internal");
-  var s2 = (e2, t2) => Object.defineProperties(e2, Object.getOwnPropertyDescriptors(t2));
+  var s = (e2, t2) => Object.defineProperties(e2, Object.getOwnPropertyDescriptors(t2));
   var a = (e2) => {
     for (const t2 in e2)
       return true;
     return false;
   };
-  var { hasOwnProperty: c2 } = Object.prototype;
-  var d2 = (e2) => e2.includes("-") ? e2 : e2.replace(/[A-Z]/g, (e3) => "-" + e3.toLowerCase());
-  var g2 = /\s+(?![^()]*\))/;
-  var p2 = (e2) => (t2) => e2(..."string" == typeof t2 ? String(t2).split(g2) : [t2]);
-  var u2 = { appearance: (e2) => ({ WebkitAppearance: e2, appearance: e2 }), backfaceVisibility: (e2) => ({ WebkitBackfaceVisibility: e2, backfaceVisibility: e2 }), backdropFilter: (e2) => ({ WebkitBackdropFilter: e2, backdropFilter: e2 }), backgroundClip: (e2) => ({ WebkitBackgroundClip: e2, backgroundClip: e2 }), boxDecorationBreak: (e2) => ({ WebkitBoxDecorationBreak: e2, boxDecorationBreak: e2 }), clipPath: (e2) => ({ WebkitClipPath: e2, clipPath: e2 }), content: (e2) => ({ content: e2.includes('"') || e2.includes("'") || /^([A-Za-z]+\([^]*|[^]*-quote|inherit|initial|none|normal|revert|unset)$/.test(e2) ? e2 : `"${e2}"` }), hyphens: (e2) => ({ WebkitHyphens: e2, hyphens: e2 }), maskImage: (e2) => ({ WebkitMaskImage: e2, maskImage: e2 }), maskSize: (e2) => ({ WebkitMaskSize: e2, maskSize: e2 }), tabSize: (e2) => ({ MozTabSize: e2, tabSize: e2 }), textSizeAdjust: (e2) => ({ WebkitTextSizeAdjust: e2, textSizeAdjust: e2 }), userSelect: (e2) => ({ WebkitUserSelect: e2, userSelect: e2 }), marginBlock: p2((e2, t2) => ({ marginBlockStart: e2, marginBlockEnd: t2 || e2 })), marginInline: p2((e2, t2) => ({ marginInlineStart: e2, marginInlineEnd: t2 || e2 })), maxSize: p2((e2, t2) => ({ maxBlockSize: e2, maxInlineSize: t2 || e2 })), minSize: p2((e2, t2) => ({ minBlockSize: e2, minInlineSize: t2 || e2 })), paddingBlock: p2((e2, t2) => ({ paddingBlockStart: e2, paddingBlockEnd: t2 || e2 })), paddingInline: p2((e2, t2) => ({ paddingInlineStart: e2, paddingInlineEnd: t2 || e2 })) };
-  var h2 = /([\d.]+)([^]*)/;
-  var f2 = (e2, t2) => e2.length ? e2.reduce((e3, r2) => (e3.push(...t2.map((e4) => e4.includes("&") ? e4.replace(/&/g, /[ +>|~]/.test(r2) && /&.*&/.test(e4) ? `:is(${r2})` : r2) : r2 + " " + e4)), e3), []) : t2;
-  var m2 = (e2, t2) => e2 in b2 && "string" == typeof t2 ? t2.replace(/^((?:[^]*[^\w-])?)(fit-content|stretch)((?:[^\w-][^]*)?)$/, (t3, r2, n2, i3) => r2 + ("stretch" === n2 ? `-moz-available${i3};${d2(e2)}:${r2}-webkit-fill-available` : `-moz-fit-content${i3};${d2(e2)}:${r2}fit-content`) + i3) : String(t2);
-  var b2 = { blockSize: 1, height: 1, inlineSize: 1, maxBlockSize: 1, maxHeight: 1, maxInlineSize: 1, maxWidth: 1, minBlockSize: 1, minHeight: 1, minInlineSize: 1, minWidth: 1, width: 1 };
-  var S2 = (e2) => e2 ? e2 + "-" : "";
-  var k2 = (e2, t2, r2) => e2.replace(/([+-])?((?:\d+(?:\.\d*)?|\.\d+)(?:[Ee][+-]?\d+)?)?(\$|--)([$\w-]+)/g, (e3, n2, i3, o2, l2) => "$" == o2 == !!i3 ? e3 : (n2 || "--" == o2 ? "calc(" : "") + "var(--" + ("$" === o2 ? S2(t2) + (l2.includes("$") ? "" : S2(r2)) + l2.replace(/\$/g, "-") : l2) + ")" + (n2 || "--" == o2 ? "*" + (n2 || "") + (i3 || "1") + ")" : ""));
-  var y2 = /\s*,\s*(?![^()]*\))/;
-  var B2 = Object.prototype.toString;
-  var $2 = (e2, t2, r2, n2, i3) => {
-    let o2, l2, s4;
+  var { hasOwnProperty: c } = Object.prototype;
+  var d = (e2) => e2.includes("-") ? e2 : e2.replace(/[A-Z]/g, (e3) => "-" + e3.toLowerCase());
+  var g = /\s+(?![^()]*\))/;
+  var p = (e2) => (t2) => e2(..."string" == typeof t2 ? String(t2).split(g) : [t2]);
+  var u = { appearance: (e2) => ({ WebkitAppearance: e2, appearance: e2 }), backfaceVisibility: (e2) => ({ WebkitBackfaceVisibility: e2, backfaceVisibility: e2 }), backdropFilter: (e2) => ({ WebkitBackdropFilter: e2, backdropFilter: e2 }), backgroundClip: (e2) => ({ WebkitBackgroundClip: e2, backgroundClip: e2 }), boxDecorationBreak: (e2) => ({ WebkitBoxDecorationBreak: e2, boxDecorationBreak: e2 }), clipPath: (e2) => ({ WebkitClipPath: e2, clipPath: e2 }), content: (e2) => ({ content: e2.includes('"') || e2.includes("'") || /^([A-Za-z]+\([^]*|[^]*-quote|inherit|initial|none|normal|revert|unset)$/.test(e2) ? e2 : `"${e2}"` }), hyphens: (e2) => ({ WebkitHyphens: e2, hyphens: e2 }), maskImage: (e2) => ({ WebkitMaskImage: e2, maskImage: e2 }), maskSize: (e2) => ({ WebkitMaskSize: e2, maskSize: e2 }), tabSize: (e2) => ({ MozTabSize: e2, tabSize: e2 }), textSizeAdjust: (e2) => ({ WebkitTextSizeAdjust: e2, textSizeAdjust: e2 }), userSelect: (e2) => ({ WebkitUserSelect: e2, userSelect: e2 }), marginBlock: p((e2, t2) => ({ marginBlockStart: e2, marginBlockEnd: t2 || e2 })), marginInline: p((e2, t2) => ({ marginInlineStart: e2, marginInlineEnd: t2 || e2 })), maxSize: p((e2, t2) => ({ maxBlockSize: e2, maxInlineSize: t2 || e2 })), minSize: p((e2, t2) => ({ minBlockSize: e2, minInlineSize: t2 || e2 })), paddingBlock: p((e2, t2) => ({ paddingBlockStart: e2, paddingBlockEnd: t2 || e2 })), paddingInline: p((e2, t2) => ({ paddingInlineStart: e2, paddingInlineEnd: t2 || e2 })) };
+  var h = /([\d.]+)([^]*)/;
+  var f = (e2, t2) => e2.length ? e2.reduce((e3, r2) => (e3.push(...t2.map((e4) => e4.includes("&") ? e4.replace(/&/g, /[ +>|~]/.test(r2) && /&.*&/.test(e4) ? `:is(${r2})` : r2) : r2 + " " + e4)), e3), []) : t2;
+  var m = (e2, t2) => e2 in b && "string" == typeof t2 ? t2.replace(/^((?:[^]*[^\w-])?)(fit-content|stretch)((?:[^\w-][^]*)?)$/, (t3, r2, n2, i3) => r2 + ("stretch" === n2 ? `-moz-available${i3};${d(e2)}:${r2}-webkit-fill-available` : `-moz-fit-content${i3};${d(e2)}:${r2}fit-content`) + i3) : String(t2);
+  var b = { blockSize: 1, height: 1, inlineSize: 1, maxBlockSize: 1, maxHeight: 1, maxInlineSize: 1, maxWidth: 1, minBlockSize: 1, minHeight: 1, minInlineSize: 1, minWidth: 1, width: 1 };
+  var S = (e2) => e2 ? e2 + "-" : "";
+  var k = (e2, t2, r2) => e2.replace(/([+-])?((?:\d+(?:\.\d*)?|\.\d+)(?:[Ee][+-]?\d+)?)?(\$|--)([$\w-]+)/g, (e3, n2, i3, o2, l2) => "$" == o2 == !!i3 ? e3 : (n2 || "--" == o2 ? "calc(" : "") + "var(--" + ("$" === o2 ? S(t2) + (l2.includes("$") ? "" : S(r2)) + l2.replace(/\$/g, "-") : l2) + ")" + (n2 || "--" == o2 ? "*" + (n2 || "") + (i3 || "1") + ")" : ""));
+  var y = /\s*,\s*(?![^()]*\))/;
+  var B = Object.prototype.toString;
+  var $ = (e2, t2, r2, n2, i3) => {
+    let o2, l2, s3;
     const a2 = (e3, t3, r3) => {
-      let c4, g3;
-      const p3 = (e4) => {
-        for (c4 in e4) {
-          const R3 = 64 === c4.charCodeAt(0), z4 = R3 && Array.isArray(e4[c4]) ? e4[c4] : [e4[c4]];
-          for (g3 of z4) {
-            const e5 = /[A-Z]/.test($5 = c4) ? $5 : $5.replace(/-[^]/g, (e6) => e6[1].toUpperCase()), z5 = "object" == typeof g3 && g3 && g3.toString === B2 && (!n2.utils[e5] || !t3.length);
-            if (e5 in n2.utils && !z5) {
+      let c3, g2;
+      const p2 = (e4) => {
+        for (c3 in e4) {
+          const R3 = 64 === c3.charCodeAt(0), z3 = R3 && Array.isArray(e4[c3]) ? e4[c3] : [e4[c3]];
+          for (g2 of z3) {
+            const e5 = /[A-Z]/.test($4 = c3) ? $4 : $4.replace(/-[^]/g, (e6) => e6[1].toUpperCase()), z4 = "object" == typeof g2 && g2 && g2.toString === B && (!n2.utils[e5] || !t3.length);
+            if (e5 in n2.utils && !z4) {
               const t4 = n2.utils[e5];
               if (t4 !== l2) {
-                l2 = t4, p3(t4(g3)), l2 = null;
+                l2 = t4, p2(t4(g2)), l2 = null;
                 continue;
               }
-            } else if (e5 in u2) {
-              const t4 = u2[e5];
-              if (t4 !== s4) {
-                s4 = t4, p3(t4(g3)), s4 = null;
+            } else if (e5 in u) {
+              const t4 = u[e5];
+              if (t4 !== s3) {
+                s3 = t4, p2(t4(g2)), s3 = null;
                 continue;
               }
             }
-            if (R3 && (b3 = c4.slice(1) in n2.media ? "@media " + n2.media[c4.slice(1)] : c4, c4 = b3.replace(/\(\s*([\w-]+)\s*(=|<|<=|>|>=)\s*([\w-]+)\s*(?:(<|<=|>|>=)\s*([\w-]+)\s*)?\)/g, (e6, t4, r4, n3, i4, o3) => {
-              const l3 = h2.test(t4), s5 = 0.0625 * (l3 ? -1 : 1), [a3, c5] = l3 ? [n3, t4] : [t4, n3];
-              return "(" + ("=" === r4[0] ? "" : ">" === r4[0] === l3 ? "max-" : "min-") + a3 + ":" + ("=" !== r4[0] && 1 === r4.length ? c5.replace(h2, (e7, t5, n4) => Number(t5) + s5 * (">" === r4 ? 1 : -1) + n4) : c5) + (i4 ? ") and (" + (">" === i4[0] ? "min-" : "max-") + a3 + ":" + (1 === i4.length ? o3.replace(h2, (e7, t5, r5) => Number(t5) + s5 * (">" === i4 ? -1 : 1) + r5) : o3) : "") + ")";
-            })), z5) {
-              const e6 = R3 ? r3.concat(c4) : [...r3], n3 = R3 ? [...t3] : f2(t3, c4.split(y2));
-              void 0 !== o2 && i3(x2(...o2)), o2 = void 0, a2(g3, n3, e6);
+            if (R3 && (b2 = c3.slice(1) in n2.media ? "@media " + n2.media[c3.slice(1)] : c3, c3 = b2.replace(/\(\s*([\w-]+)\s*(=|<|<=|>|>=)\s*([\w-]+)\s*(?:(<|<=|>|>=)\s*([\w-]+)\s*)?\)/g, (e6, t4, r4, n3, i4, o3) => {
+              const l3 = h.test(t4), s4 = 0.0625 * (l3 ? -1 : 1), [a3, c4] = l3 ? [n3, t4] : [t4, n3];
+              return "(" + ("=" === r4[0] ? "" : ">" === r4[0] === l3 ? "max-" : "min-") + a3 + ":" + ("=" !== r4[0] && 1 === r4.length ? c4.replace(h, (e7, t5, n4) => Number(t5) + s4 * (">" === r4 ? 1 : -1) + n4) : c4) + (i4 ? ") and (" + (">" === i4[0] ? "min-" : "max-") + a3 + ":" + (1 === i4.length ? o3.replace(h, (e7, t5, r5) => Number(t5) + s4 * (">" === i4 ? -1 : 1) + r5) : o3) : "") + ")";
+            })), z4) {
+              const e6 = R3 ? r3.concat(c3) : [...r3], n3 = R3 ? [...t3] : f(t3, c3.split(y));
+              void 0 !== o2 && i3(x(...o2)), o2 = void 0, a2(g2, n3, e6);
             } else
-              void 0 === o2 && (o2 = [[], t3, r3]), c4 = R3 || 36 !== c4.charCodeAt(0) ? c4 : `--${S2(n2.prefix)}${c4.slice(1).replace(/\$/g, "-")}`, g3 = z5 ? g3 : "number" == typeof g3 ? g3 && e5 in I2 ? String(g3) + "px" : String(g3) : k2(m2(e5, null == g3 ? "" : g3), n2.prefix, n2.themeMap[e5]), o2[0].push(`${R3 ? `${c4} ` : `${d2(c4)}:`}${g3}`);
+              void 0 === o2 && (o2 = [[], t3, r3]), c3 = R3 || 36 !== c3.charCodeAt(0) ? c3 : `--${S(n2.prefix)}${c3.slice(1).replace(/\$/g, "-")}`, g2 = z4 ? g2 : "number" == typeof g2 ? g2 && e5 in I ? String(g2) + "px" : String(g2) : k(m(e5, null == g2 ? "" : g2), n2.prefix, n2.themeMap[e5]), o2[0].push(`${R3 ? `${c3} ` : `${d(c3)}:`}${g2}`);
           }
         }
-        var b3, $5;
+        var b2, $4;
       };
-      p3(e3), void 0 !== o2 && i3(x2(...o2)), o2 = void 0;
+      p2(e3), void 0 !== o2 && i3(x(...o2)), o2 = void 0;
     };
     a2(e2, t2, r2);
   };
-  var x2 = (e2, t2, r2) => `${r2.map((e3) => `${e3}{`).join("")}${t2.length ? `${t2.join(",")}{` : ""}${e2.join(";")}${t2.length ? "}" : ""}${Array(r2.length ? r2.length + 1 : 0).join("}")}`;
-  var I2 = { animationDelay: 1, animationDuration: 1, backgroundSize: 1, blockSize: 1, border: 1, borderBlock: 1, borderBlockEnd: 1, borderBlockEndWidth: 1, borderBlockStart: 1, borderBlockStartWidth: 1, borderBlockWidth: 1, borderBottom: 1, borderBottomLeftRadius: 1, borderBottomRightRadius: 1, borderBottomWidth: 1, borderEndEndRadius: 1, borderEndStartRadius: 1, borderInlineEnd: 1, borderInlineEndWidth: 1, borderInlineStart: 1, borderInlineStartWidth: 1, borderInlineWidth: 1, borderLeft: 1, borderLeftWidth: 1, borderRadius: 1, borderRight: 1, borderRightWidth: 1, borderSpacing: 1, borderStartEndRadius: 1, borderStartStartRadius: 1, borderTop: 1, borderTopLeftRadius: 1, borderTopRightRadius: 1, borderTopWidth: 1, borderWidth: 1, bottom: 1, columnGap: 1, columnRule: 1, columnRuleWidth: 1, columnWidth: 1, containIntrinsicSize: 1, flexBasis: 1, fontSize: 1, gap: 1, gridAutoColumns: 1, gridAutoRows: 1, gridTemplateColumns: 1, gridTemplateRows: 1, height: 1, inlineSize: 1, inset: 1, insetBlock: 1, insetBlockEnd: 1, insetBlockStart: 1, insetInline: 1, insetInlineEnd: 1, insetInlineStart: 1, left: 1, letterSpacing: 1, margin: 1, marginBlock: 1, marginBlockEnd: 1, marginBlockStart: 1, marginBottom: 1, marginInline: 1, marginInlineEnd: 1, marginInlineStart: 1, marginLeft: 1, marginRight: 1, marginTop: 1, maxBlockSize: 1, maxHeight: 1, maxInlineSize: 1, maxWidth: 1, minBlockSize: 1, minHeight: 1, minInlineSize: 1, minWidth: 1, offsetDistance: 1, offsetRotate: 1, outline: 1, outlineOffset: 1, outlineWidth: 1, overflowClipMargin: 1, padding: 1, paddingBlock: 1, paddingBlockEnd: 1, paddingBlockStart: 1, paddingBottom: 1, paddingInline: 1, paddingInlineEnd: 1, paddingInlineStart: 1, paddingLeft: 1, paddingRight: 1, paddingTop: 1, perspective: 1, right: 1, rowGap: 1, scrollMargin: 1, scrollMarginBlock: 1, scrollMarginBlockEnd: 1, scrollMarginBlockStart: 1, scrollMarginBottom: 1, scrollMarginInline: 1, scrollMarginInlineEnd: 1, scrollMarginInlineStart: 1, scrollMarginLeft: 1, scrollMarginRight: 1, scrollMarginTop: 1, scrollPadding: 1, scrollPaddingBlock: 1, scrollPaddingBlockEnd: 1, scrollPaddingBlockStart: 1, scrollPaddingBottom: 1, scrollPaddingInline: 1, scrollPaddingInlineEnd: 1, scrollPaddingInlineStart: 1, scrollPaddingLeft: 1, scrollPaddingRight: 1, scrollPaddingTop: 1, shapeMargin: 1, textDecoration: 1, textDecorationThickness: 1, textIndent: 1, textUnderlineOffset: 1, top: 1, transitionDelay: 1, transitionDuration: 1, verticalAlign: 1, width: 1, wordSpacing: 1 };
+  var x = (e2, t2, r2) => `${r2.map((e3) => `${e3}{`).join("")}${t2.length ? `${t2.join(",")}{` : ""}${e2.join(";")}${t2.length ? "}" : ""}${Array(r2.length ? r2.length + 1 : 0).join("}")}`;
+  var I = { animationDelay: 1, animationDuration: 1, backgroundSize: 1, blockSize: 1, border: 1, borderBlock: 1, borderBlockEnd: 1, borderBlockEndWidth: 1, borderBlockStart: 1, borderBlockStartWidth: 1, borderBlockWidth: 1, borderBottom: 1, borderBottomLeftRadius: 1, borderBottomRightRadius: 1, borderBottomWidth: 1, borderEndEndRadius: 1, borderEndStartRadius: 1, borderInlineEnd: 1, borderInlineEndWidth: 1, borderInlineStart: 1, borderInlineStartWidth: 1, borderInlineWidth: 1, borderLeft: 1, borderLeftWidth: 1, borderRadius: 1, borderRight: 1, borderRightWidth: 1, borderSpacing: 1, borderStartEndRadius: 1, borderStartStartRadius: 1, borderTop: 1, borderTopLeftRadius: 1, borderTopRightRadius: 1, borderTopWidth: 1, borderWidth: 1, bottom: 1, columnGap: 1, columnRule: 1, columnRuleWidth: 1, columnWidth: 1, containIntrinsicSize: 1, flexBasis: 1, fontSize: 1, gap: 1, gridAutoColumns: 1, gridAutoRows: 1, gridTemplateColumns: 1, gridTemplateRows: 1, height: 1, inlineSize: 1, inset: 1, insetBlock: 1, insetBlockEnd: 1, insetBlockStart: 1, insetInline: 1, insetInlineEnd: 1, insetInlineStart: 1, left: 1, letterSpacing: 1, margin: 1, marginBlock: 1, marginBlockEnd: 1, marginBlockStart: 1, marginBottom: 1, marginInline: 1, marginInlineEnd: 1, marginInlineStart: 1, marginLeft: 1, marginRight: 1, marginTop: 1, maxBlockSize: 1, maxHeight: 1, maxInlineSize: 1, maxWidth: 1, minBlockSize: 1, minHeight: 1, minInlineSize: 1, minWidth: 1, offsetDistance: 1, offsetRotate: 1, outline: 1, outlineOffset: 1, outlineWidth: 1, overflowClipMargin: 1, padding: 1, paddingBlock: 1, paddingBlockEnd: 1, paddingBlockStart: 1, paddingBottom: 1, paddingInline: 1, paddingInlineEnd: 1, paddingInlineStart: 1, paddingLeft: 1, paddingRight: 1, paddingTop: 1, perspective: 1, right: 1, rowGap: 1, scrollMargin: 1, scrollMarginBlock: 1, scrollMarginBlockEnd: 1, scrollMarginBlockStart: 1, scrollMarginBottom: 1, scrollMarginInline: 1, scrollMarginInlineEnd: 1, scrollMarginInlineStart: 1, scrollMarginLeft: 1, scrollMarginRight: 1, scrollMarginTop: 1, scrollPadding: 1, scrollPaddingBlock: 1, scrollPaddingBlockEnd: 1, scrollPaddingBlockStart: 1, scrollPaddingBottom: 1, scrollPaddingInline: 1, scrollPaddingInlineEnd: 1, scrollPaddingInlineStart: 1, scrollPaddingLeft: 1, scrollPaddingRight: 1, scrollPaddingTop: 1, shapeMargin: 1, textDecoration: 1, textDecorationThickness: 1, textIndent: 1, textUnderlineOffset: 1, top: 1, transitionDelay: 1, transitionDuration: 1, verticalAlign: 1, width: 1, wordSpacing: 1 };
   var R = (e2) => String.fromCharCode(e2 + (e2 > 25 ? 39 : 97));
-  var z2 = (e2) => ((e3) => {
+  var z = (e2) => ((e3) => {
     let t2, r2 = "";
     for (t2 = Math.abs(e3); t2 > 52; t2 = t2 / 52 | 0)
       r2 = R(t2 % 52) + r2;
@@ -53959,8 +52356,8 @@ and ensure you are accounting for this risk.
       e3 = 33 * e3 ^ t2.charCodeAt(--r2);
     return e3;
   })(5381, JSON.stringify(e2)) >>> 0);
-  var W2 = ["themed", "global", "styled", "onevar", "resonevar", "allvar", "inline"];
-  var j2 = (e2) => {
+  var W = ["themed", "global", "styled", "onevar", "resonevar", "allvar", "inline"];
+  var j = (e2) => {
     if (e2.href && !e2.href.startsWith(location.origin))
       return false;
     try {
@@ -54001,20 +52398,20 @@ and ensure you are accounting for this risk.
       }
       const i3 = Object(e2).styleSheets || [];
       for (const e3 of i3)
-        if (j2(e3)) {
+        if (j(e3)) {
           for (let i4 = 0, o3 = e3.cssRules; o3[i4]; ++i4) {
             const l3 = Object(o3[i4]);
             if (1 !== l3.type)
               continue;
-            const s4 = Object(o3[i4 + 1]);
-            if (4 !== s4.type)
+            const s3 = Object(o3[i4 + 1]);
+            if (4 !== s3.type)
               continue;
             ++i4;
             const { cssText: a2 } = l3;
             if (!a2.startsWith("--sxs"))
               continue;
-            const c4 = a2.slice(14, -3).trim().split(/\s+/), d4 = W2[c4[0]];
-            d4 && (t2 || (t2 = { sheet: e3, reset: n2, rules: {}, toString: r2 }), t2.rules[d4] = { group: s4, index: i4, cache: new Set(c4) });
+            const c3 = a2.slice(14, -3).trim().split(/\s+/), d3 = W[c3[0]];
+            d3 && (t2 || (t2 = { sheet: e3, reset: n2, rules: {}, toString: r2 }), t2.rules[d3] = { group: s3, index: i4, cache: new Set(c3) });
           }
           if (t2)
             break;
@@ -54028,18 +52425,18 @@ and ensure you are accounting for this risk.
         t2 = { sheet: e2 ? (e2.head || e2).appendChild(document.createElement("style")).sheet : i4("", "text/css"), rules: {}, reset: n2, toString: r2 };
       }
       const { sheet: o2, rules: l2 } = t2;
-      for (let e3 = W2.length - 1; e3 >= 0; --e3) {
-        const t3 = W2[e3];
+      for (let e3 = W.length - 1; e3 >= 0; --e3) {
+        const t3 = W[e3];
         if (!l2[t3]) {
-          const r3 = W2[e3 + 1], n3 = l2[r3] ? l2[r3].index : o2.cssRules.length;
+          const r3 = W[e3 + 1], n3 = l2[r3] ? l2[r3].index : o2.cssRules.length;
           o2.insertRule("@media{}", n3), o2.insertRule(`--sxs{--sxs:${e3}}`, n3), l2[t3] = { group: o2.cssRules[n3 + 1], index: n3, cache: /* @__PURE__ */ new Set([e3]) };
         }
-        v2(l2[t3]);
+        v(l2[t3]);
       }
     };
     return n2(), t2;
   };
-  var v2 = (e2) => {
+  var v = (e2) => {
     const t2 = e2.group;
     let r2 = t2.cssRules.length;
     e2.apply = (e3) => {
@@ -54050,8 +52447,8 @@ and ensure you are accounting for this risk.
     };
   };
   var T = Symbol();
-  var w2 = o();
-  var M2 = (e2, t2) => w2(e2, () => (...r2) => {
+  var w = o();
+  var M = (e2, t2) => w(e2, () => (...r2) => {
     let n2 = { type: null, composers: /* @__PURE__ */ new Set() };
     for (const t3 of r2)
       if (null != t3)
@@ -54060,25 +52457,25 @@ and ensure you are accounting for this risk.
           for (const e3 of t3[l].composers)
             n2.composers.add(e3);
         } else
-          t3.constructor !== Object || t3.$$typeof ? null == n2.type && (n2.type = t3) : n2.composers.add(C2(t3, e2));
-    return null == n2.type && (n2.type = "span"), n2.composers.size || n2.composers.add(["PJLV", {}, [], [], {}, []]), P2(e2, n2, t2);
+          t3.constructor !== Object || t3.$$typeof ? null == n2.type && (n2.type = t3) : n2.composers.add(C(t3, e2));
+    return null == n2.type && (n2.type = "span"), n2.composers.size || n2.composers.add(["PJLV", {}, [], [], {}, []]), P(e2, n2, t2);
   });
-  var C2 = ({ variants: e2, compoundVariants: t2, defaultVariants: r2, ...n2 }, i3) => {
-    const o2 = `${S2(i3.prefix)}c-${z2(n2)}`, l2 = [], s4 = [], d4 = /* @__PURE__ */ Object.create(null), g3 = [];
+  var C = ({ variants: e2, compoundVariants: t2, defaultVariants: r2, ...n2 }, i3) => {
+    const o2 = `${S(i3.prefix)}c-${z(n2)}`, l2 = [], s3 = [], d3 = /* @__PURE__ */ Object.create(null), g2 = [];
     for (const e3 in r2)
-      d4[e3] = String(r2[e3]);
+      d3[e3] = String(r2[e3]);
     if ("object" == typeof e2 && e2)
       for (const t3 in e2) {
-        p3 = d4, u3 = t3, c2.call(p3, u3) || (d4[t3] = "undefined");
+        p2 = d3, u2 = t3, c.call(p2, u2) || (d3[t3] = "undefined");
         const r3 = e2[t3];
         for (const e3 in r3) {
           const n3 = { [t3]: String(e3) };
-          "undefined" === String(e3) && g3.push(t3);
+          "undefined" === String(e3) && g2.push(t3);
           const i4 = r3[e3], o3 = [n3, i4, !a(i4)];
           l2.push(o3);
         }
       }
-    var p3, u3;
+    var p2, u2;
     if ("object" == typeof t2 && t2)
       for (const e3 of t2) {
         let { css: t3, ...r3 } = e3;
@@ -54086,12 +52483,12 @@ and ensure you are accounting for this risk.
         for (const e4 in r3)
           r3[e4] = String(r3[e4]);
         const n3 = [r3, t3, !a(t3)];
-        s4.push(n3);
+        s3.push(n3);
       }
-    return [o2, n2, l2, s4, d4, g3];
+    return [o2, n2, l2, s3, d3, g2];
   };
-  var P2 = (e2, t2, r2) => {
-    const [n2, i3, o2, a2] = L2(t2.composers), c4 = "function" == typeof t2.type || t2.type.$$typeof ? ((e3) => {
+  var P = (e2, t2, r2) => {
+    const [n2, i3, o2, a2] = L(t2.composers), c3 = "function" == typeof t2.type || t2.type.$$typeof ? ((e3) => {
       function t3() {
         for (let r3 = 0; r3 < t3[T].length; r3++) {
           const [n3, i4] = t3[T][r3];
@@ -54099,73 +52496,73 @@ and ensure you are accounting for this risk.
         }
         return t3[T] = [], null;
       }
-      return t3[T] = [], t3.rules = {}, W2.forEach((e4) => t3.rules[e4] = { apply: (r3) => t3[T].push([e4, r3]) }), t3;
-    })(r2) : null, d4 = (c4 || r2).rules, g3 = `.${n2}${i3.length > 1 ? `:where(.${i3.slice(1).join(".")})` : ""}`, p3 = (l2) => {
-      l2 = "object" == typeof l2 && l2 || A2;
-      const { css: s4, ...p4 } = l2, u3 = {};
+      return t3[T] = [], t3.rules = {}, W.forEach((e4) => t3.rules[e4] = { apply: (r3) => t3[T].push([e4, r3]) }), t3;
+    })(r2) : null, d3 = (c3 || r2).rules, g2 = `.${n2}${i3.length > 1 ? `:where(.${i3.slice(1).join(".")})` : ""}`, p2 = (l2) => {
+      l2 = "object" == typeof l2 && l2 || A;
+      const { css: s3, ...p3 } = l2, u2 = {};
       for (const e3 in o2)
-        if (delete p4[e3], e3 in l2) {
+        if (delete p3[e3], e3 in l2) {
           let t3 = l2[e3];
-          "object" == typeof t3 && t3 ? u3[e3] = { "@initial": o2[e3], ...t3 } : (t3 = String(t3), u3[e3] = "undefined" !== t3 || a2.has(e3) ? t3 : o2[e3]);
+          "object" == typeof t3 && t3 ? u2[e3] = { "@initial": o2[e3], ...t3 } : (t3 = String(t3), u2[e3] = "undefined" !== t3 || a2.has(e3) ? t3 : o2[e3]);
         } else
-          u3[e3] = o2[e3];
-      const h4 = /* @__PURE__ */ new Set([...i3]);
+          u2[e3] = o2[e3];
+      const h3 = /* @__PURE__ */ new Set([...i3]);
       for (const [n3, i4, o3, l3] of t2.composers) {
-        r2.rules.styled.cache.has(n3) || (r2.rules.styled.cache.add(n3), $2(i4, [`.${n3}`], [], e2, (e3) => {
-          d4.styled.apply(e3);
+        r2.rules.styled.cache.has(n3) || (r2.rules.styled.cache.add(n3), $(i4, [`.${n3}`], [], e2, (e3) => {
+          d3.styled.apply(e3);
         }));
-        const t3 = O2(o3, u3, e2.media), s5 = O2(l3, u3, e2.media, true);
+        const t3 = O(o3, u2, e2.media), s4 = O(l3, u2, e2.media, true);
         for (const i5 of t3)
           if (void 0 !== i5)
             for (const [t4, o4, l4] of i5) {
-              const i6 = `${n3}-${z2(o4)}-${t4}`;
-              h4.add(i6);
-              const s6 = (l4 ? r2.rules.resonevar : r2.rules.onevar).cache, a3 = l4 ? d4.resonevar : d4.onevar;
-              s6.has(i6) || (s6.add(i6), $2(o4, [`.${i6}`], [], e2, (e3) => {
+              const i6 = `${n3}-${z(o4)}-${t4}`;
+              h3.add(i6);
+              const s5 = (l4 ? r2.rules.resonevar : r2.rules.onevar).cache, a3 = l4 ? d3.resonevar : d3.onevar;
+              s5.has(i6) || (s5.add(i6), $(o4, [`.${i6}`], [], e2, (e3) => {
                 a3.apply(e3);
               }));
             }
-        for (const t4 of s5)
+        for (const t4 of s4)
           if (void 0 !== t4)
             for (const [i5, o4] of t4) {
-              const t5 = `${n3}-${z2(o4)}-${i5}`;
-              h4.add(t5), r2.rules.allvar.cache.has(t5) || (r2.rules.allvar.cache.add(t5), $2(o4, [`.${t5}`], [], e2, (e3) => {
-                d4.allvar.apply(e3);
+              const t5 = `${n3}-${z(o4)}-${i5}`;
+              h3.add(t5), r2.rules.allvar.cache.has(t5) || (r2.rules.allvar.cache.add(t5), $(o4, [`.${t5}`], [], e2, (e3) => {
+                d3.allvar.apply(e3);
               }));
             }
       }
-      if ("object" == typeof s4 && s4) {
-        const t3 = `${n2}-i${z2(s4)}-css`;
-        h4.add(t3), r2.rules.inline.cache.has(t3) || (r2.rules.inline.cache.add(t3), $2(s4, [`.${t3}`], [], e2, (e3) => {
-          d4.inline.apply(e3);
+      if ("object" == typeof s3 && s3) {
+        const t3 = `${n2}-i${z(s3)}-css`;
+        h3.add(t3), r2.rules.inline.cache.has(t3) || (r2.rules.inline.cache.add(t3), $(s3, [`.${t3}`], [], e2, (e3) => {
+          d3.inline.apply(e3);
         }));
       }
       for (const e3 of String(l2.className || "").trim().split(/\s+/))
-        e3 && h4.add(e3);
-      const f3 = p4.className = [...h4].join(" ");
-      return { type: t2.type, className: f3, selector: g3, props: p4, toString: () => f3, deferredInjector: c4 };
+        e3 && h3.add(e3);
+      const f2 = p3.className = [...h3].join(" ");
+      return { type: t2.type, className: f2, selector: g2, props: p3, toString: () => f2, deferredInjector: c3 };
     };
-    return s2(p3, { className: n2, selector: g3, [l]: t2, toString: () => (r2.rules.styled.cache.has(n2) || p3(), n2) });
+    return s(p2, { className: n2, selector: g2, [l]: t2, toString: () => (r2.rules.styled.cache.has(n2) || p2(), n2) });
   };
-  var L2 = (e2) => {
+  var L = (e2) => {
     let t2 = "";
     const r2 = [], n2 = {}, i3 = [];
-    for (const [o2, , , , l2, s4] of e2) {
-      "" === t2 && (t2 = o2), r2.push(o2), i3.push(...s4);
+    for (const [o2, , , , l2, s3] of e2) {
+      "" === t2 && (t2 = o2), r2.push(o2), i3.push(...s3);
       for (const e3 in l2) {
         const t3 = l2[e3];
-        (void 0 === n2[e3] || "undefined" !== t3 || s4.includes(t3)) && (n2[e3] = t3);
+        (void 0 === n2[e3] || "undefined" !== t3 || s3.includes(t3)) && (n2[e3] = t3);
       }
     }
     return [t2, r2, n2, new Set(i3)];
   };
-  var O2 = (e2, t2, r2, n2) => {
+  var O = (e2, t2, r2, n2) => {
     const i3 = [];
     e:
-      for (let [o2, l2, s4] of e2) {
-        if (s4)
+      for (let [o2, l2, s3] of e2) {
+        if (s3)
           continue;
-        let e3, a2 = 0, c4 = false;
+        let e3, a2 = 0, c3 = false;
         for (e3 in o2) {
           const n3 = o2[e3];
           let i4 = t2[e3];
@@ -54178,7 +52575,7 @@ and ensure you are accounting for this risk.
                 if (n3 === String(i4[l3])) {
                   if ("@initial" !== l3) {
                     const e5 = l3.slice(1);
-                    (t3 = t3 || []).push(e5 in r2 ? r2[e5] : l3.replace(/^@media ?/, "")), c4 = true;
+                    (t3 = t3 || []).push(e5 in r2 ? r2[e5] : l3.replace(/^@media ?/, "")), c3 = true;
                   }
                   a2 += o3, e4 = true;
                 }
@@ -54189,17 +52586,17 @@ and ensure you are accounting for this risk.
             }
           }
         }
-        (i3[a2] = i3[a2] || []).push([n2 ? "cv" : `${e3}-${o2[e3]}`, l2, c4]);
+        (i3[a2] = i3[a2] || []).push([n2 ? "cv" : `${e3}-${o2[e3]}`, l2, c3]);
       }
     return i3;
   };
-  var A2 = {};
-  var N2 = o();
-  var D = (e2, t2) => N2(e2, () => (...r2) => {
+  var A = {};
+  var N = o();
+  var D = (e2, t2) => N(e2, () => (...r2) => {
     const n2 = () => {
       for (let n3 of r2) {
         n3 = "object" == typeof n3 && n3 || {};
-        let r3 = z2(n3);
+        let r3 = z(n3);
         if (!t2.rules.global.cache.has(r3)) {
           if (t2.rules.global.cache.add(r3), "@import" in n3) {
             let e3 = [].indexOf.call(t2.sheet.cssRules, t2.rules.themed.group) - 1;
@@ -54207,32 +52604,32 @@ and ensure you are accounting for this risk.
               r4 = r4.includes('"') || r4.includes("'") ? r4 : `"${r4}"`, t2.sheet.insertRule(`@import ${r4};`, e3++);
             delete n3["@import"];
           }
-          $2(n3, [], [], e2, (e3) => {
+          $(n3, [], [], e2, (e3) => {
             t2.rules.global.apply(e3);
           });
         }
       }
       return "";
     };
-    return s2(n2, { toString: n2 });
+    return s(n2, { toString: n2 });
   });
-  var H2 = o();
-  var V2 = (e2, t2) => H2(e2, () => (r2) => {
-    const n2 = `${S2(e2.prefix)}k-${z2(r2)}`, i3 = () => {
+  var H = o();
+  var V = (e2, t2) => H(e2, () => (r2) => {
+    const n2 = `${S(e2.prefix)}k-${z(r2)}`, i3 = () => {
       if (!t2.rules.global.cache.has(n2)) {
         t2.rules.global.cache.add(n2);
         const i4 = [];
-        $2(r2, [], [], e2, (e3) => i4.push(e3));
+        $(r2, [], [], e2, (e3) => i4.push(e3));
         const o2 = `@keyframes ${n2}{${i4.join("")}}`;
         t2.rules.global.apply(o2);
       }
       return n2;
     };
-    return s2(i3, { get name() {
+    return s(i3, { get name() {
       return i3();
     }, toString: i3 });
   });
-  var G2 = class {
+  var G = class {
     constructor(e2, t2, r2, n2) {
       this.token = null == e2 ? "" : String(e2), this.value = null == t2 ? "" : String(t2), this.scale = null == r2 ? "" : String(r2), this.prefix = null == n2 ? "" : String(n2);
     }
@@ -54240,24 +52637,24 @@ and ensure you are accounting for this risk.
       return "var(" + this.variable + ")";
     }
     get variable() {
-      return "--" + S2(this.prefix) + S2(this.scale) + this.token;
+      return "--" + S(this.prefix) + S(this.scale) + this.token;
     }
     toString() {
       return this.computedValue;
     }
   };
-  var F2 = o();
-  var J2 = (e2, t2) => F2(e2, () => (r2, n2) => {
+  var F = o();
+  var J = (e2, t2) => F(e2, () => (r2, n2) => {
     n2 = "object" == typeof r2 && r2 || Object(n2);
-    const i3 = `.${r2 = (r2 = "string" == typeof r2 ? r2 : "") || `${S2(e2.prefix)}t-${z2(n2)}`}`, o2 = {}, l2 = [];
+    const i3 = `.${r2 = (r2 = "string" == typeof r2 ? r2 : "") || `${S(e2.prefix)}t-${z(n2)}`}`, o2 = {}, l2 = [];
     for (const t3 in n2) {
       o2[t3] = {};
       for (const r3 in n2[t3]) {
-        const i4 = `--${S2(e2.prefix)}${t3}-${r3}`, s5 = k2(String(n2[t3][r3]), e2.prefix, t3);
-        o2[t3][r3] = new G2(r3, s5, t3, e2.prefix), l2.push(`${i4}:${s5}`);
+        const i4 = `--${S(e2.prefix)}${t3}-${r3}`, s4 = k(String(n2[t3][r3]), e2.prefix, t3);
+        o2[t3][r3] = new G(r3, s4, t3, e2.prefix), l2.push(`${i4}:${s4}`);
       }
     }
-    const s4 = () => {
+    const s3 = () => {
       if (l2.length && !t2.rules.themed.cache.has(r2)) {
         t2.rules.themed.cache.add(r2);
         const i4 = `${n2 === e2.theme ? ":root," : ""}.${r2}{${l2.join(";")}}`;
@@ -54266,26 +52663,26 @@ and ensure you are accounting for this risk.
       return r2;
     };
     return { ...o2, get className() {
-      return s4();
-    }, selector: i3, toString: s4 };
+      return s3();
+    }, selector: i3, toString: s3 };
   });
-  var U2 = o();
-  var X2;
-  var Y2 = o();
-  var q2 = (e2) => {
+  var U = o();
+  var X;
+  var Y = o();
+  var q = (e2) => {
     const t2 = ((e3) => {
       let t3 = false;
-      const r2 = U2(e3, (e4) => {
+      const r2 = U(e3, (e4) => {
         t3 = true;
-        const r3 = "prefix" in (e4 = "object" == typeof e4 && e4 || {}) ? String(e4.prefix) : "", i3 = "object" == typeof e4.media && e4.media || {}, o2 = "object" == typeof e4.root ? e4.root || null : globalThis.document || null, l2 = "object" == typeof e4.theme && e4.theme || {}, s4 = { prefix: r3, media: i3, theme: l2, themeMap: "object" == typeof e4.themeMap && e4.themeMap || { ...n }, utils: "object" == typeof e4.utils && e4.utils || {} }, a2 = E(o2), c4 = { css: M2(s4, a2), globalCss: D(s4, a2), keyframes: V2(s4, a2), createTheme: J2(s4, a2), reset() {
-          a2.reset(), c4.theme.toString();
-        }, theme: {}, sheet: a2, config: s4, prefix: r3, getCssText: a2.toString, toString: a2.toString };
-        return String(c4.theme = c4.createTheme(l2)), c4;
+        const r3 = "prefix" in (e4 = "object" == typeof e4 && e4 || {}) ? String(e4.prefix) : "", i3 = "object" == typeof e4.media && e4.media || {}, o2 = "object" == typeof e4.root ? e4.root || null : globalThis.document || null, l2 = "object" == typeof e4.theme && e4.theme || {}, s3 = { prefix: r3, media: i3, theme: l2, themeMap: "object" == typeof e4.themeMap && e4.themeMap || { ...n }, utils: "object" == typeof e4.utils && e4.utils || {} }, a2 = E(o2), c3 = { css: M(s3, a2), globalCss: D(s3, a2), keyframes: V(s3, a2), createTheme: J(s3, a2), reset() {
+          a2.reset(), c3.theme.toString();
+        }, theme: {}, sheet: a2, config: s3, prefix: r3, getCssText: a2.toString, toString: a2.toString };
+        return String(c3.theme = c3.createTheme(l2)), c3;
       });
       return t3 || r2.reset(), r2;
     })(e2);
-    return t2.styled = (({ config: e3, sheet: t3 }) => Y2(e3, () => {
-      const r2 = M2(e3, t3);
+    return t2.styled = (({ config: e3, sheet: t3 }) => Y(e3, () => {
+      const r2 = M(e3, t3);
       return (...e4) => {
         const t4 = r2(...e4), n2 = t4[l].type, i3 = import_react2.default.forwardRef((e5, r3) => {
           const i4 = e5 && e5.as || n2, { props: o2, deferredInjector: l2 } = t4(e5);
@@ -54295,8 +52692,8 @@ and ensure you are accounting for this risk.
       };
     }))(t2), t2;
   };
-  var K2 = () => X2 || (X2 = q2());
-  var re2 = (...e2) => K2().styled(...e2);
+  var K = () => X || (X = q());
+  var re = (...e2) => K().styled(...e2);
 
   // src/stitches.ts
   var gr = (multiplier) => {
@@ -54358,7 +52755,7 @@ and ensure you are accounting for this risk.
     xl: "(max-width: 1199px)",
     lg: "(min-width: 1200px)"
   };
-  var { styled, css, keyframes, createTheme } = q2({
+  var { styled, css, keyframes, createTheme } = q({
     theme,
     media
   });
@@ -54423,24 +52820,24 @@ and ensure you are accounting for this risk.
   var import_react16 = __toESM(require_react());
   var import_react17 = __toESM(require_react());
   var import_hls = __toESM(require_hls());
-  var J3 = Object.defineProperty;
-  var Q2 = Object.defineProperties;
-  var U3 = Object.getOwnPropertyDescriptors;
-  var z3 = Object.getOwnPropertySymbols;
-  var X3 = Object.prototype.hasOwnProperty;
-  var Y3 = Object.prototype.propertyIsEnumerable;
-  var P3 = (t2, r2, e2) => r2 in t2 ? J3(t2, r2, { enumerable: true, configurable: true, writable: true, value: e2 }) : t2[r2] = e2;
+  var J2 = Object.defineProperty;
+  var Q = Object.defineProperties;
+  var U2 = Object.getOwnPropertyDescriptors;
+  var z2 = Object.getOwnPropertySymbols;
+  var X2 = Object.prototype.hasOwnProperty;
+  var Y2 = Object.prototype.propertyIsEnumerable;
+  var P2 = (t2, r2, e2) => r2 in t2 ? J2(t2, r2, { enumerable: true, configurable: true, writable: true, value: e2 }) : t2[r2] = e2;
   var i2 = (t2, r2) => {
     for (var e2 in r2 || (r2 = {}))
-      X3.call(r2, e2) && P3(t2, e2, r2[e2]);
-    if (z3)
-      for (var e2 of z3(r2))
-        Y3.call(r2, e2) && P3(t2, e2, r2[e2]);
+      X2.call(r2, e2) && P2(t2, e2, r2[e2]);
+    if (z2)
+      for (var e2 of z2(r2))
+        Y2.call(r2, e2) && P2(t2, e2, r2[e2]);
     return t2;
   };
-  var $3 = (t2, r2) => Q2(t2, U3(r2));
-  var { styled: m3, css: jt, keyframes: qt } = q2({ prefix: "nectar" });
-  var x3 = (t2, r2 = "none") => {
+  var $2 = (t2, r2) => Q(t2, U2(r2));
+  var { styled: m2, css: jt, keyframes: qt } = q({ prefix: "nectar" });
+  var x2 = (t2, r2 = "none") => {
     if (!t2)
       return null;
     if (typeof t2 == "string")
@@ -54452,56 +52849,56 @@ and ensure you are accounting for this risk.
     }
     return !t2[r2] || !Array.isArray(t2[r2]) ? null : t2[r2];
   };
-  var c3 = (t2, r2 = "none") => {
-    let e2 = x3(t2, r2);
+  var c2 = (t2, r2 = "none") => {
+    let e2 = x2(t2, r2);
     return Array.isArray(e2) ? e2.join(", ") : e2;
   };
-  function W3(t2) {
-    return { __html: et2(t2) };
+  function W2(t2) {
+    return { __html: et(t2) };
   }
-  function s3(t2, r2) {
+  function s2(t2, r2) {
     let e2 = Object.keys(t2).filter((a2) => r2.includes(a2) ? null : a2), n2 = new Object();
     return e2.forEach((a2) => {
       n2[a2] = t2[a2];
     }), n2;
   }
-  function et2(t2) {
+  function et(t2) {
     return (0, import_sanitize_html.default)(t2, { allowedAttributes: { a: ["href"], img: ["alt", "src"] }, allowedSchemes: ["http", "https", "mailto"], allowedTags: ["a", "b", "br", "i", "img", "p", "small", "span", "sub", "sup"] });
   }
-  var rt2 = m3("a", {});
-  var ot2 = (t2) => {
-    let { children: r2, homepage: e2 } = t2, a2 = s3(t2, ["children", "homepage"]);
+  var rt = m2("a", {});
+  var ot = (t2) => {
+    let { children: r2, homepage: e2 } = t2, a2 = s2(t2, ["children", "homepage"]);
     return import_react4.default.createElement(import_react4.default.Fragment, null, e2 && e2.map((o2) => {
-      let l2 = c3(o2.label, a2.lang);
-      return import_react4.default.createElement(rt2, i2({ "aria-label": r2 ? l2 : void 0, href: o2.id, key: o2.id }, a2), r2 || l2);
+      let l2 = c2(o2.label, a2.lang);
+      return import_react4.default.createElement(rt, i2({ "aria-label": r2 ? l2 : void 0, href: o2.id, key: o2.id }, a2), r2 || l2);
     }));
   };
-  var at = ot2;
-  var it2 = m3("span", {});
+  var at = ot;
+  var it = m2("span", {});
   var mt = (t2) => {
-    let { as: r2, label: e2 } = t2, a2 = s3(t2, ["as", "label"]);
-    return import_react6.default.createElement(it2, i2({ as: r2 }, a2), c3(e2, a2.lang));
+    let { as: r2, label: e2 } = t2, a2 = s2(t2, ["as", "label"]);
+    return import_react6.default.createElement(it, i2({ as: r2 }, a2), c2(e2, a2.lang));
   };
   var R2 = mt;
-  var st2 = m3("span", {});
-  var lt2 = (t2) => {
+  var st = m2("span", {});
+  var lt = (t2) => {
     let { as: r2, markup: e2 } = t2;
     if (!e2)
       return import_react10.default.createElement(import_react10.default.Fragment, null);
-    let a2 = s3(t2, ["as", "markup"]), o2 = W3(c3(e2, a2.lang));
-    return import_react10.default.createElement(st2, $3(i2({ as: r2 }, a2), { dangerouslySetInnerHTML: o2 }));
+    let a2 = s2(t2, ["as", "markup"]), o2 = W2(c2(e2, a2.lang));
+    return import_react10.default.createElement(st, $2(i2({ as: r2 }, a2), { dangerouslySetInnerHTML: o2 }));
   };
-  var h3 = lt2;
-  var dt2 = m3("span", {});
-  var bt = m3("dl", {});
-  var ht2 = m3("li", {});
-  var vt2 = m3("ul", {});
-  var Mt = m3("dl", {});
-  var kt = m3("li", {});
-  var xt = m3("ul", {});
+  var h2 = lt;
+  var dt = m2("span", {});
+  var bt = m2("dl", {});
+  var ht = m2("li", {});
+  var vt = m2("ul", {});
+  var Mt = m2("dl", {});
+  var kt = m2("li", {});
+  var xt = m2("ul", {});
   var Tt = (t2) => {
-    let { as: r2, summary: e2 } = t2, a2 = s3(t2, ["as", "summary"]);
-    return import_react15.default.createElement(h3, i2({ as: r2, markup: e2 }, a2));
+    let { as: r2, summary: e2 } = t2, a2 = s2(t2, ["as", "summary"]);
+    return import_react15.default.createElement(h2, i2({ as: r2, markup: e2 }, a2));
   };
   var Ft = Tt;
   var D2 = (t2, r2 = "200,", e2 = "full") => {
@@ -54516,59 +52913,59 @@ and ensure you are accounting for this risk.
         return `${o2.id}/${e2}/${r2}/0/default.jpg`;
     }
   };
-  var K3 = m3("img", { objectFit: "cover" });
+  var K2 = m2("img", { objectFit: "cover" });
   var Ht = (t2) => {
     let r2 = (0, import_react17.useRef)(null), { contentResource: e2, altAsLabel: n2, region: a2 = "full" } = t2, o2;
-    n2 && (o2 = c3(n2));
-    let p3 = s3(t2, ["contentResource", "altAsLabel"]), { type: g3, id: f3, width: I3 = 200, height: L3 = 200, format: Pt, duration: A3 } = e2;
+    n2 && (o2 = c2(n2));
+    let p2 = s2(t2, ["contentResource", "altAsLabel"]), { type: g2, id: f2, width: I2 = 200, height: L2 = 200, format: Pt, duration: A2 } = e2;
     (0, import_react17.useEffect)(() => {
-      if (!f3 && !r2.current || ["Image"].includes(g3) || !f3.includes("m3u8"))
+      if (!f2 && !r2.current || ["Image"].includes(g2) || !f2.includes("m3u8"))
         return;
-      let u3 = new import_hls.default();
-      return r2.current && (u3.attachMedia(r2.current), u3.on(import_hls.default.Events.MEDIA_ATTACHED, function() {
-        u3.loadSource(f3);
-      })), u3.on(import_hls.default.Events.ERROR, function(y3, b3) {
-        if (b3.fatal)
-          switch (b3.type) {
+      let u2 = new import_hls.default();
+      return r2.current && (u2.attachMedia(r2.current), u2.on(import_hls.default.Events.MEDIA_ATTACHED, function() {
+        u2.loadSource(f2);
+      })), u2.on(import_hls.default.Events.ERROR, function(y2, b2) {
+        if (b2.fatal)
+          switch (b2.type) {
             case import_hls.default.ErrorTypes.NETWORK_ERROR:
-              console.error(`fatal ${y3} network error encountered, try to recover`), u3.startLoad();
+              console.error(`fatal ${y2} network error encountered, try to recover`), u2.startLoad();
               break;
             case import_hls.default.ErrorTypes.MEDIA_ERROR:
-              console.error(`fatal ${y3} media error encountered, try to recover`), u3.recoverMediaError();
+              console.error(`fatal ${y2} media error encountered, try to recover`), u2.recoverMediaError();
               break;
             default:
-              u3.destroy();
+              u2.destroy();
               break;
           }
       }), () => {
-        u3 && (u3.detachMedia(), u3.destroy());
+        u2 && (u2.detachMedia(), u2.destroy());
       };
-    }, []), (0, import_react17.useEffect)(() => k3(), []);
-    let k3 = () => {
+    }, []), (0, import_react17.useEffect)(() => k2(), []);
+    let k2 = () => {
       if (!r2.current)
         return;
-      let u3 = 0, y3 = 30;
-      if (A3 && (y3 = A3), !f3.split("#t=") && A3 && (u3 = A3 * 0.1), f3.split("#t=").pop()) {
-        let w3 = f3.split("#t=").pop();
-        w3 && (u3 = parseInt(w3.split(",")[0]));
+      let u2 = 0, y2 = 30;
+      if (A2 && (y2 = A2), !f2.split("#t=") && A2 && (u2 = A2 * 0.1), f2.split("#t=").pop()) {
+        let w2 = f2.split("#t=").pop();
+        w2 && (u2 = parseInt(w2.split(",")[0]));
       }
-      let b3 = r2.current;
-      b3.autoplay = true, b3.currentTime = u3, setTimeout(() => k3(), y3 * 1e3);
+      let b2 = r2.current;
+      b2.autoplay = true, b2.currentTime = u2, setTimeout(() => k2(), y2 * 1e3);
     };
-    switch (g3) {
+    switch (g2) {
       case "Image":
-        let u3 = D2(e2, `${I3},${L3}`, a2);
-        return import_react17.default.createElement(K3, i2({ as: "img", alt: o2, css: { width: I3, height: L3 }, key: f3, src: u3 }, p3));
+        let u2 = D2(e2, `${I2},${L2}`, a2);
+        return import_react17.default.createElement(K2, i2({ as: "img", alt: o2, css: { width: I2, height: L2 }, key: f2, src: u2 }, p2));
       case "Video":
-        return import_react17.default.createElement(K3, { as: "video", css: { width: I3, height: L3 }, disablePictureInPicture: true, key: f3, loop: true, muted: true, onPause: k3, ref: r2, src: f3 });
+        return import_react17.default.createElement(K2, { as: "video", css: { width: I2, height: L2 }, disablePictureInPicture: true, key: f2, loop: true, muted: true, onPause: k2, ref: r2, src: f2 });
       default:
-        return console.warn(`Resource type: ${g3} is not valid or not yet supported in Nectar.`), import_react17.default.createElement(import_react17.default.Fragment, null);
+        return console.warn(`Resource type: ${g2} is not valid or not yet supported in Nectar.`), import_react17.default.createElement(import_react17.default.Fragment, null);
     }
   };
-  var B3 = Ht;
+  var B2 = Ht;
   var wt = (t2) => {
-    let { thumbnail: r2, region: e2 } = t2, a2 = s3(t2, ["thumbnail"]);
-    return import_react16.default.createElement(import_react16.default.Fragment, null, r2 && r2.map((o2) => import_react16.default.createElement(B3, i2({ contentResource: o2, key: o2.id, region: e2 }, a2))));
+    let { thumbnail: r2, region: e2 } = t2, a2 = s2(t2, ["thumbnail"]);
+    return import_react16.default.createElement(import_react16.default.Fragment, null, r2 && r2.map((o2) => import_react16.default.createElement(B2, i2({ contentResource: o2, key: o2.id, region: e2 }, a2))));
   };
   var zt = wt;
 
@@ -54725,10 +53122,21 @@ and ensure you are accounting for this risk.
   var Header_default = Header;
 
   // src/components/Items/Items.tsx
-  var import_react38 = __toESM(require_react());
+  var import_react37 = __toESM(require_react());
+
+  // src/components/Items/Item.styled.ts
+  var Anchor = styled("a", {
+    color: "black",
+    textDecoration: "none"
+  });
+  var ItemStyled = styled("div", {
+    position: "relative",
+    zIndex: "0",
+    borderRadius: "3px"
+  });
 
   // src/components/Items/Item.tsx
-  var import_react30 = __toESM(require_react());
+  var import_react29 = __toESM(require_react());
 
   // node_modules/@babel/runtime/helpers/esm/extends.js
   function _extends() {
@@ -55020,8 +53428,9 @@ and ensure you are accounting for this risk.
     alignItems: "center",
     justifyContent: "center",
     position: "absolute",
-    left: "50%",
-    top: "50%",
+    zIndex: "1",
+    bottom: "1rem",
+    right: "1rem",
     margin: "-1rem 0 0 -1rem",
     boxShadow: "5px 5px 13px #0003",
     svg: {
@@ -55042,127 +53451,14 @@ and ensure you are accounting for this risk.
     thumbnail
   }) => {
     const widthRef = (0, import_react27.useRef)(null);
-    return /* @__PURE__ */ import_react27.default.createElement(FigureStyled, { isFocused }, /* @__PURE__ */ import_react27.default.createElement($c1b5f66aac50e106$export$be92b6f5f03c0fe9, { ratio: 1 / 1 }, /* @__PURE__ */ import_react27.default.createElement(Width, { ref: widthRef }), /* @__PURE__ */ import_react27.default.createElement(Placeholder, null, thumbnail && status === 200 ? /* @__PURE__ */ import_react27.default.createElement(zt, { altAsLabel: label, thumbnail }) : /* @__PURE__ */ import_react27.default.createElement(StatusIcon_default, { status }))), /* @__PURE__ */ import_react27.default.createElement("figcaption", null, /* @__PURE__ */ import_react27.default.createElement(Title, { label }), summary && /* @__PURE__ */ import_react27.default.createElement(Description, { summary })));
+    return /* @__PURE__ */ import_react27.default.createElement(FigureStyled, { isFocused }, /* @__PURE__ */ import_react27.default.createElement($c1b5f66aac50e106$export$be92b6f5f03c0fe9, { ratio: 1 / 1 }, /* @__PURE__ */ import_react27.default.createElement(Width, { ref: widthRef }), /* @__PURE__ */ import_react27.default.createElement(Placeholder, null, status !== 200 && /* @__PURE__ */ import_react27.default.createElement(StatusIcon_default, { status }), /* @__PURE__ */ import_react27.default.createElement(zt, { altAsLabel: label, thumbnail }))), /* @__PURE__ */ import_react27.default.createElement("figcaption", null, /* @__PURE__ */ import_react27.default.createElement(Title, { label }), summary && /* @__PURE__ */ import_react27.default.createElement(Description, { summary })));
   };
   var Figure_default = Figure;
 
-  // src/components/Items/Item.styled.ts
-  var Anchor = styled("a", {
-    color: "black",
-    textDecoration: "none"
-  });
-  var ItemStyled = styled("div", {
-    position: "relative",
-    zIndex: "0",
-    borderRadius: "3px"
-  });
-
-  // src/components/Preview/Preview.tsx
-  var import_react28 = __toESM(require_react());
-
-  // src/components/Preview/Preview.styled.ts
-  var PreviewStyled = styled("div", {
-    position: "absolute",
-    zIndex: "2",
-    width: "100%",
-    opacity: "0",
-    top: "0",
-    variants: {
-      isFocused: {
-        true: {
-          opacity: "1"
-        }
-      }
-    }
-  });
-  var Overlay = styled("div", {
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-end",
-    zIndex: "1"
-  });
-  var Controls = styled("div", {
-    display: "flex",
-    justifyContent: "center",
-    padding: "$2 $2 0",
-    background: "linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%)",
-    cursor: "default",
-    button: {
-      width: "$4",
-      height: "$4",
-      display: "flex",
-      flexDirection: "column",
-      textAlign: "center",
-      justifyContent: "center",
-      alignItems: "center",
-      borderRadious: "100%",
-      backgroundColor: "transparent",
-      border: "none",
-      cursor: "pointer",
-      "&:disabled": {
-        opacity: "0.2"
-      },
-      svg: {
-        width: "100%",
-        fill: "$secondary",
-        stroke: "$secondary",
-        color: "$secondary"
-      }
-    }
-  });
-  var Label = styled("div", {
-    display: "flex",
-    justifyContent: "center",
-    backgroundColor: "rgba(0,0,0,0.7)",
-    color: "$secondaryAlt",
-    fontSize: "$1",
-    padding: "$1",
-    cursor: "default"
-  });
-
-  // src/components/Preview/Preview.tsx
-  var Preview = ({
-    activeCanvas,
-    handleActiveCanvas,
-    isFocused,
-    manifest
-  }) => {
-    const [hasPrev, setHasPrev] = (0, import_react28.useState)(false);
-    const [hasNext, setHasNext] = (0, import_react28.useState)(false);
-    const canvasCurrent = activeCanvas + 1;
-    let canvasCount = 0;
-    if (manifest)
-      canvasCount = manifest.items.length;
-    (0, import_react28.useEffect)(() => {
-      canvasCurrent <= 1 ? setHasPrev(false) : setHasPrev(true);
-      canvasCurrent >= canvasCount ? setHasNext(false) : setHasNext(true);
-    }, [activeCanvas, manifest]);
-    return /* @__PURE__ */ import_react28.default.createElement(PreviewStyled, { isFocused }, /* @__PURE__ */ import_react28.default.createElement($c1b5f66aac50e106$export$be92b6f5f03c0fe9, { ratio: 1 / 1 }, manifest && /* @__PURE__ */ import_react28.default.createElement(Overlay, null, /* @__PURE__ */ import_react28.default.createElement(Controls, { onClick: (e2) => e2.preventDefault() }, /* @__PURE__ */ import_react28.default.createElement(
-      "button",
-      {
-        onClick: () => handleActiveCanvas(-1),
-        disabled: !hasPrev
-      },
-      /* @__PURE__ */ import_react28.default.createElement(PreviousIcon, null)
-    ), /* @__PURE__ */ import_react28.default.createElement("button", { onClick: () => handleActiveCanvas(1), disabled: !hasNext }, /* @__PURE__ */ import_react28.default.createElement(NextIcon, null))), /* @__PURE__ */ import_react28.default.createElement(Label, { onClick: (e2) => e2.preventDefault() }, canvasCurrent, " of ", canvasCount))));
-  };
-  var Preview_default = Preview;
-
-  // src/lib/iiif.ts
-  var getCanvasResource = (canvas, vault) => {
-    if (canvas.thumbnail.length !== 0)
-      return canvas.thumbnail;
-    const annotationPage = vault.get(canvas.items[0]);
-    const annotation = vault.get(annotationPage.items[0]);
-    return annotation.body;
-  };
-
   // src/components/Items/Placeholder.tsx
-  var import_react29 = __toESM(require_react());
+  var import_react28 = __toESM(require_react());
   var Placeholder2 = ({ backgroundImage }) => {
-    return /* @__PURE__ */ import_react29.default.createElement(StyledPlaceholder, null, /* @__PURE__ */ import_react29.default.createElement(
+    return /* @__PURE__ */ import_react28.default.createElement(StyledPlaceholder, null, /* @__PURE__ */ import_react28.default.createElement(
       BackgroundImage,
       {
         ratio: 1 / 1,
@@ -55187,66 +53483,59 @@ and ensure you are accounting for this risk.
   });
   var Placeholder_default = Placeholder2;
 
+  // src/lib/iiif.ts
+  var getCanvasResource = (canvas) => {
+    if (canvas == null ? void 0 : canvas.items) {
+      const annotationPage = canvas == null ? void 0 : canvas.items[0];
+      if (annotationPage == null ? void 0 : annotationPage.items) {
+        const resource = annotationPage == null ? void 0 : annotationPage.items[0].body;
+        if (resource == null ? void 0 : resource.hasOwnProperty("id")) {
+          return resource.id;
+        }
+      }
+    }
+  };
+
   // src/components/Items/Item.tsx
+  var import_upgrader = __toESM(require_index_umd());
   var Item = ({ index: index2, item }) => {
     const store = useCollectionState();
-    const { vault, options } = store;
-    const { credentials, enablePreview } = options;
-    const [activeCanvas, setActiveCanvas] = (0, import_react30.useState)(0);
-    const [href, setHref] = (0, import_react30.useState)();
-    const [id, setId] = (0, import_react30.useState)(item.id);
-    const [isFocused, setIsFocused] = (0, import_react30.useState)(false);
-    const [manifest, setManifest] = (0, import_react30.useState)();
-    const [placeholder, setPlaceholder] = (0, import_react30.useState)();
-    const [status, setStatus] = (0, import_react30.useState)(200);
-    const [thumbnail, setThumbnail] = (0, import_react30.useState)([]);
-    (0, import_react30.useEffect)(() => {
-      enablePreview && isFocused && !manifest ? vault.load(item.id).then((data) => setManifest(data)).catch((error) => {
-        console.error(`Manifest failed to load: ${error}`);
-      }) : null;
-      return;
-    }, [isFocused]);
-    (0, import_react30.useEffect)(() => {
+    const { options } = store;
+    const { credentials } = options;
+    const [href, setHref] = (0, import_react29.useState)();
+    const [isFocused, setIsFocused] = (0, import_react29.useState)(false);
+    const [placeholder, setPlaceholder] = (0, import_react29.useState)();
+    const [status, setStatus] = (0, import_react29.useState)(200);
+    const [thumbnail, setThumbnail] = (0, import_react29.useState)([]);
+    (0, import_react29.useEffect)(() => {
       var _a, _b;
       if (item && (item == null ? void 0 : item.thumbnail) && ((_a = item.thumbnail) == null ? void 0 : _a.length) > 0) {
-        const iiifThumbnail = vault.get(
-          item.thumbnail
-        );
-        setThumbnail(iiifThumbnail);
-        setPlaceholder(iiifThumbnail[0].id);
+        fetch(item == null ? void 0 : item.id).then((response) => response.json()).then(import_upgrader.upgrade).then((manifest) => {
+          if ((manifest == null ? void 0 : manifest.type) === "Manifest") {
+            const id = getCanvasResource(manifest == null ? void 0 : manifest.items[0]);
+            if (id) {
+              fetch(id, {
+                method: "GET",
+                headers: {
+                  accept: "image/*"
+                },
+                credentials
+              }).then((response) => {
+                setStatus(response.status);
+              }).catch((error) => setStatus(error.status));
+            }
+          }
+        });
+        const { thumbnail: thumbnail2 } = item;
+        setPlaceholder(thumbnail2[0].id);
+        setThumbnail(thumbnail2);
       }
       if ((item == null ? void 0 : item.homepage) && ((_b = item.homepage) == null ? void 0 : _b.length) > 0)
         setHref(item.homepage[0].id);
     }, []);
     const onFocus = () => setIsFocused(true);
     const onBlur = () => setIsFocused(false);
-    const handleActiveCanvas = (increment) => {
-      if (!manifest)
-        return;
-      const targetCanvas = activeCanvas + increment;
-      if (Array.isArray(manifest.items) && manifest.items[targetCanvas]) {
-        const canvas = vault.get(manifest.items[targetCanvas]);
-        const resource = getCanvasResource(canvas, vault);
-        const canvasThumbnail = vault.get(resource);
-        if (canvasThumbnail.length > 0 && canvasThumbnail[0].id) {
-          setThumbnail(canvasThumbnail);
-          fetch(canvasThumbnail[0].id, {
-            method: "GET",
-            headers: {
-              accept: "image/*"
-            },
-            credentials
-          }).then((response) => setStatus(response.status)).catch((error) => setStatus(error.status));
-        }
-        setId(canvas.id);
-        setActiveCanvas(targetCanvas);
-      }
-    };
-    (0, import_react30.useEffect)(() => {
-      if (manifest)
-        handleActiveCanvas(0);
-    }, [manifest]);
-    return /* @__PURE__ */ import_react30.default.createElement(ItemStyled, null, /* @__PURE__ */ import_react30.default.createElement(
+    return /* @__PURE__ */ import_react29.default.createElement(ItemStyled, null, /* @__PURE__ */ import_react29.default.createElement(
       Anchor,
       {
         href,
@@ -55256,26 +53545,17 @@ and ensure you are accounting for this risk.
         onMouseEnter: onFocus,
         onMouseLeave: onBlur
       },
-      placeholder && /* @__PURE__ */ import_react30.default.createElement(Placeholder_default, { backgroundImage: placeholder }),
-      /* @__PURE__ */ import_react30.default.createElement(
+      placeholder && /* @__PURE__ */ import_react29.default.createElement(Placeholder_default, { backgroundImage: placeholder }),
+      /* @__PURE__ */ import_react29.default.createElement(
         Figure_default,
         {
           index: index2,
           isFocused,
-          key: id,
+          key: item.id,
           label: item.label,
           summary: item.summary,
           status,
           thumbnail
-        }
-      ),
-      enablePreview && /* @__PURE__ */ import_react30.default.createElement(
-        Preview_default,
-        {
-          manifest,
-          activeCanvas,
-          handleActiveCanvas,
-          isFocused
         }
       )
     ));
@@ -55486,7 +53766,7 @@ and ensure you are accounting for this risk.
     }
     return a2;
   }
-  function $4(selector, context) {
+  function $3(selector, context) {
     const window2 = getWindow();
     const document2 = getDocument();
     let arr = [];
@@ -55527,23 +53807,23 @@ and ensure you are accounting for this risk.
     }
     return new Dom7(arrayUnique(arr));
   }
-  $4.fn = Dom7.prototype;
+  $3.fn = Dom7.prototype;
   function addClass(...classes) {
-    const classNames = arrayFlat(classes.map((c4) => c4.split(" ")));
+    const classNames = arrayFlat(classes.map((c3) => c3.split(" ")));
     this.forEach((el) => {
       el.classList.add(...classNames);
     });
     return this;
   }
   function removeClass(...classes) {
-    const classNames = arrayFlat(classes.map((c4) => c4.split(" ")));
+    const classNames = arrayFlat(classes.map((c3) => c3.split(" ")));
     this.forEach((el) => {
       el.classList.remove(...classNames);
     });
     return this;
   }
   function toggleClass(...classes) {
-    const classNames = arrayFlat(classes.map((c4) => c4.split(" ")));
+    const classNames = arrayFlat(classes.map((c3) => c3.split(" ")));
     this.forEach((el) => {
       classNames.forEach((className) => {
         el.classList.toggle(className);
@@ -55551,7 +53831,7 @@ and ensure you are accounting for this risk.
     });
   }
   function hasClass(...classes) {
-    const classNames = arrayFlat(classes.map((c4) => c4.split(" ")));
+    const classNames = arrayFlat(classes.map((c3) => c3.split(" ")));
     return arrayFilter(this, (el) => {
       return classNames.filter((className) => el.classList.contains(className)).length > 0;
     }).length > 0;
@@ -55608,13 +53888,13 @@ and ensure you are accounting for this risk.
       if (eventData.indexOf(e2) < 0) {
         eventData.unshift(e2);
       }
-      if ($4(target).is(targetSelector))
+      if ($3(target).is(targetSelector))
         listener.apply(target, eventData);
       else {
-        const parents2 = $4(target).parents();
-        for (let k3 = 0; k3 < parents2.length; k3 += 1) {
-          if ($4(parents2[k3]).is(targetSelector))
-            listener.apply(parents2[k3], eventData);
+        const parents2 = $3(target).parents();
+        for (let k2 = 0; k2 < parents2.length; k2 += 1) {
+          if ($3(parents2[k2]).is(targetSelector))
+            listener.apply(parents2[k2], eventData);
         }
       }
     }
@@ -55626,12 +53906,12 @@ and ensure you are accounting for this risk.
       listener.apply(this, eventData);
     }
     const events2 = eventType.split(" ");
-    let j4;
+    let j3;
     for (let i3 = 0; i3 < this.length; i3 += 1) {
       const el = this[i3];
       if (!targetSelector) {
-        for (j4 = 0; j4 < events2.length; j4 += 1) {
-          const event2 = events2[j4];
+        for (j3 = 0; j3 < events2.length; j3 += 1) {
+          const event2 = events2[j3];
           if (!el.dom7Listeners)
             el.dom7Listeners = {};
           if (!el.dom7Listeners[event2])
@@ -55643,8 +53923,8 @@ and ensure you are accounting for this risk.
           el.addEventListener(event2, handleEvent, capture);
         }
       } else {
-        for (j4 = 0; j4 < events2.length; j4 += 1) {
-          const event2 = events2[j4];
+        for (j3 = 0; j3 < events2.length; j3 += 1) {
+          const event2 = events2[j3];
           if (!el.dom7LiveListeners)
             el.dom7LiveListeners = {};
           if (!el.dom7LiveListeners[event2])
@@ -55670,8 +53950,8 @@ and ensure you are accounting for this risk.
     const events2 = eventType.split(" ");
     for (let i3 = 0; i3 < events2.length; i3 += 1) {
       const event2 = events2[i3];
-      for (let j4 = 0; j4 < this.length; j4 += 1) {
-        const el = this[j4];
+      for (let j3 = 0; j3 < this.length; j3 += 1) {
+        const el = this[j3];
         let handlers;
         if (!targetSelector && el.dom7Listeners) {
           handlers = el.dom7Listeners[event2];
@@ -55679,17 +53959,17 @@ and ensure you are accounting for this risk.
           handlers = el.dom7LiveListeners[event2];
         }
         if (handlers && handlers.length) {
-          for (let k3 = handlers.length - 1; k3 >= 0; k3 -= 1) {
-            const handler = handlers[k3];
+          for (let k2 = handlers.length - 1; k2 >= 0; k2 -= 1) {
+            const handler = handlers[k2];
             if (listener && handler.listener === listener) {
               el.removeEventListener(event2, handler.proxyListener, capture);
-              handlers.splice(k3, 1);
+              handlers.splice(k2, 1);
             } else if (listener && handler.listener && handler.listener.dom7proxy && handler.listener.dom7proxy === listener) {
               el.removeEventListener(event2, handler.proxyListener, capture);
-              handlers.splice(k3, 1);
+              handlers.splice(k2, 1);
             } else if (!listener) {
               el.removeEventListener(event2, handler.proxyListener, capture);
-              handlers.splice(k3, 1);
+              handlers.splice(k2, 1);
             }
           }
         }
@@ -55703,8 +53983,8 @@ and ensure you are accounting for this risk.
     const eventData = args[1];
     for (let i3 = 0; i3 < events2.length; i3 += 1) {
       const event2 = events2[i3];
-      for (let j4 = 0; j4 < this.length; j4 += 1) {
-        const el = this[j4];
+      for (let j3 = 0; j3 < this.length; j3 += 1) {
+        const el = this[j3];
         if (window2.CustomEvent) {
           const evt = new window2.CustomEvent(event2, {
             detail: eventData,
@@ -55811,7 +54091,7 @@ and ensure you are accounting for this risk.
   }
   function filter(callback) {
     const result = arrayFilter(this, callback);
-    return $4(result);
+    return $3(result);
   }
   function html(html2) {
     if (typeof html2 === "undefined") {
@@ -55846,7 +54126,7 @@ and ensure you are accounting for this risk.
         return el.webkitMatchesSelector(selector);
       if (el.msMatchesSelector)
         return el.msMatchesSelector(selector);
-      compareWith = $4(selector);
+      compareWith = $3(selector);
       for (i3 = 0; i3 < compareWith.length; i3 += 1) {
         if (compareWith[i3] === el)
           return true;
@@ -55887,21 +54167,21 @@ and ensure you are accounting for this risk.
       return this;
     const length = this.length;
     if (index2 > length - 1) {
-      return $4([]);
+      return $3([]);
     }
     if (index2 < 0) {
       const returnIndex = length + index2;
       if (returnIndex < 0)
-        return $4([]);
-      return $4([this[returnIndex]]);
+        return $3([]);
+      return $3([this[returnIndex]]);
     }
-    return $4([this[index2]]);
+    return $3([this[index2]]);
   }
   function append(...els) {
     let newChild;
     const document2 = getDocument();
-    for (let k3 = 0; k3 < els.length; k3 += 1) {
-      newChild = els[k3];
+    for (let k2 = 0; k2 < els.length; k2 += 1) {
+      newChild = els[k2];
       for (let i3 = 0; i3 < this.length; i3 += 1) {
         if (typeof newChild === "string") {
           const tempDiv = document2.createElement("div");
@@ -55910,8 +54190,8 @@ and ensure you are accounting for this risk.
             this[i3].appendChild(tempDiv.firstChild);
           }
         } else if (newChild instanceof Dom7) {
-          for (let j4 = 0; j4 < newChild.length; j4 += 1) {
-            this[i3].appendChild(newChild[j4]);
+          for (let j3 = 0; j3 < newChild.length; j3 += 1) {
+            this[i3].appendChild(newChild[j3]);
           }
         } else {
           this[i3].appendChild(newChild);
@@ -55923,17 +54203,17 @@ and ensure you are accounting for this risk.
   function prepend(newChild) {
     const document2 = getDocument();
     let i3;
-    let j4;
+    let j3;
     for (i3 = 0; i3 < this.length; i3 += 1) {
       if (typeof newChild === "string") {
         const tempDiv = document2.createElement("div");
         tempDiv.innerHTML = newChild;
-        for (j4 = tempDiv.childNodes.length - 1; j4 >= 0; j4 -= 1) {
-          this[i3].insertBefore(tempDiv.childNodes[j4], this[i3].childNodes[0]);
+        for (j3 = tempDiv.childNodes.length - 1; j3 >= 0; j3 -= 1) {
+          this[i3].insertBefore(tempDiv.childNodes[j3], this[i3].childNodes[0]);
         }
       } else if (newChild instanceof Dom7) {
-        for (j4 = 0; j4 < newChild.length; j4 += 1) {
-          this[i3].insertBefore(newChild[j4], this[i3].childNodes[0]);
+        for (j3 = 0; j3 < newChild.length; j3 += 1) {
+          this[i3].insertBefore(newChild[j3], this[i3].childNodes[0]);
         }
       } else {
         this[i3].insertBefore(newChild, this[i3].childNodes[0]);
@@ -55944,77 +54224,77 @@ and ensure you are accounting for this risk.
   function next(selector) {
     if (this.length > 0) {
       if (selector) {
-        if (this[0].nextElementSibling && $4(this[0].nextElementSibling).is(selector)) {
-          return $4([this[0].nextElementSibling]);
+        if (this[0].nextElementSibling && $3(this[0].nextElementSibling).is(selector)) {
+          return $3([this[0].nextElementSibling]);
         }
-        return $4([]);
+        return $3([]);
       }
       if (this[0].nextElementSibling)
-        return $4([this[0].nextElementSibling]);
-      return $4([]);
+        return $3([this[0].nextElementSibling]);
+      return $3([]);
     }
-    return $4([]);
+    return $3([]);
   }
   function nextAll(selector) {
     const nextEls = [];
     let el = this[0];
     if (!el)
-      return $4([]);
+      return $3([]);
     while (el.nextElementSibling) {
       const next2 = el.nextElementSibling;
       if (selector) {
-        if ($4(next2).is(selector))
+        if ($3(next2).is(selector))
           nextEls.push(next2);
       } else
         nextEls.push(next2);
       el = next2;
     }
-    return $4(nextEls);
+    return $3(nextEls);
   }
   function prev(selector) {
     if (this.length > 0) {
       const el = this[0];
       if (selector) {
-        if (el.previousElementSibling && $4(el.previousElementSibling).is(selector)) {
-          return $4([el.previousElementSibling]);
+        if (el.previousElementSibling && $3(el.previousElementSibling).is(selector)) {
+          return $3([el.previousElementSibling]);
         }
-        return $4([]);
+        return $3([]);
       }
       if (el.previousElementSibling)
-        return $4([el.previousElementSibling]);
-      return $4([]);
+        return $3([el.previousElementSibling]);
+      return $3([]);
     }
-    return $4([]);
+    return $3([]);
   }
   function prevAll(selector) {
     const prevEls = [];
     let el = this[0];
     if (!el)
-      return $4([]);
+      return $3([]);
     while (el.previousElementSibling) {
       const prev2 = el.previousElementSibling;
       if (selector) {
-        if ($4(prev2).is(selector))
+        if ($3(prev2).is(selector))
           prevEls.push(prev2);
       } else
         prevEls.push(prev2);
       el = prev2;
     }
-    return $4(prevEls);
+    return $3(prevEls);
   }
   function parent(selector) {
     const parents2 = [];
     for (let i3 = 0; i3 < this.length; i3 += 1) {
       if (this[i3].parentNode !== null) {
         if (selector) {
-          if ($4(this[i3].parentNode).is(selector))
+          if ($3(this[i3].parentNode).is(selector))
             parents2.push(this[i3].parentNode);
         } else {
           parents2.push(this[i3].parentNode);
         }
       }
     }
-    return $4(parents2);
+    return $3(parents2);
   }
   function parents(selector) {
     const parents2 = [];
@@ -56022,7 +54302,7 @@ and ensure you are accounting for this risk.
       let parent2 = this[i3].parentNode;
       while (parent2) {
         if (selector) {
-          if ($4(parent2).is(selector))
+          if ($3(parent2).is(selector))
             parents2.push(parent2);
         } else {
           parents2.push(parent2);
@@ -56030,12 +54310,12 @@ and ensure you are accounting for this risk.
         parent2 = parent2.parentNode;
       }
     }
-    return $4(parents2);
+    return $3(parents2);
   }
   function closest(selector) {
     let closest2 = this;
     if (typeof selector === "undefined") {
-      return $4([]);
+      return $3([]);
     }
     if (!closest2.is(selector)) {
       closest2 = closest2.parents(selector).eq(0);
@@ -56046,23 +54326,23 @@ and ensure you are accounting for this risk.
     const foundElements = [];
     for (let i3 = 0; i3 < this.length; i3 += 1) {
       const found = this[i3].querySelectorAll(selector);
-      for (let j4 = 0; j4 < found.length; j4 += 1) {
-        foundElements.push(found[j4]);
+      for (let j3 = 0; j3 < found.length; j3 += 1) {
+        foundElements.push(found[j3]);
       }
     }
-    return $4(foundElements);
+    return $3(foundElements);
   }
   function children(selector) {
     const children2 = [];
     for (let i3 = 0; i3 < this.length; i3 += 1) {
       const childNodes = this[i3].children;
-      for (let j4 = 0; j4 < childNodes.length; j4 += 1) {
-        if (!selector || $4(childNodes[j4]).is(selector)) {
-          children2.push(childNodes[j4]);
+      for (let j3 = 0; j3 < childNodes.length; j3 += 1) {
+        if (!selector || $3(childNodes[j3]).is(selector)) {
+          children2.push(childNodes[j3]);
         }
       }
     }
-    return $4(children2);
+    return $3(children2);
   }
   function remove() {
     for (let i3 = 0; i3 < this.length; i3 += 1) {
@@ -56080,7 +54360,7 @@ and ensure you are accounting for this risk.
             if (name in this[i3])
               this[i3][name]();
             else {
-              $4(this[i3]).trigger(name);
+              $3(this[i3]).trigger(name);
             }
           }
         }
@@ -56153,12 +54433,12 @@ and ensure you are accounting for this risk.
     remove
   };
   Object.keys(Methods).forEach((methodName) => {
-    Object.defineProperty($4.fn, methodName, {
+    Object.defineProperty($3.fn, methodName, {
       value: Methods[methodName],
       writable: true
     });
   });
-  var dom_default = $4;
+  var dom_default = $3;
 
   // node_modules/swiper/shared/utils.js
   function deleteProps(obj) {
@@ -56894,7 +55174,7 @@ and ensure you are accounting for this risk.
       snapGrid = [0];
     if (params.spaceBetween !== 0) {
       const key = swiper.isHorizontal() && rtl ? "marginLeft" : getDirectionLabel("marginRight");
-      slides.filter((_2, slideIndex) => {
+      slides.filter((_, slideIndex) => {
         if (!params.cssMode)
           return true;
         if (slideIndex === slides.length - 1) {
@@ -56947,8 +55227,8 @@ and ensure you are accounting for this risk.
       setCSSProperty(swiper.wrapperEl, "--swiper-centered-offset-after", `${swiper.size / 2 - slidesSizesGrid[slidesSizesGrid.length - 1] / 2}px`);
       const addToSnapGrid = -swiper.snapGrid[0];
       const addToSlidesGrid = -swiper.slidesGrid[0];
-      swiper.snapGrid = swiper.snapGrid.map((v4) => v4 + addToSnapGrid);
-      swiper.slidesGrid = swiper.slidesGrid.map((v4) => v4 + addToSlidesGrid);
+      swiper.snapGrid = swiper.snapGrid.map((v3) => v3 + addToSnapGrid);
+      swiper.slidesGrid = swiper.slidesGrid.map((v3) => v3 + addToSlidesGrid);
     }
     if (slidesLength !== previousSlidesLength) {
       swiper.emit("slidesLengthChange");
@@ -57305,25 +55585,25 @@ and ensure you are accounting for this risk.
       wrapperEl,
       progress
     } = swiper;
-    let x4 = 0;
-    let y3 = 0;
-    const z4 = 0;
+    let x3 = 0;
+    let y2 = 0;
+    const z3 = 0;
     if (swiper.isHorizontal()) {
-      x4 = rtl ? -translate : translate;
+      x3 = rtl ? -translate : translate;
     } else {
-      y3 = translate;
+      y2 = translate;
     }
     if (params.roundLengths) {
-      x4 = Math.floor(x4);
-      y3 = Math.floor(y3);
+      x3 = Math.floor(x3);
+      y2 = Math.floor(y2);
     }
     if (params.cssMode) {
-      wrapperEl[swiper.isHorizontal() ? "scrollLeft" : "scrollTop"] = swiper.isHorizontal() ? -x4 : -y3;
+      wrapperEl[swiper.isHorizontal() ? "scrollLeft" : "scrollTop"] = swiper.isHorizontal() ? -x3 : -y2;
     } else if (!params.virtualTranslate) {
-      $wrapperEl.transform(`translate3d(${x4}px, ${y3}px, ${z4}px)`);
+      $wrapperEl.transform(`translate3d(${x3}px, ${y2}px, ${z3}px)`);
     }
     swiper.previousTranslate = swiper.translate;
-    swiper.translate = swiper.isHorizontal() ? x4 : y3;
+    swiper.translate = swiper.isHorizontal() ? x3 : y2;
     let newProgress;
     const translatesDiff = swiper.maxTranslate() - swiper.minTranslate();
     if (translatesDiff === 0) {
@@ -58670,7 +56950,7 @@ and ensure you are accounting for this risk.
         point
       };
     });
-    points.sort((a2, b3) => parseInt(a2.value, 10) - parseInt(b3.value, 10));
+    points.sort((a2, b2) => parseInt(a2.value, 10) - parseInt(b2.value, 10));
     for (let i3 = 0; i3 < points.length; i3 += 1) {
       const {
         point,
@@ -59470,7 +57750,7 @@ and ensure you are accounting for this risk.
     }
     static use(module) {
       if (Array.isArray(module)) {
-        module.forEach((m4) => Swiper.installModule(m4));
+        module.forEach((m3) => Swiper.installModule(m3));
         return Swiper;
       }
       Swiper.installModule(module);
@@ -59993,7 +58273,7 @@ and ensure you are accounting for this risk.
   }
 
   // node_modules/swiper/react/swiper.js
-  var import_react36 = __toESM(require_react(), 1);
+  var import_react35 = __toESM(require_react(), 1);
 
   // node_modules/swiper/components-shared/utils.js
   function isObject3(o2) {
@@ -60024,11 +58304,11 @@ and ensure you are accounting for this risk.
     return params.scrollbar && typeof params.scrollbar.el === "undefined";
   }
   function uniqueClasses(classNames = "") {
-    const classes = classNames.split(" ").map((c4) => c4.trim()).filter((c4) => !!c4);
+    const classes = classNames.split(" ").map((c3) => c3.trim()).filter((c3) => !!c3);
     const unique = [];
-    classes.forEach((c4) => {
-      if (unique.indexOf(c4) < 0)
-        unique.push(c4);
+    classes.forEach((c3) => {
+      if (unique.indexOf(c3) < 0)
+        unique.push(c3);
     });
     return unique.join(" ");
   }
@@ -60230,7 +58510,7 @@ and ensure you are accounting for this risk.
   }
 
   // node_modules/swiper/react/loop.js
-  var import_react31 = __toESM(require_react(), 1);
+  var import_react30 = __toESM(require_react(), 1);
 
   // node_modules/swiper/shared/calc-looped-slides.js
   var calcLoopedSlides = (slides, swiperParams) => {
@@ -60253,13 +58533,13 @@ and ensure you are accounting for this risk.
   // node_modules/swiper/react/loop.js
   function renderLoop(swiper, slides, swiperParams) {
     const modifiedSlides = slides.map((child, index2) => {
-      return /* @__PURE__ */ import_react31.default.cloneElement(child, {
+      return /* @__PURE__ */ import_react30.default.cloneElement(child, {
         swiper,
         "data-swiper-slide-index": index2
       });
     });
     function duplicateSlide(child, index2, position) {
-      return /* @__PURE__ */ import_react31.default.cloneElement(child, {
+      return /* @__PURE__ */ import_react30.default.cloneElement(child, {
         key: `${child.key}-duplicate-${index2}-${position}`,
         className: `${child.props.className || ""} ${swiperParams.slideDuplicateClass}`
       });
@@ -60268,7 +58548,7 @@ and ensure you are accounting for this risk.
       const blankSlidesNum = swiperParams.slidesPerGroup - modifiedSlides.length % swiperParams.slidesPerGroup;
       if (blankSlidesNum !== swiperParams.slidesPerGroup) {
         for (let i3 = 0; i3 < blankSlidesNum; i3 += 1) {
-          const blankSlide = /* @__PURE__ */ import_react31.default.createElement("div", {
+          const blankSlide = /* @__PURE__ */ import_react30.default.createElement("div", {
             className: `${swiperParams.slideClass} ${swiperParams.slideBlankClass}`
           });
           modifiedSlides.push(blankSlide);
@@ -60337,13 +58617,13 @@ and ensure you are accounting for this risk.
   }
 
   // node_modules/swiper/react/get-children.js
-  var import_react32 = __toESM(require_react(), 1);
+  var import_react31 = __toESM(require_react(), 1);
   function isChildSwiperSlide(child) {
     return child.type && child.type.displayName && child.type.displayName.includes("SwiperSlide");
   }
-  function processChildren(c4) {
+  function processChildren(c3) {
     const slides = [];
-    import_react32.default.Children.toArray(c4).forEach((child) => {
+    import_react31.default.Children.toArray(c3).forEach((child) => {
       if (isChildSwiperSlide(child)) {
         slides.push(child);
       } else if (child.props && child.props.children) {
@@ -60352,7 +58632,7 @@ and ensure you are accounting for this risk.
     });
     return slides;
   }
-  function getChildren(c4) {
+  function getChildren(c3) {
     const slides = [];
     const slots = {
       "container-start": [],
@@ -60360,7 +58640,7 @@ and ensure you are accounting for this risk.
       "wrapper-start": [],
       "wrapper-end": []
     };
-    import_react32.default.Children.toArray(c4).forEach((child) => {
+    import_react31.default.Children.toArray(c3).forEach((child) => {
       if (isChildSwiperSlide(child)) {
         slides.push(child);
       } else if (child.props && child.props.slot && slots[child.props.slot]) {
@@ -60502,7 +58782,7 @@ and ensure you are accounting for this risk.
   }
 
   // node_modules/swiper/react/virtual.js
-  var import_react33 = __toESM(require_react(), 1);
+  var import_react32 = __toESM(require_react(), 1);
   function renderVirtual(swiper, slides, virtualData) {
     if (!virtualData)
       return null;
@@ -60512,7 +58792,7 @@ and ensure you are accounting for this risk.
       top: `${virtualData.offset}px`
     };
     return slides.filter((child, index2) => index2 >= virtualData.from && index2 <= virtualData.to).map((child) => {
-      return /* @__PURE__ */ import_react33.default.cloneElement(child, {
+      return /* @__PURE__ */ import_react32.default.cloneElement(child, {
         swiper,
         style
       });
@@ -60535,17 +58815,17 @@ and ensure you are accounting for this risk.
   };
 
   // node_modules/swiper/react/use-isomorphic-layout-effect.js
-  var import_react34 = __toESM(require_react(), 1);
+  var import_react33 = __toESM(require_react(), 1);
   function useIsomorphicLayoutEffect(callback, deps) {
     if (typeof window === "undefined")
-      return (0, import_react34.useEffect)(callback, deps);
-    return (0, import_react34.useLayoutEffect)(callback, deps);
+      return (0, import_react33.useEffect)(callback, deps);
+    return (0, import_react33.useLayoutEffect)(callback, deps);
   }
 
   // node_modules/swiper/react/context.js
-  var import_react35 = __toESM(require_react(), 1);
-  var SwiperSlideContext = /* @__PURE__ */ (0, import_react35.createContext)(null);
-  var SwiperContext = /* @__PURE__ */ (0, import_react35.createContext)(null);
+  var import_react34 = __toESM(require_react(), 1);
+  var SwiperSlideContext = /* @__PURE__ */ (0, import_react34.createContext)(null);
+  var SwiperContext = /* @__PURE__ */ (0, import_react34.createContext)(null);
 
   // node_modules/swiper/react/swiper.js
   function _extends2() {
@@ -60562,7 +58842,7 @@ and ensure you are accounting for this risk.
     };
     return _extends2.apply(this, arguments);
   }
-  var Swiper2 = /* @__PURE__ */ (0, import_react36.forwardRef)(function(_temp, externalElRef) {
+  var Swiper2 = /* @__PURE__ */ (0, import_react35.forwardRef)(function(_temp, externalElRef) {
     let {
       className,
       tag: Tag = "div",
@@ -60572,18 +58852,18 @@ and ensure you are accounting for this risk.
       ...rest
     } = _temp === void 0 ? {} : _temp;
     let eventsAssigned = false;
-    const [containerClasses, setContainerClasses] = (0, import_react36.useState)("swiper");
-    const [virtualData, setVirtualData] = (0, import_react36.useState)(null);
-    const [breakpointChanged, setBreakpointChanged] = (0, import_react36.useState)(false);
-    const initializedRef = (0, import_react36.useRef)(false);
-    const swiperElRef = (0, import_react36.useRef)(null);
-    const swiperRef = (0, import_react36.useRef)(null);
-    const oldPassedParamsRef = (0, import_react36.useRef)(null);
-    const oldSlides = (0, import_react36.useRef)(null);
-    const nextElRef = (0, import_react36.useRef)(null);
-    const prevElRef = (0, import_react36.useRef)(null);
-    const paginationElRef = (0, import_react36.useRef)(null);
-    const scrollbarElRef = (0, import_react36.useRef)(null);
+    const [containerClasses, setContainerClasses] = (0, import_react35.useState)("swiper");
+    const [virtualData, setVirtualData] = (0, import_react35.useState)(null);
+    const [breakpointChanged, setBreakpointChanged] = (0, import_react35.useState)(false);
+    const initializedRef = (0, import_react35.useRef)(false);
+    const swiperElRef = (0, import_react35.useRef)(null);
+    const swiperRef = (0, import_react35.useRef)(null);
+    const oldPassedParamsRef = (0, import_react35.useRef)(null);
+    const oldSlides = (0, import_react35.useRef)(null);
+    const nextElRef = (0, import_react35.useRef)(null);
+    const prevElRef = (0, import_react35.useRef)(null);
+    const paginationElRef = (0, import_react35.useRef)(null);
+    const scrollbarElRef = (0, import_react35.useRef)(null);
     const {
       params: swiperParams,
       passedParams,
@@ -60645,13 +58925,13 @@ and ensure you are accounting for this risk.
         swiperRef.current.off(eventName, events2[eventName]);
       });
     };
-    (0, import_react36.useEffect)(() => {
+    (0, import_react35.useEffect)(() => {
       return () => {
         if (swiperRef.current)
           swiperRef.current.off("_beforeBreakpoint", onBeforeBreakpoint);
       };
     });
-    (0, import_react36.useEffect)(() => {
+    (0, import_react35.useEffect)(() => {
       if (!initializedRef.current && swiperRef.current) {
         swiperRef.current.emitSlidesClasses();
         initializedRef.current = true;
@@ -60684,7 +58964,7 @@ and ensure you are accounting for this risk.
     }, []);
     useIsomorphicLayoutEffect(() => {
       attachEvents2();
-      const changedParams = getChangedParams(passedParams, oldPassedParamsRef.current, slides, oldSlides.current, (c4) => c4.key);
+      const changedParams = getChangedParams(passedParams, oldPassedParamsRef.current, slides, oldSlides.current, (c3) => c3.key);
       oldPassedParamsRef.current = passedParams;
       oldSlides.current = slides;
       if (changedParams.length && swiperRef.current && !swiperRef.current.destroyed) {
@@ -60712,30 +58992,30 @@ and ensure you are accounting for this risk.
       }
       if (!swiperParams.loop || swiperRef.current && swiperRef.current.destroyed) {
         return slides.map((child) => {
-          return /* @__PURE__ */ import_react36.default.cloneElement(child, {
+          return /* @__PURE__ */ import_react35.default.cloneElement(child, {
             swiper: swiperRef.current
           });
         });
       }
       return renderLoop(swiperRef.current, slides, swiperParams);
     }
-    return /* @__PURE__ */ import_react36.default.createElement(Tag, _extends2({
+    return /* @__PURE__ */ import_react35.default.createElement(Tag, _extends2({
       ref: swiperElRef,
       className: uniqueClasses(`${containerClasses}${className ? ` ${className}` : ""}`)
-    }, restProps), /* @__PURE__ */ import_react36.default.createElement(SwiperContext.Provider, {
+    }, restProps), /* @__PURE__ */ import_react35.default.createElement(SwiperContext.Provider, {
       value: swiperRef.current
-    }, slots["container-start"], /* @__PURE__ */ import_react36.default.createElement(WrapperTag, {
+    }, slots["container-start"], /* @__PURE__ */ import_react35.default.createElement(WrapperTag, {
       className: "swiper-wrapper"
-    }, slots["wrapper-start"], renderSlides(), slots["wrapper-end"]), needsNavigation(swiperParams) && /* @__PURE__ */ import_react36.default.createElement(import_react36.default.Fragment, null, /* @__PURE__ */ import_react36.default.createElement("div", {
+    }, slots["wrapper-start"], renderSlides(), slots["wrapper-end"]), needsNavigation(swiperParams) && /* @__PURE__ */ import_react35.default.createElement(import_react35.default.Fragment, null, /* @__PURE__ */ import_react35.default.createElement("div", {
       ref: prevElRef,
       className: "swiper-button-prev"
-    }), /* @__PURE__ */ import_react36.default.createElement("div", {
+    }), /* @__PURE__ */ import_react35.default.createElement("div", {
       ref: nextElRef,
       className: "swiper-button-next"
-    })), needsScrollbar(swiperParams) && /* @__PURE__ */ import_react36.default.createElement("div", {
+    })), needsScrollbar(swiperParams) && /* @__PURE__ */ import_react35.default.createElement("div", {
       ref: scrollbarElRef,
       className: "swiper-scrollbar"
-    }), needsPagination(swiperParams) && /* @__PURE__ */ import_react36.default.createElement("div", {
+    }), needsPagination(swiperParams) && /* @__PURE__ */ import_react35.default.createElement("div", {
       ref: paginationElRef,
       className: "swiper-pagination"
     }), slots["container-end"]));
@@ -60743,7 +59023,7 @@ and ensure you are accounting for this risk.
   Swiper2.displayName = "Swiper";
 
   // node_modules/swiper/react/swiper-slide.js
-  var import_react37 = __toESM(require_react(), 1);
+  var import_react36 = __toESM(require_react(), 1);
   function _extends3() {
     _extends3 = Object.assign ? Object.assign.bind() : function(target) {
       for (var i3 = 1; i3 < arguments.length; i3++) {
@@ -60758,7 +59038,7 @@ and ensure you are accounting for this risk.
     };
     return _extends3.apply(this, arguments);
   }
-  var SwiperSlide = /* @__PURE__ */ (0, import_react37.forwardRef)(function(_temp, externalRef) {
+  var SwiperSlide = /* @__PURE__ */ (0, import_react36.forwardRef)(function(_temp, externalRef) {
     let {
       tag: Tag = "div",
       children: children2,
@@ -60768,8 +59048,8 @@ and ensure you are accounting for this risk.
       virtualIndex,
       ...rest
     } = _temp === void 0 ? {} : _temp;
-    const slideElRef = (0, import_react37.useRef)(null);
-    const [slideClasses, setSlideClasses] = (0, import_react37.useState)("swiper-slide");
+    const slideElRef = (0, import_react36.useRef)(null);
+    const [slideClasses, setSlideClasses] = (0, import_react36.useState)("swiper-slide");
     function updateClasses(_s, el, classNames) {
       if (el === slideElRef.current) {
         setSlideClasses(classNames);
@@ -60810,13 +59090,13 @@ and ensure you are accounting for this risk.
     const renderChildren = () => {
       return typeof children2 === "function" ? children2(slideData) : children2;
     };
-    return /* @__PURE__ */ import_react37.default.createElement(Tag, _extends3({
+    return /* @__PURE__ */ import_react36.default.createElement(Tag, _extends3({
       ref: slideElRef,
       className: uniqueClasses(`${slideClasses}${className ? ` ${className}` : ""}`),
       "data-swiper-slide-index": virtualIndex
-    }, rest), /* @__PURE__ */ import_react37.default.createElement(SwiperSlideContext.Provider, {
+    }, rest), /* @__PURE__ */ import_react36.default.createElement(SwiperSlideContext.Provider, {
       value: slideData
-    }, zoom ? /* @__PURE__ */ import_react37.default.createElement("div", {
+    }, zoom ? /* @__PURE__ */ import_react36.default.createElement("div", {
       className: "swiper-zoom-container",
       "data-swiper-zoom": typeof zoom === "number" ? zoom : void 0
     }, renderChildren()) : renderChildren()));
@@ -60856,8 +59136,8 @@ and ensure you are accounting for this risk.
     instance,
     items
   }) => {
-    const itemsRef = (0, import_react38.useRef)(null);
-    return /* @__PURE__ */ import_react38.default.createElement(ItemsStyled, { ref: itemsRef }, /* @__PURE__ */ import_react38.default.createElement(
+    const itemsRef = (0, import_react37.useRef)(null);
+    return /* @__PURE__ */ import_react37.default.createElement(ItemsStyled, { ref: itemsRef }, /* @__PURE__ */ import_react37.default.createElement(
       Swiper2,
       {
         a11y: {
@@ -60874,26 +59154,26 @@ and ensure you are accounting for this risk.
         slidesPerGroup: 2,
         breakpoints
       },
-      items.map((item, index2) => /* @__PURE__ */ import_react38.default.createElement(
+      items.map((item, index2) => /* @__PURE__ */ import_react37.default.createElement(
         SwiperSlide,
         {
           key: `${item.id}-${index2}`,
           "data-index": index2,
           "data-type": item == null ? void 0 : item.type.toLowerCase()
         },
-        /* @__PURE__ */ import_react38.default.createElement(Item_default, { index: index2, item })
+        /* @__PURE__ */ import_react37.default.createElement(Item_default, { index: index2, item })
       ))
     ));
   };
   var Items_default = Items;
 
   // src/lib/hash.ts
-  var hash = (s4) => {
-    var h4 = 0, l2 = s4.length, i3 = 0;
+  var hash = (s3) => {
+    var h3 = 0, l2 = s3.length, i3 = 0;
     if (l2 > 0)
       while (i3 < l2)
-        h4 = (h4 << 5) - h4 + s4.charCodeAt(i3++) | 0;
-    return h4;
+        h3 = (h3 << 5) - h3 + s3.charCodeAt(i3++) | 0;
+    return h3;
   };
   var hash_default = hash;
 
@@ -60901,7 +59181,7 @@ and ensure you are accounting for this risk.
   var import_react_error_boundary = __toESM(require_react_error_boundary_umd());
 
   // src/components/ErrorFallback/ErrorFallback.tsx
-  var import_react40 = __toESM(require_react());
+  var import_react39 = __toESM(require_react());
 
   // src/components/ErrorFallback/ErrorFallback.styled.tsx
   var ErrorFallbackStyled = styled("div", {
@@ -60917,46 +59197,42 @@ and ensure you are accounting for this risk.
   // src/components/ErrorFallback/ErrorFallback.tsx
   var ErrorFallback = ({ error }) => {
     const { message } = error;
-    return /* @__PURE__ */ import_react40.default.createElement(ErrorFallbackStyled, { role: "alert" }, /* @__PURE__ */ import_react40.default.createElement(Headline, { "data-testid": "headline" }, "Something went wrong"), message && /* @__PURE__ */ import_react40.default.createElement(ErrorBody, null, `Error message: ${message}`, " "));
+    return /* @__PURE__ */ import_react39.default.createElement(ErrorFallbackStyled, { role: "alert" }, /* @__PURE__ */ import_react39.default.createElement(Headline, { "data-testid": "headline" }, "Something went wrong"), message && /* @__PURE__ */ import_react39.default.createElement(ErrorBody, null, `Error message: ${message}`, " "));
   };
   var ErrorFallback_default = ErrorFallback;
 
   // src/index.tsx
-  var App = (props) => /* @__PURE__ */ import_react41.default.createElement(
+  var import_upgrader2 = __toESM(require_index_umd());
+  var App = (props) => /* @__PURE__ */ import_react40.default.createElement(
     CollectionProvider,
     {
       initialState: __spreadProps(__spreadValues({}, defaultState), {
         options: __spreadValues({}, props.options)
       })
     },
-    /* @__PURE__ */ import_react41.default.createElement(Bloom, __spreadValues({}, props))
+    /* @__PURE__ */ import_react40.default.createElement(Bloom, __spreadValues({}, props))
   );
   var Bloom = ({ collectionId }) => {
     const store = useCollectionState();
-    const { vault, options } = store;
-    const [collection, setCollection] = (0, import_react41.useState)();
-    const [error, setError] = (0, import_react41.useState)("");
-    (0, import_react41.useEffect)(() => {
+    const { options } = store;
+    const [collection, setCollection] = (0, import_react40.useState)();
+    (0, import_react40.useEffect)(() => {
       if (!collectionId)
         return;
-      vault.loadCollection(collectionId).then((data) => setCollection(data)).catch((error2) => {
+      fetch(collectionId).then((response) => response.json()).then(import_upgrader2.upgrade).then((data) => setCollection(data)).catch((error) => {
         console.error(
-          `The IIIF Collection ${collectionId} failed to load: ${error2}`
+          `The IIIF Collection ${collectionId} failed to load: ${error}`
         );
-        setError(
-          error2 instanceof Error ? error2.message : `Collection failed to load`
-        );
-      }).finally(() => {
       });
     }, [collectionId]);
     if ((collection == null ? void 0 : collection.items.length) === 0) {
       console.log(`The IIIF Collection ${collectionId} does not contain items.`);
-      return /* @__PURE__ */ import_react41.default.createElement(import_react41.default.Fragment, null);
+      return /* @__PURE__ */ import_react40.default.createElement(import_react40.default.Fragment, null);
     }
     const instance = hash_default(collectionId);
     if (!collection)
-      return /* @__PURE__ */ import_react41.default.createElement(import_react41.default.Fragment, null);
-    return /* @__PURE__ */ import_react41.default.createElement("div", null, /* @__PURE__ */ import_react41.default.createElement(import_react_error_boundary.ErrorBoundary, { FallbackComponent: ErrorFallback_default }, /* @__PURE__ */ import_react41.default.createElement(
+      return /* @__PURE__ */ import_react40.default.createElement(import_react40.default.Fragment, null);
+    return /* @__PURE__ */ import_react40.default.createElement("div", null, /* @__PURE__ */ import_react40.default.createElement(import_react_error_boundary.ErrorBoundary, { FallbackComponent: ErrorFallback_default }, /* @__PURE__ */ import_react40.default.createElement(
       Header_default,
       {
         label: collection.label,
@@ -60964,7 +59240,7 @@ and ensure you are accounting for this risk.
         homepage: collection.homepage,
         instance
       }
-    ), /* @__PURE__ */ import_react41.default.createElement(
+    ), /* @__PURE__ */ import_react40.default.createElement(
       Items_default,
       {
         items: collection.items,
@@ -60976,16 +59252,16 @@ and ensure you are accounting for this risk.
   var src_default = App;
 
   // src/dev/DynamicUrl.tsx
-  var import_react43 = __toESM(require_react());
+  var import_react42 = __toESM(require_react());
 
   // src/dev/DynamicUrl.styled.tsx
-  var DynamicUrlStyled = re2("section", {
+  var DynamicUrlStyled = re("section", {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     padding: "2rem"
   });
-  var ManualForm = re2("form", {
+  var ManualForm = re("form", {
     display: "flex",
     justifyContent: "center",
     flexDirection: "column",
@@ -61030,13 +59306,13 @@ and ensure you are accounting for this risk.
       }
     }
   });
-  var Curated = re2("div", {
+  var Curated = re("div", {
     padding: "2rem",
     display: "flex",
     justifyContent: "center",
     flexWrap: "wrap"
   });
-  var ButtonForm = re2("form", {
+  var ButtonForm = re("form", {
     button: {
       backgroundColor: "$transparent",
       border: "none",
@@ -61062,6 +59338,10 @@ and ensure you are accounting for this risk.
 
   // src/dev/collections.ts
   var collections = [
+    {
+      url: "https://api.dc.library.northwestern.edu/api/v2/search?query=assembly&as=iiif",
+      label: "mixed access"
+    },
     {
       url: "https://api.dc.library.northwestern.edu/api/v2/collections/c373ecd2-2c45-45f2-9f9e-52dc244870bd?as=iiif",
       label: "Masks of Antonio Fava"
@@ -61098,18 +59378,18 @@ and ensure you are accounting for this risk.
 
   // src/dev/DynamicUrl.tsx
   var DynamicUrl = ({ url, setUrl }) => {
-    const inputRef = (0, import_react43.useRef)(null);
+    const inputRef = (0, import_react42.useRef)(null);
     const handleSubmit = (e2) => {
       var _a;
       e2.preventDefault();
       const target = e2.target;
       setUrl((_a = target.url) == null ? void 0 : _a.value);
     };
-    (0, import_react43.useEffect)(() => {
+    (0, import_react42.useEffect)(() => {
       if (inputRef.current)
         inputRef.current.value = url;
     }, [url]);
-    return /* @__PURE__ */ import_react43.default.createElement(DynamicUrlStyled, null, /* @__PURE__ */ import_react43.default.createElement(ManualForm, { onSubmit: handleSubmit }, /* @__PURE__ */ import_react43.default.createElement("label", { htmlFor: "manual-collection" }, "View a IIIF Collection"), /* @__PURE__ */ import_react43.default.createElement("div", null, /* @__PURE__ */ import_react43.default.createElement(
+    return /* @__PURE__ */ import_react42.default.createElement(DynamicUrlStyled, null, /* @__PURE__ */ import_react42.default.createElement(ManualForm, { onSubmit: handleSubmit }, /* @__PURE__ */ import_react42.default.createElement("label", { htmlFor: "manual-collection" }, "View a IIIF Collection"), /* @__PURE__ */ import_react42.default.createElement("div", null, /* @__PURE__ */ import_react42.default.createElement(
       "input",
       {
         type: "text",
@@ -61118,14 +59398,14 @@ and ensure you are accounting for this risk.
         placeholder: "IIIF Collection",
         ref: inputRef
       }
-    ), /* @__PURE__ */ import_react43.default.createElement("button", { type: "submit" }, "View"))), collections.length > 0 && /* @__PURE__ */ import_react43.default.createElement(Curated, null, collections.map((obj) => /* @__PURE__ */ import_react43.default.createElement(
+    ), /* @__PURE__ */ import_react42.default.createElement("button", { type: "submit" }, "View"))), collections.length > 0 && /* @__PURE__ */ import_react42.default.createElement(Curated, null, collections.map((obj) => /* @__PURE__ */ import_react42.default.createElement(
       ButtonForm,
       {
         key: obj.label,
         onSubmit: handleSubmit,
         "data-active": url === obj.url ? true : false
       },
-      /* @__PURE__ */ import_react43.default.createElement("button", { name: "url", value: obj.url }, obj.label)
+      /* @__PURE__ */ import_react42.default.createElement("button", { name: "url", value: obj.url }, obj.label)
     ))));
   };
   var DynamicUrl_default = DynamicUrl;
@@ -61134,12 +59414,12 @@ and ensure you are accounting for this risk.
   var import_client = __toESM(require_client());
   var Wrapper = () => {
     const defaultUrl = collections[0].url;
-    const [url, setUrl] = import_react44.default.useState(defaultUrl);
-    return /* @__PURE__ */ import_react44.default.createElement(import_react44.default.Fragment, null, /* @__PURE__ */ import_react44.default.createElement(src_default, { collectionId: url, key: url }), /* @__PURE__ */ import_react44.default.createElement(DynamicUrl_default, { url, setUrl }));
+    const [url, setUrl] = import_react43.default.useState(defaultUrl);
+    return /* @__PURE__ */ import_react43.default.createElement(import_react43.default.Fragment, null, /* @__PURE__ */ import_react43.default.createElement(src_default, { collectionId: url, key: url }), /* @__PURE__ */ import_react43.default.createElement(DynamicUrl_default, { url, setUrl }));
   };
   var container = document.getElementById("root");
   var root = (0, import_client.createRoot)(container);
-  root.render(/* @__PURE__ */ import_react44.default.createElement(Wrapper, null));
+  root.render(/* @__PURE__ */ import_react43.default.createElement(Wrapper, null));
 })();
 /*!
  * is-plain-object <https://github.com/jonschlinkert/is-plain-object>

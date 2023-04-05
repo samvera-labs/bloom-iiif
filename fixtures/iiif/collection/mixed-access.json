@@ -1,0 +1,341 @@
+{
+  "@context": ["http://iiif.io/api/presentation/3/context.json"],
+  "id": "http://127.0.0.1:8080/fixtures/iiif/collection/mixed-access.json",
+  "type": "Collection",
+  "label": {
+    "none": ["IIIF Collection"]
+  },
+  "summary": {
+    "none": [""]
+  },
+  "homepage": [
+    {
+      "id": "https://dc.library.northwestern.edu/search?q=assembly",
+      "type": "Text",
+      "format": "text/html",
+      "label": {
+        "none": ["IIIF Collection"]
+      }
+    }
+  ],
+  "items": [
+    {
+      "id": "https://api.dc.library.northwestern.edu/api/v2/works/cfeddfe9-5aae-4772-933e-99d91451276e?as=iiif",
+      "type": "Manifest",
+      "homepage": [
+        {
+          "id": "https://dc.library.northwestern.edu/items/cfeddfe9-5aae-4772-933e-99d91451276e",
+          "type": "Text",
+          "format": "text/html",
+          "label": {
+            "none": ["Project Survival Teach-out. Parts 2, 3, 4, and 5"]
+          }
+        }
+      ],
+      "label": {
+        "none": ["Project Survival Teach-out. Parts 2, 3, 4, and 5"]
+      },
+      "summary": {
+        "none": ["Video"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://api.dc.library.northwestern.edu/api/v2/works/cfeddfe9-5aae-4772-933e-99d91451276e/thumbnail",
+          "format": "image/jpeg",
+          "type": "Image",
+          "width": 400,
+          "height": 400
+        }
+      ]
+    },
+    {
+      "id": "https://api.dc.library.northwestern.edu/api/v2/works/c4b05936-2202-4d52-b7ab-9d02480c6c34?as=iiif",
+      "type": "Manifest",
+      "homepage": [
+        {
+          "id": "https://dc.library.northwestern.edu/items/c4b05936-2202-4d52-b7ab-9d02480c6c34",
+          "type": "Text",
+          "format": "text/html",
+          "label": {
+            "none": ["Project Survival Teach-out. Parts 1, 6, and 7"]
+          }
+        }
+      ],
+      "label": {
+        "none": ["Project Survival Teach-out. Parts 1, 6, and 7"]
+      },
+      "summary": {
+        "none": ["Video"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://api.dc.library.northwestern.edu/api/v2/works/c4b05936-2202-4d52-b7ab-9d02480c6c34/thumbnail",
+          "format": "image/jpeg",
+          "type": "Image",
+          "width": 400,
+          "height": 400
+        }
+      ]
+    },
+    {
+      "id": "https://api.dc.library.northwestern.edu/api/v2/works/dcde7d05-c563-4ee2-bf0d-39fba0212df0?as=iiif",
+      "type": "Manifest",
+      "homepage": [
+        {
+          "id": "https://dc.library.northwestern.edu/items/dcde7d05-c563-4ee2-bf0d-39fba0212df0",
+          "type": "Text",
+          "format": "text/html",
+          "label": {
+            "none": [
+              "Makeup of the National Assembly : distribution of national and provincial seats."
+            ]
+          }
+        }
+      ],
+      "label": {
+        "none": [
+          "Makeup of the National Assembly : distribution of national and provincial seats."
+        ]
+      },
+      "summary": {
+        "none": ["Image"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://api.dc.library.northwestern.edu/api/v2/works/dcde7d05-c563-4ee2-bf0d-39fba0212df0/thumbnail",
+          "format": "image/jpeg",
+          "type": "Image",
+          "width": 400,
+          "height": 400
+        }
+      ]
+    },
+    {
+      "id": "https://api.dc.library.northwestern.edu/api/v2/works/522f6909-faa7-4425-a5a4-d93ee6faada7?as=iiif",
+      "type": "Manifest",
+      "homepage": [
+        {
+          "id": "https://dc.library.northwestern.edu/items/522f6909-faa7-4425-a5a4-d93ee6faada7",
+          "type": "Text",
+          "format": "text/html",
+          "label": {
+            "none": ["Assembly Building. Aerial view"]
+          }
+        }
+      ],
+      "label": {
+        "none": ["Assembly Building. Aerial view"]
+      },
+      "summary": {
+        "none": ["Image"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://api.dc.library.northwestern.edu/api/v2/works/522f6909-faa7-4425-a5a4-d93ee6faada7/thumbnail",
+          "format": "image/jpeg",
+          "type": "Image",
+          "width": 400,
+          "height": 400,
+          "service": [
+            {
+              "@id": "https://iiif.dc.library.northwestern.edu/iiif/2/a6a99751-b15e-44c9-91f3-3838e0a206c1",
+              "@type": "ImageService2",
+              "profile": "http://iiif.io/api/image/2/level2.json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://api.dc.library.northwestern.edu/api/v2/works/be3fcc3e-c627-40a8-9a17-b982dd5ff31a?as=iiif",
+      "type": "Manifest",
+      "homepage": [
+        {
+          "id": "https://dc.library.northwestern.edu/items/be3fcc3e-c627-40a8-9a17-b982dd5ff31a",
+          "type": "Text",
+          "format": "text/html",
+          "label": {
+            "none": ["Sam Hinton concert program"]
+          }
+        }
+      ],
+      "label": {
+        "none": ["Sam Hinton concert program"]
+      },
+      "summary": {
+        "none": ["Image"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://api.dc.library.northwestern.edu/api/v2/works/be3fcc3e-c627-40a8-9a17-b982dd5ff31a/thumbnail",
+          "format": "image/jpeg",
+          "type": "Image",
+          "width": 400,
+          "height": 400
+        }
+      ]
+    },
+    {
+      "id": "https://api.dc.library.northwestern.edu/api/v2/works/ca750b67-8e03-44a9-a790-63e386cde962?as=iiif",
+      "type": "Manifest",
+      "homepage": [
+        {
+          "id": "https://dc.library.northwestern.edu/items/ca750b67-8e03-44a9-a790-63e386cde962",
+          "type": "Text",
+          "format": "text/html",
+          "label": {
+            "none": ["United Nations declaration against apartheid"]
+          }
+        }
+      ],
+      "label": {
+        "none": ["United Nations declaration against apartheid"]
+      },
+      "summary": {
+        "none": ["Image"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://api.dc.library.northwestern.edu/api/v2/works/ca750b67-8e03-44a9-a790-63e386cde962/thumbnail",
+          "format": "image/jpeg",
+          "type": "Image",
+          "width": 400,
+          "height": 400
+        }
+      ]
+    },
+    {
+      "id": "https://api.dc.library.northwestern.edu/api/v2/works/dd398918-c876-4f03-8b2b-cdc3f734bff6?as=iiif",
+      "type": "Manifest",
+      "homepage": [
+        {
+          "id": "https://dc.library.northwestern.edu/items/dd398918-c876-4f03-8b2b-cdc3f734bff6",
+          "type": "Text",
+          "format": "text/html",
+          "label": {
+            "none": ["Palace of the Assembly. Interior view of assembly hall"]
+          }
+        }
+      ],
+      "label": {
+        "none": ["Palace of the Assembly. Interior view of assembly hall"]
+      },
+      "summary": {
+        "none": ["Image"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://api.dc.library.northwestern.edu/api/v2/works/dd398918-c876-4f03-8b2b-cdc3f734bff6/thumbnail",
+          "format": "image/jpeg",
+          "type": "Image",
+          "width": 400,
+          "height": 400
+        }
+      ]
+    },
+    {
+      "id": "https://api.dc.library.northwestern.edu/api/v2/works/ce46512a-5399-4050-8aad-6c4357eb89ce?as=iiif",
+      "type": "Manifest",
+      "homepage": [
+        {
+          "id": "https://dc.library.northwestern.edu/items/ce46512a-5399-4050-8aad-6c4357eb89ce",
+          "type": "Text",
+          "format": "text/html",
+          "label": {
+            "none": [
+              "The new provinces and their seats in the National Assembly."
+            ]
+          }
+        }
+      ],
+      "label": {
+        "none": ["The new provinces and their seats in the National Assembly."]
+      },
+      "summary": {
+        "none": ["Image"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://api.dc.library.northwestern.edu/api/v2/works/ce46512a-5399-4050-8aad-6c4357eb89ce/thumbnail",
+          "format": "image/jpeg",
+          "type": "Image",
+          "width": 400,
+          "height": 400
+        }
+      ]
+    },
+    {
+      "id": "https://api.dc.library.northwestern.edu/api/v2/works/a8777918-3b38-41b0-90f2-605ebcb60bb4?as=iiif",
+      "type": "Manifest",
+      "homepage": [
+        {
+          "id": "https://dc.library.northwestern.edu/items/a8777918-3b38-41b0-90f2-605ebcb60bb4",
+          "type": "Text",
+          "format": "text/html",
+          "label": {
+            "none": [
+              "Main Dukhang (assembly hall), with photograph on throne for the Dalai Lama and hanging banners and thangkas in front of glassed in altar with sculptures. Interior"
+            ]
+          }
+        }
+      ],
+      "label": {
+        "none": [
+          "Main Dukhang (assembly hall), with photograph on throne for the Dalai Lama and hanging banners and thangkas in front of glassed in altar with sculptures. Interior"
+        ]
+      },
+      "summary": {
+        "none": ["Image"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://api.dc.library.northwestern.edu/api/v2/works/a8777918-3b38-41b0-90f2-605ebcb60bb4/thumbnail",
+          "format": "image/jpeg",
+          "type": "Image",
+          "width": 400,
+          "height": 400
+        }
+      ]
+    },
+    {
+      "id": "https://api.dc.library.northwestern.edu/api/v2/works/f133c859-0d11-4ac7-89f8-7c496166a44e?as=iiif",
+      "type": "Manifest",
+      "homepage": [
+        {
+          "id": "https://dc.library.northwestern.edu/items/f133c859-0d11-4ac7-89f8-7c496166a44e",
+          "type": "Text",
+          "format": "text/html",
+          "label": {
+            "none": [
+              "The new Parliament : Constitutional Assembly (sitting together)."
+            ]
+          }
+        }
+      ],
+      "label": {
+        "none": [
+          "The new Parliament : Constitutional Assembly (sitting together)."
+        ]
+      },
+      "summary": {
+        "none": ["Image"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://api.dc.library.northwestern.edu/api/v2/works/f133c859-0d11-4ac7-89f8-7c496166a44e/thumbnail",
+          "format": "image/jpeg",
+          "type": "Image",
+          "width": 400,
+          "height": 400
+        }
+      ]
+    },
+    {
+      "id": "https://api.dc.library.northwestern.edu/api/v2/search?as=iiif&query=assembly&page=2",
+      "type": "Collection",
+      "label": {
+        "none": ["Next page"]
+      }
+    }
+  ]
+}
