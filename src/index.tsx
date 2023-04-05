@@ -16,6 +16,7 @@ import Items from "components/Items/Items";
 import hash from "lib/hash";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "components/ErrorFallback/ErrorFallback";
+import { upgrade } from "@iiif/parser/upgrader";
 
 interface BloomProps {
   collectionId: string;
@@ -35,24 +36,20 @@ const App: React.FC<BloomProps> = (props) => (
 
 const Bloom: React.FC<BloomProps> = ({ collectionId }) => {
   const store = useCollectionState();
-  const { vault, options } = store;
+  const { options } = store;
   const [collection, setCollection] = useState<CollectionNormalized>();
-  const [error, setError] = useState("");
 
   useEffect(() => {
     if (!collectionId) return;
-    vault
-      .loadCollection(collectionId)
+    fetch(collectionId)
+      .then((response) => response.json())
+      .then(upgrade)
       .then((data: any) => setCollection(data))
       .catch((error: any) => {
         console.error(
           `The IIIF Collection ${collectionId} failed to load: ${error}`
         );
-        setError(
-          error instanceof Error ? error.message : `Collection failed to load`
-        );
-      })
-      .finally(() => {});
+      });
   }, [collectionId]);
 
   if (collection?.items.length === 0) {

@@ -54,8 +54,9 @@ const StyledStatusIcon = styled("div", {
   alignItems: "center",
   justifyContent: "center",
   position: "absolute",
-  left: "50%",
-  top: "50%",
+  zIndex: "1",
+  bottom: "1rem",
+  right: "1rem",
   margin: "-1rem 0 0 -1rem",
   boxShadow: "5px 5px 13px #0003",
 
