@@ -50,8 +50,7 @@
     "typescript": "^4.9.3"
   },
   "dependencies": {
-    "@iiif/vault": "^0.9.19",
-    "@iiif/vault-helpers": "^0.9.11",
+    "@iiif/parser": "^1.1.2",
     "@radix-ui/react-aspect-ratio": "^1.0.1",
     "@samvera/nectar-iiif": "^0.0.18",
     "@stitches/react": "^1.2.8",

@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
-import Figure from "components/Figure/Figure";
+import { Anchor, ItemStyled } from "./Item.styled";
 import {
-  CanvasNormalized,
   Collection,
   IIIFExternalWebResource,
   Manifest,
 } from "@iiif/presentation-3";
-import { useCollectionState } from "context/collection-context";
-import { Anchor, ItemStyled } from "./Item.styled";
-import Preview from "components/Preview/Preview";
-import { getCanvasResource } from "lib/iiif";
+import React, { useEffect, useState } from "react";
+import Figure from "components/Figure/Figure";
 import Placeholder from "./Placeholder";
+import { getCanvasResource } from "lib/iiif";
+import { useCollectionState } from "context/collection-context";
+import { upgrade } from "@iiif/parser/upgrader";
 
 interface ItemProps {
   index: number;
@@ -19,38 +18,42 @@ interface ItemProps {
 
 const Item: React.FC<ItemProps> = ({ index, item }) => {
   const store = useCollectionState();
-  const { vault, options } = store;
-  const { credentials, enablePreview } = options;
+  const { options } = store;
+  const { credentials } = options;
 
-  const [activeCanvas, setActiveCanvas] = useState<number>(0);
   const [href, setHref] = useState<string>();
-  const [id, setId] = useState<string>(item.id);
   const [isFocused, setIsFocused] = useState<boolean>(false);
-  const [manifest, setManifest] = useState<Collection | Manifest>();
   const [placeholder, setPlaceholder] = useState<string>();
   const [status, setStatus] = useState<number>(200);
   const [thumbnail, setThumbnail] = useState<IIIFExternalWebResource[]>([]);
 
   useEffect(() => {
-    enablePreview && isFocused && !manifest
-      ? vault
-          .load(item.id)
-          .then((data: any) => setManifest(data))
-          .catch((error: any) => {
-            console.error(`Manifest failed to load: ${error}`);
-          })
-      : null;
-    return;
-  }, [isFocused]);
-
-  useEffect(() => {
     if (item && item?.thumbnail && item.thumbnail?.length > 0) {
-      const iiifThumbnail = vault.get(
-        item.thumbnail
-      ) as IIIFExternalWebResource[];
+      fetch(item?.id)
+        .then((response) => response.json())
+        .then(upgrade)
+        .then((manifest: any) => {
+          if (manifest?.type === "Manifest") {
+            const id = getCanvasResource(manifest?.items[0]);
+            if (id) {
+              fetch(id, {
+                method: "GET",
+                headers: {
+                  accept: "image/*",
+                },
+                credentials: credentials,
+              })
+                .then((response) => {
+                  setStatus(response.status);
+                })
+                .catch((error) => setStatus(error.status));
+            }
+          }
+        });
 
-      setThumbnail(iiifThumbnail);
-      setPlaceholder(iiifThumbnail[0].id);
+      const { thumbnail } = item;
+      setPlaceholder(thumbnail[0].id);
+      setThumbnail(thumbnail as IIIFExternalWebResource[]);
     }
     if (item?.homepage && item.homepage?.length > 0)
       setHref(item.homepage[0].id);
@@ -58,38 +61,6 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
 
   const onFocus = () => setIsFocused(true);
   const onBlur = () => setIsFocused(false);
-
-  const handleActiveCanvas = (increment: number) => {
-    if (!manifest) return;
-
-    const targetCanvas: number = activeCanvas + increment;
-
-    if (Array.isArray(manifest.items) && manifest.items[targetCanvas]) {
-      const canvas: CanvasNormalized = vault.get(manifest.items[targetCanvas]);
-      const resource = getCanvasResource(canvas, vault);
-      const canvasThumbnail = vault.get(resource) as IIIFExternalWebResource[];
-
-      if (canvasThumbnail.length > 0 && canvasThumbnail[0].id) {
-        setThumbnail(canvasThumbnail);
-        fetch(canvasThumbnail[0].id, {
-          method: "GET",
-          headers: {
-            accept: "image/*",
-          },
-          credentials: credentials,
-        })
-          .then((response) => setStatus(response.status))
-          .catch((error) => setStatus(error.status));
-      }
-
-      setId(canvas.id);
-      setActiveCanvas(targetCanvas);
-    }
-  };
-
-  useEffect(() => {
-    if (manifest) handleActiveCanvas(0);
-  }, [manifest]);
 
   return (
     <ItemStyled>
@@ -105,20 +76,12 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
         <Figure
           index={index}
           isFocused={isFocused}
-          key={id}
+          key={item.id}
           label={item.label}
           summary={item.summary}
           status={status}
           thumbnail={thumbnail}
         />
-        {enablePreview && (
-          <Preview
-            manifest={manifest as Manifest}
-            activeCanvas={activeCanvas}
-            handleActiveCanvas={handleActiveCanvas}
-            isFocused={isFocused}
-          />
-        )}
       </Anchor>
     </ItemStyled>
   );

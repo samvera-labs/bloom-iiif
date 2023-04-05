@@ -34,11 +34,8 @@ const Figure: React.FC<FigureProps> = ({
       <AspectRatio.Root ratio={1 / 1}>
         <Width ref={widthRef} />
         <Placeholder>
-          {thumbnail && status === 200 ? (
-            <Thumbnail altAsLabel={label} thumbnail={thumbnail} />
-          ) : (
-            <StatusIcon status={status} />
-          )}
+          {status !== 200 && <StatusIcon status={status} />}
+          <Thumbnail altAsLabel={label} thumbnail={thumbnail} />
         </Placeholder>
       </AspectRatio.Root>
       <figcaption>

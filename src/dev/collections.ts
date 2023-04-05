@@ -1,5 +1,9 @@
 export const collections = [
   {
+    url: "https://api.dc.library.northwestern.edu/api/v2/search?query=assembly&as=iiif",
+    label: "mixed access",
+  },
+  {
     url: "https://api.dc.library.northwestern.edu/api/v2/collections/c373ecd2-2c45-45f2-9f9e-52dc244870bd?as=iiif",
     label: "Masks of Antonio Fava",
   },
