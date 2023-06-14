@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import {
+  Collection,
   CollectionItems,
   CollectionNormalized,
   ContentResource,
   InternationalString,
+  Manifest,
 } from "@iiif/presentation-3";
 import {
   CollectionProvider,
@@ -20,6 +22,7 @@ import { upgrade } from "@iiif/parser/upgrader";
 
 interface BloomProps {
   collectionId: string;
+  onItemInteraction?: (item: Manifest | Collection) => void;
   options?: ConfigOptions;
 }
 
@@ -34,7 +37,7 @@ const App: React.FC<BloomProps> = (props) => (
   </CollectionProvider>
 );
 
-const Bloom: React.FC<BloomProps> = ({ collectionId }) => {
+const Bloom: React.FC<BloomProps> = ({ collectionId, onItemInteraction }) => {
   const store = useCollectionState();
   const { options } = store;
   const [collection, setCollection] = useState<CollectionNormalized>();
@@ -76,6 +79,7 @@ const Bloom: React.FC<BloomProps> = ({ collectionId }) => {
         />
         <Items
           items={collection.items as CollectionItems[]}
+          handleItemInteraction={onItemInteraction}
           instance={instance}
           breakpoints={options.breakpoints}
         />

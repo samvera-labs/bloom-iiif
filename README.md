@@ -84,6 +84,62 @@ const myBreakpoints = {
 />
 ```
 
+<h3>Item Interaction Callback (optional)</h3>
+
+The default behavior for a click (or press) event on each of the individual items is to route to the `href` value set by the IIIF Presentation 3.0 API `homepage[0].id` for each `item` entry.
+
+You can optionally set an event handler for the `onItemInteraction` value as a callback for a custom action. The full `item` object will be passed back to the consuming application.
+
+```jsx
+const handleItemInteraction = (item) => {
+  console.log(item);
+}
+
+<BloomIIIF
+  collectionId={...}
+  onItemInteraction={handleItemInteraction}
+/>
+```
+
+```json
+{
+  "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/01-half-moon.json",
+  "type": "Manifest",
+  "label": {
+    "none": ["Half Moon - Nez Percé"]
+  },
+  "summary": {
+    "none": ["Image"]
+  },
+  "thumbnail": [
+    {
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/1ce40089-9317-4dc7-823a-3af757d55c5d/full/200,/0/default.jpg",
+      "type": "Image",
+      "format": "image/jpeg",
+      "service": [
+        {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/1ce40089-9317-4dc7-823a-3af757d55c5d",
+          "profile": "http://iiif.io/api/image/2/level2.json",
+          "type": "ImageService2"
+        }
+      ],
+      "width": 200,
+      "height": 200
+    }
+  ],
+  "homepage": [
+    {
+      "id": "https://dc.library.northwestern.edu/items/9bda3bba-18f6-467e-be96-3bbd079dabdb",
+      "type": "Text",
+      "label": {
+        "none": ["Half Moon - Nez Percé"]
+      },
+      "format": "text/html"
+    }
+  ]
+}
+```
+
 <h3>Next.js</h3>
 
 Usage with Next.js requires a dynamic import using `next/dynamic`

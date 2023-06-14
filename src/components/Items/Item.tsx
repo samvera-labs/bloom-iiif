@@ -4,7 +4,12 @@ import {
   IIIFExternalWebResource,
   Manifest,
 } from "@iiif/presentation-3";
-import React, { useEffect, useState } from "react";
+import React, {
+  MouseEvent,
+  MouseEventHandler,
+  useEffect,
+  useState,
+} from "react";
 import Figure from "components/Figure/Figure";
 import Placeholder from "./Placeholder";
 import { getCanvasResource } from "lib/iiif";
@@ -12,11 +17,12 @@ import { useCollectionState } from "context/collection-context";
 import { upgrade } from "@iiif/parser/upgrader";
 
 interface ItemProps {
+  handleItemInteraction?: (item: Collection | Manifest) => void;
   index: number;
   item: Collection | Manifest;
 }
 
-const Item: React.FC<ItemProps> = ({ index, item }) => {
+const Item: React.FC<ItemProps> = ({ handleItemInteraction, index, item }) => {
   const store = useCollectionState();
   const { options } = store;
   const { credentials } = options;
@@ -62,10 +68,23 @@ const Item: React.FC<ItemProps> = ({ index, item }) => {
   const onFocus = () => setIsFocused(true);
   const onBlur = () => setIsFocused(false);
 
+  /**
+   * if a handleItemInteraction() callback is present
+   * pass `item` object up to consuming application.
+   * if not, allow browser to route user to href value.
+   */
+  const handleAnchorClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    if (!handleItemInteraction) return;
+
+    e.preventDefault();
+    handleItemInteraction(item);
+  };
+
   return (
     <ItemStyled>
       <Anchor
         href={href}
+        onClick={handleAnchorClick}
         tabIndex={0}
         onFocus={onFocus}
         onBlur={onBlur}

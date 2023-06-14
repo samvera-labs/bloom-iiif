@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 interface ItemsProps {
   breakpoints?: SwiperBreakpoints;
+  handleItemInteraction?: (item: Collection | Manifest) => void;
   instance: number;
   items: CollectionItems[];
 }
@@ -42,6 +43,7 @@ const defaultBreakpoints = {
 
 const Items: React.FC<ItemsProps> = ({
   breakpoints = defaultBreakpoints,
+  handleItemInteraction,
   instance,
   items,
 }) => {
@@ -70,7 +72,11 @@ const Items: React.FC<ItemsProps> = ({
             data-index={index}
             data-type={item?.type.toLowerCase()}
           >
-            <Item index={index} item={item as Collection | Manifest} />
+            <Item
+              handleItemInteraction={handleItemInteraction}
+              index={index}
+              item={item as Collection | Manifest}
+            />
           </SwiperSlide>
         ))}
       </Swiper>
