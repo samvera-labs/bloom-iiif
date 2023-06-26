@@ -84,6 +84,74 @@ const myBreakpoints = {
 />
 ```
 
+<h3>Item Interaction Callback (optional)</h3>
+
+The default behavior for a click (or press) event on each of the individual items is to route to the `href` value set by the IIIF Presentation 3.0 API `homepage[0].id` for each `item` entry.
+
+You can optionally set an event handler for the `onItemInteraction` value as a callback for a custom action. The full `item` object will be passed back to the consuming application.
+
+#### Example usage of `onItemInteraction` callback:
+
+```jsx
+import BloomIIIF from "@samvera/bloom-iiif";
+
+// import swiper.js styling
+import "swiper/css";
+import "swiper/css/lazy";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+const MyApp = () => {
+  const collectionId =
+    "https://api.dc.library.northwestern.edu/api/v2/collections/c373ecd2-2c45-45f2-9f9e-52dc244870bd?as=iiif";
+  const handleItemInteraction = (item: Manifest | Collection) => {
+    console.log(`item`, item);
+    // do something with `item`
+  };
+
+  return (
+    <BloomIIIF
+      collectionId={collectionId}
+      onItemInteraction={handleItemInteraction}
+    />
+  );
+};
+```
+
+#### Example `item` return value:
+
+```json
+{
+  "id": "https://api.dc.library.northwestern.edu/api/v2/works/2de0355c-8e48-4478-93af-8cbd1437bd16?as=iiif",
+  "type": "Manifest",
+  "homepage": [
+    {
+      "id": "https://dc.library.northwestern.edu/items/2de0355c-8e48-4478-93af-8cbd1437bd16",
+      "type": "Text",
+      "format": "text/html",
+      "label": {
+        "none": ["Pulcinella \"tiepolano\""]
+      }
+    }
+  ],
+  "label": {
+    "none": ["Pulcinella \"tiepolano\""]
+  },
+  "summary": {
+    "none": ["Image"]
+  },
+  "thumbnail": [
+    {
+      "id": "https://api.dc.library.northwestern.edu/api/v2/works/2de0355c-8e48-4478-93af-8cbd1437bd16/thumbnail",
+      "format": "image/jpeg",
+      "type": "Image",
+      "width": 400,
+      "height": 400
+    }
+  ]
+}
+```
+
 <h3>Next.js</h3>
 
 Usage with Next.js requires a dynamic import using `next/dynamic`
