@@ -53100,7 +53100,7 @@ and ensure you are accounting for this risk.
   }) => {
     const [hasHomepage, setHasHomepage] = (0, import_react21.useState)(false);
     (0, import_react21.useEffect)(() => {
-      if (homepage.length > 0)
+      if ((homepage == null ? void 0 : homepage.length) > 0)
         setHasHomepage(true);
     }, [homepage]);
     return /* @__PURE__ */ import_react21.default.createElement(HeaderStyled, null, /* @__PURE__ */ import_react21.default.createElement(HeaderContent, null, hasHomepage ? /* @__PURE__ */ import_react21.default.createElement(at, { homepage, className: "bloom-header-homepage" }, /* @__PURE__ */ import_react21.default.createElement(R2, { label, as: "span", className: "bloom-header-label" })) : /* @__PURE__ */ import_react21.default.createElement(R2, { label, as: "span", className: "bloom-header-label" }), summary && /* @__PURE__ */ import_react21.default.createElement(
@@ -53498,7 +53498,7 @@ and ensure you are accounting for this risk.
 
   // src/components/Items/Item.tsx
   var import_upgrader = __toESM(require_index_umd());
-  var Item = ({ index: index2, item }) => {
+  var Item = ({ handleItemInteraction, index: index2, item }) => {
     const store = useCollectionState();
     const { options } = store;
     const { credentials } = options;
@@ -53535,10 +53535,17 @@ and ensure you are accounting for this risk.
     }, []);
     const onFocus = () => setIsFocused(true);
     const onBlur = () => setIsFocused(false);
+    const handleAnchorClick = (e2) => {
+      if (!handleItemInteraction)
+        return;
+      e2.preventDefault();
+      handleItemInteraction(item);
+    };
     return /* @__PURE__ */ import_react29.default.createElement(ItemStyled, null, /* @__PURE__ */ import_react29.default.createElement(
       Anchor,
       {
         href,
+        onClick: handleAnchorClick,
         tabIndex: 0,
         onFocus,
         onBlur,
@@ -59133,6 +59140,7 @@ and ensure you are accounting for this risk.
   };
   var Items = ({
     breakpoints = defaultBreakpoints,
+    handleItemInteraction,
     instance,
     items
   }) => {
@@ -59161,7 +59169,14 @@ and ensure you are accounting for this risk.
           "data-index": index2,
           "data-type": item == null ? void 0 : item.type.toLowerCase()
         },
-        /* @__PURE__ */ import_react37.default.createElement(Item_default, { index: index2, item })
+        /* @__PURE__ */ import_react37.default.createElement(
+          Item_default,
+          {
+            handleItemInteraction,
+            index: index2,
+            item
+          }
+        )
       ))
     ));
   };
@@ -59212,7 +59227,7 @@ and ensure you are accounting for this risk.
     },
     /* @__PURE__ */ import_react40.default.createElement(Bloom, __spreadValues({}, props))
   );
-  var Bloom = ({ collectionId }) => {
+  var Bloom = ({ collectionId, onItemInteraction }) => {
     const store = useCollectionState();
     const { options } = store;
     const [collection, setCollection] = (0, import_react40.useState)();
@@ -59244,6 +59259,7 @@ and ensure you are accounting for this risk.
       Items_default,
       {
         items: collection.items,
+        handleItemInteraction: onItemInteraction,
         instance,
         breakpoints: options.breakpoints
       }
@@ -59411,7 +59427,17 @@ and ensure you are accounting for this risk.
   var Wrapper = () => {
     const defaultUrl = collections[0].url;
     const [url, setUrl] = import_react43.default.useState(defaultUrl);
-    return /* @__PURE__ */ import_react43.default.createElement(import_react43.default.Fragment, null, /* @__PURE__ */ import_react43.default.createElement(src_default, { collectionId: url, key: url }), /* @__PURE__ */ import_react43.default.createElement(DynamicUrl_default, { url, setUrl }));
+    const handleItemInteraction = (item) => {
+      console.log(`item`, item);
+    };
+    return /* @__PURE__ */ import_react43.default.createElement(import_react43.default.Fragment, null, /* @__PURE__ */ import_react43.default.createElement(
+      src_default,
+      {
+        collectionId: url,
+        key: url,
+        onItemInteraction: handleItemInteraction
+      }
+    ), /* @__PURE__ */ import_react43.default.createElement(DynamicUrl_default, { url, setUrl }));
   };
   var container = document.getElementById("root");
   var root = (0, import_client.createRoot)(container);
