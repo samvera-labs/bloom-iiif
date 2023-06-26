@@ -90,51 +90,63 @@ The default behavior for a click (or press) event on each of the individual item
 
 You can optionally set an event handler for the `onItemInteraction` value as a callback for a custom action. The full `item` object will be passed back to the consuming application.
 
-```jsx
-const handleItemInteraction = (item) => {
-  console.log(item);
-}
+#### Example usage of `onItemInteraction` callback:
 
-<BloomIIIF
-  collectionId={...}
-  onItemInteraction={handleItemInteraction}
-/>
+```jsx
+import BloomIIIF from "@samvera/bloom-iiif";
+
+// import swiper.js styling
+import "swiper/css";
+import "swiper/css/lazy";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+const MyApp = () => {
+  const collectionId =
+    "https://api.dc.library.northwestern.edu/api/v2/collections/c373ecd2-2c45-45f2-9f9e-52dc244870bd?as=iiif";
+  const handleItemInteraction = (item: Manifest | Collection) => {
+    console.log(`item`, item);
+    // do something with `item`
+  };
+
+  return (
+    <BloomIIIF
+      collectionId={collectionId}
+      onItemInteraction={handleItemInteraction}
+    />
+  );
+};
 ```
+
+#### Example `item` return value:
 
 ```json
 {
-  "id": "http://127.0.0.1:8080/fixtures/iiif/manifest/nez-perce/01-half-moon.json",
+  "id": "https://api.dc.library.northwestern.edu/api/v2/works/2de0355c-8e48-4478-93af-8cbd1437bd16?as=iiif",
   "type": "Manifest",
+  "homepage": [
+    {
+      "id": "https://dc.library.northwestern.edu/items/2de0355c-8e48-4478-93af-8cbd1437bd16",
+      "type": "Text",
+      "format": "text/html",
+      "label": {
+        "none": ["Pulcinella \"tiepolano\""]
+      }
+    }
+  ],
   "label": {
-    "none": ["Half Moon - Nez Percé"]
+    "none": ["Pulcinella \"tiepolano\""]
   },
   "summary": {
     "none": ["Image"]
   },
   "thumbnail": [
     {
-      "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/1ce40089-9317-4dc7-823a-3af757d55c5d/full/200,/0/default.jpg",
-      "type": "Image",
+      "id": "https://api.dc.library.northwestern.edu/api/v2/works/2de0355c-8e48-4478-93af-8cbd1437bd16/thumbnail",
       "format": "image/jpeg",
-      "service": [
-        {
-          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/1ce40089-9317-4dc7-823a-3af757d55c5d",
-          "profile": "http://iiif.io/api/image/2/level2.json",
-          "type": "ImageService2"
-        }
-      ],
-      "width": 200,
-      "height": 200
-    }
-  ],
-  "homepage": [
-    {
-      "id": "https://dc.library.northwestern.edu/items/9bda3bba-18f6-467e-be96-3bbd079dabdb",
-      "type": "Text",
-      "label": {
-        "none": ["Half Moon - Nez Percé"]
-      },
-      "format": "text/html"
+      "type": "Image",
+      "width": 400,
+      "height": 400
     }
   ]
 }

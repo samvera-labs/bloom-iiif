@@ -4,12 +4,7 @@ import {
   IIIFExternalWebResource,
   Manifest,
 } from "@iiif/presentation-3";
-import React, {
-  MouseEvent,
-  MouseEventHandler,
-  useEffect,
-  useState,
-} from "react";
+import React, { MouseEvent, useEffect, useState } from "react";
 import Figure from "components/Figure/Figure";
 import Placeholder from "./Placeholder";
 import { getCanvasResource } from "lib/iiif";

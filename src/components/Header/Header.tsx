@@ -23,7 +23,7 @@ const Header: React.FC<HeaderProps> = ({
   const [hasHomepage, setHasHomepage] = useState<boolean>(false);
 
   useEffect(() => {
-    if (homepage.length > 0) setHasHomepage(true);
+    if (homepage?.length > 0) setHasHomepage(true);
   }, [homepage]);
 
   return (
