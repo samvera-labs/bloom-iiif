@@ -6,16 +6,14 @@ async function buildHTML(isStatic) {
     <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Bloom IIIF</title>
-      ${isStatic ? ` <link rel="stylesheet" href="./default.css" />` : ``}
-      <link rel="stylesheet" href="./script.css" />
-      <link rel="stylesheet" href="./styles.css" />
+      <title>Redirecting to Clover IIIF</title>
+      <meta
+        http-equiv="refresh"
+        content="0; URL=https://samvera-labs.github.io/clover-iiif/docs/slider"
+      />
+      <link rel="canonical" href="https://samvera-labs.github.io/clover-iiif/docs/slider" />
     </head>
-    <body>
-      <div id="root"></div>
-      ${isStatic ? await buildMarkdown() : ``}
-      <script src="./script.js"></script>
-    </body>
+    <body></body>
   </html>`;
 
   return htmlFile;
